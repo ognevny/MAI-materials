@@ -1,0 +1,6 @@
+[book]
+authors = ["Максим Бондаренков"]
+language = "ru"
+multilingual = false
+src = "lectures"
+title = "Материалы МАИ"
