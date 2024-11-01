@@ -2,5 +2,5 @@
 authors = ["Максим Бондаренков"]
 language = "ru"
 multilingual = false
-src = "lectures"
+src = "materials"
 title = "Материалы МАИ"
