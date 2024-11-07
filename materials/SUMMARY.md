@@ -11,6 +11,7 @@
   - [Лекция 4](algorithmic-langs/lecture-4.md)
   - [Лекция 5](algorithmic-langs/lecture-5.md)
   - [Лекция 6](algorithmic-langs/lecture-6.md)
+  - [Лекция 7](algorithmic-langs/lecture-7.md)
 
 # История России
 
@@ -25,12 +26,15 @@
   - [Семинар 2](russian-history/seminar-2.md)
   - [Лекция 8](russian-history/lecture-8.md)
   - [Семинар 3](russian-history/seminar-3.md)
+  - [Лекция 9](russian-history/lecture-9.md)
 
 # Основы российской государственности
 
 - [Начальные сведения](FRS/README.md)
   - [Лекция 1](FRS/lecture-1.md)
   - [Лекция 2](FRS/lecture-2.md)
+  - [Семинар 1](FRS/seminar-1.md)
+  - [Семинар 2](FRS/seminar-2.md)
 
 # ПРОЧЕЕ
 
