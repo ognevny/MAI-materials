@@ -27,6 +27,9 @@
   - [Лекция 8](russian-history/lecture-8.md)
   - [Семинар 3](russian-history/seminar-3.md)
   - [Лекция 9](russian-history/lecture-9.md)
+  - [Лекция 10](russian-history/lecture-10.md)
+  - [Лекция 11](russian-history/lecture-11.md)
+  - [Лекция 12](russian-history/lecture-12.md)
 
 # Основы российской государственности
 
