@@ -30,6 +30,8 @@
   - [Лекция 10](russian-history/lecture-10.md)
   - [Лекция 11](russian-history/lecture-11.md)
   - [Лекция 12](russian-history/lecture-12.md)
+  - [Лекция 13](russian-history/lecture-13.md)
+  - [Лекция 14](russian-history/lecture-14.md)
 
 # Основы российской государственности
 
