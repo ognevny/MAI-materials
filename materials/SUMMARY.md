@@ -2,7 +2,11 @@
 
 [Введение](README.md)
 
-# Алгоритмические языки и программирование
+# 1 Курс
+
+- [О материалах с 1 курса](1-year.md)
+
+## Алгоритмические языки и программирование
 
 - [Начальные сведения](algorithmic-langs/README.md)
   - [Лекция 1](algorithmic-langs/lecture-1.md)
@@ -13,7 +17,7 @@
   - [Лекция 6](algorithmic-langs/lecture-6.md)
   - [Лекция 7](algorithmic-langs/lecture-7.md)
 
-# История России
+## История России
 
 - [Начальные сведения](russian-history/README.md)
   - [Лекция 1](russian-history/lecture-1.md)
@@ -40,13 +44,32 @@
   - [Лекция 19](russian-history/lecture-19.md)
   - [Лекция 20](russian-history/lecture-20.md)
 
-# Основы российской государственности
+## Основы российской государственности
 
 - [Начальные сведения](FRS/README.md)
   - [Лекция 1](FRS/lecture-1.md)
   - [Лекция 2](FRS/lecture-2.md)
   - [Семинар 1](FRS/seminar-1.md)
   - [Семинар 2](FRS/seminar-2.md)
+
+# 2 Курс
+
+- [О материалах со 2 курса](2-year.md)
+
+## Сопротивление материалов
+
+- [Начальные сведения](strength-of-materials/README.md)
+  - [Лекция 4](strength-of-materials/lecture-4.md)
+
+## Дифференциальные уравнения
+
+- [Начальные сведения](differential-equations/README.md)
+  - [Лекция 3](differential-equations/lecture-3.md)
+
+## Теория вероятностей
+
+- [Начальные сведения](probability-theory/README.md)
+  - [Лекция 4](probability-theory/lecture-4.md)
 
 # ПРОЧЕЕ
 
