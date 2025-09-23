@@ -8,7 +8,7 @@
 
 Листинг 1: Различные примеры со случайными величинами
 
-![[../../source-figures/prob-th-lect4-list1.png]]
+<img src=../../source-figures/prob-th-lect4-list1.png>
 
 (подразумевается, что это всё является результатом экспериментов)
 
@@ -24,13 +24,13 @@
 
 Листинг 2: таблица закона распределения ДСВ (ряд распределения)
 
-![[../../source-figures/prob-th-lect4-list2.png]]
+<img src=../../source-figures/prob-th-lect4-list2.png>
 
 Также ЗР ДСВ может быть задан графиком (рис. 3) (рис. 4) или аналитически в виде формулы.
 
-![[../../source-figures/prob-th-lect4-fig3.png]]
+<img src=../../source-figures/prob-th-lect4-fig3.png>
 
-![[../../source-figures/prob-th-lect4-fig4.png]]
+<img src=../../source-figures/prob-th-lect4-fig4.png>
 
 Наиболее общей формой ЗР СВ как для Д, так и для НСВ является функция распределения. Они бывают интегральные (ИФР, иногда И опускают), и дифференциальные (ДФР или ПР - плотность распределения).
 
@@ -40,13 +40,13 @@ F(x) = P(X < x)
 
 Листинг 5: запись ИФР, его свойства и графики
 
-![[../../source-figures/prob-th-lect4-list5p1.png]]
+<img src=../../source-figures/prob-th-lect4-list5p1.png>
 
-![[../../source-figures/prob-th-lect4-list5p2.png]]
+<img src=../../source-figures/prob-th-lect4-list5p2.png>
 
 Листинг 6: ДФР
 
-![[../../source-figures/prob-th-lect4-list6.png]]
+<img src=../../source-figures/prob-th-lect4-list6.png>
 
 ### Числовые характеристики СВ
 
