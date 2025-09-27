@@ -77,10 +77,16 @@
 - [Теоретическая механика](theoritecal-mechanics/README.md)
   - [Лекция 2](theoritecal-mechanics/lecture-2.md)
 
+## Материаловедение
+
+- [Материаловедение](material-theory/README.md)
+   - [Лекция 3](material-theory/lecture-3.md) 
+
 ## Психология и педагогика
 
 - [Психология и педагогика](psychology/README.md)
   - [Лекция 1](psychology/lecture-1.md)
+  - [Лекция 2](psychology/lecture-2.md)
 
 # ПРОЧЕЕ
 
