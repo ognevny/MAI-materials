@@ -25,8 +25,8 @@ y' + p(x) = 0 - ЛОДУ. Такие уравнения решаются мет�
 
 Листинг 5: решение примера из листинга 3 методом Бернулли
 
-![[../../source-figures/diff-eq-lect3-list5p1.png]]
-![[../../source-figures/diff-eq-lect3-list5p2.png]]
+<img src=../../source-figures/diff-eq-lect3-list5p1.png>
+<img src=../../source-figures/diff-eq-lect3-list5p2.png>
 
 ### Уравнение Бернулли
 
@@ -44,4 +44,4 @@ P(x, y)dx + Q(x, y)dy = 0, если <a>&delta;</a>P/<a>&delta;</a>y = <a>&delta;
 	
 Листинг 7: пример решения ДУ в полных дифференциалах
 
-![[../../source-figures/diff-eq-lect3-list7.png]]
+<img src=../../source-figures/diff-eq-lect3-list7.png>
