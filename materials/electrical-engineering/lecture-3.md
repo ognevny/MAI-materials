@@ -4,11 +4,11 @@
 
 Пассивный элемент можно заменить активным (рис. 1)
 
-<img src=../../source-figures/elec-eng-lect3-fig1.png>
+<img src=source-figures/lect3-fig1.png>
 
 На рис. 2 приведена немного иная схема, контур a-b так же может быть заменен активным элементом
 
-<img src=../../source-figures/elec-eng-lect3-fig2.png>
+<img src=source-figures/lect3-fig2.png>
 
 ### Теорема обратимости (взаимности)
 
@@ -16,19 +16,19 @@
 
 Передаточная проводимость (обозначается G на рис. 3) - отношение тока на выходе к величине ЭДС на входе электрической цепи.
 
-<img src=../../source-figures/elec-eng-lect3-fig3.png>
+<img src=source-figures/lect3-fig3.png>
 
 ### Метод эквивалентного источника напряжения
 
 Теорема об эквивалентном источнике напряжения - электрическую цепь относительно выделенных выводов можно заменить эквивалентным источником напряжения, величина ЭДС которого равняется напряжению на разомкнутых выводах, а внутреннее сопротивление источника - эквивалентному сопротивлению относительно разомкнутых выводов (рис. 4).
 
-<img src=../../source-figures/elec-eng-lect3-fig4.png>
+<img src=source-figures/lect3-fig4.png>
 
 R'<sub>mn</sub> - сопротивление цепи относительно разомкнутых элементов
 
 На рис. 5 изображен пример применения метода
 
-<img src=../../source-figures/elec-eng-lect3-fig5.png>
+<img src=source-figures/lect3-fig5.png>
 
 ### Переменный ток
 
@@ -44,16 +44,16 @@ u = <a>U<sub>m</sub>sin(&omega;t + &psi;<sub>u</sub>)</a> - напряжение
 
 Среднее значение синусоидального тока считается как
 
-<img src=../../source-figures/elec-eng-lect3-6.png>
+<img src=source-figures/lect3-6.png>
 
 Средняя квадратическая синусоидального тока
 
-<img src=../../source-figures/elec-eng-lect3-7.png>
+<img src=source-figures/lect3-7.png>
 
 Действующие значения являются неким эквивалентом значениям при постоянном токе
 
-<img src=../../source-figures/elec-eng-lect3-8.png>
+<img src=source-figures/lect3-8.png>
 
 #### Синусоидальный ток в сопротивлениях
 
-<img src=../../source-figures/elec-eng-lect3-9.png>
+<img src=source-figures/lect3-9.png>
