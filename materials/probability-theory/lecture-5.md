@@ -30,6 +30,8 @@
 
 Листинг 2: числовые характеристики СВ
 
+Изменено 04.10.25: в свойстве (2) дисперсии допущена описка - на самом деле D(X + C) = D(X).
+
 <img src=source-figures/lect5-list2p1.png>
 <img src=source-figures/lect5-list2p2.png>
 
