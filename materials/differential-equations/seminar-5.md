@@ -4,7 +4,7 @@
 
 F(x) - функция многих переменных (x = (x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>))
 
-dF(x) = <a>&Sigma;(&part;F(x)/&part;x<sub>i</sub>)dx<sub>i</sub></a> при 1 <= i <= n.
+dF(x) = <a>&Sigma;(&part;F(x)/&part;x<sub>i</sub>)dx<sub>i</sub> при 1 &le; i &le; n</a>.
 
 ДУ вида:
 
