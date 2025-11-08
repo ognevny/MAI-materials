@@ -6,11 +6,11 @@
 
 #### Законы распределения
 
-<img src=source-figures/lect9-1.png>
+<img src=source-figures/lect9-1.png />
 
 #### Числовые характеристики
 
-<img src=source-figures/lect9-2.png>
+<img src=source-figures/lect9-2.png />
 
 2 СВ называются зависимыми, если ЗР одной из них зависит от того, какое значение приняла другая СВ.
 
@@ -20,7 +20,7 @@
 
 #### Условные ЗР (УЗР) компонент двумерной СВ
 
-<img src=source-figures/lect9-3.png>
+<img src=source-figures/lect9-3.png />
 
 УЗР одной компоненты двумерной СВ называется её ЗР при условии, что другая компонента приняла определенное значение.
 
@@ -28,18 +28,18 @@
 
 ##### Теорема о независимости случайных величин
 
-<img src=source-figures/lect9-4.png>
+<img src=source-figures/lect9-4.png />
 
 #### Условные числовые характеристики двумерной случайной величины
 
-<img src=source-figures/lect9-5.png>
+<img src=source-figures/lect9-5.png />
 
 Регрессией называется зависимость условного математического ожидания одной компоненты двумерной СВ от другой.
 
 ##### Уравнение линейной регрессии
 
-<img src=source-figures/lect9-6.png>
+<img src=source-figures/lect9-6.png />
 
 ##### Формула полного математического ожидания
 
-<img src=source-figures/lect9-7.png>
+<img src=source-figures/lect9-7.png />

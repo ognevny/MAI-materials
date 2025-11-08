@@ -38,7 +38,7 @@ M(x, y)dx + N(x, y)dy = 0 (\*) (* - т.н. <a>"зви&#769;здочка"</a>)
 
 Пример:
 
-<img src=source-figures/sem5-1.png>
+<img src=source-figures/sem5-1.png />
 
 ### ДУ, не разрешенные относительно производной
 

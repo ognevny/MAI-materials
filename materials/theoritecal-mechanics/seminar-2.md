@@ -4,5 +4,5 @@
 
 Статическая реакция определяется силой тяжести. Динамическая реакция - силами, создаваемыми за счёт движения тела (в контексте 42.4 - вращения).
 
-<img src=source-figures/sem2-1.png>
-<img src=source-figures/sem2-2.png>
+<img src=source-figures/sem2-1.png />
+<img src=source-figures/sem2-2.png />

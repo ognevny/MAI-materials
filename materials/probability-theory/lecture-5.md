@@ -6,7 +6,7 @@
 
 Листинг 1: мат. ожидание для СВ
 
-<img src=source-figures/lect5-list1.png>
+<img src=source-figures/lect5-list1.png />
 
 #### Числовые характеристики математического ожидания
 
@@ -32,8 +32,8 @@
 
 Листинг 2: числовые характеристики СВ
 
-<img src=source-figures/lect5-list2p1.png>
-<img src=source-figures/lect5-list2p2.png>
+<img src=source-figures/lect5-list2p1.png />
+<img src=source-figures/lect5-list2p2.png />
 
 #### Квантили и процентные точки
 
@@ -41,4 +41,4 @@
 
 Листинг 3: определение и свойства приведенных величин
 
-<img src=source-figures/lect5-list3.png>
+<img src=source-figures/lect5-list3.png />

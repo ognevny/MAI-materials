@@ -4,5 +4,5 @@
 
 Правило трёх сигм: СВ X ~ N(m; <a>&sigma;<sup>2</sup></a>) практически не отклоняется от своего среднего значения больше, чем на 3<a>&sigma;</a>.
 
-<img src=source-figures/sem8-1.png>
-<img src=source-figures/sem8-2.png>
+<img src=source-figures/sem8-1.png />
+<img src=source-figures/sem8-2.png />

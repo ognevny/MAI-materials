@@ -8,6 +8,6 @@
 
 Разобраны следующие ЗР: равномерный, экспоненциальный (показательный), нормальный (Гауссовское распределение), "для эрудиции" Вейбулла
 
-<img src=source-figures/lect7-1.png>
-<img src=source-figures/lect7-2.png>
-<img src=source-figures/lect7-3.png>
+<img src=source-figures/lect7-1.png />
+<img src=source-figures/lect7-2.png />
+<img src=source-figures/lect7-3.png />

@@ -16,7 +16,7 @@ p<sub>n</sub>(x)y<sup>(n)</sup> + p<sub>n-1</sub>(x)y<sup>(n-1)</sup> + ... + p<
 
 Если функции y<sub>1</sub>(x), y<sub>2</sub>(x), ..., y<sub>n</sub>(x) дифференцируемы (n - 1) раз, то из них можно построить определитель n-ого порядка.
 
-<img src=source-figures/sem7-1.png>
+<img src=source-figures/sem7-1.png />
 
 Если функции y<sub>1</sub>(x), y<sub>2</sub>(x), ..., y<sub>n</sub>(x) являются решениями ЛОДУ и являются ЛНЗ, то определитель Вронского этой системы функций не обращается в ноль ни в одной точке промежутка (a, b).
 
@@ -32,4 +32,4 @@ a<sub>n</sub>y<sup>(n)</sup> + a<sub>n-1</sub>y<sup>(n-1)</sup> + ... + a<sub>2<
 
 <a>y<sub>j,j+1</sub> = e<sup>(&alpha;&plusmn;i&beta;)x</sup> = e<sup>&alpha;x</sup>(cos&beta;x &plusmn; isin&beta;x)</a>.
 
-<img src=source-figures/sem7-2.png>
+<img src=source-figures/sem7-2.png />

@@ -2,13 +2,13 @@
 
 #### Синусоидальный ток в ветви при последовательном соединении элементов RLC
 
-<img src=source-figures/lect5-1.png>
+<img src=source-figures/lect5-1.png />
 
 X = X<sub>L</sub> - X<sub>C</sub> - реактивное сопротивление; Z - полное сопротивление (импеданс).
 
 #### Параллельное соединение элементов RLC
 
-<img src=source-figures/lect5-2.png>
+<img src=source-figures/lect5-2.png />
 
 B - реактивная проводимость, Y - полная проводимость.
 
@@ -18,7 +18,7 @@ B - реактивная проводимость, Y - полная провод
 
 p = ui - мгновенная мощность, p = <a>U<sub>m</sub>I<sub>m</sub>sin&omega;tsin(&omega;t - &phi;) = (U<sub>m</sub>I<sub>m</sub>)/2 * (cos&phi; - cos(2&omega;t - &phi;))</a>.
 
-<img src=source-figures/lect5-3.png>
+<img src=source-figures/lect5-3.png />
 
 P - активная мощность, S - полная мощность, <a>cos&phi;</a> - коэффициент мощности, Q - реактивная мощность.
 

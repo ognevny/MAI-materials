@@ -6,11 +6,11 @@
 
 Листинг 1: решение примера
 
-<img src=source-figures/lect4-list1.png>
+<img src=source-figures/lect4-list1.png />
 
 Листинг 2: пример решения задачи методом интегрирующего множителя
 
-<img src=source-figures/lect4-list2.png>
+<img src=source-figures/lect4-list2.png />
 
 ### ДУ не разрешенные относительно производных
 
@@ -20,7 +20,7 @@ b) x = f(y, y'); Замена y' = P(y); x = f(y, P(y)); dx/dy = f'(y, P(y))<sub
 
 Листинг 3: решение примера данного ДУ
 
-<img src=source-figures/lect4-list3.png>
+<img src=source-figures/lect4-list3.png />
 
 Решение, в каждой точке которого нарушено условие задачи Коши (условие единственности), называется особым решением.
 

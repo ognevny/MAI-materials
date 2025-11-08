@@ -18,7 +18,7 @@
 
 Биномиальный, Пуассона, геометрическое распределение (Фарри). Также в конце есть 3 "бонус-трека": дополнительные ЗР для "эрудиции"
 
-<img src=source-figures/lect6-1.png>
-<img src=source-figures/lect6-2.png>
-<img src=source-figures/lect6-3.png>
-<img src=source-figures/lect6-4.png>
+<img src=source-figures/lect6-1.png />
+<img src=source-figures/lect6-2.png />
+<img src=source-figures/lect6-3.png />
+<img src=source-figures/lect6-4.png />

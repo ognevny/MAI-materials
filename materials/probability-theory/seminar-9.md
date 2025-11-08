@@ -10,5 +10,5 @@ D\[X + Y\] = D\[X\] + D\[Y\] + 2cov(X, Y).
 
 Коэффициент корреляции - мера линейной зависимости СВ.
 
-<img src=source-figures/sem9-1.png>
-<img src=source-figures/sem9-2.png>
+<img src=source-figures/sem9-1.png />
+<img src=source-figures/sem9-2.png />

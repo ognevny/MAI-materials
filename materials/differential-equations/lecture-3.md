@@ -6,27 +6,27 @@ y' + p(x) = 0 - ЛОДУ. Такие уравнения решаются мет�
 
 Листинг 1: решение ЛОДУ
 
-<img src=source-figures/lect3-list1.png>
+<img src=source-figures/lect3-list1.png />
 
 ЛНДУ: y' + p(x)y = q(x).
 
 #### Метод вариации произвольной постоянной (листинг 2)
 
-<img src=source-figures/lect3-list2.png>
+<img src=source-figures/lect3-list2.png />
 
 Листинг 3: пример решения ЛНДУ
 
-<img src=source-figures/lect3-list3p1.png>
-<img src=source-figures/lect3-list3p2.png>
+<img src=source-figures/lect3-list3p1.png />
+<img src=source-figures/lect3-list3p2.png />
 
 #### Метод Бернулли (листинг 4)
 
-<img src=source-figures/lect3-list4.png>
+<img src=source-figures/lect3-list4.png />
 
 Листинг 5: решение примера из листинга 3 методом Бернулли
 
-<img src=source-figures/lect3-list5p1.png>
-<img src=source-figures/lect3-list5p2.png>
+<img src=source-figures/lect3-list5p1.png />
+<img src=source-figures/lect3-list5p2.png />
 
 ### Уравнение Бернулли
 
@@ -34,7 +34,7 @@ y' + p(x)y = q(x)y<sup>&#945;</sup>, &#945; - действительное чи�
 
 Листинг 6: пример уравнения Бернулли
 
-<img src=source-figures/lect3-list6.png>
+<img src=source-figures/lect3-list6.png />
 
 ### ДУ в полных дифференциалах
 
@@ -44,4 +44,4 @@ P(x, y)dx + Q(x, y)dy = 0, если <a>&part;</a>P/<a>&part;</a>y = <a>&part;</a
 
 Листинг 7: пример решения ДУ в полных дифференциалах
 
-<img src=source-figures/lect3-list7.png>
+<img src=source-figures/lect3-list7.png />

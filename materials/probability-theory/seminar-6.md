@@ -24,25 +24,25 @@ F(x) = P(X <a>&le;</a> x)
 
 Задача 1:
 
-<img src=source-figures/sem6-1.png>
+<img src=source-figures/sem6-1.png />
 
 Дискретное равномерное распределение: СВ принимает свои значения с одинаковой вероятностью:
 
-<img src=source-figures/sem6-2.png>
+<img src=source-figures/sem6-2.png />
 
 Распределение Бернулли: СВ - результат опыта по схеме Бернулли с вероятностью успеха p:
 
-<img src=source-figures/sem6-3.png>
+<img src=source-figures/sem6-3.png />
 
 Биномиальное распределение: СВ - число успехов в серии из n опытов по схеме Бернулли с вероятностью успеха p в каждом:
 
-<img src=source-figures/sem6-4.png>
+<img src=source-figures/sem6-4.png />
 
 Геометрическое распределение: СВ - число опытов до достижения первого успеха (включительно).
 
-<img src=source-figures/sem6-5.png>
-<img src=source-figures/sem6-6.png>
+<img src=source-figures/sem6-5.png />
+<img src=source-figures/sem6-6.png />
 
 Распределение Пуассона: СВ - число событий, произошедших за фиксированное время с фиксированное интенсивностью:
 
-<img src=source-figures/sem6-7.png>
+<img src=source-figures/sem6-7.png />

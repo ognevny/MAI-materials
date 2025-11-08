@@ -4,7 +4,7 @@
 
 #### Логнормальное распределение
 
-<img src=source-figures/lect8-1.png>
+<img src=source-figures/lect8-1.png />
 
 ### Многомерные случайные величины
 
@@ -16,9 +16,9 @@
 
 #### Законы распределения двумерной случайной величины
 
-<img src=source-figures/lect8-2.png>
-<img src=source-figures/lect8-3.png>
-<img src=source-figures/lect8-4.png>
+<img src=source-figures/lect8-2.png />
+<img src=source-figures/lect8-3.png />
+<img src=source-figures/lect8-4.png />
 
 Плотностью распределения (дифференциальной функцией) НДСВ называют вторую смешанную производную.
 
