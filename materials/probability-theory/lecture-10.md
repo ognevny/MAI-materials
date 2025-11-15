@@ -10,5 +10,6 @@
 
 <img src=source-figures/lect10-2.png />
 <img src=source-figures/lect10-3.png />
+<img src=source-figures/lect10-4.png />
 
 Для нормально распределенных СВ независимость и некоррелированность являются эквивалентными понятиями.
