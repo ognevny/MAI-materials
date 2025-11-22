@@ -53,4 +53,28 @@ y = -1; y' = 0 => ДУ: 0 = <a>&radic;(1 - (-1)<sup>2</sup>) &equiv; 0</a> => y 
 
 #### Геометрический смысл ДУ 1 порядка
 
-А дальше текстом не получится...
+<img src=source-figures/lect1-2-1.png />
+
+### Метод Эйлера для решения задач Коши на \[a; b\] для ДУ y' = f(x, y) с НУ y(x<sub>0</sub>) = y<sub>0</sub>
+
+<img src=source-figures/lect1-2-2.png />
+
+### Аналитические методы решения ДУ
+
+#### ДУ с разделяемыми переменными
+
+<img src=source-figures/lect1-2-3.png />
+
+#### Однородные ДУ
+
+<img src=source-figures/lect1-2-4.png />
+
+#### Линейные ДУ
+
+<img src=source-figures/lect1-2-5.png />
+
+### Методы решения ЛНДУ 1-ого порядка
+
+#### Метод вариации произвольной постоянной (метод Лагранжа)
+
+<img src=source-figures/lect1-2-6.png />
