@@ -52,17 +52,17 @@ F(x) = P(X < x)
 
 ### Числовые характеристики СВ
 
-1. ХП
+1. Характеристики положения
     M(x)
-    M_o(x)
-    M_e(x)
+    M<sub>o</sub>(x)
+    M<sub>e</sub>(x)
     <a>&nu;</a><sub>1</sub>(x) = M(x)
 
-2. ХР
+2. Характеристики рассеяния
     D(x)
-    <a>&delta;</a>(x)      СКО
+    <a>&delta;</a>(x) - СКО
     <a>&nu;</a><sub>k</sub>(x), k > 1
-    <a>&mu;</a><sub>k</sub>(x), k > 1         <a>&mu;</a><sub>1</sub>(x) = 0
+    <a>&mu;</a><sub>k</sub>(x), k > 1; <a>&mu;</a><sub>1</sub>(x) = 0
     <a>&alpha;</a>(x)
     <a>&epsilon;</a>(x)
 
