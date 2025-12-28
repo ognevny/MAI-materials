@@ -1,13 +1,14 @@
 {
   "lsp": {
     "tinymist": {
-      // "settings": {
-      //   "preview": {
-      //     "background": {
-      //       "enabled": true,
-      //     },
-      //   },
-      // },
+      "initialization_options": {
+        "preview": {
+          "background": {
+            "enabled": true,
+            "args": ["--data-plane-host=127.0.0.1:23625", "--invert-colors=never", "--open"],
+          },
+        },
+      },
     },
   },
   "soft_wrap": "preferred_line_length",
