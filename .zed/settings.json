@@ -1,0 +1,14 @@
+{
+  "lsp": {
+    "tinymist": {
+      // "settings": {
+      //   "preview": {
+      //     "background": {
+      //       "enabled": true,
+      //     },
+      //   },
+      // },
+    },
+  },
+  "soft_wrap": "preferred_line_length",
+}
