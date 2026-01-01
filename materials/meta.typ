@@ -17,8 +17,13 @@
   set page(
     paper: "a4",
     numbering: "1",
-    header: head, // как здесь сделать весь прикол?
+    header: [
+      #set text(8pt)
+      #h(1fr) #head
+    ],
   )
+
+  set par(justify: true)
 
   doc
 }
