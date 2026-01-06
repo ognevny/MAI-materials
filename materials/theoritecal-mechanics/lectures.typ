@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+  #import "meta.typ": conf
 
 #show: conf.with(
   titl: "Лекции по Теоретической механике",
@@ -8,6 +8,7 @@
 )
 
 #let ov(var) = $overline(#var)$
+#let delimsys = ("{", "|")
 
 #outline()
 #pagebreak(weak: true)
@@ -751,13 +752,15 @@ $ dif/(dif t) (partial T)/(partial dot(q)_i) - (partial T)/(partial q_i) = -(par
 
 ==== Уравнение Лагранжа II рода в потенциальном поле сил
 
-Лагранжиан $ L = T - Pi $
+$ L = T - Pi "- Лагранжиан" $
 
 $display((partial Pi)/(partial dot(q)_i) = 0 => (partial L)/(partial dot(q)_i) = (partial T)/(partial dot(q)_i)\; dif/(dif t) (partial T)/(partial dot(q)_i) - partial/(partial q_i) (T - Pi) = 0)$
 
 $ dif/(dif t) (partial L)/(partial dot(q)_i) - (partial L)/(partial q_i) = 0 $
 
 === Уравнения равновесия в МС
+
+#v(1em)
 
 $n -> q_1, ..., q_n \
   delta A = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0\
@@ -784,6 +787,8 @@ $Q_i = -(partial Pi)/(partial q_i) \
 
 ==== Нахождение положения равновесия при одной степени свободы
 
+#v(1em)
+
 $n = 1 \
   (partial Pi)/(partial q) = 0 => q^* \
   (partial^2 Pi)/(partial q^2) bar.v_(q^*) = cases(> 0 - min - "устойчивый", < 0 - max - "неустойчивый")$
@@ -798,7 +803,7 @@ $n &= 1\
   T &= display(sum_j m_j/2 ((dif ov(r)_j)/(dif t) = (partial ov(r)_j)/(partial q) dot(q) + (partial ov(r)_j)/(partial t))^2 = sum_j m_j/2 ((partial ov(r)_j)/(partial q) dot(q))^2 + sum_j m_j/2 dot 2((partial ov(r)_j)/(partial q), (partial ov(r)_j)/(partial t)) dot(q) + sum_j m_j/2 ((partial ov(r)_j)/(partial t))^2 = \ &= 1/2 dot(q)^2 sum_j ((partial ov(r)_j)/(partial q))^2 + dot(q) sum_j m_j ((partial ov(r)_j)/(partial q), (partial ov(r)_j)/(partial t)) dot(q) + 1/2 sum_j m_j ((partial ov(r)_j)/(partial t))^2)$
 
 #grid(
-  columns: (1fr, 2fr, 1fr),
+  columns: (1cm, 6cm, 3cm),
   align: center + horizon,
   [
     $ov(r)_j (q, t)$
@@ -881,3 +886,352 @@ $ov(F)_j = -beta_j ov(V)_j, beta_j > 0 \
   Q^* = -b^* q, dot(q) = dot(x) => Q^* = -b dot(x)$
 
 $ a^* dot.double(x) + c^* x = -b^* dot(x) <=> a^* dot.double(x) + b^* dot(x) + c^* x = 0; a^*, b^*, c^* > 0 $
+
+$dot.double(x) + b^* / a^* dot(x) + c^* / a^* x = 0 \
+  b^* / a^* = 2n, c^* / a^* = k^2 \
+  dot.double(x) + 2n dot(x) + k^2 x = 0 \
+  lambda^2 + 2n lambda + k^2 = 0 - "характеристическое уравнение" \
+  lambda = -n plus.minus sqrt(n^2 - k^2)$
+
+$ n < k - "случай малого сопротивления" $
+
+$k_1^2 = k^2 - n^2 \
+  lambda = -n plus.minus sqrt(-k_1^2) = -n plus.minus i k_1 \
+  X = tilde(C)_1 e^((-n + i k_1) t) + tilde(C)_2 e^((-n - i k_1) t) = e^(-n t) (tilde(C)_1 e^(i k_1 t) + tilde(C)_2 e^(- i k_1 t) = A e^(n t) sin(k_1 t + epsilon)$
+
+#figure(
+  image("source-figures/lect6-1.png", width: 31%),
+)
+
+$x -> 0 "при" t -> infinity$
+
+$ tau_1 = (2pi)/k_1 - "период затухающих колебаний" $
+
+#figure(
+  image("source-figures/lect6-2.png", width: 35%),
+  caption: [Затухающие колебания в случае $n > k$],
+)
+
+$x -> 0 "при" t -> infinity$
+
+==== Малые колебания МС с одной степенью свободы при наличии гармонической вынуждающей силы
+
+$ a^* dot.double(x) + c^* x = tilde(F) cos(p t) $
+
+$X_"ОН" = X_"ОО" + X_"Част"; X_"ОО" = A sin(k t + epsilon), k = sqrt(c^* / a^*) \
+  X_"Част" = B cos(p t) + D sin(p t) \
+  dot(X)_"Част" = -B p sin(p t) + D p cos(p t), dot.double(X)_"Част" = -B p^2 cos(p t) - D p^2 sin(p t) \
+  a^* (-B p^2 cos(p t) - D p^2 sin(p t)) + c^* (B cos(p t) + D sin(p t)) = tilde(F) cos(p t) \
+  display(cases(
+    sin(p t)\: -a^* B p^2 + c^* B = tilde(F),
+    cos(p t)\: -a^* D p^2 + c^* D = 0,
+  ) => cases(
+    B = tilde(F)/(-a^* p^2 + c^*),
+    D = 0/(-a^* p^2 + c^*),
+  )) -a^* p^2 + c^* != 0 <=> p^2 != c^* / a^* = k^2 <=> p != k \
+  X_"ОН" = A sin(k t + epsilon) + tilde(F)/(-a^* p^2 + c^*) cos(p t)$
+
+$k = p - "резонанс" \
+  dot.double(x) + k^2 x = F_0 cos(p t), F_0 = tilde(F)/a^* \
+  X_"Част" = B t cos(p t) + D t sin(p t); dot(X)_"Част" = B cos(p t) + B t (-sin(p t)) p + D sin(p t) + D t cos(p t) p; dot.double(X)_"Част" = \ = -B p sin(p t) - B p sin(p t) - B p t cos(p t) p + D p cos(p t) + D p cos(p t) + D p t (-sin(p t)) p \
+  -2B p sin(p t) - B p t cos(p t) p + 2D p cos(p t) + D p t (-sin(p t)) p + k^2 (B t cos(p t) + D t sin(p t)) = F_0 cos(p t) \
+  display(cases(
+    cos(p t)\: 2D p = F_0 => D = F_0/(2p),
+    sin(p t)\: -2B p = 0 => B = 0,
+  )) \
+  X_"Част" = X_"вын." = F_0/(2p) t sin(p t)$
+
+#figure(
+  image("source-figures/lect6-3.png", width: 50%),
+)
+
+$abs(X_"вын.") -> infinity "при" t -> infinity \
+  abs(X_"ОН") -> infinity "при" t -> infinity$
+
+$X_"ОО"$ - собственные колебания ($X_"собств."$), $X_"част."$ - вынужденные колебания ($X_"вын."$)
+
+Явление, при котором совпадают частоты вынужденных и собственных колебаний, называют резонансом. При резонансе неограниченно возрастает амплитуда колебаний. Биение - случай, когда p лишь приблизительно равен k.
+
+== Геометрия масс
+
+#v(1em)
+
+$display(J_z = sum_j m_j d_(j z)^2)$
+
+#figure(
+  image("source-figures/lect6-4.png", width: 25%),
+)
+
+$ cases(
+  reverse: #true,
+  delim: "|",
+  J_x = sum_j m_j (y_j^2 + z_j^2),
+  J_y = sum_j m_j (x_j^2 + z_j^2),
+  J_z = sum_j m_j (x_j^2 + y_j^2),
+) "Осевые моменты инерции" $
+
+$ cases(
+  reverse: #true,
+  delim: "|",
+  J_(x y) = sum_j m_j x_j y_j,
+  J_(x z) = sum_j m_j x_j z_j,
+  J_(y z) = sum_j m_j y_j z_j,
+) "Центробежные (смешанные) моменты инерции" $
+
+Смешанный момент инерции в индексе которого присутствует название оси симметрии, равен 0. Смешанный момент инерции, в индексе которого присутствует название оси ортогональной плоскости симметрии, равен 0.
+
+#grid(
+  columns: (1fr, 1fr),
+  [
+    #figure(
+      image("source-figures/lect6-5.png", width: 60%),
+    )
+    $ J_(x z) = display(sum_j m_j (x_j z_j + (-x_j) z_j)) = 0, J_(y z) = 0 $
+  ],
+  [
+    #figure(
+      image("source-figures/lect6-6.png", width: 50%),
+    )
+    $ J_(x z) = display(sum_j m_j (x_j z_j + x_j (-z_j))) = 0 $
+  ]
+)
+
+=== Тензор инерции
+
+#v(1em)
+
+$ I = mat(
+  delim: "|",
+  J_x, -J_(x y), -J_(x z);
+  -J_(y x), J_y, -J_(y z);
+  -J_(z x), -J_(z y), J_z;
+) - "тензор инерции" $
+
+=== Углы Эйлера
+
+Берётся твёрдое тело с неподвижной точкой
+
+#figure(
+  image("source-figures/lect6-7.png", width: 35%),
+)
+
+ON - линия узлов
+
+$ cases(
+  reverse: #true,
+  psi - "угол прецессии",
+  theta - "угол нутации",
+  phi - "угол собственного вращения",
+) "Углы Эйлера" $
+
+$ ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)) $
+
+==== Кинематические уравнения Эйлера
+
+#v(1em)
+
+$dot(psi)' = psi sin(theta), dot(psi)'' = dot(psi) cos(theta) \
+  display(cases(
+    omega_x = dot(psi)' cos(90 degree - phi) + dot(theta) cos(phi),
+    omega_y = dot(psi)' cos(phi) + dot(theta) cos(90 degree + phi),
+    omega_z = dot(psi)'' + dot(phi),
+  ))$
+
+$ cases(
+  reverse: #true,
+  delim: "|",
+  omega_x = dot(psi)' cos(90 degree - phi) + dot(theta) cos(phi),
+  omega_y = dot(psi)' cos(phi) + dot(theta) cos(90 degree + phi),
+  omega_z = dot(psi)'' + dot(phi),
+) "Кинематические уравнения Эйлера" $
+
+==== Кинетический момент твердого тела с неподвижной точкой
+
+#v(1em)
+
+$ov(K)_0 = display(sum_j [ov(r)_j, m_j ov(V)_j]), ov(r)_j = (x_j, y_j, z_j), ov(V)_j = [ov(omega), ov(r)_j], ov(omega) = (omega_x, omega_y, omega_z)$
+
+#v(1em)
+
+#grid(
+  columns: (3.5cm, 1fr),
+  align: horizon,
+  [$display(
+    ov(V)_j = mat(delim: "|", ov(i), ov(j), ov(k); omega_x, omega_y, omega_z; x_j, y_j, z_j;)
+  )$],
+  [
+    $V_(j x) = omega_y z_j - omega_z y_j \
+      V_(j y) = omega_z x_j - omega_x z_j \
+      V_(j z) = omega_x y_j - omega_y x_j$
+  ],
+)
+
+#v(1em)
+
+$display(
+  [ov(r)_j, m_j ov(V)_j] = mat(
+    delim: "|",
+    ov(i), ov(j), ov(k);
+    x_j, y_j, z_j;
+    m_j (omega_y z_j - omega_z y_j), m_j (omega_z x_j - omega_x z_j), m_j (omega_x y_j - omega_y x_j);
+  )
+)$
+
+#v(1em)
+
+$[ov(r)_j, m_j ov(V)_j]_x &= y_j m_j (omega_x y_j - omega_y x_j) - z_j m_j (omega_z x_j - omega_x z_j) = \
+  &= omega_x m_j (y_j^2 + z_j^2) - omega_y m_j x_j y_j - omega_z m_j x_j z_j$
+
+$ K_x = (omega_x sum_j m_j (y_j^2 + z_j^2) - omega_y sum_j m_j x_j y_j - omega_z sum_j m_j x_j z_j) $
+
+#v(1em)
+
+#grid(
+  columns: (1.5fr, 1fr, 1fr, 1fr),
+  align: horizon,
+  [
+    $K_x = J_x omega_x - J_(x y) omega_y - J_(x z) omega_z \
+      K_y = J_y omega_y - J_(y z) omega_z - J_(y x) omega_y \
+      K_z = J_z omega_z - J_(z x) omega_x - J_(z y) omega_x$
+  ],
+  [$
+    ov(K)_0 = vec(K_x, K_y, K_z)
+  $],
+  [$
+    ov(omega) = vec(omega_x, omega_y, omega_z)
+  $],
+  [$
+    ov(K)_0 = I ov(omega)
+  $]
+)
+
+=== Главные оси инерции
+
+Главными осями инерции называются оси, для которых смешанные моменты инерции в индексе которых присутствует название этой оси равны 0 ($J_(x y) = J_(x z) = 0 => O x - "главная ось инерции"$). Можно доказать, что в любой точке твердого тела любой формы можно построить по крайней мере 3 взаимноортоганальные главные оси инерции.
+
+Если $O x$, $O y$, $O z$ - главные оси инерции, то $ov(K)_0 = (J_x omega_x, J_y omega_y, J_z omega_z)$.
+
+==== Динамические уравнения Эйлера
+
+#v(1em)
+
+$display(
+  (dif ov(K)_0)/(dif t) = ov(M)_0^((e))\; (dif ov(K)_0)/(dif t) = (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] => (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] = ov(M)_0^((e))
+)$
+
+$display(
+  [ov(omega), ov(K)_0] = mat(delim: "|", ov(i), ov(j), ov(k); omega_x, omega_y, omega_z; K_x, K_y, K_z)\; [ov(omega), ov(K)_0]_x = omega_y K_z - omega_z K_y = omega_y J_z omega_z - omega_z J_y omega_y = omega_y omega_z (J_z - J_y)
+)$
+
+$ cases(
+  reverse: #true,
+  delim: "|",
+  J_x dot(omega)_x + (J_z - J_y) omega_y omega_z = M_x^((e)),
+  J_y dot(omega)_y + (J_x - J_z) omega_x omega_z = M_y^((e)),
+  J_z dot(omega)_z + (J_y - J_x) omega_x omega_y = M_z^((e)),
+) "Динамические уравнения Эйлера" $
+
+==== Векторные и скалярные уравнения движения точки
+
+Один из вопросов в билетах
+
+$ cases(
+  reverse: #true,
+  delim: "|",
+  ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)),
+  (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] = ov(M)_0^((e)),
+) "векторные уравнения" $
+
+$ cases(
+  reverse: #true,
+  delim: "|",
+  omega_x = dot(psi)' cos(90 degree - phi) + dot(theta) cos(phi),
+  omega_y = dot(psi)' cos(phi) + dot(theta) cos(90 degree + phi),
+  omega_z = dot(psi)'' + dot(phi),
+  J_x dot(omega)_x + (J_z - J_y) omega_y omega_z = M_x^((e)),
+  J_y dot(omega)_y + (J_x - J_z) omega_x omega_z = M_y^((e)),
+  J_z dot(omega)_z + (J_y - J_x) omega_x omega_y = M_z^((e)),
+) "скалярные уравнения" $
+
+==== Векторные и скалярные уравнения свободного движения твердого тела
+
+#figure(
+  image("source-figures/lect7-1.png", width: 45%),
+)
+
+$M ov(W)_c = ov(F)^((e)); ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)) \
+  (tilde(dif) ov(K)_c)/(dif t) + [ov(omega), ov(K)_c] = ov(M)_c^((e)) \
+  M W_(c x) = F_x^((e)), M W_(c y) = F_y^((e)), M W_(c z) = F_z^((e)) \
+  omega_x = dot(psi)' cos(90 degree - phi) + dot(theta) cos(phi), omega_y = dot(psi)' cos(phi) + dot(theta) cos(90 degree + phi), omega_z = dot(psi)'' + dot(phi) \
+  J_x dot(omega)_x + (J_z - J_y) omega_y omega_z = M_c^((e)), J_y dot(omega)_y + (J_x - J_z) omega_x omega_z = M_c^((e)), J_z dot(omega)_z + (J_y - J_x) omega_x omega_y = M_c^((e))$
+
+=== Поступательное движение тела переменной массы
+
+Масса меняется непрерывно. "Не будем рисовать ракету, чтобы никто ничего не заподозрил".
+
+#figure(
+  image("source-figures/lect7-2.png", width: 35%),
+)
+
+$(dif ov(Q))/(dif t) = ov(F)^((e)) \
+  m(t + Delta t) = m(t) + Delta m_2 - Delta m_1 \
+  Delta m = m(t + Delta t) - m(t) = -Delta m_1 + Delta m_2 \
+  display((dif m)/(dif t) = lim_(Delta t -> 0) (Delta m)/(Delta t) = -lim_(Delta t -> 0) (Delta m_1)/(Delta t) + lim_(Delta t -> 0) (Delta m_2)/(Delta t) = -(dif m_1)/(dif t) + (dif m_2)/(dif t)) \
+  Delta ov(Q) = ov(Q)(t + Delta t) - ov(Q)(t) = m(t + Delta t) ov(V)(t + Delta t) + Delta m_1 ov(V)_1 - (m(t) ov(V)(t) + Delta m_2 ov(V)_2) = \ = cancel(m(t) ov(V)(t)) - Delta m_1 ov(V)(t) + Delta m_2 ov(V)(t) + m(t) Delta ov(V) - Delta m_1 Delta ov(V) + Delta m_2 Delta ov(V) - cancel(m(t) ov(V)(t)) - Delta m_2 ov(V)_2 + Delta m_1 ov(V)_1 = \
+  = m(t) Delta ov(V) - Delta m_1 (ov(V)_1 - ov(V)(t)) - Delta m_2 (ov(V)_2 - ov(V)(t)) - Delta m_1 Delta ov(V) + Delta m_2 Delta ov(V)$
+
+$display((dif ov(Q))/(dif t) = lim_(Delta t -> 0) (Delta ov(Q))/(Delta t) = lim_(Delta t -> 0) m(t) (Delta ov(V))/(Delta t) + lim_(Delta t -> 0) ((Delta m_1)/(Delta t) (ov(V)_1 - ov(V)(t))) - lim_(Delta t -> 0) ((Delta m_2)/(Delta t) (ov(V)_2 - ov(V)(t))) - \ - lim_(Delta t -> 0) (Delta m_1 Delta ov(V))/(Delta t) + lim_(Delta t -> 0) (Delta m_2 Delta ov(V))/(Delta t) = m(t) lim_(Delta t -> 0) (Delta ov(V))/(Delta t) + (ov(V)_1 - ov(V)(t)) lim_(Delta -> 0) (Delta m_1)/(Delta t) - (ov(V)_2 - ov(V)(t)) lim_(Delta -> 0) (Delta m_2)/(Delta t)) \
+  ov(V)_1 - ov(V)(t) = ov(V)_(1r); ov(V)_2 - ov(V)(t) = ov(V)_(2r) \
+  (dif ov(Q))/(dif t) = ov(F)^((e)) => m(t) (dif ov(V))/(dif t) + (dif m_1)/(dif t) ov(V)_(1r) - (dif m_2)/(dif t) ov(V)_(2r) = ov(F)^((e))$
+
+Уравнение Мещерского#footnote[Да, того самого создателя легендарного задачника] в случае одновременного отсоединения и присоединения частиц
+$ m(t) (dif ov(V))/(dif t) = ov(F)^((e)) - (dif m_1)/(dif t) ov(V)_(1r) + (dif m_2)/(dif t) ov(V)_(2r) $
+
+Уравнение Мещерского в случае отсоединения частиц - уравнение реактивного движения
+$ Delta m_2 = 0 => (dif m_2)/(dif t) = 0; (dif m)/(dif t) = -(dif m_1)/(dif t) => m(t) (dif ov(V))/(dif t) = ov(F)^((e)) + (dif m)/(dif t) ov(V)_(1r) $
+
+Уравнение Мещерского в случае присоединения частиц
+$ Delta m_1 = 0 => (dif m_1)/(dif t) = 0; (dif m)/(dif t) = (dif m_2)/(dif t) => m(t) (dif ov(V))/(dif t) = ov(F)^((e)) + (dif m)/(dif t) ov(V)_(2r) $
+
+==== Задача Циолковского
+
+$ cases(
+  reverse: #true,
+  delim: "|",
+  ov(F)^((e)) = 0,
+  V_(1r) = "const",
+) m(t) (dif ov(V))/(dif t) = (dif m)/(dif t) ov(V)_(1r) $
+
+#figure(
+  image("source-figures/lect7-3.png", width: 40%),
+)
+
+$(x): m(t) (dif V)/(dif t) = -(dif m)/(dif t) V_(1r) => integral dif V = -integral (dif m)/(m) V_(1r) => -V_(1r) ln m + C \
+  t = 0, V = V_0, m = m_0 => V_0 = -V_(1r) ln m_0 + C => C = V_0 + V_(1r) ln m_0 \
+  V = V_0 + (ln m_0 - ln m) V_(1r)$
+
+$ V = V_0 + V_(1r) ln m_0/m - "Формула Циолковского" $
+
+$V_0 = 0, V_k = V_(1r) ln m_0/m$
+
+$ z = m_0/m_k - "Число Циолковского" $
+
+$display(cases(
+  delim: "|",
+  V_k = 8"км"/с,
+  V_(1r) = "2,4""км"/с,
+) V_k/V_(1r) = ln z => z = e^(V_k/V_(1r)) = e^(8/"2,4") = e^(10/3) approx 28)$
+
+Отсюда получается, что количество топлива, необходимое для попадания на космическую орбиту, по массе в 28 раз больше массы остальной ракеты. Было предложено использование многоступенчатой системы.
+
+===== Многоступенчатая ракета (@многоступ)
+
+#v(1em)
+
+$z = z_1 = z_2 = z_3; V_1 = V_(1r) ln z; V_2 = V_1 + V_(1r) ln z; V_k = V_2 + V_(1r) ln z = 3V_(1r) ln z \
+  V_k = 8 "км"/с, V_(1r) = "2,4""км"/с => z = e^(8/("2,4" dot 3)) = e^(10/9) approx 3$
+
+#figure(
+  image("source-figures/lect7-4.png", width: 20%),
+  caption: [Схема многоступенчатой ракеты],
+) <многоступ>
