@@ -4,15 +4,13 @@ set -eo pipefail
 
 root=$(cd "$(dirname ${BASH_SOURCE[0]})"/.. && pwd)
 build_dir="$root"/build
-artifact="$root"/artifacts
 
 mkdir -p "$build_dir"
-mkdir -p "$artifact"
 
 build_pdfs() {
   local -A sources=(
     material-theory       'Material-science'
-    strength-of-materials 'Materials-strengths'
+    strength-of-materials 'Materials-strength'
     theoritecal-mechanics 'Theoritecal-mechanics'
   )
 
@@ -24,5 +22,3 @@ build_pdfs() {
 }
 
 build_pdfs
-
-cp $build_dir/*.pdf "$artifact"

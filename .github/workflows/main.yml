@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: "Materials"
-          path: artifacts/*.pdf
+          path: build/*.pdf
           if-no-files-found: ignore
 
   update-release:
@@ -59,10 +59,10 @@ jobs:
       - name: "Обновление тега 'latest'"
         uses: softprops/action-gh-release@v2.5.0
         with:
-          body: "Ниже доступны готовые конспекты лекций некоторых предметов. Со временем этот список будет пополняться"
+          body_path: PDF_LINKS.txt
           draft: false
           prerelease: false
           name: "Материалы с пар"
           tag_name: "latest"
-          files: artifacts/*.pdf
+          files: build/*.pdf
           make_latest: true
