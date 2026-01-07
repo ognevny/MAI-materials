@@ -50,6 +50,12 @@ jobs:
       - name: "Сборка PDF файлов"
         run: .ci/build.sh
 
+      - name: "Подготовка к обновлению тега 'latest'"
+        uses: softprops/action-gh-release@v2.5.0
+        with:
+          tag_name: "latest"
+          make_latest: true
+
       - name: "Обновление тега 'latest'"
         uses: softprops/action-gh-release@v2.5.0
         with:
