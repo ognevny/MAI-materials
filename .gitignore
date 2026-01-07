@@ -1,4 +1,7 @@
-/book
 .obsidian
 .*.autosave.*
 hw*.xopp
+
+# CI
+/artifacts
+/build

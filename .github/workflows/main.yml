@@ -1,0 +1,62 @@
+name: главный
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' }}
+    strategy:
+      fail-fast: false
+    name: "Сборка PDF"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: "Скачивание Typst"
+        run: sudo snap install typst
+
+      - name: "Сборка PDF файлов"
+        run: .ci/build.sh
+
+      - name: "Выкладывание PDF"
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v5
+        with:
+          name: "Materials"
+          path: artifacts/*.pdf
+          if-no-files-found: ignore
+
+  update-release:
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    strategy:
+      fail-fast: false
+    name: "Выкладывание PDF в страницу Releases"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: "Скачивание Typst"
+        run: sudo snap install typst
+
+      - name: "Сборка PDF файлов"
+        run: .ci/build.sh
+
+      - name: "Обновление тега 'latest'"
+        uses: softprops/action-gh-release@v2.5.0
+        with:
+          body: "Ниже доступны готовые конспекты лекций некоторых предметов. Со временем этот список будет пополняться"
+          draft: false
+          prerelease: false
+          name: "Материалы с пар"
+          tag_name: "latest"
+          files: artifacts/*.pdf
+          make_latest: true
