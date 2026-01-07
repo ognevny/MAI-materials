@@ -10,7 +10,7 @@
   set document(
     title: titl,
     author: "Максим Бондаренков",
-    description: desc,
+    description: desc + [. Распространяется на условиях лицензии CC-BY-SA-4.0],
     date: datet,
   )
 
@@ -19,7 +19,7 @@
     numbering: "1",
     header: [
       #set text(8pt)
-      #h(1fr) #head
+      #h(1fr) #emph(head)
     ],
   )
 

@@ -1,14 +1,13 @@
-  #import "meta.typ": conf
+#import "meta.typ": conf
 
 #show: conf.with(
   titl: "Лекции по Теоретической механике",
   desc: "Конспект лекций Зародова В.К. по Теоретической механике",
   datet: datetime(year: 2026, month: 1, day: 2),
-  head: [_Лекции по Теоретической механике_],
+  head: [Лекции по Теоретической механике],
 )
 
 #let ov(var) = $overline(#var)$
-#let delimsys = ("{", "|")
 
 #outline()
 #pagebreak(weak: true)
