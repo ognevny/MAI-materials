@@ -59,7 +59,7 @@ jobs:
       - name: "Обновление тега 'latest'"
         uses: softprops/action-gh-release@v2.5.0
         with:
-          body_path: PDF_LINKS.txt
+          body_path: LINKS.md
           draft: false
           prerelease: false
           name: "Материалы с пар"
