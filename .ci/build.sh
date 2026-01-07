@@ -12,14 +12,14 @@ mkdir -p "$artifact"
 build_pdfs() {
   local -A sources=(
     material-theory       'Материаловедению'
-    strength-of-materials 'Сопротивлению материалов'
-    theoritecal-mechanics 'Теоретической механике'
+    strength-of-materials 'Сопротивлению_материалов'
+    theoritecal-mechanics 'Теоретической_механике'
   )
 
   for subject in "${!sources[@]}"; do
     typst compile \
       "$root"/materials/$subject/lectures.typ \
-      "$build_dir/Лекции по ${sources[$subject]}.pdf"
+      "$build_dir/Лекции_по_${sources[$subject]}.pdf"
   done
 }
 
