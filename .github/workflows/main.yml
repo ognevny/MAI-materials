@@ -53,5 +53,6 @@ jobs:
           prerelease: false
           name: "Материалы с пар"
           tag_name: "latest"
-          files: *.pdf
+          files: |
+            *.pdf
           make_latest: true
