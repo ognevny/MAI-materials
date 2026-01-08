@@ -9,7 +9,6 @@ permissions:
 
 jobs:
   build:
-    if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/master' }}
     strategy:
       fail-fast: false
     name: "Сборка PDF"
@@ -34,6 +33,7 @@ jobs:
           if-no-files-found: ignore
 
   update-release:
+    needs: [build]
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     strategy:
       fail-fast: false
@@ -41,28 +41,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-
-      - name: "Скачивание Typst"
-        run: sudo snap install typst
-
-      - name: "Сборка PDF файлов"
-        run: .ci/build.sh
-
-      - name: "Подготовка к обновлению тега 'latest'"
-        uses: softprops/action-gh-release@v2.5.0
-        with:
-          tag_name: "latest"
-          make_latest: true
+      - uses: actions/download-artifact@v7
+        id: artifacts
 
       - name: "Обновление тега 'latest'"
         uses: softprops/action-gh-release@v2.5.0
+        if: steps.artifacts.outcome == 'success'
         with:
           body_path: LINKS.md
           draft: false
           prerelease: false
           name: "Материалы с пар"
           tag_name: "latest"
-          files: build/*.pdf
+          files: *.pdf
           make_latest: true
