@@ -3,5 +3,4 @@
 hw*.xopp
 
 # CI
-/artifacts
 /build

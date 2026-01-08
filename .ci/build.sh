@@ -2,23 +2,19 @@
 
 set -eo pipefail
 
-root=$(cd "$(dirname ${BASH_SOURCE[0]})"/.. && pwd)
+root=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)
 build_dir="$root"/build
 
 mkdir -p "$build_dir"
 
-build_pdfs() {
-  local -A sources=(
-    material-theory       'Material-science'
-    strength-of-materials 'Materials-strength'
-    theoritecal-mechanics 'Theoritecal-mechanics'
-  )
+declare -A sources=(
+  [material_theory]='Material-science'
+  [strength_of_materials]='Materials-strength'
+  [theoritecal_mechanics]='Theoritecal-mechanics'
+)
 
-  for subject in "${!sources[@]}"; do
-    typst compile \
-      "$root"/materials/$subject/lectures.typ \
-      "$build_dir/Lectures_of_${sources[$subject]}.pdf"
-  done
-}
-
-build_pdfs
+for subject in "${!sources[@]}"; do
+  typst compile \
+    "$root/materials/${subject//_/-}/lectures.typ" \
+    "$build_dir/Lectures_of_${sources[$subject]}.pdf"
+done

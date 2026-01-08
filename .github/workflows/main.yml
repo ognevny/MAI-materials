@@ -41,8 +41,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+
       - uses: actions/download-artifact@v7
         id: artifacts
+
+      - name: "Установка времени изменения"
+        run: |
+          sed -i "s/%DATE%/$(date -u +'%F %T UTC+0')" LINKS.md
 
       - name: "Обновление тега 'latest'"
         uses: softprops/action-gh-release@v2.5.0
