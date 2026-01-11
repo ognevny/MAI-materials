@@ -115,7 +115,7 @@
 == Определение нормального усилия поперечных сечений стержня (@растяжение)
 
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1.8fr, 1fr),
   [
     #figure(
       image("source-figures/lect1-3-4.png", width: 80%),
@@ -123,11 +123,8 @@
     ) <растяжение>
     #figure(
       grid(
-        columns: 1,
-        //2, а фигушки, ха
-        gutter: 2mm,
-        // image("source-figures/lect1-3-5.png"), забыл дорисовать...
-        image("source-figures/lect1-3-6.png", width: 80%),
+        columns: 2,
+        image("source-figures/lect1-3-5.png", width: 55%), image("source-figures/lect1-3-6.png"),
       ),
       caption: [],
     ) <растсечения>
