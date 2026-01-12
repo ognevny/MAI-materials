@@ -10,7 +10,7 @@
 
 #let delimsys = ("{", "|")
 
-#hide[#link("https://gist.github.com/ognevny/9d45be15d9655b52c01538d9a2571799")]
+#hide[#link("https://gist.github.com/ognevny/9d45be15d9655b52c01538d9a2571799")] // пускай здесь будет, может потом куда переставить????
 
 = ДУ 1 порядка
 
