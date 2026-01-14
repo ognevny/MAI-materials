@@ -22,7 +22,22 @@ jobs:
         run: sudo snap install typst
 
       - name: "Сборка PDF файлов"
-        run: .ci/build.sh
+        run: |
+          set -x
+
+          mkdir -p build
+
+          declare -A sources=(
+            [material_theory]='Material-science'
+            [strength_of_materials]='Materials-strength'
+            [theoritecal_mechanics]='Theoritecal-mechanics'
+          )
+
+          for subject in "${!sources[@]}"; do
+            typst compile \
+              "materials/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources[$subject]}.pdf"
+          done
 
       - name: "Выкладывание PDF"
         if: ${{ !cancelled() }}
