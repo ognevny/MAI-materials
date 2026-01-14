@@ -192,7 +192,7 @@ $ov(Q) = M ov(V)_C; (dif ov(Q))/(dif t) = display(sum_j ov(F)_j^((e))\; M (dif o
     #figure(
       image("source-figures/lect0-1-5.png", width: 30%),
     )
-  ]
+  ],
 )
 Кинетическим моментом МС относительно центра называется векторная сумма $ov(K)_(j O)$.
 

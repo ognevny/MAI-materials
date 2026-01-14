@@ -156,7 +156,7 @@ $ M ov(W)_C = sum_j ov(F)_j^((e)) $
     #figure(
       image("source-figures/lect0-1-5.png", width: 30%),
     )
-  ]
+  ],
 )
 Кинетическим моментом МС относительно центра называется векторная сумма $ov(K)_(j O)$.
 
@@ -165,7 +165,8 @@ $ M ov(W)_C = sum_j ov(F)_j^((e)) $
 $ dif/(dif t) ov(K)_(j O) = sum_j M_0 (ov(F)_j^((e))) $
 
 $display(
-  (dif ov(K)_(j O))/(dif t) = dif/(dif t) sum_j [ov(r)_j, m_j ov(V)_j] = sum_j dif/(dif t) [ov(r)_j, m_j ov(V)_j] = sum_j ([(dif ov(r)_j)/(dif t), m_j ov(V)_j] + [ov(r)_j, (dif (m_j ov(V)_j))/(dif t)]) = \ = sum_j [ov(r)_j, ov(F)_j^((e))] + sum_j [ov(r)_j, ov(F)_j^((i))] = sum_j ov(M)_0 (ov(F)_j^((e))) + cancel(sum_j ov(M)_0 (ov(F)_j^((i))))) \
+  (dif ov(K)_(j O))/(dif t) = dif/(dif t) sum_j [ov(r)_j, m_j ov(V)_j] = sum_j dif/(dif t) [ov(r)_j, m_j ov(V)_j] = sum_j ([(dif ov(r)_j)/(dif t), m_j ov(V)_j] + [ov(r)_j, (dif (m_j ov(V)_j))/(dif t)]) = \ = sum_j [ov(r)_j, ov(F)_j^((e))] + sum_j [ov(r)_j, ov(F)_j^((i))] = sum_j ov(M)_0 (ov(F)_j^((e))) + cancel(sum_j ov(M)_0 (ov(F)_j^((i))))
+) \
 ov(K)_0 = display(sum_j [ov(r)_j, m_j ov(V)_j] => (dif ov(K)_0)/(dif t) = sum_j ov(M)_0 (ov(F)_j^((e))))$
 
 #grid(
@@ -449,7 +450,7 @@ display((dif ov(K)_c) / (dif t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c
     #rect[$
       cases(
         M ov(W)_c = display(sum_j ov(F)_j^((e))),
-        display((dif ov(K)_O) / (dif t) = sum_j ov(M)_c (ov(F)_j^((e)))),
+        display((dif ov(K)_c) / (dif t) = sum_j ov(M)_c (ov(F)_j^((e)))),
       )
     $]
     $x': ov(K)'_c = J_(c z') ov(omega) \
