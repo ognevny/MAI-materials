@@ -183,10 +183,17 @@ $ov(Q) = M ov(V)_C; (dif ov(Q))/(dif t) = display(sum_j ov(F)_j^((e))\; M (dif o
 #v(1em)
 
 Моментом количества движения точки относительно центра O называется векторное произведение радиус-вектора на её вектор количества движения.
-#figure(
-  image("source-figures/lect0-1-5.png", width: 12%),
+#grid(
+  columns: (1fr, 1fr),
+  [
+    #rect[$ ov(K)_(j O) = [ov(r)_j, ov(q)_j] = [ov(r)_j, m_j ov(V)_j] $]
+  ],
+  [
+    #figure(
+      image("source-figures/lect0-1-5.png", width: 30%),
+    )
+  ]
 )
-$ ov(K)_(j O) = [ov(r)_j, ov(q)_j] = [ov(r)_j, m_j ov(V)_j] $
 Кинетическим моментом МС относительно центра называется векторная сумма $ov(K)_(j O)$.
 
 ==== Теорема об изменении кинетического момента МС относительно неподвижного центра
@@ -254,7 +261,7 @@ $display("Пр"_"Ox" (dif ov(K)_O)/(dif t) = "Пр"_"Ox" sum_j ov(M)_O (ov(F)_j^
 
 Момент инерции: $ J_z = sum_j m_j d_(j z)^2 $
 
-$K_(O z) = J_z dot(phi); display((dif K(O z))/(dif t) = sum_j M_(O z) (ov(F)_j^((e)))\; J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))))$
+$K_(O z) = J_z dot(phi); display((dif K_(O z))/(dif t) = sum_j M_(O z) (ov(F)_j^((e)))\; J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))))$
 
 ===== Осевые моменты инерции некоторых тел
 
@@ -291,7 +298,7 @@ $K_(O z) = J_z dot(phi); display((dif K(O z))/(dif t) = sum_j M_(O z) (ov(F)_j^(
 #grid(
   columns: (3fr, 1fr),
   [
-    3. Диск с осью вращения, проходящим через центр поперёк диска \
+    3. Стержень с осью вращения, проходящим через центр поперёк диска \
     $J_(d x) = m_(d x) x^2; m_(d x) = M/L dif x$ \
     $display(J_(c z) = integral J_(d x) = integral M/L dif x dot x^2 = M/L integral_(-L/2)^(L/2) x^2 dif x = lr(M/L x^3/3|)_(-L/2)^(L/2) = M/L times \ times (L^3/24 - (-L^3/24)) = #rect[$ (M L^2)/12 $])$
   ],
@@ -305,8 +312,8 @@ $K_(O z) = J_z dot(phi); display((dif K(O z))/(dif t) = sum_j M_(O z) (ov(F)_j^(
 #grid(
   columns: (2.5fr, 1fr),
   [
-    3.1. Тот же диск, но ось вращения находится на расстоянии $n$ от центральной \
-    $J_"AZ'" = J_"CZ" + M h^2 => #rect[$ J_"AZ'" = 1/12 M L^2 + M (L/2)^2 = (M L^2)/3 $]$
+    3.1. Тот же стержень, но ось вращения находится на расстоянии $n$ от центральной \
+    $n = L/2, J_"AZ'" = J_"CZ" + M n^2 => #rect[$ J_"AZ'" = 1/12 M L^2 + M (L/2)^2 = (M L^2)/3 $]$
   ],
   [
     #figure(
@@ -418,7 +425,7 @@ $ N = (ov(F), ov(V)), dif' A = N dif t $
 
 #v(1em)
 
-Дифференциал кинетической энергии МС равен сумме элементарных работ сил, приоженных к точкам этой системы $ dif T = sum_j dif' A (ov(F)_j) $
+Дифференциал кинетической энергии МС равен сумме элементарных работ сил, приложенных к точкам этой системы $ dif T = sum_j dif' A (ov(F)_j) $
 
 Доказательство:
 
@@ -488,10 +495,10 @@ $ sum_j dif' A = sum_j M_z (ov(F)_j^((e))) dif phi $
 #grid(
   columns: (3fr, 1fr),
   [
-    3. Плоскопараллельное движение \
+    3. Плоскопараллельное движение
+
     $display(sum_j dif' A = sum_j (ov(F)_j, ov(V)_j) dif t = sum_j (ov(F)_j, ov(V)_A) dif t + sum_j (ov(F)_j, [ov(omega), ov(rho)]) dif t = \ = (sum_j ov(F)_j^((e)) + cancel(sum_j ov(F)_j^((i))); ov(V)_A) dif t + sum_j (ov(omega), [ov(rho)_j, ov(F)_j^((e)) + ov(F)_j^((i))]) dif t = \ = (ov(omega), sum_j [ov(rho)_j, ov(F)_j^((e))]) dif t + (ov(omega), sum_j [ov(rho)_j, ov(F)_j^((i))]) dif t) \
-    [ov(rho)_j, ov(F)_j^((e))] = ov(M)_A (ov(F)_j^((e))) \
-    [ov(rho)_j, ov(F)_j^((i))] = ov(M)_A (ov(F)_j^((i))) \
+    [ov(rho)_j, ov(F)_j^((e))] = ov(M)_A (ov(F)_j^((e))), [ov(rho)_j, ov(F)_j^((i))] = ov(M)_A (ov(F)_j^((i))) \
     display(sum_j dif' A (ov(F)_j) = (ov(omega), ov(r)_j ov(M)_A (ov(F)_j^((e)))) dif t = M_(A ov(omega)) (ov(F)_j^((e))) omega dif t)$
   ],
   [
@@ -518,7 +525,7 @@ $dif' A_j = (ov(F)_j, ov(N)_j) dif t$
 
     #v(1em)
 
-    #rect[$ dif' A (ov(N), ov(V)_A) dif t = 0 $]
+    #rect[$ dif' A = (ov(N), ov(V)_A) dif t = 0 $]
   ],
   [
     #figure(
@@ -656,7 +663,7 @@ $ (dif ov(K)_c) / (dif t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov
 
 $display((dif ov(K)_O) / (dif t) = sum_j ov(M)_O (ov(F)_j^((e))) = sum_j [ov(r)_j, ov(F)_j^((e))]), ov(r)_j = ov(r)_c + ov(rho)_j \
 display((dif ov(K)_O) / (dif t) = sum_j [ov(r)_c, ov(F)_j^((e))] + sum_j [ov(rho)_j, ov(F)_j^((e))] = [ov(r)_c, sum_j ov(F)_j^((e))] + sum_j ov(M)_c (ov(F)_j^((e)))\; (dif ov(K)_O) / (dif t) = [ov(r)_c; M ov(W)_c] + \ + sum_j ov(M)_c (ov(F)_j^((e)))) \
-display(M ov(W)_c) = sum_j ov(F)_j^((e)) \
+display(M ov(W)_c = sum_j ov(F)_j^((e))) \
 display((dif ov(K)_O) / (dif t) = (dif ov(K)_c) / (dif t) + [(dif ov(r)_c)/(dif t), M ov(V)_c] + [ov(r)_c, dif/(dif t) (M ov(V)_c)] = (dif ov(K)_c) / (dif t) + [ov(r)_c, M ov(W)_c]) \
 display((dif ov(K)_c) / (dif t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c; M ov(W)_c]) + sum_j ov(M)_c (ov(F)_j^((e))))$
 
@@ -815,7 +822,7 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0" "(>= 0) $
 #grid(
   columns: (1fr, 1fr),
   [
-    Связь называется стационарной, если в уравнении связей не присутствует явно время t. Связь называется нестационарной, если в уравнении связей явно присутствует время t (@стационарный). \
+    Связь называется стационарной, если в уравнении связей не присутствует явно время $t$. Связь называется нестационарной, если в уравнении связей явно присутствует время $t$ (@стационарный). \
     $z = 0, u = "const", u = s t$
     #rect[$ x^2 - (y - u t)^2 - l^2 = 0 $]
   ],
@@ -1131,8 +1138,6 @@ T &= display(sum_j m_j/2 ((dif ov(r)_j)/(dif t) = (partial ov(r)_j)/(partial q) 
 
 $T = 1/2 a(q, t) dot(q)^2 + b(q, t) dot(q) + d(q, t)$
 
-#pagebreak(weak: true)
-
 Стационарные связи:
 
 $ov(r)_j (q), (partial ov(r)_j)/(partial t) = 0, T = T_2 = 1/2 a(q) dot(q)^2$
@@ -1146,8 +1151,9 @@ abs(x) << 1 \
 $a(q) = q(q^*) + (partial a)/(partial q) bar.v_(q^*)(q - q^*) + ... \
 a^* = a(q^*) \
 x = q - q^*, dot(x) = dot(q) => T approx 1/2 a^* dot(x)^2 \
-Pi(q) = Pi(q^*) + (partial Pi)/(partial q) bar.v_(q^*)(q - q^*) + 1/2! (partial^2 Pi)/(partial q^2) bar.v_(q^*)(q - q^*) + ...\
-(partial Pi)/(partial q) bar.v_(q^*) = 0; Pi(q^*) = Pi^*; (partial^2 Pi)/(partial q^2) bar.v_(q^*) = c^* > 0 \
+Pi(q) = Pi(q^*) + (partial Pi)/(partial q) bar.v_(q^*)(q - q^*) + 1/2! (partial^2 Pi)/(partial q^2) bar.v_(q^*)(q - q^*) + ...$
+
+$(partial Pi)/(partial q) bar.v_(q^*) = 0; Pi(q^*) = Pi^*; (partial^2 Pi)/(partial q^2) bar.v_(q^*) = c^* > 0 \
 Pi approx Pi^* + 1/2 c^* x^2 \
 dif/(dif t) ((partial T)/(partial dot(x))) - (partial T)/(partial x) = -(partial Pi)/(partial x) \
 (partial T)/(partial dot(x)) = 1/2 a^* dot 2 dot(x) = a^* dot(x); (partial T)/(partial x) = 0; (partial Pi)/(partial x) = 1/2 c^* dot 2x = c^* x \

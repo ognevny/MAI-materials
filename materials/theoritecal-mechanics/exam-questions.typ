@@ -32,14 +32,14 @@
 1. I закон Ньютона: существуют системы отсчёта, по отношению к которым материальная точка без действия сил либо покоится, либо движется равномерно и прямолинейно. Такая система отсчёта называется инерциальной (ИСО).
 
 #grid(
-  columns: (2.5fr, 1fr),
+  columns: (3fr, 1fr),
   [
     2. II закон Ньютона: в ИСО при действии на материальную точку силы она получает ускорение, направленное по линии действия силы и по величине ей пропорциональная.
     $ W ~ F, ov(W) = 1/m ov(F) $
   ],
   [
     #figure(
-      image("source-figures/lect0-1-1.png", width: 80%),
+      image("source-figures/lect0-1-1.png"),
     )
   ],
 )
@@ -147,10 +147,17 @@ $ M ov(W)_C = sum_j ov(F)_j^((e)) $
 #v(1em)
 
 Моментом количества движения точки относительно центра O называется векторное произведение радиус-вектора на её вектор количества движения.
-#figure(
-  image("source-figures/lect0-1-5.png", width: 12%),
+#grid(
+  columns: (1fr, 1fr),
+  [
+    #rect[$ ov(K)_(j O) = [ov(r)_j, ov(q)_j] = [ov(r)_j, m_j ov(V)_j] $]
+  ],
+  [
+    #figure(
+      image("source-figures/lect0-1-5.png", width: 30%),
+    )
+  ]
 )
-$ ov(K)_(j O) = [ov(r)_j, ov(q)_j] = [ov(r)_j, m_j ov(V)_j] $
 Кинетическим моментом МС относительно центра называется векторная сумма $ov(K)_(j O)$.
 
 *Теорема об изменении кинетического момента МС относительно неподвижного центра*
@@ -158,10 +165,7 @@ $ ov(K)_(j O) = [ov(r)_j, ov(q)_j] = [ov(r)_j, m_j ov(V)_j] $
 $ dif/(dif t) ov(K)_(j O) = sum_j M_0 (ov(F)_j^((e))) $
 
 $display(
-  (dif ov(K)_(j O))/(dif t) = dif/(dif t) sum_j [ov(r)_j, m_j ov(V)_j] = sum_j dif/(dif t) [ov(r)_j, m_j ov(V)_j] = sum_j ([(dif ov(r)_j)/(dif t), m_j ov(V)_j] + [ov(r)_j, (dif (m_j ov(V)_j))/(dif t)]) = \
-  = sum_j (0 + ov(M)_0 (ov(F)_j^((e))))
-) \
-display(sum_j [ov(r)_j, (dif (m_j ov(V)_j))/(dif t)] = sum_j [ov(r)_j, ov(F)_j^((e))] + sum_j [ov(r)_j, ov(F)_j^((i))] = sum_j ov(M)_0 (ov(F)_j^((e))) + cancel(sum_j ov(M)_0 (ov(F)_j^((i))))) \
+  (dif ov(K)_(j O))/(dif t) = dif/(dif t) sum_j [ov(r)_j, m_j ov(V)_j] = sum_j dif/(dif t) [ov(r)_j, m_j ov(V)_j] = sum_j ([(dif ov(r)_j)/(dif t), m_j ov(V)_j] + [ov(r)_j, (dif (m_j ov(V)_j))/(dif t)]) = \ = sum_j [ov(r)_j, ov(F)_j^((e))] + sum_j [ov(r)_j, ov(F)_j^((i))] = sum_j ov(M)_0 (ov(F)_j^((e))) + cancel(sum_j ov(M)_0 (ov(F)_j^((i))))) \
 ov(K)_0 = display(sum_j [ov(r)_j, m_j ov(V)_j] => (dif ov(K)_0)/(dif t) = sum_j ov(M)_0 (ov(F)_j^((e))))$
 
 #grid(
@@ -217,7 +221,7 @@ $display("Пр"_"Ox" (dif ov(K)_O)/(dif t) = "Пр"_"Ox" sum_j ov(M)_O (ov(F)_j^
 
 $ K_(O z) = J_z dot(phi) $
 
-$display((dif K(O z))/(dif t) = sum_j M_(O z) (ov(F)_j^((e))))$
+$display((dif K_(O z))/(dif t) = sum_j M_(O z) (ov(F)_j^((e))))$
 
 $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 
@@ -229,7 +233,7 @@ $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 
 *Теорема об изменении кинетической энергии МС в дифференциальной форме*
 
-Дифференциал кинетической энергии МС равен сумме элементарных работ сил, приоженных к точкам этой системы $ dif T = sum_j dif' A (ov(F)_j) $
+Дифференциал кинетической энергии МС равен сумме элементарных работ сил, приложенных к точкам этой системы $ dif T = sum_j dif' A (ov(F)_j) $
 
 Доказательство:
 
@@ -326,7 +330,7 @@ $dif' A_j = (ov(F)_j, ov(N)_j) dif t$
   columns: (2fr, 1fr),
   [
     1. Гладкая поверхность
-    #rect[$ dif' A (ov(N), ov(V)_A) dif t = 0 $]
+    #rect[$ dif' A = (ov(N), ov(V)_A) dif t = 0 $]
   ],
   [
     #figure(
@@ -431,7 +435,7 @@ $ (dif ov(K)_c) / (dif t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov
 
 $display((dif ov(K)_O) / (dif t) = sum_j ov(M)_O (ov(F)_j^((e))) = sum_j [ov(r)_j, ov(F)_j^((e))]), ov(r)_j = ov(r)_c + ov(rho)_j \
 display((dif ov(K)_O) / (dif t) = sum_j [ov(r)_c, ov(F)_j^((e))] + sum_j [ov(rho)_j, ov(F)_j^((e))] = [ov(r)_c, sum_j ov(F)_j^((e))] + sum_j ov(M)_c (ov(F)_j^((e)))\; (dif ov(K)_O) / (dif t) = [ov(r)_c; M ov(W)_c] + \ + sum_j ov(M)_c (ov(F)_j^((e)))) \
-display(M ov(W)_c) = sum_j ov(F)_j^((e)) \
+display(M ov(W)_c = sum_j ov(F)_j^((e))) \
 display((dif ov(K)_O) / (dif t) = (dif ov(K)_c) / (dif t) + [(dif ov(r)_c)/(dif t), M ov(V)_c] + [ov(r)_c, dif/(dif t) (M ov(V)_c)] = (dif ov(K)_c) / (dif t) + [ov(r)_c, M ov(W)_c]) \
 display((dif ov(K)_c) / (dif t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c; M ov(W)_c]) + sum_j ov(M)_c (ov(F)_j^((e))))$
 
@@ -549,7 +553,7 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0" "(>= 0) $
 #grid(
   columns: (1fr, 1fr),
   [
-    Связь называется стационарной, если в уравнении связей не присутствует явно время t. Связь называется нестационарной, если в уравнении связей явно присутствует время t (@стационарный). \
+    Связь называется стационарной, если в уравнении связей не присутствует явно время $t$. Связь называется нестационарной, если в уравнении связей явно присутствует время $t$ (@стационарный). \
     $z = 0, u = "const", u = s t$
     #rect[$ x^2 - (y - u t)^2 - l^2 = 0 $]
   ],
@@ -587,8 +591,9 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0" "(>= 0) $
 *Виртуальные перемещения*
 
 $f(x, y, z, dot(x), dot(y), dot(z), t) = 0 \
-f(x, y, z, t) = 0 \
-dif f = (partial f)/(partial x) dif x + (partial f)/(partial y) dif y + (partial f)/(partial z) dif z$
+f(x, y, z, t) = 0$
+
+$dif f = (partial f)/(partial x) dif x + (partial f)/(partial y) dif y + (partial f)/(partial z) dif z$
 
 $delta f = (partial f)/(partial x) delta x + (partial f)/(partial y) delta y + (partial f)/(partial z) delta z$ - вариация функции ($t = "const"$)
 
@@ -711,7 +716,7 @@ $Pi(x_1(q_1, ..., q_n), y_1(q_1, ..., q_n), ..., z_N (q_1, ..., q_n))$
 
 $ Q_i = -(partial Pi)/(partial q_i) $
 
-= Обобщенный силы инерции
+= Обобщенные силы инерции
 
 #v(1em)
 
