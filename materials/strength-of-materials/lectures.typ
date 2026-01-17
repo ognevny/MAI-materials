@@ -769,13 +769,13 @@ $
 #v(1em)
 
 #grid(
-  columns: (3fr, 1fr),
+  columns: (1.6fr, 1fr),
   [
     Если средняя линия тонкостенного сечения не замкнута, то сечение называется сечением открытого профиля (@открпроф). Для стержня, сечение которого вытянутый прямоугольник (с $h/b > 10$) $alpha = beta = 1/3$.
   ],
   [
     #figure(
-      image("source-figures/lect7-fig7.png", width: 70%),
+      image("source-figures/lect7-fig7.png", width: 40%),
       caption: [Сечение открытого профиля],
     ) <открпроф>
   ],
@@ -1255,6 +1255,7 @@ $
     $display(
       vec(
         delim: delimsys,
+        align: #left,
         sum y: A + B - 4 q l = 0,
         sum m_B: A dot 2l - 3 q l dot (3l)/2 + q l dot l/2 = 0,
       )

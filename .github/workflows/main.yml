@@ -23,8 +23,6 @@ jobs:
 
       - name: "Сборка PDF файлов"
         run: |
-          set -x
-
           mkdir -p build
 
           declare -A sources=(
@@ -32,6 +30,8 @@ jobs:
             [strength_of_materials]='Materials-strength'
             [theoritecal_mechanics]='Theoritecal-mechanics'
           )
+
+          set -x
 
           for subject in "${!sources[@]}"; do
             typst compile \
@@ -71,8 +71,9 @@ jobs:
           body_path: LINKS.md
           draft: false
           prerelease: false
-          name: "Материалы с пар"
-          tag_name: "latest"
           files: |
             *.pdf
+          name: "Материалы с пар"
+          tag_name: "latest"
+          target_commitish: ${{ github.sha }}
           make_latest: true
