@@ -26,6 +26,7 @@ jobs:
           mkdir -p build
 
           declare -A sources=(
+            [differential_equations]='Differential-equations'
             [material_theory]='Material-science'
             [strength_of_materials]='Materials-strength'
             [theoritecal_mechanics]='Theoritecal-mechanics'

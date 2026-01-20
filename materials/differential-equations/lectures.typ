@@ -9,7 +9,17 @@
   head: [Лекции по Дифференциальным уравнениям],
 )
 
+#set footnote(numbering: "a")
+
 #let delimsys = ("{", "|")
+#let clrundrln(color: black, equation) = block(
+  stroke: (bottom: color),
+  outset: (bottom: 1.5pt),
+  $equation$,
+)
+#let ov(var) = $overline(#var)$
+
+#show circle: set align(center + horizon)
 
 #outline()
 #hide[#link("https://gist.github.com/ognevny/9d45be15d9655b52c01538d9a2571799")] // надёжно спрятано))) ссылка безопасная, жми
@@ -971,7 +981,7 @@ $ y^((n)) + p_1(x) y^((n-1)) + p_2(x) y^((n-2)) + ... + p_(n-1)(x) y' + p_n(x) y
 $y = phi(x)$ - решение ДУ, если подстановка $phi(x)$, $phi'(x)$, ..., $phi^((n))(x)$ обращает ДУ в тождество; $phi(x)$ -- непрерывно дифференцируемая n раз функция на $(a, b)$.
 
 $f(x) = 0 => L_n [y] = 0 "- ЛОДУ" \
-  f(x) != 0 => L_n [y] = f(x) "- ЛНДУ"$
+f(x) != 0 => L_n [y] = f(x) "- ЛНДУ"$
 
 == Задача Коши для ДУ N-ого порядка
 
@@ -996,7 +1006,9 @@ $n$ ЛНЗ на $(a, b)$ решений ЛОДУ n-ого порядка наз�
 
 #v(1em)
 
-$ W = mdet(y_1, y_2, ..., y_n; y'_1, y'_2, ..., y'_n; ..., ..., dots.down, dots.v; y_1^((n-1)), y_2^((n-1)), ..., y_n^((n-1))) $
+$
+  W = mdet(y_1, y_2, ..., y_n; y'_1, y'_2, ..., y'_n; ..., ..., dots.down, dots.v; y_1^((n-1)), y_2^((n-1)), ..., y_n^((n-1)))
+$
 
 ==== Теорема об определителе Вронского
 
@@ -1064,16 +1076,16 @@ $y' = k e^(k x)$, $y'' = k^2 e^(k x)$, ..., $y^((n-1)) = k^(n-1) e^(k x)$, $y^((
 + Всякой паре комплексных корней $alpha plus.minus beta$ кратности $m$ соответствует $2m$ ЛНЗ решений: $e^(alpha x) cos beta x, e^(alpha x) sin beta x, x e^(alpha x) cos beta x, x e^(alpha x) sin beta x, ..., x^(n-1) e^(alpha x) cos beta x, x^(n-1) e^(alpha x) sin beta x$
 
 $y^"IV" - y''' - 3y'' + 5y' + 2y = 0 \
-  k^4 - k^3 - 3k^2 + 5k + 2 = 0 \
-  k = 2, 0 equiv 0 => (k + 2) (k^3 - 3k^2 + 3k - 1) = 0 => (k + 2) (k - 1)^3$
+k^4 - k^3 - 3k^2 + 5k + 2 = 0 \
+k = 2, 0 equiv 0 => (k + 2) (k^3 - 3k^2 + 3k - 1) = 0 => (k + 2) (k - 1)^3$
 
 Ответ: $y_"общ" = C_1 e^(-2x) + C_2 e^x + C_3 x e^x + C_4 x^2 e^x$
 
 $y^"VI" + 2y^"IV" + y^"II" = 0 \
-  k^6 + 2k^4 + k^2 = 0 \
-  k^2 (k^4 + 2k^2 + 1) = 0 \
-  k^2 (k^2 + 1)^2 = 0 \
-  k^2 = -1 => k_(1,2) = plus.minus i => e^(0x) cos 1x, e^(0x) sin 1x, x e^(0x) cos 1x, x e^(0x) sin 1x \
+k^6 + 2k^4 + k^2 = 0 \
+k^2 (k^4 + 2k^2 + 1) = 0 \
+k^2 (k^2 + 1)^2 = 0 \
+k^2 = -1 => k_(1,2) = plus.minus i => e^(0x) cos 1x, e^(0x) sin 1x, x e^(0x) cos 1x, x e^(0x) sin 1x \
 "ФСР" {e^(0x), x e^(0x), cos x, sin x, x cos x, x sin x}$
 
 Ответ: $y_о = C_1 + C_2 x + C_3 cos x + C_4 sin x + C_5 x cos x + C_6 x sin x$
@@ -1093,7 +1105,7 @@ $y^"VI" + 2y^"IV" + y^"II" = 0 \
 $ forall C_k: (sum_(k=1)^n C_k y_k + y_"част") "- решение ЛНДУ" $
 
 $L_n [sum C_k y_k + y_"част"] = f(x) \
-  L_n [sum C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) L_n [C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) C_k underbracket(L_n [y_k], 0) + underbracket(L_n [y_"част"], f(x)) = f(x)$
+L_n [sum C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) L_n [C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) C_k underbracket(L_n [y_k], 0) + underbracket(L_n [y_"част"], f(x)) = f(x)$
 
 Дано: ${y_k}$ - ФСР ЛОДУ $L_n [y] = 0$; $y_"част"$ - решение $L_n [y_"част"] = f(x)$
 
@@ -1102,10 +1114,634 @@ $z(x)$ - произвольное решение ЛОДУ, то есть $L_n [z
 $ exists tilde(C)_k: z(x) = sum_(k=1)^n tilde(C)_k y_k + y_"част" $
 
 $L_n [z - y_"част"] = L_n [z] - L_n [y_"част"] = f(x) - f(x) = 0 => (z - y_"част") "- решение ЛОДУ" \ "тогда по теореме о структуре общего решения ЛОДУ" \
-  exists tilde(C)_k: z - y_"част" = sum tilde(C)_k y_k => z = display(sum_(k=1)^n) tilde(C)_k y_k + y_"част"$
+exists tilde(C)_k: z - y_"част" = sum tilde(C)_k y_k => z = display(sum_(k=1)^n) tilde(C)_k y_k + y_"част"$
 
 === Теорема о суперпозиции решений ЛНДУ
 
 #v(1em)
 
 Пусть $y_1(x)$ - решение $L_n [y] = f_1(x)$, а $y_2(x)$ - решение $L_n [y] = f_2(x)$, тогда $y_1(x) + y_2(x)$ -- решение уравнения $L_n [y] = f_1(x) + f_2(x)$
+
+==== Следствие из теоремы о суперпозиции решений
+
+#v(1em)
+
+Если $L_n [y] = f_1(x) + f_2(x) + ... + f_m (x)$, тогда $ y_"част" = y_1(x) + y_2(x) + ... y_m (x), $ где $y_k (x)$ является решением $L_n [y] = f_k (x)$
+
+=== Метод подбора $y_"част"$ для $L_n [y] = f(x)$
+
+==== Лемма 1
+
+#v(1em)
+
+Рассмотрим $L_n [y] = a e^(k x)$; $a, k = "const"$.
+
+Если $k$ не совпадает с корнями ХУ $R_n (k) = 0$, тогда частное решение имеет вид $ y_"част" = A e^(k x), $ где $A = a/(R_n (k))$
+
+$display(
+  cases(
+    reverse: #true,
+    delim: "|",
+    y_"част" = A e^(k x),
+    y'_"част" = A k e^(k x),
+    y''_"част" = A k^2 e^(k x),
+    dots.v,
+    y^((n))_"част" = A k^n e^(k x),
+  ) => "ДУ " \
+  y^((n)) + p_1 y^((n-1)) + ... + p_(n-2) y'' + p_(n-1) y' + p_n y = a e^(k x) \
+  A k^n e^(k x) + p_1 A k^(n-1) e^(k x) + ... + p_(n-2) A k^2 e^(k x) + p_(n-1) A k e^(k x) + p_n A e^(k x) equiv a e^(k x) \
+  A (k^n + p_1 k^(n-1) + ... + p(n-2) k^2 + p_(n-1) k + p_n) equiv a \
+  A underbrace(R_n (k), != 0) = a => A = a/(R_n (k))
+)$
+
+$y''' - 3y'' + 2y' = 4e^(3x) \
+y_"част" = A e^(3x), y'_"част" = 3A e^(3x), y''_"част" = 9A e^(3x), y'''_"част" = 27A e^(3x) \
+k^3 - 3k^2 + 2k = 0 \
+k (k^2 - 3k + 2) = 0 \
+k (k - 1) (k - 2) = 0 <=> display(
+  cases(
+    k_1 = 0,
+    k_2 = 1,
+    k_3 = 2,
+  )" " k = 3 "не является характеристическим корнем"#footnote[Термин "характерестический корень" считайте выдумкой автора. Стоит употреблять понятие "корень ХУ"]
+) \
+cancel(27A cancel(e^(3x), inverted: #true)) - cancel(3 dot 9A cancel(e^(3x), inverted: #true)) + 2 dot 3A cancel(e^(3x), inverted: #true) = 4cancel(e^(3x), inverted: #true) \
+6A = 4 => A = 2/3 => y_"част" = 2/3 e^(3x) \
+y''' - 3y'' + 2y' = 4e^x, k = 1 \
+y_"част" = clrundrln(x, color: #blue), y'_"част" = A (x + 1) e^x, y''_"част" = A (x + 2) e^x, y'''_"част" = A (x + 3) e^x \
+A (x + 3) cancel(e^x) - 3A (x + 2) cancel(e^x) + 2A (x + 1) cancel(e^x) = 4cancel(e^x) \
+A [x + 3 - 3(x + 2) + 2(x + 1)] = 4 \
+A (-1) = 4 => A = -4 => y_"част" = -4x e^x$
+
+==== Лемма 2
+
+#v(1em)
+
+Если для $L_n [y] = a e^(k x)$ $k$ совпадает с однократным характеристическим корнем, тогда $ y_"част" = x A e^(k x) $
+
+=== Алгоритм подбора $y_"част"$ для ЛНДУ $L_n [y] = f(x)$
+
+#v(1em)
+
++ $f(x) = P_n (x) e^(k x)$ $ y_"част" = x^r Q_N (x) e^(k x), $ где $Q_N (x)$ - многочлен степени $N = n$, $r$ - кратность действительного характеристического корня, совпадающего с $k$, $r = 0$, если $k$ не совпадает с характеристическими корнями.
+
++ $f(x) = P_n (x) e^(alpha x) cos beta x + Q_m (x) e^(alpha x) sin beta x$ $ y_"част" = x^r [R_N (x) e^(alpha x) cos beta x + T_N (x) e^(alpha x) sin beta x], $ где $N = max(n, m)$, $r$ - кратность пары комплексных корней, совпадающих с $alpha plus.minus beta$, $r = 0$ при случае, аналогичному первому пункту
+
+$y^"V" - y' = 2x e^(0x) cases(delim: "[", n = 1, k = 0) \
+k^5 - k = 0 \
+k (k^4 - 1) = 0 \
+k (k^2 - 1) (k^2 + 1) = 0 \
+k (k - 1) (k + 1) (k - i) (k + i) = 0 <=> display(cases(k_1 = 0, k_2 = 1, k_3 = -1, k_4 = i, k_5 = -i)) \
+N = n = 1 \
+r = 1, "так как" k = 0 "совпадает с" k_1 \
+y_"част" = x^r Q_N (x) e^(0x) = x^1 Q_1 (x) e^(0x) = x (a_1 x + a_0) e^(0x) = a_1 x^2 + a_0 x \
+y'_"част" = 2a_1 x + a_0 \
+y''_"част" = 2a_1 \
+y'''_"част" = y^"IV"_"част" = y^"V"_"част" = 0 \
+0 - (2a_1 x + a_0) equiv 2x \
+-2a_1 x - a_0 equiv 2x <=> display(cases(-2a_1 = 2, -a_0 = 0) <=> cases(a_1 = -1, a_0 = 0)) \
+y_"част" = -1x^2 + 0x = -x^2$
+
+$y^"IV" - 5y''' + 4y'' = 20sin 2x dot e^(0x) mat(delim: "[", n = 0, alpha = 0; m = 0, beta = 2) alpha plus.minus i beta = plus.minus 2i \
+k^4 - 5k^3 + 4k^2 = 0 \
+k^2 (k^2 - 5k + 4) = 0 <=> display(cases(k_(1,2) = 0, k_3 = 1, k_4 = 4)) \
+N = 0, r = 0 => y_"част" = x^0 [R_0 (x) e^(0x) cos 2x + T_0 (x) e^(0x) sin 2x] = A cos 2x + B sin 2x \
+y'_ч = -2A sin 2x + 2B cos 2x \
+y''_ч = -4A cos 2x - 4B sin 2x \
+y'''_ч = 8A sin 2x - 8B cos 2x \
+y^"IV"_ч = 16A cos 2x + 16B sin 2x \
+16A cos 2x + 16B sin 2x - 5 (8A sin 2x - 8B cos 2x) + 4 (-4A cos 2x - 4B sin 2x) = 20sin 2x \
+(16A + 40B - 16A) cos 2x + (16B - 40A - 16B) sin 2x = 20sin 2x \
+display(cases(40B = 0, -40A = 20) <=> cases(B = 0, A = -"0,5") => y_ч = -"0,5"cos 2x)$
+
+=== Метод вариации для n-ого порядка
+
+#v(1em)
+
+Пусть ${y_k (x)}$ $k = 1, 2, ..., n$ - ФСР ЛОДУ, тогда решение ЛНДУ $L_n [y] = f(x)$ можно найти в виде $ y_"ОН" = sum_1^n C_k (x) y_k (x), $ где $C_k (x)$ определяется из системы
+
+$
+  cases(
+    C'_1 y_1 + C'_2 y_2 + ... + C'_n y_n = 0,
+    C'_1 y'_1 + C'_2 y'_2 + ... + C'_n y'_n = 0,
+    .. .,
+    C'_1 y_1^((n-1)) + C'_2 y_2^((n-1)) + ... + C'_n y_n^((n-1)) = 0
+  )" "mat(y_1, ..., y_n; dots.v, dots.down, dots.v; y_1^((n-1)), ..., y_n^((n-1))) mat(C'_1; dots.v; C'_n) = mat(0; dots.v; f(x))
+$
+
+${y_k} "- ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ - существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dif x$
+
+$y''' + y' = (sin x)/(cos^2 x) \
+k^3 + k = 0 <=> display(cases(k_1 = 0 &=> y_1 = e^(0x), k_(2,3) = plus.minus i &=> y_2 = cos x\, y_3 = sin x)) \
+y_"ОН" = C_1(x) dot 1 + C_2(x) cos x + C_3(x) sin x \
+display(
+  cases(
+    C'_1 dot 1 + C'_2 cos x + C'_3 sin x = 0,
+    C'_1 dot 0 + C'_2 (-sin x) + C'_3 cos x = 0,
+    0 + C'_2 (-cos x) + C'_3 (-sin x) = (sin x)/(cos^2 x),
+  )
+) \
+C'_1 = (sin x)/(cos^2 x) => C_1 = integral (sin x)/(cos^2 x) dif x = -integral (dif cos x)/(cos^2 x) = -(-1/(cos x)) = 1/(cos x) \
+display(
+  cases(
+    C'_2 (-sin x) + C'_3 cos x = 0,
+    C'_2 (-cos x) + C'_3 (-sin x) = (sin x)/(cos^2 x),
+  )" "
+)$
+
+$display(
+  Delta &= mdet(-sin x, cos x; -cos x, -sin x) = sin^2 x + cos^2 x = 1 \
+  Delta_1 &= mdet(0, cos x; (sin x)/(cos^2 x), -sin x) = (sin x)/(cos x) = 1 \
+  Delta_2 &= mdet(-sin x, 0; -cos x, (sin x)/(cos^2 x)) = -(sin^2 x)/(cos^2 x) = tg^2 (x)
+)$
+
+= Линейные системы ДУ
+
+#v(1em)
+
+$ cases(
+  dot(x) = a_11 x + a_12 y + f_1 (t),
+  dot(y) = a_21 x + a_22 y + f_2 (t),
+), X = vec(x(t), y(t)), dot(X) = vec(dot(x) (t), dot(y) (t)), F = vec(f_1 (t), f_2 (t)), A = mat(a_11, a_12; a_21, a_22), $ $a_(i j)$ - непрерывные функции
+
+$
+  cases(
+    delim: #none,
+    dot(X) = A X + F & "- ЛНСУ",
+    dot(X) = A X & "- ЛОСУ"
+  )
+$
+
+== Задача Коши
+
+#v(1em)
+
+Поиск решения системы ДУ, удовлетворяющих дополнительным условиям (НУ) $display(cases(x(t_0) = x_0, y(t_0) = y_0))$
+
+== Решение ЛОСУ ДУ
+
+=== Теорема о структуре общего решения ЛОСУ
+
+#v(1em)
+
+Пусть $ov(u) = vec(u_1(t), u_2(t)), ov(v) = vec(v_1(t), v_2(t))$ - ЛНЗ на $(a, b)$ решения ЛОСУ: $dv(ov(y), t) = A ov(y)$
+
+Тогда $ ov(y)_о = C_1 ov(u) + C_2 ov(v), $ где $C_1$, $C_2$ - произвольные постоянные
+
+Дано: $ov(u): dv(ov(u), t) = A ov(u), ov(v): dv(ov(v), t) = A ov(v)$
+
+Показать, что $forall C_1, C_2: (C_1 ov(u) + C_2 ov(v))$ - решение ЛОСУ
+
+Подстановка $display(
+  cases(
+    delim: #none,
+    dv(, t) (C_1 ov(u) + C_2 ov(v)) = C_1 dv(ov(u), t) + C_2 dv(ov(v), t) = C_1 A ov(u) + C_2 A ov(v)" "&(1),
+    A (C_1 ov(u) + C_2 ov(v)) = A (C_1 ov(u)) + A (C_2 ov(v)) = C_1 A ov(u) + C_2 A ov(v)" "&(2)
+  )
+)$
+
+$(1) = (2) => "имеем решение"$
+
+Дано: $ov(u)$, $ov(u)$ - ЛНЗ решения ЛОСУ
+
+$ov(z) (t) = vec(z_1(t), z_2(t))$ - произвольное решение ЛОСУ с НУ $cases(z_1(t_0) = z_1, z_2(t_0) = z_2)$
+
+Показать, что $exists tilde(C)_1, tilde(C)_2: z(t) = tilde(C)_1 ov(u) + tilde(C)_2 ov(v)$
+
+Сравним $ov(z) (t)$ и $ov(y) = C_1 ov(u) + C_2 ov(v)$
+
+$display(
+  cases(
+    ov(y)_1 (t_0) = C_1 u_1(t_0) + C_2 v_1(t_0) = z_1,
+    ov(y)_2 (t_o) = C_1 u_2(t_0) + C_2 v_2(t_0) = z_2,
+  ) <=> mat(u_1(t_0), v_1(t_0); u_2(t_0), v_2(t_0)) mat(C_1; C_2) = mat(z_1; z_2)
+)$
+
+СЛАУ относительно $C_1$, $C_2$ с главным определителем $Delta = W(t_0) != 0$, так как $ov(u)$, $ov(v)$ - ЛНЗ на $(a, b) => exists "единственное решение" tilde(C)_1, tilde(C)_2 => z(t_0) = tilde(C)_1 ov(u) (t_0) + C_2 ov(v) (t_0)$. В силу теоремы Коши о единственности решения задачи Коши $ov(y) = ov(z) (t)$
+
+=== Метод Эйлера решения ЛОСУ с постоянными коэффициентами
+
+#v(1em)
+
+$display(
+  cases(
+    x(t) = alpha e^(lambda t),
+    y(t) = beta e^(lambda t),
+  )\; alpha\, beta\, lambda = "const"\; cases(
+    dot(x) (t) = alpha lambda e^(lambda t),
+    dot(y) (t) = beta lambda e^(lambda t),
+  ) \
+  cases(
+    alpha lambda e^(lambda t) = a_11 alpha e^(lambda t) + a_12 beta e^(lambda t),
+    beta lambda e^(lambda t) = a_21 alpha e^(lambda t) + a_22 beta e^(lambda t),
+  ) <=> cases(
+    (a_11 - lambda) alpha + a_12 beta = 0,
+    a_21 alpha + (a_22 - lambda) beta = 0,
+  ) <=> mat(a_11 - lambda, a_12; a_21, a_22 - lambda) mat(alpha; beta) = mat(0; 0) \
+  cases(
+    alpha = 0,
+    beta = 0,
+  ) "- тривиальное решение"
+)$
+
+Для существующего нетривиального решения потребуем
+
+$display(mdet(a_11 - lambda, a_12; a_21, a_22 - lambda) = 0 "- Характеристическое уравнение": det(A - lambda E) = 0)$
+
+$display(
+  cases(
+    dot(x) = y,
+    dot(y) = 2x + y,
+  ) " " A = mat(0, 1; 2, 1) => mdet(0 - lambda, 1; 2, 1 - lambda) = 0 <=> -lambda (1 - lambda) - 2 = 0 <=> cases(delim: "[", lambda_1 = 2, lambda_2 = -1) \
+  lambda_1 = 2: cases(-2alpha + beta = 0, 2alpha - beta = 0) " " beta = 2alpha\, cases(alpha = 1, beta = 2) => cases(x = alpha e^(lambda t) = 1e^(2t), y = beta e^(lambda t) = 2e^(2t)) " " X_1 = vec(1, 2) e^(2t) \
+  lambda_1 = -1: cases(alpha + beta = 0, 2alpha + 2beta = 0) " " alpha = -beta\, cases(alpha = -1, beta = 1) " " X_2 = vec(-1, 1) e^(-t)
+)$
+
+$display(
+  W = mdet(1e^(2t), -1e^(-t); 2e^(2t), 1e^(-t)) = e^(2t) dot e^(-t) - (-e^(-t) dot 2e^(2t)) = e^t + 2e^t = 3e^t != 0 => "ЛНЗ"
+)$
+
+$display(
+  X_"общ" = C_1 X_1 + C_2 X_2 = C_1 vec(1, 2) e^(2t) + C_2 vec(-1, 1) e^(-t) \
+  cases(
+    x(t) = C_1 e^(2t) - C_2 e^(-t),
+    y(t) = 2C_1 e^(2t) + C_2 e^(-t),
+  )\, cases(
+    x(0) = C_1 - C_2 = 4,
+    y(0) = 2C_1 + C_2 = -1,
+  ) <=> cases(
+    3C_1 = 3 => C_1 = 1,
+    C_2 = -3,
+  )
+)$
+
+$display(
+  cases(
+    dot(x) = 4x - 3y,
+    dot(y) = 3x + 4y,
+  )\, mdet(4 - lambda, -3; 3, 4 - lambda) = 0 <=> (4 - lambda)^2 = -9 <=> cases(
+    delim: "[",
+    lambda_1 = 4 - 3i,
+    lambda_2 = 4 + 3i,
+  ) \
+  lambda = 4 + 3i: cases(
+    [4 - (4 + 3i)] alpha - 3beta = 0,
+    3alpha + [4 - (4 + 3i)] beta = 0,
+  ) <=> cases(
+    -3i alpha - 3beta = 0,
+    3alpha - 3i beta = 0,
+  ) <=> cases(
+    -i alpha - beta = 0,
+    alpha - i beta = 0,
+  ) <=> alpha - i beta = 0 <=> alpha = i beta \
+  cases(alpha = i, beta = 1)\, X = vec(i, 1) e^((4+3i)t) = vec(i, 1) e^(4t) dot e^(3i t) = vec(i, 1) e^(4t) (cos 3t + i sin 3t) = e^(4t) vec(i cos 3t + i^2 sin 3t, cos 3t + i sin 3t) = \ = e^(4t) vec(-sin 3t, cos 3t) + i e^(4t) vec(cos 3t, sin 3t) \
+  X_"общ" = C_1"Re"X + C_2"Im"X = C_1 e^(4t) vec(-sin 3t, cos 3t) + C_2 e^(4t) vec(cos 3t, sin 3t)
+)$
+
+$display(
+  cases(
+    dot(x) = -3x - y => y = -dot(x) - 3x #circle(radius: 8pt)[
+      #set align(center + horizon)
+      $=>$
+    ],
+    dot(y) = x - y => (-dot(x) - 3x)'_t = x - (-dot(x) - 3x) => -dot.double(x) - 3dot(x) = x + dot(x) + 3x => dot.double(x) + 4dot(x) + 4x = 0
+  ) \
+  k^2 + 4k + 4 = 0 <=> (k + 2)^2 = k_(1,2) = -2 \
+  "ФСР": cases(delim: #none, x_1 = e^(-2t), x_2 = t e^(-2t)) \
+  #circle(radius: 8pt)[$=>$] y = -(C_1 e^(-2t) + C_2 t e^(-2t))'_t - 3(C_1 e^(-2t) + C_2 t e^(-2t))
+)$
+
+==== Алгоритм формирования ФСР
+
+#v(1em)
+
++ $lambda_1, lambda_2$ - действительные различные: $X_1 = Y^1 e^(lambda_1 t); X_2 = Y^2 e^(lambda_2 t); Y^1, Y^2$ - собственные вектора
+
++ $lambda_(1,2) = alpha plus.minus i beta: X_1 = "Re"(H e^(lambda t)); X_2 = "Im"(H e^(lambda t)), H$ - собственный вектор
+
+=== Теорема о структуре общего решения ЛНСУ
+
+#v(1em)
+
+Пусть $ov(u)$, $ov(v)$ - ФСР ЛОСУ $L[ov(y)] = 0$, $ov(y)_"част"$ -- какое-либо решение ЛНСУ $L[ov(y)] = F$.
+
+Тогда $ y_"ОН" = C_1 ov(u) + C_2 ov(v) + ov(y)_"част" "или" ov(y)_"ОН" = ov(y)_"О" + ov(y)_"част" $
+
+Дано: $ov(u): L[ov(u)] = 0, ov(v): L[ov(v)] = 0, ov(y)_"част": L[ov(y)_"част"] = F$
+
+Показать, что $forall C_1, C_2: (C_1 ov(u) + C_2 ov(v) + ov(y)_ч) "- решение ЛНСУ"$
+
+Подстановка $display(cases(delim: #none, L[C_1 ov(u) + C_2 ov(v) + ov(y)_ч] = F, C_1 L[ov(u)] + C_2 L[ov(v)] + L[ov(y)_ч] = F) <=> F equiv F)$
+
+Дано: $ov(u)$, $ov(v)$ - ФСР ЛОСУ, $ov(y)_ч: L[ov(y)_ч] = F$, $ov(z)$ - произвольное решение ЛНСУ, $L[ov(z)] = F$
+
+Показать, что $exists tilde(C)_1, tilde(C)_2: ov(z) = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) + ov(y)_ч$
+
+$L[ov(z)] - L[ov(y)_ч] = F - F equiv 0 => (ov(z) - ov(y)_ч) "- решение ЛОСУ" => exists tilde(C)_1, tilde(C)_2: ov(z) - ov(y)_ч = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) <=> \ <=> z = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) + ov(y)_ч$
+
+=== Метод подбора $y_"част"$ для ЛНСУ $L[y] = F(t)$
+
+#v(1em)
+
+$ F(t) = ov(P)_n (t) e^(k t), ov(P)_n (t) = vec(a_n t^n + a_(n-1) t^(n-1) + ... a_0, b_m t^m + ... + b_0) " " n >= m $
+
+$ y_"част" = ov(Q)_(N+r) (t) e^(k t), ov(Q)_(N+r) = vec(d_(N+r) t^(N+r) + ... + d_0, s_(N+r) t^(N+r) + ... + s_0), $ где $N = n$, $r$ - кратность корня ХУ, совпадающего с $k$; $r = 0$, если $k$ не совпадает с корнями ХУ
+
+$display(
+  cases(
+    dot(x) = 2x + 4y + 1,
+    dot(y) = x + 2y + t,
+  ) " " mdet(A - lambda E) = 0 <=> mdet(2 - lambda, 4; 1, 2 - lambda) = 0 <=> (2 - lambda)^2 - 4 = 0 <=> lambda_1 = 0\, lambda_2 = 4 \
+  #circle(radius: 8pt)[1] F(t) = vec(1, t) e^(0t) " " mat(delim: "[", n = 1; k = 0) => cases(
+    delim: #none,
+    N = n = 1\; r = 1\, "так как" k = 0 "совпадает с" lambda_1 "кратности" 1,
+    N + r = 1 + 1 = 2,
+  ) \
+  ov(y)_"част" = ov(Q)_2 (t) e^(0t) = vec(a_2 t^2 + a_1 t + a_0, b_2 t^2 + b_1 t + b_0) e^(0t) => ov(y)_"част" = vec(a_2 t^2 + a_1 t + a_0, b_2 t^2 + b_1 t + b_0) \
+  #circle(radius: 8pt)[2] cases(
+    delim: #none,
+    F(t) = ov(P)_n (t) e^(alpha t) cos beta t + ov(Q)_m (t) e^(alpha t) sin beta t,
+    ov(y)_"част" = ov(R)_(N+r) (t) e^(alpha t) cos beta t + ov(T)_(N+r) (t) e^(alpha t) sin beta t
+  )" "mat(delim: "[", n = " ", alpha = " "; m = " ", beta = " ") cases(
+    delim: #none,
+    N = max(n, m),
+    r "- кратность пары комплексных",
+    "корней, совпадающих с" alpha plus.minus i beta
+  ) \
+  cases(
+    dot(x) = y + e^t cos 2t,
+    dot(y) = -3x -4y + e^t sin 2t,
+  ) " " mdet(-lambda, 1; -3, -4 - lambda) = 0 <=> 4lambda + lambda^2 + 3 = 0 <=> cases(lambda_1 = -1, lambda_2 = -3) \
+  F(t) = vec(e^t cos 2t, e^t sin 2t) = vec(1, 0) e^t cos 2t + (0, 1) e^t sin 2t " " mat(delim: "[", n = 0, alpha = 1; m = 0, beta = 2) alpha plus.minus beta = 1 plus.minus 2i \
+  N = max(0, 0) = 0\, r = 0\, "так как пара" 1 plus.minus 2i "не совпадает с корнями ХУ" => N + r = 0 + 0 = 0 \
+  underline(ov(y)_"част") = ov(R)_0 (t) e^(1t) cos 2t + ov(T)_0 (t) e^(1t) sin 2t = vec(a_0, b_0) e^t cos 2t + vec(d_0, s_0) e^t sin 2t
+)$
+
+=== Принцип суперпозиции для ЛНСУ $L[y] = F(t)$
+
+#v(1em)
+
+Пусть $ov(y)_1$ - решение ЛНСУ $L[ov(y)] = F_1$, $ov(y)_2$ - решение ЛНСУ $L[ov(y)] = F_2$
+
+Тогда $(ov(y)_1 + ov(y)_2)$ - решение ЛНСУ $L[ov(y)] = F_1 + F_2$
+
+Показать, что $(ov(y)_1 + ov(y)_2)$ - решение $L[ov(y)] = F_1 + F_2$ #sym.ast.op.o
+
+$L[ov(y)_1 + ov(y)_2] = underbrace(L[ov(y)_1], F_1) + underbrace(L[ov(y)_2], F_2) = F_1 + F_2 => (ov(y)_1 + ov(y)_2) "- решение" ast.op.o$
+
+Пусть $F(t) = F_1 + F_2 + ... + F_m$, тогда $ov(y)_"част" = ov(y)_1 + ov(y)_2 + ... + ov(y)_m$, где $ov(y)_k$ - решение $L[ov(y)] = F_k$
+
+$display(
+  cases(
+    dot(x) = y + 35e^(4t),
+    dot(y) = -3x - 4y + 2e^t,
+  ) " " mat(delim: "[", lambda_1 = -1; lambda_2 = -3) " " F(t) = vec(35e^(4t), 2e^t) = vec(35, 0) e^(4t) + vec(0, 2) e^t \
+  #circle(radius: 8pt)[1] L[ov(y)] = vec(35, 0) e^(4t) " " mat(delim: "[", n = 0; k = 1) => mat(delim: "[", align: #left, N = n = 0; r = 0\, "так как" k = 4 "не совпадает с корнями ХУ") \
+  ov(y)_(ч_1) = ov(Q)_(N+r) (t) e^(4t) = ov(Q)_0 (t) e^(4t) = vec(A, B) e^(4t) " " cases(x_ч = A e^(4t), y_ч = B e^(4t)) " " cases(dot(x)_ч = 4A e^(4t), dot(y)_ч = 4B e^(4t)) \
+  cases(
+    4A e^(4t) = B e^(4t) + 35e^(4t),
+    4B e^(4t) = -3A e^(4t) - 4B e^(4t),
+  ) <=> cases(
+    4A - B - 35 = 0,
+    3A + 8B = 0,
+  ) <=> cases(B = 4A - 35, 35A - 35 dot 8 = 0) <=> cases(A = 8, B = -3) \
+  y_(ч_1) = vec(8, -3) e^(4t) \
+  #circle(radius: 8pt)[2] L[y] = vec(0, 2) e^t " " mat(delim: "[", n = 0; k = 1) => cases(
+    delim: #none,
+    N = n = 0,
+    r = 0\, "так как" k = 1 "не совпадает с корнями ХУ",
+  ) \
+  ov(y)_"част" = ov(Q)_(N+r) (t) e^t = vec(D, E) e^t \
+  cases(x_ч = D e^t, y_ч = E e^t) " " cases(dot(x) = D e^t, dot(y) = E e^t) " " cases(D e^t = E e^t, E e^t = -3D e^t - 4E e^t + 2e^t) <=> cases(D = E, 8D = 2) <=> cases(D = 1/4, E = 1/4) \
+  y_(ч_2) = vec(frac(1, 4, style: "skewed"), frac(1, 4, style: "skewed")) e^t \
+  ov(y)_"ОН" = ov(y)_о + vec(8, -3) e^(4t) + vec(frac(1, 4, style: "skewed"), frac(1, 4, style: "skewed")) e^t
+)$
+
+=== Метод вариации решения ЛНСУ $L[y] = F(t)$
+
+#v(1em)
+
+Пусть $ov(u)$, $ov(v)$ -- ФСР ЛОСУ $L[ov(y)] = 0$, тогда решение ЛНСУ $L[ov(y)] = F$ можно найти в виде $ ov(y)_"ОН" = C_1(t) ov(u) + C_2(t) ov(v), $ где $C_1(t)$, $C_2(t)$ определяется из условия $ C'_1 ov(u) + C'_2 ov(v) = F $
+
+$ov(u): dv(ov(u), t) = A ov(u), ov(v): dv(ov(v), t) = A ov(v)$
+
+Показать, что $exists C_1(t), C_2(t): [C_1(t) ov(u) + C_2(t) ov(v)]$ -- решение $dv(ov(y), t) = A ov(y) + F$
+
+$display(
+  "Подставим в левую часть" dv(, t) [C_1(t) ov(u) + C_2(t) ov(v)] = C'_1 ov(u) + C_1 dv(ov(u), t) + C'_2 ov(v) + C_2 dv(ov(v), t) = \ = C'_1 ov(u) + C'_2 ov(v) + C_1 A ov(u) + C_2 A ov(v) " " (1) \
+  "В правую часть" A [C_1 ov(u) + C_2 ov(v)] = C_1 A ov(u) + C_2 A ov(v) + F " " (2) \
+  (1) = (2) <=> C'_1 ov(u) + C'_2 ov(v) = F <=> cases(
+    C'_1 u_1 + C'_2 v_1 = f_1(t),
+    C'_1 u_2 + C'_2 v_2 = f_2(t),
+  ) <=> mat(u_1, v_1; u_2, v_2) mat(C'_1; C'_2) = mat(f_1; f_2) \
+  Delta = W[ov(u), ov(v)]\; W != 0 => exists "единственное решение" cases(C'_1(t) = phi_1(t), C'_2(t) = phi_2(t))
+)$
+
+$display(
+  cases(
+    dot(x) = y + 1/(cos t),
+    dot(y) = -x + tg t,
+  ) " " mdet(-lambda, 1; -1, -lambda) = 0 <=> lambda^2 + 1 = 0 <=> lambda_(1,2) = plus.minus i \
+  lambda = i: cases(-i alpha + beta = 0, -alpha - i beta = 0) " " beta = alpha i " " cases(alpha = 1, beta = i) " " X = vec(1, i) e^(i t) = vec(1, i) (cos t + i sin t) = \ = vec(cos t + i sin t, i cos t - sin t) = vec(cos t, -sin t) + i vec(sin t, cos t)\; ov(u) = vec(cos t, -sin t)\, ov(v) = vec(sin t, cos t) \
+  C'_1 vec(cos t, -sin t) + C'_2 vec(sin t, cos t) = vec(frac(1, cos t, style: "skewed"), tg t) <=> cases(
+    C'_1 cos t + C'_2 sin t = 1/(cos t),
+    C'_1 (-sin t) + C'_2 cos t = tg t,
+  )
+)$
+
+== Устойчивость стационарного решения ЛОСУ
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    Решения ЛОСУ могут быть как устойчивы (@устойчивость, слева), так и неустойчивы (@устойчивость, справа)
+  ],
+  [
+    #figure(
+      image("source-figures/lect11-1.png", width: 90%),
+      caption: [],
+    ) <устойчивость>
+  ],
+)
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect11-2.png", width: 80%),
+    )
+  ],
+  [
+    $display(
+      cases(dot(x) = 0, dot(y) = 0) <=> cases(a_11 x + a_12 y = 0, a_21 x + a_22 y = 0) \
+      cases(
+        x(t) = C_1 alpha_1 e^(lambda_1 t) + C_2 alpha_2 e^(lambda_2 t),
+        y(t) = C_1 beta e^(lambda_1 t) + C_2 beta e^(lambda_2 t),
+      ) \
+      Y^1 = vec(alpha_1, beta_1)\, Y^2 = vec(alpha_2, beta_2)
+    )$
+  ],
+)
+
+$display(t -> oo\, e^(lambda t) -> cases(0\, lambda < 0, oo\, lambda > 0))$
+
+$display(
+  cases(
+    dot(x) = -x,
+    dot(y) = -2y,
+  ) " " det(A - lambda E) = 0 <=> mdet(-1 - lambda, 0; 0, 2 - lambda) = 0 <=> (-1 - lambda)(-2 - lambda) = 0 <=> cases(lambda_1 = -1, lambda_2 = -2) \
+  cases(
+    x(t) = C_1 e^(-t),
+    y(t) = C_2 e^(-2t)
+  ) " " y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> \ <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, tilde(C) = plus.minus C
+)$
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect11-3.png", width: 55%),
+      caption: [Устойчивый узел],
+    )
+  ],
+  [
+    $display(
+      C_1 = 0: cases(x equiv 0, y = C_2 e^(-2t)) \
+      C_2 = 0: cases(x = C_1 e^(-t), y equiv 0)
+    )$
+  ],
+)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    $display(
+      cases(dot(x) = -x, dot(y) = y) <=> cases(x = C_1 e^(-t), y = C_2 e^t) \
+      C_1 = 0: cases(x equiv 0, y = C_2 e^t)\, C_2 = 0: cases(x = C_1 e^(-t), y equiv 0) \
+      dot(y)/dot(x) = y/(-x) <=> dv(y, x) = y/(-x) <=> integral (dif y)/y = -integral (dif x)/x <=> ln abs(y) = \ = -ln abs(x) + ln abs(C) <=> ln abs(y) = ln abs(C/x) <=> abs(y) = abs(C/x) <=> y = tilde(C) 1/x
+    )$
+  ],
+  [
+    #figure(
+      image("source-figures/lect11-4.png"),
+      caption: [Седло],
+    )
+  ],
+)
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect11-5.png", width: 70%),
+      caption: [],
+    )
+  ],
+  [
+    $display(
+      cases(
+        delim: #none,
+        lambda_(1,2)& = alpha plus.minus beta,
+        alpha& = 0
+      ) " " cases(
+        x(t) = A cos beta t + B sin beta t,
+        y(t) = D cos beta t + E sin beta t,
+      )
+    )$
+
+    Если траектории сходятся в точку, то точка называется устойчивой по Ляпунову.
+  ],
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect11-6.png"),
+      caption: [],
+    ) <спираль>
+  ],
+  [
+    График зависимости $y(x)$ приобретает вид спирали при добавлении координаты $t$ (@спираль)
+  ],
+)
+
+$display(
+  cases(
+    delim: #none,
+    lambda_(1,2)& = alpha plus.minus beta,
+    alpha& != 0
+  ) " " cases(
+    x(t) = A e^(alpha t) cos beta t + B e^(alpha t) sin beta t,
+    y(t) = D e^(alpha t) cos beta t + E e^(alpha t) sin beta t,
+  ) \
+  alpha > 0: "точка - неустойчивый фокус" \
+  alpha < 0: "точка - устойчивый фокус"
+)$
+
+$display(
+  cases(
+    dot(x) = x - y,
+    dot(y) = x + y,
+  ) " " mdet(1 - lambda, -1; 1, 1 - lambda) = 0 <=> (1 - lambda)^2 + 1 = 0 <=> 1 - lambda = plus.minus i <=> cases(lambda_1 = 1 + i, lambda_2 = 1 - i) \
+  dot(y)/dot(x) = (x + y)/(x - y) <=> dv(y, x) = (x + y)/(x - y) <=> |u = y/x| <=> (1 + u)/(1 - u) = u + x u' <=> x dv(u, x) = (1 + u)/(1 - u) - u <=> \ <=> x dv(u, x) = (1 + u^2)/(1 - u) <=> integral (dif x)/x = integral (1 - u)/(1 + u^2) dif u <=> "arctg" u - 1/2 ln abs(1 + u^2) = ln abs(x) + ln abs(C) <=> \ <=> ln abs(x) + ln sqrt(1 + u^2) = ln abs(C) + ln e^("arctg"u) <=> sqrt(x^2 + y^2) = tilde(C) e^("arctg"u) <=> \ <=> mat(
+    delim: "|",
+    align: #left,
+    x = r cos phi, x^2 + y^2 = r^2;
+    y = r sin phi, y/x = tg phi
+  ) <=> r = tilde(C) e^(phi)
+)$
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [Получившаяся точка покоя - устойчивый фокус (@устфокус)],
+  [
+    #figure(
+      image("source-figures/lect11-7.png", width: 80%),
+      caption: [],
+    ) <устфокус>
+  ],
+)
+
+Тривиальное решение ЛОСУ с постоянными коэффициентами асимптотически устойчивы тогда и только тогда, когда действительные корни или действительные части корней ХУ отрицательны.
+
+Стационарное решение $ ov(phi) (t) = vec(x(t), y(t)) $
+
+$phi(t)$ называется устойчивым по Ляпунову если для любого $x(t)$ и для любого $epsilon > 0$ существует $delta(epsilon) > 0$: из условия $abs(ov(phi) (t_0) - ov(x) (t_0)) < delta => abs(ov(phi) (t) - ov(x) (t)) < epsilon forall t >= t_0$.
+
+$display(
+  cases(
+    delim: #none,
+    det A = 0,
+    lambda = 0,
+  ) " " cases(
+    dot(x) = -6x + 3y,
+    dot(y) = -2x + y,
+  ) " " dv(y, x) = dot(y)/dot(x) = (-2x + y)/(-6x + 3y) = 1/3 => y(x) = 1/3 x + C
+)$
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    $display(
+      ov(V) = vec(-6x + 3y, -2x + y) \
+      ov(V) = 0\, cases(dot(x) = 0, dot(y) = 0) => cases(-6x + 3y = 0, -2x + y = 0) => #text(blue)[$y = 2x$] \
+      #text(red)[$ evaluated(V)_(x=1,y=1) = vec(-3, -1) $]
+    )$
+  ],
+  [
+    #figure(
+      image("source-figures/lect12-1.png")
+    )
+  ]
+)

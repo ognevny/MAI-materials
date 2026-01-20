@@ -1230,7 +1230,7 @@ X = tilde(C)_1 e^((-n + i k_1) t) + tilde(C)_2 e^((-n - i k_1) t) = e^(-n t) (ti
 #grid(
   columns: (1.5fr, 1fr),
   [
-    $x -> 0 "при" t -> infinity$
+    $x -> 0 "при" t -> oo$
     #rect[$ tau_1 = (2pi)/k_1 - "период затухающих колебаний" $]
   ],
   [
@@ -1244,7 +1244,7 @@ X = tilde(C)_1 e^((-n + i k_1) t) + tilde(C)_2 e^((-n - i k_1) t) = e^(-n t) (ti
   columns: (1fr, 1fr),
   [
     $n > k: \
-    x -> 0 "при" t -> infinity$
+    x -> 0 "при" t -> oo$
   ],
   [
     #figure(
@@ -1290,8 +1290,8 @@ X_"Част" = X_"вын." = F_0/(2p) t sin(p t)$
 #grid(
   columns: (1fr, 1fr),
   [
-    $abs(X_"вын.") -> infinity "при" t -> infinity \
-    abs(X_"ОН") -> infinity "при" t -> infinity$
+    $abs(X_"вын.") -> oo "при" t -> oo \
+    abs(X_"ОН") -> oo "при" t -> oo$
   ],
   [
     #figure(
