@@ -1741,7 +1741,7 @@ $display(
   ],
   [
     #figure(
-      image("source-figures/lect12-1.png")
+      image("source-figures/lect12-1.png"),
     )
-  ]
+  ],
 )
