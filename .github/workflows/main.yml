@@ -25,18 +25,37 @@ jobs:
         run: |
           mkdir -p build
 
-          declare -A sources=(
+          declare -A sources_2-3=(
+            [theoritecal_mechanics]='Theoritecal-mechanics'
+          )
+
+          declare -A sources_3=(
             [differential_equations]='Differential-equations'
             [material_theory]='Material-science'
+            [probability_theory]='Probability-theory'
+          )
+
+          declare -A sources_3-4=(
             [strength_of_materials]='Materials-strength'
-            [theoritecal_mechanics]='Theoritecal-mechanics'
           )
 
           set -x
 
-          for subject in "${!sources[@]}"; do
+          for subject in "${!sources_2-3[@]}"; do
             typst compile \
-              "materials/${subject//_/-}/lectures.typ" \
+              "materials/semester-2-3/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_3[@]}"; do
+            typst compile \
+              "materials/semester-3/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_3-4[@]}"; do
+            typst compile \
+              "materials/semester-3-4/${subject//_/-}/lectures.typ" \
               "build/Lectures_of_${sources[$subject]}.pdf"
           done
 
