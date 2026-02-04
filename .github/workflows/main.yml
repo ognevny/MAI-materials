@@ -45,19 +45,19 @@ jobs:
           for subject in "${!sources_2_3[@]}"; do
             typst compile \
               "materials/semester-2-3/${subject//_/-}/lectures.typ" \
-              "build/Lectures_of_${sources[$subject]}.pdf"
+              "build/Lectures_of_${sources_2_3[$subject]}.pdf"
           done
 
           for subject in "${!sources_3[@]}"; do
             typst compile \
               "materials/semester-3/${subject//_/-}/lectures.typ" \
-              "build/Lectures_of_${sources[$subject]}.pdf"
+              "build/Lectures_of_${sources_3[$subject]}.pdf"
           done
 
           for subject in "${!sources_3_4[@]}"; do
             typst compile \
               "materials/semester-3-4/${subject//_/-}/lectures.typ" \
-              "build/Lectures_of_${sources[$subject]}.pdf"
+              "build/Lectures_of_${sources_3_4[$subject]}.pdf"
           done
 
       - name: "Выкладывание PDF"
