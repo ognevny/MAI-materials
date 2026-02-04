@@ -33,6 +33,7 @@ jobs:
             [differential_equations]='Differential-equations'
             [material_theory]='Material-science'
             [probability_theory]='Probability-theory'
+            [psychology]='Psychology'
           )
 
           declare -A sources_3_4=(

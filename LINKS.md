@@ -6,6 +6,7 @@
 - 3 семестр:
   - [Лекции по Дифференциальным уравнениям](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Differential-equations.pdf)
   - [Лекции по Материаловедению](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Material-science.pdf)
+  - [Лекции по Психологии и педагогике](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Psychology.pdf)
   - [Лекции по Теории вероятностей](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Probability-theory.pdf)
 
 3-4 семестры:
