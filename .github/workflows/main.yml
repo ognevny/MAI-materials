@@ -25,7 +25,7 @@ jobs:
         run: |
           mkdir -p build
 
-          declare -A sources_2-3=(
+          declare -A sources_2_3=(
             [theoritecal_mechanics]='Theoritecal-mechanics'
           )
 
@@ -35,13 +35,13 @@ jobs:
             [probability_theory]='Probability-theory'
           )
 
-          declare -A sources_3-4=(
+          declare -A sources_3_4=(
             [strength_of_materials]='Materials-strength'
           )
 
           set -x
 
-          for subject in "${!sources_2-3[@]}"; do
+          for subject in "${!sources_2_3[@]}"; do
             typst compile \
               "materials/semester-2-3/${subject//_/-}/lectures.typ" \
               "build/Lectures_of_${sources[$subject]}.pdf"
@@ -53,7 +53,7 @@ jobs:
               "build/Lectures_of_${sources[$subject]}.pdf"
           done
 
-          for subject in "${!sources_3-4[@]}"; do
+          for subject in "${!sources_3_4[@]}"; do
             typst compile \
               "materials/semester-3-4/${subject//_/-}/lectures.typ" \
               "build/Lectures_of_${sources[$subject]}.pdf"
