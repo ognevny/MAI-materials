@@ -9,6 +9,7 @@
           },
         },
         "syntaxOnly": "onPowerSaving",
+        // "formatterMode": "typstyle",
       },
     },
   },

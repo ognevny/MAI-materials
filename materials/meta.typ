@@ -1,3 +1,4 @@
+/// Основная метаинформация
 #let conf(
   titl: [],
   desc: [],
@@ -26,6 +27,20 @@
   set par(justify: true)
 
   show figure.where(kind: table): set figure.caption(position: top)
+  show circle: set align(center + horizon)
 
   doc
 }
+
+/// Разделитель для vec()
+#let delimsys = ("{", "|")
+
+/// Раскрашивает лишь подчёркивание
+#let clrundrln(color: black, equation) = block(
+  stroke: (bottom: color),
+  outset: (bottom: 1.5pt),
+  $equation$,
+)
+
+/// У нас принято обозначать вектора палочкой над переменным, поэтому это сокращение нужно для большей читаемости
+#let ov(var) = $overline(#var)$

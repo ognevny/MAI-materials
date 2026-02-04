@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": conf, delimsys
 
 #show: conf.with(
   titl: "Лекции по Сопротивлению материалов",
@@ -6,8 +6,6 @@
   datet: datetime(year: 2025, month: 12, day: 30),
   head: [Лекции по Сопротивлению материалов],
 )
-
-#let delimsys = ("{", "|")
 
 #outline()
 #pagebreak(weak: true)

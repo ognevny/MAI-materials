@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": clrundrln, conf, delimsys, ov
 #import "@preview/cetz:0.4.2": canvas, draw
 #import "@preview/physica:0.9.8": dv, evaluated, mdet, pdv
 
@@ -10,16 +10,6 @@
 )
 
 #set footnote(numbering: "a")
-
-#let delimsys = ("{", "|")
-#let clrundrln(color: black, equation) = block(
-  stroke: (bottom: color),
-  outset: (bottom: 1.5pt),
-  $equation$,
-)
-#let ov(var) = $overline(#var)$
-
-#show circle: set align(center + horizon)
 
 #outline()
 #hide[#link("https://gist.github.com/ognevny/9d45be15d9655b52c01538d9a2571799")] // надёжно спрятано))) ссылка безопасная, жми

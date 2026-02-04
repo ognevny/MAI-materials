@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": conf, ov
 
 #show: conf.with(
   titl: "Лекции по Теоретической механике",
@@ -6,8 +6,6 @@
   datet: datetime(year: 2026, month: 1, day: 2),
   head: [Лекции по Теоретической механике],
 )
-
-#let ov(var) = $overline(#var)$
 
 #outline()
 #pagebreak(weak: true)
