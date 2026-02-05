@@ -1,5 +1,12 @@
 Ниже доступны готовые конспекты лекций некоторых предметов. Со временем этот список будет пополняться
 
+- 1 семестр:
+  - [Лекции по АЯП](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Algorithmic-langs.pdf)
+  - [Лекции по ОРГ](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_FRS.pdf)
+
+- 1-2 семестры:
+  - [Лекции по Истории России](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Russian-history.pdf)
+
 - 2-3 семестры:
   - [Лекции по Теоретической механике (пока только динамика)](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Theoritecal-mechanics.pdf)
 

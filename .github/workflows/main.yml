@@ -25,6 +25,15 @@ jobs:
         run: |
           mkdir -p build
 
+          declare -A sources_1=(
+            [algorithmic_langs]='Algorithmic-langs'
+            [FRS]='FRS'
+          )
+
+          declare -A sources_1_2=(
+            [russian_history]='Russian-history'
+          )
+
           declare -A sources_2_3=(
             [theoritecal_mechanics]='Theoritecal-mechanics'
           )
@@ -41,6 +50,18 @@ jobs:
           )
 
           set -x
+
+          for subject in "${!sources_1[@]}"; do
+            typst compile \
+              "materials/semester-1/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_1[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_1_2[@]}"; do
+            typst compile \
+              "materials/semester-1-2/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_1_2[$subject]}.pdf"
+          done
 
           for subject in "${!sources_2_3[@]}"; do
             typst compile \
