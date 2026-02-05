@@ -140,8 +140,7 @@
     #figure(
       grid(
         columns: (1fr, 1.8fr),
-        image("source-figures/lect1-3-5.png", width: 80%),
-        image("source-figures/lect1-3-6.png", width: 80%),
+        image("source-figures/lect1-3-5.png", width: 80%), image("source-figures/lect1-3-6.png", width: 80%),
       ),
       caption: [],
     ) <растсечения>
@@ -317,10 +316,10 @@ $l_1 approx "1,5"l$
     На оси $Delta l$:
 
     $O M = Delta l_"ост" \
-      Delta l_"упр" "- проходит от точки M" \
-      "до проекции точки L на ось" \
-      Delta l_"разр" = Delta l_"ост" + Delta l_"упр"$
-  ]
+    Delta l_"упр" "- проходит от точки M" \
+    "до проекции точки L на ось" \
+    Delta l_"разр" = Delta l_"ост" + Delta l_"упр"$
+  ],
 )
 
 При $Delta l <= Delta l_A$ справедлив закон Гука
@@ -1000,7 +999,15 @@ $stretch(integral.double)_F rho^2 dif F = stretch(integral.double)_F y^2 dif F +
 
 #v(1em)
 
-"Смотри самостоятельно". От автора: формулы имеют следующий вид $ I_x_1 &= I_x cos^2 alpha + I_y sin^2 alpha - I_(x y) sin 2alpha \ I_y_1 &= I_y cos^2 alpha + I_x sin^2 alpha + I_(x y) sin 2alpha \ I_(x_1 y_1) &= I_(x y) cos 2alpha + (I_x - I_y) (sin 2alpha)/2 $
+"Смотри самостоятельно".
+
+От автора: формулы имеют следующий вид
+
+$
+  I_x_1 & = I_x cos^2 alpha + I_y sin^2 alpha - I_(x y) sin 2alpha \
+  I_y_1 & = I_y cos^2 alpha + I_x sin^2 alpha + I_(x y) sin 2alpha \
+  I_(x_1 y_1) & = I_(x y) cos 2alpha + (I_x - I_y) (sin 2alpha)/2
+$
 
 === Главные оси и главные моменты инерции
 
