@@ -48,6 +48,10 @@ jobs:
             [strength_of_materials]='Materials-strength'
           )
 
+          declare -A sources_4=(
+            [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
+          )
+
           set -x
 
           for subject in "${!sources_1[@]}"; do
@@ -78,6 +82,12 @@ jobs:
             typst compile \
               "materials/semester-3-4/${subject//_/-}/lectures.typ" \
               "build/Lectures_of_${sources_3_4[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_4[@]}"; do
+            typst compile \
+              "materials/semester-4/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_4[$subject]}.pdf"
           done
 
       - name: "Выкладывание PDF"
