@@ -50,6 +50,7 @@ jobs:
 
           declare -A sources_4=(
             [equations_of_math_phys]='Equations-of-mathematical-physics'
+            [machine_theory]='Machine-theory'
             [metrology]='Metrology-and-standartization'
             [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
           )
