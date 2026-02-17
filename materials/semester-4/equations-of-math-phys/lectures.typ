@@ -190,3 +190,149 @@ display(
 Ответ: $z = 1/2 (x + y)^2 + 1/(x^2 + y^2) - 1/2 (x^2 + y^2) = x y + 1/(x^2 + y^2)$
 
 (Свойство равных дробей: $display(alpha_1/beta_1 = alpha_2/beta_2 = lambda => forall k_1\, k_2: (k_1 alpha_1 + k_2 alpha_2)/(k_1 beta_1 + k_2 beta_2) = lambda)$)
+
+=== Метод подстановки
+
+#v(1em)
+
+$x pdv(z, x) + y pdv(z, y) = 2x y$
+
+$display(
+  (dif x)/x = (dif y)/y = (dif z)/(2x y) \
+  cases(
+    (dif x)/x = (dif y)/y => ln abs(x) = ln abs(y) + ln abs(C_1) => x/y = tilde(C)_1 => y = x/C_1 "- подстановка",
+    (dif x)/x = (dif z)/(2x y),
+  ) \
+  (dif x)/cancel(x) = (dif z)/(2cancel(x) dot x/C_1) => (2x)/C_1 dif x = dif z => x^2/C_1 = z - C_2 => z - x^2/C_1 = C_2 => z - x^2/(x/y) = C_2 => z - x y = C_2 \
+  Phi(phi_1(x, y, z), phi_2(x, y, z)) = 0 => Phi(x/y, z - x y) = 0 => z - x y = phi(x/y) => z = x y + phi(x/y)
+)$
+
+$ pdv(u, t) + u pdv(u, x) = 0, $ $u(x, t) "- скорость"$
+
+$display(
+  (dif t)/1 = (dif x)/u = (dif u)/0 \
+  cases(
+    dif u = 0 => u = C_1,
+    (dif t)/1 = (dif x)/u,
+  ) \
+  dif t = (dif x)/C_1 => C_1 integral dif t = dif x => C_1 t = x - C_2 => u t = x - C_2 => C_2 = x - u t \
+  Phi(u, x - u t) = 0 "- ответ"
+)$
+
+$x pdv(z, x) - y pdv(z, y) = x - y quad z(1, y) = y + e^y$
+
+$display(
+  (dif x)/x = (dif y)/(-y) = (dif z)/(x - y) \
+  (dif x)/x = (dif y)/(-y) => ln abs(x) = -ln abs(y) + ln abs(C_1) => abs(x y) = abs(C_1) => C_1 = x y \
+  "Опираемся на свойство равных дробей" \
+  (1 dot dif x + 1 dot dif y)/cancel(1 dot x + 1 dot (-y)) = (dif z)/cancel(x - y) => dif(x + y) = dif z => x + y = z - C_2 => C_2 = z - x - y \
+  Phi(x y, z - x - y) = 0 => z - x - y = phi(x y) => z = phi(x y) + x + y \
+  z(1, y) = y + e^y\, space evaluated(z)_(x=1) = evaluated(phi(x y) + x + y)_(x=1) = phi(y) + 1 + cancel(y) = cancel(y) + e^y => \ => phi(y) = e^y - 1 => phi(t) = e^t - 1 => phi(x y) = e^(x y) - 1 \
+  "Ответ:" z = e^(x y) - 1 + x + y
+)$
+
+Аналогично для функций больших переменных $ a_1 pdv(u, x_1) + a_2 pdv(u, x_2) + ... + a_n pdv(u, x_n) = b, $ функция $u(x_1, x_2, ..., x_n)$; $a_i$, $b$ - непрерывные коэффициенты
+
+$
+  (dif x_1)/a_1 = (dif x_2)/a_2 = ... = (dif x_n)/a_n = (dif u)/b \
+  Phi(C_1, C_2, ..., C_n) = 0
+$
+
+$x u_x + y u_y + z u_z = 0$
+
+$display(
+  (dif x)/x = (dif y)/y = (dif z)/z = (dif u)/0 \
+  dif u = 0 => u = C_1 \
+  cases(
+    (dif x)/x = (dif y)/y,
+    (dif y)/y = (dif z)/z,
+  ) => cases(
+    ln abs(x) = ln abs(y) - ln abs(C_2),
+    ln abs(y) = ln abs(z) - ln abs(C_3),
+  ) => cases(
+    abs(y/x) = abs(C_2),
+    abs(z/y) = abs(C_3),
+  ) => cases(
+    C_2 = y/x,
+    C_3 = z/y,
+  ) \
+  Phi(u, y/x, z/y) = 0 => u = phi(y/x, z/y)
+)$
+
+== УЧП 2-ого порядка
+
+#v(1em)
+
+$
+  underbracket(a_11 u_(x x) + 2a_12 u_(x y) + a_22 u_(y y), "главная часть") + b_1 u_x + b_2 u_y + c u = f(x, y) \
+  Delta = a_12^2 - a_11 dot a_22
+$
++ $Delta > 0$ - гиперболический тип
++ $Delta = 0$ - параболический тип
++ $Delta < 0$ - эллиптический тип
+$a_(i j)$, $b_j$, $c$ - коэффициенты; $f(x, y)$ - непрерывная функция
+
+$x u_(x x) - 2u_(x y) + y u_(y y) + u = 0$
+
+$a_11 = x, space a_12 = - 1, space a_22 = y => Delta = (-1)^2 - x y$
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    + $1 - x y > 0 => x y < 1$ - гиперболический
+    + $1 - x y = 0 => x y = 1$ - параболический
+    + $1 - x y < 0 => x y > 1$ - эллиптический
+
+    $x y = 1 => y = 1/x$ - выполняется для точек, лежащих на гиперболе
+  ],
+  [
+    #figure(
+      image("source-figures/lect2-1.png")
+    )
+  ]
+)
+
+$u(s, v) \
+  s = s(x, y) \
+  v = v(x, y) \
+  pdv(u, x) = pdv(u, s) dot pdv(s, x) + pdv(u, v) dot pdv(v, x) \
+  pdv(u, y) = pdv(u, s) dot pdv(s, y) + pdv(u, s) dot pdv(s, y) \
+  u = u(xi, eta) \
+  xi = xi(x, y) \
+  eta = eta(x, y) \
+  u_x = u_xi dot xi_x + u_eta dot eta_x \
+  u_y = u_xi dot xi_y + u_eta dot eta_y \
+  u_(x x) = (u_xi dot xi_x + u_eta dot eta_x)'_x = (u_xi)'_x dot xi_x + u_xi dot (xi_x)'_x + (u_eta)'_x dot eta_x + u_eta dot (eta_x)'_x = \ = [(u_(xi xi) dot xi_x + u_(xi eta) eta_x) dot xi_x + u_xi dot xi_(x x)] + [(u_(eta xi) dot xi_x + u_(eta eta) dot eta_x) dot eta_x + u_eta dot eta_(x x)] = ... \
+  u_(x y) = ... \
+  u_(y y) = ... \
+  macron(a)_11 = underbrace(a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0, (1)) \
+  ... \
+  macron(a)_11 u_(xi xi) + 2macron(a)_12 u_(xi eta) + macron(a)_22 u_(eta eta) = 0$
+
+==== Лемма 1
+
+#v(1em)
+
+Пусть $xi = phi(x, y)$ - решение уравнения УЧП (1), тогда $phi(x, y) = C$ является первым интегралом дифференциального уравнения $ a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 quad (2)$ носящего название характеристического уравнения (внимание на "минус" перед $a_12$!!!)
+
+$triangle.r xi = phi(x, y)$ в (1)
+
+$a_11 phi_x^2 + 2a_12 phi_x phi_y + a_22 phi_y^2 = 0 \
+  a_11 (-phi_x/phi_y)^2 - 2a_12 (-phi_x/phi_y) + a_22 = 0$
+
+В $phi(x, y) = C quad y = f(x, C)$
+
+$dv(y, x) = -phi_x/phi_y$
+
+$a_11 dv(y, x)^2 - 2a_12 dv(y, x) + a_22 = 0 \
+  dv(y, x) = (a_12 plus.minus sqrt(a_12^2 - a_11 a_22))/a_11 \
+  dv(y, x) = (a_12 plus.minus Delta)/a_11 <=> a_11 dif y = (a_12 plus.minus sqrt(Delta)) dif x$
+
+Приведение к каноническому виду:
++ $Delta > 0, space xi = phi(x, y), space eta = psi(x, y) => u_(xi eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
++ $Delta = 0, space xi = phi(x, y), space eta = psi(x, y)$ произвольные дважды дифференцируемые функции
+
+  $u_(eta eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
+
++ $Delta = 0 => phi(x, y) plus.minus i psi(x, y) = C_(1,2) => u_(xi xi) + u_(eta eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
