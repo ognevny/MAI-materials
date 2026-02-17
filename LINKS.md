@@ -25,6 +25,6 @@
   - [Лекции по Теории машин и механизмов](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Machines-theory.pdf)
   - [Лекции по Термодинамике и теплопроводности](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Thermodynamics-and-heat-transfer.pdf)
   - [Лекции по Уравнениям математической физики](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Equations-of-mathematical-physics.pdf)
-  - [Семинары по Уравнениям математической физики](https://github.com/ognevny/MAI-materials/releases/download/latest/Seminars_of_Equations-of-mathematical-physics.pdf)
+  - Семинары по Уравнениям математической физики смотрите в ЛМС
 
 Последнее обновление: %DATE%

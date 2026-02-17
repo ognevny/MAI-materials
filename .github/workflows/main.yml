@@ -59,10 +59,6 @@ jobs:
             [strength_of_materials]='Materials-strength'
           )
 
-          declare -A seminars_4=(
-            [equations_of_math_phys]='Equations-of-mathematical-physics'
-          )
-
           set -x
 
           for subject in "${!sources_1[@]}"; do
@@ -105,12 +101,6 @@ jobs:
             typst compile \
               "materials/semester-3-4/${subject//_/-}/seminars.typ" \
               "build/Seminars_of_${seminars_3_4[$subject]}.pdf"
-          done
-
-          for subject in "${!seminars_4[@]}"; do
-            typst compile \
-              "materials/semester-4/${subject//_/-}/seminars.typ" \
-              "build/Seminars_of_${seminars_4[$subject]}.pdf"
           done
 
       - name: "Выкладывание PDF"
