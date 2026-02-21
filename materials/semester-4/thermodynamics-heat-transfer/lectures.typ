@@ -110,12 +110,12 @@
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect2-1.png")
+      image("source-figures/lect2-1.png"),
     )
   ],
   [
     Термодинамическое уравнение состояния #rect[$ Phi(p, v, T) = 0 $] Это можно трактовать как уравнение поверхности, именуемой термодинамической. При соединении точек кривой получим термодинамический процесс.
-  ]
+  ],
 )
 
 По Бойлю-Мариотту $ evaluated(p V)_(T="const") = "const" $
@@ -149,7 +149,7 @@ $ p V = m/mu hat(R) T $
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect2-2.png")
+      image("source-figures/lect2-2.png"),
     )
   ],
   [
@@ -173,9 +173,9 @@ $ p V = m/mu hat(R) T $
   ],
   [
     #figure(
-      image("source-figures/lect2-3.png")
+      image("source-figures/lect2-3.png"),
     )
-  ]
+  ],
 )
 
 === Обратимый и необратимые процессы (1.1.6)
@@ -209,7 +209,7 @@ $c ["Дж"/("кг" dot К)], space C ["Дж"/(м^3 dot К)], space hat(c) ["Дж
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect2-4.png")
+      image("source-figures/lect2-4.png"),
     )
   ],
   [
@@ -218,9 +218,11 @@ $c ["Дж"/("кг" dot К)], space C ["Дж"/(м^3 dot К)], space hat(c) ["Дж
     $c_p$ - изобарная теплоёмкость. #rect[$ Q_p = c_p (T_2 - T_1) $] При $Delta T = 1К space Q_p = c_p$.
 
     #rect[$ c_p > c_V quad c_T = dv(q, T) = oo $]
-    #rect[$ c_p = c_V + R => c_p - c_V &= R "- уравнение Майера" ["Дж"/("кг" dot К)] \
-      hat(c)_p - hat(c)_V &= hat(R) $]
-  ]
+    #rect[$
+      c_p = c_V + R => c_p - c_V & = R "- уравнение Майера" ["Дж"/("кг" dot К)] \
+             hat(c)_p - hat(c)_V & = hat(R)
+    $]
+  ],
 )
 
 Показатель адиабаты $ c_p/c_V = k $
@@ -258,9 +260,9 @@ $"1,4"c_V - c_V = 287 => c_V = 287/("1,4" - 1) approx 717 "Дж"/("кг" dot К)
   [
     #figure(
       image("source-figures/lect2-5.png"),
-      caption: [Превращения теплоты]
+      caption: [Превращения теплоты],
     )
-  ]
+  ],
 )
 
 Уравнение первого закона ТД показывает, что совершение работы всегда сопровождается изменением энергии. Отсюда невозможно построить вечный двигатель первого рода

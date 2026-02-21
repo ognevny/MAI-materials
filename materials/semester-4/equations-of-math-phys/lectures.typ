@@ -270,7 +270,7 @@ $
 + $Delta > 0$ - гиперболический тип
 + $Delta = 0$ - параболический тип
 + $Delta < 0$ - эллиптический тип
-$a_(i j)$, $b_j$, $c$ - коэффициенты; $f(x, y)$ - непрерывная функция
+$a_(i j)$, $b_j$, $c$, $f(x, y)$ - непрерывные функции
 
 $x u_(x x) - 2u_(x y) + y u_(y y) + u = 0$
 
@@ -288,46 +288,46 @@ $a_11 = x, space a_12 = - 1, space a_22 = y => Delta = (-1)^2 - x y$
   ],
   [
     #figure(
-      image("source-figures/lect2-1.png")
+      image("source-figures/lect2-1.png"),
     )
-  ]
+  ],
 )
 
 $u(s, v) \
-  s = s(x, y) \
-  v = v(x, y) \
-  pdv(u, x) = pdv(u, s) dot pdv(s, x) + pdv(u, v) dot pdv(v, x) \
-  pdv(u, y) = pdv(u, s) dot pdv(s, y) + pdv(u, s) dot pdv(s, y) \
-  u = u(xi, eta) \
-  xi = xi(x, y) \
-  eta = eta(x, y) \
-  u_x = u_xi dot xi_x + u_eta dot eta_x \
-  u_y = u_xi dot xi_y + u_eta dot eta_y \
-  u_(x x) = (u_xi dot xi_x + u_eta dot eta_x)'_x = (u_xi)'_x dot xi_x + u_xi dot (xi_x)'_x + (u_eta)'_x dot eta_x + u_eta dot (eta_x)'_x = \ = [(u_(xi xi) dot xi_x + u_(xi eta) eta_x) dot xi_x + u_xi dot xi_(x x)] + [(u_(eta xi) dot xi_x + u_(eta eta) dot eta_x) dot eta_x + u_eta dot eta_(x x)] = ... \
-  u_(x y) = ... \
-  u_(y y) = ... \
-  macron(a)_11 = underbrace(a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0, (1)) \
-  ... \
-  macron(a)_11 u_(xi xi) + 2macron(a)_12 u_(xi eta) + macron(a)_22 u_(eta eta) = 0$
+s = s(x, y) \
+v = v(x, y) \
+pdv(u, x) = pdv(u, s) dot pdv(s, x) + pdv(u, v) dot pdv(v, x) \
+pdv(u, y) = pdv(u, s) dot pdv(s, y) + pdv(u, s) dot pdv(s, y) \
+u = u(xi, eta) \
+xi = xi(x, y) \
+eta = eta(x, y) \
+u_x = u_xi dot xi_x + u_eta dot eta_x \
+u_y = u_xi dot xi_y + u_eta dot eta_y \
+u_(x x) = (u_xi dot xi_x + u_eta dot eta_x)'_x = (u_xi)'_x dot xi_x + u_xi dot (xi_x)'_x + (u_eta)'_x dot eta_x + u_eta dot (eta_x)'_x = \ = [(u_(xi xi) dot xi_x + u_(xi eta) eta_x) dot xi_x + u_xi dot xi_(x x)] + [(u_(eta xi) dot xi_x + u_(eta eta) dot eta_x) dot eta_x + u_eta dot eta_(x x)] = ... \
+u_(x y) = ... \
+u_(y y) = ... \
+macron(a)_11 = underbrace(a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0, (1)) \
+... \
+macron(a)_11 u_(xi xi) + 2macron(a)_12 u_(xi eta) + macron(a)_22 u_(eta eta) = 0$
 
 ==== Лемма 1
 
 #v(1em)
 
-Пусть $xi = phi(x, y)$ - решение уравнения УЧП (1), тогда $phi(x, y) = C$ является первым интегралом дифференциального уравнения $ a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 quad (2)$ носящего название характеристического уравнения (внимание на "минус" перед $a_12$!!!)
+Пусть $xi = phi(x, y)$ - решение уравнения УЧП (1), тогда $phi(x, y) = C$ является первым интегралом дифференциального уравнения $ a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 quad (2), $ носящего название характеристического уравнения (внимание на "минус" перед $a_12$!!!)
 
 $triangle.r xi = phi(x, y)$ в (1)
 
 $a_11 phi_x^2 + 2a_12 phi_x phi_y + a_22 phi_y^2 = 0 \
-  a_11 (-phi_x/phi_y)^2 - 2a_12 (-phi_x/phi_y) + a_22 = 0$
+a_11 (-phi_x/phi_y)^2 - 2a_12 (-phi_x/phi_y) + a_22 = 0$
 
 В $phi(x, y) = C quad y = f(x, C)$
 
 $dv(y, x) = -phi_x/phi_y$
 
 $a_11 dv(y, x)^2 - 2a_12 dv(y, x) + a_22 = 0 \
-  dv(y, x) = (a_12 plus.minus sqrt(a_12^2 - a_11 a_22))/a_11 \
-  dv(y, x) = (a_12 plus.minus Delta)/a_11 <=> a_11 dif y = (a_12 plus.minus sqrt(Delta)) dif x$
+dv(y, x) = (a_12 plus.minus sqrt(a_12^2 - a_11 a_22))/a_11 \
+dv(y, x) = (a_12 plus.minus Delta)/a_11 <=> a_11 dif y = (a_12 plus.minus sqrt(Delta)) dif x$
 
 Приведение к каноническому виду:
 + $Delta > 0, space xi = phi(x, y), space eta = psi(x, y) => u_(xi eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$

@@ -14,19 +14,35 @@
 
 #v(1em)
 
-Построить эпюры ЭN, ЭQ, ЭM (Внутренних силовых факторов)
+Построить эпюры ЭN, ЭQ, ЭM (Внутренних силовых факторов) следующих плоских рам
+
+== Прямолинейная рама
+
+#v(1em)
 
 #grid(
   columns: (1fr, 1fr),
   column-gutter: 1em,
   [
     #figure(
-      (
-        image("source-figures/sem8-1.png", width: 70%),
-        image("source-figures/sem8-2.png", width: 30%),
-        image("source-figures/sem8-3.png", width: 30%),
-        image("source-figures/sem8-4.png", width: 45%),
-      ).join(),
+      image("source-figures/sem8-1.png", width: 70%),
+    )
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 1em,
+      [
+        #figure(
+          image("source-figures/sem8-2.png", width: 55%),
+        )
+      ],
+      [
+        #figure(
+          image("source-figures/sem8-3.png", width: 55%),
+        )
+      ],
+    )
+    #figure(
+      image("source-figures/sem8-4.png", width: 45%),
     )
     #grid(
       columns: (1fr, 1fr),
@@ -118,3 +134,76 @@
 )
 
 В рисунке к задаче я не поменял направление реакций. В решении курсовой не забудьте перечеркнуть стрелку и нарисовать в направлении, для которого реакция будет положительна.
+
+== Криволинейная рама
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/sem9-1.png", width: 70%),
+    )
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 1em,
+      [
+        #figure(
+          image("source-figures/sem9-2.png", width: 45%),
+        )
+      ],
+      [
+        #figure(
+          image("source-figures/sem9-3.png", width: 45%),
+        )
+      ],
+    )
+    #figure(
+      (
+        image("source-figures/sem9-4.png", width: 35%),
+        image("source-figures/sem9-5.png", width: 60%),
+        image("source-figures/sem9-6.png", width: 60%),
+      ).join(),
+    )
+  ],
+  [
+    Здесь присутствует лишь жёсткая заделка, поэтому находить реакции совершенно необязательно
+    #colbreak()
+    0-1:
+
+    $M_01 = -q x dot x/2 = (-q x^2)/2 \
+    N_01 = 0 \
+    Q_01 = q x$
+
+    1-2:
+
+    $M_12 = -q a (a/2 + x) \
+    N_12 = 0 \
+    Q_12 = q a$
+
+    2-3:
+
+    $N_23 = -q a sin phi \
+    Q_23 = q a cos phi \
+    M_23 = -q a (3/2 a + a sin phi) + 1/2 q a^2$
+
+    3-4:
+
+    $N_34 = -q a cos phi - 2q a sin phi \
+    Q_34 = -q a sin phi + 2q a cos phi \
+    M_34 = 1/2 q a^2 - q a (3/2 a + a cos phi) - 2q a sin phi$
+
+    4-5:
+
+    $N_45 = -2q a \
+    Q_45 = -q a \
+    M_45 = 1/2 q a^2 - 2q a^2 - q a (3/2 a - x)$
+  ],
+)
+
+#figure(
+  image("source-figures/sem9-7.png"),
+  caption: [Искомые эпюры],
+)
