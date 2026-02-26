@@ -26,6 +26,8 @@
 
   set par(justify: true)
 
+  set enum(full: true)
+
   show figure.where(kind: table): set figure.caption(position: top)
   show circle: set align(center + horizon)
 

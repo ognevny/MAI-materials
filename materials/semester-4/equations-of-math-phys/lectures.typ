@@ -310,7 +310,7 @@ macron(a)_11 = underbrace(a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0, (1)) 
 ... \
 macron(a)_11 u_(xi xi) + 2macron(a)_12 u_(xi eta) + macron(a)_22 u_(eta eta) = 0$
 
-==== Лемма 1
+=== Лемма 1
 
 #v(1em)
 
@@ -336,3 +336,126 @@ dv(y, x) = (a_12 plus.minus Delta)/a_11 <=> a_11 dif y = (a_12 plus.minus sqrt(D
   $u_(eta eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
 
 + $Delta = 0 => phi(x, y) plus.minus i psi(x, y) = C_(1,2) => u_(xi xi) + u_(eta eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
+
+=== Повторение
+
+#v(1em)
+
+$
+  underbrace((a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2), = 0) u_(xi xi) \
+                      a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0 quad & (1) \
+              a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 quad & (2)
+$
+
+=== Лемма 2
+
+#v(1em)
+
+Пусть $phi(x, y) = C$ - первый интеграл ДУ $(2)$, тогда $xi = phi(x, y)$ - решение УЧП $(1)$
+
+$triangle.r$ Пусть $phi(x, y) = C$ - первый интеграл $(2)$, тогда $y = f(x, C)$ имеет производную $dv(y, x) = -phi_x/phi_y => "ДУ" (2)$
+
+$a_11 dv(y, x)^2 - 2a_12 dv(x, y) + a_22 = 0 \
+a_11 (-phi_x/phi_y)^2 - 2a_12 (-phi_x/phi_y) + a_22 = 0 | dot (phi_y)^2 \
+a_11 phi_x^2 - 2a_12 (-phi_x phi_y) + a_22 phi_y^2 = 0 \
+a_11 phi_x^2 + 2a_12 phi_x phi_y + a_22 phi_y^2 = 0 => "функция" xi = phi(x, y) "является решением УЧП" (1)$
+
+$
+  xi = phi(x, y) => macron(a)_11 = 0 \
+  eta = psi(x, y) => macron(a)_22 = 0
+$
+
+=== Методика получения общего решения УЧП 2-ого порядка
+
+#v(1em)
+
++ Определить тип, составить характеристическое уравнение
+
++ Найти замены $display(cases(xi = xi(x, y), eta = eta(x, y)))$, привести к каноническому виду
+
++ Найти общее решение $u(xi, eta)$
+  + Гиперболический тип: $u_(xi xi) = F(xi, eta, u_xi, u_eta, u)$ - дважды проинтегрировать по $xi$ и по $eta$
+  + Параболический тип: $u_(eta eta) = F(xi, eta, u_xi, u_eta, u)$ - дважды проинтегрировать по $eta$
+  + Эллиптический тип: $u_(xi xi) + u_(eta eta) = 0 <=> laplace u = 0$ для $phi(x, y) plus.minus i psi(x, y) = C_(1,2)$
+
+    $display(
+      cases(
+        xi = phi(x, y),
+        eta = psi(x, y),
+      ) space u = Phi_1(C_1) + Phi_2(C_2) semi space "либо" u = "Re"f(C) "или" u = "Im"f(C)
+    )$
+
+=== Пример
+
+#v(1em)
+
+$u_(x x) - 2u_(x y) + u_(y y) + u_x - u_y = 0$
+
+$display(
+  Delta = (-1)^2 - 1 dot 1 = 0 => "параболический вид" \
+  1 (dif y)^2 + 2 (dif x) (dif y) + 1 (dif x) = 0 \
+  dv(y, x)^2 + 2dv(y, x) + 1 = 0 \
+  (dv(y, x) + 1)^2 = 0 => dv(y, x) = -1 => dif y = -dif x => y = -x + C => C = x + y \
+  cases(
+    xi = y + x,
+    eta = x,
+  ) \
+  xi_x = 1 quad xi_y = 1 \
+  eta_x = 1 quad eta_y = 0 \
+  pdv(u, x) = u_xi xi_x + u_eta eta_x = u_xi + u_eta \
+  pdv(u, y) = u_xi xi_y + u_eta eta_y = u_xi \
+  u_(x x) = (u_x)'_x = (u_xi + u_eta)'_x = (u_xi)'_xi xi_x + (u_xi)'_eta eta_x + (u_eta)'_xi xi_x + (u_eta)'_eta eta_x = u_(xi xi) + 2u_(xi eta) + u_(eta eta) \
+  u_(x y) = (u_y)'_x = (u_xi)'_x = (u_xi)'_xi xi_x + (u_xi)'_eta eta_x = u_(xi xi) + u_(xi eta) \
+  u_(y y) = (u_y)'_y = (u_xi)'_y = (u_xi)'_xi xi_y + (u_xi)'_eta eta_y = u_(xi xi) \
+  cancel(u_(xi xi)) + cancel(2u_(xi eta)) + u_(eta eta) - 2(cancel(u_(xi xi)) + cancel(u_(xi eta))) + cancel(u_(xi xi)) + cancel(u_xi) + u_eta - cancel(u_xi) = 0 \
+  u_(eta eta) + u_eta = 0 \
+  u_(eta eta) = -u_eta \
+  (u_eta)_eta = -(u)_eta \
+  u_eta = -u + phi(xi) \
+  dv(u, eta) = -u + phi(xi) \
+  (dif u)/(u - phi(xi)) = -dif eta \
+  ln abs(u - phi(xi)) = -eta + ln abs(psi(xi)) \
+  abs(u - phi(xi)) = abs(psi(xi)) e^(-eta) \
+  u - phi(xi) = tilde(psi)(xi) e^(-eta) \
+  u(xi, eta) = tilde(psi)(xi) e^(-eta) + phi(xi) \
+  "Обратная замена" \
+  u(x, y) = tilde(psi)(y + x) e^(-x) + phi(y + x)
+)$
+
+$display(
+  "Альтернативный способ (работает при постоянных коэффициентах)" \
+  u''_(eta eta) + u'_eta = 0 \
+  y'' + y' = 0 \
+  k^2 + k = 0 \
+  k (k + 1) = 0 <=> k = 0\, space k = 1 \
+  y = C_1(xi) + C_2(xi) e^(-eta) \
+  u = C_1(y + x) + C_2(y + x) e^(-x) \
+  v = u_eta \
+  v_eta + v = 0 => dv(v, eta) = -v => (dif v)/v = -dif eta => ln abs(v) = -eta + ln abs(phi(xi)) \
+  v = tilde(phi)(xi) e^(-eta) => dv(u, eta) = tilde(phi)(xi) e^(-eta) => dif u = tilde(phi)(xi) e^(-eta) dif eta => u = tilde(phi)(xi) (-e^(-eta)) + psi(xi) \
+  u = Phi(xi) e^(-eta) + psi(xi)\, "где" Phi(xi) = -tilde(phi)(xi) quad tilde(phi)(xi) = plus.minus phi(xi)
+)$
+
+$ u_(x x) - 4u_(x y) - 21u_(y y) + 10u_x + 30u_y = 0 $
+
+$display(
+  ... \
+  cases(
+    xi = y + 7x,
+    eta = y - 3x,
+  ) quad cases(
+    delim: #none,
+    xi_x = 7 quad xi_y = 1,
+    eta_x = -3 quad eta_y = 1,
+  ) \
+  ... \
+  u_(xi eta) = u_eta \
+  v = u_eta \
+  v_xi = v => dv(v, xi) = v => (dif v)/v = dif xi => ln abs(v) = xi + ln abs(phi(eta)) \
+  ln abs(v) = ln(abs(phi(eta)) e^xi) \
+  v = plus.minus phi(eta) e^xi \
+  dv(u, eta) = u_eta = v = tilde(phi)(eta) e^xi \
+  integral dif u = integral tilde(phi)(eta) e^xi dif eta \
+  u = e^xi integral tilde(phi)(eta) dif eta = e^xi Phi(eta) + psi(xi) \
+  u(x, y) = e^(x + 7y) Phi(y - 3x) + psi(y + 7x)
+)$

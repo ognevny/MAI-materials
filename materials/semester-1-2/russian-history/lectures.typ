@@ -7,8 +7,6 @@
   head: [Лекции по Истории России],
 )
 
-#set enum(numbering: "1.a.")
-
 #outline()
 #pagebreak(weak: true)
 
