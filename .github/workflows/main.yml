@@ -110,6 +110,7 @@ jobs:
           name: "Materials"
           path: build/*.pdf
           if-no-files-found: ignore
+          archive: false
 
   update-release:
     needs: [build]
