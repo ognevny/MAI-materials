@@ -27,9 +27,9 @@
 
 в) $P(x, y) dif x + Q(x, y) dif y$ = 0
 
-$ y' = (dif y)/(dif x) $
+$ y' = dv(y, x) $
 
-$y' + y = 1 => y' = 1 - y; y' + y - 1 = 0; (dif y)/(dif x) + y = 1 => (dif y)/(dif x) = 1 - y => (1 - y) dif x - dif y = 0$
+$y' + y = 1 => y' = 1 - y; y' + y - 1 = 0; dv(y, x) + y = 1 => dv(y, x) = 1 - y => (1 - y) dif x - dif y = 0$
 
 Функция $y = phi(x)$, непрерывно дифференцируемая на интервале $(a; b)$ называется решением ДУ, если подстановка $phi(x), phi'(x)$ обращает ДУ в тождество для любого $x$ из $(a; b)$.
 
@@ -48,7 +48,7 @@ $y' = 2x => y(x) = integral 2x dif x = x^2 + C$ -- семейство интег
 
 $y = phi(x) = x^2 + C; y' = phi'(x) => 2x + 0 equiv 2x$
 
-$y(1) = 2, y(1) = x^2 + C|_(x=1) = 2$
+$y(1) = 2, y(1) = x^2 + evaluated(C)_(x=1) = 2$
 
 $1^2 + C = 2 => C = 1 => y = x^2 + 1$ -- решение задачи Коши
 
@@ -235,7 +235,7 @@ $y' = 1 - y, y' = k; k = 1 - y => y = 1 - k$
 
 в) $M_1 (x) N_1 (y) dif x + M_2 (x) N_2 (y) dif y = 0$
 
-$y' = y/x => y' = (dif y)/(dif x) => (dif y)/(dif x) = y/x => dif y = y/x dif x |":" y != 0 (!) => integral (dif y)/y = integral (dif x)/x => ln abs(y) = ln abs(x) + ln abs(C)$
+$y' = y/x => y' = dv(y, x) => dv(y, x) = y/x => dif y = y/x dif x |":" y != 0 (!) => integral (dif y)/y = integral (dif x)/x => ln abs(y) = ln abs(x) + ln abs(C)$
 
 $C != 0 => abs(y) = abs(C x) => y = plus.minus C x =>$ $tilde(C) x$ -- общее решение
 
@@ -243,16 +243,16 @@ $C != 0 => abs(y) = abs(C x) => y = plus.minus C x =>$ $tilde(C) x$ -- обще�
 
 Ответ: $y = tilde(C) x$
 
-$y' = 1 - y => (dif y)/(dif x) = 1 - y => dif y = (1 - y) dif x |":" (1-y)!=0 (!) => (dif y)/(1 - y) = dif x => integral (dif y)/(1 - y) = integral dif x => \ => ln abs(y - 1) = -x + ln abs(C), C != 0 => ln abs(y - 1) = ln e^(-x) + ln abs(C) => ln abs(y - 1) = ln abs(C e^(-x)) => \ => abs(y - 1) = abs(C e^(-x)) => y - 1 = plus.minus C e^(-x) => y = 1 + tilde(C) e^(-x)$
+$y' = 1 - y => dv(y, x) = 1 - y => dif y = (1 - y) dif x |":" (1-y)!=0 (!) => (dif y)/(1 - y) = dif x => integral (dif y)/(1 - y) = integral dif x => \ => ln abs(y - 1) = -x + ln abs(C), C != 0 => ln abs(y - 1) = ln e^(-x) + ln abs(C) => ln abs(y - 1) = ln abs(C e^(-x)) => \ => abs(y - 1) = abs(C e^(-x)) => y - 1 = plus.minus C e^(-x) => y = 1 + tilde(C) e^(-x)$
 
 Проверка: $1 - y = 0, y = 1; y' = 0: 0 = 1 - 1 => 0 equiv 0$
 
 Ответ: $y = 1 + tilde(C) e^(-x)$
 
 $y(0) = 1/2 \
-(dif T)/(dif t) = -k (T - T_"вн"); T_"вн" = 20 degree C". "T(t) "- температура чайника"$
+dv(T, t) = -k (T - T_"вн"); T_"вн" = 20 degree C". "T(t) "- температура чайника"$
 
-$(dif T)/(dif t) = -k (T - 20) => dif T = -k (T - 20) dif t |":" (T - 20) => integral (dif T)/(T - 20) = -k integral dif t => ln(T - 20) = \ = -k t + ln abs(C) => ln(T - 20) = ln e^(-k t) + ln abs(C) => ln(T-20) = ln abs(C e^(-k t)) => T - 20 = C e^(-k t) => \ => T(t) = 20 + C e^(-k t)$
+$dv(T, t) = -k (T - 20) => dif T = -k (T - 20) dif t |":" (T - 20) => integral (dif T)/(T - 20) = -k integral dif t => ln(T - 20) = \ = -k t + ln abs(C) => ln(T - 20) = ln e^(-k t) + ln abs(C) => ln(T-20) = ln abs(C e^(-k t)) => T - 20 = C e^(-k t) => \ => T(t) = 20 + C e^(-k t)$
 
 $display(
   cases(
@@ -265,7 +265,7 @@ $display(
     delim: #none,
     T(0) = 20 + C e^(-k dot 0) => 100 = 20 + C => C = 80,
     T(10) = 20 + 80e^(-k dot 10) => 60 = 20 + 80e^(-10k) => 80e^(-10k) = 40 => e^(-10k) = 1/2 =>,
-    => e^(10k) = 2 => 10k = ln 2 => k = (ln 2)/10" "(e^(-k t) = 1/2),
+    => e^(10k) = 2 => 10k = ln 2 => k = (ln 2)/10 space (e^(-k t) = 1/2),
   )
 )$
 
@@ -291,7 +291,7 @@ $y' = phi(y/x)$. Замена $u(x) = y/x$
 $y = x u(x), y' = (x u(x))' = u(x) + u'(x) dot x = y/x - 1 = u - 1$
 
 $u + x u' = u - 1 => x u' = -1 => u' = -1/x, x != 0 => u = -ln abs(x) + ln abs(C) => u = ln abs(C/x) => y/x = ln abs(C/x) => \ => y = x ln abs(C/x) \
-y' = e^(y/x) + y/x => y' = e^u + u => x u' = e^u => x (dif u)/(dif x) = e^u => integral (dif u)/e^u = integral (dif x)/x => -e^(-u) = ln abs(x) + ln abs(C) => \ => e^(-u) = -ln abs(x) + ln abs(C) => e^(-u) = ln abs(C/x) => -u = ln ln abs(C/x) => u = -ln ln abs(C/x) => y = -x ln ln abs(C/x) \
+y' = e^(y/x) + y/x => y' = e^u + u => x u' = e^u => x dv(u, x) = e^u => integral (dif u)/e^u = integral (dif x)/x => -e^(-u) = ln abs(x) + ln abs(C) => \ => e^(-u) = -ln abs(x) + ln abs(C) => e^(-u) = ln abs(C/x) => -u = ln ln abs(C/x) => u = -ln ln abs(C/x) => y = -x ln ln abs(C/x) \
 y' = y/x + sin y/x => ... => y = 2x("arctg"(tilde(C) x) + pi n)$
 
 Проверка: $sin u = 0 => u = pi k, y = pi k x$ входит в решение
@@ -300,7 +300,7 @@ y' = y/x + sin y/x => ... => y = 2x("arctg"(tilde(C) x) + pi n)$
 
 #v(1em)
 
-$y' + P(x) y = Q(x)" "display(
+$y' + P(x) y = Q(x) quad display(
   cases(
     delim: #none,
     Q(x) = 0 => y' + P(x) = 0 "- линейное однородное ДУ - ЛОДУ",
@@ -308,7 +308,7 @@ $y' + P(x) y = Q(x)" "display(
   )
 )$
 
-ЛОДУ: $(dif y)/(dif x) = -y P(x) dif x |":" y != 0 => integral (dif y)/y = -integral P(x) dif x =>$
+ЛОДУ: $dv(y, x) = -y P(x) dif x |":" y != 0 => integral (dif y)/y = -integral P(x) dif x =>$
 
 $=> ln abs(y) = -integral P(x) dif x => ln abs(y) = ln(abs(C) e^(-integral P(x) dif x)) => abs(y) = abs(C) e^(-integral P(x) dif x) => \ => y = plus.minus C e^(-integral P(x) dif x) => y_О = tilde(C) e^(-integral P(x) dif x)$
 
@@ -323,7 +323,7 @@ $ y_"ОН" = C(x) Y_О, $ где $Y_О = tilde(C) e^(-integral P(x) dif x)$, $C(
 $tilde(C) -> C(x)$
 
 $y' + y/(1 + x) = cos(x)/(1 + x) \
-y' + y/(1 + x) = 0 => (dif y)/(dif x) = -y/(1 + x) => integral (dif y)/y = -integral (dif x)/(1 + x) => ln abs(y) = ln abs(C/(1 + x)) => y = (plus.minus C)/(1 + x) => y = (tilde(C))/(1 + x) \
+y' + y/(1 + x) = 0 => dv(y, x) = -y/(1 + x) => integral (dif y)/y = -integral (dif x)/(1 + x) => ln abs(y) = ln abs(C/(1 + x)) => y = (plus.minus C)/(1 + x) => y = (tilde(C))/(1 + x) \
 y_О = (tilde(C))/(1 + x), y_"ОН" = C(x)/(1 + x) \
 y'_"ОН" = (C' (1 + x) - C)/(1 + x)^2 = C'/(1 + x) - C/(1 + x)^2 \
 C'/(1 + x) - C/(1 + x)^2 + C/(1 + x)^2 = (cos x)/(1 + x) => C'/(1 + x) = (cos x)/(1 + x) => C'(x) = cos x => C(x) = sin x + C_1$
@@ -363,7 +363,7 @@ $y_"ОН" = (integral q(x) e^(integral p dif x) dif x + C_1) e^(-integral p dif 
 
 $y' + 2x y = 2x \
 "решаем ЛОДУ:" y' + 2x y = 0 \
-(dif y)/(dif x) = -2x y |":" y != 0 \
+dv(y, x) = -2x y |":" y != 0 \
 integral (dif y)/y = integral -2x dif x \
 ln abs(y) = -(2x^2)/2 + ln abs(C) \
 ln abs(y) = ln e^(-x^2) + ln abs(C) \
@@ -401,7 +401,7 @@ $y' + 2x y = 2x \
 u' v + (u v' + 2x u v) = 2x \
 u' v + u (v' + 2x v) = 2x \
 v' + 2x v = 0 \
-(dif v)/(dif x) = -2x v \
+dv(v, x) = -2x v \
 integral (dif v)/v = integral -2x dif x \
 ln abs(v) = -x^2 + C \
 ln abs(v) = x^2 + ln abs(C) => v_0 = e^(-x^2), tilde(C) = 1 \
@@ -422,7 +422,7 @@ $y' + 1/x y = -x y^2 \
 underparen(u' v + u v', y') + 1/x underparen(u v, y) = -x underparen((u v), y)^2 \
 u' v + u(v' + 1/x v) = -x u^2 v^2 \
 v' + 1/x v = 0 \
-(dif v)/(dif x) = -1/x v \
+dv(v, x) = -1/x v \
 integral (dif v)/v = integral -(dif x)/x \
 ln abs(v) = -(ln abs(x) + ln abs(c)) \
 ln abs(v) = ln abs(c/x) \
@@ -431,7 +431,7 @@ v = tilde(C)/x; v_0 = 1/x \
 u' 1/x + u dot 0 = -x u^2 1/x^2 \
 u'/x + u^2/x = 0 \
 u' = -u^2 \
-(dif u)/(dif x) = -u^2 \
+dv(u, x) = -u^2 \
 integral (dif u)/u^2 = integral -dif x \
 -1/u = -x + C \
 u = 1/(x - C); u = 1/(x + tilde(C)) \
@@ -441,7 +441,7 @@ y = u v = 1/(x - C) dot 1/x = 1/(x^2 - C x); y = 0 "- тоже решение"$
 
 #v(1em)
 
-$ P(x, y) dif x + Q(x, y) dif y = 0, $ если $(partial P)/(partial y) = (partial Q)/(partial x)$ (в частных дифференциалах) $=> dif U(x, y) = 0 => U(x, y) = "const"$ - общий интеграл ДУ
+$ P(x, y) dif x + Q(x, y) dif y = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в частных дифференциалах) $=> dif U(x, y) = 0 => U(x, y) = "const"$ - общий интеграл ДУ
 
 === Пример решения ДУ в полных дифференциалах
 
@@ -469,8 +469,8 @@ $U(x, y) = integral_(x_0)^x P(x, y) dif x + integral_(y_0)^y Q(x, y) dif y$
 Собственно пример:
 
 $(x + sin y) dif x + (x cos y + sin y) dif y = 0 \
-(partial P)/(partial y) = (x_0 + sin y)'_y = cos y \
-(partial Q)/(partial x) = (x cos y_0 + sin_y_0)'_x = cos y \
+pdv(P, y) = (x_0 + sin y)'_y = cos y \
+pdv(Q, x) = (x cos y_0 + sin_y_0)'_x = cos y \
 display(U(x, y) = integral_(x_0=0)^x (x + sin y) dif x + integral_(y_0=0)^y (x_0 cos y + sin y) dif y = integral_0^x (x + sin y) dif x + integral_0^y sin y dif y = \ = evaluated((x^2/2 + sin y dot x))_0^x + evaluated((-cos y))_0^y = x^2/2 + x sin y - 0 + (-cos y + 1) = x^2/2 + x sin y - cos y + 1)$
 
 Ответ: $x^2/2 + x sin y - cos y = "const"$
@@ -484,9 +484,9 @@ display(
   cases(
     reverse: #true,
     delim: "|",
-    (partial Q)/(partial x) = 2x,
-    (partial P)/(partial y) = 2x,
-  ) (partial Q)/(partial x) = (partial P)/(partial y) \
+    pdv(Q, x) = 2x,
+    pdv(P, y) = 2x,
+  ) pdv(Q, x) = pdv(P, y) \
   cases(
     U'_x = P(x, y) = 2x y - 5 => U(x, y) = integral (2x y - 5) dif x = x^2 y - 5x + phi(y),
     U'_y = Q(x, y) = 3y^2 + x^2 => (x^2 - 5x + phi(y))'_y = 3y^2 + x^2,
@@ -502,7 +502,7 @@ x^2 - phi'_y = 3y^2 + x^2 => phi'_y = 3y^2 => phi(y) = 3y^2 => phi(y) = y^3 + C 
 
 Пусть $dif U(x, y) = U'_x dif x + U'_y dif y$
 
-Совпадение $P dif x + Q dif y => display(cases(delim: #none, U'_x = P(x, y), U'_y = Q(x, y)) => cases(delim: #none, U''_(x y) = (U'_x)'_y = (P(x, y))'_y = (partial P)/(partial y), U''_(y x) = (U'_y)'_x = (Q(x, y))'_x = (partial Q)/(partial x)))$
+Совпадение $P dif x + Q dif y => display(cases(delim: #none, U'_x = P(x, y), U'_y = Q(x, y)) => cases(delim: #none, U''_(x y) = (U'_x)'_y = (P(x, y))'_y = pdv(P, y), U''_(y x) = (U'_y)'_x = (Q(x, y))'_x = pdv(Q, x)))$
 
 ==== Пример решения задачи методом интегрирующего множителя
 
@@ -515,31 +515,31 @@ display(
     delim: "|",
     (2x y + x^2 y + 1/3 y^2)'_y = 2x + x^2 + y^2,
     (x^2 + y^2)'_x = 2x,
-  ) => (partial Q)/(partial x) != (partial P)/(partial y)
+  ) => pdv(Q, x) != pdv(P, y)
 )$
 
-+ $mu(x)$, если $1/Q ((partial P)/(partial y) - (partial Q)/(partial x)) = F(x) => mu(x) = e^(integral F(x) dif x)$
++ $mu(x)$, если $1/Q (pdv(P, y) - pdv(Q, x)) = F(x) => mu(x) = e^(integral F(x) dif x)$
 
-+ $mu(y)$, если $-1/P ((partial P)/(partial y) - (partial Q)/(partial x)) = G(y) => mu(y) = e^(integral G(y) dif y)$
++ $mu(y)$, если $-1/P (pdv(P, y) - pdv(Q, x)) = G(y) => mu(y) = e^(integral G(y) dif y)$
 
-$1/Q ((partial P)/(partial y) - (partial Q)/(partial x)) = 1/(x^2 + y^2) (2x + x^2 + y^2 - 2x) = 1 => mu(x) = e^(integral 1 dif x) = e^x \
+$1/Q (pdv(P, y) - pdv(Q, x)) = 1/(x^2 + y^2) (2x + x^2 + y^2 - 2x) = 1 => mu(x) = e^(integral 1 dif x) = e^x \
 e^x (2x y + x^2 y + 1/3 y^3) dif x + e^x (x^2 + y^2) dif y = 0 \
 display(
   cases(
     reverse: #true,
     delim: "|",
-    (partial P)/(partial y) = e^x (2x + x^2 + y^2),
-    (partial Q)/(partial x) = e^x (x^2 + y^2) + e^x dot 2x = e^x (2x + x^2 + y^2),
-  ) =>(partial P)/(partial y) = (partial Q)/(partial x)
+    pdv(P, y) = e^x (2x + x^2 + y^2),
+    pdv(Q, x) = e^x (x^2 + y^2) + e^x dot 2x = e^x (2x + x^2 + y^2),
+  ) => pdv(P, y) = pdv(Q, x)
 )$
 
-Пусть $mu = mu(x); 1/Q ((partial P)/(partial y) - (partial Q)/(partial x)) = F(x)$
+Пусть $mu = mu(x); 1/Q (pdv(P, y) - pdv(Q, x)) = F(x)$
 
 $underbrace(mu(x) P(x, y), P_1) dif x + underbrace(mu(x) Q(x, y), Q_1) dif y = 0 \
-(partial P_1)/(partial y) = (partial Q_1)/(partial x) <=> partial/(partial y) (mu(x) P(x, y)) = partial/(partial x) (mu(x) Q(x, y)) \
-mu(x) (partial P)/(partial y) = (dif mu)/(dif x) Q(x, y) + mu(x) (partial Q)/(partial y) \
-(dif mu)/(dif x) Q(x, y) = mu(x) ((partial P)/(partial y) - (partial Q)/(partial x)) \
-integral (dif mu)/mu = integral 1/Q ((partial P)/(partial y) - (partial Q)/(partial x)) dif x \
+pdv(P_1, y) = pdv(Q_1, x) <=> pdv(, y) (mu(x) P(x, y)) = pdv(, x) (mu(x) Q(x, y)) \
+mu(x) pdv(P, y) = dv(mu, x) Q(x, y) + mu(x) pdv(Q, y) \
+dv(mu, x) Q(x, y) = mu(x) (pdv(P, y) - pdv(Q, x)) \
+integral (dif mu)/mu = integral 1/Q (pdv(P, y) - pdv(Q, x)) dif x \
 ln abs(mu(x)) = integral F(x) dif x \
 mu(x) = e^(integral F(x) dif x)$
 
@@ -547,9 +547,9 @@ mu(x) = e^(integral F(x) dif x)$
 
 #v(1em)
 
-a) $y = f(x, y')$; Замена $y' = P(x); y = f(x, P(x)); (dif y)/(dif x) = f'(x, P(x))_x$
+a) $y = f(x, y')$; Замена $y' = P(x); y = f(x, P(x)); dv(y, x) = f'(x, P(x))_x$
 
-b) $x = f(y, y')$; Замена $y' = P(y); x = f(y, P(y)); (dif y)/(dif x) = f'(y, P(y))_y$
+b) $x = f(y, y')$; Замена $y' = P(y); x = f(y, P(y)); dv(y, x) = f'(y, P(y))_y$
 
 === Решение примера данного ДУ
 
@@ -557,14 +557,14 @@ b) $x = f(y, y')$; Замена $y' = P(y); x = f(y, P(y)); (dif y)/(dif x) = f'
 
 $ y = x y' + y'^2 "- уравнение Клеро" $
 
-$y' = P(x) => y = x P(x) + (P(x))^2 => (dif y)/(dif x) = (x P(x) + (P(x))^2)'_x = P(x) + x P'(x) + 2P(x) times \ times P'(x) = P(x) \
+$y' = P(x) => y = x P(x) + (P(x))^2 => dv(y, x) = (x P(x) + (P(x))^2)'_x = P(x) + x P'(x) + 2P(x) times \ times P'(x) = P(x) \
 p = P(x) \
 p = p + (x + 2p) p' \
 (x + 2p) p' = 0 <=> display(
   cases(
     delim: "[",
-    p' = 0" "&(1),
-    x + 2p = 0" "&(2),
+    p' = 0 quad &(1),
+    x + 2p = 0 quad &(2),
   )
 ) \
 (1): p' = 0 => p = C => y' = C => y = x C + C^2$
@@ -641,7 +641,7 @@ y'(0) = evaluated(((e^x + C_1 x + C_2)'))_(x=0) = 2 => evaluated((e^x + C_1))_(x
 $x = 4/9 y'^2 \
 y' = p(y) \
 x = 4/9 (p(y))^2 \
-(dif x)/(dif y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p (dif p)/(dif y) => integral dif y = integral 8/9 p^2 dif p => display(
+dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = integral 8/9 p^2 dif p => display(
   cases(
     y = 8/27 p^3 + C,
     x = 4/9 p^2,
@@ -666,7 +666,7 @@ x = 4/9 (p(y))^2 \
     y'' = z'(x)$
   ],
   [
-    $y'' = y'/x => z' = z/x => (dif z)/(dif x) = z/x => (dif z)/z = (dif x)/x => ln abs(z) = ln abs(C x) => \ => z = tilde(C) x, tilde(C) = plus.minus C \
+    $y'' = y'/x => z' = z/x => dv(z, x) = z/x => (dif z)/z = (dif x)/x => ln abs(z) = ln abs(C x) => \ => z = tilde(C) x, tilde(C) = plus.minus C \
     y' = tilde(C) x => y = integral tilde(C) x dif x = tilde(C) x^2/2 + C_2 \
     y = C_1 x^2 + C_2$
   ],
@@ -689,8 +689,8 @@ x = 4/9 (p(y))^2 \
       )
     ) \
     y' = z \
-    y'' = z (dif z)/(dif y) \
-    z (dif z)/(dif y) = e^(2y) => integral z dif z = integral e^(2y) dif y => z^2/2 = e^(2y)/2 + C => z^2 = e^(2y) + 2C$
+    y'' = z dv(z, y) \
+    z dv(z, y) = e^(2y) => integral z dif z = integral e^(2y) dif y => z^2/2 = e^(2y)/2 + C => z^2 = e^(2y) + 2C$
   ],
 )
 
@@ -715,7 +715,7 @@ $ y'' + p_1(x) y' + p_2(x) y = f(x), $ где $p_1(x)$, $p_2(x)$ и $f(x)$ - н�
 
 $y'' + p_1(x) y' + p_2(x) y = 0 \
 y'' = underbrace(-p_1(x) y' - p_2(x) y, f(x, y, y')) \
-(partial f)/(partial y) = -p_2(x); (partial f)/(partial y') = -p_1(x)$
+pdv(f, y) = -p_2(x); pdv(f, y') = -p_1(x)$
 
 === Теорема Коши
 
@@ -728,7 +728,7 @@ y'' = underbrace(-p_1(x) y' - p_2(x) y, f(x, y, y')) \
   )
 )$
 
-Пусть $f(x, y, y')$, $(partial f)/(partial y)$ и $(partial f)/(partial y')$ в области $D subset RR^3$, содержащей точку $(x_0, y_0, y_1)$, непрерывны. Тогда в $(x_0 - h, x_0 + h)$ существует единственное дважды дифференцируемое решение ДУ 2-ого порядка, удовлетворяющее ДУ.
+Пусть $f(x, y, y')$, $pdv(f, y)$ и $pdv(f, y')$ в области $D subset RR^3$, содержащей точку $(x_0, y_0, y_1)$, непрерывны. Тогда в $(x_0 - h, x_0 + h)$ существует единственное дважды дифференцируемое решение ДУ 2-ого порядка, удовлетворяющее ДУ.
 
 === Определитель Вронского
 
@@ -778,7 +778,7 @@ $tilde(y) = C_1 y_1(x) + C_2 y_2(x)$
   cases(
     z(x_0) = C_1 y_1(x_0) + C_2 y_2(x_0) = z_0,
     z'(x_0) = C_1 y'_1(x_0) + C_2 y'_2(x_0) = z_1,
-  )" "mat(y_1(x_0), y_2(x_0); y'_1(x_0), y'_2(x_0)) mat(C_1; C_2) = mat(z_0; z_1)
+  ) space mat(y_1(x_0), y_2(x_0); y'_1(x_0), y'_2(x_0)) mat(C_1; C_2) = mat(z_0; z_1)
 )$
 
 Так как $y_1$, $y_2$ - ЛНЗ, то $W(x_0) != 0 =>$ СЛАУ имеет единственное решение при $tilde(C)_1$, $tilde(C)_2$: $ z_(x_0) = tilde(C)_1 y_1(x_0) + tilde(C)_2 y_2(x_0) $
@@ -844,7 +844,7 @@ $display(
   cases(
     y_1 = e^(-3x),
     y_2 = x e^(-3x),
-  )" "W = mdet(e^(-3x), x e^(-3x); -3e^(-3x), e^(-3x) - 3x e^(-3x)) = e^(-6x) - 3x e^(-6x) + 3x e^(-6x) = e^(-6x) != 0 "- ЛНЗ"
+  ) space W = mdet(e^(-3x), x e^(-3x); -3e^(-3x), e^(-3x) - 3x e^(-3x)) = e^(-6x) - 3x e^(-6x) + 3x e^(-6x) = e^(-6x) != 0 "- ЛНЗ"
 )$
 
 $y'' + 9y = 0 \
@@ -931,7 +931,7 @@ L_2[y_"ОН"] = C'_1 y'_1 + C'_2 y'_2 + C_1 y''_1 + C_2 y''_2 + p_1 (C_1 y'_1 + 
 C'_1 y'_1 + C'_2 y'_2 + C_1 cancel((y''_1 + p_1 y'_1 + p_2 y_1)) + C_2 cancel((y''_2 + p_1 y'_2 + p_2 y_2)) = f(x) => C'_1 y'_1 + C'_2 y'_2 = f(x)$
 
 $display(
-  mat(y_1, y_2; y'_1, y'_2) mat(C'_1; C'_2) = mat(0, f(x))" "W != 0 => "система имеет единственное решение" cases(
+  mat(y_1, y_2; y'_1, y'_2) mat(C'_1; C'_2) = mat(0, f(x)) space W != 0 => "система имеет единственное решение" cases(
     C'_1 = phi_1(x),
     C'_2 = phi_2(x),
   ) => \ => cases(
@@ -959,7 +959,7 @@ display(
     delim: #none,
     C'_1 cos x sin x + C'_2 sin^2 x = 0,
     C'_1 (-sin x cos x) + C'_2 cos^2 x = 1,
-  )" "C'_2 = 1
+  ) space C'_2 = 1
 )$
 
 = Линейные ДУ N-ого порядка
@@ -1153,7 +1153,7 @@ k (k - 1) (k - 2) = 0 <=> display(
     k_1 = 0,
     k_2 = 1,
     k_3 = 2,
-  )" " k = 3 "не является характеристическим корнем"#footnote[Термин "характеристический корень" считайте выдумкой автора. Стоит употреблять понятие "корень ХУ"]
+  ) space k = 3 "не является характеристическим корнем"#footnote[Термин "характеристический корень" считайте выдумкой автора. Стоит употреблять понятие "корень ХУ"]
 ) \
 cancel(27A cancel(e^(3x), inverted: #true)) - cancel(3 dot 9A cancel(e^(3x), inverted: #true)) + 2 dot 3A cancel(e^(3x), inverted: #true) = 4cancel(e^(3x), inverted: #true) \
 6A = 4 => A = 2/3 => y_"част" = 2/3 e^(3x) \
@@ -1216,7 +1216,7 @@ $
     C'_1 y'_1 + C'_2 y'_2 + ... + C'_n y'_n = 0,
     .. .,
     C'_1 y_1^((n-1)) + C'_2 y_2^((n-1)) + ... + C'_n y_n^((n-1)) = 0
-  )" "mat(y_1, ..., y_n; dots.v, dots.down, dots.v; y_1^((n-1)), ..., y_n^((n-1))) mat(C'_1; dots.v; C'_n) = mat(0; dots.v; f(x))
+  ) space mat(y_1, ..., y_n; dots.v, dots.down, dots.v; y_1^((n-1)), ..., y_n^((n-1))) mat(C'_1; dots.v; C'_n) = mat(0; dots.v; f(x))
 $
 
 ${y_k} "- ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ - существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dif x$
@@ -1236,7 +1236,7 @@ display(
   cases(
     C'_2 (-sin x) + C'_3 cos x = 0,
     C'_2 (-cos x) + C'_3 (-sin x) = (sin x)/(cos^2 x),
-  )" "
+  )
 )$
 
 $display(
@@ -1285,8 +1285,8 @@ $
 Подстановка $display(
   cases(
     delim: #none,
-    dv(, t) (C_1 ov(u) + C_2 ov(v)) = C_1 dv(ov(u), t) + C_2 dv(ov(v), t) = C_1 A ov(u) + C_2 A ov(v)" "&(1),
-    A (C_1 ov(u) + C_2 ov(v)) = A (C_1 ov(u)) + A (C_2 ov(v)) = C_1 A ov(u) + C_2 A ov(v)" "&(2)
+    dv(, t) (C_1 ov(u) + C_2 ov(v)) = C_1 dv(ov(u), t) + C_2 dv(ov(v), t) = C_1 A ov(u) + C_2 A ov(v) quad &(1),
+    A (C_1 ov(u) + C_2 ov(v)) = A (C_1 ov(u)) + A (C_2 ov(v)) = C_1 A ov(u) + C_2 A ov(v) quad &(2)
   )
 )$
 
@@ -1342,9 +1342,9 @@ $display(
   cases(
     dot(x) = y,
     dot(y) = 2x + y,
-  ) " " A = mat(0, 1; 2, 1) => mdet(0 - lambda, 1; 2, 1 - lambda) = 0 <=> -lambda (1 - lambda) - 2 = 0 <=> cases(delim: "[", lambda_1 = 2, lambda_2 = -1) \
-  lambda_1 = 2: cases(-2alpha + beta = 0, 2alpha - beta = 0) " " beta = 2alpha\, cases(alpha = 1, beta = 2) => cases(x = alpha e^(lambda t) = 1e^(2t), y = beta e^(lambda t) = 2e^(2t)) " " X_1 = vec(1, 2) e^(2t) \
-  lambda_1 = -1: cases(alpha + beta = 0, 2alpha + 2beta = 0) " " alpha = -beta\, cases(alpha = -1, beta = 1) " " X_2 = vec(-1, 1) e^(-t)
+  ) quad A = mat(0, 1; 2, 1) => mdet(0 - lambda, 1; 2, 1 - lambda) = 0 <=> -lambda (1 - lambda) - 2 = 0 <=> cases(delim: "[", lambda_1 = 2, lambda_2 = -1) \
+  lambda_1 = 2: cases(-2alpha + beta = 0, 2alpha - beta = 0) quad beta = 2alpha\, cases(alpha = 1, beta = 2) => cases(x = alpha e^(lambda t) = 1e^(2t), y = beta e^(lambda t) = 2e^(2t)) quad X_1 = vec(1, 2) e^(2t) \
+  lambda_1 = -1: cases(alpha + beta = 0, 2alpha + 2beta = 0) quad alpha = -beta\, cases(alpha = -1, beta = 1) quad X_2 = vec(-1, 1) e^(-t)
 )$
 
 $display(
@@ -1433,7 +1433,7 @@ $L[ov(z)] - L[ov(y)_ч] = F - F equiv 0 => (ov(z) - ov(y)_ч) "- решение 
 
 #v(1em)
 
-$ F(t) = ov(P)_n (t) e^(k t), ov(P)_n (t) = vec(a_n t^n + a_(n-1) t^(n-1) + ... a_0, b_m t^m + ... + b_0) " " n >= m $
+$ F(t) = ov(P)_n (t) e^(k t), ov(P)_n (t) = vec(a_n t^n + a_(n-1) t^(n-1) + ... a_0, b_m t^m + ... + b_0) quad n >= m $
 
 $ y_"част" = ov(Q)_(N+r) (t) e^(k t), ov(Q)_(N+r) = vec(d_(N+r) t^(N+r) + ... + d_0, s_(N+r) t^(N+r) + ... + s_0), $ где $N = n$, $r$ - кратность корня ХУ, совпадающего с $k$; $r = 0$, если $k$ не совпадает с корнями ХУ
 
@@ -1441,8 +1441,8 @@ $display(
   cases(
     dot(x) = 2x + 4y + 1,
     dot(y) = x + 2y + t,
-  ) " " mdet(A - lambda E) = 0 <=> mdet(2 - lambda, 4; 1, 2 - lambda) = 0 <=> (2 - lambda)^2 - 4 = 0 <=> lambda_1 = 0\, lambda_2 = 4 \
-  #circle(radius: 8pt)[1] F(t) = vec(1, t) e^(0t) " " mat(delim: "[", n = 1; k = 0) => cases(
+  ) quad mdet(A - lambda E) = 0 <=> mdet(2 - lambda, 4; 1, 2 - lambda) = 0 <=> (2 - lambda)^2 - 4 = 0 <=> lambda_1 = 0\, lambda_2 = 4 \
+  #circle(radius: 8pt)[1] F(t) = vec(1, t) e^(0t) quad mat(delim: "[", n = 1; k = 0) => cases(
     delim: #none,
     N = n = 1\; r = 1\, "так как" k = 0 "совпадает с" lambda_1 "кратности" 1,
     N + r = 1 + 1 = 2,
@@ -1452,7 +1452,7 @@ $display(
     delim: #none,
     F(t) = ov(P)_n (t) e^(alpha t) cos beta t + ov(Q)_m (t) e^(alpha t) sin beta t,
     ov(y)_"част" = ov(R)_(N+r) (t) e^(alpha t) cos beta t + ov(T)_(N+r) (t) e^(alpha t) sin beta t
-  )" "mat(delim: "[", n = " ", alpha = " "; m = " ", beta = " ") cases(
+  ) space mat(delim: "[", n = space, alpha = space; m = space, beta = space) cases(
     delim: #none,
     N = max(n, m),
     r "- кратность пары комплексных",
@@ -1461,8 +1461,8 @@ $display(
   cases(
     dot(x) = y + e^t cos 2t,
     dot(y) = -3x -4y + e^t sin 2t,
-  ) " " mdet(-lambda, 1; -3, -4 - lambda) = 0 <=> 4lambda + lambda^2 + 3 = 0 <=> cases(lambda_1 = -1, lambda_2 = -3) \
-  F(t) = vec(e^t cos 2t, e^t sin 2t) = vec(1, 0) e^t cos 2t + (0, 1) e^t sin 2t " " mat(delim: "[", n = 0, alpha = 1; m = 0, beta = 2) alpha plus.minus beta = 1 plus.minus 2i \
+  ) quad mdet(-lambda, 1; -3, -4 - lambda) = 0 <=> 4lambda + lambda^2 + 3 = 0 <=> cases(lambda_1 = -1, lambda_2 = -3) \
+  F(t) = vec(e^t cos 2t, e^t sin 2t) = vec(1, 0) e^t cos 2t + (0, 1) e^t sin 2t quad mat(delim: "[", n = 0, alpha = 1; m = 0, beta = 2) alpha plus.minus beta = 1 plus.minus 2i \
   N = max(0, 0) = 0\, r = 0\, "так как пара" 1 plus.minus 2i "не совпадает с корнями ХУ" => N + r = 0 + 0 = 0 \
   underline(ov(y)_"част") = ov(R)_0 (t) e^(1t) cos 2t + ov(T)_0 (t) e^(1t) sin 2t = vec(a_0, b_0) e^t cos 2t + vec(d_0, s_0) e^t sin 2t
 )$
@@ -1485,9 +1485,9 @@ $display(
   cases(
     dot(x) = y + 35e^(4t),
     dot(y) = -3x - 4y + 2e^t,
-  ) " " mat(delim: "[", lambda_1 = -1; lambda_2 = -3) " " F(t) = vec(35e^(4t), 2e^t) = vec(35, 0) e^(4t) + vec(0, 2) e^t \
-  #circle(radius: 8pt)[1] L[ov(y)] = vec(35, 0) e^(4t) " " mat(delim: "[", n = 0; k = 1) => mat(delim: "[", align: #left, N = n = 0; r = 0\, "так как" k = 4 "не совпадает с корнями ХУ") \
-  ov(y)_(ч_1) = ov(Q)_(N+r) (t) e^(4t) = ov(Q)_0 (t) e^(4t) = vec(A, B) e^(4t) " " cases(x_ч = A e^(4t), y_ч = B e^(4t)) " " cases(dot(x)_ч = 4A e^(4t), dot(y)_ч = 4B e^(4t)) \
+  ) quad mat(delim: "[", lambda_1 = -1; lambda_2 = -3) quad F(t) = vec(35e^(4t), 2e^t) = vec(35, 0) e^(4t) + vec(0, 2) e^t \
+  #circle(radius: 8pt)[1] L[ov(y)] = vec(35, 0) e^(4t) quad mat(delim: "[", n = 0; k = 1) => mat(delim: "[", align: #left, N = n = 0; r = 0\, "так как" k = 4 "не совпадает с корнями ХУ") \
+  ov(y)_(ч_1) = ov(Q)_(N+r) (t) e^(4t) = ov(Q)_0 (t) e^(4t) = vec(A, B) e^(4t) quad cases(x_ч = A e^(4t), y_ч = B e^(4t)) quad cases(dot(x)_ч = 4A e^(4t), dot(y)_ч = 4B e^(4t)) \
   cases(
     4A e^(4t) = B e^(4t) + 35e^(4t),
     4B e^(4t) = -3A e^(4t) - 4B e^(4t),
@@ -1496,13 +1496,13 @@ $display(
     3A + 8B = 0,
   ) <=> cases(B = 4A - 35, 35A - 35 dot 8 = 0) <=> cases(A = 8, B = -3) \
   y_(ч_1) = vec(8, -3) e^(4t) \
-  #circle(radius: 8pt)[2] L[y] = vec(0, 2) e^t " " mat(delim: "[", n = 0; k = 1) => cases(
+  #circle(radius: 8pt)[2] L[y] = vec(0, 2) e^t quad mat(delim: "[", n = 0; k = 1) => cases(
     delim: #none,
     N = n = 0,
     r = 0\, "так как" k = 1 "не совпадает с корнями ХУ",
   ) \
   ov(y)_"част" = ov(Q)_(N+r) (t) e^t = vec(D, E) e^t \
-  cases(x_ч = D e^t, y_ч = E e^t) " " cases(dot(x) = D e^t, dot(y) = E e^t) " " cases(D e^t = E e^t, E e^t = -3D e^t - 4E e^t + 2e^t) <=> cases(D = E, 8D = 2) <=> cases(D = 1/4, E = 1/4) \
+  cases(x_ч = D e^t, y_ч = E e^t) quad cases(dot(x) = D e^t, dot(y) = E e^t) quad cases(D e^t = E e^t, E e^t = -3D e^t - 4E e^t + 2e^t) <=> cases(D = E, 8D = 2) <=> cases(D = 1/4, E = 1/4) \
   y_(ч_2) = vec(frac(1, 4, style: "skewed"), frac(1, 4, style: "skewed")) e^t \
   ov(y)_"ОН" = ov(y)_о + vec(8, -3) e^(4t) + vec(frac(1, 4, style: "skewed"), frac(1, 4, style: "skewed")) e^t
 )$
@@ -1518,8 +1518,8 @@ $ov(u): dv(ov(u), t) = A ov(u), ov(v): dv(ov(v), t) = A ov(v)$
 Показать, что $exists C_1(t), C_2(t): [C_1(t) ov(u) + C_2(t) ov(v)]$ -- решение $dv(ov(y), t) = A ov(y) + F$
 
 $display(
-  "Подставим в левую часть" dv(, t) [C_1(t) ov(u) + C_2(t) ov(v)] = C'_1 ov(u) + C_1 dv(ov(u), t) + C'_2 ov(v) + C_2 dv(ov(v), t) = \ = C'_1 ov(u) + C'_2 ov(v) + C_1 A ov(u) + C_2 A ov(v) " " (1) \
-  "В правую часть" A [C_1 ov(u) + C_2 ov(v)] = C_1 A ov(u) + C_2 A ov(v) + F " " (2) \
+  "Подставим в левую часть" dv(, t) [C_1(t) ov(u) + C_2(t) ov(v)] = C'_1 ov(u) + C_1 dv(ov(u), t) + C'_2 ov(v) + C_2 dv(ov(v), t) = \ = C'_1 ov(u) + C'_2 ov(v) + C_1 A ov(u) + C_2 A ov(v) quad (1) \
+  "В правую часть" A [C_1 ov(u) + C_2 ov(v)] = C_1 A ov(u) + C_2 A ov(v) + F quad (2) \
   (1) = (2) <=> C'_1 ov(u) + C'_2 ov(v) = F <=> cases(
     C'_1 u_1 + C'_2 v_1 = f_1(t),
     C'_1 u_2 + C'_2 v_2 = f_2(t),
@@ -1531,8 +1531,8 @@ $display(
   cases(
     dot(x) = y + 1/(cos t),
     dot(y) = -x + tg t,
-  ) " " mdet(-lambda, 1; -1, -lambda) = 0 <=> lambda^2 + 1 = 0 <=> lambda_(1,2) = plus.minus i \
-  lambda = i: cases(-i alpha + beta = 0, -alpha - i beta = 0) " " beta = alpha i " " cases(alpha = 1, beta = i) " " X = vec(1, i) e^(i t) = vec(1, i) (cos t + i sin t) = \ = vec(cos t + i sin t, i cos t - sin t) = vec(cos t, -sin t) + i vec(sin t, cos t)\; ov(u) = vec(cos t, -sin t)\, ov(v) = vec(sin t, cos t) \
+  ) quad mdet(-lambda, 1; -1, -lambda) = 0 <=> lambda^2 + 1 = 0 <=> lambda_(1,2) = plus.minus i \
+  lambda = i: cases(-i alpha + beta = 0, -alpha - i beta = 0) quad beta = alpha i quad cases(alpha = 1, beta = i) quad X = vec(1, i) e^(i t) = vec(1, i) (cos t + i sin t) = \ = vec(cos t + i sin t, i cos t - sin t) = vec(cos t, -sin t) + i vec(sin t, cos t)\; ov(u) = vec(cos t, -sin t)\, ov(v) = vec(sin t, cos t) \
   C'_1 vec(cos t, -sin t) + C'_2 vec(sin t, cos t) = vec(frac(1, cos t, style: "skewed"), tg t) <=> cases(
     C'_1 cos t + C'_2 sin t = 1/(cos t),
     C'_1 (-sin t) + C'_2 cos t = tg t,
@@ -1583,11 +1583,11 @@ $display(
   cases(
     dot(x) = -x,
     dot(y) = -2y,
-  ) " " det(A - lambda E) = 0 <=> mdet(-1 - lambda, 0; 0, 2 - lambda) = 0 <=> (-1 - lambda)(-2 - lambda) = 0 <=> cases(lambda_1 = -1, lambda_2 = -2) \
+  ) quad det(A - lambda E) = 0 <=> mdet(-1 - lambda, 0; 0, 2 - lambda) = 0 <=> (-1 - lambda)(-2 - lambda) = 0 <=> cases(lambda_1 = -1, lambda_2 = -2) \
   cases(
     x(t) = C_1 e^(-t),
     y(t) = C_2 e^(-2t)
-  ) " " y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> \ <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, tilde(C) = plus.minus C
+  ) quad y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> \ <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, tilde(C) = plus.minus C
 )$
 
 #grid(
@@ -1640,7 +1640,7 @@ $display(
         delim: #none,
         lambda_(1,2)& = alpha plus.minus beta,
         alpha& = 0
-      ) " " cases(
+      ) quad cases(
         x(t) = A cos beta t + B sin beta t,
         y(t) = D cos beta t + E sin beta t,
       )
@@ -1669,7 +1669,7 @@ $display(
     delim: #none,
     lambda_(1,2)& = alpha plus.minus beta,
     alpha& != 0
-  ) " " cases(
+  ) quad cases(
     x(t) = A e^(alpha t) cos beta t + B e^(alpha t) sin beta t,
     y(t) = D e^(alpha t) cos beta t + E e^(alpha t) sin beta t,
   ) \
@@ -1681,7 +1681,7 @@ $display(
   cases(
     dot(x) = x - y,
     dot(y) = x + y,
-  ) " " mdet(1 - lambda, -1; 1, 1 - lambda) = 0 <=> (1 - lambda)^2 + 1 = 0 <=> 1 - lambda = plus.minus i <=> cases(lambda_1 = 1 + i, lambda_2 = 1 - i) \
+  ) quad mdet(1 - lambda, -1; 1, 1 - lambda) = 0 <=> (1 - lambda)^2 + 1 = 0 <=> 1 - lambda = plus.minus i <=> cases(lambda_1 = 1 + i, lambda_2 = 1 - i) \
   dot(y)/dot(x) = (x + y)/(x - y) <=> dv(y, x) = (x + y)/(x - y) <=> |u = y/x| <=> (1 + u)/(1 - u) = u + x u' <=> x dv(u, x) = (1 + u)/(1 - u) - u <=> \ <=> x dv(u, x) = (1 + u^2)/(1 - u) <=> integral (dif x)/x = integral (1 - u)/(1 + u^2) dif u <=> "arctg" u - 1/2 ln abs(1 + u^2) = ln abs(x) + ln abs(C) <=> \ <=> ln abs(x) + ln sqrt(1 + u^2) = ln abs(C) + ln e^("arctg"u) <=> sqrt(x^2 + y^2) = tilde(C) e^("arctg"u) <=> \ <=> mat(
     delim: "|",
     align: #left,
@@ -1713,10 +1713,10 @@ $display(
     delim: #none,
     det A = 0,
     lambda = 0,
-  ) " " cases(
+  ) quad cases(
     dot(x) = -6x + 3y,
     dot(y) = -2x + y,
-  ) " " dv(y, x) = dot(y)/dot(x) = (-2x + y)/(-6x + 3y) = 1/3 => y(x) = 1/3 x + C
+  ) quad dv(y, x) = dot(y)/dot(x) = (-2x + y)/(-6x + 3y) = 1/3 => y(x) = 1/3 x + C
 )$
 
 #grid(

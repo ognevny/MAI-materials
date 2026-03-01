@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": conf, ov
 
 #show: conf.with(
   titl: "Лекции по Теории машин и механизмов",
@@ -321,3 +321,105 @@
 )
 
 Удачным выбором ведущего звена можно понизить класс механизма.
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  align: center,
+  [
+    #figure(
+      image("source-figures/lect3-1.png")
+    )
+    $"I"(0,1) -> #text(blue)[$"III"_3(2,3,4,5)$]$
+  ],
+  [
+    #figure(
+      image("source-figures/lect3-2.png")
+    )
+    $"I"(0,4) -> #text(blue)[$"II"_2^3(3,5)$] -> #text(red)[$"II"_2^1(2,1)$]$
+  ],
+)
+
+= Кинематический анализ механизма
+
+#v(1em)
+
++ Задача о положении, которая даёт представление о том, какие положения занимают ведомые звенья при заданном положений ведущего звена
++ Задача о скоростях, которая устанавливает зависимость скоростей ведомых точек механизма от скорости ведущего звена
++ Задача об ускорении, связана с нахождением инерционной нагрузки
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect3-3.png")
+    )
+  ],
+  [
+    $phi_1 = phi_1(t) \
+    omega_1 = omega_1(t) \
+    epsilon_1 = epsilon_1(t)$
+  ],
+)
+
+Задачи кинематического анализа считаются решёнными, если известны координаты, скорости и ускорения двух точек, принадлежащих одному звену или известны положение, угловая скорость и угловое ускорение звена и координаты, скорость и ускорение точки, принадлежащие этому звену.
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect3-4.png"),
+      caption: [Вал с цапфой]
+    )
+  ],
+  [
+    Точки $C_2$ и $C_3$ - совмещенные
+
+    $x_C_2 = x_C_3 \
+    y_C_2 = y_C_2 \
+    v_C_2 = v_C_3 \
+    a_C_2 = a_C_3$
+  ],
+)
+
+== Метод планов
+
+#v(1em)
+
+- План положений#footnote[Смотрите в учебнике]
+- План скоростей
+- План ускорений
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      (
+        image("source-figures/lect3-5.png"),
+        image("source-figures/lect3-6.png", width: 65%),
+      ).join()
+    )
+  ],
+  [
+    1, 3 - вращательные; 2 - плоское
+
+    $underline(underline(ov(V)_B)) = omega_1 L_(A B)$
+
+    Коэффициент масштаба $ mu_V = P_(v b)/V_B $
+
+    $ov(V)_C = underline(underline(V_B)) + V_(C B) \
+    ov(V)_B = ov(V)_A + ov(V)_(B A) \
+    ov(V)_D = ov(V)_C + ov(V)_(C D)$
+
+    "Что такое $V_B$? Нет, это не "Вайлдберриз"
+
+    $display(
+      V_C = P_(V C)/mu_V space [м/с] \
+      omega_2 = V_(C B)/L_(C B) \
+      omega_3 = V_C/L_(C D)
+    )$
+  ],
+)

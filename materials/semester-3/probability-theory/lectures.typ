@@ -143,7 +143,7 @@
 
 #v(1em)
 
-+ Полная группа событий образует совокупность событий $A_1, A_2, ..., A_n => sum_i A_i = Omega; A_i A_j = nothing" "forall i != j$
++ Полная группа событий образует совокупность событий $A_1, A_2, ..., A_n => sum_i A_i = Omega; A_i A_j = nothing space forall i != j$
 + События называются равновозможными, если в результате эксперимента появляются одинаково часто
 
 $ P(A) = m/n; P(Omega) = 1; P(nothing) = 0; 0 < P(A) < 1 (A != Omega, A != nothing) => 0 <= P(A) <= 1 $
@@ -221,10 +221,10 @@ A_1, A_2, ... in F => sum_i A_i in F, product_i A_i in F$
 Вероятностной мерой называется числовая функция, заданная в алгебре событий.
 
 $F: A in F; P(A) \
-P(A) >= 0" "forall A in F \
+P(A) >= 0 space forall A in F \
 P(Omega) = 1 \
-P(sum_i A_i) = sum_i P(A_i), A_i A_j = nothing" "forall i != j" "forall A_i in F \
-lim_(n->oo) P(A_n) = 0, A_1 supset A_2 supset ... supset A_n supset ... => product_i A_i = nothing" "forall A_i in F$
+P(sum_i A_i) = sum_i P(A_i), A_i A_j = nothing space forall i != j space forall A_i in F \
+lim_(n->oo) P(A_n) = 0, A_1 supset A_2 supset ... supset A_n supset ... => product_i A_i = nothing space forall A_i in F$
 
 Конечно аддитивная вероятность, заданная на $sigma$-алгебре называется непрерывной, если для любой убывающей последовательности, имеющей пустое пересечение имеет место равенство $ lim_(n->oo) (P(A_n)) = 0 <= [P(A_n), F]; A_1 supset A_2 supset ... supset A_n supset ... "и" product A_i = nothing $
 
@@ -315,7 +315,7 @@ $display(
 
 #v(1em)
 
-Полная группа событий, образованная несовместными событиями $ H_1, H_2, ..., H_n, $ то есть $H_i H_j = nothing" "forall i != j$ и $sum_i H_i = Omega$.
+Полная группа событий, образованная несовместными событиями $ H_1, H_2, ..., H_n, $ то есть $H_i H_j = nothing space forall i != j$ и $sum_i H_i = Omega$.
 
 Следствием теоремы сложения вероятностей для несовместных событий и умножения для независимых событий является формула полной вероятности $ P(A) = sum_i P(H_i)P(A\/H_i) $
 
@@ -341,7 +341,7 @@ $display(
     n = 10,
     m_г = 3,
     m_ц = 7,
-  ) " " cases(
+  ) quad cases(
     delim: #none,
     P(A) = display(C_10^3/2^10 = C_10^3/tilde(A)_10^2 = 10!/(3! (10 - 3)!) dot (1/2^10)),
     P_n (m) = display(C_n^m p^m q^(n-m) = C_10^3 (1/2)^3 (1/2)^(10-3) = C_10^3/2^10),

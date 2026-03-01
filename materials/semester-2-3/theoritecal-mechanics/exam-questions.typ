@@ -1,4 +1,5 @@
-#import "meta.typ": conf
+#import "@preview/physica:0.9.8": dv, pdv
+#import "meta.typ": conf, delimsys, ov
 
 #show: conf.with(
   titl: "Ответы на вопросы к экзамену по Теоретической механике",
@@ -6,9 +7,6 @@
   datet: datetime(year: 2026, month: 1, day: 13),
   head: [Вопросы к экзамену по Теоретической механике],
 )
-
-#let ov(var) = $overline(#var)$
-#let delimsys = ("{", "|")
 
 Ответы являются выдержками из моего #link("https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Theoritecal-mechanics.pdf")[конспекта]
 
@@ -100,11 +98,11 @@ $ sum_(j=1)^N ov(F)_j + sum_(k=1)^p ov(R)_k + ov(Phi)_e = 0 $
 
 Скорость центра масс:
 $
-  ov(V)_C = (dif ov(r)_C)/(dif t) = display(dif/(dif t) (sum_j m_j ov(r)_j)) / display(sum_j m_j) = display(sum_j m_j (dif ov(r)_j)/(dif t))/display(sum_j m_j) = (display(sum_j) m_j ov(V)_j)/M
+  ov(V)_C = dv(ov(r)_C, t) = display(dv(, t) (sum_j m_j ov(r)_j)) / display(sum_j m_j) = display(sum_j m_j dv(ov(r)_j, t))/display(sum_j m_j) = (display(sum_j) m_j ov(V)_j)/M
 $
 
 Ускорение центра масс:
-$ ov(W)_C = (dif ov(V)_C) / (dif t) = (display(sum_j) m_j ov(W)_j)/M $
+$ ov(W)_C = dv(ov(V)_C, t) = (display(sum_j) m_j ov(W)_j)/M $
 
 = Количество движения МС. Импульс силы. Теоремы об изменении количества движения МС в дифференциальной и интегральной формах
 
@@ -118,9 +116,9 @@ $ ov(W)_C = (dif ov(V)_C) / (dif t) = (display(sum_j) m_j ov(W)_j)/M $
 
 *Теорема об изменении вектора количества движения МС в дифференциальной форме*
 
-$ dif/(dif t) ov(Q) = display(sum_j) ov(F)_j^((e)) $
+$ dv(, t) ov(Q) = display(sum_j) ov(F)_j^((e)) $
 
-$display((dif ov(Q))/(dif t) = dif/(dif t) (sum_j m_j ov(V)_j) = sum_j dif/(dif t) (m_j ov(V)_j) = sum_j m_j (dif ov(V)_j)/(dif t) = sum_j m_j ov(W)_j = sum_j ov(F)_j^((e)) + sum_j ov(F)_j^((i)) = \ = sum_j ov(F)_j^((e)))$
+$display(dv(ov(Q), t) = dv(, t) (sum_j m_j ov(V)_j) = sum_j dv(, t) (m_j ov(V)_j) = sum_j m_j dv(ov(V)_j, t) = sum_j m_j ov(W)_j = sum_j ov(F)_j^((e)) + sum_j ov(F)_j^((i)) = \ = sum_j ov(F)_j^((e)))$
 
 *Теорема об изменении вектора количества движения МС в интегральной форме*
 
@@ -128,7 +126,7 @@ $display((dif ov(Q))/(dif t) = dif/(dif t) (sum_j m_j ov(V)_j) = sum_j dif/(dif 
 
 $ Delta ov(Q) = ov(Q) (tau) - ov(Q) (0) = sum_j ov(S)_(tau) (ov(F)_j^((e))) $
 
-$(dif ov(Q))/(dif t) = display(sum_j ov(F)_j^((e))) \
+$dv(ov(Q), t) = display(sum_j ov(F)_j^((e))) \
 dif ov(Q) = display((sum_j ov(F)_j^((e))) dif t) \
 dif ov(Q) = display(sum_j (ov(F)_j^((e)) dif t) => integral_0^(tau) dif ov(Q) = integral_0^(tau) sum_j (F_j^((e)) dif t)) => display(ov(Q) (tau) - ov(Q) (0) = sum_j ov(S)_(tau) (ov(F)_j^((e))))$
 
@@ -166,12 +164,12 @@ $ M ov(W)_C = sum_j ov(F)_j^((e)) $
 
 *Теорема об изменении кинетического момента МС относительно неподвижного центра*
 
-$ dif/(dif t) ov(K)_(j O) = sum_j M_0 (ov(F)_j^((e))) $
+$ dv(, t) ov(K)_(j O) = sum_j M_0 (ov(F)_j^((e))) $
 
 $display(
-  (dif ov(K)_(j O))/(dif t) = dif/(dif t) sum_j [ov(r)_j, m_j ov(V)_j] = sum_j dif/(dif t) [ov(r)_j, m_j ov(V)_j] = sum_j ([(dif ov(r)_j)/(dif t), m_j ov(V)_j] + [ov(r)_j, (dif (m_j ov(V)_j))/(dif t)]) = \ = sum_j [ov(r)_j, ov(F)_j^((e))] + sum_j [ov(r)_j, ov(F)_j^((i))] = sum_j ov(M)_0 (ov(F)_j^((e))) + cancel(sum_j ov(M)_0 (ov(F)_j^((i))))
+  dv(ov(K)_(j O), t) = dv(, t) sum_j [ov(r)_j, m_j ov(V)_j] = sum_j dv(, t) [ov(r)_j, m_j ov(V)_j] = sum_j ([dv(ov(r)_j, t), m_j ov(V)_j] + [ov(r)_j, dv((m_j ov(V)_j), t)]) = \ = sum_j [ov(r)_j, ov(F)_j^((e))] + sum_j [ov(r)_j, ov(F)_j^((i))] = sum_j ov(M)_0 (ov(F)_j^((e))) + cancel(sum_j ov(M)_0 (ov(F)_j^((i))))
 ) \
-ov(K)_0 = display(sum_j [ov(r)_j, m_j ov(V)_j] => (dif ov(K)_0)/(dif t) = sum_j ov(M)_0 (ov(F)_j^((e))))$
+ov(K)_0 = display(sum_j [ov(r)_j, m_j ov(V)_j] => dv(ov(K)_0, t) = sum_j ov(M)_0 (ov(F)_j^((e))))$
 
 #grid(
   columns: (1fr, 1fr),
@@ -197,9 +195,9 @@ $x'_j = x_j, y'_j = y_j, z'_j != z_j => K_"O'Z'" = display(sum_j (x'_j m_j V_(j 
 
 *Кинетический момент МС относительно оси*
 
-Кинетическим моментом МС относительно оси называется проекция на эту ось вектора кинетического момента МС, вычисленного относительно любого центра, лежащего на этой оси $ K_"Ox" = "Пр"_"Ox" ov(K)_O $ Производная по времени от кинетического момента МС относительно неподвижной оси равна алгебраической сумме моментов внешних сил относительно этой оси $ (dif K_(O x))/(dif t) = sum_j M_(O x) (ov(F)_j^((e))) $
+Кинетическим моментом МС относительно оси называется проекция на эту ось вектора кинетического момента МС, вычисленного относительно любого центра, лежащего на этой оси $ K_"Ox" = "Пр"_"Ox" ov(K)_O $ Производная по времени от кинетического момента МС относительно неподвижной оси равна алгебраической сумме моментов внешних сил относительно этой оси $ dv(K_(O x), t) = sum_j M_(O x) (ov(F)_j^((e))) $
 
-$display("Пр"_"Ox" (dif ov(K)_O)/(dif t) = "Пр"_"Ox" sum_j ov(M)_O (ov(F)_j^((e)))\; dif/(dif t) "Пр"_"Ox" ov(K)_O = sum_j "Пр"_"Ox" ov(M)_O (ov(F)_j^((e)))) \
+$display("Пр"_"Ox" dv(ov(K)_O, t) = "Пр"_"Ox" sum_j ov(M)_O (ov(F)_j^((e)))\; dv(, t) "Пр"_"Ox" ov(K)_O = sum_j "Пр"_"Ox" ov(M)_O (ov(F)_j^((e)))) \
 "Пр"_"Ox" ov(K)_O = K_(O x); "Пр"_"Ox" ov(M)_O (ov(F)_j^((e))) = M_(O x) (ov(F)_j^((e)))$
 
 = Кинетический момент твердого тела при его вращении вокруг неподвижной оси. Дифференциальное уравнение вращательного движения твердого тела
@@ -226,7 +224,7 @@ $display("Пр"_"Ox" (dif ov(K)_O)/(dif t) = "Пр"_"Ox" sum_j ov(M)_O (ov(F)_j^
 
 $ K_(O z) = J_z dot(phi) $
 
-$display((dif K_(O z))/(dif t) = sum_j M_(O z) (ov(F)_j^((e))))$
+$display(dv(K_(O z), t) = sum_j M_(O z) (ov(F)_j^((e))))$
 
 $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 
@@ -243,7 +241,7 @@ $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 Доказательство:
 
 $display(T = sum_j (m_j V_j^2) = sum_j m_j/2 (ov(V)_j, ov(V)_j)) \
-display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, ov(V)_j) + (ov(V)_j, dif ov(V)_j)) = sum_j m_j (d ov(V)_j, (dif ov(r))/(dif t)) = \ = sum_j (m_j ov(W)_j, dif ov(r)_j) = sum_j (ov(F)_j, dif ov(r)_j) = sum_j dif' A (ov(F)_j))$
+display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, ov(V)_j) + (ov(V)_j, dif ov(V)_j)) = sum_j m_j (d ov(V)_j, dv(ov(r), t)) = \ = sum_j (m_j ov(W)_j, dif ov(r)_j) = sum_j (ov(F)_j, dif ov(r)_j) = sum_j dif' A (ov(F)_j))$
 
 В этой теореме в общем случае учитываются элементарные работы как внешних, так и внутренних сил.
 
@@ -288,7 +286,7 @@ $dif' A$ - величина порядка дифференциала.
 #grid(
   columns: (3fr, 1fr),
   [
-    $ov(V) = (dif ov(r))/(dif t), dif ov(r) = ov(V) dif t$
+    $ov(V) = dv(ov(r), t), space dif ov(r) = ov(V) dif t$
     #rect[$ dif' A = (ov(F), dif ov(r)) $]
     $dif' A = F dif r cos(angle(ov(F), ov(V))) = F_x dif x + F_y dif y + F_z dif z = (ov(F), ov(V)) dif t = \ = F V cos(ov(F), ov(V)) dif t = (F_x V_x + F_y V_y + F_z V_z) dif t$
   ],
@@ -380,9 +378,9 @@ dif' A = (ov(T)_A, ov(V)_A) dif t + (ov(T)_B, ov(V)_B) dif t = ... = 0$
 
 #v(1em)
 
-Поле сил называется потенциальным, если существует некая функция $U$, зависящая от координат ($exists U(x, y, z, ..., x_n, y_n, z_n)$), такая что выполняются уравнения $ F_(j x) = (partial U)/(partial x_j), F_(j y) = (partial U)/(partial y_j), F_(j z) = (partial U)/(partial z_j) $ для $j = 1...n$. Соответственно $U$ - силовая функция.
+Поле сил называется потенциальным, если существует некая функция $U$, зависящая от координат ($exists U(x, y, z, ..., x_n, y_n, z_n)$), такая что выполняются уравнения $ F_(j x) = pdv(U, x_j), F_(j y) = pdv(U, y_j), F_(j z) = pdv(U, z_j) $ для $j = 1...n$. Соответственно $U$ - силовая функция.
 
-$display(sum_j dif' A (ov(F)_j) = sum_j (F_(j x) dif x_j + F_(j y) dif y_j + F_(j z) dif z_j) = sum_j ((partial U)/(partial x_j) dif x_j + (partial U)/(partial y_j) dif y_j + (partial U)/(partial z_j) dif z_j) = dif U) \
+$display(sum_j dif' A (ov(F)_j) = sum_j (F_(j x) dif x_j + F_(j y) dif y_j + F_(j z) dif z_j) = sum_j (pdv(U, x_j) dif x_j + pdv(U, y_j) dif y_j + pdv(U, z_j) dif z_j) = dif U) \
 display(dif T = sum_j dif' A (ov(F)_j) = dif U)$
 
 $ display(Delta T = integral_((1))^((2)) dif U = U_((2)) - U_((1)) = Delta U) $
@@ -434,15 +432,15 @@ $ ov(K)_O = ov(K)'_c + [ov(r)_c; (sum_j m_j) ov(V)_c] $
 
 Производная по времени от кинетического момента МС в движении относительно центра масс равна векторной сумме моментов внешних сил относительно центра масс
 
-$ (dif ov(K)_c) / (dif t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov(F)_j^((e))] $
+$ dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov(F)_j^((e))] $
 
 Доказательство
 
-$display((dif ov(K)_O) / (dif t) = sum_j ov(M)_O (ov(F)_j^((e))) = sum_j [ov(r)_j, ov(F)_j^((e))]), ov(r)_j = ov(r)_c + ov(rho)_j \
-display((dif ov(K)_O) / (dif t) = sum_j [ov(r)_c, ov(F)_j^((e))] + sum_j [ov(rho)_j, ov(F)_j^((e))] = [ov(r)_c, sum_j ov(F)_j^((e))] + sum_j ov(M)_c (ov(F)_j^((e)))\; (dif ov(K)_O) / (dif t) = [ov(r)_c; M ov(W)_c] + \ + sum_j ov(M)_c (ov(F)_j^((e)))) \
+$display(dv(ov(K)_O, t) = sum_j ov(M)_O (ov(F)_j^((e))) = sum_j [ov(r)_j, ov(F)_j^((e))]), ov(r)_j = ov(r)_c + ov(rho)_j \
+display(dv(ov(K)_O, t) = sum_j [ov(r)_c, ov(F)_j^((e))] + sum_j [ov(rho)_j, ov(F)_j^((e))] = [ov(r)_c, sum_j ov(F)_j^((e))] + sum_j ov(M)_c (ov(F)_j^((e)))\; dv(ov(K)_O, t) = [ov(r)_c; M ov(W)_c] + \ + sum_j ov(M)_c (ov(F)_j^((e)))) \
 display(M ov(W)_c = sum_j ov(F)_j^((e))) \
-display((dif ov(K)_O) / (dif t) = (dif ov(K)_c) / (dif t) + [(dif ov(r)_c)/(dif t), M ov(V)_c] + [ov(r)_c, dif/(dif t) (M ov(V)_c)] = (dif ov(K)_c) / (dif t) + [ov(r)_c, M ov(W)_c]) \
-display((dif ov(K)_c) / (dif t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c; M ov(W)_c]) + sum_j ov(M)_c (ov(F)_j^((e))))$
+display(dv(ov(K)_O, t) = dv(ov(K)_c, t) + [dv(ov(r)_c, t), M ov(V)_c] + [ov(r)_c, dv(, t) (M ov(V)_c)] = dv(ov(K)_c, t) + [ov(r)_c, M ov(W)_c]) \
+display(dv(ov(K)_c, t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c; M ov(W)_c]) + sum_j ov(M)_c (ov(F)_j^((e))))$
 
 = Дифференциальные уравнения плоскопараллельного движения тела
 
@@ -454,12 +452,12 @@ display((dif ov(K)_c) / (dif t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c
     #rect[$
       cases(
         M ov(W)_c = display(sum_j ov(F)_j^((e))),
-        display((dif ov(K)_c) / (dif t) = sum_j ov(M)_c (ov(F)_j^((e)))),
+        display(dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e)))),
       )
     $]
     $x': ov(K)'_c = J_(c z') ov(omega) \
     y': display(M dot.double(X)_c = sum_j F_(j x)^((e))) \
-    z': display(J_(c z) dot (dif omega)/(dif t) = J_(c z) dot.double(phi) = sum_j M_(c z') (ov(F)_j^((e))))$
+    z': display(J_(c z) dot dv(omega, t) = J_(c z) dot.double(phi) = sum_j M_(c z') (ov(F)_j^((e))))$
   ],
   [
     #figure(
@@ -524,13 +522,13 @@ display(ov(Phi) = sum_j ov(Phi)_j = -(sum_j ov(F)_j^((e)) + sum_j ov(R)_j^((e)))
 
 Главный вектор: $ ov(Phi) = -M ov(W)_c $
 
-$display((dif ov(K)_O) / (dif t) = sum_j ov(M)_O (ov(F)_j^((e))) + sum_j ov(M)_O (ov(R)_j^((e)))) \
+$display(dv(ov(K)_O, t) = sum_j ov(M)_O (ov(F)_j^((e))) + sum_j ov(M)_O (ov(R)_j^((e)))) \
 display(ov(M)_O^(Phi) = sum_j ov(M)_O (ov(Phi)_j) = -(sum_j ov(M)_O (ov(F)_j^((e))) + sum_j ov(M)_O (ov(R)_j^((e)))))$
 
 $display(ov(M)_C^(Phi) = sum_j ov(M)_C (ov(Phi)_j)) \
-display((dif ov(K)'_C) / (dif t) = sum_j ov(M)_C (ov(F)_j^((e))) + sum_j ov(M)_C (ov(R)_j^((e))))$
+display(dv(ov(K)'_C, t) = sum_j ov(M)_C (ov(F)_j^((e))) + sum_j ov(M)_C (ov(R)_j^((e))))$
 
-Главный момент: $ ov(M)_C^(Phi) = -(dif ov(K)'_C) / (dif t) "и" ov(M)_O^(Phi) = -(dif ov(K)_O) / (dif t) $
+Главный момент: $ ov(M)_C^(Phi) = -dv(ov(K)'_C, t) "и" ov(M)_O^(Phi) = -dv(ov(K)_O, t) $
 
 = Классификация связей. Виртуальное перемещение. Виртуальная работа. Уточненное определение идеальных связей. Принцип элементарных перемещений
 
@@ -538,7 +536,7 @@ display((dif ov(K)'_C) / (dif t) = sum_j ov(M)_C (ov(F)_j^((e))) + sum_j ov(M)_C
 
 Связями будем называть ограничения на положения и скорости объектов МС. Уравнение связи:
 
-$ f(x, y, z, dot(x), dot(y), dot(z), t) = 0" "(>= 0) $
+$ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
 
 #grid(
   columns: (2fr, 1fr),
@@ -579,7 +577,7 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0" "(>= 0) $
 
     $V_c = omega R \
     dot(x)_c - omega R = 0 \
-    (dif x_c)/(dif t) = (dif phi)/(dif t) R \
+    dv(x_c, t) = dv(phi, t) R \
     x_c = phi R + "const"$
     #rect[$ x_c - phi R - "const" = 0 $]
   ],
@@ -598,14 +596,14 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0" "(>= 0) $
 $f(x, y, z, dot(x), dot(y), dot(z), t) = 0 \
 f(x, y, z, t) = 0$
 
-$dif f = (partial f)/(partial x) dif x + (partial f)/(partial y) dif y + (partial f)/(partial z) dif z$
+$dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z$
 
-$delta f = (partial f)/(partial x) delta x + (partial f)/(partial y) delta y + (partial f)/(partial z) delta z$ - вариация функции ($t = "const"$)
+$delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ - вариация функции ($t = "const"$)
 
 $ov(r) = (x, y, z, t) \
-dif ov(r) = (partial ov(r))/(partial x) dif x + (partial ov(r))/(partial y) dif y + (partial ov(r))/(partial z) dif z + (partial ov(r))/(partial t) dif t "- элементарное перемещение"$
+dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t "- элементарное перемещение"$
 
-Виртуальное перемещение $ delta ov(r) = (partial ov(r))/(partial x) delta x + (partial ov(r))/(partial y) delta y + (partial ov(r))/(partial z) delta z $
+Виртуальное перемещение $ delta ov(r) = pdv(ov(r), x) delta x + pdv(ov(r), y) delta y + pdv(ov(r), z) delta z $
 
 Виртуальным перемещением называется мысленное малое перемещение точки, допускаемое связями, в фиксированный момент времени. При стационарных связях множество действительных элементарных перемещений, допускаемых связями, и множество виртуальных перемещений совпадают.
 
@@ -687,27 +685,27 @@ N точек, 3N координат
 
 $ f_k (x_1, y_1, z_1, ..., x_N, y_N, z_N, t) = 0 $
 
-$ dot(q)_i = (dif q_i)/(dif t) $
+$ dot(q)_i = dv(q_i, t) $
 
 $ov(r)_j = ov(r)_j (q_1, ..., q_n, t)$
 
-$ ov(V)_j = display(sum_(i=1)^n (partial ov(r)_j)/(partial q_i) dot(q_i) + (partial ov(r)_j)/(partial t)) $
+$ ov(V)_j = display(sum_(i=1)^n pdv(ov(r)_j, q_i) dot(q_i) + pdv(ov(r)_j, t)) $
 
 Числом степеней свободы МС называется число независимых вариаций обобщенных координат. В голономных системах число степеней свободы совпадает с числом обобщенных координат. Голономные МС называется МС, на которые наложены только голономные связи.
 
 $
-  delta A = sum_j (ov(F)_j, delta ov(r)_j) = sum_j (ov(F)_j, sum_(i=1)^n (partial ov(r)_j)/(partial q_i) delta q_i) = sum_j sum_(i=1)^n (ov(F)_j, (partial ov(r)_j)/(partial q_i)) delta q_i = \ = sum_(i=1)^n sum_j (ov(F)_j, (partial ov(r)_j)/(partial q_i)) delta q_i = sum_(i=1)^n delta q_i sum_j (ov(F)_j, (partial ov(r)_j)/(partial q_i))
+  delta A = sum_j (ov(F)_j, delta ov(r)_j) = sum_j (ov(F)_j, sum_(i=1)^n pdv(ov(r)_j, q_i) delta q_i) = sum_j sum_(i=1)^n (ov(F)_j, pdv(ov(r)_j, q_i)) delta q_i = \ = sum_(i=1)^n sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) delta q_i = sum_(i=1)^n delta q_i sum_j (ov(F)_j, pdv(ov(r)_j, q_i))
 $
 
 *Обобщенные силы*
 
 Обобщенными силами ($Q_i$) называются множители в выражении для суммы виртуальных работ активных сил при вариациях обобщенных координат
 
-$ Q_i = sum_j (ov(F)_j, (partial ov(r)_j)/(partial q_i)) $
+$ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) $
 
 *Способы вычисления обобщенных сил*
 
-1. По определению $ Q_i = sum_j (ov(F)_j, (partial ov(r)_j)/(partial q_i)) = sum_j (F_(j x) (partial x_j)/(partial q_i) + F_(j y) (partial y_j)/(partial q_i) + F_(j z) (partial z_j)/(partial q_i)) $
+1. По определению $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) = sum_j (F_(j x) pdv(x_j, q_i) + F_(j y) pdv(y_j, q_i) + F_(j z) pdv(z_j, q_i)) $
 
 2. Для голономных систем
 
@@ -719,7 +717,7 @@ delta A_((1)) = display(sum_j (ov(F)_j, delta ov(r)_j^((1)))); delta A_((1)) = d
 
 $Pi(x_1(q_1, ..., q_n), y_1(q_1, ..., q_n), ..., z_N (q_1, ..., q_n))$
 
-$ Q_i = -(partial Pi)/(partial q_i) $
+$ Q_i = -pdv(Pi, q_i) $
 
 = Обобщенные силы инерции
 
@@ -729,28 +727,28 @@ $ov(Phi)_j = -m_j ov(W)_j \
 display(delta A^(Phi) = sum_j (ov(Phi)_j, delta ov(r)_j) = -sum_j m_j (ov(W)_j, delta ov(r)_j) = sum_(i=1)^n Q_i^(Phi) delta q_i)$\
 $Q_i^(Phi)$ - обобщенные силы инерции
 
-$display(delta ov(r)_j = sum_(i=1)^n (partial ov(r)_j)/(partial q_i) delta q_i) \
-display(ov(V)_j = (dif ov(r)_j)/(dif t) = sum_(i=1)^n (partial ov(r)_j)/(partial q_i) dot(q_i))$
+$display(delta ov(r)_j = sum_(i=1)^n pdv(ov(r)_j, q_i) delta q_i) \
+display(ov(V)_j = dv(ov(r)_j, t) = sum_(i=1)^n pdv(ov(r)_j, q_i) dot(q_i))$
 
 $n = 1, q_1 = q \
-delta ov(r)_j = (partial ov(r)_j)/(partial q) delta q \
-ov(V)_j = (partial ov(r)_j)/(partial q) dot(q) \
-(partial ov(V)_j)/(partial dot(q)) = (partial ov(r)_j)/(partial q)" "(**) \
-ov(V)_j = (dif ov(r)_j)/(dif t); (partial ov(V)_j)/(partial q) = dif/(dif t) (partial ov(r)_j)/(partial q)" "(*) \
+delta ov(r)_j = pdv(ov(r)_j, q) delta q \
+ov(V)_j = pdv(ov(r)_j, q) dot(q) \
+pdv(ov(V)_j, dot(q)) = pdv(ov(r)_j, q) quad (**) \
+ov(V)_j = dv(ov(r)_j, t); pdv(ov(V)_j, q) = dv(, t) pdv(ov(r)_j, q) quad (*) \
 V_j^2 = (ov(V)_j, ov(V)_j) \
-partial/(partial q) V_j^2 = partial/(partial q) (ov(V)_j, ov(V)_j) = ((partial ov(V)_j)/(partial q), ov(V)_j) + (ov(V)_j, (partial ov(V)_j)/(partial q)) = 2(ov(V)_j, (partial ov(V)_j)/(partial q))" "(****) \
-(partial (V_j)^2)/(partial dot(q)) = 2(ov(V)_j, (partial ov(V)_j)/(partial dot(q)))" "(***) \
-(ov(W)_j, delta ov(r)_j) = ((dif ov(V)_j)/(dif t), (partial ov(r)_j)/(partial q)) delta q = \
-= display(dif/(dif t) (ov(V)_j, overparen((partial ov(r)_j)/(partial q), (**))) - (ov(V)_j, overparen(dif/(dif t) ((partial ov(r)_j)/(partial q)), (*))) = dif/(dif t) overparen((ov(V)_j, (partial ov(V)_j)/(partial dot(q))), (***)) - overparen((ov(V)_j, (partial ov(V)_j)/(partial q)), (****)) = 1/2 dif/(dif t) ((partial (V_j)^2)/(partial dot(q))) - 1/2 (partial (V_j)^2)/(partial q)) \
+pdv(, q) V_j^2 = pdv(, q) (ov(V)_j, ov(V)_j) = (pdv(ov(V)_j, q), ov(V)_j) + (ov(V)_j, pdv(ov(V)_j, q)) = 2(ov(V)_j, pdv(ov(V)_j, q)) quad (****) \
+pdv((V_j)^2, dot(q)) = 2(ov(V)_j, pdv(ov(V)_j, dot(q))) quad (***) \
+(ov(W)_j, delta ov(r)_j) = (dv(ov(V)_j, t), pdv(ov(r)_j, q)) delta q = \
+= display(dv(, t) (ov(V)_j, overparen(pdv(ov(r)_j, q), (**))) - (ov(V)_j, overparen(dv(, t) (pdv(ov(r)_j, q)), (*))) = dv(, t) overparen((ov(V)_j, pdv(ov(V)_j, dot(q))), (***)) - overparen((ov(V)_j, pdv(ov(V)_j, q)), (****)) = 1/2 dv(, t) (pdv((V_j)^2, dot(q))) - 1/2 pdv((V_j)^2, q)) \
 display(
-  delta A^(Phi) = -sum_j m_j (ov(W)_j, delta ov(r)_j) delta q = -{sum_j 1/2 m_j dif/(dif t) ((partial (V_j)^2)/(partial dot(q))) - sum_j 1/2 m_j (partial (V_j)^2)/(partial q)} delta q = -delta q times \ times {sum_j dif/(dif t) ((partial (1/2 m_j V_j^2))/(partial dot(q))) - sum_j partial/(partial q) (1/2 m_j V_j^2)} = -delta q {dif/(dif t) partial/(partial dot(q)) (sum_j (m_j V_j^2)/2) - partial/(partial q) (sum_j 1/2 m_j V_j^2)} = \ = -delta q {dif/(dif t) (partial T)/(partial dot(q)) - (partial T)/(partial q)}
-);"  "delta A^(Phi) = Q^(Phi) delta q$
+  delta A^(Phi) = -sum_j m_j (ov(W)_j, delta ov(r)_j) delta q = -{sum_j 1/2 m_j dv(, t) (pdv((V_j)^2, dot(q))) - sum_j 1/2 m_j pdv((V_j)^2, q)} delta q = -delta q times \ times {sum_j dv(, t) (pdv((1/2 m_j V_j^2), dot(q))) - sum_j pdv(, q) (1/2 m_j V_j^2)} = -delta q {dv(, t) pdv(, dot(q)) (sum_j (m_j V_j^2)/2) - pdv(, q) (sum_j 1/2 m_j V_j^2)} = \ = -delta q {dv(, t) pdv(T, dot(q)) - pdv(T, q)}
+); quad delta A^(Phi) = Q^(Phi) delta q$
 
-$ Q^(Phi) = -{dif/(dif t) (partial T)/(partial dot(q)) - (partial T)/(partial q)} $
+$ Q^(Phi) = -{dv(, t) pdv(T, dot(q)) - pdv(T, q)} $
 
 По аналогии с системами с n степенями свободы
 
-$ Q_i^(Phi) = -{dif/(dif t) (partial T)/(partial dot(q)_i) - (partial T)/(partial q_i)} $
+$ Q_i^(Phi) = -{dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)} $
 
 = Уравнения Лагранжа II рода. Функция Лагранжа. Уравнения Лагранжа II рода в потенциальном поле сил
 
@@ -762,37 +760,37 @@ $display(sum_(i=1)^n Q_i delta q_i + sum_(i=1)^n Q_i^(Phi) delta q_i = 0) \
 display(sum_(i=1)^n (Q_i + Q_i^(Phi)) delta q_i = 0)$
 
 $delta q_i - "независимы" \
-Q_i + Q_i^(Phi) = 0" "(i = 1...n) \
-Q_i - display({dif/(dif t) (partial T)/(partial dot(q)_i) - (partial T)/(partial q_i)}) = 0$
+Q_i + Q_i^(Phi) = 0 space (i = 1...n) \
+Q_i - display({dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)}) = 0$
 
-$ dif/(dif t) (partial T)/(partial dot(q)_i) - (partial T)/(partial q_i) = Q_i; i = 1...n $
+$ dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i) = Q_i; i = 1...n $
 
-$Q_i = -(partial Pi)/(partial q_i)$
+$Q_i = -pdv(Pi, q_i)$
 
-$ dif/(dif t) (partial T)/(partial dot(q)_i) - (partial T)/(partial q_i) = -(partial Pi)/(partial q_i) $
+$ dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i) = -pdv(Pi, q_i) $
 
 *Уравнение Лагранжа II рода в потенциальном поле сил*
 
 $ L = T - Pi "- Лагранжиан (функция Лагранжа)" $
 
-$display((partial Pi)/(partial dot(q)_i) = 0 => (partial L)/(partial dot(q)_i) = (partial T)/(partial dot(q)_i)\; dif/(dif t) (partial T)/(partial dot(q)_i) - partial/(partial q_i) (T - Pi) = 0)$
+$display(pdv(Pi, dot(q)_i) = 0 => pdv(L, dot(q)_i) = pdv(T, dot(q)_i)\; dv(, t) pdv(T, dot(q)_i) - pdv(, q_i) (T - Pi) = 0)$
 
-$ dif/(dif t) (partial L)/(partial dot(q)_i) - (partial L)/(partial q_i) = 0 $
+$ dv(, t) pdv(L, dot(q)_i) - pdv(L, q_i) = 0 $
 
 = Уравнения равновесия голономных систем. Уравнения равновесия в потенциальном поле сил. Понятие устойчивого равновесия. Теорема Лагранжа-Дирихле об устойчивости равновесия консервативных систем
 
 #v(1em)
 
 $display(sum_(i=1)^n Q_i delta q_i) = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0 - "уравнение равновесия голономных систем" \
-(partial Pi)/(partial q_i) = 0 => q_i^*, i = 1...n - "положение равновесия" \
+pdv(Pi, q_i) = 0 => q_i^*, i = 1...n - "положение равновесия" \
 x_i = q_i - q_i^* - "возмущение" \
-x_(i O) = q_(i O) - q_i^*" "(t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
+x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 
 Положение равновесия считаем устойчивым, если при всех достаточно малых начальных возмущениях по координатам и скоростям МС остается в заданной малой окрестности положения равновесия.
 
 *Теорема Лагранжа-Дирихле*
 
-Если в положении равновесия консервативной МС потенциальная энергия имеет изолированный минимум, то положение равновесия является устойчивым $(display((partial^2 Pi)/(partial q^2) > 0))$.
+Если в положении равновесия консервативной МС потенциальная энергия имеет изолированный минимум, то положение равновесия является устойчивым $(display(pdv(Pi, q, 2) > 0))$.
 
 #figure(
   image("source-figures/lect5-2.png", width: 40%),
@@ -805,11 +803,11 @@ x_(i O) = q_(i O) - q_i^*" "(t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 #v(1em)
 
 $T = 1/2 a(q) dot(q)^2 \
-a(q) = q(q^*) + (partial a)/(partial q) bar.v_(q^*)(q - q^*) + ... \
+a(q) = q(q^*) + pdv(a, q) bar.v_(q^*)(q - q^*) + ... \
 a^* = a(q^*) \
 x = q - q^*, dot(x) = dot(q) => T approx 1/2 a^* dot(x)^2 \
-Pi(q) = Pi(q^*) + (partial Pi)/(partial q) bar.v_(q^*)(q - q^*) + 1/2! (partial^2 Pi)/(partial q^2) bar.v_(q^*)(q - q^*) + ...\
-(partial Pi)/(partial q) bar.v_(q^*) = 0; Pi(q^*) = Pi^*; (partial^2 Pi)/(partial q^2) bar.v_(q^*) = c^* > 0 \
+Pi(q) = Pi(q^*) + pdv(Pi, q) bar.v_(q^*)(q - q^*) + 1/2! pdv(Pi, q, 2) bar.v_(q^*)(q - q^*) + ... \
+pdv(Pi, q) bar.v_(q^*) = 0; Pi(q^*) = Pi^*; pdv(Pi, q, 2) bar.v_(q^*) = c^* > 0 \
 Pi approx Pi^* + 1/2 c^* x^2$
 
 = Свободные малые колебания МС с одной степенью свободы. Уравнение движения и его интегрирование
@@ -840,10 +838,10 @@ _Здесь и далее под интегрированием уравнени
   [
     $ov(F)_j = -beta_j ov(V)_j, beta_j > 0 \
     delta A = display(sum_j (ov(F)_j, delta ov(r)_j)) \
-    delta ov(r)_j = (partial ov(r)_j)/(partial q) delta q; ov(V)_j = (partial ov(r)_j)/(partial q) dot(q) \
-    delta A = display(sum_j (-beta_j (partial ov(r)_j)/(partial q) dot(q), (partial ov(r)_j)/(partial q) q) = -(sum_j beta_j ((partial ov(r)_j)/(partial q))^2) dot(q) delta q) \
-    b_j (q) = display(sum_j beta_j ((partial ov(r)_j)/(partial q))^2) > 0 \
-    b_j (q) = b_j (q^*) + (partial b_j)/(partial q) (q- q^*) + ... approx b_j (q^*) = b^* > 0 \
+    delta ov(r)_j = pdv(ov(r)_j, q) delta q; ov(V)_j = pdv(ov(r)_j, q) dot(q) \
+    delta A = display(sum_j (-beta_j pdv(ov(r)_j, q) dot(q), pdv(ov(r)_j, q) q) = -(sum_j beta_j (pdv(ov(r)_j, q))^2) dot(q) delta q) \
+    b_j (q) = display(sum_j beta_j (pdv(ov(r)_j, q))^2) > 0 \
+    b_j (q) = b_j (q^*) + pdv(b_j, q) (q- q^*) + ... approx b_j (q^*) = b^* > 0 \
     delta A = -b^* dot(q) delta q \
     Q^* = -b^* q, dot(q) = dot(x) => Q^* = -b dot(x)$
   ],
@@ -1053,7 +1051,7 @@ $
 #v(1em)
 
 $display(
-  (dif ov(K)_0)/(dif t) = ov(M)_0^((e))\; (dif ov(K)_0)/(dif t) = (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] => (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] = ov(M)_0^((e))
+  dv(ov(K)_0, t) = ov(M)_0^((e))\; dv(ov(K)_0, t) = (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] => (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] = ov(M)_0^((e))
 )$
 
 $display(
@@ -1114,7 +1112,7 @@ $
   [
     $m(t + Delta t) = m(t) + Delta m_2 - Delta m_1 \
     Delta m = m(t + Delta t) - m(t) = -Delta m_1 + Delta m_2 \
-    display((dif m)/(dif t) = lim_(Delta t -> 0) (Delta m)/(Delta t) = -lim_(Delta t -> 0) (Delta m_1)/(Delta t) + lim_(Delta t -> 0) (Delta m_2)/(Delta t) = \ = -(dif m_1)/(dif t) + (dif m_2)/(dif t)) \
+    display(dv(m, t) = lim_(Delta t -> 0) dv(m, t, d: Delta) = -lim_(Delta t -> 0) dv(m_1, t, d: Delta) + lim_(Delta t -> 0) dv(m_2, t, d: Delta) = \ = -dv(m_1, t) + dv(m_2, t)) \
     Delta ov(Q) = ov(Q)(t + Delta t) - ov(Q)(t) = ... = \ = m(t) Delta ov(V) - Delta m_1 (ov(V)_1 - ov(V)(t)) - Delta m_2 (ov(V)_2 - ov(V)(t)) - \ - Delta m_1 Delta ov(V) + Delta m_2 Delta ov(V)$
   ],
   [
@@ -1124,15 +1122,15 @@ $
   ],
 )
 
-$display((dif ov(Q))/(dif t) = lim_(Delta t -> 0) (Delta ov(Q))/(Delta t) = lim_(Delta t -> 0) m(t) (Delta ov(V))/(Delta t) + lim_(Delta t -> 0) ((Delta m_1)/(Delta t) (ov(V)_1 - ov(V)(t))) - lim_(Delta t -> 0) ((Delta m_2)/(Delta t) (ov(V)_2 - ov(V)(t))) - \ - lim_(Delta t -> 0) (Delta m_1 Delta ov(V))/(Delta t) + lim_(Delta t -> 0) (Delta m_2 Delta ov(V))/(Delta t) = m(t) lim_(Delta t -> 0) (Delta ov(V))/(Delta t) + (ov(V)_1 - ov(V)(t)) lim_(Delta -> 0) (Delta m_1)/(Delta t) - (ov(V)_2 - ov(V)(t)) lim_(Delta -> 0) (Delta m_2)/(Delta t)) \
+$display(dv(ov(Q), t) = lim_(Delta t -> 0) dv(ov(Q), t, d: Delta) = lim_(Delta t -> 0) m(t) dv(ov(V), t, d: Delta) + lim_(Delta t -> 0) (dv(m_1, t, d: Delta) (ov(V)_1 - ov(V)(t))) - lim_(Delta t -> 0) (dv(m_2, t, d: Delta) (ov(V)_2 - ov(V)(t))) - \ - lim_(Delta t -> 0) (Delta m_1 Delta ov(V))/(Delta t) + lim_(Delta t -> 0) (Delta m_2 Delta ov(V))/(Delta t) = m(t) lim_(Delta t -> 0) dv(ov(V), t, d: Delta) + (ov(V)_1 - ov(V)(t)) lim_(Delta -> 0) dv(m_1, t, d: Delta) - (ov(V)_2 - ov(V)(t)) lim_(Delta -> 0) dv(m_2, t, d: Delta)) \
 ov(V)_1 - ov(V)(t) = ov(V)_(1r); ov(V)_2 - ov(V)(t) = ov(V)_(2r) \
-(dif ov(Q))/(dif t) = ov(F)^((e)) => m(t) (dif ov(V))/(dif t) + (dif m_1)/(dif t) ov(V)_(1r) - (dif m_2)/(dif t) ov(V)_(2r) = ov(F)^((e))$
+dv(ov(Q), t) = ov(F)^((e)) => m(t) dv(ov(V), t) + dv(m_1, t) ov(V)_(1r) - dv(m_2, t) ov(V)_(2r) = ov(F)^((e))$
 
-Уравнение Мещерского в случае одновременного отсоединения и присоединения частиц $ m(t) (dif ov(V))/(dif t) = ov(F)^((e)) - (dif m_1)/(dif t) ov(V)_(1r) + (dif m_2)/(dif t) ov(V)_(2r) $
+Уравнение Мещерского в случае одновременного отсоединения и присоединения частиц $ m(t) dv(ov(V), t) = ov(F)^((e)) - dv(m_1, t) ov(V)_(1r) + dv(m_2, t) ov(V)_(2r) $
 
-Уравнение Мещерского в случае отсоединения частиц - уравнение реактивного движения $ Delta m_2 = 0 => (dif m_2)/(dif t) = 0; (dif m)/(dif t) = -(dif m_1)/(dif t) => m(t) (dif ov(V))/(dif t) = ov(F)^((e)) + (dif m)/(dif t) ov(V)_(1r) $
+Уравнение Мещерского в случае отсоединения частиц - уравнение реактивного движения $ Delta m_2 = 0 => dv(m_2, t) = 0; dv(m, t) = -dv(m_1, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(1r) $
 
-Уравнение Мещерского в случае присоединения частиц $ Delta m_1 = 0 => (dif m_1)/(dif t) = 0; (dif m)/(dif t) = (dif m_2)/(dif t) => m(t) (dif ov(V))/(dif t) = ov(F)^((e)) + (dif m)/(dif t) ov(V)_(2r) $
+Уравнение Мещерского в случае присоединения частиц $ Delta m_1 = 0 => dv(m_1, t) = 0; dv(m, t) = dv(m_2, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(2r) $
 
 = Задача К.Э. Циолковского. Движение многоступенчатой ракеты
 
@@ -1147,7 +1145,7 @@ ov(V)_1 - ov(V)(t) = ov(V)_(1r); ov(V)_2 - ov(V)(t) = ov(V)_(2r) \
         delim: "|",
         ov(F)^((e)) = 0,
         V_(1r) = "const",
-      )\, m(t) (dif ov(V))/(dif t) = (dif m)/(dif t) ov(V)_(1r)
+      )\, m(t) dv(ov(V), t) = dv(m, t) ov(V)_(1r)
     )$
   ],
   [
@@ -1157,7 +1155,7 @@ ov(V)_1 - ov(V)(t) = ov(V)_(1r); ov(V)_2 - ov(V)(t) = ov(V)_(2r) \
   ],
 )
 
-$(x): m(t) (dif V)/(dif t) = -(dif m)/(dif t) V_(1r) => integral dif V = -integral (dif m)/(m) V_(1r) => -V_(1r) ln m + C \
+$(x): m(t) dv(V, t) = -dv(m, t) V_(1r) => integral dif V = -integral (dif m)/(m) V_(1r) => -V_(1r) ln m + C \
 t = 0, V = V_0, m = m_0 => V_0 = -V_(1r) ln m_0 + C => C = V_0 + V_(1r) ln m_0 \
 V = V_0 + (ln m_0 - ln m) V_(1r)$
 
@@ -1202,7 +1200,7 @@ $display(
 
 #v(1em)
 
-Теорема об изменении кинетического момента: $ (dif K_z)/(dif t) = M_z^((e)) $
+Теорема об изменении кинетического момента: $ dv(K_z, t) = M_z^((e)) $
 Кинетический момент относительно неподвижной оси: $ K_z = J_z omega $
 Кинетический момент материальной точка: $ K_z = plus.minus h m V, $ где h - длина перпендикуляра, проведенного от оси к вектору скорости
 
