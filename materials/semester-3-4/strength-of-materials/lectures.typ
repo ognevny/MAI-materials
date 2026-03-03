@@ -1,4 +1,4 @@
-#import "@preview/physica:0.9.8": dv
+#import "@preview/physica:0.9.8": dv, evaluated
 #import "meta.typ": conf, delimsys
 
 #show: conf.with(
@@ -1649,11 +1649,11 @@ $delta$ - искомое перемещение (прогиб $y$ или уго�
 
     $M_(z_P) = -P x \
     M_(z_1) = (-1) (x - l) \
-    y_B = integral_l^2l 1/(E I_z) M_(z_P) M_(z_1) dif x = 1/(E I_z) integral_l^2l P x (x - l) dif x = \ = P/(E I_z) [x^3 / 3 bar.v_l^2l - l dot x^2 / 2 bar.v_l^2l ] = 5/6 (P l^3)/(E I_z)$
+    y_B = integral_l^2l 1/(E I_z) M_(z_P) M_(z_1) dif x = 1/(E I_z) integral_l^2l P x (x - l) dif x = \ = P/(E I_z) [evaluated(x^3 / 3)_l^2l - l dot evaluated(x^2 / 2)_l^2l] = 5/6 (P l^3)/(E I_z)$
 
     $M_(z_P) = -P x \
     M_(z_1) = 1 \
-    theta_C = -1/(E I_z) integral_0^2l P x 1 dif x = -P/(E I_z) dot x^2 / 2 bar.v_0^2l = -2 (P l^2) / (E I_z)$
+    theta_C = -1/(E I_z) integral_0^2l P x 1 dif x = -P/(E I_z) dot evaluated(x^2 / 2)_0^2l = -2 (P l^2) / (E I_z)$
 
     Знак минус в окончательном выражении означает, что торцевое сечение C поворачивается не в направлении единичной пары, а в противоположную.
   ],

@@ -441,7 +441,7 @@ display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, o
 
 Доказательство
 
-$display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; T bar.v_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$
+$display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; evaluated(T)_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$
 
 $dif' A$ - величина порядка дифференциала.
 
@@ -1100,7 +1100,7 @@ x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 
 $n = 1 \
 pdv(Pi, q) = 0 => q^* \
-pdv(Pi, q, 2) bar.v_(q^*) = cases(> 0 - min - "устойчивый", < 0 - max - "неустойчивый")$
+evaluated(pdv(Pi, q, 2))_(q^*) = cases(> 0 - min - "устойчивый", < 0 - max - "неустойчивый")$
 
 === Малые колебания для систем с одной степенью свободы
 
@@ -1152,7 +1152,7 @@ a^* = a(q^*) \
 x = q - q^*, dot(x) = dot(q) => T approx 1/2 a^* dot(x)^2 \
 Pi(q) = Pi(q^*) + evaluated(pdv(Pi, q))_(q^*)(q - q^*) + 1/2! evaluated(pdv(Pi, q, 2))_(q^*)(q - q^*) + ...$
 
-$pdv(Pi, q) bar.v_(q^*) = 0; Pi(q^*) = Pi^*; pdv(Pi, q, 2) bar.v_(q^*) = c^* > 0 \
+$evaluated(pdv(Pi, q))_(q^*) = 0; Pi(q^*) = Pi^*; evaluated(pdv(Pi, q, 2))_(q^*) = c^* > 0 \
 Pi approx Pi^* + 1/2 c^* x^2 \
 dv(, t) (pdv(T, dot(x))) - pdv(T, x) = -pdv(Pi, x) \
 pdv(T, dot(x)) = 1/2 a^* dot 2 dot(x) = a^* dot(x); pdv(T, x) = 0; pdv(Pi, x) = 1/2 c^* dot 2x = c^* x \

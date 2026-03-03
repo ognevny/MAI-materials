@@ -1,4 +1,4 @@
-#import "@preview/physica:0.9.8": dv, pdv
+#import "@preview/physica:0.9.8": dv, evaluated, pdv
 #import "meta.typ": conf, delimsys, ov
 
 #show: conf.with(
@@ -251,7 +251,7 @@ display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, o
 
 Доказательство
 
-$display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; T bar.v_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$
+$display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; evaluated(T)_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$
 
 $dif' A$ - величина порядка дифференциала.
 
@@ -803,11 +803,11 @@ x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 #v(1em)
 
 $T = 1/2 a(q) dot(q)^2 \
-a(q) = q(q^*) + pdv(a, q) bar.v_(q^*)(q - q^*) + ... \
+a(q) = q(q^*) + evaluated(pdv(a, q))_(q^*)(q - q^*) + ... \
 a^* = a(q^*) \
 x = q - q^*, dot(x) = dot(q) => T approx 1/2 a^* dot(x)^2 \
-Pi(q) = Pi(q^*) + pdv(Pi, q) bar.v_(q^*)(q - q^*) + 1/2! pdv(Pi, q, 2) bar.v_(q^*)(q - q^*) + ... \
-pdv(Pi, q) bar.v_(q^*) = 0; Pi(q^*) = Pi^*; pdv(Pi, q, 2) bar.v_(q^*) = c^* > 0 \
+Pi(q) = Pi(q^*) + evaluated(pdv(Pi, q))_(q^*)(q - q^*) + 1/2! evaluated(pdv(Pi, q, 2))_(q^*)(q - q^*) + ... \
+evaluated(pdv(Pi, q))_(q^*) = 0; Pi(q^*) = Pi^*; evaluated(pdv(Pi, q, 2))_(q^*) = c^* > 0 \
 Pi approx Pi^* + 1/2 c^* x^2$
 
 = Свободные малые колебания МС с одной степенью свободы. Уравнение движения и его интегрирование
