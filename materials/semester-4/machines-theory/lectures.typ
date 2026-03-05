@@ -328,13 +328,13 @@
   align: center,
   [
     #figure(
-      image("source-figures/lect3-1.png")
+      image("source-figures/lect3-1.png"),
     )
     $"I"(0,1) -> #text(blue)[$"III"_3(2,3,4,5)$]$
   ],
   [
     #figure(
-      image("source-figures/lect3-2.png")
+      image("source-figures/lect3-2.png"),
     )
     $"I"(0,4) -> #text(blue)[$"II"_2^3(3,5)$] -> #text(red)[$"II"_2^1(2,1)$]$
   ],
@@ -353,7 +353,7 @@
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect3-3.png")
+      image("source-figures/lect3-3.png"),
     )
   ],
   [
@@ -371,7 +371,7 @@
   [
     #figure(
       image("source-figures/lect3-4.png"),
-      caption: [Вал с цапфой]
+      caption: [Вал с цапфой],
     )
   ],
   [
@@ -400,7 +400,7 @@
       (
         image("source-figures/lect3-5.png"),
         image("source-figures/lect3-6.png", width: 65%),
-      ).join()
+      ).join(),
     )
   ],
   [

@@ -385,7 +385,7 @@ $
       ) space u = Phi_1(C_1) + Phi_2(C_2) semi space "либо" u = "Re"f(C) "или" u = "Im"f(C)
     )$
 
-=== Пример
+==== Пример
 
 #v(1em)
 
@@ -459,3 +459,159 @@ $display(
   u = e^xi integral tilde(phi)(eta) dif eta = e^xi Phi(eta) + psi(xi) \
   u(x, y) = e^(x + 7y) Phi(y - 3x) + psi(y + 7x)
 )$
+
+=== Приведение к каноническому виду. Повторение
+
+#v(1em)
+
+$
+  u_(x x) + 1/x^2 u_(y y) + 1/x u_x = 0 space (x > 0)
+$
+
+$display(
+  Delta = 0^2 - 1 dot 1/x^2 = -1/x^2 < 0 "- эллиптический" \
+  1 dot (dif y)^2 + 1/x^2 (dif x)^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => \ => dv(y, x) = plus.minus i/x => integral dif y = integral i/x dif x => y = plus.minus i ln x + C => C = y plus.minus i ln x
+)$
+
+$display(
+  cases(
+    xi = y,
+    eta = ln x,
+  ) \
+  xi_x = 0 quad xi_y = 1 \
+  eta_x = 1/x quad eta_y = 0 \
+  u_x = u_xi xi_x + u_eta eta_x = 1/x u_eta \
+  u_y = u_xi xi_y + u_eta eta_y = u_xi \
+  u_(x x) = (u_x)'_x = (1/x u_eta)'_x = -1/x^2 u_eta + 1/x ((u_eta)'_eta eta_x (u_eta)'_xi xi_x) = -1/x^2 u_eta + 1/x (1/x u_(eta eta) + u_(xi eta) dot 0) = \ = -1/x^2 u_eta + 1/x^2 u_(eta eta) \
+  u_(y y) = (u_y)'_y = (u_xi)'_y = u_(xi xi) xi_y + u_(xi eta) eta_y = u_(xi xi) \
+  -1/x^2 u_eta + 1/x^2 u_(eta eta) + 1/x^2 u_(xi xi) + 1/x^2 u_eta = 0 \
+  1/x^2 (u_(xi xi) + u_(eta eta)) = 0 \
+  u_(xi xi) + u_(eta eta) = 0 "- уравнение Лапласа" \
+  u = phi(C_1) + psi(C_2) = phi(y + i ln x) + psi(y - i ln x) \
+  u = "Re" f(C) = "Re" f(y + i ln x) \
+  u = "Im" f(C) = "Im" f(y + i ln x) \
+  f\, phi\, psi "- произвольные аналитические функции"
+)$
+
+= Уравнения математической физики
+
+== Гиперболические уравнения
+
+=== Волновое уравнение
+
+#v(1em)
+
+$ u_(t t) = a^2 u_(x x), $
+
+$u(x, t)$ - отклонение от положения равновесия точки $x$
+
+==== Вывод уравнения свободных колебаний струны
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect4-1.png"),
+    )
+  ],
+  [
+    Рассмотрим $Delta x$, $T = "const"$, $rho = "const"$
+
+    $Delta x approx Delta l quad cos alpha approx 1 quad sin alpha approx tg alpha = u_x$ -- из геометрического смысла производной.
+
+    $m = rho Delta x$
+  ],
+)
+
+#pagebreak(weak: true)
+
+II закон Ньютона
+
+$a m = F_"верт." \
+a = u_(t t) \
+F_"верт." = evaluated(T sin alpha)_(x+Delta x) - evaluated(T sin alpha)_x \
+u_(t t) rho Delta x = evaluated(T u_x)_(x+Delta x) - evaluated(T u_x)_x = T (evaluated(u_x)_(x+Delta x) - evaluated(u_x)_x) = \ = T evaluated((u_x)'_x)_(x=C) Delta x$
+
+#rect[$ Delta f = f'(C) Delta x $]
+
+$u_(t t) rho Delta x = T evaluated(u_(x x))_(x=C) Delta x \
+Delta x -> 0 => C -> x
+u_(t t) rho Delta x = T evaluated(u_(x x))_(x=x) Delta x \
+u_(t t) rho = T u_(x x) \
+u_(t t) = T/rho u_(x x) \
+T/rho = a^2$
+
+#rect[$ u_(t t) = a^2 u_(x x) $]
+
+При наличии вынуждающей силы $ u_(t t) = a^2 u_(x x) + f(x, t) $
+
+===== Решение уравнения
+
+#v(1em)
+
+$
+  u_(t t) - a^2 u_(x x) = 0
+$
+
+$display(
+  1 dot (dif x)^2 - a^2 (dif t)^2 = 0 => (dv(x, t))^2 = a^2 => cases(
+    integral dif x = integral a dif t,
+    integral dif x = integral -a dif t,
+  ) => cases(
+    x = a t + C_1,
+    x = -a t + C_2,
+  ) => cases(
+    C_1 = x + a t,
+    C_2 = x - a t,
+  ) \
+  cases(
+    xi = x + a t,
+    eta = x - a t,
+  ) \
+  xi_x = 1 quad xi_t = a \
+  eta_x = 1 quad eta_t = -a \
+  u_x = u_xi xi_x + u_eta eta_x = u_xi + u_eta \
+  u_t = u_xi xi_t + u_eta eta_t = a u_xi - a u_xi \
+  u_(x x) = (u_x)'_x = (u_xi + u_eta)'_x = u_(xi xi) xi_x + u_(xi eta) eta_x + u_(eta eta) eta_x + u_(eta xi) xi_x = u_(xi xi) + 2u_(xi eta) + u_(eta eta) \
+  u_(t t) = (u_t)'_t = a (u_(xi xi) xi_t + u_(xi eta) eta_t) - a (u_(eta xi) xi_t + u_(eta eta) eta_t) = a^2 u_(xi xi) - 2a^2 u_(xi eta) + u_(eta eta) \
+  a^2 u_(xi xi) - 2a^2 u_(xi eta) + u_(eta eta) - a^2 (u_(xi xi) + 2u_(xi eta) + u_(eta eta)) = 0 \
+  -4a^2 u_(xi eta) = 0 \
+  u_(xi eta) = 0 \
+  dv(u_xi, eta) = 0 => u_xi = psi(xi)
+)$
+
+$display(
+  dv(u, xi) = psi(xi) \
+  integral dif u = integral(psi(xi)) dif xi => u = Psi(xi) + phi(eta) \
+  u(x, t) = Psi(x + a t) + phi(x - a t)
+)$
+
+$psi(xi), phi(eta)$ - произвольные функции, $Psi(xi)$ - первообразная $psi(xi)$
+
+Найти решения $u_(t t) = a^2 u_(x x)$ в области $cases(delim: #none, -oo < x < oo, 0 <= t < oo) quad evaluated(u)_(t=0) = phi(x) quad evaluated(u_t)_(t=0) = psi(x)$ -- постановка задачи Коши.
+
+$display(
+  evaluated(u)_(t=0) = evaluated((Phi_1(x + a t) + Phi_2(x - a t)))_(t=0) = Phi_1(x) + Phi_2(x) = phi(x) \
+  (Phi(x + a t))'_t = (Phi(u))'_t = Phi'_u dot u'_t = Phi'_u dot a \
+  evaluated(u_t)_(t=0) = evaluated((a Phi'_1(x + a t) - a Phi'_2(x - a t)))_(t=0) = a Phi'_1(x) - a Phi'_2(x) = psi(x) \
+  cases(
+    Phi_1(x) + Phi_2(x) = phi(x),
+    integral [a Phi'_1(x) - a Phi'_2(x)] dif x = integral psi(x) dif x
+  ) => cases(
+    Phi_1(x) + Phi_2(x) = phi(x),
+    a Phi_1(x) - a Phi_2(x) = F(x) + C,
+  ) => \ => cases(
+    Phi_1(x) + Phi_2(x) = phi(x),
+    Phi_1(x) - Phi_2(x) = 1/a F(x) + C,
+  ) => cases(
+    Phi_1(x) = 1/2 phi(x) + 1/(2a) F(x) + C,
+    Phi_2(x) = 1/2 phi(x) - 1/(2a) F(x) - C,
+  ) \
+  u(x, t) = (Phi_1(x + a t) + Phi_2(x - a t)) = evaluated((1/2 phi(x) + 1/(2a) F(x) + C))_(x+a t) + evaluated((1/2 phi(x) - 1/(2a) F(x) - C))_(x - a t) = \ = 1/2 phi(x + a t) + 1/(2a) F(x + a t) + C + 1/2 phi(x - a t) - 1/(2a) F(x - a t) - C \
+  u = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) underbrace([F(x + a t) - F(x - a t)], integral_(x- a t)^(x + a t) psi(z) dif z)
+)$
+
+Полученная формула $ u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z $ называется формулой д'Аламбера

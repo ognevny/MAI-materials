@@ -276,6 +276,31 @@ $
             #image("source-figures/sem10-8.png")
           ],
         ),
+        grid(
+          columns: (1fr, 1fr),
+          column-gutter: 1em,
+          [
+            #image("source-figures/sem10-9.png")
+          ],
+          [
+            #image("source-figures/sem10-10.png")
+          ],
+        ),
+      ).join(),
+    )
+    #figure(
+      (
+        grid(
+          columns: (1fr, 1fr),
+          column-gutter: 1em,
+          [
+            #image("source-figures/sem10-11.png")
+          ],
+          [
+            #image("source-figures/sem10-13.png")
+          ],
+        ),
+        image("source-figures/sem10-12.png"),
       ).join(),
     )
   ],
@@ -332,39 +357,39 @@ $
       ) Omega h = 8/3 l^3 \
       delta_11 = ((16/3 + 8)l^3)/(E I)
     )$
+
+    $display(
+      delta_12 = delta_21 = 1/(E I) sum_(k=1)^n integral_l_k M_k^1 dot M_k^2 dif x \
+      cases(
+        reverse: #true,
+        Omega_2 = 1/2 dot 2l dot 2l = 2l^2,
+        h_1 = 2l,
+      ) -4l^3 \
+      cases(
+        reverse: #true,
+        Omega_1 = 3/2 l^2,
+        h_2 = 2l,
+      ) -3l^3 \
+      delta_12 = (-4l^3 - 3l^3)/(E I)
+    )$
+
+    $display(
+      delta_22 = ... \
+      Omega h = 8/3 l^3 \
+      Omega h = 4l^3 \
+      cases(
+        reverse: #true,
+        Omega = 1/2 l dot 2l = l^2,
+        h = 2/3 dot 2l,
+      ) 4/3 l^3 \
+      delta_22 = (8l^3)/(E I)
+    )$
+
+    $display(delta_(1 p) = -(3/2 q l^3 dot 2l)/(E I))$
+
+    $display(delta_(2 p) = (2 dot 2/3) (q l^4)/(E I))$
   ],
 )
-
-$display(
-  delta_12 = delta_21 = 1/(E I) sum_(k=1)^n integral_l_k M_k^1 dot M_k^2 dif x \
-  cases(
-    reverse: #true,
-    Omega_2 = 1/2 dot 2l dot 2l = 2l^2,
-    h_1 = 2l,
-  ) -4l^3 \
-  cases(
-    reverse: #true,
-    Omega_1 = 3/2 l^2,
-    h_2 = 2l,
-  ) -3l^3 \
-  delta_12 = (-4l^3 - 3l^3)/(E I)
-)$
-
-$display(
-  delta_22 = ... \
-  Omega h = 8/3 l^3 \
-  Omega h = 4l^3 \
-  cases(
-    reverse: #true,
-    Omega = 1/2 l dot 2l = l^2,
-    h = 2/3 dot 2l,
-  ) 4/3 l^3 \
-  delta_22 = (8l^3)/(E I)
-)$
-
-$display(delta_(1 p) = -(3/2 q l^3 dot 2l)/(E I))$
-
-$display(delta_(2 p) = (2 dot 2/3) (q l^4)/(E I))$
 
 $display(
   cases(
@@ -374,5 +399,39 @@ $display(
   cases(
     40/3 X_1 - 7X_2 - 3q l = 0,
     -7X_1 + 8X_2 + 4/3 q l = 0,
+  ) => cases(
+    40X_1 - 21X_2 - 9q l = 0,
+    -21X_1 + 24X_2 + 4q l = 0,
+  ) => cases(
+    19X_1 + 3X_2 - 5q l = 0,
+    -21X_1 + 24X_2 + 4q l = 0,
+  ) => \ => cases(
+    172X_1 + 24X_2 - 40q l = 0,
+    -21X_1 + 24X_2 + 4q l = 0,
+  ) => cases(
+    193X_1 - 44q l = 0,
+    X_2 = 7/8 X_1 - 4/21 q l,
+  ) => cases(
+    X_1 = 44/193 q l,
+    X_2 = 73/8106 q l,
   )
 )$
+
+То ли я плохо посчитал, то ли в зале неправильные значения сказали, но берём
+
+$X_1 = "0,25"$; $X_2 = "0,05"$
+
+Строим единичные эпюры, подставив значения $X_1$ и $X_2$. Суммарная эпюра легко получается при суммировании значений в критический точек и соединении их прямыми линиями.
+
+Для проверки исключаем второй неподвижный шарнир, строим единичную эпюру для одной из проекций, затем считаем перемещение $ delta(5) = 1/(E I) sum_(i=1)^n integral M_i^1 M_i^sum dif x = 0 $ Значение может быть примерно равным нулю, например, иметь лишь второй значащий знак после запятой.
+
+Условие прочности
+
+$
+  sigma_"из"^max <= [sigma] \
+  sigma_"из"^max = M^max/W \
+  W = (pi delta D^2)/4 \
+  W = I/rho => I = W R
+$
+
+Для нахождения перемещения точки приложения момента/силы нужно просто взять $Э M^sum$ и перемножить на эпюру для $P = 1$ или $M = 1$
