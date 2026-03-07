@@ -49,9 +49,11 @@ jobs:
           )
 
           declare -A sources_4=(
+            [composite_materials]='Composite-materials'
             [equations_of_math_phys]='Equations-of-mathematical-physics'
             [machines_theory]='Machines-theory'
-            [metrology]='Metrology-and-standartization'
+            [metrology]='Metrology-and-standardization'
+            [sociology]='Sociology'
             [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
           )
 

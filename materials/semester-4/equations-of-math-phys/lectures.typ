@@ -21,14 +21,14 @@ $ F(x, y, u(x, y), u'_x, u'_y, u''_(x x), u''_(x y), u''_(y y), u'''_(x x x), u'
 
 Введём обозначение $u'_x = u_x$, $u''_(x y) = u_(x y)$ и так далее#footnote[Там ещё некоторое время использовались штрихи, далее нужно привыкнуть к записям без штрихов]
 
-$u = phi(x, y)$ - решение УЧП, если при подстановке... (аналогично тому, что было в ДУ)
+$u = phi(x, y)$ -- решение УЧП, если при подстановке... (аналогично тому, что было в ДУ)
 
-Пример $u''_(y y) = 0 stretch(<=>)^(x=x_0) (u'_y)'_y = 0 => u'_y = phi(x) => u(x, y) = integral phi(x) dif y = phi (x) y + psi(x)$. Функции $phi(x)$ и $psi(x)$ - произвольные.
+Пример $u''_(y y) = 0 stretch(<=>)^(x=x_0) (u'_y)'_y = 0 => u'_y = phi(x) => u(x, y) = integral phi(x) dif y = phi (x) y + psi(x)$. Функции $phi(x)$ и $psi(x)$ -- произвольные.
 
 $u'_y = (y dot phi(x_0) + psi(x_0))'_y = phi(x_0) + 0 \
 u''_(y y) = (phi(x_0))'_y = 0$
 
-Ответ: $u(x, y) = phi (x) y + psi(x)$, где $phi(x)$ и $psi(x)$ - произвольные функции.
+Ответ: $u(x, y) = phi (x) y + psi(x)$, где $phi(x)$ и $psi(x)$ -- произвольные функции.
 
 $u_x u_y - y u_y = 0 => u_y (u_x - y) = 0 => \ => display(
   cases(
@@ -44,21 +44,21 @@ $u_x u_y - y u_y = 0 => u_y (u_x - y) = 0 => \ => display(
 
 #v(1em)
 
-$ u_t = a^2 u_(x x) + f(x, t), $ где $u(x, t)$ - температура в точке $x$ в момент времени $t$.
+$ u_t = a^2 u_(x x) + f(x, t), $ где $u(x, t)$ -- температура в точке $x$ в момент времени $t$.
 
 Краевые или начальные условия могут выглядеть как
-- $u(x, 0) = phi(x)$ - температура в точке $x$ в момент времени $t = 0$ (начальное условие)
-- $u(0, t) = psi(t)$ - закон изменения температуры в точке $x = 0$ в момент времени $t$ (краевое условие)
+- $u(x, 0) = phi(x)$ -- температура в точке $x$ в момент времени $t = 0$ (начальное условие)
+- $u(0, t) = psi(t)$ -- закон изменения температуры в точке $x = 0$ в момент времени $t$ (краевое условие)
 
 == Уравнение колебаний гибкой струны
 
 #v(1em)
 
-$ u_(t t) = a^2 u_(x x) + f(x, t), $ где $u(x, t)$ - отклонение от положения равновесия
+$ u_(t t) = a^2 u_(x x) + f(x, t), $ где $u(x, t)$ -- отклонение от положения равновесия
 
 Краевые или начальные условия могут выглядеть как
-- $u(x, 0) = phi(x)$ - положение струны при $t = 0$
-- $u(0, t) = 0$ - закрепленный конец струны $x = 0$
+- $u(x, 0) = phi(x)$ -- положение струны при $t = 0$
+- $u(0, t) = 0$ -- закрепленный конец струны $x = 0$
 
 == Уравнения Лапласа
 
@@ -69,31 +69,31 @@ $ laplace u = 0 quad pdv(u, x, [2]) + pdv(u, y, [2]) = 0 $
 $laplace u(phi, r) = 0 \
 laplace u = f(x, y)$
 
-$evaluated(u(r, phi))_(r=R) = f(phi)$ - задание функции на окружности по условию Дирихле
+$evaluated(u(r, phi))_(r=R) = f(phi)$ -- задание функции на окружности по условию Дирихле
 
-$evaluated((nabla u(r, phi))_n)_(r=R) = f(phi)$ - условие Неймана
+$evaluated((nabla u(r, phi))_n)_(r=R) = f(phi)$ -- условие Неймана
 
 == Уравнение Хопфа
 
 #v(1em)
 
-$ pdv(u, t) + u pdv(u, x) = 0, $ $u$ - скорость жидкости
+$ pdv(u, t) + u pdv(u, x) = 0, $ $u$ -- скорость жидкости
 
 == Уравнение потенциала скорости для расчёта скорости в несжимаемом потоке
 
 #v(1em)
 
-$ (1 - M^2) pdv(u, x, [2]) + pdv(u, y, [2]) + pdv(u, z, [2]) = 0, $ $u(x, y, z)$ - потенциал скорости, $M$ - число Маха, $evaluated(pdv(u, n))_r = 0$.
+$ (1 - M^2) pdv(u, x, [2]) + pdv(u, y, [2]) + pdv(u, z, [2]) = 0, $ $u(x, y, z)$ -- потенциал скорости, $M$ -- число Маха, $evaluated(pdv(u, n))_r = 0$.
 
 == УЧП первого порядка
 
 #v(1em)
 
-$ P(x, y, z) pdv(z, x) + Q(x, y, z) pdv(z, y) = R(x, y, z) quad (1), $ где функция $z(x, y)$ - неизвестная. Такое уравнение называется квази-линейным.
+$ P(x, y, z) pdv(z, x) + Q(x, y, z) pdv(z, y) = R(x, y, z) quad (1), $ где функция $z(x, y)$ -- неизвестная. Такое уравнение называется квази-линейным.
 
 Если коэффициенты $P$, $Q$ и $R$ зависят только от $x$ и $y$, то это линейное УЧП.
 
-$R(x, y, z) = 0$ - однородное УЧП
+$R(x, y, z) = 0$ -- однородное УЧП
 
 Составляем систему
 $
@@ -106,11 +106,11 @@ $
 $
 
 Получение общего решения
-$ Phi(phi_1(x, y, z), phi_2(x, y, z)) = 0, $ $phi_1(x)$, $phi_2(x)$ - первые интегралы системы ОДУ
+$ Phi(phi_1(x, y, z), phi_2(x, y, z)) = 0, $ $phi_1(x)$, $phi_2(x)$ -- первые интегралы системы ОДУ
 
 $P(x, y, z) pdv(z, x) + Q(x, y, z) pdv(z, y) - R(x, y, z) = 0$
 
-Векторы ${P, Q, R}$, $n = {pdv(z, x), pdv(z, y), -1}$ - вектор нормали к поверхности
+Векторы ${P, Q, R}$, $n = {pdv(z, x), pdv(z, y), -1}$ -- вектор нормали к поверхности
 
 #grid(
   columns: (1fr, 1fr),
@@ -121,7 +121,7 @@ $P(x, y, z) pdv(z, x) + Q(x, y, z) pdv(z, y) - R(x, y, z) = 0$
     )
   ],
   [
-    Вектор #text(red)[$tau = {x(t), y(t), z(t)}$] параллелен #text(blue)[${P, Q, R}$] - это условие (2).
+    Вектор #text(red)[$tau = {x(t), y(t), z(t)}$] параллелен #text(blue)[${P, Q, R}$] -- это условие (2).
   ],
 )
 
@@ -153,7 +153,7 @@ $underparen(-x, P) pdv(z, x) + underparen(y, Q) pdv(z, y) = underparen(z, R) => 
 ) \
 Phi(x y, z/y) => z/y = phi(x y)$
 
-Ответ: $z = y phi(x y)$, где $phi$ - произвольная функция
+Ответ: $z = y phi(x y)$, где $phi$ -- произвольная функция
 
 === Задача Коши
 
@@ -231,7 +231,7 @@ $display(
   "Ответ:" z = e^(x y) - 1 + x + y
 )$
 
-Аналогично для функций больших переменных $ a_1 pdv(u, x_1) + a_2 pdv(u, x_2) + ... + a_n pdv(u, x_n) = b, $ функция $u(x_1, x_2, ..., x_n)$; $a_i$, $b$ - непрерывные коэффициенты
+Аналогично для функций больших переменных $ a_1 pdv(u, x_1) + a_2 pdv(u, x_2) + ... + a_n pdv(u, x_n) = b, $ функция $u(x_1, x_2, ..., x_n)$; $a_i$, $b$ -- непрерывные коэффициенты
 
 $
   (dif x_1)/a_1 = (dif x_2)/a_2 = ... = (dif x_n)/a_n = (dif u)/b \
@@ -267,10 +267,10 @@ $
   underbracket(a_11 u_(x x) + 2a_12 u_(x y) + a_22 u_(y y), "главная часть") + b_1 u_x + b_2 u_y + c u = f(x, y) \
   Delta = a_12^2 - a_11 dot a_22
 $
-+ $Delta > 0$ - гиперболический тип
-+ $Delta = 0$ - параболический тип
-+ $Delta < 0$ - эллиптический тип
-$a_(i j)$, $b_j$, $c$, $f(x, y)$ - непрерывные функции
++ $Delta > 0$ -- гиперболический тип
++ $Delta = 0$ -- параболический тип
++ $Delta < 0$ -- эллиптический тип
+$a_(i j)$, $b_j$, $c$, $f(x, y)$ -- непрерывные функции
 
 $x u_(x x) - 2u_(x y) + y u_(y y) + u = 0$
 
@@ -280,11 +280,11 @@ $a_11 = x, space a_12 = - 1, space a_22 = y => Delta = (-1)^2 - x y$
   columns: (1.5fr, 1fr),
   column-gutter: 1em,
   [
-    + $1 - x y > 0 => x y < 1$ - гиперболический
-    + $1 - x y = 0 => x y = 1$ - параболический
-    + $1 - x y < 0 => x y > 1$ - эллиптический
+    + $1 - x y > 0 => x y < 1$ -- гиперболический
+    + $1 - x y = 0 => x y = 1$ -- параболический
+    + $1 - x y < 0 => x y > 1$ -- эллиптический
 
-    $x y = 1 => y = 1/x$ - выполняется для точек, лежащих на гиперболе
+    $x y = 1 => y = 1/x$ -- выполняется для точек, лежащих на гиперболе
   ],
   [
     #figure(
@@ -314,7 +314,7 @@ macron(a)_11 u_(xi xi) + 2macron(a)_12 u_(xi eta) + macron(a)_22 u_(eta eta) = 0
 
 #v(1em)
 
-Пусть $xi = phi(x, y)$ - решение уравнения УЧП (1), тогда $phi(x, y) = C$ является первым интегралом дифференциального уравнения $ a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 quad (2), $ носящего название характеристического уравнения (внимание на "минус" перед $a_12$!!!)
+Пусть $xi = phi(x, y)$ -- решение уравнения УЧП (1), тогда $phi(x, y) = C$ является первым интегралом дифференциального уравнения $ a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 quad (2), $ носящего название характеристического уравнения (внимание на "минус" перед $a_12$!!!)
 
 $triangle.r xi = phi(x, y)$ в (1)
 
@@ -326,8 +326,8 @@ a_11 (-phi_x/phi_y)^2 - 2a_12 (-phi_x/phi_y) + a_22 = 0$
 $dv(y, x) = -phi_x/phi_y$
 
 $a_11 dv(y, x)^2 - 2a_12 dv(y, x) + a_22 = 0 \
-dv(y, x) = (a_12 plus.minus sqrt(a_12^2 - a_11 a_22))/a_11 \
-dv(y, x) = (a_12 plus.minus Delta)/a_11 <=> a_11 dif y = (a_12 plus.minus sqrt(Delta)) dif x$
+dv(y, x) = (a_12 +- sqrt(a_12^2 - a_11 a_22))/a_11 \
+dv(y, x) = (a_12 +- Delta)/a_11 <=> a_11 dif y = (a_12 +- sqrt(Delta)) dif x$
 
 Приведение к каноническому виду:
 + $Delta > 0, space xi = phi(x, y), space eta = psi(x, y) => u_(xi eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
@@ -335,7 +335,7 @@ dv(y, x) = (a_12 plus.minus Delta)/a_11 <=> a_11 dif y = (a_12 plus.minus sqrt(D
 
   $u_(eta eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
 
-+ $Delta = 0 => phi(x, y) plus.minus i psi(x, y) = C_(1,2) => u_(xi xi) + u_(eta eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
++ $Delta = 0 => phi(x, y) +- i psi(x, y) = C_(1,2) => u_(xi xi) + u_(eta eta) = b_1 u_eta + b_2 u_eta + c u + f(xi, eta)$
 
 === Повторение
 
@@ -351,9 +351,9 @@ $
 
 #v(1em)
 
-Пусть $phi(x, y) = C$ - первый интеграл ДУ $(2)$, тогда $xi = phi(x, y)$ - решение УЧП $(1)$
+Пусть $phi(x, y) = C$ -- первый интеграл ДУ $(2)$, тогда $xi = phi(x, y)$ -- решение УЧП $(1)$
 
-$triangle.r$ Пусть $phi(x, y) = C$ - первый интеграл $(2)$, тогда $y = f(x, C)$ имеет производную $dv(y, x) = -phi_x/phi_y => "ДУ" (2)$
+$triangle.r$ Пусть $phi(x, y) = C$ -- первый интеграл $(2)$, тогда $y = f(x, C)$ имеет производную $dv(y, x) = -phi_x/phi_y => "ДУ" (2)$
 
 $a_11 dv(y, x)^2 - 2a_12 dv(x, y) + a_22 = 0 \
 a_11 (-phi_x/phi_y)^2 - 2a_12 (-phi_x/phi_y) + a_22 = 0 | dot (phi_y)^2 \
@@ -374,9 +374,9 @@ $
 + Найти замены $display(cases(xi = xi(x, y), eta = eta(x, y)))$, привести к каноническому виду
 
 + Найти общее решение $u(xi, eta)$
-  + Гиперболический тип: $u_(xi xi) = F(xi, eta, u_xi, u_eta, u)$ - дважды проинтегрировать по $xi$ и по $eta$
-  + Параболический тип: $u_(eta eta) = F(xi, eta, u_xi, u_eta, u)$ - дважды проинтегрировать по $eta$
-  + Эллиптический тип: $u_(xi xi) + u_(eta eta) = 0 <=> laplace u = 0$ для $phi(x, y) plus.minus i psi(x, y) = C_(1,2)$
+  + Гиперболический тип: $u_(xi xi) = F(xi, eta, u_xi, u_eta, u)$ -- дважды проинтегрировать по $xi$ и по $eta$
+  + Параболический тип: $u_(eta eta) = F(xi, eta, u_xi, u_eta, u)$ -- дважды проинтегрировать по $eta$
+  + Эллиптический тип: $u_(xi xi) + u_(eta eta) = 0 <=> laplace u = 0$ для $phi(x, y) +- i psi(x, y) = C_(1,2)$
 
     $display(
       cases(
@@ -433,7 +433,7 @@ $display(
   v = u_eta \
   v_eta + v = 0 => dv(v, eta) = -v => (dif v)/v = -dif eta => ln abs(v) = -eta + ln abs(phi(xi)) \
   v = tilde(phi)(xi) e^(-eta) => dv(u, eta) = tilde(phi)(xi) e^(-eta) => dif u = tilde(phi)(xi) e^(-eta) dif eta => u = tilde(phi)(xi) (-e^(-eta)) + psi(xi) \
-  u = Phi(xi) e^(-eta) + psi(xi)\, "где" Phi(xi) = -tilde(phi)(xi) quad tilde(phi)(xi) = plus.minus phi(xi)
+  u = Phi(xi) e^(-eta) + psi(xi)\, "где" Phi(xi) = -tilde(phi)(xi) quad tilde(phi)(xi) = +- phi(xi)
 )$
 
 $ u_(x x) - 4u_(x y) - 21u_(y y) + 10u_x + 30u_y = 0 $
@@ -453,7 +453,7 @@ $display(
   v = u_eta \
   v_xi = v => dv(v, xi) = v => (dif v)/v = dif xi => ln abs(v) = xi + ln abs(phi(eta)) \
   ln abs(v) = ln(abs(phi(eta)) e^xi) \
-  v = plus.minus phi(eta) e^xi \
+  v = +- phi(eta) e^xi \
   dv(u, eta) = u_eta = v = tilde(phi)(eta) e^xi \
   integral dif u = integral tilde(phi)(eta) e^xi dif eta \
   u = e^xi integral tilde(phi)(eta) dif eta = e^xi Phi(eta) + psi(xi) \
@@ -470,7 +470,7 @@ $
 
 $display(
   Delta = 0^2 - 1 dot 1/x^2 = -1/x^2 < 0 "- эллиптический" \
-  1 dot (dif y)^2 + 1/x^2 (dif x)^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => \ => dv(y, x) = plus.minus i/x => integral dif y = integral i/x dif x => y = plus.minus i ln x + C => C = y plus.minus i ln x
+  1 dot (dif y)^2 + 1/x^2 (dif x)^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => \ => dv(y, x) = +- i/x => integral dif y = integral i/x dif x => y = +- i ln x + C => C = y +- i ln x
 )$
 
 $display(
@@ -503,7 +503,7 @@ $display(
 
 $ u_(t t) = a^2 u_(x x), $
 
-$u(x, t)$ - отклонение от положения равновесия точки $x$
+$u(x, t)$ -- отклонение от положения равновесия точки $x$
 
 ==== Вывод уравнения свободных колебаний струны
 
@@ -589,7 +589,7 @@ $display(
   u(x, t) = Psi(x + a t) + phi(x - a t)
 )$
 
-$psi(xi), phi(eta)$ - произвольные функции, $Psi(xi)$ - первообразная $psi(xi)$
+$psi(xi), phi(eta)$ -- произвольные функции, $Psi(xi)$ -- первообразная $psi(xi)$
 
 Найти решения $u_(t t) = a^2 u_(x x)$ в области $cases(delim: #none, -oo < x < oo, 0 <= t < oo) quad evaluated(u)_(t=0) = phi(x) quad evaluated(u_t)_(t=0) = psi(x)$ -- постановка задачи Коши.
 

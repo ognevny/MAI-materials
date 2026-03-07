@@ -377,7 +377,7 @@ $
 
 #v(1em)
 
-Элементарная работа силы - скалярное произведение вектора силы на вектор элементарного перемещения точки её приложения.
+Элементарная работа силы -- скалярное произведение вектора силы на вектор элементарного перемещения точки её приложения.
 #grid(
   columns: (3fr, 1fr),
   [
@@ -405,7 +405,7 @@ $ N = (ov(F), ov(V)), dif' A = N dif t $
 #grid(
   columns: (3fr, 1fr),
   [
-    Полная работа силы при перемещении материальной точки из точки (1) в точку (2) (@работа) - интеграл вдоль траектории перемещения от элементарных работы #rect[$ A_((1))^((2)) = integral_((1))^((2)) dif' A $]
+    Полная работа силы при перемещении материальной точки из точки (1) в точку (2) (@работа) -- интеграл вдоль траектории перемещения от элементарных работы #rect[$ A_((1))^((2)) = integral_((1))^((2)) dif' A $]
     Для $(ov(F)) = "const"$ (@постсила) имеем #rect[$ A_((1))^((2)) = F S $]
   ],
   [
@@ -443,13 +443,13 @@ display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, o
 
 $display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; evaluated(T)_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$
 
-$dif' A$ - величина порядка дифференциала.
+$dif' A$ -- величина порядка дифференциала.
 
 === Потенциальное поле сил (ППС) <ППС>
 
 #v(1em)
 
-Поле сил называется потенциальным, если существует некая функция $U$, зависящая от координат ($exists U(x, y, z, ..., x_n, y_n, z_n)$), такая что выполняется уравнение $ F_(j x) = pdv(U, x_j), F_(j y) = pdv(U, y_j), F_(j z) = pdv(U, z_j) $ для $j = 1...n$. Соответственно $U$ - силовая функция.
+Поле сил называется потенциальным, если существует некая функция $U$, зависящая от координат ($exists U(x, y, z, ..., x_n, y_n, z_n)$), такая что выполняется уравнение $ F_(j x) = pdv(U, x_j), F_(j y) = pdv(U, y_j), F_(j z) = pdv(U, z_j) $ для $j = 1...n$. Соответственно $U$ -- силовая функция.
 
 $display(sum_j dif' A (ov(F)_j) = sum_j (F_(j x) dif x_j + F_(j y) dif y_j + F_(j z) dif z_j) = sum_j (pdv(U, x_j) dif x_j + pdv(U, y_j) dif y_j + pdv(U, z_j) dif z_j) = dif U) \
 display(dif T = sum_j dif' A (ov(F)_j) = dif U) \
@@ -564,7 +564,7 @@ dif' A = (ov(T)_A, ov(V)_A) dif t + (ov(T)_B, ov(V)_B) dif t = (ov(T)_A, ov(V)_A
   [
     === Качение без скольжения по неподвижной поверхности
 
-    #rect[$ V_P = 0 - "М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dif t = 0 $]
+    #rect[$ V_P = 0 "- М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dif t = 0 $]
   ],
   [
     #figure(
@@ -864,7 +864,7 @@ $f(x, y, z, dot(x), dot(y), dot(z), t) = 0 \
 f(x, y, z, t) = 0 \
 dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z$
 
-$delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ - вариация функции ($t = "const"$)
+$delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ -- вариация функции ($t = "const"$)
 
 $ov(r) = (x, y, z, t) \
 dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t "- элементарное перемещение"$
@@ -945,7 +945,7 @@ N точек, 3N координат
 
 Общее уравнение аналитической динамики (принцип д'Аламбера/Лагранжа) $ sum_(alpha) (ov(F)_(alpha), delta ov(r)_(alpha)) + sum_(alpha) (ov(Phi)_(alpha), delta ov(r)_(alpha)) = 0 $
 
-Обобщенными координатами называются независимые параметры, которые полностью определяют положение всех точек МС - $q_1, ..., q_n$. Обобщенной скоростью называется производная по времени от обобщенной координаты.
+Обобщенными координатами называются независимые параметры, которые полностью определяют положение всех точек МС -- $q_1, ..., q_n$. Обобщенной скоростью называется производная по времени от обобщенной координаты.
 
 $ f_k (x_1, y_1, z_1, ..., x_N, y_N, z_N, t) = 0 $
 
@@ -993,7 +993,7 @@ $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) $
 
 2. Для голономных систем
 
-$delta q_i - "независимы" \
+$delta q_i "- независимы" \
 delta q_1 > 0; delta q_2 = ... = delta q_n = 0 \
 delta A_((1)) = display(sum_j (ov(F)_j, delta ov(r)_j^((1)))); delta A_((1)) = display(sum_(i=1)^n Q_i delta q_i = Q_1 delta q_1)$
 
@@ -1011,7 +1011,7 @@ $ Q_i = -pdv(Pi, q_i) $
 
 $ov(Phi)_j = -m_j ov(W)_j \
 display(delta A^(Phi) = sum_j (ov(Phi)_j, delta ov(r)_j) = -sum_j m_j (ov(W)_j, delta ov(r)_j) = sum_(i=1)^n Q_i^(Phi) delta q_i)$\
-$Q_i^(Phi)$ - обобщенные силы инерции
+$Q_i^(Phi)$ -- обобщенные силы инерции
 
 $display(delta ov(r)_j = sum_(i=1)^n pdv(ov(r)_j, q_i) delta q_i) \
 display(ov(V)_j = dv(ov(r)_j, t) = sum_(i=1)^n pdv(ov(r)_j, q_i) dot(q_i))$
@@ -1047,7 +1047,7 @@ $ Q_i^(Phi) = -{dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)} $
 $display(sum_(i=1)^n Q_i delta q_i + sum_(i=1)^n Q_i^(Phi) delta q_i = 0) \
 display(sum_(i=1)^n (Q_i + Q_i^(Phi)) delta q_i = 0)$
 
-$delta q_i - "независимы" \
+$delta q_i "- независимы" \
 Q_i + Q_i^(Phi) = 0 space (i = 1...n) \
 Q_i - display({dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)}) = 0$
 
@@ -1074,10 +1074,10 @@ $ dv(, t) pdv(L, dot(q)_i) - pdv(L, q_i) = 0 $
 $n -> q_1, ..., q_n \
 delta A = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0\
 delta A = display(sum_(i=1)^n Q_i delta q_i) = 0 \
-delta q_i - "независимы" => Q_i = 0 space (i = 1...n) - "уравнение равновесия голономных систем" \
+delta q_i "- независимы" => Q_i = 0 space (i = 1...n) "- уравнение равновесия голономных систем" \
 Q_i = -pdv(Pi, q_i) \
-pdv(Pi, q_i) = 0 => q_i^*, i = 1...n - "положение равновесия" \
-x_i = q_i - q_i^* - "возмущение" \
+pdv(Pi, q_i) = 0 => q_i^*, i = 1...n "- положение равновесия" \
+x_i = q_i - q_i^* "- возмущение" \
 x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 
 Положение равновесия считаем устойчивым, если при всех достаточно малых начальных возмущениях по координатам и скоростям МС остается в заданной малой окрестности положения равновесия.
@@ -1100,7 +1100,7 @@ x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 
 $n = 1 \
 pdv(Pi, q) = 0 => q^* \
-evaluated(pdv(Pi, q, 2))_(q^*) = cases(> 0 - min - "устойчивый", < 0 - max - "неустойчивый")$
+evaluated(pdv(Pi, q, 2))_(q^*) = cases(> 0 - min "- устойчивый", < 0 - max "- неустойчивый")$
 
 === Малые колебания для систем с одной степенью свободы
 
@@ -1165,7 +1165,7 @@ $a^* > 0, c^* > 0 \
 dot.double(x) + c^* / a^* x = 0, k^2 = c^* / a^* > 0 \
 dot.double(x) + k^2 x = 0 \
 x = c e^(lambda t), dot(x) = c lambda e^(lambda t), dot.double(x) = c lambda^2 e^(lambda t) \
-lambda^2 c e^(lambda t) + k^2 c e^(lambda t) = 0 <=> lambda^2 = -k^2 <=> lambda_(1,2) = plus.minus i k \
+lambda^2 c e^(lambda t) + k^2 c e^(lambda t) = 0 <=> lambda^2 = -k^2 <=> lambda_(1,2) = +- i k \
 x = tilde(C)_1 e^(i k t) + tilde(C)_2 e^(-i k t) = tilde(C)_1 (cos(k t) + i sin(k t)) + tilde(C)_2 (cos(-k t) + i sin(k t)) = \ = (tilde(C)_1 + tilde(C)_2) cos(k t) + i(tilde(C)_1 - tilde(C)_2) sin(k t) \
 C_1 = tilde(C)_1 + tilde(C)_2, C_2 = (tilde(C)_1 - tilde(C)_2) i => x = C_1 cos(k t) + C_2 sin(k t) \
 x = sqrt(C_1^2 + C_2^2) (C_1/sqrt(C_1^2 + C_2^2) cos(k t) + C_2/sqrt(C_1^2 + C_2^2) sin(k t)) \
@@ -1178,9 +1178,9 @@ display(
   )
 ) => x = sqrt(C_1^2 + C_2^2) (sin(epsilon) cos(k t) + cos(epsilon) sin(k t)) = sqrt(C_1^2 + C_2^2) sin(k t + epsilon)$
 
-$ A = sqrt(C_1^2 + C_2^2) - "Амплитуда", x = A sin(k t + epsilon), $
+$ A = sqrt(C_1^2 + C_2^2) "- Амплитуда", x = A sin(k t + epsilon), $
 
-где $k$ - (круговая) частота колебаний, $k t + epsilon$ - фаза колебаний, $epsilon$ - начальная фаза
+где $k$ -- (круговая) частота колебаний, $k t + epsilon$ -- фаза колебаний, $epsilon$ -- начальная фаза
 
 #figure(
   image("source-figures/lect5-6.png", width: 60%),
@@ -1217,20 +1217,20 @@ $ a^* dot.double(x) + c^* x = -b^* dot(x) <=> a^* dot.double(x) + b^* dot(x) + c
 $dot.double(x) + b^* / a^* dot(x) + c^* / a^* x = 0 \
 b^* / a^* = 2n, c^* / a^* = k^2 \
 dot.double(x) + 2n dot(x) + k^2 x = 0 \
-lambda^2 + 2n lambda + k^2 = 0 - "характеристическое уравнение" \
-lambda = -n plus.minus sqrt(n^2 - k^2)$
+lambda^2 + 2n lambda + k^2 = 0 "- характеристическое уравнение" \
+lambda = -n +- sqrt(n^2 - k^2)$
 
-$ n < k - "случай малого сопротивления" $
+$ n < k "- случай малого сопротивления" $
 
 $k_1^2 = k^2 - n^2 \
-lambda = -n plus.minus sqrt(-k_1^2) = -n plus.minus i k_1 \
+lambda = -n +- sqrt(-k_1^2) = -n +- i k_1 \
 X = tilde(C)_1 e^((-n + i k_1) t) + tilde(C)_2 e^((-n - i k_1) t) = e^(-n t) (tilde(C)_1 e^(i k_1 t) + tilde(C)_2 e^(- i k_1 t) = A e^(n t) sin(k_1 t + epsilon)$
 
 #grid(
   columns: (1.5fr, 1fr),
   [
     $x -> 0 "при" t -> oo$
-    #rect[$ tau_1 = (2pi)/k_1 - "период затухающих колебаний" $]
+    #rect[$ tau_1 = (2pi)/k_1 "- период затухающих колебаний" $]
   ],
   [
     #figure(
@@ -1274,7 +1274,7 @@ display(
 ) -a^* p^2 + c^* != 0 <=> p^2 != c^* / a^* = k^2 <=> p != k \
 X_"ОН" = A sin(k t + epsilon) + tilde(F)/(-a^* p^2 + c^*) cos(p t)$
 
-$k = p - "резонанс" \
+$k = p "- резонанс" \
 dot.double(x) + k^2 x = F_0 cos(p t), F_0 = tilde(F)/a^* \
 X_"Част" = B t cos(p t) + D t sin(p t); dot(X)_"Част" = B cos(p t) + B t (-sin(p t)) p + D sin(p t) + D t cos(p t) p; dot.double(X)_"Част" = \ = -B p sin(p t) - B p sin(p t) - B p t cos(p t) p + D p cos(p t) + D p cos(p t) + D p t (-sin(p t)) p \
 -2B p sin(p t) - B p t cos(p t) p + 2D p cos(p t) + D p t (-sin(p t)) p + k^2 (B t cos(p t) + D t sin(p t)) = F_0 cos(p t) \
@@ -1299,9 +1299,9 @@ X_"Част" = X_"вын." = F_0/(2p) t sin(p t)$
   ],
 )
 
-$X_"ОО"$ - собственные колебания ($X_"собств."$), $X_"част."$ - вынужденные колебания ($X_"вын."$)
+$X_"ОО"$ -- собственные колебания ($X_"собств."$), $X_"част."$ -- вынужденные колебания ($X_"вын."$)
 
-Явление, при котором совпадают частоты вынужденных и собственных колебаний, называют резонансом. При резонансе неограниченно возрастает амплитуда колебаний. Биение - случай, когда p лишь приблизительно равен k.
+Явление, при котором совпадают частоты вынужденных и собственных колебаний, называют резонансом. При резонансе неограниченно возрастает амплитуда колебаний. Биение -- случай, когда p лишь приблизительно равен k.
 
 == Геометрия масс
 
@@ -1366,7 +1366,7 @@ $
     J_x, -J_(x y), -J_(x z);
     -J_(y x), J_y, -J_(y z);
     -J_(z x), -J_(z y), J_z;
-  ) - "тензор инерции"
+  ) "- тензор инерции"
 $
 
 === Углы Эйлера
@@ -1378,13 +1378,13 @@ $
 #grid(
   columns: (1.5fr, 1fr),
   [
-    ON - линия узлов
+    ON -- линия узлов
     #rect[$
       cases(
         reverse: #true,
-        psi - "угол прецессии",
-        theta - "угол нутации",
-        phi - "угол собственного вращения",
+        psi "- угол прецессии",
+        theta "- угол нутации",
+        phi "- угол собственного вращения",
       ) "Углы Эйлера"
     $]
     #rect[$ ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)) $]
@@ -1481,9 +1481,9 @@ $ K_x = (omega_x sum_j m_j (y_j^2 + z_j^2) - omega_y sum_j m_j x_j y_j - omega_z
 
 #v(1em)
 
-Главными осями инерции называются оси, для которых смешанные моменты инерции в индексе которых присутствует название этой оси равны 0 ($J_(x y) = J_(x z) = 0 => O x - "главная ось инерции"$). Можно доказать, что в любой точке твердого тела любой формы можно построить по крайней мере 3 взаимноортоганальные главные оси инерции.
+Главными осями инерции называются оси, для которых смешанные моменты инерции в индексе которых присутствует название этой оси равны 0 ($J_(x y) = J_(x z) = 0 => O x "- главная ось инерции"$). Можно доказать, что в любой точке твердого тела любой формы можно построить по крайней мере 3 взаимноортоганальные главные оси инерции.
 
-Если $O x$, $O y$, $O z$ - главные оси инерции, то $ov(K)_0 = (J_x omega_x, J_y omega_y, J_z omega_z)$.
+Если $O x$, $O y$, $O z$ -- главные оси инерции, то $ov(K)_0 = (J_x omega_x, J_y omega_y, J_z omega_z)$.
 
 ==== Динамические уравнения Эйлера
 
@@ -1588,7 +1588,7 @@ dv(ov(Q), t) = ov(F)^((e)) => m(t) dv(ov(V), t) + dv(m_1, t) ov(V)_(1r) - dv(m_2
 
 #pagebreak(weak: true)
 
-Уравнение Мещерского в случае отсоединения частиц - уравнение реактивного движения $ Delta m_2 = 0 => dv(m_2, t) = 0; dv(m, t) = -dv(m_1, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(1r) $
+Уравнение Мещерского в случае отсоединения частиц -- уравнение реактивного движения $ Delta m_2 = 0 => dv(m_2, t) = 0; dv(m, t) = -dv(m_1, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(1r) $
 
 Уравнение Мещерского в случае присоединения частиц $ Delta m_1 = 0 => dv(m_1, t) = 0; dv(m, t) = dv(m_2, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(2r) $
 
@@ -1619,11 +1619,11 @@ $(x): m(t) dv(V, t) = -dv(m, t) V_(1r) => integral dif V = -integral (dif m)/(m)
 t = 0, V = V_0, m = m_0 => V_0 = -V_(1r) ln m_0 + C => C = V_0 + V_(1r) ln m_0 \
 V = V_0 + (ln m_0 - ln m) V_(1r)$
 
-$ V = V_0 + V_(1r) ln m_0/m - "Формула Циолковского" $
+$ V = V_0 + V_(1r) ln m_0/m "- Формула Циолковского" $
 
 $V_0 = 0, V_k = V_(1r) ln m_0/m$
 
-$ z = m_0/m_k - "Число Циолковского" $
+$ z = m_0/m_k "- Число Циолковского" $
 
 $display(
   cases(

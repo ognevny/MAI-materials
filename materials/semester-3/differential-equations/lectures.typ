@@ -33,7 +33,7 @@ $y' + y = 1 => y' = 1 - y; y' + y - 1 = 0; dv(y, x) + y = 1 => dv(y, x) = 1 - y 
 
 Функция $y = phi(x)$, непрерывно дифференцируемая на интервале $(a; b)$ называется решением ДУ, если подстановка $phi(x), phi'(x)$ обращает ДУ в тождество для любого $x$ из $(a; b)$.
 
-+ $phi(x) = 1; phi'(x) = 0 => "ДУ": 0 + 1 equiv 1 => y = 1$ - решение ДУ.
++ $phi(x) = 1; phi'(x) = 0 => "ДУ": 0 + 1 equiv 1 => y = 1$ -- решение ДУ.
 + $y = phi(x) = x^2; y' = phi'(x) = 2x => "ДУ": 2x + x^2 equiv.not 1 => y = x^2$ не является решением ДУ.
 + $y = phi(x) = C e^(-x) + 1; y' = phi'(x) = -C e^(-x) => "ДУ": -C e^(-x) + 1 - (-C e^(-x)) equiv 1 =>$
 $=> y = -C e^(-x) + 1$ -- решение ДУ
@@ -42,7 +42,7 @@ $=> y = -C e^(-x) + 1$ -- решение ДУ
 
 #v(1em)
 
-Поиск решения ДУ $y' = f(x, y)$, удовлетворяющего дополнительному условию $y(x_0) = y_0$ (начальные условия - НУ), называется задачей Коши.
+Поиск решения ДУ $y' = f(x, y)$, удовлетворяющего дополнительному условию $y(x_0) = y_0$ (начальные условия -- НУ), называется задачей Коши.
 
 $y' = 2x => y(x) = integral 2x dif x = x^2 + C$ -- семейство интегральных кривых.
 
@@ -64,7 +64,7 @@ $y = C e^x, y' = C e^x => "ДУ": C e^x equiv C e^x$
 
 $y' = 1 - y; f(x, y) = 1 - y; f'_y (x, y) = -1 =>$ по т. Коши ДУ имеет единственное решение для всех точек XOY.
 
-$y' = sqrt(1 - y^2); f(x, y) = sqrt(1 - y^2); f'_y (x, y) = 1/2 dot 1/sqrt(1 - y^2) dot (-2y) = -y/sqrt(1 - y^2); y != plus.minus 1 =>$ условие т. Коши не выполнено $=>$ нарушена либо единственность решения, либо существование решения.
+$y' = sqrt(1 - y^2); f(x, y) = sqrt(1 - y^2); f'_y (x, y) = 1/2 dot 1/sqrt(1 - y^2) dot (-2y) = -y/sqrt(1 - y^2); y != +- 1 =>$ условие т. Коши не выполнено $=>$ нарушена либо единственность решения, либо существование решения.
 
 $y = phi(x) = 1; y' = 0 => "ДУ": 0 = sqrt(1 - 1^2) equiv 0 => y = 1$ -- решение
 
@@ -237,13 +237,13 @@ $y' = 1 - y, y' = k; k = 1 - y => y = 1 - k$
 
 $y' = y/x => y' = dv(y, x) => dv(y, x) = y/x => dif y = y/x dif x |":" y != 0 (!) => integral (dif y)/y = integral (dif x)/x => ln abs(y) = ln abs(x) + ln abs(C)$
 
-$C != 0 => abs(y) = abs(C x) => y = plus.minus C x =>$ $tilde(C) x$ -- общее решение
+$C != 0 => abs(y) = abs(C x) => y = +- C x =>$ $tilde(C) x$ -- общее решение
 
 Проверка: $y = 0, y' = 0 => "ДУ": 0 = 0/x, 0 equiv 0$
 
 Ответ: $y = tilde(C) x$
 
-$y' = 1 - y => dv(y, x) = 1 - y => dif y = (1 - y) dif x |":" (1-y)!=0 (!) => (dif y)/(1 - y) = dif x => integral (dif y)/(1 - y) = integral dif x => \ => ln abs(y - 1) = -x + ln abs(C), C != 0 => ln abs(y - 1) = ln e^(-x) + ln abs(C) => ln abs(y - 1) = ln abs(C e^(-x)) => \ => abs(y - 1) = abs(C e^(-x)) => y - 1 = plus.minus C e^(-x) => y = 1 + tilde(C) e^(-x)$
+$y' = 1 - y => dv(y, x) = 1 - y => dif y = (1 - y) dif x |":" (1-y)!=0 (!) => (dif y)/(1 - y) = dif x => integral (dif y)/(1 - y) = integral dif x => \ => ln abs(y - 1) = -x + ln abs(C), C != 0 => ln abs(y - 1) = ln e^(-x) + ln abs(C) => ln abs(y - 1) = ln abs(C e^(-x)) => \ => abs(y - 1) = abs(C e^(-x)) => y - 1 = +- C e^(-x) => y = 1 + tilde(C) e^(-x)$
 
 Проверка: $1 - y = 0, y = 1; y' = 0: 0 = 1 - 1 => 0 equiv 0$
 
@@ -310,7 +310,7 @@ $y' + P(x) y = Q(x) quad display(
 
 ЛОДУ: $dv(y, x) = -y P(x) dif x |":" y != 0 => integral (dif y)/y = -integral P(x) dif x =>$
 
-$=> ln abs(y) = -integral P(x) dif x => ln abs(y) = ln(abs(C) e^(-integral P(x) dif x)) => abs(y) = abs(C) e^(-integral P(x) dif x) => \ => y = plus.minus C e^(-integral P(x) dif x) => y_О = tilde(C) e^(-integral P(x) dif x)$
+$=> ln abs(y) = -integral P(x) dif x => ln abs(y) = ln(abs(C) e^(-integral P(x) dif x)) => abs(y) = abs(C) e^(-integral P(x) dif x) => \ => y = +- C e^(-integral P(x) dif x) => y_О = tilde(C) e^(-integral P(x) dif x)$
 
 === Методы решения ЛНДУ 1-ого порядка
 
@@ -318,12 +318,12 @@ $=> ln abs(y) = -integral P(x) dif x => ln abs(y) = ln(abs(C) e^(-integral P(x) 
 
 #v(1em)
 
-$ y_"ОН" = C(x) Y_О, $ где $Y_О = tilde(C) e^(-integral P(x) dif x)$, $C(x)$ - некоторая функция
+$ y_"ОН" = C(x) Y_О, $ где $Y_О = tilde(C) e^(-integral P(x) dif x)$, $C(x)$ -- некоторая функция
 
 $tilde(C) -> C(x)$
 
 $y' + y/(1 + x) = cos(x)/(1 + x) \
-y' + y/(1 + x) = 0 => dv(y, x) = -y/(1 + x) => integral (dif y)/y = -integral (dif x)/(1 + x) => ln abs(y) = ln abs(C/(1 + x)) => y = (plus.minus C)/(1 + x) => y = (tilde(C))/(1 + x) \
+y' + y/(1 + x) = 0 => dv(y, x) = -y/(1 + x) => integral (dif y)/y = -integral (dif x)/(1 + x) => ln abs(y) = ln abs(C/(1 + x)) => y = (+- C)/(1 + x) => y = (tilde(C))/(1 + x) \
 y_О = (tilde(C))/(1 + x), y_"ОН" = C(x)/(1 + x) \
 y'_"ОН" = (C' (1 + x) - C)/(1 + x)^2 = C'/(1 + x) - C/(1 + x)^2 \
 C'/(1 + x) - C/(1 + x)^2 + C/(1 + x)^2 = (cos x)/(1 + x) => C'/(1 + x) = (cos x)/(1 + x) => C'(x) = cos x => C(x) = sin x + C_1$
@@ -334,7 +334,7 @@ $y_"ОН" = (sin x + C_1)/(1 + x)$ -- общее решение
 
 #v(1em)
 
-$y' + p(x) y = 0$ - ЛОДУ. Такие уравнения решаются методом разделения переменных.
+$y' + p(x) y = 0$ -- ЛОДУ. Такие уравнения решаются методом разделения переменных.
 
 $ y_О = tilde(C) e^(-integral p(x) dif x) $
 
@@ -368,7 +368,7 @@ integral (dif y)/y = integral -2x dif x \
 ln abs(y) = -(2x^2)/2 + ln abs(C) \
 ln abs(y) = ln e^(-x^2) + ln abs(C) \
 abs(y) = abs(C e^(-x^2)) \
-y = plus.minus C e^(-x^2) \
+y = +- C e^(-x^2) \
 y = tilde(C) e^(-x^2), y_O = tilde(C) e^(-x^2)$
 
 $y_"ОН" = C(x) e^(-x^2) \
@@ -412,7 +412,7 @@ y_"ОН" = u v = (e^(x^2) + C_1) e^(-x^2) = 1 + e^(-x^2) C_1$
 
 #v(1em)
 
-$ y' + p(x)y = q(x) y^alpha, $ где $alpha$ - действительное число
+$ y' + p(x)y = q(x) y^alpha, $ где $alpha$ -- действительное число
 
 === Пример уравнения Бернулли
 
@@ -426,7 +426,7 @@ dv(v, x) = -1/x v \
 integral (dif v)/v = integral -(dif x)/x \
 ln abs(v) = -(ln abs(x) + ln abs(c)) \
 ln abs(v) = ln abs(c/x) \
-v = plus.minus c/x \
+v = +- c/x \
 v = tilde(C)/x; v_0 = 1/x \
 u' 1/x + u dot 0 = -x u^2 1/x^2 \
 u'/x + u^2/x = 0 \
@@ -441,7 +441,7 @@ y = u v = 1/(x - C) dot 1/x = 1/(x^2 - C x); y = 0 "- тоже решение"$
 
 #v(1em)
 
-$ P(x, y) dif x + Q(x, y) dif y = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в частных дифференциалах) $=> dif U(x, y) = 0 => U(x, y) = "const"$ - общий интеграл ДУ
+$ P(x, y) dif x + Q(x, y) dif y = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в частных дифференциалах) $=> dif U(x, y) = 0 => U(x, y) = "const"$ -- общий интеграл ДУ
 
 === Пример решения ДУ в полных дифференциалах
 
@@ -494,7 +494,7 @@ display(
 ) \
 x^2 - phi'_y = 3y^2 + x^2 => phi'_y = 3y^2 => phi(y) = 3y^2 => phi(y) = y^3 + C => U(x, y) = x^2 y - 5x + y^3 + C$
 
-Ответ: $x^2 - 5x + y^3 = "const"$ - общий интеграл ДУ.
+Ответ: $x^2 - 5x + y^3 = "const"$ -- общий интеграл ДУ.
 
 ==== Обоснование данного метода
 
@@ -597,7 +597,7 @@ $p = -x/2 => y = -(-x/2)^2 = -x^2/4$
     )
   ],
   [
-    $y = -x^2/4$ - огибающее решение.
+    $y = -x^2/4$ -- огибающее решение.
 
     Решение, в каждой точке которого нарушено условие задачи Коши (условие единственности), называется особым решением. Отсюда $y = -x^2/4$ также является особым решением
   ],
@@ -651,7 +651,7 @@ dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = 
   ) <=> \ <=> cases(
     x^3 = (2/3 p)^6,
     (y + C)^2 = (2/3 p)^6,
-  ) <=> (y + C)^2 = x^3 <=> y + C = plus.minus sqrt(x^3) <=> y = plus.minus sqrt(x^3) - C
+  ) <=> (y + C)^2 = x^3 <=> y + C = +- sqrt(x^3) <=> y = +- sqrt(x^3) - C
 )$
 
 == Уравнения, допускающие понижение порядка (продолжение)
@@ -666,7 +666,7 @@ dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = 
     y'' = z'(x)$
   ],
   [
-    $y'' = y'/x => z' = z/x => dv(z, x) = z/x => (dif z)/z = (dif x)/x => ln abs(z) = ln abs(C x) => \ => z = tilde(C) x, tilde(C) = plus.minus C \
+    $y'' = y'/x => z' = z/x => dv(z, x) = z/x => (dif z)/z = (dif x)/x => ln abs(z) = ln abs(C x) => \ => z = tilde(C) x, tilde(C) = +- C \
     y' = tilde(C) x => y = integral tilde(C) x dif x = tilde(C) x^2/2 + C_2 \
     y = C_1 x^2 + C_2$
   ],
@@ -696,7 +696,7 @@ dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = 
 
 Из НУ $1^2 = e^(2 dot 0) + 2C => 1 = 1 + 2C => C = 0$
 
-$y' = plus.minus e^y$; так как $y'(0) = 1$, то выбираем "+"
+$y' = +- e^y$; так как $y'(0) = 1$, то выбираем "+"
 
 $y' = e^y => (dif y)/e^y = dif x => -e^(-y) = x + C \
 y(0) = 0 => -e^(-0) = 0 + C_1 => C_1 = -1 => -e^(-y) = x - 1 => e^(-y) = 1 - x => \ => ln e^(-y) = ln(1 - x) => -y = ln(1 - x) => y = ln(1/(1 - x))$
@@ -705,7 +705,7 @@ y(0) = 0 => -e^(-0) = 0 + C_1 => C_1 = -1 => -e^(-y) = x - 1 => e^(-y) = 1 - x =
 
 #v(1em)
 
-$ y'' + p_1(x) y' + p_2(x) y = f(x), $ где $p_1(x)$, $p_2(x)$ и $f(x)$ - непрерывные функции
+$ y'' + p_1(x) y' + p_2(x) y = f(x), $ где $p_1(x)$, $p_2(x)$ и $f(x)$ -- непрерывные функции
 
 Если $f(x) = 0$, то ЛОДУ, иначе ЛНДУ.
 
@@ -736,7 +736,7 @@ pdv(f, y) = -p_2(x); pdv(f, y') = -p_1(x)$
 
 Два линейно независимых (ЛНЗ) на $(a, b)$ решения ЛОДУ называется ФСР этого ДУ. Определитель Вронского $ W = mdet(y_1(x), y_2(x); y'_1(x), y'_2(x)) $
 
-$y_1(x)$, $y_2(x)$ - ЛНЗ на $(a, b) <=> W(x) = mdet(y_1, y_2; y'_1, y'_2) != 0 forall x in (a, b)$
+$y_1(x)$, $y_2(x)$ -- ЛНЗ на $(a, b) <=> W(x) = mdet(y_1, y_2; y'_1, y'_2) != 0 forall x in (a, b)$
 
 Пример: ${cos 2x, sin 2x}$
 
@@ -746,11 +746,11 @@ $mdet(cos 2x, sin 2x; -2sin 2x, 2cos 2x) = 2cos^2 2x - (-2sin^2 2x) = 2 dot 1 = 
 
 #v(1em)
 
-Пусть $y_1(x)$, $y_2(x)$ - ЛНЗ на $(a, b)$ решения ЛОДУ. Тогда общее решение имеет вид $ y_"общ" = C_1 y_1 (x) + C_2 y_2 (x) $
+Пусть $y_1(x)$, $y_2(x)$ -- ЛНЗ на $(a, b)$ решения ЛОДУ. Тогда общее решение имеет вид $ y_"общ" = C_1 y_1 (x) + C_2 y_2 (x) $
 
-Дано: $y_1(x)$, $y_2(x)$ - решения ЛОДУ $y'' + p_1 y' + p_2 y = 0$
+Дано: $y_1(x)$, $y_2(x)$ -- решения ЛОДУ $y'' + p_1 y' + p_2 y = 0$
 
-Показать, что $forall C_1, C_2: (C_1 y_1 + C_2 y_2)$ - решения ЛОДУ
+Показать, что $forall C_1, C_2: (C_1 y_1 + C_2 y_2)$ -- решения ЛОДУ
 
 $display(
   cases(
@@ -763,7 +763,7 @@ $display(
 (C_1 y''_2 + C_2 y''_2) + p_1 (C_1 y'_1 + C_2 y'_2) + p_2 (C_1 y_1 + C_2 y_2) = 0 \
 C_1 cancel((y''_1 + p_1 y'_1 + p_2 y_1)) + C_2 cancel((y''_2 + p_1 y'_2 + p_2 y_2)) = 0 => 0 equiv 0 => C_1 y_1 + C_2 y_2 "- решение ЛОДУ"$
 
-Дано $y_1(x)$, $y_2(x)$ - ЛНЗ решения ЛОДУ, $z(x)$ - произвольное решение ЛОДУ с НУ $display(
+Дано $y_1(x)$, $y_2(x)$ -- ЛНЗ решения ЛОДУ, $z(x)$ -- произвольное решение ЛОДУ с НУ $display(
   cases(
     z(x_0) = z_0,
     z'(x_0) = z_1,
@@ -781,9 +781,9 @@ $tilde(y) = C_1 y_1(x) + C_2 y_2(x)$
   ) space mat(y_1(x_0), y_2(x_0); y'_1(x_0), y'_2(x_0)) mat(C_1; C_2) = mat(z_0; z_1)
 )$
 
-Так как $y_1$, $y_2$ - ЛНЗ, то $W(x_0) != 0 =>$ СЛАУ имеет единственное решение при $tilde(C)_1$, $tilde(C)_2$: $ z_(x_0) = tilde(C)_1 y_1(x_0) + tilde(C)_2 y_2(x_0) $
+Так как $y_1$, $y_2$ -- ЛНЗ, то $W(x_0) != 0 =>$ СЛАУ имеет единственное решение при $tilde(C)_1$, $tilde(C)_2$: $ z_(x_0) = tilde(C)_1 y_1(x_0) + tilde(C)_2 y_2(x_0) $
 
-В силу теоремы Коши это - тождество на $(a, b)$
+В силу теоремы Коши это -- тождество на $(a, b)$
 
 $z(x) equiv tilde(C)_1 y_1(x) + tilde(C)_2 y_2(x)$, иначе через точку $x_0$ проходит более одного решения; приходим к противоречию.
 
@@ -812,7 +812,7 @@ $display(W = mdet(e^x, e^(2x); e^x, 2e^(2x)) = 2e^(3x) - e^(3x) = e^(3x) != 0) =
 
 #v(1em)
 
-Назовем левую часть ЛДУ 2 порядка линейным дифференциальным оператором и обозначим $L_2[y]$, тогда $L_2[y] = 0$ - ЛОДУ, а $L_2[y] = f(x)$ - ЛНДУ.
+Назовем левую часть ЛДУ 2 порядка линейным дифференциальным оператором и обозначим $L_2[y]$, тогда $L_2[y] = 0$ -- ЛОДУ, а $L_2[y] = f(x)$ -- ЛНДУ.
 
 $ underbrace(y'' + p_1 y' + p_2 y, L_2[y]) = f(x) $
 
@@ -871,9 +871,9 @@ W = mdet(cos 3x, sin 3x; -3sin 3x, 3cos 3x) = 3cos^2 3x + 3sin^2 3x != 0 => y_1,
 
 Для ЛОДУ с постоянными коэффициентами
 
-+ $k_1, k_2$ - действительные, различные, тогда $y_1 = e^(k_1 x), y_2 = e^(k_2 x)$ - ЛНЗ
-+ $k_1 = k_2 = k$ - двукратный корень $y_1 = e^(k x), y_2 = x e^(k x)$ - ЛНЗ
-+ $alpha plus.minus i beta$ - пара комплексно сопряжённых корней $y_1 = e^(alpha x) cos beta x, y_2 = e^(alpha x) sin beta x$
++ $k_1, k_2$ -- действительные, различные, тогда $y_1 = e^(k_1 x), y_2 = e^(k_2 x)$ -- ЛНЗ
++ $k_1 = k_2 = k$ -- двукратный корень $y_1 = e^(k x), y_2 = x e^(k x)$ -- ЛНЗ
++ $alpha +- i beta$ -- пара комплексно сопряжённых корней $y_1 = e^(alpha x) cos beta x, y_2 = e^(alpha x) sin beta x$
 
 $y'' - 2y' + 5 = 0 \
 k^2 - 2k + 5 dot 1 = 0 \
@@ -887,25 +887,25 @@ k_2 = 1 + 2i => y_2 = e^x sin 2x$
 
 #v(1em)
 
-Пусть $y_1(x)$, $y_2(x)$ - ФСР ЛОДУ $L_2[y] = 0$
+Пусть $y_1(x)$, $y_2(x)$ -- ФСР ЛОДУ $L_2[y] = 0$
 
 $y_"част"$ -- какое-либо решение ЛНДУ $L_2[y] = f(x)$
 
 Тогда $ y_"ОН" = C_1 y_1 + C_2 y_2 + y_"част" "или" y_"ОН" = y_о + y_"част" $ (теорема о структуре общего решения)
 
-Дано: $y_1(x)$, $y_2(x)$ - ФСР ЛОДУ $L_2[y_1] = 0$, $L_2[y_2] = 0$
+Дано: $y_1(x)$, $y_2(x)$ -- ФСР ЛОДУ $L_2[y_1] = 0$, $L_2[y_2] = 0$
 
 $y_"част"$ -- решение ЛНДУ $L_2[y_"част"] = f(x)$
 
-Доказать $forall C_1, C_2: tilde(y) = C_1 y_1 + C_2 y_2 + y_"част"$ - решение ЛНДУ
+Доказать $forall C_1, C_2: tilde(y) = C_1 y_1 + C_2 y_2 + y_"част"$ -- решение ЛНДУ
 
 $L_2[C_1 y_1 + C_2 y_2 + y_"част"] = f(x) <=> L_2[C_1 y_1] + L_2[C_2 y_2] + \ + L_2[y_"част"] = C_1 L_2[y_1] + C_2 L_2[y_2] + L_2 [y_"част"] = C_1 dot 0 + C_2 dot 0 + f(x) = f(x)$
 
-Пусть $y_1(x)$, $y_2(x)$ - ФСР ЛОДУ $L_2[y] = 0$
+Пусть $y_1(x)$, $y_2(x)$ -- ФСР ЛОДУ $L_2[y] = 0$
 
 $y_"част"$ -- какое-либо решение ЛНДУ $L_2[y_"част"] = f(x)$
 
-$z(x)$ - произвольное решение ЛНДУ
+$z(x)$ -- произвольное решение ЛНДУ
 
 $exists tilde(C)_1, tilde(C)_2: z(x) = tilde(C)_1 y_1 + tilde(C)_2 y_2 + y_"част"$
 
@@ -942,7 +942,7 @@ $display(
 
 $y'' + y = 1/(cos x) \
 y'' + y = 0 \
-k^2 + 1 = 0 => k_(1,2) = plus.minus i \
+k^2 + 1 = 0 => k_(1,2) = +- i \
 "ФСР" {cos x, sin x} \
 y_о = C_1 cos x + C_2 sin x \
 display(
@@ -966,9 +966,9 @@ display(
 
 #v(1em)
 
-$ y^((n)) + p_1(x) y^((n-1)) + p_2(x) y^((n-2)) + ... + p_(n-1)(x) y' + p_n(x) y = f(x), $ где $p_i(x)$ и $f(x)$ - непрерывные функции.
+$ y^((n)) + p_1(x) y^((n-1)) + p_2(x) y^((n-2)) + ... + p_(n-1)(x) y' + p_n(x) y = f(x), $ где $p_i(x)$ и $f(x)$ -- непрерывные функции.
 
-$y = phi(x)$ - решение ДУ, если подстановка $phi(x)$, $phi'(x)$, ..., $phi^((n))(x)$ обращает ДУ в тождество; $phi(x)$ -- непрерывно дифференцируемая n раз функция на $(a, b)$.
+$y = phi(x)$ -- решение ДУ, если подстановка $phi(x)$, $phi'(x)$, ..., $phi^((n))(x)$ обращает ДУ в тождество; $phi(x)$ -- непрерывно дифференцируемая n раз функция на $(a, b)$.
 
 $f(x) = 0 => L_n [y] = 0 "- ЛОДУ" \
 f(x) != 0 => L_n [y] = f(x) "- ЛНДУ"$
@@ -1010,9 +1010,9 @@ $n$ решений ЛОДУ n-ого порядка ЛНЗ на $(a, b)$ $<=>$ $
 
 #v(1em)
 
-Пусть $y_1(x)$, $y_2(x)$, ..., $y_n(x)$ - ЛНЗ на $(a, b)$ решения ЛОДУ n-ого порядка $L_n [y] = 0$. Тогда общее решение имеет вид $ y_"общ" = sum_(k=1)^n C_k y_k (x), $ где $C_k$ - произвольные постоянные.
+Пусть $y_1(x)$, $y_2(x)$, ..., $y_n(x)$ -- ЛНЗ на $(a, b)$ решения ЛОДУ n-ого порядка $L_n [y] = 0$. Тогда общее решение имеет вид $ y_"общ" = sum_(k=1)^n C_k y_k (x), $ где $C_k$ -- произвольные постоянные.
 
-Дано: ${y_k}$ - ФСР ЛОДУ, $z(x)$ - произвольное решение ЛОДУ с НУ $display(
+Дано: ${y_k}$ -- ФСР ЛОДУ, $z(x)$ -- произвольное решение ЛОДУ с НУ $display(
   cases(
     z(x_0) = z_0,
     z'(x_0) = z_1,
@@ -1063,7 +1063,7 @@ $y' = k e^(k x)$, $y'' = k^2 e^(k x)$, ..., $y^((n-1)) = k^(n-1) e^(k x)$, $y^((
 #v(1em)
 
 + Всякому действительному корню $k$ кратности $r$ соответствует $r$ ЛНЗ решений: $e^(k x), x e^(k x), x^2 e^(k x), ..., x^(n-1) e^(k x)$
-+ Всякой паре комплексных корней $alpha plus.minus beta$ кратности $m$ соответствует $2m$ ЛНЗ решений: $e^(alpha x) cos beta x, e^(alpha x) sin beta x, x e^(alpha x) cos beta x, x e^(alpha x) sin beta x, ..., x^(n-1) e^(alpha x) cos beta x, x^(n-1) e^(alpha x) sin beta x$
++ Всякой паре комплексных корней $alpha +- beta$ кратности $m$ соответствует $2m$ ЛНЗ решений: $e^(alpha x) cos beta x, e^(alpha x) sin beta x, x e^(alpha x) cos beta x, x e^(alpha x) sin beta x, ..., x^(n-1) e^(alpha x) cos beta x, x^(n-1) e^(alpha x) sin beta x$
 
 $y^"IV" - y''' - 3y'' + 5y' + 2y = 0 \
 k^4 - k^3 - 3k^2 + 5k + 2 = 0 \
@@ -1075,7 +1075,7 @@ $y^"VI" + 2y^"IV" + y^"II" = 0 \
 k^6 + 2k^4 + k^2 = 0 \
 k^2 (k^4 + 2k^2 + 1) = 0 \
 k^2 (k^2 + 1)^2 = 0 \
-k^2 = -1 => k_(1,2) = plus.minus i => e^(0x) cos 1x, e^(0x) sin 1x, x e^(0x) cos 1x, x e^(0x) sin 1x \
+k^2 = -1 => k_(1,2) = +- i => e^(0x) cos 1x, e^(0x) sin 1x, x e^(0x) cos 1x, x e^(0x) sin 1x \
 "ФСР" {e^(0x), x e^(0x), cos x, sin x, x cos x, x sin x}$
 
 Ответ: $y_о = C_1 + C_2 x + C_3 cos x + C_4 sin x + C_5 x cos x + C_6 x sin x$
@@ -1086,20 +1086,20 @@ k^2 = -1 => k_(1,2) = plus.minus i => e^(0x) cos 1x, e^(0x) sin 1x, x e^(0x) cos
 
 #v(1em)
 
-Пусть ${y_k (x)}$ - ФСР ЛОДУ n-ого порядка $L_n [y]$
+Пусть ${y_k (x)}$ -- ФСР ЛОДУ n-ого порядка $L_n [y]$
 
 Пусть $y_"част"$ -- какое-либо решение ЛНДУ n-ого порядка $L_n [y_"част"] = f(x)$, тогда $ y_"ОН" = sum_(k=1)^n C_k y_k (x) + y_"част" "или" y_"ОН" = y_о + y_"част" $
 
-Дано ${y_k}$ - решение ЛОДУ $L_n [y_k] = 0$; $y_"част"$ - решение ЛНДУ $L_n [y_"част"] = f(x)$
+Дано ${y_k}$ -- решение ЛОДУ $L_n [y_k] = 0$; $y_"част"$ -- решение ЛНДУ $L_n [y_"част"] = f(x)$
 
 $ forall C_k: (sum_(k=1)^n C_k y_k + y_"част") "- решение ЛНДУ" $
 
 $L_n [sum C_k y_k + y_"част"] = f(x) \
 L_n [sum C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) L_n [C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) C_k underbracket(L_n [y_k], 0) + underbracket(L_n [y_"част"], f(x)) = f(x)$
 
-Дано: ${y_k}$ - ФСР ЛОДУ $L_n [y] = 0$; $y_"част"$ - решение $L_n [y_"част"] = f(x)$
+Дано: ${y_k}$ -- ФСР ЛОДУ $L_n [y] = 0$; $y_"част"$ -- решение $L_n [y_"част"] = f(x)$
 
-$z(x)$ - произвольное решение ЛОДУ, то есть $L_n [z] = f(x)$
+$z(x)$ -- произвольное решение ЛОДУ, то есть $L_n [z] = f(x)$
 
 $ exists tilde(C)_k: z(x) = sum_(k=1)^n tilde(C)_k y_k + y_"част" $
 
@@ -1110,7 +1110,7 @@ exists tilde(C)_k: z - y_"част" = sum tilde(C)_k y_k => z = display(sum_(k=1
 
 #v(1em)
 
-Пусть $y_1(x)$ - решение $L_n [y] = f_1(x)$, а $y_2(x)$ - решение $L_n [y] = f_2(x)$, тогда $y_1(x) + y_2(x)$ -- решение уравнения $L_n [y] = f_1(x) + f_2(x)$
+Пусть $y_1(x)$ -- решение $L_n [y] = f_1(x)$, а $y_2(x)$ -- решение $L_n [y] = f_2(x)$, тогда $y_1(x) + y_2(x)$ -- решение уравнения $L_n [y] = f_1(x) + f_2(x)$
 
 ==== Следствие из теоремы о суперпозиции решений
 
@@ -1173,9 +1173,9 @@ A (-1) = 4 => A = -4 => y_"част" = -4x e^x$
 
 #v(1em)
 
-+ $f(x) = P_n (x) e^(k x)$ $ y_"част" = x^r Q_N (x) e^(k x), $ где $Q_N (x)$ - многочлен степени $N = n$, $r$ - кратность действительного характеристического корня, совпадающего с $k$, $r = 0$, если $k$ не совпадает с характеристическими корнями.
++ $f(x) = P_n (x) e^(k x)$ $ y_"част" = x^r Q_N (x) e^(k x), $ где $Q_N (x)$ -- многочлен степени $N = n$, $r$ -- кратность действительного характеристического корня, совпадающего с $k$, $r = 0$, если $k$ не совпадает с характеристическими корнями.
 
-+ $f(x) = P_n (x) e^(alpha x) cos beta x + Q_m (x) e^(alpha x) sin beta x$ $ y_"част" = x^r [R_N (x) e^(alpha x) cos beta x + T_N (x) e^(alpha x) sin beta x], $ где $N = max(n, m)$, $r$ - кратность пары комплексных корней, совпадающих с $alpha plus.minus beta$, $r = 0$ при случае, аналогичному первому пункту
++ $f(x) = P_n (x) e^(alpha x) cos beta x + Q_m (x) e^(alpha x) sin beta x$ $ y_"част" = x^r [R_N (x) e^(alpha x) cos beta x + T_N (x) e^(alpha x) sin beta x], $ где $N = max(n, m)$, $r$ -- кратность пары комплексных корней, совпадающих с $alpha +- beta$, $r = 0$ при случае, аналогичному первому пункту
 
 $y^"V" - y' = 2x e^(0x) cases(delim: "[", n = 1, k = 0) \
 k^5 - k = 0 \
@@ -1192,7 +1192,7 @@ y'''_"част" = y^"IV"_"част" = y^"V"_"част" = 0 \
 -2a_1 x - a_0 equiv 2x <=> display(cases(-2a_1 = 2, -a_0 = 0) <=> cases(a_1 = -1, a_0 = 0)) \
 y_"част" = -1x^2 + 0x = -x^2$
 
-$y^"IV" - 5y''' + 4y'' = 20sin 2x dot e^(0x) mat(delim: "[", n = 0, alpha = 0; m = 0, beta = 2) alpha plus.minus i beta = plus.minus 2i \
+$y^"IV" - 5y''' + 4y'' = 20sin 2x dot e^(0x) mat(delim: "[", n = 0, alpha = 0; m = 0, beta = 2) alpha +- i beta = +- 2i \
 k^4 - 5k^3 + 4k^2 = 0 \
 k^2 (k^2 - 5k + 4) = 0 <=> display(cases(k_(1,2) = 0, k_3 = 1, k_4 = 4)) \
 N = 0, r = 0 => y_"част" = x^0 [R_0 (x) e^(0x) cos 2x + T_0 (x) e^(0x) sin 2x] = A cos 2x + B sin 2x \
@@ -1208,7 +1208,7 @@ display(cases(40B = 0, -40A = 20) <=> cases(B = 0, A = -"0,5") => y_ч = -"0,5"c
 
 #v(1em)
 
-Пусть ${y_k (x)}$ $k = 1, 2, ..., n$ - ФСР ЛОДУ, тогда решение ЛНДУ $L_n [y] = f(x)$ можно найти в виде $ y_"ОН" = sum_1^n C_k (x) y_k (x), $ где $C_k (x)$ определяется из системы
+Пусть ${y_k (x)}$ $k = 1, 2, ..., n$ -- ФСР ЛОДУ, тогда решение ЛНДУ $L_n [y] = f(x)$ можно найти в виде $ y_"ОН" = sum_1^n C_k (x) y_k (x), $ где $C_k (x)$ определяется из системы
 
 $
   cases(
@@ -1219,10 +1219,10 @@ $
   ) space mat(y_1, ..., y_n; dots.v, dots.down, dots.v; y_1^((n-1)), ..., y_n^((n-1))) mat(C'_1; dots.v; C'_n) = mat(0; dots.v; f(x))
 $
 
-${y_k} "- ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ - существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dif x$
+${y_k} "- ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ -- существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dif x$
 
 $y''' + y' = (sin x)/(cos^2 x) \
-k^3 + k = 0 <=> display(cases(k_1 = 0 &=> y_1 = e^(0x), k_(2,3) = plus.minus i &=> y_2 = cos x\, y_3 = sin x)) \
+k^3 + k = 0 <=> display(cases(k_1 = 0 &=> y_1 = e^(0x), k_(2,3) = +- i &=> y_2 = cos x\, y_3 = sin x)) \
 y_"ОН" = C_1(x) dot 1 + C_2(x) cos x + C_3(x) sin x \
 display(
   cases(
@@ -1252,7 +1252,7 @@ $display(
 $ cases(
   dot(x) = a_11 x + a_12 y + f_1 (t),
   dot(y) = a_21 x + a_22 y + f_2 (t),
-), X = vec(x(t), y(t)), dot(X) = vec(dot(x) (t), dot(y) (t)), F = vec(f_1 (t), f_2 (t)), A = mat(a_11, a_12; a_21, a_22), $ $a_(i j)$ - непрерывные функции
+), X = vec(x(t), y(t)), dot(X) = vec(dot(x) (t), dot(y) (t)), F = vec(f_1 (t), f_2 (t)), A = mat(a_11, a_12; a_21, a_22), $ $a_(i j)$ -- непрерывные функции
 
 $
   cases(
@@ -1274,13 +1274,13 @@ $
 
 #v(1em)
 
-Пусть $ov(u) = vec(u_1(t), u_2(t)), ov(v) = vec(v_1(t), v_2(t))$ - ЛНЗ на $(a, b)$ решения ЛОСУ: $dv(ov(y), t) = A ov(y)$
+Пусть $ov(u) = vec(u_1(t), u_2(t)), ov(v) = vec(v_1(t), v_2(t))$ -- ЛНЗ на $(a, b)$ решения ЛОСУ: $dv(ov(y), t) = A ov(y)$
 
-Тогда $ ov(y)_о = C_1 ov(u) + C_2 ov(v), $ где $C_1$, $C_2$ - произвольные постоянные
+Тогда $ ov(y)_о = C_1 ov(u) + C_2 ov(v), $ где $C_1$, $C_2$ -- произвольные постоянные
 
 Дано: $ov(u): dv(ov(u), t) = A ov(u), ov(v): dv(ov(v), t) = A ov(v)$
 
-Показать, что $forall C_1, C_2: (C_1 ov(u) + C_2 ov(v))$ - решение ЛОСУ
+Показать, что $forall C_1, C_2: (C_1 ov(u) + C_2 ov(v))$ -- решение ЛОСУ
 
 Подстановка $display(
   cases(
@@ -1292,9 +1292,9 @@ $
 
 $(1) = (2) => "имеем решение"$
 
-Дано: $ov(u)$, $ov(u)$ - ЛНЗ решения ЛОСУ
+Дано: $ov(u)$, $ov(u)$ -- ЛНЗ решения ЛОСУ
 
-$ov(z) (t) = vec(z_1(t), z_2(t))$ - произвольное решение ЛОСУ с НУ $cases(z_1(t_0) = z_1, z_2(t_0) = z_2)$
+$ov(z) (t) = vec(z_1(t), z_2(t))$ -- произвольное решение ЛОСУ с НУ $cases(z_1(t_0) = z_1, z_2(t_0) = z_2)$
 
 Показать, что $exists tilde(C)_1, tilde(C)_2: z(t) = tilde(C)_1 ov(u) + tilde(C)_2 ov(v)$
 
@@ -1307,7 +1307,7 @@ $display(
   ) <=> mat(u_1(t_0), v_1(t_0); u_2(t_0), v_2(t_0)) mat(C_1; C_2) = mat(z_1; z_2)
 )$
 
-СЛАУ относительно $C_1$, $C_2$ с главным определителем $Delta = W(t_0) != 0$, так как $ov(u)$, $ov(v)$ - ЛНЗ на $(a, b) => exists "единственное решение" tilde(C)_1, tilde(C)_2 => z(t_0) = tilde(C)_1 ov(u) (t_0) + C_2 ov(v) (t_0)$. В силу теоремы Коши о единственности решения задачи Коши $ov(y) = ov(z) (t)$
+СЛАУ относительно $C_1$, $C_2$ с главным определителем $Delta = W(t_0) != 0$, так как $ov(u)$, $ov(v)$ -- ЛНЗ на $(a, b) => exists "единственное решение" tilde(C)_1, tilde(C)_2 => z(t_0) = tilde(C)_1 ov(u) (t_0) + C_2 ov(v) (t_0)$. В силу теоремы Коши о единственности решения задачи Коши $ov(y) = ov(z) (t)$
 
 === Метод Эйлера решения ЛОСУ с постоянными коэффициентами
 
@@ -1405,15 +1405,15 @@ $display(
 
 #v(1em)
 
-+ $lambda_1, lambda_2$ - действительные различные: $X_1 = Y^1 e^(lambda_1 t); X_2 = Y^2 e^(lambda_2 t); Y^1, Y^2$ - собственные вектора
++ $lambda_1, lambda_2$ -- действительные различные: $X_1 = Y^1 e^(lambda_1 t); X_2 = Y^2 e^(lambda_2 t); Y^1, Y^2$ -- собственные вектора
 
-+ $lambda_(1,2) = alpha plus.minus i beta: X_1 = "Re"(H e^(lambda t)); X_2 = "Im"(H e^(lambda t)), H$ - собственный вектор
++ $lambda_(1,2) = alpha +- i beta: X_1 = "Re"(H e^(lambda t)); X_2 = "Im"(H e^(lambda t)), H$ -- собственный вектор
 
 === Теорема о структуре общего решения ЛНСУ
 
 #v(1em)
 
-Пусть $ov(u)$, $ov(v)$ - ФСР ЛОСУ $L[ov(y)] = 0$, $ov(y)_"част"$ -- какое-либо решение ЛНСУ $L[ov(y)] = F$.
+Пусть $ov(u)$, $ov(v)$ -- ФСР ЛОСУ $L[ov(y)] = 0$, $ov(y)_"част"$ -- какое-либо решение ЛНСУ $L[ov(y)] = F$.
 
 Тогда $ y_"ОН" = C_1 ov(u) + C_2 ov(v) + ov(y)_"част" "или" ov(y)_"ОН" = ov(y)_"О" + ov(y)_"част" $
 
@@ -1423,7 +1423,7 @@ $display(
 
 Подстановка $display(cases(delim: #none, L[C_1 ov(u) + C_2 ov(v) + ov(y)_ч] = F, C_1 L[ov(u)] + C_2 L[ov(v)] + L[ov(y)_ч] = F) <=> F equiv F)$
 
-Дано: $ov(u)$, $ov(v)$ - ФСР ЛОСУ, $ov(y)_ч: L[ov(y)_ч] = F$, $ov(z)$ - произвольное решение ЛНСУ, $L[ov(z)] = F$
+Дано: $ov(u)$, $ov(v)$ -- ФСР ЛОСУ, $ov(y)_ч: L[ov(y)_ч] = F$, $ov(z)$ -- произвольное решение ЛНСУ, $L[ov(z)] = F$
 
 Показать, что $exists tilde(C)_1, tilde(C)_2: ov(z) = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) + ov(y)_ч$
 
@@ -1435,7 +1435,7 @@ $L[ov(z)] - L[ov(y)_ч] = F - F equiv 0 => (ov(z) - ov(y)_ч) "- решение 
 
 $ F(t) = ov(P)_n (t) e^(k t), ov(P)_n (t) = vec(a_n t^n + a_(n-1) t^(n-1) + ... a_0, b_m t^m + ... + b_0) quad n >= m $
 
-$ y_"част" = ov(Q)_(N+r) (t) e^(k t), ov(Q)_(N+r) = vec(d_(N+r) t^(N+r) + ... + d_0, s_(N+r) t^(N+r) + ... + s_0), $ где $N = n$, $r$ - кратность корня ХУ, совпадающего с $k$; $r = 0$, если $k$ не совпадает с корнями ХУ
+$ y_"част" = ov(Q)_(N+r) (t) e^(k t), ov(Q)_(N+r) = vec(d_(N+r) t^(N+r) + ... + d_0, s_(N+r) t^(N+r) + ... + s_0), $ где $N = n$, $r$ -- кратность корня ХУ, совпадающего с $k$; $r = 0$, если $k$ не совпадает с корнями ХУ
 
 $display(
   cases(
@@ -1456,14 +1456,14 @@ $display(
     delim: #none,
     N = max(n, m),
     r "- кратность пары комплексных",
-    "корней, совпадающих с" alpha plus.minus i beta
+    "корней, совпадающих с" alpha +- i beta
   ) \
   cases(
     dot(x) = y + e^t cos 2t,
     dot(y) = -3x -4y + e^t sin 2t,
   ) quad mdet(-lambda, 1; -3, -4 - lambda) = 0 <=> 4lambda + lambda^2 + 3 = 0 <=> cases(lambda_1 = -1, lambda_2 = -3) \
-  F(t) = vec(e^t cos 2t, e^t sin 2t) = vec(1, 0) e^t cos 2t + (0, 1) e^t sin 2t quad mat(delim: "[", n = 0, alpha = 1; m = 0, beta = 2) alpha plus.minus beta = 1 plus.minus 2i \
-  N = max(0, 0) = 0\, r = 0\, "так как пара" 1 plus.minus 2i "не совпадает с корнями ХУ" => N + r = 0 + 0 = 0 \
+  F(t) = vec(e^t cos 2t, e^t sin 2t) = vec(1, 0) e^t cos 2t + (0, 1) e^t sin 2t quad mat(delim: "[", n = 0, alpha = 1; m = 0, beta = 2) alpha +- beta = 1 +- 2i \
+  N = max(0, 0) = 0\, r = 0\, "так как пара" 1 +- 2i "не совпадает с корнями ХУ" => N + r = 0 + 0 = 0 \
   underline(ov(y)_"част") = ov(R)_0 (t) e^(1t) cos 2t + ov(T)_0 (t) e^(1t) sin 2t = vec(a_0, b_0) e^t cos 2t + vec(d_0, s_0) e^t sin 2t
 )$
 
@@ -1471,15 +1471,15 @@ $display(
 
 #v(1em)
 
-Пусть $ov(y)_1$ - решение ЛНСУ $L[ov(y)] = F_1$, $ov(y)_2$ - решение ЛНСУ $L[ov(y)] = F_2$
+Пусть $ov(y)_1$ -- решение ЛНСУ $L[ov(y)] = F_1$, $ov(y)_2$ -- решение ЛНСУ $L[ov(y)] = F_2$
 
-Тогда $(ov(y)_1 + ov(y)_2)$ - решение ЛНСУ $L[ov(y)] = F_1 + F_2$
+Тогда $(ov(y)_1 + ov(y)_2)$ -- решение ЛНСУ $L[ov(y)] = F_1 + F_2$
 
-Показать, что $(ov(y)_1 + ov(y)_2)$ - решение $L[ov(y)] = F_1 + F_2$ #sym.ast.op.o
+Показать, что $(ov(y)_1 + ov(y)_2)$ -- решение $L[ov(y)] = F_1 + F_2$ #sym.ast.op.o
 
 $L[ov(y)_1 + ov(y)_2] = underbrace(L[ov(y)_1], F_1) + underbrace(L[ov(y)_2], F_2) = F_1 + F_2 => (ov(y)_1 + ov(y)_2) "- решение" ast.op.o$
 
-Пусть $F(t) = F_1 + F_2 + ... + F_m$, тогда $ov(y)_"част" = ov(y)_1 + ov(y)_2 + ... + ov(y)_m$, где $ov(y)_k$ - решение $L[ov(y)] = F_k$
+Пусть $F(t) = F_1 + F_2 + ... + F_m$, тогда $ov(y)_"част" = ov(y)_1 + ov(y)_2 + ... + ov(y)_m$, где $ov(y)_k$ -- решение $L[ov(y)] = F_k$
 
 $display(
   cases(
@@ -1531,7 +1531,7 @@ $display(
   cases(
     dot(x) = y + 1/(cos t),
     dot(y) = -x + tg t,
-  ) quad mdet(-lambda, 1; -1, -lambda) = 0 <=> lambda^2 + 1 = 0 <=> lambda_(1,2) = plus.minus i \
+  ) quad mdet(-lambda, 1; -1, -lambda) = 0 <=> lambda^2 + 1 = 0 <=> lambda_(1,2) = +- i \
   lambda = i: cases(-i alpha + beta = 0, -alpha - i beta = 0) quad beta = alpha i quad cases(alpha = 1, beta = i) quad X = vec(1, i) e^(i t) = vec(1, i) (cos t + i sin t) = \ = vec(cos t + i sin t, i cos t - sin t) = vec(cos t, -sin t) + i vec(sin t, cos t)\; ov(u) = vec(cos t, -sin t)\, ov(v) = vec(sin t, cos t) \
   C'_1 vec(cos t, -sin t) + C'_2 vec(sin t, cos t) = vec(frac(1, cos t, style: "skewed"), tg t) <=> cases(
     C'_1 cos t + C'_2 sin t = 1/(cos t),
@@ -1587,7 +1587,7 @@ $display(
   cases(
     x(t) = C_1 e^(-t),
     y(t) = C_2 e^(-2t)
-  ) quad y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> \ <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, tilde(C) = plus.minus C
+  ) quad y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> \ <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, tilde(C) = +- C
 )$
 
 #grid(
@@ -1638,7 +1638,7 @@ $display(
     $display(
       cases(
         delim: #none,
-        lambda_(1,2)& = alpha plus.minus beta,
+        lambda_(1,2)& = alpha +- beta,
         alpha& = 0
       ) quad cases(
         x(t) = A cos beta t + B sin beta t,
@@ -1667,7 +1667,7 @@ $display(
 $display(
   cases(
     delim: #none,
-    lambda_(1,2)& = alpha plus.minus beta,
+    lambda_(1,2)& = alpha +- beta,
     alpha& != 0
   ) quad cases(
     x(t) = A e^(alpha t) cos beta t + B e^(alpha t) sin beta t,
@@ -1681,7 +1681,7 @@ $display(
   cases(
     dot(x) = x - y,
     dot(y) = x + y,
-  ) quad mdet(1 - lambda, -1; 1, 1 - lambda) = 0 <=> (1 - lambda)^2 + 1 = 0 <=> 1 - lambda = plus.minus i <=> cases(lambda_1 = 1 + i, lambda_2 = 1 - i) \
+  ) quad mdet(1 - lambda, -1; 1, 1 - lambda) = 0 <=> (1 - lambda)^2 + 1 = 0 <=> 1 - lambda = +- i <=> cases(lambda_1 = 1 + i, lambda_2 = 1 - i) \
   dot(y)/dot(x) = (x + y)/(x - y) <=> dv(y, x) = (x + y)/(x - y) <=> |u = y/x| <=> (1 + u)/(1 - u) = u + x u' <=> x dv(u, x) = (1 + u)/(1 - u) - u <=> \ <=> x dv(u, x) = (1 + u^2)/(1 - u) <=> integral (dif x)/x = integral (1 - u)/(1 + u^2) dif u <=> "arctg" u - 1/2 ln abs(1 + u^2) = ln abs(x) + ln abs(C) <=> \ <=> ln abs(x) + ln sqrt(1 + u^2) = ln abs(C) + ln e^("arctg"u) <=> sqrt(x^2 + y^2) = tilde(C) e^("arctg"u) <=> \ <=> mat(
     delim: "|",
     align: #left,
@@ -1693,7 +1693,7 @@ $display(
 #grid(
   columns: (2fr, 1fr),
   column-gutter: 1em,
-  [Получившаяся точка покоя - устойчивый фокус (@устфокус)],
+  [Получившаяся точка покоя -- устойчивый фокус (@устфокус)],
   [
     #figure(
       image("source-figures/lect11-7.png", width: 80%),
