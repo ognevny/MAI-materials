@@ -1,3 +1,4 @@
+#import "@preview/physica:0.9.8": dv
 #import "meta.typ": conf, ov, un
 
 #show: conf.with(
@@ -518,6 +519,7 @@
       (
         image("source-figures/lect4-5.png"),
         image("source-figures/lect4-6.png", width: 70%),
+        image("source-figures/lect5-1.png")
       ).join(),
     )
   ],
@@ -533,5 +535,105 @@
     &parallel C E&$
 
     $triangle B C E ~ triangle b c e$
+
+    $a_B = &un(un(a_B^n))& + &un(un(a_B^tau))& \
+      &parallel A B& &perp A B& \
+      &omega_1^2 L_(A B)& &epsilon_1 L_(A B)&$
+
+    (В нашем случае $epsilon_1 = 0$)
+
+    $a_C = un(un(a_B)) + &un(un(a_(C B)^n))& + &un(a_(C B)^tau)& \
+      &parallel C B& &perp C B& \
+      &omega_2^2 L_(C B)& &&$
+
+    $a_C = un(un(a_D)) + un(un(a_(C D)^k)) + &un(a_(C D)^r)& \
+      &parallel x x&$
+
+    Направление ускорение Кориолиса определяем по направлению $omega_2$ (вверх перпендикулярно $V_(C D)$).
+
+    Ускорение точки $E$ получаем из подобия.
+
+    $ epsilon_2 = a_(C B)^tau/L_(C B), $ сонаправлен с $omega_2$, получается при переносе вектора из плана ускорений на план положений.
+  ],
+)
+
+== Аналитический метод кинематического анализа механизма
+
+#v(1em)
+
+Основан на построении функции положений, и считается, что все задачи кинематического анализа будут решены, если составлена функция положения для ведомой точки или ведомого звена механизма.
+
+Функцией положения называется зависимость координаты ведомой точки (@функположения, а) или координаты ведомого звена (@функположения, б) от координаты ведущей
+
+
+
+#figure(
+  grid(
+    columns: (1fr, 1fr),
+    column-gutter: 1em,
+    [
+      #image("source-figures/lect5-2.png", width: 80%)
+      (а)
+
+      $ S_j = S_j (phi_1) $
+    ],
+    [
+      #image("source-figures/lect5-3.png", width: 70%)
+      (б)
+
+      $ phi_j = phi_j (phi_1) $
+    ],
+  ),
+  caption: []
+) <функположения>
+
+Вид функции положения зависит от схемы механизма, а входящие в её состав постоянные -- от размерных параметров звеньев.
+
+$phi_1 = phi_1(t)$ -- закон движения
+
+$dv(phi_1, t) quad epsilon_1 = dv(omega_1, t) = dv(phi_1, t, 2)$
+
+$v_j = dv(S_j, t) = dv(S_j, phi_1) dv(phi_1, t) = dv(S_j, phi_1) omega_1 \
+  omega_j = dv(phi_j, t) = dv(phi_j, phi_1) dv(phi_1, t) = dv(phi_j, phi_1) omega_1$
+
+$dv(S_j, phi_1)$ и $dv(phi_j, phi_1)$ -- аналоги скоростей (передаточное отношение).
+
+$dv(S_j, phi_1) = S'_(j phi_1) = (v_j)_phi_1 = i_j_1$
+
+$a_j^tau = dv(v_j, t) = dv([(S'_j) omega_1], t) = dv(S_j, phi_1, 2) omega_1 dv(phi_1, t) + dv(S_j, phi_1) dv(omega_1, t) = dv(S_j, phi_1, 2) omega_1^2 + dv(S_j, phi_1) epsilon_1$
+
+$epsilon_j = dv(omega_j, t) = dv([(phi'_j) omega_1], t) = dv(phi_j, phi_1, 2) omega_1 dv(phi_1, t) + dv(phi_j, phi_1) dv(omega_1, t) = dv(phi_j, phi_1, 2) omega_1^2 + dv(phi_j, phi_1) epsilon_1$
+
+$dv(S_j, phi_1, 2)$ и $dv(phi_j, phi_1, 2)$ -- аналоги ускорений.
+
+_Орехов скрипящему мелу: "Что ты ноешь?"_
+
+=== Порядок аналитического решения задач кинематического анализа механизма
+
+#v(1em)
+
++ Составляется функция положения
++ Дифференцирование функции положения и определение аналога скорости
++ Дифференцирование аналога скорости и определение аналога ускорения
+
+=== Пример 1
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect5-4.png")
+    )
+  ],
+  [
+    Из $triangle A B K$: $S_3 = l_(A B) sin phi_1$
+
+    $
+      v_3 &= dv(S_3, phi_1) = dv((l_(A B) sin phi_1), phi_1) = l_(A B) cos phi_1 \
+      a_3 &= dv(S_3, phi_1, 2) = dv((l_(A B) cos phi_1), phi_1) = -l_(A B) sin phi_1
+    $
   ],
 )

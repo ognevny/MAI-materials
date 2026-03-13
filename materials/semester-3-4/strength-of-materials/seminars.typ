@@ -435,3 +435,78 @@ $
 $
 
 Для нахождения перемещения точки приложения момента/силы нужно просто взять $Э M^sum$ и перемножить на эпюру для $P = 1$ или $M = 1$
+
+== Криволинейная рама
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/sem12-1.png"),
+      caption: [Прямая симметрия (сверху) и косая симметрия (снизу)],
+    )
+  ],
+  [
+    У кривой рамы появляется симметрия, соответственно решаем в 2 раза меньше по времени.
+  ]
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/sem12-2.png")
+    )
+  ],
+  [
+    $X_1; X_3$ -- факторы прямой симметрии
+
+    $X_2$ -- фактор косой симметрии
+  ]
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      (
+        image("source-figures/sem12-3.png"),
+        image("source-figures/sem12-4.png", width: 65%),
+      ).join()
+    )
+  ],
+  [
+    Каноническое уравнение перемещений $ delta_11 X_1 + delta_(1p) = 0 $
+
+    Реакции при $X_1 = 1$ и $q = 0$ получаются нулевыми
+
+    Реакции при $X_1 = 0$ и $q != 0$
+
+    $8l dot R - 14q l^2 + 2q l^2 = 0 => R = 12/8 q l = 3/2 q l$
+
+    $
+      delta_(1p) = -(1/2 dot 2l dot 2l dot 2/3 q l dot l) 1/(E I) = -4/3 (q l^4)/(E I)
+    $
+
+    $
+      delta_11 = 1/(E I) [integral_0^(pi/2) (M_I^1)^2 2l dif phi + integral_0^(2l) (M_"II"^1)^2 dif x]
+    $
+
+    $display(integral_0^(pi/2) (M_I^1)^2 2l dif phi = integral_0^(pi/2) (1 dot 2l sin phi)^2 2l dif phi = \ = 8l^3 integral_0^(pi/2) sin^2 phi dif phi = 8l^3 pi/4 approx "6,28"l^3)$
+
+    Для треугольника $Omega h = 4/3 l dot 2l^2 = 8/3 l^3 approx "2,67"l^3$
+
+    $delta_11 = "8,95" l^3/(E I)$
+
+    $display("8,95" l^3/(E I) dot X_1 - 4/3 (q l^4)/(E I) = 0 => X_1 approx "0,149"q l)$
+  ],
+)
+
+#figure(
+  image("source-figures/sem12-5.png"),
+)

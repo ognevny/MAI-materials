@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": conf, ov
 #import "@preview/physica:0.9.8": dv, evaluated, pdv
 
 #show: conf.with(
@@ -614,4 +614,147 @@ $display(
   u = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) underbrace([F(x + a t) - F(x - a t)], integral_(x- a t)^(x + a t) psi(z) dif z)
 )$
 
-Полученная формула $ u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z $ называется формулой д'Аламбера
+Полученная формула $
+  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z quad (1)
+$ называется формулой д'Аламбера
+
+===== Пример
+
+#v(1em)
+
+$ u_(t t) = 4u_(x x) quad cases(
+  delim: bar.v.double,
+  evaluated(u)_(t=0) = k x,
+  evaluated(u_t)_(t=0) = k,
+) $
+
+$display(
+  a^2 = 4 => a = 2 \
+  u(x, t) = 1/2 [k(x + 2t) + k(x - 2t)] + 1/(2 dot 2) integral_(x-2t)^(x+2t) k dif z = k x + evaluated(1/4 k z)_(x-2t)^(x+2t) = \ = k x + 1/4 k (x + 2t - x + 2t) = k x + k t
+)$
+
+==== Вынужденные колебания
+
+#v(1em)
+
+$
+  u_(t t) = a^2 u_(x x) + f(x, t)
+$
+
+Формула д'Аламбера для неоднородного уравнения $
+  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z + 1/(2a) integral_0^t integral_(x - a (t - tau))^(x + a (t - tau)) f(z, t) dif z dif tau quad (2)
+$
+
+===== Пример
+
+#v(1em)
+
+$
+  u_(t t) = 4u_(x x) + sin t quad cases(
+    delim: bar.v.double,
+    evaluated(u)_(t=0) = phi(x) = k x,
+    evaluated(u_t)_(t=0) = psi(x) = k,
+  )
+$
+
+$display(
+  a = 2 \
+  f(x, t) = sin t \
+  u(x, t) = k (x + t) + 1/4 integral_0^t dif tau [integral_(x - 2(t - tau))^(x + 2(t + tau)) sin tau dif z] = k (x + t) + 1/4 integral_0^t evaluated(sin tau dot z)_(x - 2(t - tau))^(x + 2(t - tau)) = \ = k (x + t) + 1/4 integral_0^t sin tau dot (x + 2t - 2tau - x + 2t - 2tau) dif tau = k (x + t) + 1/4 integral_0^t (4t - 4tau) sin tau dif tau = \ = k (x + t) + integral_0^t t sin tau dif tau - integral_0^t tau sin tau dif tau = k (x + t) - t evaluated(cos tau)_(0)^t - (evaluated(-tau cos tau)_0^t + integral_0^t cos tau dif tau) = \ = k (x + t) - t cos t + t + t cos t - 0 - evaluated(sin tau)_0^t = k (x + t) + t - sin t
+)$
+
+==== Метод Фурье для волнового уравнения колебания ограниченной струны
+
+#v(1em)
+
+$
+  u_(t t) = a^2 u_(x x) quad "НУ" cases(
+    delim: bar.v.double,
+    evaluated(u)_(t=0) = phi(x),
+    evaluated(u_t)_(t=0) = psi(x),
+  ) quad "ГУ" cases(
+    delim: bar.v.double,
+    evaluated(u)_(x=0) = 0,
+    evaluated(u)_(x=l) = 0,
+  ) "- однородные граничные условия"
+$
+
+#enum(numbering: "Условия 1 рода", number-align: left)[$u(0, t) = mu(t)$][$u_x (0, t) = eta(t)$][$u_x (0, t) = theta [u(0, t) - mu(t)]$ (упругое закрепление)]
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      (
+        image("source-figures/lect5-1.png"),
+        image("source-figures/lect5-2.png"),
+      ).join()
+    )
+  ],
+  [
+    $0 < x < l \
+    0 < t < oo$
+
+    Будем искать решение поставленной задачи в виде $
+      u(x, t) = X(x) dot T(t)
+    $
+  ]
+)
+
+Подставим
+
+$display(
+  X(x) dot T''(t) = a^2 X''(x) dot T(t) |":" T(t) dot X(x) \
+  X''/X = T''/(a^2 T) = -ov(lambda) space (ov(lambda) = "const") => cases(
+    delim: "[",
+    X'' + ov(lambda) X = 0 + cases(delim: bar.v.double, X(0) = 0, X(l) = 0),
+    T'' + a^2 ov(lambda) T = 0,
+  )
+)$
+
+$display(
+  u(0, t) = X(0) dot T(t) = 0 => X(0) = 0 \
+  u(l, t) = X(l) dot T(t) = 0 => X(l) = 0
+)$
+
++ $ov(lambda) = 0 => X'' = 0, X(x) = C_1 x + C_2$
+
+  $X(0) = C_2 = 0, X(l) = C_1 l + C_2 = 0 => C_1 = C_2 = 0, X(x) equiv 0$
+
++ $ov(lambda) = -lambda^2 < 0$
+
+  $X'' - lambda^2 X = 0 \
+    k^2 - lambda^2 = 0 <=> k_(1,2) = +-lambda$
+
+  $X_1 = C_1 e^(lambda x), X_2 = C_2 e^(-lambda x) \
+    X(x) = C_1 e^(lambda x) + C_2 e^(-lambda x) \
+    X(0) = C_1 + C_2 = 0 => C_1 = -C_2 \
+    X(l) = C_1 e^(lambda l) + C_2 e^(-lambda l) = 0 \
+    C_1 (e^(lambda l) - e^(-lambda l)) = 0 => C_1 = 0 => C_2 = 0$
+
++ $ov(lambda) = lambda^2 > 0$
+
+  $X'' + lambda^2 X = 0 \
+    k^2 + lambda^2 = 0 <=> k = +-i lambda \
+    X(x) = e^(0 dot x) (C_1 cos(lambda x) + C_2 sin(lambda x)) = C_1 cos(lambda x) + C_2 sin(lambda x) \
+    X(0) = C_1 cos(lambda dot 0) + C_2 sin(lambda dot 0) = 0 => C_1 = 0 \
+    X(l) = 0 + C_2 sin(lambda l) = 0 stretch(=>)^(C_2 != 0) sin(lambda l) = 0 => lambda l = pi k => lambda = (pi k)/l => \ => ov(lambda) = lambda^2 = ((pi n)/l)^2 "- собственные числа" => \ => X_n (x) = C_2 sin (pi n)/l x "- собственные функции (задача Штурма-Лиувилля)"$
+
+$T'' + a^2 ov(lambda) T = 0 <=> T'' + a^2 lambda^2 T = 0 \
+  k^2 + a^2 lambda^2 = 0 <=> k_(1,2) = +-a lambda \
+  T = C_1 cos(a lambda t) + C_2 sin(a lambda t) => \
+  => T_n (t) = tilde(A)_n cos (pi n)/l a t + tilde(B)_n sin (pi n)/l a t$
+
+$
+  u_n (x, t) = X_n (x) dot T_n (t) = C_2 sin (pi n)/l x (tilde(A)_n cos (pi n)/l a t + tilde(B)_n sin (pi n)/l a t) \
+  A_n = C_2 tilde(A)_n quad B_n = C_2 tilde(B)_n \
+  u(x, t) = sum_1^oo u_n (x, t) = sum_1^oo (A_n cos (pi n)/l a t + B_n sin (pi n)/l a t) sin (pi n)/l x
+$
+
+(Сумма решений -- тоже решение)
+
+$display(
+  evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) \
+  evaluated(u_t)_(t=0) = sum_1^oo evaluated([(A_n (-sin (pi n)/l a t) (pi n a)/l + B_n cos (pi n)/l a t dot (pi n a)/l) sin(pi n)/l x])_(t=0) = \ = sum_1^oo B_n (pi n a)/l sin (pi n)/l x = psi(x)
+)$
