@@ -131,7 +131,7 @@ jobs:
           sed -i "s/%DATE%/$(date -u +'%F %T UTC+0')/" LINKS.md
 
       - name: "Обновление тега 'latest'"
-        uses: softprops/action-gh-release@v2.5.0
+        uses: softprops/action-gh-release@v2.5.3
         if: steps.artifacts.outcome == 'success'
         with:
           body_path: LINKS.md
