@@ -451,7 +451,7 @@ $
   ],
   [
     У кривой рамы появляется симметрия, соответственно решаем в 2 раза меньше по времени.
-  ]
+  ],
 )
 
 #grid(
@@ -459,14 +459,14 @@ $
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/sem12-2.png")
+      image("source-figures/sem12-2.png"),
     )
   ],
   [
     $X_1; X_3$ -- факторы прямой симметрии
 
     $X_2$ -- фактор косой симметрии
-  ]
+  ],
 )
 
 #grid(
@@ -477,7 +477,7 @@ $
       (
         image("source-figures/sem12-3.png"),
         image("source-figures/sem12-4.png", width: 65%),
-      ).join()
+      ).join(),
     )
   ],
   [

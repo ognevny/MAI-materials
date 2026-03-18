@@ -250,7 +250,7 @@ $y' = 1 - y => dv(y, x) = 1 - y => dif y = (1 - y) dif x |":" (1-y)!=0 (!) => (d
 Ответ: $y = 1 + tilde(C) e^(-x)$
 
 $y(0) = 1/2 \
-dv(T, t) = -k (T - T_"вн"); T_"вн" = 20 degree C". "T(t) "- температура чайника"$
+dv(T, t) = -k (T - T_"вн"); T_"вн" = 20 degree C, space T(t) dash "температура чайника"$
 
 $dv(T, t) = -k (T - 20) => dif T = -k (T - 20) dif t |":" (T - 20) => integral (dif T)/(T - 20) = -k integral dif t => ln(T - 20) = \ = -k t + ln abs(C) => ln(T - 20) = ln e^(-k t) + ln abs(C) => ln(T-20) = ln abs(C e^(-k t)) => T - 20 = C e^(-k t) => \ => T(t) = 20 + C e^(-k t)$
 
@@ -303,8 +303,8 @@ y' = y/x + sin y/x => ... => y = 2x("arctg"(tilde(C) x) + pi n)$
 $y' + P(x) y = Q(x) quad display(
   cases(
     delim: #none,
-    Q(x) = 0 => y' + P(x) = 0 "- линейное однородное ДУ - ЛОДУ",
-    Q(x) != 0 "- линейное неоднородное ДУ - ЛНДУ",
+    Q(x) = 0 => y' + P(x) = 0 dash "линейное однородное ДУ - ЛОДУ",
+    Q(x) != 0 dash "линейное неоднородное ДУ - ЛНДУ",
   )
 )$
 
@@ -435,7 +435,7 @@ dv(u, x) = -u^2 \
 integral (dif u)/u^2 = integral -dif x \
 -1/u = -x + C \
 u = 1/(x - C); u = 1/(x + tilde(C)) \
-y = u v = 1/(x - C) dot 1/x = 1/(x^2 - C x); y = 0 "- тоже решение"$
+y = u v = 1/(x - C) dot 1/x = 1/(x^2 - C x); y = 0 dash "тоже решение"$
 
 == ДУ в полных дифференциалах
 
@@ -555,7 +555,7 @@ b) $x = f(y, y')$; Замена $y' = P(y); x = f(y, P(y)); dv(y, x) = f'(y, P(y
 
 #v(1em)
 
-$ y = x y' + y'^2 "- уравнение Клеро" $
+$ y = x y' + y'^2 dash "уравнение Клеро" $
 
 $y' = P(x) => y = x P(x) + (P(x))^2 => dv(y, x) = (x P(x) + (P(x))^2)'_x = P(x) + x P'(x) + 2P(x) times \ times P'(x) = P(x) \
 p = P(x) \
@@ -629,7 +629,7 @@ $y'' = f(x)$ решаем дважды интегрированием
 
 $y'' = e^x; "Н.У:" y(0) = 1 "и" y'(0) = 2 \
 y' = integral e^x dif x = e^x + C_1 \
-y = integral (e_x + C_1) dif x = e^x + C_1 x + C_2 "- общее решение"$
+y = integral (e_x + C_1) dif x = e^x + C_1 x + C_2 dash "общее решение"$
 
 $y(0) = evaluated((e^x + C_1 x + C_2))_(x=0) = 1 => 1 + 0 + C_2 = 1 => C_2 = 0 \
 y'(0) = evaluated(((e^x + C_1 x + C_2)'))_(x=0) = 2 => evaluated((e^x + C_1))_(x=0) = 2 => 1 + C_1 = 2 => C_1 = 1$
@@ -740,7 +740,7 @@ $y_1(x)$, $y_2(x)$ -- ЛНЗ на $(a, b) <=> W(x) = mdet(y_1, y_2; y'_1, y'_2) 
 
 Пример: ${cos 2x, sin 2x}$
 
-$mdet(cos 2x, sin 2x; -2sin 2x, 2cos 2x) = 2cos^2 2x - (-2sin^2 2x) = 2 dot 1 = 2 != 0 "- ЛНЗ"$
+$mdet(cos 2x, sin 2x; -2sin 2x, 2cos 2x) = 2cos^2 2x - (-2sin^2 2x) = 2 dot 1 = 2 != 0 dash "ЛНЗ"$
 
 === Теорема о структуре общего решения ЛОДУ
 
@@ -761,7 +761,7 @@ $display(
   ) => "ЛОДУ"
 ) \
 (C_1 y''_2 + C_2 y''_2) + p_1 (C_1 y'_1 + C_2 y'_2) + p_2 (C_1 y_1 + C_2 y_2) = 0 \
-C_1 cancel((y''_1 + p_1 y'_1 + p_2 y_1)) + C_2 cancel((y''_2 + p_1 y'_2 + p_2 y_2)) = 0 => 0 equiv 0 => C_1 y_1 + C_2 y_2 "- решение ЛОДУ"$
+C_1 cancel((y''_1 + p_1 y'_1 + p_2 y_1)) + C_2 cancel((y''_2 + p_1 y'_2 + p_2 y_2)) = 0 => 0 equiv 0 => C_1 y_1 + C_2 y_2 dash "решение ЛОДУ"$
 
 Дано $y_1(x)$, $y_2(x)$ -- ЛНЗ решения ЛОДУ, $z(x)$ -- произвольное решение ЛОДУ с НУ $display(
   cases(
@@ -798,7 +798,7 @@ $ y'' + p_1 y' + p_2 y = 0; p_1, p_2 = "const" $
 $y' = k e^(k x), y'' = k^2 e^(k x)$. Подставляем в ДУ
 
 $k^2 e^(k x) + p_1 k e^(k x) + p_2 e^(k x) = 0 \
-k^2 + p_1 k + p_2 = 0 "- характеристические уравнения"$
+k^2 + p_1 k + p_2 = 0 dash "характеристические уравнения"$
 
 $y'' - 3y' + 2y = 0 \
 k^2 e^(k x) - 3k e^(k x) + 2e^(k x) = 0 \
@@ -844,7 +844,7 @@ $display(
   cases(
     y_1 = e^(-3x),
     y_2 = x e^(-3x),
-  ) space W = mdet(e^(-3x), x e^(-3x); -3e^(-3x), e^(-3x) - 3x e^(-3x)) = e^(-6x) - 3x e^(-6x) + 3x e^(-6x) = e^(-6x) != 0 "- ЛНЗ"
+  ) space W = mdet(e^(-3x), x e^(-3x); -3e^(-3x), e^(-3x) - 3x e^(-3x)) = e^(-6x) - 3x e^(-6x) + 3x e^(-6x) = e^(-6x) != 0 dash "ЛНЗ"
 )$
 
 $y'' + 9y = 0 \
@@ -863,7 +863,7 @@ $ y_О = tilde(C)_1 cos 3x + tilde(C)_2 sin 3x $
 $underparen(y'' + 9y, L_2[y]) = 0 \
 L_2[sin 3x] = (sin 3x)'' + 9sin 3x = -9 sin 3x + 9 sin 3x equiv 0 \
 L_2[cos 3x] = (cos 3x)'' + 9cos 3x = -9 cos 3x + 9 cos 3x equiv 0 \
-W = mdet(cos 3x, sin 3x; -3sin 3x, 3cos 3x) = 3cos^2 3x + 3sin^2 3x != 0 => y_1, y_2 "- ЛНЗ"$
+W = mdet(cos 3x, sin 3x; -3sin 3x, 3cos 3x) = 3cos^2 3x + 3sin^2 3x != 0 => y_1, y_2 dash "ЛНЗ"$
 
 === Алгоритм формирования ФСР
 
@@ -911,7 +911,7 @@ $exists tilde(C)_1, tilde(C)_2: z(x) = tilde(C)_1 y_1 + tilde(C)_2 y_2 + y_"ча
 
 $L_2[z - y_"част"] = L_2[z] - L_2[y_"част"] = f(x) - f(x) equiv 0$
 
-$(z - y_"част") "- решение ЛОДУ" => "по теореме о структуре общего решения ЛОДУ" \
+$(z - y_"част") dash "решение ЛОДУ" => "по теореме о структуре общего решения ЛОДУ" \
 exists tilde(C)_1, tilde(C)_2: z - y_"част" = tilde(C)_1 y_1 + tilde(C)_2 y_2$
 
 === Метод вариации произвольной постоянной для ЛНДУ 2 порядка
@@ -970,8 +970,8 @@ $ y^((n)) + p_1(x) y^((n-1)) + p_2(x) y^((n-2)) + ... + p_(n-1)(x) y' + p_n(x) y
 
 $y = phi(x)$ -- решение ДУ, если подстановка $phi(x)$, $phi'(x)$, ..., $phi^((n))(x)$ обращает ДУ в тождество; $phi(x)$ -- непрерывно дифференцируемая n раз функция на $(a, b)$.
 
-$f(x) = 0 => L_n [y] = 0 "- ЛОДУ" \
-f(x) != 0 => L_n [y] = f(x) "- ЛНДУ"$
+$f(x) = 0 => L_n [y] = 0 dash "ЛОДУ" \
+f(x) != 0 => L_n [y] = f(x) dash "ЛНДУ"$
 
 == Задача Коши для ДУ N-ого порядка
 
@@ -1092,7 +1092,7 @@ k^2 = -1 => k_(1,2) = +- i => e^(0x) cos 1x, e^(0x) sin 1x, x e^(0x) cos 1x, x e
 
 Дано ${y_k}$ -- решение ЛОДУ $L_n [y_k] = 0$; $y_"част"$ -- решение ЛНДУ $L_n [y_"част"] = f(x)$
 
-$ forall C_k: (sum_(k=1)^n C_k y_k + y_"част") "- решение ЛНДУ" $
+$ forall C_k: (sum_(k=1)^n C_k y_k + y_"част") dash "решение ЛНДУ" $
 
 $L_n [sum C_k y_k + y_"част"] = f(x) \
 L_n [sum C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) L_n [C_k y_k] + L_n [y_"част"] = display(sum_(k=1)^n) C_k underbracket(L_n [y_k], 0) + underbracket(L_n [y_"част"], f(x)) = f(x)$
@@ -1103,7 +1103,7 @@ $z(x)$ -- произвольное решение ЛОДУ, то есть $L_n [
 
 $ exists tilde(C)_k: z(x) = sum_(k=1)^n tilde(C)_k y_k + y_"част" $
 
-$L_n [z - y_"част"] = L_n [z] - L_n [y_"част"] = f(x) - f(x) = 0 => (z - y_"част") "- решение ЛОДУ" \ "тогда по теореме о структуре общего решения ЛОДУ" \
+$L_n [z - y_"част"] = L_n [z] - L_n [y_"част"] = f(x) - f(x) = 0 => (z - y_"част") dash "решение ЛОДУ" \ "тогда по теореме о структуре общего решения ЛОДУ" \
 exists tilde(C)_k: z - y_"част" = sum tilde(C)_k y_k => z = display(sum_(k=1)^n) tilde(C)_k y_k + y_"част"$
 
 === Теорема о суперпозиции решений ЛНДУ
@@ -1219,7 +1219,7 @@ $
   ) space mat(y_1, ..., y_n; dots.v, dots.down, dots.v; y_1^((n-1)), ..., y_n^((n-1))) mat(C'_1; dots.v; C'_n) = mat(0; dots.v; f(x))
 $
 
-${y_k} "- ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ -- существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dif x$
+${y_k} dash "ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ -- существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dif x$
 
 $y''' + y' = (sin x)/(cos^2 x) \
 k^3 + k = 0 <=> display(cases(k_1 = 0 &=> y_1 = e^(0x), k_(2,3) = +- i &=> y_2 = cos x\, y_3 = sin x)) \
@@ -1257,8 +1257,8 @@ $ cases(
 $
   cases(
     delim: #none,
-    dot(X) = A X + F & "- ЛНСУ",
-    dot(X) = A X & "- ЛОСУ"
+    dot(X) = A X + F & dash "ЛНСУ",
+    dot(X) = A X & dash "ЛОСУ"
   )
 $
 
@@ -1331,12 +1331,12 @@ $display(
   cases(
     alpha = 0,
     beta = 0,
-  ) "- тривиальное решение"
+  ) dash "тривиальное решение"
 )$
 
 Для существующего нетривиального решения потребуем
 
-$display(mdet(a_11 - lambda, a_12; a_21, a_22 - lambda) = 0 "- Характеристическое уравнение": det(A - lambda E) = 0)$
+$display(mdet(a_11 - lambda, a_12; a_21, a_22 - lambda) = 0 dash "Характеристическое уравнение": det(A - lambda E) = 0)$
 
 $display(
   cases(
@@ -1419,7 +1419,7 @@ $display(
 
 Дано: $ov(u): L[ov(u)] = 0, ov(v): L[ov(v)] = 0, ov(y)_"част": L[ov(y)_"част"] = F$
 
-Показать, что $forall C_1, C_2: (C_1 ov(u) + C_2 ov(v) + ov(y)_ч) "- решение ЛНСУ"$
+Показать, что $forall C_1, C_2: (C_1 ov(u) + C_2 ov(v) + ov(y)_ч) dash "решение ЛНСУ"$
 
 Подстановка $display(cases(delim: #none, L[C_1 ov(u) + C_2 ov(v) + ov(y)_ч] = F, C_1 L[ov(u)] + C_2 L[ov(v)] + L[ov(y)_ч] = F) <=> F equiv F)$
 
@@ -1427,7 +1427,7 @@ $display(
 
 Показать, что $exists tilde(C)_1, tilde(C)_2: ov(z) = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) + ov(y)_ч$
 
-$L[ov(z)] - L[ov(y)_ч] = F - F equiv 0 => (ov(z) - ov(y)_ч) "- решение ЛОСУ" => exists tilde(C)_1, tilde(C)_2: ov(z) - ov(y)_ч = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) <=> \ <=> z = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) + ov(y)_ч$
+$L[ov(z)] - L[ov(y)_ч] = F - F equiv 0 => (ov(z) - ov(y)_ч) dash "решение ЛОСУ" => exists tilde(C)_1, tilde(C)_2: ov(z) - ov(y)_ч = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) <=> \ <=> z = tilde(C)_1 ov(u) + tilde(C)_2 ov(v) + ov(y)_ч$
 
 === Метод подбора $y_"част"$ для ЛНСУ $L[y] = F(t)$
 
@@ -1455,7 +1455,7 @@ $display(
   ) space mat(delim: "[", n = space, alpha = space; m = space, beta = space) cases(
     delim: #none,
     N = max(n, m),
-    r "- кратность пары комплексных",
+    r dash "кратность пары комплексных",
     "корней, совпадающих с" alpha +- i beta
   ) \
   cases(
@@ -1477,7 +1477,7 @@ $display(
 
 Показать, что $(ov(y)_1 + ov(y)_2)$ -- решение $L[ov(y)] = F_1 + F_2$ #sym.ast.op.o
 
-$L[ov(y)_1 + ov(y)_2] = underbrace(L[ov(y)_1], F_1) + underbrace(L[ov(y)_2], F_2) = F_1 + F_2 => (ov(y)_1 + ov(y)_2) "- решение" ast.op.o$
+$L[ov(y)_1 + ov(y)_2] = underbrace(L[ov(y)_1], F_1) + underbrace(L[ov(y)_2], F_2) = F_1 + F_2 => (ov(y)_1 + ov(y)_2) dash "решение" ast.op.o$
 
 Пусть $F(t) = F_1 + F_2 + ... + F_m$, тогда $ov(y)_"част" = ov(y)_1 + ov(y)_2 + ... + ov(y)_m$, где $ov(y)_k$ -- решение $L[ov(y)] = F_k$
 

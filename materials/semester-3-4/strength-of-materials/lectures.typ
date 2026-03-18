@@ -317,7 +317,7 @@ $l_1 approx "1,5"l$
     На оси $Delta l$:
 
     $O M = Delta l_"ост" \
-    Delta l_"упр" "- проходит от точки M" \
+    Delta l_"упр" dash "проходит от точки M" \
     "до проекции точки L на ось" \
     Delta l_"разр" = Delta l_"ост" + Delta l_"упр"$
   ],
@@ -1820,7 +1820,7 @@ $ N, M_z, M_y. $
 
 $sigma = sigma_N + sigma_(M_z) + sigma(M_y) \
 sigma = P/F + (P y_0)/I_z dot y + (P z_0)/I_y dot z \
-sigma = (1 + y_0/i_z^2 dot y + z_0/i_y^2 dot z) (P/F), space i_z = sqrt(I_z/F), space i_y = sqrt(I_y/F) "- радиусы инерции."$
+sigma = (1 + y_0/i_z^2 dot y + z_0/i_y^2 dot z) (P/F), space i_z = sqrt(I_z/F), space i_y = sqrt(I_y/F) dash "радиусы инерции."$
 
 Уравнение нейтральной линии: $ 1 + y_0/i_z^2 dot y + z_0/i_y^2 dot z = 0 $
 

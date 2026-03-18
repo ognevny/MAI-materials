@@ -268,7 +268,7 @@ $ P(B\/A) = P(A B)/P(A), $ при $P(A) = 0$ $P(B\/A)$ не определена
 Условной вероятностью события называется вероятность этого события при условии, что другое произошло.
 
 + $0 <= P(A\/B) <= 1$
-+ $P(ov(A)\/B) = 1 - P(A/B)$
++ $P(ov(A)\/B) = 1 - P(A\/B)$
 + $P(A\/A) = 1$
 + $P((A_1 + A_2)\/B) = P(A_1\/B) + P(A_2\/B) - P((A_1 A_2)\/B)$
 + $A B = nothing => P(A\/B) = 0$
@@ -507,8 +507,8 @@ $f(x) = F'(x) = display(lim_(Delta x -> 0)) (F(x + Delta x) - F(x))/(Delta x)$
 + $M(C_1 X + C_2) = C_1 M(X) + C_2$
 + $M(X - M(X)) = M(X) - M(M(X)) = 0$
 + $abs(M(X)) <= M(abs(X))$
-+ $M(X +- Y) = M(X) +- M(Y); X, Y "- НЗСВ"$
-+ $M(X Y) = M(X) M(Y); X, Y "- НЗСВ"$
++ $M(X +- Y) = M(X) +- M(Y); X, Y dash "НЗСВ"$
++ $M(X Y) = M(X) M(Y); X, Y dash "НЗСВ"$
 
 ==== Числовые характеристики математического ожидания
 
@@ -558,8 +558,8 @@ M(limits(X)^(#circle(radius: 1pt, stroke: 0.4pt))) = M(X - M(X)) = 0$
 + $D(X + C) = D(X)$
 + $D(C X) = C^2 D(X)$
 + $D(C_1 X + C_2) = C_1^2 D(X)$
-+ $D(X +- Y) = D(X) + D(Y); X, Y "- НЗСВ"$
-+ $D(X Y) = M(X^2) M(Y^2) - M^2(X) M^2(Y); X, Y "- НЗСВ"$
++ $D(X +- Y) = D(X) + D(Y); X, Y dash "НЗСВ"$
++ $D(X Y) = M(X^2) M(Y^2) - M^2(X) M^2(Y); X, Y dash "НЗСВ"$
 
 === Прочие числовые характеристики
 
@@ -617,9 +617,9 @@ mu_2 (X) = M((X - M(X))^2) = M(X^2 - 2X M(X) + M^2(X)) = M(X^2) - 2M(X) M(X) + \
 $ F(x_q) = P(X < x_q) = q $
 
 $x_"0,5" = M_e (X) \
-x_"0,1", x_"0,2", ... "- децили" \
+x_"0,1", x_"0,2", ... dash "децили" \
 x_"0,01", x_"0,02", ... \
-x_"0,25", x_"0,5", x_"0,75" "- квартили" \
+x_"0,25", x_"0,5", x_"0,75" dash "квартили" \
 x_(1-q): P(X >= x_(1-q)) = q$
 
 $display(
@@ -706,7 +706,7 @@ $ P_n (m) = C_n^m p^m q^(n-m) $
   ) \
   $M_o_1 (X) = 1, M_o_2 (X) = 2$
 
-  $M(X) = "1,6"; D(X) = "0,96"; sigma(X) approx "0,98"; alpha(X) = "0,2"/"0,98" approx "0,204"; epsilon(X) approx "-0,458"$
+  $M(X) = "1,6"; D(X) = "0,96"; sigma(X) approx "0,98"; alpha(X) = "0,2"/"0,98" approx "0,204"; epsilon(X) approx -"0,458"$
 
   $P(2 <= X <= 3) = P(X = 2) + P(X = 3) = "0,4992"$
 
@@ -744,7 +744,7 @@ $ P(X=m) = (lambda^m e^(-lambda))/m! $
 
 5. $P(x_1 < X < x_2) = sum_i P(X=m_i)$
 6. ...
-7. 1000 веретен работает на ткацкой фабрике, $p = "0,002"$, $P(X > 3) "- ?"$ \
+7. 1000 веретен работает на ткацкой фабрике, $p = "0,002"$, $P(X > 3) dash ?$ \
   $n = 1000, n p = 2$
 
   $P(X > 3) = 1 - P(X <= 3) = 1 - ((e^(-2) dot 2^0)/0! + (e^(-2) dot 2)/1! + (e^(-2) dot 2^2)/2! + (e^(-2) dot 2^3)/3!) = 1 - e^(-2) times \ times (1 + 2 + 4/2 + 8/6) approx "0,143"$
@@ -817,9 +817,9 @@ D(X) = (k q)/p^2$
 
 #v(1em)
 
-Стрельба до первого попадания, $p = "0,2"$, $M(X) "- ?", D(X) "- ?"$
+Стрельба до первого попадания, $p = "0,2"$, $M(X) dash ?, D(X) dash ?$
 
-$X "- количество выстрелов"$
+$X dash "количество выстрелов"$
 
 1) $n -> oo: M(X) = 1/"0,2" = 5, D(X) = "0,8"/"0,04" = 20$
 
@@ -896,7 +896,7 @@ M(X) = (a+b)/2 \
 D(X) = (b-a)^2/12 \
 sigma(X) = (b-a)/(2sqrt(3)) \
 alpha(X) = 0 \
-epsilon(X) = "-1,2"$
+epsilon(X) = -"1,2"$
 
 ==== Пример равномерного ЗР
 
@@ -916,7 +916,7 @@ epsilon(X) = "-1,2"$
     D(X) = 1/3 \
     sigma(X) = sqrt(3)/3 \
     alpha(X) = 0 \
-    epsilon(X) = "-1,2" \
+    epsilon(X) = -"1,2" \
     P(X < "0,5") = integral_0^"0,5" "0,5" dif x = "0,25" = F("0,5") - F(0) = S_(rect.filled)/S$
   ],
 )
@@ -1171,7 +1171,7 @@ $ k(X, Y) equiv "cov"(X, Y) = mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y))) = M(X Y
 Для ДСВ $ "cov"(X, Y) = sum_(i=1)^n sum_(j=1)^m (x_i - M(X)) (y_j - M(Y)) p_(i j) = sum_(i=1)^n sum_(j=1)^m x_i y_j p_(i j) - M(X) M(Y) $
 Для НСВ $ "cov"(X, Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X)) (y_j - M(Y)) f(x, y) dif x dif y $
 
-+ $"cov"(X, Y) = 0; X, Y "- НЗСВ"$
++ $"cov"(X, Y) = 0; X, Y dash "НЗСВ"$
 + $"cov"(X, Y) = "cov"(Y, X)$
 + $"cov"(X, X) = D(X)$
 + $"cov"(Y, Y) = D(Y)$
@@ -1193,8 +1193,8 @@ $ r(X, Y) equiv "cor"(X, Y) = ("cov"(X, Y))/(sigma(X) sigma(Y)) $
   column-gutter: 1em,
   [
     $abs(r(X, Y)) <= 1 \
-    r(X, Y) = 0 "если" X, Y "- НКСВ или" X, Y "- НЗСВ" \
-    r(X, Y) = 1 "- функциональная зависимость" \
+    r(X, Y) = 0 "если" X, Y dash "НКСВ или" X, Y dash "НЗСВ" \
+    r(X, Y) = 1 dash "функциональная зависимость" \
     r(X, Y) = 1 => Y = alpha + beta X, beta > 0 \
     r(X, Y) = -1 => Y = alpha + beta X, beta < 0 \
     r(alpha_1 + beta_1 X, alpha_2 + beta_2 Y) = r(Y, X), beta_1 beta_2 > 0 \
@@ -1296,11 +1296,11 @@ $
 #v(1em)
 
 $&M(X + Y) = M(X) + M(Y) \
-&M(X Y) = M(X) M(Y) + k(X, Y); &X, Y& "- КСВ" \
-&M(X Y) = M(X) M(Y); &X, Y& "- НЗСВ" \
-&D(X + Y) = D(X) + D(Y) + 2k(X, Y); &X, Y& "- КСВ" \
-&D(X + Y) = D(X) + D(Y) - 2k(X, Y); &X, Y& "- КСВ" \
-&D(X +- Y) = D(X) + D(Y); &X, Y& "- НЗСВ"$
+&M(X Y) = M(X) M(Y) + k(X, Y); &X, Y& dash "КСВ" \
+&M(X Y) = M(X) M(Y); &X, Y& dash "НЗСВ" \
+&D(X + Y) = D(X) + D(Y) + 2k(X, Y); &X, Y& dash "КСВ" \
+&D(X + Y) = D(X) + D(Y) - 2k(X, Y); &X, Y& dash "КСВ" \
+&D(X +- Y) = D(X) + D(Y); &X, Y& dash "НЗСВ"$
 
 ==== Про зависимость и коррелированность СВ
 
@@ -1515,7 +1515,7 @@ $display(
   M(X)\, M(Y) \
   cases(
     delim: "|",
-    X\, Y "- НЗСВ (НКСВ)",
+    X\, Y dash "НЗСВ (НКСВ)",
     r(X, Y) = 0,
   ) \
   sigma(X) = sigma(Y) = sigma
@@ -1623,7 +1623,7 @@ $M(X) = 1000 "л", sigma(X) = 200 "л" \
 
 #v(1em)
 
-$x_1, x_2, ..., x_n "- ЗСВ" quad display(macron(x) = 1/n sum_(i=1)^n x_i stretch(->)_(n->oo)^P 1/n sum_(i=1)^n M(x_i)) \
+$x_1, x_2, ..., x_n dash "ЗСВ" quad display(macron(x) = 1/n sum_(i=1)^n x_i stretch(->)_(n->oo)^P 1/n sum_(i=1)^n M(x_i)) \
 exists M(x_i), D(x_i) <= D$
 $
   & cases(
@@ -1636,7 +1636,7 @@ $
 
 В теореме Маркова фигурируют независимые СВ
 
-$x_1, x_2, ..., x_n "- НЗСВ" quad display(macron(x) = 1/n sum_(i=1)^n x_i stretch(->)_(n->oo)^P 1/n sum_(i=1)^n M(x_i)) \
+$x_1, x_2, ..., x_n dash "НЗСВ" quad display(macron(x) = 1/n sum_(i=1)^n x_i stretch(->)_(n->oo)^P 1/n sum_(i=1)^n M(x_i)) \
 exists M(x_i), D(x_i) <= D, abs(abs(k_(i j))) = abs(abs(M(limits(x_i)^(#circle(radius: 1pt, stroke: 0.4pt)), limits(x_j)^(#circle(radius: 1pt, stroke: 0.4pt))))) space i, j = ov(1\,n), M(macron(X)), \
 D(macron(X)) = display(1/n^2 sum_(i=1)^n sum_(j=1)^n k_(i j)\, lim D(macron(X)) = 0)$
 $
@@ -1673,7 +1673,7 @@ n_1 = 200 quad p_1 = "0,4" \
 n_2 = 180 quad p_2 = "0,5" \
 n_3 = 120 quad p_3 = "0,6" \
 P(abs(m/n - 1/n sum ...) <= "0,05") >= (sum ...)/() \
-x_1, x_2, ..., x_n "- НЗСВ"$
+x_1, x_2, ..., x_n dash "НЗСВ"$
 
 == ЦПТ
 
@@ -1685,7 +1685,7 @@ x_1, x_2, ..., x_n "- НЗСВ"$
 
 #v(1em)
 
-$X_1, X_2, ..., X_n "- НЗСВ" \
+$X_1, X_2, ..., X_n dash "НЗСВ" \
 X_i ~ "ЗР", exists D(X_i) = sigma^2$
 $
   &S_n^* = tilde(X) = display(sum_(i=1)^n X_i - sum_(i=1)^n M(X_i))/display(sqrt(sum_(i=1)^n D(X_i))) = display(sum_(i=1)^n X_i - n a)/sqrt(n sigma^2) = display(1/n sum_(i=1)^n X_i - a)/display(sigma/sqrt(n)) = (macron(X) - a)/display(sigma/sqrt(n)) \
@@ -1704,7 +1704,7 @@ $display(
 )$
 
 $display(
-  X_1\, X_2\, ...\, X_n "- НЗСВ" \
+  X_1\, X_2\, ...\, X_n dash "НЗСВ" \
   X_i ~ "ЗР" quad exists M(X_i) = a\, D(X_i) = sigma^2 \
   z_n = display(sum_(i=1)^n (x_i - a))/(sigma sqrt(n)) quad F(z_n) = P(z_n < x) stretch(->)_(n->oo)^P 1/sqrt(2pi) integral_(-oo)^x e^(-t^2/2) dif t \
   S_n = sum_(i=1)^n X_i
@@ -1715,7 +1715,7 @@ $
 $
   cases(
     reverse: #true,
-    X_1\, X_2\, ...\, X_n "- НЗСВ",
+    X_1\, X_2\, ...\, X_n dash "НЗСВ",
     exists M(X_i) = a_i\, D(X_i) = sigma_i^2,
     mu_3(X_i) = M(abs(X_i - a_i)^3),
     display(lim_(n->oo)) display(sum_(i=1)^n mu_3(X_i))/(display(sum_(i=1)^n sigma_i^2))^(3\/2) = ...
@@ -1726,7 +1726,7 @@ $
 $
   cases(
     reverse: #true,
-    X_1\, X_2\, ...\, X_n "- НЗСВ",
+    X_1\, X_2\, ...\, X_n dash "НЗСВ",
     exists M(X_i) = a\, D(X_i) = sigma^2\, M(abs(X_i - a_i)^3) = mu_3(X_i)
   ) Y_n = sum_(i=1)^n X_i stretch(->)_(n->oo)^P N(0; 1)
 $
@@ -1796,11 +1796,11 @@ $
     $p = "0,6" \
     n = 100 => n p = 60 \
     m = 55 => n p q = 24 \
-    x = (m - n p)/sqrt(n p q) = (55 - 60)/sqrt(24) approx "-1,02"$
+    x = (m - n p)/sqrt(n p q) = (55 - 60)/sqrt(24) approx -"1,02"$
   ],
   [
     $P_100(55) = C_100^55 ("0,6")^55 ("0,4")^45 = "0,04831" \
-    P_100(55) = f("-1,02")/sqrt(24) = "0,2371"/"4,899" = "0,04835"$
+    P_100(55) = f(-"1,02")/sqrt(24) = "0,2371"/"4,899" = "0,04835"$
   ],
 )
 
@@ -1814,8 +1814,8 @@ $
     m_2 = 630$
   ],
   [
-    $x_1 = (580 - 600)/"15,49" = "-1,29", x_2 = (630 - 600)/"15,49" = "1,94" \
-    P_1000(580 <= m <= 630) approx Phi("1,94") - Phi("-1,29") = \ = "0,4738" - ("-0,4015") = "0,8753"$
+    $x_1 = (580 - 600)/"15,49" = -"1,29", x_2 = (630 - 600)/"15,49" = "1,94" \
+    P_1000(580 <= m <= 630) approx Phi("1,94") - Phi(-"1,29") = \ = "0,4738" - (-"0,4015") = "0,8753"$
   ],
 )
 
@@ -1840,14 +1840,14 @@ $
     $P(X >= 15) = P(15 <= x < oo) = "0,5" - Phi((15 - "15,5")/"4,06") = \ = "0,5" + "0,0478" = "0,5478" \
     m_min space P_д = "0,93" \
     P_д = "0,5" - Phi((m_min - "15,5")/"4,06") = "0,93" \
-    Phi((m_min - "15,5")/"4,06") = "-0,43" \
+    Phi((m_min - "15,5")/"4,06") = -"0,43" \
     -(m_min - "15,5")/"4,06" = "1,475" \
-    m_min = "-1,475" dot "4,06" + "15,5" approx "9,5" = 9$
+    m_min = -"1,475" dot "4,06" + "15,5" approx "9,5" = 9$
     #line(length: 100%, stroke: 0.5pt)
-    $n "- ?" \
+    $n dash ? \
     X >= 10 \
     P_д = "0,98" = "0,5" - Phi((10 - "1,55"n)/sqrt("1,65"n)) \
-    Phi((10 - "1,55"n)/sqrt("1,65"n)) = "-0,48" \
+    Phi((10 - "1,55"n)/sqrt("1,65"n)) = -"0,48" \
     -(10 - "1,55"n)/sqrt("1,65"n) = "2,05" => n = "12,433" = 13$
   ],
 )

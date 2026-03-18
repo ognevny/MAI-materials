@@ -179,7 +179,7 @@
     )
   ],
   [
-    $k = 8 "- количество звеньев (общее)" \
+    $k = 8 dash "количество звеньев (общее)" \
     n = 7 \
     p_4 = 0 \
     q = 0 \
@@ -519,7 +519,7 @@
       (
         image("source-figures/lect4-5.png"),
         image("source-figures/lect4-6.png", width: 70%),
-        image("source-figures/lect5-1.png")
+        image("source-figures/lect5-1.png"),
       ).join(),
     )
   ],
@@ -537,17 +537,17 @@
     $triangle B C E ~ triangle b c e$
 
     $a_B = &un(un(a_B^n))& + &un(un(a_B^tau))& \
-      &parallel A B& &perp A B& \
-      &omega_1^2 L_(A B)& &epsilon_1 L_(A B)&$
+    &parallel A B& &perp A B& \
+    &omega_1^2 L_(A B)& &epsilon_1 L_(A B)&$
 
     (В нашем случае $epsilon_1 = 0$)
 
     $a_C = un(un(a_B)) + &un(un(a_(C B)^n))& + &un(a_(C B)^tau)& \
-      &parallel C B& &perp C B& \
-      &omega_2^2 L_(C B)& &&$
+    &parallel C B& &perp C B& \
+    &omega_2^2 L_(C B)& &&$
 
     $a_C = un(un(a_D)) + un(un(a_(C D)^k)) + &un(a_(C D)^r)& \
-      &parallel x x&$
+    &parallel x x&$
 
     Направление ускорение Кориолиса определяем по направлению $omega_2$ (вверх перпендикулярно $V_(C D)$).
 
@@ -584,7 +584,7 @@
       $ phi_j = phi_j (phi_1) $
     ],
   ),
-  caption: []
+  caption: [],
 ) <функположения>
 
 Вид функции положения зависит от схемы механизма, а входящие в её состав постоянные -- от размерных параметров звеньев.
@@ -594,7 +594,7 @@ $phi_1 = phi_1(t)$ -- закон движения
 $dv(phi_1, t) quad epsilon_1 = dv(omega_1, t) = dv(phi_1, t, 2)$
 
 $v_j = dv(S_j, t) = dv(S_j, phi_1) dv(phi_1, t) = dv(S_j, phi_1) omega_1 \
-  omega_j = dv(phi_j, t) = dv(phi_j, phi_1) dv(phi_1, t) = dv(phi_j, phi_1) omega_1$
+omega_j = dv(phi_j, t) = dv(phi_j, phi_1) dv(phi_1, t) = dv(phi_j, phi_1) omega_1$
 
 $dv(S_j, phi_1)$ и $dv(phi_j, phi_1)$ -- аналоги скоростей (передаточное отношение).
 
@@ -625,15 +625,15 @@ _Орехов скрипящему мелу: "Что ты ноешь?"_
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect5-4.png")
+      image("source-figures/lect5-4.png"),
     )
   ],
   [
     Из $triangle A B K$: $S_3 = l_(A B) sin phi_1$
 
     $
-      v_3 &= dv(S_3, phi_1) = dv((l_(A B) sin phi_1), phi_1) = l_(A B) cos phi_1 \
-      a_3 &= dv(S_3, phi_1, 2) = dv((l_(A B) cos phi_1), phi_1) = -l_(A B) sin phi_1
+      v_3 & = dv(S_3, phi_1) = dv((l_(A B) sin phi_1), phi_1) = l_(A B) cos phi_1 \
+      a_3 & = dv(S_3, phi_1, 2) = dv((l_(A B) cos phi_1), phi_1) = -l_(A B) sin phi_1
     $
   ],
 )

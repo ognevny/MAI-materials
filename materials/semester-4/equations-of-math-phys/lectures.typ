@@ -130,7 +130,7 @@ $display(
     phi(x, y, z) = C_1,
     phi(x, y, z) = C_2,
   )
-), space "доказать" Phi(C_1, C_2) = 0 "- общее решение (1)" \
+), space "доказать" Phi(C_1, C_2) = 0 dash "общее решение (1)" \
 Phi(C_1(x, y, z), C_2(x, y, z)) = 0 quad F(x, y, z) \
 pdv(z, x) = -F_x/F_z
 pdv(z, y) = -F_y/F_z
@@ -200,14 +200,14 @@ $x pdv(z, x) + y pdv(z, y) = 2x y$
 $display(
   (dif x)/x = (dif y)/y = (dif z)/(2x y) \
   cases(
-    (dif x)/x = (dif y)/y => ln abs(x) = ln abs(y) + ln abs(C_1) => x/y = tilde(C)_1 => y = x/C_1 "- подстановка",
+    (dif x)/x = (dif y)/y => ln abs(x) = ln abs(y) + ln abs(C_1) => x/y = tilde(C)_1 => y = x/C_1 dash "подстановка",
     (dif x)/x = (dif z)/(2x y),
   ) \
   (dif x)/cancel(x) = (dif z)/(2cancel(x) dot x/C_1) => (2x)/C_1 dif x = dif z => x^2/C_1 = z - C_2 => z - x^2/C_1 = C_2 => z - x^2/(x/y) = C_2 => z - x y = C_2 \
   Phi(phi_1(x, y, z), phi_2(x, y, z)) = 0 => Phi(x/y, z - x y) = 0 => z - x y = phi(x/y) => z = x y + phi(x/y)
 )$
 
-$ pdv(u, t) + u pdv(u, x) = 0, $ $u(x, t) "- скорость"$
+$ pdv(u, t) + u pdv(u, x) = 0, $ $u(x, t) dash "скорость"$
 
 $display(
   (dif t)/1 = (dif x)/u = (dif u)/0 \
@@ -216,7 +216,7 @@ $display(
     (dif t)/1 = (dif x)/u,
   ) \
   dif t = (dif x)/C_1 => C_1 integral dif t = dif x => C_1 t = x - C_2 => u t = x - C_2 => C_2 = x - u t \
-  Phi(u, x - u t) = 0 "- ответ"
+  Phi(u, x - u t) = 0 dash "ответ"
 )$
 
 $x pdv(z, x) - y pdv(z, y) = x - y quad z(1, y) = y + e^y$
@@ -469,7 +469,7 @@ $
 $
 
 $display(
-  Delta = 0^2 - 1 dot 1/x^2 = -1/x^2 < 0 "- эллиптический" \
+  Delta = 0^2 - 1 dot 1/x^2 = -1/x^2 < 0 dash "эллиптический" \
   1 dot (dif y)^2 + 1/x^2 (dif x)^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => \ => dv(y, x) = +- i/x => integral dif y = integral i/x dif x => y = +- i ln x + C => C = y +- i ln x
 )$
 
@@ -486,11 +486,11 @@ $display(
   u_(y y) = (u_y)'_y = (u_xi)'_y = u_(xi xi) xi_y + u_(xi eta) eta_y = u_(xi xi) \
   -1/x^2 u_eta + 1/x^2 u_(eta eta) + 1/x^2 u_(xi xi) + 1/x^2 u_eta = 0 \
   1/x^2 (u_(xi xi) + u_(eta eta)) = 0 \
-  u_(xi xi) + u_(eta eta) = 0 "- уравнение Лапласа" \
+  u_(xi xi) + u_(eta eta) = 0 dash "уравнение Лапласа" \
   u = phi(C_1) + psi(C_2) = phi(y + i ln x) + psi(y - i ln x) \
   u = "Re" f(C) = "Re" f(y + i ln x) \
   u = "Im" f(C) = "Im" f(y + i ln x) \
-  f\, phi\, psi "- произвольные аналитические функции"
+  f\, phi\, psi dash "произвольные аналитические функции"
 )$
 
 = Уравнения математической физики
@@ -614,19 +614,19 @@ $display(
   u = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) underbrace([F(x + a t) - F(x - a t)], integral_(x- a t)^(x + a t) psi(z) dif z)
 )$
 
-Полученная формула $
-  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z quad (1)
-$ называется формулой д'Аламбера
+Полученная формула $ u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z quad (1) $ называется формулой д'Аламбера
 
 ===== Пример
 
 #v(1em)
 
-$ u_(t t) = 4u_(x x) quad cases(
-  delim: bar.v.double,
-  evaluated(u)_(t=0) = k x,
-  evaluated(u_t)_(t=0) = k,
-) $
+$
+  u_(t t) = 4u_(x x) quad cases(
+    delim: bar.v.double,
+    evaluated(u)_(t=0) = k x,
+    evaluated(u_t)_(t=0) = k,
+  )
+$
 
 $display(
   a^2 = 4 => a = 2 \
@@ -641,9 +641,7 @@ $
   u_(t t) = a^2 u_(x x) + f(x, t)
 $
 
-Формула д'Аламбера для неоднородного уравнения $
-  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z + 1/(2a) integral_0^t integral_(x - a (t - tau))^(x + a (t - tau)) f(z, t) dif z dif tau quad (2)
-$
+Формула д'Аламбера для неоднородного уравнения $ u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z + 1/(2a) integral_0^t integral_(x - a (t - tau))^(x + a (t - tau)) f(z, t) dif z dif tau quad (2) $
 
 ===== Пример
 
@@ -676,10 +674,13 @@ $
     delim: bar.v.double,
     evaluated(u)_(x=0) = 0,
     evaluated(u)_(x=l) = 0,
-  ) "- однородные граничные условия"
+  ) dash "однородные граничные условия"
 $
 
-#enum(numbering: "Условия 1 рода", number-align: left)[$u(0, t) = mu(t)$][$u_x (0, t) = eta(t)$][$u_x (0, t) = theta [u(0, t) - mu(t)]$ (упругое закрепление)]
+#enum(
+  numbering: "Условия 1 рода",
+  number-align: left,
+)[$u(0, t) = mu(t)$][$u_x (0, t) = eta(t)$][$u_x (0, t) = theta [u(0, t) - mu(t)]$ (упругое закрепление)]
 
 #grid(
   columns: (1fr, 2fr),
@@ -689,17 +690,15 @@ $
       (
         image("source-figures/lect5-1.png"),
         image("source-figures/lect5-2.png"),
-      ).join()
+      ).join(),
     )
   ],
   [
     $0 < x < l \
     0 < t < oo$
 
-    Будем искать решение поставленной задачи в виде $
-      u(x, t) = X(x) dot T(t)
-    $
-  ]
+    Будем искать решение поставленной задачи в виде $ u(x, t) = X(x) dot T(t) $
+  ],
 )
 
 Подставим
@@ -725,26 +724,26 @@ $display(
 + $ov(lambda) = -lambda^2 < 0$
 
   $X'' - lambda^2 X = 0 \
-    k^2 - lambda^2 = 0 <=> k_(1,2) = +-lambda$
+  k^2 - lambda^2 = 0 <=> k_(1,2) = +-lambda$
 
   $X_1 = C_1 e^(lambda x), X_2 = C_2 e^(-lambda x) \
-    X(x) = C_1 e^(lambda x) + C_2 e^(-lambda x) \
-    X(0) = C_1 + C_2 = 0 => C_1 = -C_2 \
-    X(l) = C_1 e^(lambda l) + C_2 e^(-lambda l) = 0 \
-    C_1 (e^(lambda l) - e^(-lambda l)) = 0 => C_1 = 0 => C_2 = 0$
+  X(x) = C_1 e^(lambda x) + C_2 e^(-lambda x) \
+  X(0) = C_1 + C_2 = 0 => C_1 = -C_2 \
+  X(l) = C_1 e^(lambda l) + C_2 e^(-lambda l) = 0 \
+  C_1 (e^(lambda l) - e^(-lambda l)) = 0 => C_1 = 0 => C_2 = 0$
 
 + $ov(lambda) = lambda^2 > 0$
 
   $X'' + lambda^2 X = 0 \
-    k^2 + lambda^2 = 0 <=> k = +-i lambda \
-    X(x) = e^(0 dot x) (C_1 cos(lambda x) + C_2 sin(lambda x)) = C_1 cos(lambda x) + C_2 sin(lambda x) \
-    X(0) = C_1 cos(lambda dot 0) + C_2 sin(lambda dot 0) = 0 => C_1 = 0 \
-    X(l) = 0 + C_2 sin(lambda l) = 0 stretch(=>)^(C_2 != 0) sin(lambda l) = 0 => lambda l = pi k => lambda = (pi k)/l => \ => ov(lambda) = lambda^2 = ((pi n)/l)^2 "- собственные числа" => \ => X_n (x) = C_2 sin (pi n)/l x "- собственные функции (задача Штурма-Лиувилля)"$
+  k^2 + lambda^2 = 0 <=> k = +-i lambda \
+  X(x) = e^(0 dot x) (C_1 cos(lambda x) + C_2 sin(lambda x)) = C_1 cos(lambda x) + C_2 sin(lambda x) \
+  X(0) = C_1 cos(lambda dot 0) + C_2 sin(lambda dot 0) = 0 => C_1 = 0 \
+  X(l) = 0 + C_2 sin(lambda l) = 0 stretch(=>)^(C_2 != 0) sin(lambda l) = 0 => lambda l = pi k => lambda = (pi k)/l => \ => ov(lambda) = lambda^2 = ((pi n)/l)^2 dash "собственные числа" => \ => X_n (x) = C_2 sin (pi n)/l x dash "собственные функции (задача Штурма-Лиувилля)"$
 
 $T'' + a^2 ov(lambda) T = 0 <=> T'' + a^2 lambda^2 T = 0 \
-  k^2 + a^2 lambda^2 = 0 <=> k_(1,2) = +-a lambda \
-  T = C_1 cos(a lambda t) + C_2 sin(a lambda t) => \
-  => T_n (t) = tilde(A)_n cos (pi n)/l a t + tilde(B)_n sin (pi n)/l a t$
+k^2 + a^2 lambda^2 = 0 <=> k_(1,2) = +-a lambda \
+T = C_1 cos(a lambda t) + C_2 sin(a lambda t) => \
+=> T_n (t) = tilde(A)_n cos (pi n)/l a t + tilde(B)_n sin (pi n)/l a t$
 
 $
   u_n (x, t) = X_n (x) dot T_n (t) = C_2 sin (pi n)/l x (tilde(A)_n cos (pi n)/l a t + tilde(B)_n sin (pi n)/l a t) \
@@ -756,5 +755,164 @@ $
 
 $display(
   evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) \
-  evaluated(u_t)_(t=0) = sum_1^oo evaluated([(A_n (-sin (pi n)/l a t) (pi n a)/l + B_n cos (pi n)/l a t dot (pi n a)/l) sin(pi n)/l x])_(t=0) = \ = sum_1^oo B_n (pi n a)/l sin (pi n)/l x = psi(x)
+  evaluated(u_t)_(t=0) = sum_1^oo evaluated([(A_n (-sin (pi n)/l a t) (pi n a)/l + B_n cos (pi n)/l a t dot (pi n a)/l) sin (pi n)/l x])_(t=0) = \ = sum_1^oo B_n (pi n a)/l sin (pi n)/l x = psi(x)
 )$
+
+Собственные функции (для $n in NN$) образуют ортогональную систему $ X_n dot X_m = integral_0^l X_n dot X_m dif x space dash "скалярное произведение" \
+X_n dot X_m = cases(0 quad &n != m, ||x||^2 quad &n = m), $ где $||x||^2$ -- норма.
+
+= Ряды Фурье
+
+#v(1em)
+
+Рассмотрим бесконечный базис
+
+1, $cos x$, $sin x$, $cos 2x$, $sin 2x$, ..., $cos n x$, $sin n x$, ...
+относительно скалярного произведения
+
+$display((phi_n (x) dot phi_m (x)) = integral_(-pi)^pi phi_n (x) dot phi_m (x) dif x)$
+
+$display(
+  (phi_n dot phi_m) = cases(
+    0 quad n != m,
+    1 quad n = m,
+  ) \
+  integral_(-pi)^(pi) sin x cos x dif x = integral_(-pi)^(pi) 1/2 sin 2x dif x = evaluated(-1/4 cos 2x)_(-pi)^pi = 0 \
+  (sin x dot sin x) = integral_(-pi)^(pi) sin^2 x dif x = integral_(-pi)^(pi) 1/2 (1 - cos 2x) dif x = evaluated(1/(2pi) (x - 1/2 sin 2x))_(-pi)^pi = 1/(2pi) evaluated(x)_(-pi)^pi - 1/(2pi) dot 0 = 1
+)$
+
+$
+  f(x) & = a_0/2 + sum_1^oo (a_n cos n x + b_n sin n x) \
+   a_n & = 1/pi integral_(-pi)^(pi) f(x) cos n x dif x \
+   b_n & = 1/pi integral_(-pi)^(pi) f(x) sin n x dif x \
+   a_0 & = 1/pi integral_(-pi)^(pi) f(x) dif x
+$
+
+$display(
+  f(x) space dash "чётная" => cases(
+    delim: bar.v.double,
+    f(x) cos n x space dash "чётная",
+    f(x) sin n x space dash "нечётная",
+  ) => cases(
+    delim: #none,
+    a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dif x = 2/pi integral_0^(pi) f(x) cos n x dif x,
+    b_n = 0,
+  )
+)$
+
+$display(
+  f(x) space dash "нечётная" => cases(
+    delim: bar.v.double,
+    f(x) cos n x space dash "нечётная",
+    f(x) sin n x space dash "чётная",
+  ) => cases(
+    delim: #none,
+    a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dif x = 0,
+    b_n = 1/pi integral_(-pi)^(pi) f(x) sin n x dif x = 2/pi integral_0^(pi) f(x) sin n x dif x,
+  )
+)$
+
+= Возвращение к УМФ
+
+#v(1em)
+
+$display(
+  evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) => A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dif x => \ => phi(x) space dash "разложена в ряд Фурье по синусам" \
+  evaluated(u_t)_(t=0) = sum_1^oo underbrace(B_n (pi n a)/l, tilde(B)_n) sin (pi n)/l x = psi(x) => B_n dot (pi a n)/l = 2/l integral_0^l psi(x) sin (pi n x)/l dif x
+)$
+
+===== Задача
+
+#v(1em)
+
+$
+  u_(t t) = u_(x x) quad cases(
+    delim: bar.v.double,
+    0 < x < pi,
+    0 < t < oo
+  ) quad cases(
+    delim: bar.v.double,
+    (x) = -x/l,
+    psi(x) = 0,
+  ) quad cases(
+    delim: bar.v.double,
+    evaluated(u)_(x=0) = 0,
+    evaluated(u)_(x=pi) = 0,
+  )
+$
+
+$a = 1; phi(x) = -x/pi; psi(x) = 0; l = pi$
+
+$display(
+  u(x, t) = sum_1^oo (A_n cos(n t) + B_n sin(n t)) sin n x \
+  A_n = 2/pi integral_0^pi -x/pi sin n x dif x = -2/pi^2 integral_0^pi x sin n x dif x = 2/(pi^2 n) integral_0^pi x dif cos n x = 2/(pi^2 n) (evaluated(x cos n x)_0^pi - \ - integral_0^pi cos n x dif x) = 2/(pi^2 n) pi cos pi n - 2/(pi^2 n) evaluated(1/n sin n x)_0^pi = 2/(pi n) dot (-1)^n \
+  B_n dot n = 2/pi integral_0^pi 0 dot sin n x dif x => B_n = 0 \
+  u(x, t) = sum_1^oo 2/(pi n) dot (-1)^n cos n t sin n x
+)$
+
+==== Метод Фурье для решения начально-краевой задачи неоднородного уравнения
+
+#v(1em)
+
+$
+  u_(t t) = a^2 u_(x x) + f(x, t) quad "НУ" cases(
+    delim: bar.v.double,
+    evaluated(u)_(t=0) = phi(x),
+    evaluated(u_t)_(t=0) = psi(x),
+  ) quad "ГУ" cases(
+    delim: bar.v.double,
+    evaluated(u)_(x=0) = 0,
+    evaluated(u)_(x=l) = 0,
+  )
+$
+
+$
+  u_(t t) = u_(x x) + sin 3x quad cases(
+    delim: bar.v.double,
+    evaluated(u)_(t=0) = 0,
+    evaluated(u_t)_(t=0) = 0,
+  ) quad cases(
+    delim: bar.v.double,
+    evaluated(u)_(x=0) = 0,
+    evaluated(u)_(x=pi) = 0,
+  )
+$
+
+Будем искать решение задачи Коши в виде $ u(x, t) = sum_1^oo T_n (t) sin (pi n x)/l, $ где $X_n = sin (pi n x)/l$
+
+$display(
+  u'_x = sum_1^oo T_n (t) cos (pi n x)/l dot (pi n)/l \
+  u''_(x x) = sum_1^oo T_n (t) (-sin (pi n x)/l dot ((pi n)/l)^2)
+)$
+
+В нашем случае
+
+$display(
+  X_n = sin n x \
+  u'_x = sum_1^oo T_n (t) cos n x dot n \
+  u''_(x x) = sum_1^oo T_n (t) (-sin n x dot n^2) \
+)$
+
+$display(
+  u'_t = sum_1^oo T'_n (t) sin n x \
+  u''_(t t) = sum_1^oo T''_n (t) sin n x
+)$
+
+Подставляем в уравнение
+
+$display(
+  sum_1^oo T''_n (t) sin n x = sum_1^oo T_n (t) (-sin n x dot n^2) + f(x, t) \
+  sum_1^oo [T''_n (t) sin n x + sin n x dot n^2] = f(x, t) \
+  sum_1^oo [T''_n (t) + n^2] sin n x = f(x, t) \
+  sum_1^oo [T''_n (t) + n^2] sin n x = sin 3x
+)$
+
+Не надо раскладывать в ряд Фурье то, что уже разложено (в нашем случае $sin 3x$)
+
+$display(
+  sin n x space (n != 3): &T''_n (t) + n^2 T_n (t) = 0 \
+  sin 3x: &T''_3 (t) + 9T_3 (t) = 1
+)$
+
+$&T_n (0) = phi_n quad &T'_n (0) = psi_n = 0 \
+&T_3(0) = 0 quad &T'_3(0) = 0$

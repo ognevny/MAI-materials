@@ -219,7 +219,7 @@ $c ["Дж"/("кг" dot К)], space C ["Дж"/(м^3 dot К)], space hat(c) ["Дж
 
     #rect[$ c_p > c_V quad c_T = dv(q, T) = oo $]
     #rect[$
-      c_p = c_V + R => c_p - c_V & = R "- уравнение Майера" ["Дж"/("кг" dot К)] \
+      c_p = c_V + R => c_p - c_V & = R dash "уравнение Майера" ["Дж"/("кг" dot К)] \
              hat(c)_p - hat(c)_V & = hat(R)
     $]
   ],
@@ -307,7 +307,7 @@ $
 
 где $i_j$ -- энтальпия процесса.
 
-Для адиабаты $ (w_2^2 - w_1^2)/2 = i_1 - i_2 "- превращение кинетической энергии (располагаемая работа)" $
+Для адиабаты $ (w_2^2 - w_1^2)/2 = i_1 - i_2 dash "превращение кинетической энергии (располагаемая работа)" $
 
 === Анализ ТД процессов (1.1.11)
 
@@ -371,3 +371,136 @@ $
 + $L = R T ln v_2/v_1 = p_1 v_1 ln p_1/p_2 = "2,303"R T lg v_2/v_1$
 + $Q = L$
 + $psi = (Delta u)/Q = 0$
+
+==== Адиабатный процесс
+
+#v(1em)
+
+Процесс, протекающий без теплообмена с окружающей средой
+
+$ Delta u + L = 0 => L = -Delta u = c_v (T_1 - T_2) $
+
+$display(
+  p v = R T => T = (p v)/R \
+  L = c_v ((p_1 v_1)/R - (p_2 v_2)/R) = c_v/R (p_1 v_1 - p_2 v_2) \
+  L = c_v/(c_p - c_v) (p_1 v_1 - p_2 v_2) = 1/(k - 1) (p_1 v_1 - p_2 v_2)
+)$
+
+$ k = c_p/c_v $
+
+Работа -- площадь под графиком. В нашем случае она имеет вид $ F = 1/(n - 1) (x_1 y_1 - x_2 y_2), space "где" y x^n = "const" $ Соответственно здесь $p v^k = "const"$, график -- гипербола.
+
+Формула соотношения параметров $ p_1 v_1^k = p_2 v_2^k => p_2/p_1 = (v_1/v_2)^k $
+
+$
+  (p_2 v_2)/(p_1 v_1) = T_2/T_1 => p_2/p_1 = T_2/T_1 dot v_1/v_2 = (v_1/v_2)^k => T_2/T_1 & = (v_1/v_2)^(k-1) \
+                                                                                  v_1/v_2 & = (p_2/p_1)^(1/k) \
+                                                                                  v_1/v_2 & = (T_2/T_1)^(1/(k-1)) \
+                                         (p_2/p_1)^(1/k) = (T_2/T_1)^(1/(k-1)) => T_2/T_1 & = (p_2/p_1)^((k-1)/k)
+$
+
+$display(
+  Delta u = c_v (T_2 - T_1) \
+  L = 1/(k - 1) (p_1 v_1 - p_2 v_2) = R/(k - 1) (T_1 - T_2) \
+  cancel(angle: #90deg, L = (1 - psi) Q) \
+  L = (R T_1)/(k - 1) (1 - T_2/T_1) = (R T_1)/(k - 1) [1 - (p_2/p_1)^((k-1)/k)] \
+  L = (p_1 v_1)/(k - 1) [1 - (v_1/v_2)^(k-1)]
+)$
+
+$
+  psi = (Delta u)/Q = oo
+$
+
+==== Политропный процесс
+
+#v(1em)
+
+Процессы, протекающие при постоянном законе распределения энергии.
+
+$
+  psi = (Delta u)/Q = "const" \
+  cases(
+    Delta u = psi Q,
+    L = (1 - psi) Q,
+  ) \
+  p v^gamma = "const",
+$
+
+где $gamma$ -- показатель политропы
+
+$
+  gamma = (c - c_p)/(c - c_v) \
+  c = c_v/psi
+$
+
+Частные случаи:
+- $v = "const" quad gamma = oo quad c = c_v$
+- $p = "const" quad gamma = 0 quad c = c_p$
+- $p v = "const" quad gamma = 1 quad c = oo$
+- $p v^k = "const" quad gamma = k quad c = 0$
+
+$
+  p_2/p_1 & = (v_1/v_2)^gamma \
+  T_2/T_1 & = (v_1/v_2)^(gamma-1) \
+  T_2/T_1 & = (p_2/p_1)^((gamma-1)/gamma)
+$
+
+$
+  L = 1/(gamma - 1) (p_1 v_1 - p_2 v_2) = R/(gamma - 1) (T_1 - T_2) = (p_1 v_1)/(gamma - 1) [1 - (p_2/p_1)^((gamma-1)/gamma)]
+$
+
+Теплоёмкость политропного процесса $ & gamma c - gamma c_v = c - c_p => (gamma - 1) c = gamma c_v - c_p \
+& c = (gamma c_v - c_p)/(gamma - 1) = (gamma c_v - k c_v)/(gamma - 1) => c = (gamma - k)/(gamma - 1) c_v \
+& psi = (gamma - 1)/(gamma - k) \
+& Q = c (T_2 - T_1) = c_v (gamma - k)/(gamma - 1) (T_2 - T_1) \
+& Q = L/(1 - psi) $
+
+$
+  lg p + gamma lg v = lg("const") = lg G
+$
+
+#figure(
+  image("source-figures/lect4-1.png"),
+)
+
+$
+  & tg beta = (lg G)/((lg G)/gamma) = gamma \
+  & lg(p_2/p_1) = gamma lg(v_1/v_2) \
+  & gamma = lg(p_2/p_1)/lg(v_1/v_2)
+$
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect4-2.png"),
+    )
+  ],
+  [
+    $gamma = "const"
+    G_1 < G_2 < G_3$
+  ],
+)
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect4-3.png"),
+    )
+  ],
+  [
+    $G = "const"
+    gamma_1 < gamma_2 < gamma_3$
+  ],
+)
+
+#figure(
+  image("source-figures/lect4-4.png"),
+)
+
+#figure(
+  image("source-figures/lect4-5.png", width: 70%),
+)

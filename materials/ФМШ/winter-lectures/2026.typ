@@ -403,11 +403,11 @@
 
 + $display(S_(triangle) = 1/2 a b sin(gamma))$
 
-+ $display(S_(triangle) = sqrt(p (p - a) (p - b) (p - c)) "- формула Герона, где" p = (a + b + c)/2)$
++ $display(S_(triangle) = sqrt(p (p - a) (p - b) (p - c)) dash "формула Герона, где" p = (a + b + c)/2)$
 
-+ $display(S_(triangle) = p r\, r "- радиус вписанной окружности")$
++ $display(S_(triangle) = p r\, r dash "радиус вписанной окружности")$
 
-+ $display(S_(triangle) = (a b c)/(4R)\, R "- радиус описанной окружности")$
++ $display(S_(triangle) = (a b c)/(4R)\, R dash "радиус описанной окружности")$
 
 + $display(S_(triangle) = (b + c - a)/2 dot r_a)$
 
@@ -483,8 +483,8 @@ $(A_1 B)/(A_1 C) = (B_1 B_2)/(B_1 C) => B_1 B_2 = (A_1 B dot B_1 C)/(A_1 C) \
 
 $C_1 A_2: (C_1 O)/(O C) &= (A_2 A_1)/(A_1 C) \
 C_1 B_2: (C_1 O)/(O C) &= (B_1 B_2)/(C B_1) \
-A_1 A_2 "-" ?: (A_1 A_2)/(A C_1) = (A_1 B)/(A B) => A_1 A_2 = (A C_1 dot A_1 B)/(A B) \
-B_1 B_2 "-" ?: (B_1 B_2)/(C_1 B) = (A B_1)/(A B) => B_1 B_2 = (A B_1 dot C_1 B)/(A B)$
+A_1 A_2 dash ?: (A_1 A_2)/(A C_1) = (A_1 B)/(A B) => A_1 A_2 = (A C_1 dot A_1 B)/(A B) \
+B_1 B_2 dash ?: (B_1 B_2)/(C_1 B) = (A B_1)/(A B) => B_1 B_2 = (A B_1 dot C_1 B)/(A B)$
 
 $(A_1 A_2)/(A_1 C) = (B_1 B_2)/(C B_1) \
 (A C_1 dot A_1 B)/(cancel(A B) dot A_1 C) = (A B_1 dot C_1 B)/(cancel(A B) dot C B_1) => (A C_1)/(C_1 B) dot (B A_1)/(A_1 C) dot (C B_1)/(B_1 A) = 1. triangle.filled$
@@ -911,7 +911,7 @@ a ((x + 1/x)^2 - 2) + b (x + 1/x) + macron(c) = 0$
     )
   ],
   [
-    $A O dot m_1 = O B dot m_2 => O "- центр масс для" A B$
+    $A O dot m_1 = O B dot m_2 => O dash "центр масс для" A B$
   ],
 )
 
@@ -1007,8 +1007,8 @@ $ (m_1 + m_2 + ... + m_k) arrow(Z C) + sum_(i=k+1)^n m_i dot arrow(Z A_i) = 0 $
   [
     $M O colon O M = ? \
     x = x_1 + x_2 \
-    (x)_1 A, C (z) quad Q "- барицентр" \
-    A (x_2), B (y) quad P "- барицентр" \
+    (x)_1 A, C (z) quad Q dash "барицентр" \
+    A (x_2), B (y) quad P dash "барицентр" \
     x_1 dot 3alpha = z 5alpha \
     x_1 = 5/3 z \
     x_2 dot (2beta)/3 = beta/3 dot y \
@@ -1019,7 +1019,7 @@ $ (m_1 + m_2 + ... + m_k) arrow(Z C) + sum_(i=k+1)^n m_i dot arrow(Z A_i) = 0 $
     13/3 arrow(M B) + 26/3 arrow(M A) = 0 \
     3 arrow(N B) + 3 arrow(N C) = 0 \
     13 arrow(O M) + 6 arrow(O N) = 0 \
-    (O M)/(O N) = 6/13 "- Ответ"$
+    (O M)/(O N) = 6/13 dash "Ответ"$
   ],
 )
 
@@ -1096,7 +1096,7 @@ $ (m_1 + m_2 + ... + m_k) arrow(Z C) + sum_(i=k+1)^n m_i dot arrow(Z A_i) = 0 $
 
 $ 1 = 7^7/7^7 = 7^(7-7) = 7^0 $
 
-По аналогии для нуля $ 0^10/0^10 "- неопределённость, деление на 0" $
+По аналогии для нуля $ 0^10/0^10 dash "неопределённость, деление на 0" $
 
 Допустим есть пароль из трёх чисел, количество вариантов равно 1000 ($10 dot 10 dot 10 = 10^3$). А что если нужно в 0 ячеек разместить 0 чисел? Будет одна комбинация, соответственно, $0^0 = 1$#footnote[Я (автор конспекта) ставлю под сомнение данное доказательство, поскольку оно сводится к аналогии, что не является логически верным].
 
@@ -1168,7 +1168,7 @@ $A D + D C = 2, (2x)/sqrt(3) + 2x = 2$
 
     В $triangle A B C$ $C P$ -- медиана, равная половине стороны $A B$, к которой она проведена. Отсюда по признаку прямоугольного треугольника $triangle A B C$ -- прямоугольный, $angle C = 90 degree => A D perp B E$.
 
-    $angle B C D = 90 degree => B D "- диаметр" => B D perp A B$
+    $angle B C D = 90 degree => B D dash "диаметр" => B D perp A B$
 
     $A E perp A B, B D perp A B => A E parallel B D triangle.filled$
   ],
@@ -1214,7 +1214,7 @@ x = (-b +- sqrt(D))/(2a)$
 
 $underbrace(2, a_n)x^3 - 3x^2 + 5x - underbrace(14, a_0) = 0$
 
-${m} "- делители" a_0, {n} "- делители" a_n$
+${m} dash "делители" a_0, {n} dash "делители" a_n$
 
 Составляем ${+- m/n}$:
 
@@ -1477,10 +1477,10 @@ $ S = 1 dot 1/(1 - 1/2) = 2 $
     )
   ],
   [
-    $O "- полюс"
+    $O dash "полюс"
     M(r; phi) \
     phi > 0, "если" O P "повёрнут против часовой стрелки" \
-    phi > 0, "если" O P "- по часовой" \
+    phi > 0, "если" O P dash "по часовой" \
     tg phi = (M H)/(O H) \
     r^2 = M H^2 + O H^2$
   ],
@@ -1538,7 +1538,7 @@ A(sqrt(13); "0,98")$
 
 Уравнение вида $r = k = "const"$
 
-Пример 1: $r = 2, 2 = sqrt(x^2 + y^2) => 2^2 = x^2 + y^2 "- уравнение окружности"$
+Пример 1: $r = 2, 2 = sqrt(x^2 + y^2) => 2^2 = x^2 + y^2 dash "уравнение окружности"$
 
 #grid(
   columns: (2fr, 1fr),

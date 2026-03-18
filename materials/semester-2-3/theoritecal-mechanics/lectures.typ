@@ -564,7 +564,7 @@ dif' A = (ov(T)_A, ov(V)_A) dif t + (ov(T)_B, ov(V)_B) dif t = (ov(T)_A, ov(V)_A
   [
     === Качение без скольжения по неподвижной поверхности
 
-    #rect[$ V_P = 0 "- М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dif t = 0 $]
+    #rect[$ V_P = 0 dash "М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dif t = 0 $]
   ],
   [
     #figure(
@@ -867,7 +867,7 @@ dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z$
 $delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ -- вариация функции ($t = "const"$)
 
 $ov(r) = (x, y, z, t) \
-dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t "- элементарное перемещение"$
+dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t dash "элементарное перемещение"$
 
 Виртуальное перемещение $ delta ov(r) = pdv(ov(r), x) delta x + pdv(ov(r), y) delta y + pdv(ov(r), z) delta z $
 
@@ -993,7 +993,7 @@ $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) $
 
 2. Для голономных систем
 
-$delta q_i "- независимы" \
+$delta q_i dash "независимы" \
 delta q_1 > 0; delta q_2 = ... = delta q_n = 0 \
 delta A_((1)) = display(sum_j (ov(F)_j, delta ov(r)_j^((1)))); delta A_((1)) = display(sum_(i=1)^n Q_i delta q_i = Q_1 delta q_1)$
 
@@ -1047,7 +1047,7 @@ $ Q_i^(Phi) = -{dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)} $
 $display(sum_(i=1)^n Q_i delta q_i + sum_(i=1)^n Q_i^(Phi) delta q_i = 0) \
 display(sum_(i=1)^n (Q_i + Q_i^(Phi)) delta q_i = 0)$
 
-$delta q_i "- независимы" \
+$delta q_i dash "независимы" \
 Q_i + Q_i^(Phi) = 0 space (i = 1...n) \
 Q_i - display({dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)}) = 0$
 
@@ -1061,7 +1061,7 @@ $ dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i) = -pdv(Pi, q_i) $
 
 #v(1em)
 
-$ L = T - Pi "- Лагранжиан" $
+$ L = T - Pi dash "Лагранжиан" $
 
 $display(pdv(Pi, dot(q)_i) = 0 => pdv(L, dot(q)_i) = pdv(T, dot(q)_i)\; dv(, t) pdv(T, dot(q)_i) - pdv(, q_i) (T - Pi) = 0)$
 
@@ -1074,10 +1074,10 @@ $ dv(, t) pdv(L, dot(q)_i) - pdv(L, q_i) = 0 $
 $n -> q_1, ..., q_n \
 delta A = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0\
 delta A = display(sum_(i=1)^n Q_i delta q_i) = 0 \
-delta q_i "- независимы" => Q_i = 0 space (i = 1...n) "- уравнение равновесия голономных систем" \
+delta q_i dash "независимы" => Q_i = 0 space (i = 1...n) dash "уравнение равновесия голономных систем" \
 Q_i = -pdv(Pi, q_i) \
-pdv(Pi, q_i) = 0 => q_i^*, i = 1...n "- положение равновесия" \
-x_i = q_i - q_i^* "- возмущение" \
+pdv(Pi, q_i) = 0 => q_i^*, i = 1...n dash "положение равновесия" \
+x_i = q_i - q_i^* dash "возмущение" \
 x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 
 Положение равновесия считаем устойчивым, если при всех достаточно малых начальных возмущениях по координатам и скоростям МС остается в заданной малой окрестности положения равновесия.
@@ -1100,7 +1100,7 @@ x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 
 $n = 1 \
 pdv(Pi, q) = 0 => q^* \
-evaluated(pdv(Pi, q, 2))_(q^*) = cases(> 0 - min "- устойчивый", < 0 - max "- неустойчивый")$
+evaluated(pdv(Pi, q, 2))_(q^*) = cases(> 0 dash min dash "устойчивый", < 0 dash max dash "неустойчивый")$
 
 === Малые колебания для систем с одной степенью свободы
 
@@ -1178,7 +1178,7 @@ display(
   )
 ) => x = sqrt(C_1^2 + C_2^2) (sin(epsilon) cos(k t) + cos(epsilon) sin(k t)) = sqrt(C_1^2 + C_2^2) sin(k t + epsilon)$
 
-$ A = sqrt(C_1^2 + C_2^2) "- Амплитуда", x = A sin(k t + epsilon), $
+$ A = sqrt(C_1^2 + C_2^2) dash "Амплитуда", x = A sin(k t + epsilon), $
 
 где $k$ -- (круговая) частота колебаний, $k t + epsilon$ -- фаза колебаний, $epsilon$ -- начальная фаза
 
@@ -1217,10 +1217,10 @@ $ a^* dot.double(x) + c^* x = -b^* dot(x) <=> a^* dot.double(x) + b^* dot(x) + c
 $dot.double(x) + b^* / a^* dot(x) + c^* / a^* x = 0 \
 b^* / a^* = 2n, c^* / a^* = k^2 \
 dot.double(x) + 2n dot(x) + k^2 x = 0 \
-lambda^2 + 2n lambda + k^2 = 0 "- характеристическое уравнение" \
+lambda^2 + 2n lambda + k^2 = 0 dash "характеристическое уравнение" \
 lambda = -n +- sqrt(n^2 - k^2)$
 
-$ n < k "- случай малого сопротивления" $
+$ n < k dash "случай малого сопротивления" $
 
 $k_1^2 = k^2 - n^2 \
 lambda = -n +- sqrt(-k_1^2) = -n +- i k_1 \
@@ -1230,7 +1230,7 @@ X = tilde(C)_1 e^((-n + i k_1) t) + tilde(C)_2 e^((-n - i k_1) t) = e^(-n t) (ti
   columns: (1.5fr, 1fr),
   [
     $x -> 0 "при" t -> oo$
-    #rect[$ tau_1 = (2pi)/k_1 "- период затухающих колебаний" $]
+    #rect[$ tau_1 = (2pi)/k_1 dash "период затухающих колебаний" $]
   ],
   [
     #figure(
@@ -1274,7 +1274,7 @@ display(
 ) -a^* p^2 + c^* != 0 <=> p^2 != c^* / a^* = k^2 <=> p != k \
 X_"ОН" = A sin(k t + epsilon) + tilde(F)/(-a^* p^2 + c^*) cos(p t)$
 
-$k = p "- резонанс" \
+$k = p dash "резонанс" \
 dot.double(x) + k^2 x = F_0 cos(p t), F_0 = tilde(F)/a^* \
 X_"Част" = B t cos(p t) + D t sin(p t); dot(X)_"Част" = B cos(p t) + B t (-sin(p t)) p + D sin(p t) + D t cos(p t) p; dot.double(X)_"Част" = \ = -B p sin(p t) - B p sin(p t) - B p t cos(p t) p + D p cos(p t) + D p cos(p t) + D p t (-sin(p t)) p \
 -2B p sin(p t) - B p t cos(p t) p + 2D p cos(p t) + D p t (-sin(p t)) p + k^2 (B t cos(p t) + D t sin(p t)) = F_0 cos(p t) \
@@ -1366,7 +1366,7 @@ $
     J_x, -J_(x y), -J_(x z);
     -J_(y x), J_y, -J_(y z);
     -J_(z x), -J_(z y), J_z;
-  ) "- тензор инерции"
+  ) dash "тензор инерции"
 $
 
 === Углы Эйлера
@@ -1382,10 +1382,10 @@ $
     #rect[$
       cases(
         reverse: #true,
-        psi "- угол прецессии",
-        theta "- угол нутации",
-        phi "- угол собственного вращения",
-      ) "Углы Эйлера"
+        psi dash "угол прецессии",
+        theta dash "угол нутации",
+        phi dash "угол собственного вращения",
+      ) dash "Углы Эйлера"
     $]
     #rect[$ ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)) $]
   ],
@@ -1481,7 +1481,7 @@ $ K_x = (omega_x sum_j m_j (y_j^2 + z_j^2) - omega_y sum_j m_j x_j y_j - omega_z
 
 #v(1em)
 
-Главными осями инерции называются оси, для которых смешанные моменты инерции в индексе которых присутствует название этой оси равны 0 ($J_(x y) = J_(x z) = 0 => O x "- главная ось инерции"$). Можно доказать, что в любой точке твердого тела любой формы можно построить по крайней мере 3 взаимноортоганальные главные оси инерции.
+Главными осями инерции называются оси, для которых смешанные моменты инерции в индексе которых присутствует название этой оси равны 0 ($J_(x y) = J_(x z) = 0 => O x dash "главная ось инерции"$). Можно доказать, что в любой точке твердого тела любой формы можно построить по крайней мере 3 взаимноортоганальные главные оси инерции.
 
 Если $O x$, $O y$, $O z$ -- главные оси инерции, то $ov(K)_0 = (J_x omega_x, J_y omega_y, J_z omega_z)$.
 
@@ -1619,11 +1619,11 @@ $(x): m(t) dv(V, t) = -dv(m, t) V_(1r) => integral dif V = -integral (dif m)/(m)
 t = 0, V = V_0, m = m_0 => V_0 = -V_(1r) ln m_0 + C => C = V_0 + V_(1r) ln m_0 \
 V = V_0 + (ln m_0 - ln m) V_(1r)$
 
-$ V = V_0 + V_(1r) ln m_0/m "- Формула Циолковского" $
+$ V = V_0 + V_(1r) ln m_0/m dash "Формула Циолковского" $
 
 $V_0 = 0, V_k = V_(1r) ln m_0/m$
 
-$ z = m_0/m_k "- Число Циолковского" $
+$ z = m_0/m_k dash "Число Циолковского" $
 
 $display(
   cases(
