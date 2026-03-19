@@ -395,11 +395,11 @@ $ X = phi(omega), omega in Omega $
 Также ЗР ДСВ может быть задан графиком (@графикДСВ или @прямаяДСВ) или аналитически в виде формулы.
 
 #figure(
-  image("source-figures/lect4-fig3.png", width: 70%),
+  image("source-figures/lect4-fig3.png", width: 50%),
   caption: [],
 ) <графикДСВ>
 #figure(
-  image("source-figures/lect4-fig4.png", width: 70%),
+  image("source-figures/lect4-fig4.png", width: 50%),
   caption: [],
 ) <прямаяДСВ>
 
@@ -1483,10 +1483,7 @@ $display(
   f_1(x) = integral_(-oo)^(+oo) f(x, y) dif y = 1/(sigma(X) sqrt(2pi)) e^(-(x - M(X))^2/(2sigma^2(X))) \
   f_2(x) = integral_(-oo)^(+oo) f(x, y) dif x = 1/(sigma(Y) sqrt(2pi)) e^(-(y - M(Y))^2/(2sigma^2(Y))) \
   f(x, y) = 1/(2pi sigma(X) sigma(Y)) exp(-1/2 dot ((x - M(X))^2/(sigma^2(X)) + (y - M(Y))^2/(sigma^2(Y)))) = \ = 1/(sigma(X) sqrt(2pi)) e^(-(x - M(X))^2/(2sigma^2(X))) dot 1/(sigma(Y) sqrt(2pi)) e^(-(y - M(Y))^2/(2sigma^2(Y))) = f_1(x) f_2(y) \
-  f(x\/y) = 1/(sigma(X) sqrt(1 - r^2(X, Y)) sqrt(2pi)) exp(-1/(2(1 - r^2(X, Y))) ((x - M(X))/(sigma(X)) - r(X, Y) (y - M(Y))/(sigma(Y)))^2) = \ = 1/(sqrt(2pi) sigma(X\/y)) e^(-(x - M(X\/y))^2/(2sigma^2(X\/y)))
-)$
-
-$display(
+  f(x\/y) = 1/(sigma(X) sqrt(1 - r^2(X, Y)) sqrt(2pi)) exp(-1/(2(1 - r^2(X, Y))) ((x - M(X))/(sigma(X)) - r(X, Y) (y - M(Y))/(sigma(Y)))^2) = \ = 1/(sqrt(2pi) sigma(X\/y)) e^(-(x - M(X\/y))^2/(2sigma^2(X\/y))) \
   f(y\/x) = 1/(sigma(Y) sqrt(1 - r^2(X, Y)) sqrt(2pi)) exp(-1/(2(1 - r^2(X, Y))) ((y - M(Y))/(sigma(Y)) - r(X, Y) (x - M(X))/(sigma(X)))^2) = \ = 1/(sqrt(2pi) sigma(Y\/x)) e^(-(y - M(Y\/x))^2/(2sigma^2(Y\/x))) \
   M(X\/y) equiv x = M(X) + r(X, Y) (sigma(X))/(sigma(Y)) (y - M(Y)) \
   M(X\/y) equiv y = M(Y) + r(X, Y) (sigma(Y))/(sigma(X)) (x - M(X)) \
@@ -1498,7 +1495,10 @@ $display(
   0 < c < f(M(X), M(Y)) \
   alpha = 1/2 "arctg" (2"cov"(X, Y))/(sigma^2(X) - sigma^2(Y)) \
   X_1 = (X - M(X)) cos alpha + (Y - M(Y)) sin alpha \
-  Y_1 = -(X - M(X)) sin alpha + (Y - M(Y)) cos alpha \
+  Y_1 = -(X - M(X)) sin alpha + (Y - M(Y)) cos alpha
+)$
+
+$display(
   f(x_1, y_1) = 1/(2pi sigma(X_1) sigma(Y_1)) exp(-1/2 (x_1/(sigma(X_1)))^2 - 1/2 (y_1/(sigma(Y_1)))^2) \
   sigma(X_1) = sqrt(sigma^2(X) cos^2 alpha + "cov"(X,Y) sin 2alpha + sigma^2(Y) sin^2 alpha) \
   sigma(Y_1) = sqrt(sigma^2(X) sin^2 alpha - "cov"(X,Y) sin 2alpha + sigma^2(Y) cos^2 alpha) \

@@ -231,7 +231,7 @@ $
 #v(1em)
 
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1fr, 1.2fr),
   column-gutter: 1em,
   [
     #figure(

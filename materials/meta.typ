@@ -24,6 +24,12 @@
       #set text(8pt)
       #h(1fr) #emph(head)
     ],
+    margin: (
+      top: 15mm,
+      bottom: 15mm,
+      left: 15mm,
+      right: 15mm,
+    ),
   )
 
   set par(justify: true)

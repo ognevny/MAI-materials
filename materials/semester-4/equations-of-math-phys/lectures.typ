@@ -302,8 +302,9 @@ u = u(xi, eta) \
 xi = xi(x, y) \
 eta = eta(x, y) \
 u_x = u_xi dot xi_x + u_eta dot eta_x \
-u_y = u_xi dot xi_y + u_eta dot eta_y \
-u_(x x) = (u_xi dot xi_x + u_eta dot eta_x)'_x = (u_xi)'_x dot xi_x + u_xi dot (xi_x)'_x + (u_eta)'_x dot eta_x + u_eta dot (eta_x)'_x = \ = [(u_(xi xi) dot xi_x + u_(xi eta) eta_x) dot xi_x + u_xi dot xi_(x x)] + [(u_(eta xi) dot xi_x + u_(eta eta) dot eta_x) dot eta_x + u_eta dot eta_(x x)] = ... \
+u_y = u_xi dot xi_y + u_eta dot eta_y$
+
+$u_(x x) = (u_xi dot xi_x + u_eta dot eta_x)'_x = (u_xi)'_x dot xi_x + u_xi dot (xi_x)'_x + (u_eta)'_x dot eta_x + u_eta dot (eta_x)'_x = \ = [(u_(xi xi) dot xi_x + u_(xi eta) eta_x) dot xi_x + u_xi dot xi_(x x)] + [(u_(eta xi) dot xi_x + u_(eta eta) dot eta_x) dot eta_x + u_eta dot eta_(x x)] = ... \
 u_(x y) = ... \
 u_(y y) = ... \
 macron(a)_11 = underbrace(a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0, (1)) \
@@ -410,7 +411,10 @@ $display(
   cancel(u_(xi xi)) + cancel(2u_(xi eta)) + u_(eta eta) - 2(cancel(u_(xi xi)) + cancel(u_(xi eta))) + cancel(u_(xi xi)) + cancel(u_xi) + u_eta - cancel(u_xi) = 0 \
   u_(eta eta) + u_eta = 0 \
   u_(eta eta) = -u_eta \
-  (u_eta)_eta = -(u)_eta \
+  (u_eta)_eta = -(u)_eta
+)$
+
+$display(
   u_eta = -u + phi(xi) \
   dv(u, eta) = -u + phi(xi) \
   (dif u)/(u - phi(xi)) = -dif eta \
@@ -526,8 +530,6 @@ $u(x, t)$ -- отклонение от положения равновесия �
   ],
 )
 
-#pagebreak(weak: true)
-
 II закон Ньютона
 
 $a m = F_"верт." \
@@ -574,7 +576,10 @@ $display(
   xi_x = 1 quad xi_t = a \
   eta_x = 1 quad eta_t = -a \
   u_x = u_xi xi_x + u_eta eta_x = u_xi + u_eta \
-  u_t = u_xi xi_t + u_eta eta_t = a u_xi - a u_xi \
+  u_t = u_xi xi_t + u_eta eta_t = a u_xi - a u_xi
+)$
+
+$display(
   u_(x x) = (u_x)'_x = (u_xi + u_eta)'_x = u_(xi xi) xi_x + u_(xi eta) eta_x + u_(eta eta) eta_x + u_(eta xi) xi_x = u_(xi xi) + 2u_(xi eta) + u_(eta eta) \
   u_(t t) = (u_t)'_t = a (u_(xi xi) xi_t + u_(xi eta) eta_t) - a (u_(eta xi) xi_t + u_(eta eta) eta_t) = a^2 u_(xi xi) - 2a^2 u_(xi eta) + u_(eta eta) \
   a^2 u_(xi xi) - 2a^2 u_(xi eta) + u_(eta eta) - a^2 (u_(xi xi) + 2u_(xi eta) + u_(eta eta)) = 0 \
@@ -701,16 +706,16 @@ $
   ],
 )
 
-Подставим
+#block(breakable: false)[Подставим
 
-$display(
-  X(x) dot T''(t) = a^2 X''(x) dot T(t) |":" T(t) dot X(x) \
-  X''/X = T''/(a^2 T) = -ov(lambda) space (ov(lambda) = "const") => cases(
-    delim: "[",
-    X'' + ov(lambda) X = 0 + cases(delim: bar.v.double, X(0) = 0, X(l) = 0),
-    T'' + a^2 ov(lambda) T = 0,
-  )
-)$
+  $display(
+    X(x) dot T''(t) = a^2 X''(x) dot T(t) |":" T(t) dot X(x) \
+    X''/X = T''/(a^2 T) = -ov(lambda) space (ov(lambda) = "const") => cases(
+      delim: "[",
+      X'' + ov(lambda) X = 0 + cases(delim: bar.v.double, X(0) = 0, X(l) = 0),
+      T'' + a^2 ov(lambda) T = 0,
+    )
+  )$]
 
 $display(
   u(0, t) = X(0) dot T(t) = 0 => X(0) = 0 \
@@ -817,7 +822,10 @@ $display(
 #v(1em)
 
 $display(
-  evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) => A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dif x => \ => phi(x) space dash "разложена в ряд Фурье по синусам" \
+  evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) => A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dif x => phi(x)
+)$ -- разложена в ряд Фурье по синусам
+
+$display(
   evaluated(u_t)_(t=0) = sum_1^oo underbrace(B_n (pi n a)/l, tilde(B)_n) sin (pi n)/l x = psi(x) => B_n dot (pi a n)/l = 2/l integral_0^l psi(x) sin (pi n x)/l dif x
 )$
 

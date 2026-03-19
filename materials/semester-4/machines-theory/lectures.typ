@@ -621,7 +621,7 @@ _Орехов скрипящему мелу: "Что ты ноешь?"_
 #v(1em)
 
 #grid(
-  columns: (1fr, 2fr),
+  columns: (1fr, 3fr),
   column-gutter: 1em,
   [
     #figure(

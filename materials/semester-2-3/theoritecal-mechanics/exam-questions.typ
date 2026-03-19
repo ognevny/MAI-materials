@@ -238,10 +238,10 @@ $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 
 Дифференциал кинетической энергии МС равен сумме элементарных работ сил, приложенных к точкам этой системы $ dif T = sum_j dif' A (ov(F)_j) $
 
-Доказательство:
+#block(breakable: false)[Доказательство:
 
-$display(T = sum_j (m_j V_j^2) = sum_j m_j/2 (ov(V)_j, ov(V)_j)) \
-display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, ov(V)_j) + (ov(V)_j, dif ov(V)_j)) = sum_j m_j (d ov(V)_j, dv(ov(r), t)) = \ = sum_j (m_j ov(W)_j, dif ov(r)_j) = sum_j (ov(F)_j, dif ov(r)_j) = sum_j dif' A (ov(F)_j))$
+  $display(T = sum_j (m_j V_j^2) = sum_j m_j/2 (ov(V)_j, ov(V)_j)) \
+  display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, ov(V)_j) + (ov(V)_j, dif ov(V)_j)) = sum_j m_j (d ov(V)_j, dv(ov(r), t)) = \ = sum_j (m_j ov(W)_j, dif ov(r)_j) = sum_j (ov(F)_j, dif ov(r)_j) = sum_j dif' A (ov(F)_j))$]
 
 В этой теореме в общем случае учитываются элементарные работы как внешних, так и внутренних сил.
 
@@ -249,9 +249,9 @@ display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, o
 
 Изменение кинетической энергии МС, прошедшим перемещение точек из положения (1) в положение (2) равно сумме полных работ сил при перемещении $ Delta T = T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j) $
 
-Доказательство
+#block(breakable: false)[Доказательство:
 
-$display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; evaluated(T)_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$
+  $display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; evaluated(T)_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$]
 
 $dif' A$ -- величина порядка дифференциала.
 
@@ -434,13 +434,13 @@ $ ov(K)_O = ov(K)'_c + [ov(r)_c; (sum_j m_j) ov(V)_c] $
 
 $ dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov(F)_j^((e))] $
 
-Доказательство
+#block(breakable: false)[Доказательство
 
-$display(dv(ov(K)_O, t) = sum_j ov(M)_O (ov(F)_j^((e))) = sum_j [ov(r)_j, ov(F)_j^((e))]), ov(r)_j = ov(r)_c + ov(rho)_j \
-display(dv(ov(K)_O, t) = sum_j [ov(r)_c, ov(F)_j^((e))] + sum_j [ov(rho)_j, ov(F)_j^((e))] = [ov(r)_c, sum_j ov(F)_j^((e))] + sum_j ov(M)_c (ov(F)_j^((e)))\; dv(ov(K)_O, t) = [ov(r)_c; M ov(W)_c] + \ + sum_j ov(M)_c (ov(F)_j^((e)))) \
-display(M ov(W)_c = sum_j ov(F)_j^((e))) \
-display(dv(ov(K)_O, t) = dv(ov(K)_c, t) + [dv(ov(r)_c, t), M ov(V)_c] + [ov(r)_c, dv(, t) (M ov(V)_c)] = dv(ov(K)_c, t) + [ov(r)_c, M ov(W)_c]) \
-display(dv(ov(K)_c, t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c; M ov(W)_c]) + sum_j ov(M)_c (ov(F)_j^((e))))$
+  $display(dv(ov(K)_O, t) = sum_j ov(M)_O (ov(F)_j^((e))) = sum_j [ov(r)_j, ov(F)_j^((e))]), ov(r)_j = ov(r)_c + ov(rho)_j \
+  display(dv(ov(K)_O, t) = sum_j [ov(r)_c, ov(F)_j^((e))] + sum_j [ov(rho)_j, ov(F)_j^((e))] = [ov(r)_c, sum_j ov(F)_j^((e))] + sum_j ov(M)_c (ov(F)_j^((e)))\; dv(ov(K)_O, t) = [ov(r)_c; M ov(W)_c] + \ + sum_j ov(M)_c (ov(F)_j^((e)))) \
+  display(M ov(W)_c = sum_j ov(F)_j^((e))) \
+  display(dv(ov(K)_O, t) = dv(ov(K)_c, t) + [dv(ov(r)_c, t), M ov(V)_c] + [ov(r)_c, dv(, t) (M ov(V)_c)] = dv(ov(K)_c, t) + [ov(r)_c, M ov(W)_c]) \
+  display(dv(ov(K)_c, t) + cancel([ov(r)_c, M ov(W)_c]) = cancel([ov(r)_c; M ov(W)_c]) + sum_j ov(M)_c (ov(F)_j^((e))))$]
 
 = Дифференциальные уравнения плоскопараллельного движения тела
 
@@ -705,19 +705,19 @@ $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) $
 
 *Способы вычисления обобщенных сил*
 
-1. По определению $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) = sum_j (F_(j x) pdv(x_j, q_i) + F_(j y) pdv(y_j, q_i) + F_(j z) pdv(z_j, q_i)) $
++ По определению $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) = sum_j (F_(j x) pdv(x_j, q_i) + F_(j y) pdv(y_j, q_i) + F_(j z) pdv(z_j, q_i)) $
 
-2. Для голономных систем
++ Для голономных систем
 
-$delta q_i dash "независимы" \
-delta q_1 > 0; delta q_2 = ... = delta q_n = 0 \
-delta A_((1)) = display(sum_j (ov(F)_j, delta ov(r)_j^((1)))); delta A_((1)) = display(sum_(i=1)^n Q_i delta q_i = Q_1 delta q_1)$
+  $delta q_i dash "независимы" \
+  delta q_1 > 0; delta q_2 = ... = delta q_n = 0 \
+  delta A_((1)) = display(sum_j (ov(F)_j, delta ov(r)_j^((1)))); delta A_((1)) = display(sum_(i=1)^n Q_i delta q_i = Q_1 delta q_1)$
 
-3. Для потенциальных сил
++ Для потенциальных сил
 
-$Pi(x_1(q_1, ..., q_n), y_1(q_1, ..., q_n), ..., z_N (q_1, ..., q_n))$
+  $Pi(x_1(q_1, ..., q_n), y_1(q_1, ..., q_n), ..., z_N (q_1, ..., q_n))$
 
-$ Q_i = -pdv(Pi, q_i) $
+  $ Q_i = -pdv(Pi, q_i) $
 
 = Обобщенные силы инерции
 
@@ -781,8 +781,8 @@ $ dv(, t) pdv(L, dot(q)_i) - pdv(L, q_i) = 0 $
 
 #v(1em)
 
-$display(sum_(i=1)^n Q_i delta q_i) = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0 dash "уравнение равновесия голономных систем" \
-pdv(Pi, q_i) = 0 => q_i^*, i = 1...n dash "положение равновесия" \
+$display(sum_(i=1)^n Q_i delta q_i) = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0 space dash "уравнение равновесия голономных систем" \
+pdv(Pi, q_i) = 0 => q_i^*, i = 1...n space dash "положение равновесия" \
 x_i = q_i - q_i^* dash "возмущение" \
 x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 

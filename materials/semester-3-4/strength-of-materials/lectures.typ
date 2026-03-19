@@ -882,35 +882,35 @@ $ J_(k_1)/J_(k_2) = 3000/40 = 75 $
 
 Вывод: сечение тонкостенных стержней, работающих на кручение, следует делать замкнутыми.
 
-=== Свойства эпюр $M_k$, $tau$, $theta$ и $phi$
+#block(breakable: false)[=== Свойства эпюр $M_k$, $tau$, $theta$ и $phi$
 
-#v(1em)
+  #v(1em)
 
-#table(
-  columns: 3,
-  [], [*Растяжение-сжатие*], [*Кручение*],
-  [Внешняя нагрузка], [$P, q(x)$], [$M, m(x)$],
-  [Внутренний силовой фактор],
-  [
-    $N = sum P + sum stretch(integral)_l q(x) dif x$
-  ],
-  [
-    $M_k = sum M + sum stretch(integral)_l m(x) dif x$
-  ],
+  #table(
+    columns: 3,
+    [], [*Растяжение-сжатие*], [*Кручение*],
+    [Внешняя нагрузка], [$P, q(x)$], [$M, m(x)$],
+    [Внутренний силовой фактор],
+    [
+      $N = sum P + sum stretch(integral)_l q(x) dif x$
+    ],
+    [
+      $M_k = sum M + sum stretch(integral)_l m(x) dif x$
+    ],
 
-  [], [$sigma = N/F$], [$tau_max = M_k/W_k$],
-  [], [$epsilon = N/(E F)$], [$theta = M_k / (G J_k)$],
-  [], [$dv(delta, x) = epsilon$], [$dv(phi, x) = theta$],
-  [],
-  [
-    $delta = integral_0^(x_i) epsilon dif x + delta^((i-1))$
-  ],
-  [
-    $phi = integral_0^(x_i) theta dif x + phi^((i-1))$
-  ],
-)
+    [], [$sigma = N/F$], [$tau_max = M_k/W_k$],
+    [], [$epsilon = N/(E F)$], [$theta = M_k / (G J_k)$],
+    [], [$dv(delta, x) = epsilon$], [$dv(phi, x) = theta$],
+    [],
+    [
+      $delta = integral_0^(x_i) epsilon dif x + delta^((i-1))$
+    ],
+    [
+      $phi = integral_0^(x_i) theta dif x + phi^((i-1))$
+    ],
+  )
 
-Имеется полная аналогия с эпюрами $N$, $sigma$, $epsilon$ и $delta$.
+  Имеется полная аналогия с эпюрами $N$, $sigma$, $epsilon$ и $delta$.]
 
 = Геометрические характеристики плоских сечений
 
@@ -1178,8 +1178,6 @@ $
   caption: [],
 ) <балки>
 
-#pagebreak(weak: true)
-
 В примерах решается следующая задача: _Построить эпюры $Q_y$ и $M_z$ для следующей балки_
 
 === Пример: двухопорная балка
@@ -1187,7 +1185,7 @@ $
 #v(1em)
 
 #grid(
-  columns: (2fr, 1fr),
+  columns: (1.5fr, 1fr),
   column-gutter: 1em,
   [
     #figure(
@@ -1209,25 +1207,26 @@ $
     Q_y^((3)) = 1/8 q l \
     Q_y^((4)) = 1/8 q l - q l = -7/8 q l \
     display((1/8 q l) / (7/8 q l)) = x_0 / (l - x_0) => 7x_0 = l - x_0 => x_0 = 1/8 l$
-
-    Эпюра $M_z$:
-
-    $M_z^((0)) = 0 \
-    M_z^((1')) = M_z^((1)) = M_z^((1'')) = A l = 9/8 q l^2 \
-    M_z^((2')) = A dot 2l - P l = 9/8 q l dot 2l - q l^2 = 5/4 q l^2 \
-    M_z^((2'')) = 5/4 q l^2 - M = 1/4 q l^2 \
-    M_z^((3)) = A dot 3l - P dot 2l - M = \ = 9/8 q l dot 3l - q l dot 2l - q l^2 = 3/8 q l^2 \
-    M_z^((4')) = M_z^((4)) = \ = A dot 4l - P 3l - M - q l dot l/2 = 0 \
-    M_z^"экстр" = A (3l + x_0) - P (2l + x_0) - \ - M - q x_0 x_0/2 = 9/8 q l (3l + l/8) - \ - q l (2l + l/8) - q l^2 - q dot l/8 dot l/16 = 49/128 q l^2$
   ],
 )
+
+Эпюра $M_z$:
+
+$M_z^((0)) = 0 \
+M_z^((1')) = M_z^((1)) = M_z^((1'')) = A l = 9/8 q l^2 \
+M_z^((2')) = A dot 2l - P l = 9/8 q l dot 2l - q l^2 = 5/4 q l^2 \
+M_z^((2'')) = 5/4 q l^2 - M = 1/4 q l^2 \
+M_z^((3)) = A dot 3l - P dot 2l - M = 9/8 q l dot 3l - q l dot 2l - q l^2 = 3/8 q l^2 \
+M_z^((4')) = M_z^((4)) = A dot 4l - P 3l - M - q l dot l/2 = 0 \
+M_z^"экстр" = A (3l + x_0) - P (2l + x_0) - M - q x_0 x_0/2 = 9/8 q l (3l + l/8) - q l (2l + l/8) - q l^2 - q dot l/8 dot l/16 = 49/128 q l^2$
+
 
 === Пример: консольная балка
 
 #v(1em)
 
 #grid(
-  columns: (2fr, 1fr),
+  columns: (1.3fr, 1fr),
   column-gutter: 1em,
   [
     #figure(
@@ -1251,8 +1250,8 @@ $
     $M_z^((0)) = M = q l^2 \
     M_z^((1)) = M = q l^2 \
     M_z^((2)) = M - q l dot l/2 = q l^2 - (q l^2)/2 = (q l^2)/2 \
-    M_z^((3')) = M_z^((3)) = M_z^((3'')) = \ = M - q l (l + l/2) = -(q l^2)/2 \
-    M_z^((4')) = M_z^((4)) = M - q l (l/2 + 2l) - P l = \ = -5/2 q l^2$
+    M_z^((3')) = M_z^((3)) = M_z^((3'')) = M - q l (l + l/2) = -(q l^2)/2 \
+    M_z^((4')) = M_z^((4)) = M - q l (l/2 + 2l) - P l = -5/2 q l^2$
 
     Из Э$M_z$: $M_A = -5/2 q l^2$
   ],
@@ -1263,7 +1262,7 @@ $
 #v(1em)
 
 #grid(
-  columns: (2fr, 1fr),
+  columns: (1.5fr, 1fr),
   column-gutter: 1em,
   [
     #figure(
@@ -1304,7 +1303,7 @@ $
 #v(1em)
 
 #grid(
-  columns: (2fr, 1fr),
+  columns: (1.5fr, 1fr),
   column-gutter: 1em,
   [
     #figure(
@@ -1746,37 +1745,35 @@ $delta$ -- искомое перемещение (прогиб $y$ или уго
   ],
 )
 
-#pagebreak(weak: true)
+#block(breakable: false)[===== С расслоением эпюр изгибающих моментов
 
-===== С расслоением эпюр изгибающих моментов
+  #v(1em)
 
-#v(1em)
+  Определить угол поворота в сечении C заданной балки
 
-Определить угол поворота в сечении C заданной балки
+  #grid(
+    columns: (1fr, 1fr),
+    column-gutter: 1em,
+    [
+      #figure(
+        image("source-figures/lect16-2.png"),
+      )
+    ],
+    [
+      $sum y: A - P - 2 q l + B = 0 => A + B = 3 q l \
+      sum m_B: A dot 3l - P dot 2l - 2 q l dot l + M = 0 => A = q l => \ => B = 2 q l$
 
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  [
-    #figure(
-      image("source-figures/lect16-2.png"),
-    )
-  ],
-  [
-    $sum y: A - P - 2 q l + B = 0 => A + B = 3 q l \
-    sum m_B: A dot 3l - P dot 2l - 2 q l dot l + M = 0 => A = q l => \ => B = 2 q l$
+      $omega_1 = 1/2 dot 3l dot 3 q l^2 = 9/2 q l^3; x_(C_1) = l \
+      omega_2 = 1/2 dot 2l dot 2 q l^2 = 2 q l^3; x_(C_1) = 2/3 l \
+      omega_3 = 1/3 dot 2l dot 2 q l^2 = 4/3 q l^3; x_(C_1) = 1/2 l \
+      omega_4 = l dot q l^2 = q l^3; x_(C_1) = 1/2 l$
 
-    $omega_1 = 1/2 dot 3l dot 3 q l^2 = 9/2 q l^3; x_(C_1) = l \
-    omega_2 = 1/2 dot 2l dot 2 q l^2 = 2 q l^3; x_(C_1) = 2/3 l \
-    omega_3 = 1/3 dot 2l dot 2 q l^2 = 4/3 q l^3; x_(C_1) = 1/2 l \
-    omega_4 = l dot q l^2 = q l^3; x_(C_1) = 1/2 l$
+      $sum y: A_1 + B_1 = 0 => A_1 = -B_1 \
+      sum m_B: A_1 dot 3l - 1 = 0 => A_1 = 1/(3l); B_1 = -1/(3l)$
 
-    $sum y: A_1 + B_1 = 0 => A_1 = -B_1 \
-    sum m_B: A_1 dot 3l - 1 = 0 => A_1 = 1/(3l); B_1 = -1/(3l)$
-
-    $theta_C = 1/(E I_z) (omega_1 y_(C_1) - omega_2 y_(C_2) - omega_3 y_(C_3) - omega_4 y_(C_4))$
-  ],
-)
+      $theta_C = 1/(E I_z) (omega_1 y_(C_1) - omega_2 y_(C_2) - omega_3 y_(C_3) - omega_4 y_(C_4))$
+    ],
+  )]
 
 == Косой изгиб
 
@@ -1788,10 +1785,15 @@ $delta$ -- искомое перемещение (прогиб $y$ или уго
 
 #v(1em)
 
-$ Q_y, M_z" и "Q_z, M_y. $
-
-#figure(
-  image("source-figures/lect17-1.png", width: 40%),
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [$ Q_y, M_z "и" Q_z, M_y $],
+  [
+    #figure(
+      image("source-figures/lect17-1.png"),
+    )
+  ],
 )
 
 Нормальное напряжение в точке К, имеющий координаты (z, y) при совместном действии изгибающих моментов $M_z$ и $M_y$ будет равно $sigma = sigma_(M_z) + sigma_(M_y)$.
