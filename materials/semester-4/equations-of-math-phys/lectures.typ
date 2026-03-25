@@ -922,5 +922,148 @@ $display(
   sin 3x: &T''_3 (t) + 9T_3 (t) = 1
 )$
 
-$&T_n (0) = phi_n quad &T'_n (0) = psi_n = 0 \
-&T_3(0) = 0 quad &T'_3(0) = 0$
+$display(
+  T_n (0) = phi_n = 0 quad T'_n (0) = psi_n = 0 \
+  T_3(0) = phi_3 = 0 quad T'_3 (0) = psi_3 = 0 \
+  T''_n (t) + n^2 T_n (t) = 0 \
+  k^2 + n^2 dot 1 = 0 => k_(1,2) = +-i n \
+  T_n = C_1 cos n t + C_2 sin n t \
+  cases(
+    T_n (0) = 0,
+    T'_n (0) = 0,
+  ) <=> cases(
+    C_1 cos 0 + C_2 sin 0 = 0 => C_1 = 0,
+    -0 dot n dot sin 0 + C_2 dot n cos 0 = 0 => C_2 n = 0 => C_2 = 0,
+  ) \
+  T_n = 0
+)$
+
+$display(
+  T''_3 (t) + 3^2 T_3 (t) = 1 \
+  k^2 + 9 = 0 => k_(1,2) = +-3i \
+  T_3_"одн" = C_1 cos 3t + C_2 sin 3t \
+  T_3_"част" = P_0 (t) e^(0t) = A \
+  0 + 9A = 1 => A = 1/9 \
+  T_3 = C_1 cos 3t + C_2 sin 3t + 1/9 \
+  cases(
+    T_3 (0) = 0,
+    T'_3 (0) = 0,
+  ) <=> cases(
+    C_1 cos 0 + C_2 sin 0 + 1/9 = 0,
+    -3C_1 sin 0 + 3C_2 cos 0 = 0,
+  ) <=> cases(
+    C_1 = -1/9,
+    C_2 = 0,
+  ) \
+  T_3 = -1/9 cos 3t + 1/9 \
+  u(x, t) = T_1 (t) sin x + T_2 (t) sin 2x + T_3 (t) sin 3x + ... = 0 + 0 + 1/9 (1 - cos 3t) sin 3x + 0 + ... \
+  u(x, t) = 1/9 (1 - cos 3t) sin 3x
+)$
+
+== Уравнение теплопроводности
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect7-1.png")
+    )
+  ],
+  [
+    $u(x, t)$ -- температура в сечении $S$ в точке $x$ в момент времени $t$ одинакова.
+
+    Количество теплоты $
+      Q(t) = c rho S Delta x u(x + theta_1 Delta x, t),
+    $ где $c$ -- удельная теплоемкость, $rho$ -- удельная плотность, $S$ -- сечение цилиндра, $theta_1 in (0, 1)$
+  ]
+)
+
+По закону Фурье количество теплоты, прошедшее за время $Delta t$ через сечение $S$ $
+  q(x) = k S pdv(u, x) (x, t + theta_2 Delta t) Delta t,
+$ $k$ -- коэффициент теплообмена
+
+Уравнение теплового баланса для фрагмента $Delta x$ $
+  Q(t + Delta t) - Q(t) = q(x + Delta x) - q(x)
+$
+
+$display(
+  c rho S Delta x u(underbrace(x + theta_3 Delta x, C_3), t + Delta t) - c rho S Delta x u(underbrace(x + theta_1 Delta x, C_1), t) = \ = k S Delta pdv(u, x) (x + Delta x, underbrace(t + theta_4 Delta t, C_4)) - k S Delta t pdv(u, x) (x, underbrace(t + theta_2 Delta t, C_2)) \
+  c rho S Delta x [u(C_3, t + Delta t) - u(C_1, t)] = k S Delta t [pdv(u, x) (x + Delta x, C_4) - pdv(u, x) (x, C_2)] |":" S Delta x Delta t \
+  c rho (u(C_3 t + Delta t) - u(C_1, t))/(Delta t) = k (pdv(u, x) (x + Delta x, C_4) - pdv(u, x) (x, C_2))/(Delta x) \
+  cases(
+    delim: #none,
+    Delta x -> 0,
+    Delta t -> 0,
+  ) cases(
+    delim: #none,
+    C_1\, C_3 -> x,
+    C_2\, C_4 -> t,
+  )
+)$
+
+$
+  c rho undershell((Delta_t u)/(Delta t), pdv(u, t)) = k undershell((Delta_x u_x)/(Delta x), pdv(u, x, 2)) => c rho u_t = k u_(x x) => u_t = a^2 u_(x x)
+$
+Неоднородное уравнение $
+  u_t = a^2 u_(x x) + f(x, t)
+$
+
+$display(
+  a^2 u_(x x) - u_t = 0
+)$
+
+=== Формула Пуассона
+
+#v(1em)
+
+$
+  u(x, t) = 1/(2a sqrt(pi) sqrt(t)) integral_(-oo)^oo e^(-1/(4a^2 t) (x - xi)^2) phi(xi) dif xi
+$
+
+Для начального условия $evaluated(u)_(t=0) = phi(x)$
+
+Интеграл Пуассон $
+  integral_(-oo)^(oo) e^(-z^2) dif z = sqrt(pi)
+$
+
+=== Для ограниченного цилиндра
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect7-2.png")
+    )
+  ],
+  [
+    $
+      u_t = a^2 u_(x x) quad evaluated(u)_(t=0) = phi(x) quad evaluated(u)_(x=0) = 0 space evaluated(u)_(x=l) = 0 \
+      mat(0 < x < l; 0 < t < oo)
+    $
+  ],
+)
+
+Будем искать решение в виде $
+  X T' = a^2 X'' T |":" X T a^2 \
+  T'/(a^2 T) = X''/X = -ov(lambda)
+$
+
++ $X'' + ov(lambda) X = 0 => X_n (x) = sin (pi n x)/l quad ov(lambda) = ((pi n)/l)^2$
++ $T' + a^2 ov(lambda) T = 0$
+
+  $display(T' + a^2 ((pi n)/l)^2 T = 0 => T_n (t) = tilde(A)_n e^(-((a pi n)/l)^2 t))$
+
+$
+  u_n (x, t) & = A_n e^(-((a pi n)/l)^2 t) sin (pi n x)/l \
+  u(x, t)    & = sum_1^oo A_n e^(-((a pi n)/l)^2 t) sin (pi n x)/l
+$
+
+$display(
+  evaluated(u)_(t=0) = sum_1^oo A_n sin (pi n x)/l = phi(x) => A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dif x
+)$

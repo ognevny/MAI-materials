@@ -1980,7 +1980,7 @@ sigma = (1 + y_0/i_z^2 dot y + z_0/i_y^2 dot z) (P/F), space i_z = sqrt(I_z/F), 
   (
     image("source-figures/lect19-1.png", width: 80%),
     image("source-figures/lect19-2.png", width: 80%),
-  ).join()
+  ).join(),
 )
 
 $X_1$, $X_2$, $X_3$ -- неизвестные обобщенные усилия
@@ -2050,9 +2050,9 @@ $
   ],
   [
     #figure(
-      image("source-figures/lect19-4.png")
+      image("source-figures/lect19-4.png"),
     )
-  ]
+  ],
 )
 
 Как известно из алгебры 3 корня кубического уравнения с действительными коэффициентами могут быть либо действительными числами, либо один из корней будет действительным числом, а два других -- комплексно сопряженными. Доказывается, что в данном случае все 3 корня векового уравнения действительны и связаны соотношением $ sigma_1 >= sigma_2 >= sigma_3 $
@@ -2073,7 +2073,7 @@ $
   columns: (1.5fr, 1fr),
   [
     #figure(
-      image("source-figures/lect19-5.png")
+      image("source-figures/lect19-5.png"),
     )
   ],
   [

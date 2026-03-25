@@ -510,3 +510,53 @@ $
 #figure(
   image("source-figures/sem12-5.png"),
 )
+
+= Пространственная рама
+
+#v(1em)
+
+Построить эпюры $Э N [q l]$, $Э Q [q l]$, $Э M [q l^2]$. Провести расчёт на прочность для двух видов сечений: полого прямоугольного и кругового.
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      (
+        grid(
+          columns: (1fr, 1fr),
+          column-gutter: 1em,
+          [#image("source-figures/sem13-1.png")],
+          [#image("source-figures/sem13-2.png")]
+        ),
+        grid(
+          columns: (1fr, 1fr),
+          column-gutter: 1em,
+          [#image("source-figures/sem13-3.png")],
+          [#image("source-figures/sem13-6.png")]
+        ),
+        grid(
+          columns: (1fr, 1fr),
+          column-gutter: 1em,
+          [#image("source-figures/sem13-5.png")],
+          [#image("source-figures/sem13-4.png")]
+        ),
+        grid(
+          columns: (1fr, 1fr),
+          column-gutter: 1em,
+          [#image("source-figures/sem13-7.png")],
+          [#image("source-figures/sem13-8.png")]
+        ),
+      ).join(),
+    )
+  ],
+  [
+    Берём $display(Э M = cases(M^q, M^p, M^M))$
+
+    Строим эпюры сразу, поскольку у нас имеется лишь заделка (ходим со свободного конца). Растяжения идут "наружу", сжатия -- "внутрь". Направление перерезывающей силы даёт то же направление на эпюре.
+
+    Моменты можно строить в пространстве или в 3 проекциях. Учитываются моменты изгибающие и моменты крутящие. $Э M^q$ построена обеими способами. В случае построения в отдельных проекциях пространственная эпюра все равно требуется (строится по сумме проекций).
+
+    На эпюре моментов кручение выносится в отдельную проекцию рамы. Указывается стрелкой направление кручения.
+  ]
+)
