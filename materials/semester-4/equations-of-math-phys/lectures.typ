@@ -969,25 +969,19 @@ $display(
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect7-1.png")
+      image("source-figures/lect7-1.png"),
     )
   ],
   [
     $u(x, t)$ -- температура в сечении $S$ в точке $x$ в момент времени $t$ одинакова.
 
-    Количество теплоты $
-      Q(t) = c rho S Delta x u(x + theta_1 Delta x, t),
-    $ где $c$ -- удельная теплоемкость, $rho$ -- удельная плотность, $S$ -- сечение цилиндра, $theta_1 in (0, 1)$
-  ]
+    Количество теплоты $ Q(t) = c rho S Delta x u(x + theta_1 Delta x, t), $ где $c$ -- удельная теплоемкость, $rho$ -- удельная плотность, $S$ -- сечение цилиндра, $theta_1 in (0, 1)$
+  ],
 )
 
-По закону Фурье количество теплоты, прошедшее за время $Delta t$ через сечение $S$ $
-  q(x) = k S pdv(u, x) (x, t + theta_2 Delta t) Delta t,
-$ $k$ -- коэффициент теплообмена
+По закону Фурье количество теплоты, прошедшее за время $Delta t$ через сечение $S$ $ q(x) = k S pdv(u, x) (x, t + theta_2 Delta t) Delta t, $ $k$ -- коэффициент теплообмена
 
-Уравнение теплового баланса для фрагмента $Delta x$ $
-  Q(t + Delta t) - Q(t) = q(x + Delta x) - q(x)
-$
+Уравнение теплового баланса для фрагмента $Delta x$ $ Q(t + Delta t) - Q(t) = q(x + Delta x) - q(x) $
 
 $display(
   c rho S Delta x u(underbrace(x + theta_3 Delta x, C_3), t + Delta t) - c rho S Delta x u(underbrace(x + theta_1 Delta x, C_1), t) = \ = k S Delta pdv(u, x) (x + Delta x, underbrace(t + theta_4 Delta t, C_4)) - k S Delta t pdv(u, x) (x, underbrace(t + theta_2 Delta t, C_2)) \
@@ -1007,13 +1001,9 @@ $display(
 $
   c rho undershell((Delta_t u)/(Delta t), pdv(u, t)) = k undershell((Delta_x u_x)/(Delta x), pdv(u, x, 2)) => c rho u_t = k u_(x x) => u_t = a^2 u_(x x)
 $
-Неоднородное уравнение $
-  u_t = a^2 u_(x x) + f(x, t)
-$
+Неоднородное уравнение $ u_t = a^2 u_(x x) + f(x, t) $
 
-$display(
-  a^2 u_(x x) - u_t = 0
-)$
+$display(a^2 u_(x x) - u_t = 0)$
 
 === Формула Пуассона
 
@@ -1025,9 +1015,7 @@ $
 
 Для начального условия $evaluated(u)_(t=0) = phi(x)$
 
-Интеграл Пуассон $
-  integral_(-oo)^(oo) e^(-z^2) dif z = sqrt(pi)
-$
+Интеграл Пуассон $ integral_(-oo)^(oo) e^(-z^2) dif z = sqrt(pi) $
 
 === Для ограниченного цилиндра
 
@@ -1038,7 +1026,7 @@ $
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect7-2.png")
+      image("source-figures/lect7-2.png"),
     )
   ],
   [
@@ -1049,10 +1037,8 @@ $
   ],
 )
 
-Будем искать решение в виде $
-  X T' = a^2 X'' T |":" X T a^2 \
-  T'/(a^2 T) = X''/X = -ov(lambda)
-$
+Будем искать решение в виде $ X T' = a^2 X'' T |":" X T a^2 \
+T'/(a^2 T) = X''/X = -ov(lambda) $
 
 + $X'' + ov(lambda) X = 0 => X_n (x) = sin (pi n x)/l quad ov(lambda) = ((pi n)/l)^2$
 + $T' + a^2 ov(lambda) T = 0$
@@ -1061,7 +1047,7 @@ $
 
 $
   u_n (x, t) & = A_n e^(-((a pi n)/l)^2 t) sin (pi n x)/l \
-  u(x, t)    & = sum_1^oo A_n e^(-((a pi n)/l)^2 t) sin (pi n x)/l
+     u(x, t) & = sum_1^oo A_n e^(-((a pi n)/l)^2 t) sin (pi n x)/l
 $
 
 $display(
