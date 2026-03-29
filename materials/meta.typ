@@ -21,14 +21,14 @@
     paper: "a4",
     numbering: "1",
     header: [
-      #set text(8pt)
+      #set text(5pt)
       #h(1fr) #emph(head)
     ],
     margin: (
-      top: 15mm,
+      top: 10mm,
       bottom: 15mm,
-      left: 15mm,
-      right: 15mm,
+      left: 10mm,
+      right: 10mm,
     ),
   )
 

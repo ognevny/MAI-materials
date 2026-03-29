@@ -231,7 +231,7 @@ $
 #v(1em)
 
 #grid(
-  columns: (1fr, 1.2fr),
+  columns: (1fr, 1.3fr),
   column-gutter: 1em,
   [
     #figure(
@@ -441,7 +441,7 @@ $
 #v(1em)
 
 #grid(
-  columns: (1fr, 1.5fr),
+  columns: (1fr, 2fr),
   column-gutter: 1em,
   [
     #figure(
@@ -455,7 +455,7 @@ $
 )
 
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1fr, 1.5fr),
   column-gutter: 1em,
   [
     #figure(
@@ -470,7 +470,7 @@ $
 )
 
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1fr, 1.9fr),
   column-gutter: 1em,
   [
     #figure(
@@ -533,16 +533,6 @@ $
           column-gutter: 1em,
           [#image("source-figures/sem13-3.png")], [#image("source-figures/sem13-6.png")],
         ),
-        grid(
-          columns: (1fr, 1fr),
-          column-gutter: 1em,
-          [#image("source-figures/sem13-5.png")], [#image("source-figures/sem13-4.png")],
-        ),
-        grid(
-          columns: (1fr, 1fr),
-          column-gutter: 1em,
-          [#image("source-figures/sem13-7.png")], [#image("source-figures/sem13-8.png")],
-        ),
       ).join(),
     )
   ],
@@ -555,4 +545,19 @@ $
 
     На эпюре моментов кручение выносится в отдельную проекцию рамы. Указывается стрелкой направление кручения.
   ],
+)
+
+#figure(
+  (
+    grid(
+      columns: (1fr, 1fr),
+      column-gutter: 1em,
+      [#image("source-figures/sem13-5.png", width: 70%)], [#image("source-figures/sem13-4.png", width: 70%)],
+    ),
+    grid(
+      columns: (1fr, 1fr),
+      column-gutter: 1em,
+      [#image("source-figures/sem13-7.png", width: 70%)], [#image("source-figures/sem13-8.png", width: 70%)],
+    ),
+  ).join(),
 )

@@ -492,7 +492,8 @@ display(sum_j dif' A = sum_j M_z (ov(F)_j^((e))) omega dif t); omega = dv(phi, t
 $ sum_j dif' A = sum_j M_z (ov(F)_j^((e))) dif phi $
 
 #grid(
-  columns: (3fr, 1fr),
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     3. Плоскопараллельное движение
 
@@ -502,7 +503,7 @@ $ sum_j dif' A = sum_j M_z (ov(F)_j^((e))) dif phi $
   ],
   [
     #figure(
-      image("source-figures/lect0-1-16.png", width: 160%),
+      image("source-figures/lect0-1-16.png"),
     )
   ],
 )
@@ -1639,7 +1640,7 @@ $display(
 #v(1em)
 
 #grid(
-  columns: (1fr, 1fr),
+  columns: (5fr, 1fr),
   [
     $z = z_1 = z_2 = z_3; \
     V_1 = V_(1r) ln z; \
@@ -1649,8 +1650,8 @@ $display(
   ],
   [
     #figure(
-      image("source-figures/lect7-4.png", width: 43%),
-      caption: [Схема многоступенчатой ракеты],
+      image("source-figures/lect7-4.png"),
+      caption: [],
     ) <многоступ>
   ],
 )

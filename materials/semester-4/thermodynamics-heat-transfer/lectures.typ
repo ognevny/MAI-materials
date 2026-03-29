@@ -521,7 +521,7 @@ $
 #v(1em)
 
 #figure(
-  image("source-figures/lect5-1.png"),
+  image("source-figures/lect5-1.png", width: 90%),
   caption: [Прямой и обратный циклы соответственно],
 )
 

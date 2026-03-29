@@ -60,7 +60,7 @@
 Класс кинематической пары определяется числом условий связи, накладываемых на относительное движение звена, входящего в эту кинематическую пару.
 
 #grid(
-  columns: (1fr, 2fr),
+  columns: (1fr, 2.5fr),
   column-gutter: 1em,
   [
     #figure(
@@ -72,7 +72,7 @@
   ],
 )
 #grid(
-  columns: (1fr, 3fr),
+  columns: (1fr, 3.5fr),
   column-gutter: 1em,
   [
     #figure(
@@ -130,19 +130,19 @@
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect2-1.png"),
+      image("source-figures/lect2-1.png", width: 90%),
       caption: [Подшипно-четырехзвенный механизм],
     )
   ],
   [
     #figure(
-      image("source-figures/lect2-2.png"),
+      image("source-figures/lect2-2.png", width: 80%),
       caption: [Кривошипно-ползунный или же шатунный механизм],
     )
   ],
   [
     #figure(
-      image("source-figures/lect2-3.png"),
+      image("source-figures/lect2-3.png", width: 80%),
       caption: [Механизм Витворта, он же кулисный],
     )
   ],
@@ -151,13 +151,13 @@
   columns: (1fr, 1fr),
   [
     #figure(
-      image("source-figures/lect2-4.png", width: 35%),
+      image("source-figures/lect2-4.png", width: 30%),
       caption: [Кулачковый механизм],
     )
   ],
   [
     #figure(
-      image("source-figures/lect2-5.png", width: 30%),
+      image("source-figures/lect2-5.png", width: 25%),
       caption: [Кулачковый механизм с роликом на штанге],
     )
   ],
@@ -170,11 +170,11 @@
 В формуле Чебышёва может фигурировать $q$ -- число избыточных связей $ W = 3n - 2p_5 - p_4 + q $
 
 #grid(
-  columns: (1fr, 1.5fr),
+  columns: (1fr, 3fr),
   column-gutter: 1em,
   [
     #figure(
-      image("source-figures/lect2-6.png", width: 80%),
+      image("source-figures/lect2-6.png"),
       caption: [Механизм Поселье-Липкина],
     )
   ],
@@ -350,7 +350,7 @@
 + Задача об ускорении, связана с нахождением инерционной нагрузки
 
 #grid(
-  columns: (1fr, 2fr),
+  columns: (1fr, 2.5fr),
   column-gutter: 1em,
   [
     #figure(
@@ -367,7 +367,7 @@
 Задачи кинематического анализа считаются решёнными, если известны координаты, скорости и ускорения двух точек, принадлежащих одному звену или известны положение, угловая скорость и угловое ускорение звена и координаты, скорость и ускорение точки, принадлежащие этому звену.
 
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1fr, 1.5fr),
   column-gutter: 1em,
   [
     #figure(

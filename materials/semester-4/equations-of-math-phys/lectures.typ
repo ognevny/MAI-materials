@@ -911,9 +911,10 @@ $display(
 $display(
   sum_1^oo T''_n (t) sin n x = sum_1^oo T_n (t) (-sin n x dot n^2) + f(x, t) \
   sum_1^oo [T''_n (t) sin n x + sin n x dot n^2] = f(x, t) \
-  sum_1^oo [T''_n (t) + n^2] sin n x = f(x, t) \
-  sum_1^oo [T''_n (t) + n^2] sin n x = sin 3x
+  sum_1^oo [T''_n (t) + n^2] sin n x = f(x, t)
 )$
+
+$display(sum_1^oo [T''_n (t) + n^2] sin n x = sin 3x)$
 
 Не надо раскладывать в ряд Фурье то, что уже разложено (в нашем случае $sin 3x$)
 

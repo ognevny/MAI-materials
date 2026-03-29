@@ -290,7 +290,7 @@ $y' = phi(y/x)$. Замена $u(x) = y/x$
 
 $y = x u(x), y' = (x u(x))' = u(x) + u'(x) dot x = y/x - 1 = u - 1$
 
-$u + x u' = u - 1 => x u' = -1 => u' = -1/x, x != 0 => u = -ln abs(x) + ln abs(C) => u = ln abs(C/x) => y/x = ln abs(C/x) => \ => y = x ln abs(C/x) \
+$u + x u' = u - 1 => x u' = -1 => u' = -1/x, x != 0 => u = -ln abs(x) + ln abs(C) => u = ln abs(C/x) => y/x = ln abs(C/x) => y = x ln abs(C/x) \
 y' = e^(y/x) + y/x => y' = e^u + u => x u' = e^u => x dv(u, x) = e^u => integral (dif u)/e^u = integral (dif x)/x => -e^(-u) = ln abs(x) + ln abs(C) => \ => e^(-u) = -ln abs(x) + ln abs(C) => e^(-u) = ln abs(C/x) => -u = ln ln abs(C/x) => u = -ln ln abs(C/x) => y = -x ln ln abs(C/x) \
 y' = y/x + sin y/x => ... => y = 2x("arctg"(tilde(C) x) + pi n)$
 
@@ -303,14 +303,14 @@ y' = y/x + sin y/x => ... => y = 2x("arctg"(tilde(C) x) + pi n)$
 $y' + P(x) y = Q(x) quad display(
   cases(
     delim: #none,
-    Q(x) = 0 => y' + P(x) = 0 dash "линейное однородное ДУ - ЛОДУ",
-    Q(x) != 0 dash "линейное неоднородное ДУ - ЛНДУ",
+    Q(x) = 0 => y' + P(x) = 0 space dash "линейное однородное ДУ - ЛОДУ",
+    Q(x) != 0 space dash "линейное неоднородное ДУ - ЛНДУ",
   )
 )$
 
 ЛОДУ: $dv(y, x) = -y P(x) dif x |":" y != 0 => integral (dif y)/y = -integral P(x) dif x =>$
 
-$=> ln abs(y) = -integral P(x) dif x => ln abs(y) = ln(abs(C) e^(-integral P(x) dif x)) => abs(y) = abs(C) e^(-integral P(x) dif x) => \ => y = +- C e^(-integral P(x) dif x) => y_О = tilde(C) e^(-integral P(x) dif x)$
+$=> ln abs(y) = -integral P(x) dif x => ln abs(y) = ln(abs(C) e^(-integral P(x) dif x)) => abs(y) = abs(C) e^(-integral P(x) dif x) => y = +- C e^(-integral P(x) dif x) => \ => y_О = tilde(C) e^(-integral P(x) dif x)$
 
 === Методы решения ЛНДУ 1-ого порядка
 
@@ -557,7 +557,7 @@ b) $x = f(y, y')$; Замена $y' = P(y); x = f(y, P(y)); dv(y, x) = f'(y, P(y
 
 $ y = x y' + y'^2 dash "уравнение Клеро" $
 
-$y' = P(x) => y = x P(x) + (P(x))^2 => dv(y, x) = (x P(x) + (P(x))^2)'_x = P(x) + x P'(x) + 2P(x) times \ times P'(x) = P(x) \
+$y' = P(x) => y = x P(x) + (P(x))^2 => dv(y, x) = (x P(x) + (P(x))^2)'_x = P(x) + x P'(x) + 2P(x) P'(x) = P(x) \
 p = P(x) \
 p = p + (x + 2p) p' \
 (x + 2p) p' = 0 <=> display(
@@ -699,7 +699,7 @@ dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = 
 $y' = +- e^y$; так как $y'(0) = 1$, то выбираем "+"
 
 $y' = e^y => (dif y)/e^y = dif x => -e^(-y) = x + C \
-y(0) = 0 => -e^(-0) = 0 + C_1 => C_1 = -1 => -e^(-y) = x - 1 => e^(-y) = 1 - x => \ => ln e^(-y) = ln(1 - x) => -y = ln(1 - x) => y = ln(1/(1 - x))$
+y(0) = 0 => -e^(-0) = 0 + C_1 => C_1 = -1 => -e^(-y) = x - 1 => e^(-y) = 1 - x => ln e^(-y) = ln(1 - x) => \ => -y = ln(1 - x) => y = ln(1/(1 - x))$
 
 == Линейные ДУ 2-ого порядка
 
@@ -1004,7 +1004,7 @@ $
 
 #v(1em)
 
-$n$ решений ЛОДУ n-ого порядка ЛНЗ на $(a, b)$ $<=>$ $W != 0 forall x in (a, b)$
+$n$ решений ЛОДУ n-ого порядка ЛНЗ на $(a, b)$ $<=>$ $W != 0 space forall x in (a, b)$
 
 === Теорема о структуре общего решения ЛОДУ
 
@@ -1201,8 +1201,9 @@ y''_ч = -4A cos 2x - 4B sin 2x \
 y'''_ч = 8A sin 2x - 8B cos 2x \
 y^"IV"_ч = 16A cos 2x + 16B sin 2x \
 16A cos 2x + 16B sin 2x - 5 (8A sin 2x - 8B cos 2x) + 4 (-4A cos 2x - 4B sin 2x) = 20sin 2x \
-(16A + 40B - 16A) cos 2x + (16B - 40A - 16B) sin 2x = 20sin 2x \
-display(cases(40B = 0, -40A = 20) <=> cases(B = 0, A = -"0,5") => y_ч = -"0,5"cos 2x)$
+(16A + 40B - 16A) cos 2x + (16B - 40A - 16B) sin 2x = 20sin 2x$
+
+$display(cases(40B = 0, -40A = 20) <=> cases(B = 0, A = -"0,5") => y_ч = -"0,5"cos 2x)$
 
 === Метод вариации для n-ого порядка
 
@@ -1587,7 +1588,7 @@ $display(
   cases(
     x(t) = C_1 e^(-t),
     y(t) = C_2 e^(-2t)
-  ) quad y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> \ <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, tilde(C) = +- C
+  ) quad y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> abs(y) = abs(C) abs(x)^2 <=> \ <=> y = tilde(C) x^2\, tilde(C) = +- C
 )$
 
 #grid(

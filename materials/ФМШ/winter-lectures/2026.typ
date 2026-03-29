@@ -1009,7 +1009,7 @@ $ (m_1 + m_2 + ... + m_k) arrow(Z C) + sum_(i=k+1)^n m_i dot arrow(Z A_i) = 0 $
     x = x_1 + x_2 \
     (x)_1 A, C (z) quad Q dash "барицентр" \
     A (x_2), B (y) quad P dash "барицентр" \
-    x_1 dot 3alpha = z 5alpha \
+    x_1 dot 3alpha = z dot 5alpha \
     x_1 = 5/3 z \
     x_2 dot (2beta)/3 = beta/3 dot y \
     x_2 = 1/2 y \
