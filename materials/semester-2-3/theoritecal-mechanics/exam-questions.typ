@@ -31,6 +31,7 @@
 
 #grid(
   columns: (3fr, 1fr),
+  column-gutter: 1em,
   [
     2. II закон Ньютона: в ИСО при действии на материальную точку силы она получает ускорение, направленное по линии действия силы и по величине ей пропорциональная.
     $ W ~ F, ov(W) = 1/m ov(F) $
@@ -151,8 +152,9 @@ $ M ov(W)_C = sum_j ov(F)_j^((e)) $
 Моментом количества движения точки относительно центра O называется векторное произведение радиус-вектора на её вектор количества движения.
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
-    #rect[$ ov(K)_(j O) = [ov(r)_j, ov(q)_j] = [ov(r)_j, m_j ov(V)_j] $]
+    $ ov(K)_(j O) = [ov(r)_j, ov(q)_j] = [ov(r)_j, m_j ov(V)_j] $
   ],
   [
     #figure(
@@ -173,6 +175,7 @@ ov(K)_0 = display(sum_j [ov(r)_j, m_j ov(V)_j] => dv(ov(K)_0, t) = sum_j ov(M)_0
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   align: horizon,
   [
     $
@@ -206,6 +209,7 @@ $display("Пр"_"Ox" dv(ov(K)_O, t) = "Пр"_"Ox" sum_j ov(M)_O (ov(F)_j^((e)))\
 
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   align: horizon,
   [
     $[ov(r)_j, m_j ov(V)_j]_z = x_j m_j V_(j y) - y_j m_j V_(j x) \
@@ -265,11 +269,12 @@ $dif' A$ -- величина порядка дифференциала.
 
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     $ov(V)_j = ov(V)_A + [ov(omega), ov(rho)_j] \
     display(T = 1/2 sum_j m_j (ov(V)_A + [ov(omega), ov(rho)_j])^2)$ \
     ...
-    #rect[$ T = (m V_C^2)/2 + (J_(O z) omega^2)/2 $]
+    $ T = (m V_C^2)/2 + (J_(O z) omega^2)/2 $
   ],
   [
     #figure(
@@ -285,6 +290,7 @@ $dif' A$ -- величина порядка дифференциала.
 Элементарная работа силы -- скалярное произведение вектора силы на вектор элементарного перемещения точки её приложения.
 #grid(
   columns: (3fr, 1fr),
+  column-gutter: 1em,
   [
     $ov(V) = dv(ov(r), t), space dif ov(r) = ov(V) dif t$
     #rect[$ dif' A = (ov(F), dif ov(r)) $]
@@ -299,9 +305,10 @@ $dif' A$ -- величина порядка дифференциала.
 
 #grid(
   columns: (3fr, 1fr),
+  column-gutter: 1em,
   [
-    Полная работа силы при перемещении материальной точки из точки (1) в точку (2) (@работа) -- интеграл вдоль траектории перемещения от элементарных работы #rect[$ A_((1))^((2)) = integral_((1))^((2)) dif' A $]
-    Для $(ov(F)) = "const"$ (@постсила) имеем #rect[$ A_((1))^((2)) = F S $]
+    Полная работа силы при перемещении материальной точки из точки (1) в точку (2) (@работа) -- интеграл вдоль траектории перемещения от элементарных работы $ A_((1))^((2)) = integral_((1))^((2)) dif' A $
+    Для $(ov(F)) = "const"$ (@постсила) имеем $ A_((1))^((2)) = F S $
   ],
   [
     #figure(
@@ -331,9 +338,10 @@ $dif' A_j = (ov(F)_j, ov(N)_j) dif t$
 
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     1. Гладкая поверхность
-    #rect[$ dif' A = (ov(N), ov(V)_A) dif t = 0 $]
+    $ dif' A = (ov(N), ov(V)_A) dif t = 0 $
   ],
   [
     #figure(
@@ -343,9 +351,10 @@ $dif' A_j = (ov(F)_j, ov(N)_j) dif t$
 )
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     2. Неподвижный шарнир
-    #rect[$ ov(V)_O = 0; dif' A = (ov(R), ov(V)_O) dif t = 0 $]
+    $ ov(V)_O = 0; dif' A = (ov(R), ov(V)_O) dif t = 0 $
   ],
   [
     #figure(
@@ -363,9 +372,10 @@ dif' A = (ov(T)_A, ov(V)_A) dif t + (ov(T)_B, ov(V)_B) dif t = ... = 0$
 
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     4. Качение без скольжения по неподвижной поверхности
-    #rect[$ V_P = 0 dash "М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dif t = 0 $]
+    $ V_P = 0 space dash "М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dif t = 0 $
   ],
   [
     #figure(
@@ -395,6 +405,7 @@ $ display(Delta T = integral_((1))^((2)) dif U = U_((2)) - U_((1)) = Delta U) $
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     $"CX'" parallel "OX", "CY'" parallel "OY", "CZ'" parallel "OZ"$
   ],
@@ -448,13 +459,14 @@ $ dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov(F)_j^((e
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
-    #rect[$
+    $
       cases(
         M ov(W)_c = display(sum_j ov(F)_j^((e))),
         display(dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e)))),
       )
-    $]
+    $
     $x': ov(K)'_c = J_(c z') ov(omega) \
     y': display(M dot.double(X)_c = sum_j F_(j x)^((e))) \
     z': display(J_(c z) dot dv(omega, t) = J_(c z) dot.double(phi) = sum_j M_(c z') (ov(F)_j^((e))))$
@@ -472,10 +484,11 @@ $ dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov(F)_j^((e
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     $m ov(W) = ov(F) + ov(R)$ \
-    Сила инерции д'Аламбера: #rect[$ ov(Phi) = -m ov(W) $]
-    #rect[$ ov(F) + ov(R) + ov(Phi) = 0 $]
+    Сила инерции д'Аламбера: $ ov(Phi) = -m ov(W) $
+    $ ov(F) + ov(R) + ov(Phi) = 0 $
   ],
   [
     #figure(
@@ -542,8 +555,8 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
   columns: (2fr, 1fr),
   column-gutter: 1em,
   [
-    Связь называется двухсторонней (или удерживающей), если её уравнение реализуется в виде равенства (@связи, слева) #rect[$ x^2 + y^2 + z^2 = l^2 $]
-    Связь называется односторонней (неудерживающей), если её уравнение реализуется в виде неравенства (@связи, справа) #rect[$ l^2 - (x^2 + y^2 + z^2) >= 0 $]
+    Связь называется двухсторонней (или удерживающей), если её уравнение реализуется в виде равенства (@связи, слева) $ x^2 + y^2 + z^2 = l^2 $
+    Связь называется односторонней (неудерживающей), если её уравнение реализуется в виде неравенства (@связи, справа) $ l^2 - (x^2 + y^2 + z^2) >= 0 $
   ],
   [
     #figure(
@@ -555,10 +568,11 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     Связь называется стационарной, если в уравнении связей не присутствует явно время $t$. Связь называется нестационарной, если в уравнении связей явно присутствует время $t$ (@стационарный). \
     $z = 0, u = "const", u = s t$
-    #rect[$ x^2 - (y - u t)^2 - l^2 = 0 $]
+    $ x^2 - (y - u t)^2 - l^2 = 0 $
   ],
   [
     #figure(
@@ -572,6 +586,7 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     Связь называется кинематической, если в уравнении связи входят скорости (@геомкинем).
 
@@ -579,7 +594,7 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
     dot(x)_c - omega R = 0 \
     dv(x_c, t) = dv(phi, t) R \
     x_c = phi R + "const"$
-    #rect[$ x_c - phi R - "const" = 0 $]
+    $ x_c - phi R - "const" = 0 $
   ],
   [
     #figure(
@@ -601,7 +616,7 @@ $dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z$
 $delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ -- вариация функции ($t = "const"$)
 
 $ov(r) = (x, y, z, t) \
-dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t dash "элементарное перемещение"$
+dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t space dash "элементарное перемещение"$
 
 Виртуальное перемещение $ delta ov(r) = pdv(ov(r), x) delta x + pdv(ov(r), y) delta y + pdv(ov(r), z) delta z $
 
@@ -611,11 +626,12 @@ dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pd
 
 #grid(
   columns: (1fr, 2fr),
+  column-gutter: 1em,
   [
-    #rect[$
+    $
        dif' A & = (ov(F), dif ov(r)) \
       delta A & = (ov(F), delta ov(r))
-    $]
+    $
   ],
   [
     #figure(
@@ -633,6 +649,7 @@ dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pd
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     $dif' A &= display(sum_j (ov(R)_j, dif ov(r)_j)) = 0 \
     delta A &= display(sum_j (ov(R)_j, delta ov(r)_j)) = 0$
@@ -643,7 +660,7 @@ dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pd
     $display(sum_j (ov(F)_j, delta ov(r)_j) + sum_j (ov(R)_j, delta ov(r)_j) = 0) \
     "Идеальная связь" => display(sum_j (ov(R)_j, delta ov(r)_j) = 0)$
 
-    #rect[$ sum_j (ov(F)_j, delta ov(r)_j) = 0 $]
+    $ sum_j (ov(F)_j, delta ov(r)_j) = 0 $
   ],
   [
     #figure(
@@ -662,6 +679,7 @@ N точек, 3N координат
 
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     $ov(Phi)_(alpha) = -m_(alpha) ov(W)_(alpha) \
     ov(F)_(alpha) + ov(R)_(alpha) + ov(Phi)_(alpha) = 0 | dot delta ov(r)_A \
@@ -709,7 +727,7 @@ $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) $
 
 + Для голономных систем
 
-  $delta q_i dash "независимы" \
+  $delta q_i space dash "независимы" \
   delta q_1 > 0; delta q_2 = ... = delta q_n = 0 \
   delta A_((1)) = display(sum_j (ov(F)_j, delta ov(r)_j^((1)))); delta A_((1)) = display(sum_(i=1)^n Q_i delta q_i = Q_1 delta q_1)$
 
@@ -759,7 +777,7 @@ $ Q_i^(Phi) = -{dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)} $
 $display(sum_(i=1)^n Q_i delta q_i + sum_(i=1)^n Q_i^(Phi) delta q_i = 0) \
 display(sum_(i=1)^n (Q_i + Q_i^(Phi)) delta q_i = 0)$
 
-$delta q_i dash "независимы" \
+$delta q_i space dash "независимы" \
 Q_i + Q_i^(Phi) = 0 space (i = 1...n) \
 Q_i - display({dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)}) = 0$
 
@@ -771,7 +789,7 @@ $ dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i) = -pdv(Pi, q_i) $
 
 *Уравнение Лагранжа II рода в потенциальном поле сил*
 
-$ L = T - Pi dash "Лагранжиан (функция Лагранжа)" $
+$ L = T - Pi space dash "Лагранжиан (функция Лагранжа)" $
 
 $display(pdv(Pi, dot(q)_i) = 0 => pdv(L, dot(q)_i) = pdv(T, dot(q)_i)\; dv(, t) pdv(T, dot(q)_i) - pdv(, q_i) (T - Pi) = 0)$
 
@@ -783,7 +801,7 @@ $ dv(, t) pdv(L, dot(q)_i) - pdv(L, q_i) = 0 $
 
 $display(sum_(i=1)^n Q_i delta q_i) = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0 space dash "уравнение равновесия голономных систем" \
 pdv(Pi, q_i) = 0 => q_i^*, i = 1...n space dash "положение равновесия" \
-x_i = q_i - q_i^* dash "возмущение" \
+x_i = q_i - q_i^* space dash "возмущение" \
 x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
 
 Положение равновесия считаем устойчивым, если при всех достаточно малых начальных возмущениях по координатам и скоростям МС остается в заданной малой окрестности положения равновесия.
@@ -818,7 +836,7 @@ $ a^* dot.double(x) + c^* x = 0 $
 
 _При решении дифференциального использовать метод Эйлера_
 
-$ A = sqrt(C_1^2 + C_2^2) dash "Амплитуда", x = A sin(k t + epsilon), $ где $k$ -- (круговая) частота колебаний, $k t + epsilon$ -- фаза колебаний, $epsilon$ -- начальная фаза
+$ A = sqrt(C_1^2 + C_2^2) space dash "Амплитуда", x = A sin(k t + epsilon), $ где $k$ -- (круговая) частота колебаний, $k t + epsilon$ -- фаза колебаний, $epsilon$ -- начальная фаза
 
 #figure(
   image("source-figures/lect5-6.png", width: 60%),
@@ -835,6 +853,7 @@ _Здесь и далее под интегрированием уравнени
 
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     $ov(F)_j = -beta_j ov(V)_j, beta_j > 0 \
     delta A = display(sum_j (ov(F)_j, delta ov(r)_j)) \
@@ -857,10 +876,10 @@ $ a^* dot.double(x) + c^* x = -b^* dot(x) <=> a^* dot.double(x) + b^* dot(x) + c
 $dot.double(x) + b^* / a^* dot(x) + c^* / a^* x = 0 \
 b^* / a^* = 2n, c^* / a^* = k^2 \
 dot.double(x) + 2n dot(x) + k^2 x = 0 \
-lambda^2 + 2n lambda + k^2 = 0 dash "характеристическое уравнение" \
+lambda^2 + 2n lambda + k^2 = 0 space dash "характеристическое уравнение" \
 lambda = -n +- sqrt(n^2 - k^2)$
 
-$ n < k dash "случай малого сопротивления" $
+$ n < k space dash "случай малого сопротивления" $
 
 $k_1^2 = k^2 - n^2 \
 lambda = -n +- sqrt(-k_1^2) = -n +- i k_1 \
@@ -868,9 +887,10 @@ X = ... = A e^(n t) sin(k_1 t + epsilon)$
 
 #grid(
   columns: (1.5fr, 1fr),
+  column-gutter: 1em,
   [
     $x -> 0 "при" t -> oo$
-    #rect[$ tau_1 = (2pi)/k_1 dash "период затухающих колебаний" $]
+    $ tau_1 = (2pi)/k_1 space dash "период затухающих колебаний" $
   ],
   [
     #figure(
@@ -900,7 +920,7 @@ display(
 ), -a^* p^2 + c^* != 0 <=> p^2 != c^* / a^* = k^2 <=> p != k \
 X_"ОН" = A sin(k t + epsilon) + tilde(F)/(-a^* p^2 + c^*) cos(p t)$
 
-$k = p dash "резонанс" \
+$k = p space dash "резонанс" \
 dot.double(x) + k^2 x = F_0 cos(p t), F_0 = tilde(F)/a^* \
 X_"Част" = B t cos(p t) + D t sin(p t); dot(X)_"Част" = B cos(p t) + B t (-sin(p t)) p + D sin(p t) + D t cos(p t) p; dot.double(X)_"Част" = \ = -B p sin(p t) - B p sin(p t) - B p t cos(p t) p + D p cos(p t) + D p cos(p t) + D p t (-sin(p t)) p \
 -2B p sin(p t) - B p t cos(p t) p + 2D p cos(p t) + D p t (-sin(p t)) p + k^2 (B t cos(p t) + D t sin(p t)) = F_0 cos(p t) \
@@ -914,6 +934,7 @@ X_"Част" = X_"вын." = F_0/(2p) t sin(p t)$
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     $abs(X_"вын.") -> oo "при" t -> oo \
     abs(X_"ОН") -> oo "при" t -> oo$
@@ -935,9 +956,10 @@ $X_"ОО"$ -- собственные колебания ($X_"собств."$), $
 
 #grid(
   columns: (2fr, 1fr),
+  column-gutter: 1em,
   [
     $display(J_z = sum_j m_j d_(j z)^2)$
-    #rect[$
+    $
       cases(
         reverse: #true,
         delim: "|",
@@ -945,8 +967,8 @@ $X_"ОО"$ -- собственные колебания ($X_"собств."$), $
         J_y = sum_j m_j (x_j^2 + z_j^2),
         J_z = sum_j m_j (x_j^2 + y_j^2),
       ) "Осевые моменты инерции"
-    $]
-    #rect[$
+    $
+    $
       cases(
         reverse: #true,
         delim: "|",
@@ -955,7 +977,7 @@ $X_"ОО"$ -- собственные колебания ($X_"собств."$), $
         J_(y z) = sum_j m_j y_j z_j,
       ) " Центробежные (смешанные)
 моменты инерции"
-    $]
+    $
   ],
   [
     #figure(
@@ -968,6 +990,7 @@ $X_"ОО"$ -- собственные колебания ($X_"собств."$), $
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     #figure(
       image("source-figures/lect6-5.png", width: 60%),
@@ -988,10 +1011,10 @@ $
     J_x, -J_(x y), -J_(x z);
     -J_(y x), J_y, -J_(y z);
     -J_(z x), -J_(z y), J_z;
-  ) dash "тензор инерции"
+  ) space dash "тензор инерции"
 $
 
-Главными осями инерции называются оси, для которых смешанные моменты инерции в индексе которых присутствует название этой оси равны 0 ($J_(x y) = J_(x z) = 0 => O x dash "главная ось инерции"$). Можно доказать, что в любой точке твердого тела любой формы можно построить по крайней мере 3 взаимно ортогональные главные оси инерции.
+Главными осями инерции называются оси, для которых смешанные моменты инерции в индексе которых присутствует название этой оси равны 0 ($J_(x y) = J_(x z) = 0 => O x space dash "главная ось инерции"$). Можно доказать, что в любой точке твердого тела любой формы можно построить по крайней мере 3 взаимно ортогональные главные оси инерции.
 
 Если $O x$, $O y$, $O z$ -- главные оси инерции, то $ov(K)_0 = (J_x omega_x, J_y omega_y, J_z omega_z)$.
 
@@ -1008,17 +1031,18 @@ $ K_z = (sum_(j=1)^N m_j d_j^2) dot omega = J_z omega $
 #v(1em)
 #grid(
   columns: (1.5fr, 1fr),
+  column-gutter: 1em,
   [
     ON -- линия узлов
-    #rect[$
+    $
       cases(
         reverse: #true,
-        psi dash "угол прецессии",
-        theta dash "угол нутации",
-        phi dash "угол собственного вращения",
-      ) dash "Углы Эйлера"
-    $]
-    #rect[$ ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)) $]
+        psi space dash "угол прецессии",
+        theta space dash "угол нутации",
+        phi space dash "угол собственного вращения",
+      ) space dash "Углы Эйлера"
+    $
+    $ ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)) $
   ],
   [
     #figure(
@@ -1074,6 +1098,7 @@ $
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     $display(
       vec(
@@ -1109,6 +1134,7 @@ $
 
 #grid(
   columns: (1.5fr, 1fr),
+  column-gutter: 1em,
   [
     $m(t + Delta t) = m(t) + Delta m_2 - Delta m_1 \
     Delta m = m(t + Delta t) - m(t) = -Delta m_1 + Delta m_2 \
@@ -1138,6 +1164,7 @@ dv(ov(Q), t) = ov(F)^((e)) => m(t) dv(ov(V), t) + dv(m_1, t) ov(V)_(1r) - dv(m_2
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     $display(
       cases(
@@ -1159,11 +1186,11 @@ $(x): m(t) dv(V, t) = -dv(m, t) V_(1r) => integral dif V = -integral (dif m)/(m)
 t = 0, V = V_0, m = m_0 => V_0 = -V_(1r) ln m_0 + C => C = V_0 + V_(1r) ln m_0 \
 V = V_0 + (ln m_0 - ln m) V_(1r)$
 
-$ V = V_0 + V_(1r) ln m_0/m dash "Формула Циолковского" $
+$ V = V_0 + V_(1r) ln m_0/m space dash "Формула Циолковского" $
 
 $V_0 = 0, V_k = V_(1r) ln m_0/m$
 
-$ z = m_0/m_k dash "Число Циолковского" $
+$ z = m_0/m_k space dash "Число Циолковского" $
 
 $display(
   cases(
@@ -1178,6 +1205,7 @@ $display(
 
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     $z = z_1 = z_2 = z_3; \
     V_1 = V_(1r) ln z; \

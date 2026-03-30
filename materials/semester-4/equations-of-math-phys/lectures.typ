@@ -30,7 +30,7 @@ u''_(y y) = (phi(x_0))'_y = 0$
 
 Ответ: $u(x, y) = phi (x) y + psi(x)$, где $phi(x)$ и $psi(x)$ -- произвольные функции.
 
-$u_x u_y - y u_y = 0 => u_y (u_x - y) = 0 => \ => display(
+$u_x u_y - y u_y = 0 => u_y (u_x - y) = 0 => display(
   cases(
     delim: "[",
     u_y = 0 => u = phi(x),
@@ -130,7 +130,7 @@ $display(
     phi(x, y, z) = C_1,
     phi(x, y, z) = C_2,
   )
-), space "доказать" Phi(C_1, C_2) = 0 dash "общее решение (1)" \
+), space "доказать" Phi(C_1, C_2) = 0 space dash "общее решение (1)" \
 Phi(C_1(x, y, z), C_2(x, y, z)) = 0 quad F(x, y, z) \
 pdv(z, x) = -F_x/F_z
 pdv(z, y) = -F_y/F_z
@@ -173,10 +173,10 @@ display(
   ) => cases(
     x^2 + y^2 = C_1,
     (x + y)^2/2 = z - C_2,
-  ) => \ => cases(
+  ) => cases(
     x^2 + y^2 = C_1,
     z - 1/2 (x + y)^2 = C_2,
-  ) => Phi(x^2 + y^2, z - 1/2 (x + y)^2) = 0 \
+  ) => \ => Phi(x^2 + y^2, z - 1/2 (x + y)^2) = 0 \
   z - 1/2 (x + y)^2 = phi(x^2 + y^2) => z = 1/2 (x + y)^2 + phi(x^2 + y^2) \
   cases(
     delim: bar.v.double,
@@ -200,14 +200,14 @@ $x pdv(z, x) + y pdv(z, y) = 2x y$
 $display(
   (dif x)/x = (dif y)/y = (dif z)/(2x y) \
   cases(
-    (dif x)/x = (dif y)/y => ln abs(x) = ln abs(y) + ln abs(C_1) => x/y = tilde(C)_1 => y = x/C_1 dash "подстановка",
+    (dif x)/x = (dif y)/y => ln abs(x) = ln abs(y) + ln abs(C_1) => x/y = tilde(C)_1 => y = x/C_1 space dash "подстановка",
     (dif x)/x = (dif z)/(2x y),
   ) \
   (dif x)/cancel(x) = (dif z)/(2cancel(x) dot x/C_1) => (2x)/C_1 dif x = dif z => x^2/C_1 = z - C_2 => z - x^2/C_1 = C_2 => z - x^2/(x/y) = C_2 => z - x y = C_2 \
   Phi(phi_1(x, y, z), phi_2(x, y, z)) = 0 => Phi(x/y, z - x y) = 0 => z - x y = phi(x/y) => z = x y + phi(x/y)
 )$
 
-$ pdv(u, t) + u pdv(u, x) = 0, $ $u(x, t) dash "скорость"$
+$ pdv(u, t) + u pdv(u, x) = 0, $ $u(x, t) space dash "скорость"$
 
 $display(
   (dif t)/1 = (dif x)/u = (dif u)/0 \
@@ -216,7 +216,7 @@ $display(
     (dif t)/1 = (dif x)/u,
   ) \
   dif t = (dif x)/C_1 => C_1 integral dif t = dif x => C_1 t = x - C_2 => u t = x - C_2 => C_2 = x - u t \
-  Phi(u, x - u t) = 0 dash "ответ"
+  Phi(u, x - u t) = 0 space dash "ответ"
 )$
 
 $x pdv(z, x) - y pdv(z, y) = x - y quad z(1, y) = y + e^y$
@@ -227,7 +227,7 @@ $display(
   "Опираемся на свойство равных дробей" \
   (1 dot dif x + 1 dot dif y)/cancel(1 dot x + 1 dot (-y)) = (dif z)/cancel(x - y) => dif(x + y) = dif z => x + y = z - C_2 => C_2 = z - x - y \
   Phi(x y, z - x - y) = 0 => z - x - y = phi(x y) => z = phi(x y) + x + y \
-  z(1, y) = y + e^y\, space evaluated(z)_(x=1) = evaluated(phi(x y) + x + y)_(x=1) = phi(y) + 1 + cancel(y) = cancel(y) + e^y => \ => phi(y) = e^y - 1 => phi(t) = e^t - 1 => phi(x y) = e^(x y) - 1 \
+  z(1, y) = y + e^y\, space evaluated(z)_(x=1) = evaluated(phi(x y) + x + y)_(x=1) = phi(y) + 1 + cancel(y) = cancel(y) + e^y => phi(y) = e^y - 1 => phi(t) = e^t - 1 => \ => phi(x y) = e^(x y) - 1 \
   "Ответ:" z = e^(x y) - 1 + x + y
 )$
 
@@ -304,7 +304,7 @@ eta = eta(x, y) \
 u_x = u_xi dot xi_x + u_eta dot eta_x \
 u_y = u_xi dot xi_y + u_eta dot eta_y$
 
-$u_(x x) = (u_xi dot xi_x + u_eta dot eta_x)'_x = (u_xi)'_x dot xi_x + u_xi dot (xi_x)'_x + (u_eta)'_x dot eta_x + u_eta dot (eta_x)'_x = \ = [(u_(xi xi) dot xi_x + u_(xi eta) eta_x) dot xi_x + u_xi dot xi_(x x)] + [(u_(eta xi) dot xi_x + u_(eta eta) dot eta_x) dot eta_x + u_eta dot eta_(x x)] = ... \
+$u_(x x) = (u_xi dot xi_x + u_eta dot eta_x)'_x = (u_xi)'_x dot xi_x + u_xi dot (xi_x)'_x + (u_eta)'_x dot eta_x + u_eta dot (eta_x)'_x = [(u_(xi xi) dot xi_x + u_(xi eta) eta_x) dot xi_x + u_xi dot xi_(x x)] + \ + [(u_(eta xi) dot xi_x + u_(eta eta) dot eta_x) dot eta_x + u_eta dot eta_(x x)] = ... \
 u_(x y) = ... \
 u_(y y) = ... \
 macron(a)_11 = underbrace(a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0, (1)) \
@@ -473,8 +473,8 @@ $
 $
 
 $display(
-  Delta = 0^2 - 1 dot 1/x^2 = -1/x^2 < 0 dash "эллиптический" \
-  1 dot (dif y)^2 + 1/x^2 (dif x)^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => \ => dv(y, x) = +- i/x => integral dif y = integral i/x dif x => y = +- i ln x + C => C = y +- i ln x
+  Delta = 0^2 - 1 dot 1/x^2 = -1/x^2 < 0 space dash "эллиптический" \
+  1 dot (dif y)^2 + 1/x^2 (dif x)^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => dv(y, x) = +- i/x => integral dif y = integral i/x dif x => \ => y = +- i ln x + C => C = y +- i ln x
 )$
 
 $display(
@@ -486,15 +486,15 @@ $display(
   eta_x = 1/x quad eta_y = 0 \
   u_x = u_xi xi_x + u_eta eta_x = 1/x u_eta \
   u_y = u_xi xi_y + u_eta eta_y = u_xi \
-  u_(x x) = (u_x)'_x = (1/x u_eta)'_x = -1/x^2 u_eta + 1/x ((u_eta)'_eta eta_x (u_eta)'_xi xi_x) = -1/x^2 u_eta + 1/x (1/x u_(eta eta) + u_(xi eta) dot 0) = \ = -1/x^2 u_eta + 1/x^2 u_(eta eta) \
+  u_(x x) = (u_x)'_x = (1/x u_eta)'_x = -1/x^2 u_eta + 1/x ((u_eta)'_eta eta_x (u_eta)'_xi xi_x) = -1/x^2 u_eta + 1/x (1/x u_(eta eta) + u_(xi eta) dot 0) = -1/x^2 u_eta + 1/x^2 u_(eta eta) \
   u_(y y) = (u_y)'_y = (u_xi)'_y = u_(xi xi) xi_y + u_(xi eta) eta_y = u_(xi xi) \
   -1/x^2 u_eta + 1/x^2 u_(eta eta) + 1/x^2 u_(xi xi) + 1/x^2 u_eta = 0 \
   1/x^2 (u_(xi xi) + u_(eta eta)) = 0 \
-  u_(xi xi) + u_(eta eta) = 0 dash "уравнение Лапласа" \
+  u_(xi xi) + u_(eta eta) = 0 space dash "уравнение Лапласа" \
   u = phi(C_1) + psi(C_2) = phi(y + i ln x) + psi(y - i ln x) \
   u = "Re" f(C) = "Re" f(y + i ln x) \
   u = "Im" f(C) = "Im" f(y + i ln x) \
-  f\, phi\, psi dash "произвольные аналитические функции"
+  f\, phi\, psi space dash "произвольные аналитические функции"
 )$
 
 = Уравнения математической физики
@@ -535,7 +535,7 @@ II закон Ньютона
 $a m = F_"верт." \
 a = u_(t t) \
 F_"верт." = evaluated(T sin alpha)_(x+Delta x) - evaluated(T sin alpha)_x \
-u_(t t) rho Delta x = evaluated(T u_x)_(x+Delta x) - evaluated(T u_x)_x = T (evaluated(u_x)_(x+Delta x) - evaluated(u_x)_x) = \ = T evaluated((u_x)'_x)_(x=C) Delta x$
+u_(t t) rho Delta x = evaluated(T u_x)_(x+Delta x) - evaluated(T u_x)_x = T (evaluated(u_x)_(x+Delta x) - evaluated(u_x)_x) = T evaluated((u_x)'_x)_(x=C) Delta x$
 
 #rect[$ Delta f = f'(C) Delta x $]
 
@@ -608,10 +608,10 @@ $display(
   ) => cases(
     Phi_1(x) + Phi_2(x) = phi(x),
     a Phi_1(x) - a Phi_2(x) = F(x) + C,
-  ) => \ => cases(
+  ) => cases(
     Phi_1(x) + Phi_2(x) = phi(x),
     Phi_1(x) - Phi_2(x) = 1/a F(x) + C,
-  ) => cases(
+  ) => \ => cases(
     Phi_1(x) = 1/2 phi(x) + 1/(2a) F(x) + C,
     Phi_2(x) = 1/2 phi(x) - 1/(2a) F(x) - C,
   ) \
@@ -635,7 +635,7 @@ $
 
 $display(
   a^2 = 4 => a = 2 \
-  u(x, t) = 1/2 [k(x + 2t) + k(x - 2t)] + 1/(2 dot 2) integral_(x-2t)^(x+2t) k dif z = k x + evaluated(1/4 k z)_(x-2t)^(x+2t) = \ = k x + 1/4 k (x + 2t - x + 2t) = k x + k t
+  u(x, t) = 1/2 [k(x + 2t) + k(x - 2t)] + 1/(2 dot 2) integral_(x-2t)^(x+2t) k dif z = k x + evaluated(1/4 k z)_(x-2t)^(x+2t) = k x + 1/4 k (x + 2t - x + 2t) = k x + k t
 )$
 
 ==== Вынужденные колебания
@@ -663,7 +663,7 @@ $
 $display(
   a = 2 \
   f(x, t) = sin t \
-  u(x, t) = k (x + t) + 1/4 integral_0^t dif tau [integral_(x - 2(t - tau))^(x + 2(t + tau)) sin tau dif z] = k (x + t) + 1/4 integral_0^t evaluated(sin tau dot z)_(x - 2(t - tau))^(x + 2(t - tau)) = \ = k (x + t) + 1/4 integral_0^t sin tau dot (x + 2t - 2tau - x + 2t - 2tau) dif tau = k (x + t) + 1/4 integral_0^t (4t - 4tau) sin tau dif tau = \ = k (x + t) + integral_0^t t sin tau dif tau - integral_0^t tau sin tau dif tau = k (x + t) - t evaluated(cos tau)_(0)^t - (evaluated(-tau cos tau)_0^t + integral_0^t cos tau dif tau) = \ = k (x + t) - t cos t + t + t cos t - 0 - evaluated(sin tau)_0^t = k (x + t) + t - sin t
+  u(x, t) = k (x + t) + 1/4 integral_0^t dif tau [integral_(x - 2(t - tau))^(x + 2(t + tau)) sin tau dif z] = k (x + t) + 1/4 integral_0^t evaluated(sin tau dot z)_(x - 2(t - tau))^(x + 2(t - tau)) = k (x + t) + 1/4 times \ times integral_0^t sin tau dot (x + 2t - 2tau - x + 2t - 2tau) dif tau = k (x + t) + 1/4 integral_0^t (4t - 4tau) sin tau dif tau = k (x + t) + integral_0^t t sin tau dif tau - \ - integral_0^t tau sin tau dif tau = k (x + t) - t evaluated(cos tau)_(0)^t - (evaluated(-tau cos tau)_0^t + integral_0^t cos tau dif tau) = k (x + t) - t cos t + t + t cos t - 0 - \ - evaluated(sin tau)_0^t = k (x + t) + t - sin t
 )$
 
 ==== Метод Фурье для волнового уравнения колебания ограниченной струны
@@ -679,7 +679,7 @@ $
     delim: bar.v.double,
     evaluated(u)_(x=0) = 0,
     evaluated(u)_(x=l) = 0,
-  ) dash "однородные граничные условия"
+  ) space dash "однородные граничные условия"
 $
 
 #enum(
@@ -743,7 +743,7 @@ $display(
   k^2 + lambda^2 = 0 <=> k = +-i lambda \
   X(x) = e^(0 dot x) (C_1 cos(lambda x) + C_2 sin(lambda x)) = C_1 cos(lambda x) + C_2 sin(lambda x) \
   X(0) = C_1 cos(lambda dot 0) + C_2 sin(lambda dot 0) = 0 => C_1 = 0 \
-  X(l) = 0 + C_2 sin(lambda l) = 0 stretch(=>)^(C_2 != 0) sin(lambda l) = 0 => lambda l = pi k => lambda = (pi k)/l => \ => ov(lambda) = lambda^2 = ((pi n)/l)^2 dash "собственные числа" => \ => X_n (x) = C_2 sin (pi n)/l x dash "собственные функции (задача Штурма-Лиувилля)"$
+  X(l) = 0 + C_2 sin(lambda l) = 0 stretch(=>)^(C_2 != 0) sin(lambda l) = 0 => lambda l = pi k => lambda = (pi k)/l => ov(lambda) = lambda^2 = ((pi n)/l)^2 space dash "собственные числа" => \ => X_n (x) = C_2 sin (pi n)/l x space dash "собственные функции (задача Штурма-Лиувилля)"$
 
 $T'' + a^2 ov(lambda) T = 0 <=> T'' + a^2 lambda^2 T = 0 \
 k^2 + a^2 lambda^2 = 0 <=> k_(1,2) = +-a lambda \
@@ -760,7 +760,7 @@ $
 
 $display(
   evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) \
-  evaluated(u_t)_(t=0) = sum_1^oo evaluated([(A_n (-sin (pi n)/l a t) (pi n a)/l + B_n cos (pi n)/l a t dot (pi n a)/l) sin (pi n)/l x])_(t=0) = \ = sum_1^oo B_n (pi n a)/l sin (pi n)/l x = psi(x)
+  evaluated(u_t)_(t=0) = sum_1^oo evaluated([(A_n (-sin (pi n)/l a t) (pi n a)/l + B_n cos (pi n)/l a t dot (pi n a)/l) sin (pi n)/l x])_(t=0) = sum_1^oo B_n (pi n a)/l sin (pi n)/l x = psi(x)
 )$
 
 Собственные функции (для $n in NN$) образуют ортогональную систему $ X_n dot X_m = integral_0^l X_n dot X_m dif x space dash "скалярное произведение" \
@@ -853,7 +853,7 @@ $a = 1; phi(x) = -x/pi; psi(x) = 0; l = pi$
 
 $display(
   u(x, t) = sum_1^oo (A_n cos(n t) + B_n sin(n t)) sin n x \
-  A_n = 2/pi integral_0^pi -x/pi sin n x dif x = -2/pi^2 integral_0^pi x sin n x dif x = 2/(pi^2 n) integral_0^pi x dif cos n x = 2/(pi^2 n) (evaluated(x cos n x)_0^pi - \ - integral_0^pi cos n x dif x) = 2/(pi^2 n) pi cos pi n - 2/(pi^2 n) evaluated(1/n sin n x)_0^pi = 2/(pi n) dot (-1)^n \
+  A_n = 2/pi integral_0^pi -x/pi sin n x dif x = -2/pi^2 integral_0^pi x sin n x dif x = 2/(pi^2 n) integral_0^pi x dif cos n x = 2/(pi^2 n) (evaluated(x cos n x)_0^pi - integral_0^pi cos n x dif x) = \ = 2/(pi^2 n) pi cos pi n - 2/(pi^2 n) evaluated(1/n sin n x)_0^pi = 2/(pi n) dot (-1)^n \
   B_n dot n = 2/pi integral_0^pi 0 dot sin n x dif x => B_n = 0 \
   u(x, t) = sum_1^oo 2/(pi n) dot (-1)^n cos n t sin n x
 )$
@@ -985,7 +985,7 @@ $display(
 Уравнение теплового баланса для фрагмента $Delta x$ $ Q(t + Delta t) - Q(t) = q(x + Delta x) - q(x) $
 
 $display(
-  c rho S Delta x u(underbrace(x + theta_3 Delta x, C_3), t + Delta t) - c rho S Delta x u(underbrace(x + theta_1 Delta x, C_1), t) = \ = k S Delta pdv(u, x) (x + Delta x, underbrace(t + theta_4 Delta t, C_4)) - k S Delta t pdv(u, x) (x, underbrace(t + theta_2 Delta t, C_2)) \
+  c rho S Delta x u(underbrace(x + theta_3 Delta x, C_3), t + Delta t) - c rho S Delta x u(underbrace(x + theta_1 Delta x, C_1), t) = k S Delta pdv(u, x) (x + Delta x, underbrace(t + theta_4 Delta t, C_4)) - \ - k S Delta t pdv(u, x) (x, underbrace(t + theta_2 Delta t, C_2)) \
   c rho S Delta x [u(C_3, t + Delta t) - u(C_1, t)] = k S Delta t [pdv(u, x) (x + Delta x, C_4) - pdv(u, x) (x, C_2)] |":" S Delta x Delta t \
   c rho (u(C_3 t + Delta t) - u(C_1, t))/(Delta t) = k (pdv(u, x) (x + Delta x, C_4) - pdv(u, x) (x, C_2))/(Delta x) \
   cases(

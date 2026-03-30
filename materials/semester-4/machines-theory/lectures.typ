@@ -149,6 +149,7 @@
 )
 #grid(
   columns: (1fr, 1fr),
+  column-gutter: 1em,
   [
     #figure(
       image("source-figures/lect2-4.png", width: 30%),
@@ -179,7 +180,7 @@
     )
   ],
   [
-    $k = 8 dash "количество звеньев (общее)" \
+    $k = 8 space dash "количество звеньев (общее)" \
     n = 7 \
     p_4 = 0 \
     q = 0 \
@@ -738,6 +739,7 @@ $i < 1$ -- мультипликатор
 
 #grid(
   columns: (1.1fr, 1fr),
+  column-gutter: 1em,
   [
     #figure(
       image("source-figures/lect6-5.png"),
