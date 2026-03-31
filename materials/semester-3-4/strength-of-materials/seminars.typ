@@ -561,3 +561,98 @@ $
     ),
   ).join(),
 )
+
+Проводим расчёт для упрощенного сечения с одинаковой толщиной стенок (смотреть файл). Ориентировать сечение нужно исходя из III теории прочности
+$
+  & sigma^(P "III") = sqrt(sigma^2 + 4tau^2) \
+  & sigma_z = +-M/J_z y \
+  & sigma_y = +-M_y/J_y z \
+  & sigma = +-M/J_z y +- M_y/J_y z space dash "полное напряжение" \
+  & tau = M_"кр"/W_"кр" \
+  & J_i = (b_i h_i^3)/12 + F_i c_i^2
+$
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/sem14-1.png"),
+    )
+  ],
+  [
+    Момент положителен, если направление "к нам" оказывается в первой координатной четверти. Крутящий момент положителен, если он действует против часовой стрелки
+
+    $M_y = q l^2 \
+    M_z = -3q l^2 \
+    M_"кр" = 5/2 q l^2$
+  ],
+)
+
+Уравнение нейтральной линии
+
+$
+  z = +-k y
+$
+
+Нахождение моментов инерции
+
+$display(
+  J_y\: y parallel h\, y perp b \
+  J_z\: z parallel h\, z perp b \
+  J_f = 2(J_"I"^j + J_"II"^j) \
+  J_"I"^y = delta (6b)^3/12 + 6b delta (2b)^2 = 18delta b^3 + 24delta b^3 = 42delta b^3 \
+  J_"II"^y = (4b delta^3)/12 + 4b delta dot 0 approx 0 \
+  J_y = 84delta b^3 \
+  J_"I"^z = (6b delta^3)/12 + 6b delta dot 0 approx 0 \
+  J_"II"^z = delta (4b)^3/12 + 4b delta (3b)^2 = 124/3 delta b^3 \
+  J_z = 248/3 delta b^3
+)$
+
+Нахождение нейтральной линии
+
+$display(
+  0 = (q l^2)/(84delta b^3) dot z - (3q l^2)/(248/3 delta b^3) dot y \
+  z = (9q l^2)/(248 delta b^3) dot (84delta b^3)/(q l^2) y \
+  z = 3y
+)$
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/sem14-2.png"),
+    )
+  ],
+  [
+    $
+      & sigma = (q l^2)/(84delta b^3) z - (9q l^2)/(243delta b^3) y \
+      & sigma_2 = (q l^2)/(84delta b^3) dot (-2b) - (9q l^2)/(248delta b^3) dot 3b \
+      & sigma_2 = -"0,132" (q l^2)/(delta b^2) \
+      & sigma_1 = "0,132" (q l^2)/(delta b^2)
+    $
+  ],
+)
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/sem14-3.png"),
+    )
+  ],
+  [
+    $
+      & tau = M_"кр"/W_"кр" \
+      & W_"кр" = 2omega delta = 2 dot 4b dot 6b delta = 48 delta b^2
+    $
+  ],
+)
+
+Условие прочности
+$
+  sigma <= [sigma] \
+  [sigma] = sigma_"0,2"/[n]
+$

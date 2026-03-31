@@ -1048,9 +1048,171 @@ T'/(a^2 T) = X''/X = -ov(lambda) $
 
 $
   u_n (x, t) & = A_n e^(-((a pi n)/l)^2 t) sin (pi n x)/l \
-     u(x, t) & = sum_1^oo A_n e^(-((a pi n)/l)^2 t) sin (pi n x)/l
+     u(x, t) & = sum_1^oo A_n e^(-a^2((pi n)/l)^2 t) sin (pi n x)/l
 $
 
 $display(
   evaluated(u)_(t=0) = sum_1^oo A_n sin (pi n x)/l = phi(x) => A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dif x
+)$
+
+$
+  u_t = 25u_(x x) quad cases(
+    delim: #none,
+    0 < x < 5,
+    0 < t < oo,
+  ) quad evaluated(u)_(t=0) = 1/5 quad cases(
+    delim: #none,
+    evaluated(u)_(x=0) = 0,
+    evaluated(u)_(x=5) = 0,
+  )
+$
+
+$display(
+  a = 5 quad l = 5 \
+  A_n = 2/5 integral_0^l 1/5 sin (pi n x)/5 dif x = -2/5 dot 1/5 dot 5/(pi n) evaluated(cos (pi n x)/5)_0^5 = -2/(5pi n) (cos (pi n) - cos 0) = -2/(5pi n) ((-1)^n - 1) = \ = cases(
+    0 quad n = 2k,
+    4/(5pi n) quad n = 2k - 1,
+  ) \
+  u(x, t) = sum_1^oo 4/(5pi (2k - 1)) e^(-25 (pi ((2k -1))/5)^2 t) sin (pi (2k - 1) x)/5 = sum_1^oo 4/(5pi (2k - 1)) e^(-(pi (2k -1))^2 t) sin (pi (2k - 1) x)/5
+)$
+
+=== Вторая краевая задача для однородного уравнения теплопроводности
+
+#v(1em)
+
+$
+  u_t = a^2 u_(x x) quad evaluated(u)_(t=0) = phi(x) quad cases(
+    delim: #none,
+    evaluated(u_x)_(x=0) = 0,
+    evaluated(u_x)_(x=l) = 0,
+  )
+$
+
+Будем искать решение в виде $u(x, t) = X(x) dot T(t)$
+
+$display(
+  u''_(x x) = X''(x) dot T(t) \
+  u'_t = X(x) dot T'(t) \
+  X(x) T'(t) = a^2 X''(x) dot T(t) |":" a^2 X(x) dot T(t) \
+  X''/X = T'/(a^2 T) = -ov(lambda)
+)$
+
++ $X'' + ov(lambda) X = 0$
++ $T' + a^2 ov(lambda) T = 0$
+
+$display(
+  evaluated(u'_x)_(x=0) = evaluated(X'(x) T(t))_(x=0) = 0 \
+  evaluated(u'_x)_(x=l) = evaluated(X'(x) T(t))_(x=l) = 0 \
+  X'(0) = X'(l) = 0
+)$
+
++ $ov(lambda) = 0 => X'' = 0 => X = C_1 x + C_2$
+
+  $X' = C_1 \
+  C_1 = 0 space X'(0) = X'(l) = C_1 = 0 => X = C_2$
+
++ $ov(lambda) > 0 => lambda^2 = ov(lambda) => X'' + lambda^2 X = 0$
+
+  $display(
+    k^2 + lambda^2 = 0 <=> k = +-i lambda \
+    X = C_1 cos lambda x + C_2 sin lambda x \
+    X' = -C_1 lambda sin lambda x + C_2 lambda cos lambda x \
+    X'(0) = C_2 = 0 \
+    X'(l) = - C_1 lambda sin lambda l = 0 => sin lambda l = 0 \
+    lambda l = pi n => lambda = (pi n)/l => ov(lambda) = ((pi n)/l)^2 \
+    X_n = C_1 cos (pi n x)/l \
+    X_0 = C_1
+  )$
+
+$T' + a^2 ov(lambda) T = 0$
+
+$display(
+  k + a^2 ov(lambda) = 0 => k = -a^2 ov(lambda) \
+  T = C_1 e^(-a^2 ov(lambda) t) \
+  T_n = tilde(A)_n e^(-a^2 ((pi n)/l)^2 t)
+)$
+
+$
+  u(x, t) = tilde(A)_0 C_1 + sum_1^oo tilde(A)_n C_1 e^(-a^2 ((pi n)/l)^2 t) cos (pi n x)/l = A_0/2 + sum_1^oo A_n e^(-a^2 ((pi n)/l)^2 t) cos (pi n x)/l
+$
+
+$display(evaluated(u)_(t=0) = A_0/2 + sum_1^oo A_n cos (pi n x)/l = phi(x))$
+
+$
+  A_0 = 2/l integral_0^l phi(x) dif x quad A_n = 2/l integral_0^l phi(x) cos (pi n x)/l
+$
+
+$
+  u_t = 4u_(x x) quad evaluated(u)_(t=0) = x quad cases(
+    delim: #none,
+    evaluated(u_x)_(x=0) = 0,
+    evaluated(u_x)_(x=pi) = 0,
+  )
+$
+
+$display(
+  a = 2 quad l = pi \
+  A_0 = 2/pi integral_0^pi x dif x = evaluated(x^2/pi)_0^pi = pi \
+  A_n = 2/pi integral_0^pi x cos (pi n x)/pi dif x = 2/pi dot 1/n (evaluated(x sin n x)_0^pi - integral_0^pi sin n x dif x) = 2/(pi n) (pi sin pi n - 0 dot sin 0 + evaluated(1/n cos n x)_0^pi) = \ = 2/(pi n^2) (cos pi n - cos 0) = 2/(pi n^2) ((-1)^n - 1) = cases(
+    0 quad & n = 2k,
+    -4/(pi n^2) quad & n = 2k - 1,
+  ) \
+  u(x, t) = pi/2 + sum_1^oo -4/(pi (2k - 1)^2) e^(-4 (2k - 1)^2 t) cos (2k - 1) x
+)$
+
+$
+  u_t = 4u_(x x) quad evaluated(u)_(t=0) = cos 2x quad cases(
+    delim: #none,
+    evaluated(u_x)_(x=0) = 0,
+    evaluated(u_x)_(x=pi) = 0,
+  )
+$
+
+$display(
+  A_0 = 2/pi integral_0^pi cos 2x dif x = 2/pi dot evaluated(1/2 sin 2x)_0^pi = 2/pi (1/2 sin 2pi - 1/2 sin 0) = 0 \
+  A_n = 2/pi integral_0^pi cos 2x cos (pi n x)/pi dif x = 2/pi dot 1/2 integral_0^pi (cos (2 - n) x + cos (2 + n) x) dif x = 1/pi (integral_0^pi cos (2 - n) x dif x + \ + integral_0^pi cos (2 + n) x dif x) = 1/pi (evaluated(1/(2 - n) sin (2 - n) x)_0^pi + evaluated(1/(2 + n) sin (2 + n) x)_0^pi) = 1/pi (1/(2 - n) (sin (2 - n) pi - sin 0) + \ + 1/(2 + n) (sin (2 + n) pi - sin 0)) = 0
+)$
+
+А на самом деле...
+
+$display(
+  A_n = 2/pi integral_0^pi cos 2x cos n x dif x = cases(
+    0 quad & n != 2,
+    1 quad & n = 2,
+  )
+)$
+
+$
+  u(x, t) = e^(-4 dot 2^2 t) cos 2x = e^(-16t) cos 2x
+$
+
+=== Метод Фурье для решения неоднородного уравнения теплопроводности
+
+#v(1em)
+
+$
+  u_t = a^2 u_(x x) + f(x, t)
+$
+
+Будем искать решение в виде $ u(x, t) = sum_(1\/0)^oo T_n (t) X_n (x), $ где $X_n (x)$ -- собственные функции для однородного уравнения; $T_n (t)$ -- решение уравнения $T'_n (t) + a^2 n^2 T_n (t) = f_n (t)$ с НУ $T_n (0) = phi_n,$ здесь $f_n (t)$ -- коэффициент разложения $f(x, t)$ по собственным функциям $X_n (x)$; $phi_n (t)$ -- коэффициент разложения $phi(x)$ по собственным функциям $X_n (x)$
+
+$
+  u_t = 1/9 u_(x x) + cos 3x quad evaluated(u)_(t=0) = 0 quad evaluated(u_x)_(x=0) = evaluated(u_x)_(x=pi) = 0
+$
+
+$display(
+  a = 1/3 quad l = pi \
+  "Собственные функции" \
+  X_n = cos (pi n x)/pi = cos n x \
+  u(x, t) = sum_0^oo T_n (t) cos n x \
+  u'_t = sum_0^oo T'_n cos n x \
+  u''_(x x) = sum_0^oo T_n (-n^2 cos n x) \
+  sum_0^oo T'_n cos n x = 1/9 sum_0^oo T_n (-n^2 cos n x) + cos 3x \
+  sum_0^oo [T'_n + 1/9 n^2 T_n (t)] cos n x = sum_0^oo I_n cos n x \
+  I_3 = 1
+)$
+
+$display(
+  "Для" & cos n x: T'_n (t) + 1/9 n^2 T_n (t) = 0 quad T_n (0) = 0 \
+  & cos 3x: T'_3 (t) + 1/9 dot 3^2 T_3 (t) = 1 quad T_n (0) = 0
 )$
