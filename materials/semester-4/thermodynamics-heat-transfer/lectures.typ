@@ -967,12 +967,364 @@ $display(
 
   $ pdv(T, tau) = a nabla^2 T $
 
-+ $q_V != 0 quad pdv(T, tau) = 0$
++ $q_V != 0 quad pdv(T, tau) = 0$ -- уравнение Пуассона
 
   $ nabla^2 T + q_V/lambda = 0 $
 
-+ $q_V = 0 quad pdv(T, tau) = 0$
++ $q_V = 0 quad pdv(T, tau) = 0$ -- уравнение Лапласа
 
   $ nabla^2 T = 0 $
 
 ==== Условия однозначности (краевые условия)
+
+#v(1em)
+
+ДУ теплопроводности описывает процесс теплопроводности в самом общем виде. Для полного описания теплопроводности к ДУ необходимо добавить краевые условия.
+
+Частные особенности, которые совместно с ДУ теплопроводности даёт полное математическое описание, называется условиями однозначности или краевыми условиями.
+
+Условия однозначности включают в себя
++ Геометрические условия -- задаётся формы и размер тела, внутри которого ищется решения ДУ теплопроводности
++ Физические условия -- известны $lambda$, $rho$, $c$, а также функция распределения $q_v = f(x, y, z, tau)$
++ Начальные условия -- задаются только для нестационарных задач ($pdv(T, tau) != 0$). При $tau = tau_0$ задаются условия $tau_0 = tau_1 (x, y, z, tau_0)$. Обычно $tau_0 = 0$
++ Граничные условия
+  I рода $T_w = T_w (x, y, z, tau)$ \
+  II рода $q_w = q_w (x, y, z, tau)$ \
+  III рода \
+  #grid(
+      columns: (2fr, 1fr),
+      column-gutter: 1em,
+      [
+        $
+          & (-lambda pdv(T, y))_w = alpha (T_w - T_f) \
+          & [alpha] = "Вт"/(м^2 dot К) \
+          & [T_f] = К
+        $
+      ],
+      [
+        #figure(
+          image("source-figures/lect7-1.png")
+        )
+      ],
+    )
+  + IV рода
+    #grid(
+      columns: (8fr, 1fr),
+      column-gutter: 1em,
+      [
+        $
+          cases(
+            (-lambda pdv(T, u))_w^"I" = (-lambda pdv(T, u))_w^"II",
+            T_w^"I" = T_w^"II"
+          )
+        $
+      ],
+      [
+        #figure(
+          image("source-figures/lect7-2.png")
+        )
+      ]
+    )
+
+Исходя из изложенного, имея первоначальные условия, можно получить распределение температуры и действующие тепловые потоки.
+
+== Стационарные задачи теплопроводности
+
+#v(1em)
+
+$
+  & pdv(T, tau) = 0 \
+  lambda = lambda(T) quad & "div"(lambda ov("grad") T) + q_v = 0 \
+  lambda = "const" quad & nabla^2 T + q_v/lambda = 0
+$
+
+=== Теплопроводность однослойной плоской стенки при $lambda = "const"$
+
+#v(1em)
+
+$
+  pdv(T, tau) = 0; space lambda = "const"; space q_v = 0
+$
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+              image("source-figures/lect7-3.png")
+            )
+  ],
+  [
+    $display(
+      delta << l_y quad delta << l_z \
+      pdv(T, y) = pdv(T, z) = 0 \
+      T = T(x) \
+      x = 0 quad T(0) = T_w_1 \
+      x = delta quad T(delta) = T_w_2 \
+      nabla^2 T = 0 \
+      pdv(T, x, 2) + cancel(pdv(T, y, 2)) + cancel(pdv(T, z, 2)) = 0 \
+      dv(T, x, 2) = 0
+    )$
+  ]
+)
+
+$display(
+  "Граничные условия I рода" & x = 0 quad T(0) = T_w_1 \
+  & x = delta quad T(delta) = T_w_2
+)$
+
+$display(
+  dv(T,x) = C_1 \
+  T(x) = C_1 x + C_2 \
+  cases(
+    reverse: #true,
+    x = 0 quad T(0) = C_1 dot 0 + C_2 = T_w_1,
+    x = delta quad T(delta) = C_1 delta + C_2 = T_w_2,
+  ) \
+  C_2 = T_w_1 \
+  C_1 = (T_w_2 - T_w_1)/delta \
+  T(x) = (T_w_2 - T_w_1)/delta x + T_w_1 \
+  ov(q) = -lambda ov("grad") T \
+  q = -lambda C_1 = lambda/delta (T_w_1 - T_w_2) \
+  Delta T = T_w_1 - T_w_2
+)$
+
+$
+  & q = lambda/delta Delta T \
+  & [lambda/delta] = "Вт"/(м^2 dot К) \
+  & R_lambda = delta/lambda space [(м^2 dot К)/"Вт"] \
+  & q = (Delta T)/R_lambda <-> I = (Delta U)/R_э space "(аналогия с электричеством)" \
+  & R_lambda = (Delta T)/q \
+  & q ~ I \
+  & Delta T ~ Delta U \
+  & R_lambda ~ R_э
+$
+
+=== Теплопроводность многослойной плоской стенки
+
+#v(1em)
+
+Контакт между слоями идеальный. Заданы граничные условия I рода.
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+              image("source-figures/lect7-4.png")
+            )
+  ],
+  [
+    $
+      x = 0 quad T(0) = T_w_1 \
+      x = sum_(i=0)^n delta_i quad T(Sigma) = T_w_(n+1)
+    $
+
+    $display(
+      q_1 = q_2 = ... = q_n = q = "const" \
+      cases(
+        q = lambda_1/delta_1 (T_w_1 - T_w_2),
+        q = lambda_2/delta_2 (T_w_2 - T_w_3),
+        ...,
+        q = lambda_n/delta_n (T_w_n - T_w_(n+1))
+      ) <=> cases(
+        q delta_1/lambda_1 = T_w_1 - T_w_2,
+        q delta_2/lambda_2 = T_w_2 - T_w_3,
+        ...,
+        q delta_n/lambda_n = T_w_n - T_w_(n+1),
+      )
+    )$
+  ],
+)
+
+$display(
+  q (delta_1/lambda_1 + delta_2/lambda_2 + ... + delta_n/lambda_n) = T_w_1 - T_w_(n+1)
+)$
+
+$
+  & q = (T_w_1 - T_w_(n+1))/(delta_1/lambda_1 + delta_2/lambda_2 + ... + delta_n/lambda_n) \
+  & R_Sigma_lambda = delta_1/lambda_1 + delta_2/lambda_2 + ... + delta_n/lambda_n = sum_(i=1)^n (delta/lambda)_i \
+  & R_Sigma_lambda = sum_(i=1)^n R_lambda_i \
+  & q = (T_w_1 - T_w_(n+1))/(sum_(i=1)^n (delta/lambda)_i)
+$
+
+$display(
+  q = -lambda_i (dv(T, x))_i = "const" \
+  lambda arrow.t -> (dv(T, x))_i arrow.b \
+  T_w (x_i)_i = T_w_i - q x_i/delta_i
+)$
+
+=== Теплопередача через однослойную плоскую стенку (теплопроводность через плоскую стенку с граничными условиями III рода)
+
+#v(1em)
+
+$
+  T_f_1 = "const"; space alpha_1 = "const" \
+  T_f_2 = "const"; space alpha_2 = "const"
+$
+
+#grid(
+  columns: (1fr, 4fr),
+  column-gutter: 1em,
+  [
+    #figure(
+              image("source-figures/lect7-5.png")
+            )
+  ],
+  [
+    $display(
+      q_alpha_1 = q_lambda = q_alpha_2 = q = "const" \
+      cases(
+        q = alpha_1 (T_f_1 - T_w_1),
+        q = lambda/delta (T_w_1 - T_w_2),
+        q = alpha_2 (T_w_2 - T_f_2),
+      ) \
+      q (1/alpha_1 + delta/lambda + 1/alpha_2) = T_f_1 - T_f_2 \
+      q = (T_f_1 - T_f_2)/(1/alpha_1 + delta/lambda + 1/alpha_2)
+    )$
+  ]
+)
+
+$
+  & R_Sigma = 1/alpha_1 + delta/lambda + 1/alpha_2 = R_alpha_1 + R_lambda + R_alpha_2 \
+  & R_alpha = 1/alpha_1 quad R_lambda = delta/lambda quad R_alpha_2 = 1/alpha_2 \
+  & q = (T_f_1 - T_f_2)/R_Sigma
+$
+
+Коэффициент теплопередачи
+$
+  k = 1/R_Sigma \
+  k = 1/(1/alpha_1 + delta/lambda + 1/alpha_2)
+$
+
+$
+  q = k (T_f_1 - T_f_2) => k = q/(T_f_1 - T_f_2) space ["Вт"/(м^2 dot К)]
+$
+
+$k$ численно равен количеству теплоты, которое передается через единицу поверхности через плоскость стенки на единицу времени при разности температур в 1К.
+
+$
+  T_w_1 = T_f_1 - q 1/alpha_1 \
+  T_w_2 = T_f_2 - q 1/alpha_2
+$
+
+=== Теплопроводность через многослойную плоскую стенку с граничными условиями III рода (теплопередача через многослойную плоскую стенку)
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+              image("source-figures/lect7-6.png")
+            )
+  ],
+  [
+    $
+      q = q_lambda_i = q_alpha_1 = q_alpha_2 = "const"
+    $
+    $display(
+      cases(
+        q = alpha_1 (T_f_1 - T_w_1),
+        q = (T_w_1 - T_w_(n+1))/(sum_(i=1)^n (delta/lambda)_i),
+        q = alpha_2 (T_w_(n+1) - T_f_2),
+      )
+    )$
+
+    $
+      & q = (T_f_1 - T_f_2)/(1/alpha_1 + sum_(i=1)^n (delta/lambda)_i + 1/alpha_2) \
+      & R_sum = 1/alpha_1 + sum_(i=1)^n (delta/lambda)_i + 1/alpha_2
+      & R_lambda = sum_(i=1)^n (delta/lambda)_i \
+      & k = 1/(1/alpha_1 + sum_(i=1)^n (delta/lambda)_i + 1/alpha_2)
+    $
+  ],
+)
+
+$display(
+  cases(
+    T_w_1 = T_f_1 - q 1/alpha_1,
+    T_w_(n+1) = T_f_2 + q 1/alpha_2,
+  ) \
+  T(x_i) = T_w_1 - q x_i/delta_i \
+  T_w_(i+1) = T_f_1 - q (1/alpha_1 + sum_(1)^i (delta/lambda)_i)
+)$
+
+== Контактный Т/О. Контактное термическое сопротивление
+
+#v(1em)
+
+Контактным Т/О называется передача теплоты между соприкасающимися твердыми поверхностями.
+
+Обычно $
+  F_к = F_"геом"
+$
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  [
+    #figure(
+              image("source-figures/lect7-7.png")
+            )
+  ],
+  [
+    $
+      F_k << F_"геом"
+    $
+
+    I -- контактное пятно, II -- межконтактный зазор
+
+    На величину площади контакта влияют способы обработки и механические свойства.
+  ]
+)
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+              image("source-figures/lect7-8.png")
+            )
+  ],
+  [
+    Далее речь идёт про реальный контакт (в противовес идеальному, затронутому в прошлой главе)
+
+    $
+      R_к = (Delta T_к)/q
+    $
+  ],
+)
+
+$
+  & 1/R_к = 1/R_м + 1/R_с \
+  & R_м = 1/("2,12" ov(lambda)_m (P_к/E B_1^("0,8"B_2))) \
+  & R_с = (h_max_1 + h_max_2)/lambda_с B_3 (1 - xi) \
+  & ov(lambda)_m = (2lambda_1 lambda_2)/(lambda_1 + lambda_2) \
+  & P_к space dash "удельное давление" \
+  & E space dash "модуль Юнга" \
+  & lambda_с space dash "коэффициент теплопроводности среды в засоре" \
+  & h_max_1, space h_max_2 space dash "максимальные высоты неровностей первой и второй поверхностей" \
+  & xi space dash "относительное сближение"
+$
+
+При грубой обработке $
+  xi = ("0,1" P_к/(H B))^"0,28"
+$
+Для шлифованной поверхности $
+  xi = ("0,012" P_к/(H B))^"0,18"
+$
+Для полированной $
+  xi = ("0,006" P_к/(H B))^"0,18"
+$
+
+$B_1$, $B_3$ -- коэффициенты, зависящие от средней высоты неровностей, $B_2$ -- зависят от максимальной высоты неровностей и отношения удельного давления $P_к$ на модуль Юнга.
+
+=== Факторы, влияющие на величину $R_к$
+
+#v(1em)
+
++ Удельная нагрузка $R_к = f(P_к)$ (график гипербола)
++ Средняя температуры контакта
++ Степень частоты (шероховатость) поверхности (график гипербола)
++ Теплопроводность среды
