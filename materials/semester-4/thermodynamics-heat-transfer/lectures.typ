@@ -992,21 +992,21 @@ $display(
   II рода $q_w = q_w (x, y, z, tau)$ \
   III рода \
   #grid(
-      columns: (2fr, 1fr),
-      column-gutter: 1em,
-      [
-        $
-          & (-lambda pdv(T, y))_w = alpha (T_w - T_f) \
-          & [alpha] = "Вт"/(м^2 dot К) \
-          & [T_f] = К
-        $
-      ],
-      [
-        #figure(
-          image("source-figures/lect7-1.png")
-        )
-      ],
-    )
+    columns: (2fr, 1fr),
+    column-gutter: 1em,
+    [
+      $
+        & (-lambda pdv(T, y))_w = alpha (T_w - T_f) \
+        & [alpha] = "Вт"/(м^2 dot К) \
+        & [T_f] = К
+      $
+    ],
+    [
+      #figure(
+        image("source-figures/lect7-1.png"),
+      )
+    ],
+  )
   + IV рода
     #grid(
       columns: (8fr, 1fr),
@@ -1021,9 +1021,9 @@ $display(
       ],
       [
         #figure(
-          image("source-figures/lect7-2.png")
+          image("source-figures/lect7-2.png"),
         )
-      ]
+      ],
     )
 
 Исходя из изложенного, имея первоначальные условия, можно получить распределение температуры и действующие тепловые потоки.
@@ -1033,9 +1033,9 @@ $display(
 #v(1em)
 
 $
-  & pdv(T, tau) = 0 \
+                          & pdv(T, tau) = 0 \
   lambda = lambda(T) quad & "div"(lambda ov("grad") T) + q_v = 0 \
-  lambda = "const" quad & nabla^2 T + q_v/lambda = 0
+    lambda = "const" quad & nabla^2 T + q_v/lambda = 0
 $
 
 === Теплопроводность однослойной плоской стенки при $lambda = "const"$
@@ -1051,8 +1051,8 @@ $
   column-gutter: 1em,
   [
     #figure(
-              image("source-figures/lect7-3.png")
-            )
+      image("source-figures/lect7-3.png"),
+    )
   ],
   [
     $display(
@@ -1065,7 +1065,7 @@ $
       pdv(T, x, 2) + cancel(pdv(T, y, 2)) + cancel(pdv(T, z, 2)) = 0 \
       dv(T, x, 2) = 0
     )$
-  ]
+  ],
 )
 
 $display(
@@ -1074,7 +1074,7 @@ $display(
 )$
 
 $display(
-  dv(T,x) = C_1 \
+  dv(T, x) = C_1 \
   T(x) = C_1 x + C_2 \
   cases(
     reverse: #true,
@@ -1111,8 +1111,8 @@ $
   column-gutter: 1em,
   [
     #figure(
-              image("source-figures/lect7-4.png")
-            )
+      image("source-figures/lect7-4.png"),
+    )
   ],
   [
     $
@@ -1137,9 +1137,7 @@ $
   ],
 )
 
-$display(
-  q (delta_1/lambda_1 + delta_2/lambda_2 + ... + delta_n/lambda_n) = T_w_1 - T_w_(n+1)
-)$
+$display(q (delta_1/lambda_1 + delta_2/lambda_2 + ... + delta_n/lambda_n) = T_w_1 - T_w_(n+1))$
 
 $
   & q = (T_w_1 - T_w_(n+1))/(delta_1/lambda_1 + delta_2/lambda_2 + ... + delta_n/lambda_n) \
@@ -1168,8 +1166,8 @@ $
   column-gutter: 1em,
   [
     #figure(
-              image("source-figures/lect7-5.png")
-            )
+      image("source-figures/lect7-5.png"),
+    )
   ],
   [
     $display(
@@ -1182,7 +1180,7 @@ $
       q (1/alpha_1 + delta/lambda + 1/alpha_2) = T_f_1 - T_f_2 \
       q = (T_f_1 - T_f_2)/(1/alpha_1 + delta/lambda + 1/alpha_2)
     )$
-  ]
+  ],
 )
 
 $
@@ -1217,8 +1215,8 @@ $
   column-gutter: 1em,
   [
     #figure(
-              image("source-figures/lect7-6.png")
-            )
+      image("source-figures/lect7-6.png"),
+    )
   ],
   [
     $
@@ -1234,7 +1232,7 @@ $
 
     $
       & q = (T_f_1 - T_f_2)/(1/alpha_1 + sum_(i=1)^n (delta/lambda)_i + 1/alpha_2) \
-      & R_sum = 1/alpha_1 + sum_(i=1)^n (delta/lambda)_i + 1/alpha_2
+      & R_Sigma = 1/alpha_1 + sum_(i=1)^n (delta/lambda)_i + 1/alpha_2 \
       & R_lambda = sum_(i=1)^n (delta/lambda)_i \
       & k = 1/(1/alpha_1 + sum_(i=1)^n (delta/lambda)_i + 1/alpha_2)
     $
@@ -1256,17 +1254,15 @@ $display(
 
 Контактным Т/О называется передача теплоты между соприкасающимися твердыми поверхностями.
 
-Обычно $
-  F_к = F_"геом"
-$
+Обычно $ F_к = F_"геом" $
 
 #grid(
   columns: (1fr, 3fr),
   column-gutter: 1em,
   [
     #figure(
-              image("source-figures/lect7-7.png")
-            )
+      image("source-figures/lect7-7.png"),
+    )
   ],
   [
     $
@@ -1276,7 +1272,7 @@ $
     I -- контактное пятно, II -- межконтактный зазор
 
     На величину площади контакта влияют способы обработки и механические свойства.
-  ]
+  ],
 )
 
 #grid(
@@ -1284,8 +1280,8 @@ $
   column-gutter: 1em,
   [
     #figure(
-              image("source-figures/lect7-8.png")
-            )
+      image("source-figures/lect7-8.png"),
+    )
   ],
   [
     Далее речь идёт про реальный контакт (в противовес идеальному, затронутому в прошлой главе)
@@ -1308,15 +1304,9 @@ $
   & xi space dash "относительное сближение"
 $
 
-При грубой обработке $
-  xi = ("0,1" P_к/(H B))^"0,28"
-$
-Для шлифованной поверхности $
-  xi = ("0,012" P_к/(H B))^"0,18"
-$
-Для полированной $
-  xi = ("0,006" P_к/(H B))^"0,18"
-$
+При грубой обработке $ xi = ("0,1" P_к/(H B))^"0,28" $
+Для шлифованной поверхности $ xi = ("0,012" P_к/(H B))^"0,18" $
+Для полированной $ xi = ("0,006" P_к/(H B))^"0,18" $
 
 $B_1$, $B_3$ -- коэффициенты, зависящие от средней высоты неровностей, $B_2$ -- зависят от максимальной высоты неровностей и отношения удельного давления $P_к$ на модуль Юнга.
 

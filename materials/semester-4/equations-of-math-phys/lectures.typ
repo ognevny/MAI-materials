@@ -1216,3 +1216,192 @@ $display(
   "Для" & cos n x: T'_n (t) + 1/9 n^2 T_n (t) = 0 quad T_n (0) = 0 \
   & cos 3x: T'_3 (t) + 1/9 dot 3^2 T_3 (t) = 1 quad T_n (0) = 0
 )$
+
+$display(
+  T'_3 (t) + T_3 (t) = 1 \
+  k + 1 = 0 <=> k = -1 \
+  T_о (t) = C_1 e^(-t) \
+  T_"част" (t) = A \
+  T'_"част" (t) = 0 \
+  A + 0 = 1 => T'_"част" (t) = 1 \
+  T_3 = C_1 e^(-t) + 1 \
+  T_3 (0) = C_1 dot 1 + 1 => C_1 = -1 \
+  T_e = -e^(-t) + 1
+)$
+
+$display(
+  T'_n (t) + 1/9 n^2 T_n (t) = 0 \
+  k + n^2/9 = 0 <=> k = -n^2/9 \
+  T_n (t) = C_1 e^(-n^2/9) \
+  T_n (0) = C_1 dot 1 = 0 => C_1 = 0 \
+  T_n = 0
+)$
+
+$
+  u(x, t) = sum_0^oo T_n (t) cos n x = 0 + 0 cos x + 0 cos 2x + T_3 cos 3x + 0 cos 4x + ... = (1 - e^(-t)) cos 3x
+$
+
+==== Принцип редукции
+
+#v(1em)
+
+$
+  u_t = u_(x x) quad evaluated(u)_(t=0) quad cases(
+    delim: #none,
+    evaluated(u)_(x=0) = 0,
+    evaluated(u)_(x=pi) = 1,
+  )
+$
+
+Ищем решение в виде
+$
+  u(x, t) = s(x, t) + v(x, t),
+$
+где $s(x, t): evaluated(s)_(x=0) = 0, space evaluated(s)_(x=pi) = 1$
+
+$display(
+  s(x, t) = x/pi \
+  evaluated(x/pi)_(x=0) = 0 quad evaluated(x/pi)_(x=pi) = 1 \
+  u(x, t) = x/pi + v(x, t) \
+  s_t = (x/pi)'_t = 0 quad s_(x x) = (x/pi)''_(x x) = 0
+)$
+
+Поставим задачу для функции $v(x, t)$
+
+$display(
+  u_t = 0 + v_t \
+  u_(x x) = 0 + v_(x x) \
+  evaluated(u)_(t=0) = evaluated((x/pi + v(x, t)))_(t=0) = x/pi + evaluated(v)_(t=0) = 0 => evaluated(v)_(t=0) = -x/pi \
+  evaluated(u)_(x=0) = evaluated((x/pi + v))_(x=0) = 0 + evaluated(v)_(x=0) = 0 => evaluated(v)_(x=0) = 0 \
+  evaluated(u)_(x=pi) = evaluated((x/pi + v))_(x=pi) = pi/pi + evaluated(v)_(x=pi) = 1 => evaluated(v)_(x=pi) = 0
+)$
+
+$
+  v_t = v_(x x) quad evaluated(v)_(t=0) = -x/pi quad cases(
+    delim: #none,
+    evaluated(v)_(x=0) = 0,
+    evaluated(v)_(x=pi) = 0,
+  )
+$
+
+$display(
+  A_n = 2/pi integral_0^pi (-x/pi sin (pi n x)/pi) dif x = -2/pi^2 integral_0^pi x sin n x dif x = -2/pi^2 dot 1/n (evaluated(-x cos n x)_0^pi + integral_0^pi cos n x dif x) = -2/(pi^2 n) times \ times (-pi dot (-1)^n + 0 dot 1 + 1/n evaluated(sin n x)_0^pi) = 2/(pi n) dot (-1)^n - 2/(pi^2 n^2) (sin pi n - sin 0) = 2/(pi n) dot (-1)^n \
+  v(x, t) = sum_1^oo -2/(pi n) e^(-(pi^2 n^2)/pi^2 t) sin (pi n x)/pi = sum_1^oo -2/(pi n) e^(-n^2 t) sin n x
+)$
+
+$
+  u(x, t) = x/pi + sum_1^oo -2/(pi n) e^(-n^2 t) sin n x
+$
+
+== Краевые задачи для эллиптических уравнений
+
+#v(1em)
+
+Затрагиваются стационарные процессы.
+
+$
+  u_t = a^2 ( & u_(x x) + u_(y y) + u_(z z)) \
+   u_t = 0 => & u_(x x) + u_(y y) + u_(z z) = 0 \
+              & u_(x x) + u_(y y) = 0
+$
+
+Решить уравнение Лапласа $laplace u = 0$ при $evaluated(u)_L = f(M)$ (условия 1 рода, задача Дирихле), $M in L$; при $evaluated(pdv(u, n))_L = f(M)$ (условия 2 рода, задача Неймана), $M in L$.
+
+Условия 3 рода $ evaluated((pdv(u, n) + k (u - theta_0)))_L = f(M) $ $theta_0$ -- температура среды
+
+$
+  & ov(v) = -"grad"phi => "условие обтекания" "div"("grad"phi) = 0 \
+  & pdv(u, x, 2) + pdv(u, y, 2) = 0 \
+  & evaluated(pdv(phi, n))_(Sigma') = 0
+$
+
+Поставим задачу Дирихле: решить уравнение Лапласа в круге $0 < r < R_0$, $-pi < phi <= pi$ при $evaluated(u)_(r=R_0) = f(phi)$
+
+$
+  1/x u_x + u_(x x) + 1/x^2 u_(y y) = 0 \
+  cases(
+    xi = x cos y,
+    eta = x sin y,
+  )
+$
+
+$display(
+  xi_x = cos y quad xi_y = x sin y \
+  eta_x = sin y quad eta_y = -x cos y \
+  u_x = cos y dot u_xi + sin y dot u_eta \
+  u_y = x sin y dot u_xi - x cos y dot u_eta \
+  u_(x x) = (cos y dot u_xi + sin y dot u_eta)'_x = cos y dot (u_(xi xi) xi_x + u_(xi eta) eta_x) + sin y dot (u_(xi eta) xi_x + u_(eta eta) eta_x) = cos^2 y dot u_(xi xi) + 2sin y cos y times \ times u_(xi eta) + sin^2 y u_(eta eta) \
+  u_(y y) = (x sin y dot u_xi - x cos y dot u_eta)'_y = -x cos y dot u_xi - x sin y dot u_eta + x sin y dot (u_(xi xi) xi_y + u_(xi eta) eta_y) - x cos y dot (u_(xi eta) xi_y + \ + u_(eta eta) eta_y) = -x cos y dot u_xi - x sin y dot u_eta + x^2 sin^2 y dot u_(xi xi) - 2x^2 sin y cos y u_(xi eta) + x^2 cos^2 y u_(eta eta) \
+  1/x (cos y dot u_xi + sin y dot u_eta) + cos^2 y dot u_(xi xi) + 2sin y cos y dot u_(xi eta) + sin^2 y u_(eta eta) + 1/x^2 (-x cos y dot u_xi - x sin y dot u_eta + x^2 sin^2 y times \ times u_(xi xi) - 2x^2 sin y cos y u_(xi eta) + x^2 cos^2 y u_(eta eta)) = 0 \
+  ...
+)$
+
+$
+  laplace u = 0; space evaluated(u)_(r=R_0) = f(phi) \
+  laplace u = 1/r u_r + u_(r r) + 1/r^2 u_(phi phi)
+$
+
+Будем искать решение в виде
+$
+  u(r, phi) = R(r) Phi(phi)
+$
+
+$display(
+  u_r = R' Phi \
+  u_(phi phi) = R Phi'' \
+  u_(r r) = R'' Phi \
+  1/r R' Phi + R'' Phi + 1/r^2 R Phi'' = 0 \
+  r R' Phi + r^2 R'' Phi + R Phi'' = 0 |":" R Phi \
+  (r R' + r^2 R'')/Phi + Phi''/Phi = 0 \
+  (r R' + r^2 R'')/Phi = -Phi''/Phi = ov(lambda) \
+  (1) quad Phi'' + ov(lambda) Phi = 0 \
+  (2) quad r^2 R'' + r R' - ov(lambda) R = 0 \
+  ov(lambda) = lambda^2 >= 0 => Phi'' + lambda^2 Phi = 0 => Phi(phi) = tilde(A) cos lambda phi + ov(B) sin lambda phi
+)$
+
+Функция $Phi(phi)$ -- периодическая с периодом $2pi$. Отсюда $lambda = n in NN$ (и ноль), то есть $ Phi_n (phi) = tilde(A)_n cos n phi + ov(B)_n sin n phi $
+
+$display(
+  (2) quad r^2 R'' + r R' - ov(lambda) R = 0 space (r > 0) space dash "уравнение Эйлера" \
+  R(r) = r^k \
+  R'(r) = k r^(k-1) \
+  R''(r) = k (k - 1) r^(k-2) \
+  r^2 (k^2 - k) r^(k-2) + r k r^(k-1) - n^2 r^k = 0 \
+  r^k [k^2 - k + k - n^2] = 0 \
+  k^2 - n^2 = 0 => k_(1,2) = +-n => R(r) = C r^n + D 1/r^(n) => D = 0 space ("иначе при n = 0 нарушится физичность задачи") \
+  R_1 = r^n quad R_2 = r^(-n)
+)$
+
+$
+  & u_n (r, phi) = C r^n (tilde(A) cos n phi + tilde(B) sin n phi) \
+  & u(r, phi) = A_0/2 + sum_1^oo r^n (A_n cos n phi + B_n sin n phi) \
+  & A_n = C_n tilde(A)_n quad B_n = C_n tilde(B)_n quad A_0 = 2C_0 tilde(A)_0
+$
+
+$display(
+  evaluated(u)_(r=R_0) <=> evaluated(u(r, phi))_(r=R_0) = A_0/2 + sum_1^oo R_0^n (A_n cos n phi + B_n sin n phi) = f(phi)
+)$
+
+Из разложения $f(phi)$ в ряд Фурье имеем
+$
+  A_0 = 1/pi integral_(-pi)^pi f(phi) dif phi quad A_n R_0^n = 1/pi integral_(-pi)^pi f(phi) cos n phi dif phi quad B_n R_0^n = 1/pi integral_(-pi)^pi f(phi) sin n phi dif phi \
+  A_n = 1/(pi R_0^n) integral_(-pi)^pi f(phi) cos n phi dif phi quad B_n = 1/(pi R_0^n) integral_(-pi)^pi f(phi) sin n phi dif phi
+$
+
+Пример
+$
+  laplace u = 0 quad cases(
+    delim: #none,
+    0 < r < 2,
+    -pi < phi <= pi,
+  ) quad evaluated(u)_(r=2) = f(phi) = cases(
+    1 quad [-pi/2, pi/2],
+    0 quad (-pi, -pi/2) union (pi/2, pi)
+  )
+$
+
+Поскольку $f(phi)$ не всегда является ненулевым, то границы интегрирования для коэффициентов меняются
+
+$display(
+  A_0 = 1/pi integral_(-pi/2)^(pi/2) 1 dif phi = ... quad A_n = 1/(pi 2^n) integral_(-pi/2)^(pi/2) 1 cos n phi dif phi = ... quad B_n = 1/(pi 2^n) integral_(-pi/2)^(pi/2) 1 sin n phi dif phi = ...
+)$
