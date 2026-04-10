@@ -115,6 +115,8 @@ jobs:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     strategy:
       fail-fast: false
+    permissions:
+      contents: write # нужно для релиза
     name: "Выкладывание PDF в страницу Releases"
     runs-on: ubuntu-latest
     steps:
