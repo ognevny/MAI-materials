@@ -1318,3 +1318,253 @@ $B_1$, $B_3$ -- коэффициенты, зависящие от средней
 + Средняя температуры контакта
 + Степень частоты (шероховатость) поверхности (график гипербола)
 + Теплопроводность среды
+
+=== Теплопроводность плоской стенки с граничными условиями I рода и с зависимостью от температуры
+
+#v(1em)
+
+$
+  "div"(lambda ov("grad")T) = 0
+$
+
+$display(
+  pdv(, x) (lambda pdv(T, x)) + pdv(, y) (lambda pdv(T, y)) + pdv(, z) (lambda pdv(T, z)) = 0 \
+  dv(, x) (lambda pdv(T, x)) = 0
+)$
+
+$display(
+  dv(Phi, x) = pdv(T, x) \
+  dv(Phi, x, 2) = 0 quad cases(Phi(0) = Phi_1, Phi(delta) = Phi_2) \
+  Phi(x) = C_1 x + C_2 \
+  C_1 = (Phi_2 - Phi_1)/delta\, space C_2 = Phi_1 \
+  q = -lambda dv(T, x) = -dv(Phi, x) = (Phi_1 - Phi_2)/delta \
+  integral_0^delta dv(Phi, x) dif x = integral_0^delta lambda dv(T, x) dif x \
+  integral_(Phi_1)^(Phi_2) dif Phi = integral_(T_w_1)^(T_w_2) lambda dif T \
+  Phi_2 - Phi_1 = integral_(T_w_1)^(T_w_2) lambda dif T \
+  Phi_1 - Phi_2 = integral_(T_w_2)^(T_w_1) lambda dif T \
+  q = 1/delta integral_(T_w_2)^(T_w_1) lambda dif T \
+  q = (T_w_1 - T_w_2)/delta [1/(T_w_1 - T_w_2) integral_(T_w_2)^(T_w_1) lambda dif T] \
+)$
+
+Cреднее интегральное значение коэффициента теплопроводности в интервале температур
+$
+  & lambda_"ср" = 1/(T_w_1 - T_w_2) integral_(T_w_2)^(T_w_1) lambda dif T \
+  & q = lambda_"ср"/delta (T_w_1 - T_w_2)
+$
+
+Если $lambda = lambda(T)$, то вычислить q можно относительно произвольной функции с $lambda = "const"$ используя среднее интегральное значение коэффициента теплопроводности в интервале температур от $T_w_1$ до $T_w_2$. Этот вывод справедлив для любой геометрии стенки.
+
+$
+  & lambda = a + b T \
+  & lambda_"ср" = a + b T_"ср" \
+  & T_"ср" = (T_w_1 + T_w_2)/2
+$
+
++ $b = 0$, $lambda = "const"$
+
++ $b > 0 => T arrow.t -> lambda arrow.t$, $x arrow.t -> T arrow.b -> lambda arrow.b$
+
+  $q = -lambda dv(T, x) = "const"$
+
++ $b < 0$
+
+=== Теплопроводность плоской стенки при наличии объемных источников тепловыделения
+
+#v(1em)
+
+$q_v != 0$, $q_v = "const"$
+
+$
+  & nabla^2 T + q_v/lambda = 0 \
+  & dv(T, x, 2) + q_v/lambda = 0
+$
+
+$display(
+  dv(T, x) = -q_v/lambda x + C_1 \
+  T(x) = -q_v/(2lambda) x^2 + C_1 x + C_2
+)$
+
+Пусть $T_w_1 = T_w_2 = T_w$, тогда $x = delta/2$ -- ось симметрии
+
+$display(
+  evaluated(dv(T, x))_(x=delta/2) = 0 \
+  -q_v/lambda dot delta/2 + C_1 = 0 => C_1 = (q_v delta)/(2lambda) \
+  T(0) = T_w = -q_v/(2lambda) dot 0 + C_1 dot 0 = C_2 \
+  C_2 = T_w \
+  T(x) = -q_v/(2lambda) x^2 + (q_v delta)/(2lambda) x + T_w \
+  evaluated(T_max)_(x=delta/2) = T_w + (q_v delta)/(4lambda) \
+  evaluated(q)_(x=0) = -lambda evaluated(dv(T, x))_(x=0) = -lambda C_1 = -(q_v delta)/2 \
+  evaluated(q)_(x=delta) = -lambda evaluated(dv(T, x))_(x=delta) = (q_v delta)/2
+)$
+
+=== Теплопроводность плоской стенки при $q_v != 0$ с граничными условиями III рода
+
+#v(1em)
+
+$
+  evaluated((-lambda dv(T, x)))_(x=cases(0, delta)) = evaluated(alpha [T_w - T_f])_(x=cases(0, delta))
+$
+
+$display(
+  evaluated(dv(T, x))_(x=delta/2) = 0 => C_1 = (q_v delta)/(2lambda) \
+  dv(T, x) = -q_v/lambda x + (q_v delta)/(2lambda) \
+  evaluated(dv(T, x))_(x=delta) = -q_v/lambda delta + (q_v delta)/(2lambda) = -(q_v delta)/(2lambda) \
+  evaluated((-lambda dv(T, x)))_(x=delta) = alpha [T_w (delta) - T_f] \
+  T_w (delta) = T_f + (q_v delta)/(2lambda) \
+  T_w (delta) = -(q_v delta^2)/(2lambda) + (q_v delta^2)/(2lambda) + C_2 => C_2 = T_w (delta) \
+  C_2 = T_f + (q_v delta)/(2lambda) \
+  T(x) = -q_v/(2lambda) x^2 + (q_v delta)/(2lambda) x + (q_v delta)/(2lambda) + T_f \
+  evaluated(T_w)_(x=cases(0, delta)) = T_f + (q_v delta)/(2lambda)
+)$
+
+$
+  T_max = evaluated(T)_(x=delta/2) = T_f + (q_v delta^2)/(8lambda) + (q_v delta)/(2alpha)
+$
+
+== Теплопроводность цилиндрической стенки
+
+=== Теплопроводность однослойной цилиндрической стенки с граничными условиями I рода
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect8-1.png"),
+    )
+  ],
+  [
+    $
+      & nabla^2 T = 0 \
+      & pdv(T, r, 2) + 1/r pdv(T, r) + 1/r^2 pdv(T, phi, 2) + pdv(T, z) = 0 \
+      & T = T(r)
+    $
+
+    $display(
+      dv(T, r, 2) + 1/r dv(T, r) = 0 \
+      u = dv(T, r) \
+      dv(u, r) + u/r = 0 \
+      (dif u)/u = -(dif r)/r \
+      ln u = -ln z + ln C \
+      u = C_1/r
+    )$
+  ],
+)
+
+$display(
+  dv(T, r) = C_1/r \
+  q = -lambda dv(T, r) ~ C_1/r \
+  Q = "const" \
+  Q = q dot F \
+  F = 2pi r L ~ r \
+  q ~ 1/r \
+  dif T = C_1 dv(r, r) \
+  T(r) = C_1 ln r + C_2 \
+  cases(
+    T(r_1) = T_w_1 = C_1 ln r_1 + C_2,
+    T(r_2) = T_w_2 = C_1 ln r_2 + C_2,
+  ) => cases(
+    C_1 = (T_w_1 - T_w_2)/(ln r_1/r_2),
+    C_2 = (T_w_2 ln r_1 - T_w_1 ln r_2)/(ln r_1/r_2)
+  )
+)$
+
+$
+  T(r) = (T_w_1 ln(r_2/r) + T_w_2 + ln(r/r_1))/(ln r_2/r_1)
+$
+
+$display(
+  q = -lambda dv(T, r) = -lambda C_1/r = (lambda (T_w_1 - T_w_2))/(r ln r_1/r_2) \
+  Q = q F = (lambda (T_w_1 - T_w_2))/(r ln r_1/r_2) dot 2pi r L = (pi (T_w_1 - T_w_2) L)/(1/(2lambda) ln(r_2/r_1)) \
+  Q_L = Q/L = (pi (T_w_1 - T_w_2))/(1/(2lambda) ln(r_2/r_1))
+)$
+
+Линейное термическое сопротивление
+$
+  R_(L lambda) = 1/(2lambda) ln(r_2/r_1) space [(м dot К)/"Вт"]
+$
+
+=== Теплопроводность многослойной цилиндрической стенки с граничными условиями I рода
+
+#v(1em)
+
+$
+  cases(
+    T(r_1) = T_w_1,
+    T(r_(n+1)) = T_w_(n+1)
+  )
+$
+
+#figure(
+  image("source-figures/lect8-2.png", width: 60%),
+)
+
+$display(
+  Q_L_1 = Q_L_2 = ... = Q_L_n = Q_L = "const" \
+  cases(
+    Q_L = (pi (T_w_1 - T_w_2))/(1/(2lambda_1) ln r_2/r_1),
+    Q_L = (pi (T_w_2 - T_w_3))/(1/(2lambda_2) ln r_3/r_2),
+    ...,
+    Q_L = (pi (T_w_n - T_w_(n+1)))/(1/(2lambda_n) ln r_(n+1)/r_n)
+  ) \
+  Q_L (1/(2lambda_1) ln r_2/r_1 + 1/(2lambda_2) ln r_3/r_2 + ... + 1/(2lambda_n) ln r_(n+1)/r_n) = pi (T_w_1 - T_w_(n+1)) \
+  Q_L = (pi (T_w_1 - T_w_(n+1)))/(1/(2lambda_1) ln r_2/r_1 + 1/(2lambda_2) ln r_3/r_2 + ... + 1/(2lambda_n) ln r_(n+1)/r_n) \
+  R_(L lambda) = sum_(i=1)^n 1/(2lambda_i) ln r_(i+1)/r_i \
+  T_w_i = T_w_1 - Q_L/pi sum_1^i 1/(2lambda_i) ln r_(i+1)/r_i
+)$
+
+=== Теплопередача через цилиндрическую стенку (теплопроводность через однослойную цилиндрическую стенку при граничных условиях III рода)
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect8-3.png"),
+    )
+  ],
+  [
+    $
+      Q_L_a_1 = Q_L_lambda = Q_L_alpha_2 = Q_l = "const"
+    $
+
+    $display(
+      cases(
+        Q_L = alpha_1 (T_f_1 - T_w_1) dot 2pi r_1,
+        Q_L = (pi (T_w_1 - T_w_2))/(1/(2lambda) ln r_2/r_1)
+        Q_L = alpha_2 (T_f_2 - T_w_2) dot 2pi r_2,
+      ) \
+      Q_L (1/(2alpha_1 r_1) + 1/(2lambda) ln r_2/r_1 + 1/(2alpha_2 r_2)) = pi (T_f_1 - T_f_2) \
+      Q_L = (pi (T_f_1 - T_f_2))/(1/(2alpha_1 r_1) + 1/(2lambda) ln r_2/r_1 + 1/(2alpha_2 r_2)) \
+      R_Sigma_lambda = 1/(2alpha_1 r_1) + 1/(2lambda) ln r_2/r_1 + 1/(2alpha_2 r_2) \
+      R_L_alpha_1 = 1/(2alpha_1 r_1) \
+      R_L_lambda = 1/(2lambda) ln r_2/r_1 \
+      R_L_alpha_2 = 1/(2alpha_2 r_2)
+    )$
+  ],
+)
+
+Линейный коэффициент теплопередачи
+$
+  & "Kц" = 1/R_L = 1/(1/(2alpha_1 r_1) + 1/(2lambda) ln r_2/r_1 + 1/(2alpha_2 r_2)) \
+  & Q_L = pi dot "Кц" (T_f_1 - T_f_2)
+$
+Характеризует интенсивность передачи от одной среды к другой через однослойную цилиндрическую стенку. Численно равен количеству теплоты, проходящему через цилиндрическую стенку длиной в 1м в единицу времени от одной среды к другой при температурном напоре между ними, равному 1К.
+$
+  q_1 = Q/(pi d_1 L) = Q_L/(pi d_1) = "Кц"/d_1 (T_f_1 - T_f_2) \
+  q_2 = Q/(pi d_2 L) = Q_L/(pi d_2) = "Кц"/d_2 (T_f_1 - T_f_2)
+$
+
+Коэффициенты теплопередачи при единице площади ($K_1$, $K_2$)
+$
+  & K_1 = "Кц"/d_1; space K_2 = "Кц"/d_2 \
+  & q_1 = K_1 (T_f_1 - T_f_2) \
+  & q_2 = K_2 (T_f_1 - T_f_2) \
+  & K_1 = 1/(1/alpha_1 + d_1/(2lambda) ln d_2/d_1 + d_1/(alpha_2 d_2)) space dash "на внутренней поверхности" \
+  & K_2 = 1/(d_2/(alpha_1 d_1) + d_2/(2lambda) ln d_2/d_1 + 1/alpha_2) space dash "на внешней поверхности" \
+  & "Кц" = K_1 d_1 = K_2 d_2
+$
