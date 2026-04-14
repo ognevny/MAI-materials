@@ -1403,5 +1403,157 @@ $
 Поскольку $f(phi)$ не всегда является ненулевым, то границы интегрирования для коэффициентов меняются
 
 $display(
-  A_0 = 1/pi integral_(-pi/2)^(pi/2) 1 dif phi = ... quad A_n = 1/(pi 2^n) integral_(-pi/2)^(pi/2) 1 cos n phi dif phi = ... quad B_n = 1/(pi 2^n) integral_(-pi/2)^(pi/2) 1 sin n phi dif phi = ...
+  A_0 = 1/pi integral_(-pi/2)^(pi/2) 1 dif phi = 1/pi (pi/2 + pi/2) = 1 \
+  A_n = 2/(pi dot 2^n) integral_0^(pi/2) 1 cos n phi dif phi = 2/(pi dot 2^n) dot 1/n sin (pi n)/2 = cases(
+    0 quad & n = 2k,
+    (-1)^(k-1)/(pi dot 2^(n-1)) quad & n = 2k - 1,
+  ) \
+  B_n = 0 "ввиду чётности" f(phi) \
+  u = 1/2 + sum_1^oo r^(2k - 1)/2^(2k - 2) dot (-1)^(k-1)/(pi (2k - 1)) cos (2k - 1) phi
+)$
+
+=== Задача Неймана
+
+#v(1em)
+
+Решить $laplace u = 0$ в области $display(
+  cases(
+    delim: #none,
+    0 < r < R_0,
+    -pi <= phi < pi,
+  )
+)$, удовлетворяющей $display(evaluated(pdv(u, r))_(r=R_0) = f(phi))$.
+
+$display(
+  u = A_0/2 + sum_1^oo (A_n cos n phi + B_n sin n phi) r^n => pdv(u, r) = sum_1^oo n r^(n-1) evaluated(A_n cos n phi + B_n sin n phi)_(r=R_0) = f(phi)
+)$
+
+Свойства гармонических функций
+
++ Если $integral.cont_L pdv(u, n) dif S = 0$, то источников/стоков внутри контура нет $ f(phi) = pdv(u, r) = sum_1^oo a_n cos n phi + b_n sin n phi $
+
++ ... (потом будет изучено)
+
+$display(
+  sum_1^oo n R_0^(n-1) (A_n cos n phi + B_n sin n phi) = sum_1^oo (a_n cos n phi + b_n sin n phi) => n R_0^(n-1) A_n = a_n = 1/pi integral_(-pi)^pi f(phi) cos n phi dif phi \
+  n R_0^(n-1) B_n = b_n = 1/pi integral_(-pi)^pi f(phi) sin n phi dif phi
+)$
+
+$
+  & A_n = 1/(pi n R_0^(n-1)) integral_(-pi)^pi f(phi) cos n phi dif phi \
+  & B_n = 1/(pi n R_0^(n-1)) integral_(-pi)^pi f(phi) sin n phi dif phi \
+$
+
+$
+  & u(r, phi) = C + sum_1^oo r^n/(n R_0^(n-1)) (a_n cos n phi + b_n sin n phi) \
+  & u(r, phi) = C + sum_1^oo r^n (A_n cos n phi + B_n sin n phi)
+$
+
+Задача
+
+$
+  laplace u = 0 quad cases(
+    delim: #none,
+    0 < r < 2,
+    -pi <= phi < pi
+  ) quad evaluated(pdv(u, r))_(r=2) = 3/4 cos phi + 1/4 cos 3phi = a_1 cos phi + a_3 cos 3phi
+$
+
+$display(
+  u(r, phi) = C + sum_1^oo r^n/(n R_0^(n-1)) (a_n cos n phi + b_n sin n phi) = sum_(inline(cases(delim: #none, n=1, n=3)))^oo r^n/(n dot 2^(n-1)) a_n cos n phi = r^1/(1 dot 2^(1-1)) a_1 cos phi + r^3/(3 dot 2^(3-1)) a_3 cos 3phi = 3/4 r cos phi + 1/48 r^3 cos 3phi + C
+)$
+
+== Элементы вариационного исчисления
+
+#v(1em)
+
+Если задано правило, по которому каждой функции $y(x) in EE$ ставится в соответствие действительно число $J[y(x)] in RR$, то говорят, что на множестве задан функционал $J[y(x)]$ действующий из $EE -> RR$
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    $
+      J[y(x)] = integral_(x_0)^(x_1) F(x, y(x), y'(x)) dif x quad y(x_0) = y_0 quad y(x_1) = y_1
+    $
+
+    $display(C^1 [x_0, x_1])$ -- множество непрерывных функций, определенных на $[x_0, x_1]$, имеющие непрерывную производную.
+  ],
+  [
+    #figure(
+      image("source-figures/lect9-1.png"),
+    )
+  ],
+)
+
+Пример $display(J(x) = integral_0^pi y sin x dif x)$.
+
+Пусть $y_1 = 1$, тогда $J[y_1] = integral_0^pi 1 dot sin x dif x = evaluated(-cos x)_0^pi = -cos pi + cos 0 = 1 + 1 = 2$.
+
+Пусть $y_2 = cos x$, тогда $J[y_2] = integral_0^pi cos x sin x dif x = 1/2 integral_0^pi sin 2x dif x = -1/2 evaluated((cos 2x)/2)_0^pi = -1/4 (cos 2pi - cos 0) = 0$
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    Говорят, что $tilde(y)(x)$ реализует экстремум функционала $J[y(x)]$, если для всех кривых $y(x)$, близких к кривой $tilde(y)(x)$ выполняется
+
+    $
+          & J[y(x)] >= J[tilde(y)(x)] space dash "минимум" <=> \
+      <=> & J[y(x)] - J[tilde(y)(x)] >= 0 <=> Delta J[tilde(y)(x)] >= 0 \
+          & J[y(x)] <= J[tilde(y)(x)] space dash "максимум" <=> \
+      <=> & J[y(x)] - J[tilde(y)(x)] <= 0 <=> Delta J[tilde(y)(x)] <= 0
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect9-2.png"),
+    )
+  ],
+)
+
+Для сильного экстремума
+$
+  rho(y, tilde(y)) = max_(x_0 <= x <= x_1) abs(y(x) - tilde(y)(x)) < epsilon
+$
+
+Для слабого экстремума
+$
+  rho(y, tilde(y)) = max_(x_0 <= x <= x_1) abs(y(x) - tilde(y)(x)) + max_(x_0 <= x <= x_1) abs(y'(x) - tilde(y)' (x)) < epsilon
+$
+
+Всякий сильный экстремум является слабым, поэтому необходимые условия для сильного экстремума подходят и для слабого экстремума.
+
+$Delta tilde(y) = y(x) - tilde(y)(x) = delta y(x)$ -- вариация аргумента функционала. $Delta J[tilde(y)(x)] = J[tilde(y) + Delta y] - J[tilde(y)]$.
+
+Главная линейная часть относительно $Delta y = delta y$ называется вариацией функционала и обозначается $delta J[y(x)]$.
+
+=== Эквивалентное определение вариации
+
+#v(1em)
+
+Рассмотрим функцию $phi(alpha) = y(x_0 + alpha Delta x)$, $phi'_alpha = y'(x_0 + alpha Delta x) dot (x_0 + alpha Delta x)' = y'(x_0 + alpha Delta x) dot Delta x$.
+
+$phi'_alpha (0) = y'(x_0) Delta x$
+
+$dif y(x) = phi'_alpha (0) = y'(x_0) Delta x$
+
+$
+  delta J[y(x)] = evaluated(pdv(, alpha) [J[tilde(y)(x) + alpha delta x]])_(alpha=0)
+$
+
+Например, $J[y(x)] = integral_1^2 y y' dif x$
+
+$display(
+  phi(alpha) = integral_1^2 (y + alpha delta y) (y' + alpha (delta y)') dif x \
+  phi'(alpha) = integral_1^2 [delta y (y' + alpha (delta y)' + (y + alpha delta y) delta y')] dif x \
+  phi'_alpha (0) = integral_1^2 [delta y dot y' + y delta y'] dif x
+)$
+
+Пусть $tilde(y)(x)$ реализует экстремум функционала, тогда $delta J[tilde(y)(x)] = 0$ (необходимое условие локального экстремума функционала).
+
+$display(
+  phi(alpha) = J[tilde(y)(x) + alpha delta y] \
+  phi'(alpha) = (J[tilde(y)(x) + alpha delta y])'_alpha \
+  phi'_alpha (0) = evaluated(pdv(, alpha) (J[tilde(y)(x) + alpha delta y]))_(alpha=0) = delta J[y] = 0
 )$
