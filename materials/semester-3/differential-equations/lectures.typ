@@ -1,5 +1,5 @@
 #import "meta.typ": clrundrln, conf, delimsys, ov
-#import "@preview/cetz:0.4.2": canvas, draw
+#import "@preview/cetz:0.5.0": canvas, draw
 #import "@preview/physica:0.9.8": dv, evaluated, mdet, pdv
 
 #show: conf.with(
