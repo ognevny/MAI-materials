@@ -1581,7 +1581,7 @@ $phi'_alpha (0) = y'(x_0) Delta x$
 $dif y(x) = phi'_alpha (0) = y'(x_0) Delta x$
 
 $
-  delta J[y(x)] = evaluated(pdv(, alpha) [J[tilde(y)(x) + alpha delta x]])_(alpha=0)
+  delta J[y(x)] = evaluated((pdv(, alpha) [J[tilde(y)(x) + alpha delta x]]))_(alpha=0)
 $
 
 Например, $J[y(x)] = integral_1^2 y y' dif x$
@@ -1599,3 +1599,89 @@ $display(
   phi'(alpha) = (J[tilde(y)(x) + alpha delta y])'_alpha \
   phi'_alpha (0) = evaluated(pdv(, alpha) (J[tilde(y)(x) + alpha delta y]))_(alpha=0) = delta J[y] = 0
 )$
+
+Найти вариацию функционала
+$
+  J[y(x)] = integral_0^pi y'^2 sin x dif x
+$
+
+$display(
+  phi(alpha) = J[y(x) + alpha delta y] = integral_0^pi (y + alpha delta y)'^2 sin x dif x \
+  phi'_alpha = integral_0^pi 2(y + alpha delta y)' dot delta y' dot sin x dif x = integral_0^pi (2y' delta y' + 2alpha dot delta y dot delta y') sin x dif x \
+  phi'_alpha (0) = integral_0^pi 2y' delta y' sin x dif x
+)$
+
+Доказательство необходимого условия экстремума:
+
+$display(
+  triangle.r "Рассмотрим" phi(alpha) = J[tilde(y)(x) + alpha delta y]\, "которая при" alpha = 0 "имеет экстремум" J[tilde(y)(x)]. "Следовательно" phi'_alpha(0) = 0 <=> delta J[tilde(y)(x)] = evaluated((pdv(, alpha) J[tilde(y)(x) + alpha delta y]))_(alpha=0) = 0 <=> delta J[tilde(y)(x)] = 0
+)$
+
+== Вариационное уравнение Эйлера
+
+#v(1em)
+
+Простейшая вариационная задача -- найти экстремум функционала
+$
+  J[y(x)] = integral_(x_0)^(x_1) F(x, y, y') dif x quad cases(y(x_0) = y_0, y(x_1) = y_1))
+$
+
+Если $F(x, y, y')$ имеет производные по всем аргументам до второго порядка включительно и $J[y(x)]$ достигает экстремума в точке $y(x)$, то $y(x)$ удовлетворяет уравнению Эйлера
+$
+  F_y - dv(, x) F_y' = 0
+$
+
+$display(
+  triangle.r phi(alpha) = J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F(x, y + alpha delta y, y' + alpha delta y') dif x \
+  phi'_alpha = pdv(, alpha) J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F_y [(x, y + alpha delta y, y' + alpha delta y') dot delta y + F_y' (x, y + alpha delta y, y' + alpha delta y') dot delta y'] dif x \
+  phi'_alpha (0) = integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y (x, y, y') delta y'] dif x \
+  "Так как" delta J[y(x)] = 0\, "то" \
+  integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y' (x, y, y') delta y'] dif x = 0 \
+  integral_(x_0)^(x_1) underbrace(F_y', u) underbrace(delta y' dif x, dif v) = evaluated(F_y' delta y)_(x_0)^(x_1) - integral_(x_0)^(x_1) dv(, x) F_y' delta y dif x = 0 - integral_(x_0)^(x_1) dv(, x) F_y' delta y dif x \
+  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y' delta y] dif x = 0
+)$
+
+=== Основная лемма вариационного исчисления
+
+#v(1em)
+
+Если для всякой непрерывной функции $eta(x)$ выполняется $integral_(x_0)^(x_1) Phi(x) eta(x) dif x$, где $Phi(x)$ непрерывная на $[x_0, x_1]$ функция, тогда $Phi(x) equiv 0$
+
+$display(
+  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y'] delta y dif x = 0\, space delta y space dash "непрерывная функция" => F_y - dv(, x) F_y' equiv 0
+)$
+
+=== Пример
+
+#v(1em)
+
+$
+  J[y] = integral_0^(pi/2) (y'^2 - y^2) dif x quad cases(y(0) = 0, y(pi/2) = 1)
+$
+
+Функции, удовлетворяющие уравнению Эйлера называется экстремалями.
+
+$display(
+  F_y - dv(, x) F_y' = 0 quad dv(, x) F_y' (x, y, y') = F_(y' x) dv(x, x) + F_(y' y) dv(y, x) + F_(y' y') dv(y', x)
+)$
+
+Развернутое уравнение Эйлера
+$
+  y'' F_(y' y') + y' F_(y y') + F_(x y') - F_y = 0
+$
+
+$display(
+  F(x, y, y') = y'^2 - y^2 \
+  F_y = -2y quad F_y' = 2y' quad F_(y' y') = 2 quad F_(y y') = 0 quad F_(x y') = 0 \
+  y'' dot 2 + y' dot 0 + 0 - (-2y) = 0 => y_0 = C_1 cos x + C_2 sin x \
+  y(0) = C_1 dot 1 + C_2 dot 0 = 0 => C_1 = 0 \
+  y(pi/2) = C_1 dot 0 + C_2 dot 1 = 1 => C_2 = 1 => y = sin x
+)$
+
+Свойства гармонических функций
+
++ $display(integral.cont_L pdv(u, n) dif S = 0)$
+
++ Максимум или минимум для гармонической функции достигается только на границах области
+
++ $display(evaluated(u)_L = f(x, y))$ может иметь разрывы 1 родаw
