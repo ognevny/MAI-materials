@@ -4,6 +4,13 @@ on:
   push:
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   build:
     strategy:
@@ -132,15 +139,9 @@ jobs:
           sed -i "s/%DATE%/$(date -u +'%F %T UTC+0')/" LINKS.md
 
       - name: "Обновление тега 'latest'"
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
-        if: steps.artifacts.outcome == 'success'
-        with:
-          body_path: LINKS.md
-          draft: false
-          prerelease: false
-          files: |
-            *.pdf
-          name: "Материалы с пар"
-          tag_name: "latest"
-          target_commitish: ${{ github.sha }}
-          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DO_NOT_TRACK: true
+        run: |
+          gh release upload latest *.pdf --clobber
+          gh release edit latest --notes-file LINKS.md
