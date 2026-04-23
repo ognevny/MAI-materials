@@ -146,8 +146,10 @@ jobs:
         id: artifacts
 
       - name: "Установка времени изменения"
+        env:
+          TZ: "Europe/Moscow"
         run: |
-          sed -i "s/%DATE%/$(date -u +'%F %T UTC+0')/" LINKS.md
+          sed -i "s/%DATE%/$(date +'%F %T %Z')/" LINKS.md
 
       - name: "Обновление тега 'latest'"
         env:
