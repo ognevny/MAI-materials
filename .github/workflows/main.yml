@@ -38,7 +38,7 @@ jobs:
           )
 
           declare -A sources_2_3=(
-            [theoritecal_mechanics]='Theoritecal-mechanics'
+            [theoretical_mechanics]='Theoretical-mechanics'
           )
 
           declare -A sources_3=(
@@ -63,6 +63,11 @@ jobs:
 
           declare -A seminars_3_4=(
             [strength_of_materials]='Materials-strength'
+          )
+
+          declare -A seminars_4=(
+            [metrology]='Metrology-and-standardization'
+            [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
           )
 
           set -x
@@ -109,6 +114,12 @@ jobs:
               "build/Seminars_of_${seminars_3_4[$subject]}.pdf"
           done
 
+          for subject in "${!seminars_4[@]}"; do
+            typst compile \
+              "materials/semester-4/${subject//_/-}/seminars.typ" \
+              "build/Seminars_of_${seminars_4[$subject]}.pdf"
+          done
+
       - name: "Выкладывание PDF"
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -144,4 +155,4 @@ jobs:
           DO_NOT_TRACK: true
         run: |
           gh release upload latest *.pdf --clobber
-          gh release edit latest --notes-file LINKS.md
+          gh release edit latest --notes-file LINKS.md --target master
