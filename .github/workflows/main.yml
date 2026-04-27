@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
     name: "Проверка зизмором"
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       security-events: write
       contents: read
