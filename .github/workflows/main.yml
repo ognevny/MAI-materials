@@ -29,45 +29,45 @@ jobs:
           mkdir -p build
 
           declare -A sources_1=(
-            [algorithmic_langs]='АЯП'
-            [FRS]='ОРГ'
+            [algorithmic_langs]='Algorithmic-langs'
+            [FRS]='FRS'
           )
 
           declare -A sources_1_2=(
-            [russian_history]='Истории-России'
+            [russian_history]='Russian-history'
           )
 
           declare -A sources_2_3=(
-            [theoretical_mechanics]='Теоретической-механике'
+            [theoretical_mechanics]='Theoretical-mechanics'
           )
 
           declare -A sources_3=(
-            [differential_equations]='Дифференциальным-уравнениям'
-            [material_theory]='Материаловедению'
-            [probability_theory]='Теории-вероятностей'
-            [psychology]='Психологии-и-педагогике'
+            [differential_equations]='Differential-equations'
+            [material_theory]='Material-science'
+            [probability_theory]='Probability-theory'
+            [psychology]='Psychology'
           )
 
           declare -A sources_3_4=(
-            [strength_of_materials]='Сопротивлению-материалов'
+            [strength_of_materials]='Materials-strength'
           )
 
           declare -A sources_4=(
-            [composite_materials]='Композитным-материалам'
-            [equations_of_math_phys]='Уравнениям-математической-физики'
-            [machines_theory]='Теории-машин'
-            [metrology]='Метрологии-и-стандартизации'
-            [sociology]='Социологии'
-            [thermodynamics_heat_transfer]='Термодинамике-и-теплопередаче'
+            [composite_materials]='Composite-materials'
+            [equations_of_math_phys]='Equations-of-mathematical-physics'
+            [machines_theory]='Machines-theory'
+            [metrology]='Metrology-and-standardization'
+            [sociology]='Sociology'
+            [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
           )
 
           declare -A seminars_3_4=(
-            [strength_of_materials]='Сопротивлению-материалов'
+            [strength_of_materials]='Materials-strength'
           )
 
           declare -A seminars_4=(
-            [metrology]='Метрологии-и-стандартизации'
-            [thermodynamics_heat_transfer]='Термодинамике-и-теплопередаче'
+            [metrology]='Metrology-and-standardization'
+            [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
           )
 
           set -x
@@ -75,49 +75,49 @@ jobs:
           for subject in "${!sources_1[@]}"; do
             typst compile \
               "materials/semester-1/${subject//_/-}/lectures.typ" \
-              "build/Лекции_по_${sources_1[$subject]}.pdf"
+              "build/Lectures_of_${sources_1[$subject]}.pdf"
           done
 
           for subject in "${!sources_1_2[@]}"; do
             typst compile \
               "materials/semester-1-2/${subject//_/-}/lectures.typ" \
-              "build/Лекции_по_${sources_1_2[$subject]}.pdf"
+              "build/Lectures_of_${sources_1_2[$subject]}.pdf"
           done
 
           for subject in "${!sources_2_3[@]}"; do
             typst compile \
               "materials/semester-2-3/${subject//_/-}/lectures.typ" \
-              "build/Лекции_по_${sources_2_3[$subject]}.pdf"
+              "build/Lectures_of_${sources_2_3[$subject]}.pdf"
           done
 
           for subject in "${!sources_3[@]}"; do
             typst compile \
               "materials/semester-3/${subject//_/-}/lectures.typ" \
-              "build/Лекции_по_${sources_3[$subject]}.pdf"
+              "build/Lectures_of_${sources_3[$subject]}.pdf"
           done
 
           for subject in "${!sources_3_4[@]}"; do
             typst compile \
               "materials/semester-3-4/${subject//_/-}/lectures.typ" \
-              "build/Лекции_по_${sources_3_4[$subject]}.pdf"
+              "build/Lectures_of_${sources_3_4[$subject]}.pdf"
           done
 
           for subject in "${!sources_4[@]}"; do
             typst compile \
               "materials/semester-4/${subject//_/-}/lectures.typ" \
-              "build/Лекции_по_${sources_4[$subject]}.pdf"
+              "build/Lectures_of_${sources_4[$subject]}.pdf"
           done
 
           for subject in "${!seminars_3_4[@]}"; do
             typst compile \
               "materials/semester-3-4/${subject//_/-}/seminars.typ" \
-              "build/Семинары_по_${seminars_3_4[$subject]}.pdf"
+              "build/Seminars_of_${seminars_3_4[$subject]}.pdf"
           done
 
           for subject in "${!seminars_4[@]}"; do
             typst compile \
               "materials/semester-4/${subject//_/-}/seminars.typ" \
-              "build/Семинары_по_${seminars_4[$subject]}.pdf"
+              "build/Seminars_of_${seminars_4[$subject]}.pdf"
           done
 
       - name: "Выкладывание PDF"
@@ -156,5 +156,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DO_NOT_TRACK: true
         run: |
-          gh release upload latest *.pdf
+          gh release upload latest *.pdf --clobber
           gh release edit latest --notes-file LINKS.md --target master
