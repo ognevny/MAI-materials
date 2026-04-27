@@ -156,5 +156,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DO_NOT_TRACK: true
         run: |
-          gh release upload latest *.pdf --clobber
+          gh release upload latest *.pdf
           gh release edit latest --notes-file LINKS.md --target master
