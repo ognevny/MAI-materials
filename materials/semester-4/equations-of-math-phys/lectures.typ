@@ -1057,7 +1057,7 @@ $
 
 Интеграл Пуассон $ integral_(-oo)^(oo) e^(-z^2) dif z = sqrt(pi) $
 
-=== Для ограниченного цилиндра
+=== Уравнение теплопроводности для ограниченного цилиндра
 
 #v(1em)
 
@@ -1212,13 +1212,7 @@ $
 
 $display(
   A_0 = 2/pi integral_0^pi cos 2x dif x = 2/pi dot evaluated(1/2 sin 2x)_0^pi = 2/pi (1/2 sin 2pi - 1/2 sin 0) = 0 \
-  A_n = 2/pi integral_0^pi cos 2x cos (pi n x)/pi dif x = 2/pi dot 1/2 integral_0^pi (cos (2 - n) x + cos (2 + n) x) dif x = 1/pi (integral_0^pi cos (2 - n) x dif x + \ + integral_0^pi cos (2 + n) x dif x) = 1/pi (evaluated(1/(2 - n) sin (2 - n) x)_0^pi + evaluated(1/(2 + n) sin (2 + n) x)_0^pi) = 1/pi (1/(2 - n) (sin (2 - n) pi - sin 0) + \ + 1/(2 + n) (sin (2 + n) pi - sin 0)) = 0
-)$
-
-А на самом деле...
-
-$display(
-  A_n = 2/pi integral_0^pi cos 2x cos n x dif x = cases(
+  A_n = 2/pi integral_0^pi cos 2x cos (pi n x)/pi dif x = cases(
     0 quad & n != 2,
     1 quad & n = 2,
   )
@@ -1242,8 +1236,9 @@ $
   u_t = 1/9 u_(x x) + cos 3x quad evaluated(u)_(t=0) = 0 quad evaluated(u_x)_(x=0) = evaluated(u_x)_(x=pi) = 0
 $
 
+$display(a = 1/3 quad l = pi)$
+
 $display(
-  a = 1/3 quad l = pi \
   "Собственные функции" \
   X_n = cos (pi n x)/pi = cos n x \
   u(x, t) = sum_0^oo T_n (t) cos n x \
@@ -1470,12 +1465,6 @@ $display(
   u = A_0/2 + sum_1^oo (A_n cos n phi + B_n sin n phi) r^n => pdv(u, r) = sum_1^oo n r^(n-1) evaluated(A_n cos n phi + B_n sin n phi)_(r=R_0) = f(phi)
 )$
 
-Свойства гармонических функций
-
-+ Если $integral.cont_L pdv(u, n) dif S = 0$, то источников/стоков внутри контура нет $ f(phi) = pdv(u, r) = sum_1^oo a_n cos n phi + b_n sin n phi $
-
-+ ... (потом будет изучено)
-
 $display(
   sum_1^oo n R_0^(n-1) (A_n cos n phi + B_n sin n phi) = sum_1^oo (a_n cos n phi + b_n sin n phi) => n R_0^(n-1) A_n = a_n = 1/pi integral_(-pi)^pi f(phi) cos n phi dif phi \
   n R_0^(n-1) B_n = b_n = 1/pi integral_(-pi)^pi f(phi) sin n phi dif phi
@@ -1680,8 +1669,200 @@ $display(
 
 Свойства гармонических функций
 
-+ $display(integral.cont_L pdv(u, n) dif S = 0)$
++ Если $integral.cont_L pdv(u, n) dif S = 0$, то источников/стоков внутри контура нет $ f(phi) = pdv(u, r) = sum_1^oo a_n cos n phi + b_n sin n phi $
 
 + Максимум или минимум для гармонической функции достигается только на границах области
 
-+ $display(evaluated(u)_L = f(x, y))$ может иметь разрывы 1 родаw
++ $display(evaluated(u)_L = f(x, y))$ может иметь разрывы 1 рода
+
+== Достаточные условия существования слабого экстремума функционала в ПЗВИ#footnote[Простейшая задача вариационного исчисления]
+
+#v(1em)
+
+Рассмотрим приращение функционала в виде
+$
+  Delta J[y] = J[y + delta y] - J[y] = integral_(x_0)^(x_1) F(x, y + delta y, y' + delta y') dif x - integral_(x_0)^(x_1) F(x, y, y') dif x = [cases(reverse: #true, delta y = y - tilde(y), delta y' = y' - tilde(y)') "малы"]
+$
+
+$display(
+  integral_(x_0)^(x_1) [underbrace((F_y delta y + F_y' delta y'), delta J = 0) + 1/2 underbrace((F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2), delta^2 J) + R] dif x
+)$
+
+$R$ зависит от $(delta y)^3$, $(delta y')^3$ и так далее.
+
+$display(
+  Delta J[y] approx delta^2 J \
+  Delta J "имеет тот же знак как" (delta^2 J) \
+  delta^2 J = integral_(x_0)^(x_1) [F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2] dif x + integral_(x_0)^(x_1) [omega' delta y^2 + 2omega delta y delta y'] dif x
+)$
+
+$
+  integral_(x_0)^(x_1) & dif [omega(delta y)^2] = evaluated(omega(x) (delta y)^2)_(x_0)^(x_1) = 0 "в силу закрепленности концов" \
+  & dif [omega(delta y)^2] = (omega' delta y^2 + omega dot 2 delta y delta y') dif x
+$
+
+$display(
+  delta^2 J = integral_(x_0)^(x_1) [(F_(y y) + omega') delta y^2 + 2(F_(y y') + omega) delta y delta y' + F_(y' y') (delta y')^2] dif x \
+  delta^2 J = integral_(x_0)^(x_1) F_(y' y') [(F_(y y) + omega')/F_(y' y') delta y^2 + 2 (F_(y y') + omega)/F_(y' y') delta y delta y' + (delta y')^2] dif x
+)$
+
+Подберём $omega$ так, что $display((F_(y y) + omega')/F_(y' y') = ((F_(y y') + omega)/F_(y' y'))^2)$
+
+$display(F_(y' y') (F_(y y) + omega') = (F_(y y') + omega)^2)$
+
+$display(
+  omega = -F_(y y) - F_(y y') u'/u => "получим уравнение (условие) Якоби" \
+  (F_(y y) - dv(, x) F_(y y')) u - dv(, x) (F_(y' y') u') = 0\, "где" u "не обращается в ноль на промежутке" (x_0, x_1]
+)$
+
+Получили полный квадрат
+
+$display(delta^2 J = integral_(x_0)^(x_1) F_(y' y') [...]^2 dif x)$
+
+Условия Лежандра при выполнении условия Якоби дают достаточные условия слабого экстремума в ПЗВИ
+$
+  F_(y' y') > 0 => "слабый минимум"
+  F_(y' y') < 0 => "слабый максимум"
+$
+
+=== Пример
+
+#v(1em)
+
+$
+  J[y] = integral_0^(pi/6) [9y^2 + 2y y' - y'^2] dif x quad cases(y(0) = 1, y(pi/6) = 0)
+$
+
+$display(
+  F_y' = 2y - 2y' quad F_y = 18y + 2y' \
+  F_(y' y') = -2 quad F_(y y') = 2 \
+  F_(y' x) = 0 quad F_(y y) = 18 \
+  y'' dot (-2) + y' dot 2 + 0 - (18y + 2y') = 0 \
+  -2y'' - 18y = 0 <=> k^2 + 9 = 0 <=> k_(1,2) = +-3i \
+  y = C_1 cos 3x + C_2 sin 3x \
+  cases(
+    C_1 cos 3 dot 0 + C_2 sin 3 dot 0 = 1,
+    C_1 cos pi/2 + C_2 sin pi/2 = 0,
+  ) <=> cases(
+    C_1 = 1,
+    C_2 = 0,
+  ) \
+  tilde(y) = cos 3x \
+  (18 - dv(, x) 2) u - dv(, x) (-2u') = 0 \
+  18u + 2u'' = 0 <=> u'' + 9u = 0 <=> u = C_1 cos 3x + C_2 sin 3x \
+  u(0) = 0 \
+  u = C_1 cos 0 + C_2 sin 0 = 0 => C_1 = 0 => u = C_2 sin 3x
+)$
+
+$u$ не обращается в нуль на $(x_0, x_1]$, тогда по условию Лежандра $F_(y' y') = -2 < 0$, следовательно $y = cos 3x$ -- слабый экстремум
+
+Однопараметрическое семейство кривых $y = y(x, C)$ образует в области $DD$ центральное поле, если через одну точку проходят все кривые, а через любую другую точку области $DD$ только одна кривая.
+
+Например: $y = C x^2$; $y = C sin x$ при выборе области до $pi$ (по типу $[0, a], a < pi$).
+
+Условие Якоби можно заменить анализом поля экстремалей при выполнении одного из граничных условий.
+
+В том же примере берём $tilde(y) = C_1 cos 3x + C_2 sin 3x$
+
+$display(
+  tilde(y)(pi/6) = C_1 dot 0 + C_2 dot 1 = 0 => C_2 = 0 \
+  tilde(y) = C_1 cos 3x
+)$
+
+Получим, что в точке $x = pi/6$ проходят все кривые, через остальные точки области кривые проходят только один раз.
+
+Алгоритм для слабого экстремума
++ Найти экстремаль -- решить уравнение Эйлера
++ Проверить условие Якоби или включение экстремали в центральное поле
++ Применить условие Лежандра
+
+Алгоритм для сильного экстремума
++ Найти экстремаль -- решить уравнение Эйлера
++ Проверить условие Якоби или включение экстремали в центральное поле
++ Проверить условие Лежандра для всех близких $tilde(y)(x)$ точек $(x, y)$ при любом значении $y'$
+  $
+    F_(y' y') >= 0 space dash "сильный минимум" \
+    F_(y' y') <= 0 space dash "сильный максимум"
+  $
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect12-1.png"),
+    )
+  ],
+  [
+    Рассмотрим следующее движение материальной точки (рисунок слева). Необходимо найти траекторию наискорейшего движения.
+
+    Закон сохранения энергии
+    $
+      m V^2/2 = m g y
+    $
+
+    $display(
+      V^2 = 2g y \
+      V = sqrt(2g y)
+    )$
+  ],
+)
+
+$display(
+  dv(S, t) = sqrt(2g y) => dif S = sqrt(1 + y'^2) dif x \
+  (sqrt(1 + y'^2) dif x)/(dif t) = sqrt(2 q y) => dif t = 1/sqrt(2g) dot (sqrt(1 + y'^2) dif x)/sqrt(y)
+)$
+
+$
+  T[y] = 1/sqrt(2g) integral_0^x_1 sqrt(1 + y'^2)/sqrt(y) dif x quad cases(y(0) = 0, y(x_1) = y_1)
+$
+
+$display(
+  y' F_y' - F = C \
+  F_y' = 1/sqrt(y) dot 1/(2sqrt(1 + y'^2)) dot 2y' = y'/(sqrt(y) sqrt(1 + y'^2)) \
+  y' dot y'/(sqrt(y) sqrt(1 + y'^2)) - 1/sqrt(y) sqrt(1 + y'^2) = C <=> (y'^2 - 1 - y'^2)/(sqrt(y) sqrt(1 + y'^2)) = -1/(sqrt(y) sqrt(1 + y'^2)) = C \
+  y (1 + y'^2) = 1/C^2 = 2a \
+  y = (2a)/(1 + y'^2) \
+  y' = p(x) \
+  dv(y, x) = 2a (-(1 + p^2)^(-2) dot 2p dot p') = p \
+  1 = -4a dot 1/(1 + p^2)^2 dv(p, x) => dif x = -4a dot 1/(1 + p^2)^2 dif p \
+  p = ctg t/2 => dif p = -1/(2sin^2 t/2) dif t \
+  dif x = 4a 1/(1 + ctg^2 t/2)^2 dot 1/(2sin^2 t/2) dif t <=> dif x = 2a sin^2 t/2 dif t = 2a (1 - cos t)/2 dif t <=> integral dif x = integral a (1 - cos t) dif t \
+  x = a (t - sin t) + С \
+  y = (2a)/(1 + ctg^2 t/2) = 2a sin^2 t/2 = a (1 - cos t)
+)$
+
+$
+  cases(
+    x = a (t - sin t) + С,
+    y = a (1 - cos t),
+  )
+$
+
+Для начала в точке $(0, 0)$ имеем $C = 0$.
+
+Циклоида является наискорейшей траекторией для шарика, движущегося таким образом.
+
+Выберем такую область, что для любого значения параметра $a$ циклоиды будут образовывать центральное поле.
+
+$
+  F_(y' y') = 1/(sqrt(y) sqrt(1 + y'^2)) > 0 space forall y, y'
+$
+
+Получили сильный минимум.
+
+Последний пример
+$
+  J[y] = integral_1^2 (x y'^4 - 2y y'^3) dif x quad cases(y(0) = 0, y(2) = 1)
+$
+
+$display(
+  F_y = -2y'^3 quad F_y' = 4x y'^3 - 6y y'^2 \
+  F_(y y') = -6y'^2 quad F_(y' x) = 4y'^3 \
+  F_(y' y') = 12x y'^2 - 12y y' \
+  y'' dot (12 x y'^2 - 12y y') + y' (-6y'^2) + 4y'^3 + 2y'^3 = 0 \
+  12x dot y'^2 dot y'' - 12y dot y' dot y'' = 0 \
+  y'' y' (x y' - y) = 0 \
+  tilde(y) = x - 1 \
+  F_(y' y') = evaluated(12y' (x y' - y))_(y'=1) = evaluated(12(x - y))_(y=x-1) = 12 > 0 => "слабый минимум, поскольку есть зависимость от" y'
+)$
