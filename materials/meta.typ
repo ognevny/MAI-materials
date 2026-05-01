@@ -7,6 +7,7 @@
   datet: datetime,
   head: content,
   doc,
+  put_author: false,
 ) = {
   set text(lang: "ru")
 
@@ -17,12 +18,20 @@
     date: datet,
   )
 
+  let header_text = {
+    if put_author {
+      emph(head + [. Конспект составил студент группы М1О-232БВ-24 Бондаренков М.В.])
+    } else {
+      emph(head)
+    }
+  }
+
   set page(
     paper: "a4",
     numbering: "1",
     header: [
       #set text(5pt)
-      #h(1fr) #emph(head)
+      #h(1fr) #header_text
     ],
     margin: (
       top: 10mm,
@@ -38,6 +47,8 @@
 
   show figure.where(kind: table): set figure.caption(position: top)
   show circle: set align(center + horizon)
+
+  set rect(stroke: 0.5pt)
 
   show: shorthands.with(
     ($+-$, $plus.minus$),
