@@ -1907,6 +1907,10 @@ $
   a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dif x quad b_n = 1/pi integral_(-pi)^(pi) f(x) sin n x dif x quad a_0 = 1/pi integral_(-pi)^(pi) f(x) dif x
 $
 
+== Разложение в ряд Фурье четных и нечетных функций
+
+#v(1em)
+
 $display(
   f(x) space dash "чётная" => cases(
     delim: bar.v.double,
@@ -1918,10 +1922,6 @@ $display(
     b_n = 0,
   )
 )$
-
-== Разложение в ряд Фурье четных и нечетных функций
-
-#v(1em)
 
 $display(
   f(x) space dash "нечётная" => cases(

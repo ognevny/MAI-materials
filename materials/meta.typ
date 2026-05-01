@@ -14,7 +14,8 @@
   set document(
     title: titl,
     author: "Максим Бондаренков",
-    description: desc + [. Распространяется на условиях лицензии CC-BY-SA-4.0],
+    description: desc
+      + [. Распространяется на условиях лицензии CC-BY-SA-4.0. Исходный код конспекта доступен в #link("https://github.com/ognevny/MAI-materials")],
     date: datet,
   )
 
