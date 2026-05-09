@@ -1,5 +1,5 @@
 #import "@preview/physica:0.9.8": dv, evaluated, pdv
-#import "meta.typ": conf, ov
+#import "meta.typ": conf, const, ov
 
 #show: conf.with(
   titl: "Лекции по Теоретической механике",
@@ -63,7 +63,7 @@ $ov(V)_r = 0, ov(W)_r = 0 => display(sum_(j=1)^N ov(F)_j + sum_(k=1)^p ov(R)_k +
   columns: (3fr, 1fr),
   column-gutter: 1em,
   [
-    $omega_e = "const" \
+    $omega_e = const \
     "OM" = l \
     T, alpha - ?$
 
@@ -176,7 +176,7 @@ $ov(Q) = M ov(V)_C; dv(ov(Q), t) = display(sum_j ov(F)_j^((e))\; M dv(ov(V)_C, t
 
 Теорема о движении центра масс: $ M ov(W)_C = sum_j ov(F)_j^((e)) $ Центр масс движется как материальная точка в предположении, что в нём сосредоточена масса МС, и к ней приложены все внешние силы. Если $display(sum_j ov(F)_j^((e)) = 0)$, то центр масс покоится, либо движется равномерно и прямолинейно.
 
-Если $display(F_(j x)^((e)) = 0)$, то $W_(c x) = 0 => V_(c x) = "const"$, при этом при $t_0 = 0$ $V_(c x_0) = 0$.
+Если $display(F_(j x)^((e)) = 0)$, то $W_(c x) = 0 => V_(c x) = const$, при этом при $t_0 = 0$ $V_(c x_0) = 0$.
 
 Внутренние силы не влияют непосредственно на движение центра масс
 
@@ -423,7 +423,7 @@ $ N = (ov(F), ov(V)), dif' A = N dif t $
   [
     Полная работа силы при перемещении материальной точки из точки (1) в точку (2) (@работа) -- интеграл вдоль траектории перемещения от элементарных работы $ A_((1))^((2)) = integral_((1))^((2)) dif' A $
 
-    Для $(ov(F)) = "const"$ (@постсила) имеем $ A_((1))^((2)) = F S $
+    Для $(ov(F)) = const$ (@постсила) имеем $ A_((1))^((2)) = F S $
   ],
   [
     #figure(
@@ -489,7 +489,7 @@ T_((2)) + Pi_((2)) = T_((1)) + Pi_((1))$
 
 #v(1em)
 
-$ E = T + Pi = h = "const", $ соответственно полная энергия $E = T + Pi$.
+$ E = T + Pi = h = const, $ соответственно полная энергия $E = T + Pi$.
 
 ==== Сумма работ элементарных работ сил, приложенных к твердому телу
 
@@ -799,7 +799,7 @@ $ ov(M)_C^(Phi) = -dv(ov(K)'_C, t) $
     )
   ],
   [
-    Дано: $omega = "const"$, $"OA" = l$ \
+    Дано: $omega = const$, $"OA" = l$ \
     Найти: $alpha$, $T$
 
     $R = l sin(alpha) \
@@ -849,7 +849,7 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
   column-gutter: 1em,
   [
     Связь называется стационарной, если в уравнении связей не присутствует явно время $t$. Связь называется нестационарной, если в уравнении связей явно присутствует время $t$ (@стационарный). \
-    $z = 0, u = "const", u = s t$
+    $z = 0, u = const, u = s t$
     $ x^2 - (y - u t)^2 - l^2 = 0 $
   ],
   [
@@ -871,8 +871,8 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
     $V_c = omega R \
     dot(x)_c - omega R = 0 \
     dv(x_c, t) = dv(phi, t) R \
-    x_c = phi R + "const"$
-    $ x_c - phi R - "const" = 0 $
+    x_c = phi R + const$
+    $ x_c - phi R - const = 0 $
   ],
   [
     #figure(
@@ -892,7 +892,7 @@ $f(x, y, z, dot(x), dot(y), dot(z), t) = 0 \
 f(x, y, z, t) = 0 \
 dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z$
 
-$delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ -- вариация функции ($t = "const"$)
+$delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ -- вариация функции ($t = const$)
 
 $ov(r) = (x, y, z, t) \
 dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t space dash "элементарное перемещение"$
@@ -1646,7 +1646,7 @@ dv(ov(Q), t) = ov(F)^((e)) => m(t) dv(ov(V), t) + dv(m_1, t) ov(V)_(1r) - dv(m_2
         reverse: #true,
         delim: "|",
         ov(F)^((e)) = 0,
-        V_(1r) = "const",
+        V_(1r) = const,
       ) m(t) dv(ov(V), t) = dv(m, t) ov(V)_(1r)
     )$
   ],

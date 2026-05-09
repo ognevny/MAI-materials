@@ -23,6 +23,8 @@ jobs:
           persist-credentials: false
 
       - uses: typst-community/setup-typst@63ac138db421d586de61f7f5ac3bcef6a2e6c78c # v5.1.0
+        with:
+          typst-version: ^0.14.0
 
       - name: "Сборка PDF файлов"
         run: |
