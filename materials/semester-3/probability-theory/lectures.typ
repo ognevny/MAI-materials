@@ -1,5 +1,5 @@
 #import "@preview/physica:0.9.8": dv, pdv
-#import "meta.typ": conf, ov
+#import "meta.typ": arctg, conf, const, ov
 
 #show: conf.with(
   titl: "Лекции по Теории вероятностей",
@@ -7,6 +7,9 @@
   datet: datetime(year: 2026, month: 1, day: 21),
   head: [Лекции по Теории вероятностей],
 )
+
+#let cov = math.op("cov")
+#let cor = math.op("cor")
 
 #outline()
 #pagebreak(weak: true)
@@ -473,7 +476,7 @@ $f(x) = F'(x) = display(lim_(Delta x -> 0)) (F(x + Delta x) - F(x))/(Delta x)$
 
 #v(1em)
 
-+ $M(C) = C, C = "const"$
++ $M(C) = C, C = const$
 + $M(X+C) = M(X) + C$
 + $M(C X) = C M(X)$
 + $M(C_1 X + C_2) = C_1 M(X) + C_2$
@@ -1140,18 +1143,18 @@ mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y)))$
 
 #v(1em)
 
-$ k(X, Y) equiv "cov"(X, Y) = mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y))) = M(X Y) - M(X) M(Y) $
-Для ДСВ $ "cov"(X, Y) = sum_(i=1)^n sum_(j=1)^m (x_i - M(X)) (y_j - M(Y)) p_(i j) = sum_(i=1)^n sum_(j=1)^m x_i y_j p_(i j) - M(X) M(Y) $
-Для НСВ $ "cov"(X, Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X)) (y_j - M(Y)) f(x, y) dif x dif y $
+$ k(X, Y) equiv cov(X, Y) = mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y))) = M(X Y) - M(X) M(Y) $
+Для ДСВ $ cov(X, Y) = sum_(i=1)^n sum_(j=1)^m (x_i - M(X)) (y_j - M(Y)) p_(i j) = sum_(i=1)^n sum_(j=1)^m x_i y_j p_(i j) - M(X) M(Y) $
+Для НСВ $ cov(X, Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X)) (y_j - M(Y)) f(x, y) dif x dif y $
 
-+ $"cov"(X, Y) = 0; X, Y space dash "НЗСВ"$
-+ $"cov"(X, Y) = "cov"(Y, X)$
-+ $"cov"(X, X) = D(X)$
-+ $"cov"(Y, Y) = D(Y)$
-+ $abs("cov"(X, Y)) <= sqrt(D(X) D(Y))$
-+ $"cov"(alpha_1 + beta_1 X, alpha_2 + beta_2 Y) = beta_1 beta_2 "cov"(X, Y)$
-+ $"cov"(X + alpha, Y + beta) = "cov"(Y, X)$
-+ $"cov"(alpha X + beta Y, Z) = alpha"cov"(X, Z) + beta"cov"(Y, Z)$
++ $cov(X, Y) = 0; X, Y space dash "НЗСВ"$
++ $cov(X, Y) = cov(Y, X)$
++ $cov(X, X) = D(X)$
++ $cov(Y, Y) = D(Y)$
++ $abs(cov(X, Y)) <= sqrt(D(X) D(Y))$
++ $cov(alpha_1 + beta_1 X, alpha_2 + beta_2 Y) = beta_1 beta_2 cov(X, Y)$
++ $cov(X + alpha, Y + beta) = cov(Y, X)$
++ $cov(alpha X + beta Y, Z) = alpha cov(X, Z) + beta cov(Y, Z)$
 
 Ковариационная матрица $ K = mat(k(X, X), k(X, Y); k(Y, X), k(Y, Y)) = mat(D(X), k(X, Y); k(Y, X), D(Y)) $
 
@@ -1159,7 +1162,7 @@ $ k(X, Y) equiv "cov"(X, Y) = mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y))) = M(X Y
 
 #v(1em)
 
-$ r(X, Y) equiv "cor"(X, Y) = ("cov"(X, Y))/(sigma(X) sigma(Y)) $
+$ r(X, Y) equiv cor(X, Y) = (cov(X, Y))/(sigma(X) sigma(Y)) $
 
 #grid(
   columns: (2fr, 1fr),
@@ -1413,7 +1416,7 @@ $
 
 #v(1em)
 
-$(X, Y): f(x, y) = "const", f(x, y) = display(
+$(X, Y): f(x, y) = const, f(x, y) = display(
   cases(
     1/S_D\, &(x, y) in D,
     0\, &(x, y) in.not D,
@@ -1470,15 +1473,15 @@ $display(
   (x - M(X))^2/(sigma^2(X)) - 2r(X, Y) dot (x - M(X))/(sigma(X)) dot (y - M(y))/(sigma(Y)) + (y - M(Y))^2/(sigma^2(Y)) = a^2 \
   a^2 = -2(1 - r^2(X, Y)) ln(2pi c sigma(X) sigma(Y) sqrt(1 - r^2(X, Y))) \
   0 < c < f(M(X), M(Y)) \
-  alpha = 1/2 "arctg" (2"cov"(X, Y))/(sigma^2(X) - sigma^2(Y)) \
+  alpha = 1/2 arctg (2cov(X, Y))/(sigma^2(X) - sigma^2(Y)) \
   X_1 = (X - M(X)) cos alpha + (Y - M(Y)) sin alpha \
   Y_1 = -(X - M(X)) sin alpha + (Y - M(Y)) cos alpha
 )$
 
 $display(
   f(x_1, y_1) = 1/(2pi sigma(X_1) sigma(Y_1)) exp(-1/2 (x_1/(sigma(X_1)))^2 - 1/2 (y_1/(sigma(Y_1)))^2) \
-  sigma(X_1) = sqrt(sigma^2(X) cos^2 alpha + "cov"(X,Y) sin 2alpha + sigma^2(Y) sin^2 alpha) \
-  sigma(Y_1) = sqrt(sigma^2(X) sin^2 alpha - "cov"(X,Y) sin 2alpha + sigma^2(Y) cos^2 alpha) \
+  sigma(X_1) = sqrt(sigma^2(X) cos^2 alpha + cov(X, Y) sin 2alpha + sigma^2(Y) sin^2 alpha) \
+  sigma(Y_1) = sqrt(sigma^2(X) sin^2 alpha - cov(X, Y) sin 2alpha + sigma^2(Y) cos^2 alpha) \
   E(X_1) = rho sqrt(2) sigma(X_1) \
   E(Y_1) = rho sqrt(2) sigma(Y_1) \
   rho = "0,4769" quad rho sqrt(2) = "0,6744" \

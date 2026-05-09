@@ -58,6 +58,11 @@
   doc
 }
 
+// Недостающие операторы
+#let arctg = math.op("arctg")
+#let const = math.op("const")
+#let grad = math.op("grad")
+
 /// Разделитель для vec()
 #let delimsys = ("{", "|")
 

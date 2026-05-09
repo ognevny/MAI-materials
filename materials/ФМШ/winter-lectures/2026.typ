@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": arctg, conf, const
 
 #show: conf.with(
   titl: "Зимние лекции по математике ФМШ МАИ, 2026 год",
@@ -1563,14 +1563,14 @@ $ S = 1 dot 1/(1 - 1/2) = 2 $
 
 $r = sqrt(2^2 + 3^2) = sqrt(13) \
 sin phi = 3/sqrt(13); cos phi = 2/sqrt(13) \
-tg 3/2 => 4 = "arctg" 3/2 = "0,98"
+tg 3/2 => 4 = arctg 3/2 = "0,98"
 A(sqrt(13); "0,98")$
 
 == Уравнение линии в полярных координатах
 
 #v(1em)
 
-Уравнение вида $r = k = "const"$
+Уравнение вида $r = k = const$
 
 Пример 1: $r = 2, 2 = sqrt(x^2 + y^2) => 2^2 = x^2 + y^2 space dash "уравнение окружности"$
 

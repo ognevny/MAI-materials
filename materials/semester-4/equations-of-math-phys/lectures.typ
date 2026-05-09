@@ -1,4 +1,4 @@
-#import "meta.typ": conf, ov
+#import "meta.typ": conf, const, grad, ov
 #import "@preview/physica:0.9.8": dv, evaluated, pdv
 
 #show: conf.with(
@@ -571,7 +571,7 @@ $ u_(t t) = a^2 u_(x x), $
   [
     Вывод уравнения свободных колебаний струны:
 
-    Рассмотрим $Delta x$, $T = "const"$, $rho = "const"$
+    Рассмотрим $Delta x$, $T = const$, $rho = const$
 
     $Delta x approx Delta l quad cos alpha approx 1 quad sin alpha approx tg alpha = u_x$ -- из геометрического смысла производной.
 
@@ -779,7 +779,7 @@ $
 
 $display(
   X(x) dot T''(t) = a^2 X''(x) dot T(t) |":" T(t) dot X(x) \
-  X''/X = T''/(a^2 T) = -ov(lambda) space (ov(lambda) = "const") => cases(
+  X''/X = T''/(a^2 T) = -ov(lambda) space (ov(lambda) = const) => cases(
     delim: "[",
     X'' + ov(lambda) X = 0,
     T'' + a^2 ov(lambda) T = 0,
@@ -1361,7 +1361,7 @@ $
 
 Если уравнение рассматривается вне области, то задача называется внешней. Например, задача об обтекании профиля несущей поверхности стационарным потоком несжимаемой жидкости
 $
-  ov(v) = -"grad"phi => "условие отсутствия источников" "div"("grad"phi) = 0
+  ov(v) = -grad phi => "условие отсутствия источников" "div"(grad phi) = 0
 $
 
 Следовательно, $phi$ -- потенциал возмущенных скоростей, удовлетворяет уравнению Лапласа

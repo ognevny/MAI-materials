@@ -1,4 +1,4 @@
-#import "meta.typ": clrundrln, conf, delimsys, ov
+#import "meta.typ": arctg, clrundrln, conf, const, delimsys, ov
 #import "@preview/cetz:0.5.2": canvas, draw
 #import "@preview/physica:0.9.8": dv, evaluated, mdet, pdv
 
@@ -104,7 +104,7 @@ $y = -1; y' = 0 => "ДУ": 0 = sqrt(1 - (-1)^2) equiv 0 => y = -1$ -- решен
     $display(h = (b - a)/n)$ -- шаг метода
 
     $M_0(x_0, y_0) -> y'(x_0) = f(x_0, y_0) - tg(alpha) \
-    forall x in [x_0; x_1]: y'(x) = "const" \
+    forall x in [x_0; x_1]: y'(x) = const \
     y - y_0 = y'(x_0, y_0) (x - x_0) => (x_1, y_1); \
     underbrace(y_1 - y_0, Delta y) = underbrace(y'(x_0), tg(alpha)) underbrace((x_1 - x_0), h) \
     Delta y = h tg(alpha) \
@@ -127,7 +127,7 @@ $y = -1; y' = 0 => "ДУ": 0 = sqrt(1 - (-1)^2) equiv 0 => y = -1$ -- решен
   ],
 )
 
-Линия $f(x, y) = k$, где $k = y'(x) = "const"$, называется изоклиной для ДУ $y' = f(x, y)$
+Линия $f(x, y) = k$, где $k = y'(x) = const$, называется изоклиной для ДУ $y' = f(x, y)$
 
 $y' = 1 - y, y' = k; k = 1 - y => y = 1 - k$
 #grid(
@@ -292,7 +292,7 @@ $y = x u(x), y' = (x u(x))' = u(x) + u'(x) dot x = y/x - 1 = u - 1$
 
 $u + x u' = u - 1 => x u' = -1 => u' = -1/x, x != 0 => u = -ln abs(x) + ln abs(C) => u = ln abs(C/x) => y/x = ln abs(C/x) => y = x ln abs(C/x) \
 y' = e^(y/x) + y/x => y' = e^u + u => x u' = e^u => x dv(u, x) = e^u => integral (dif u)/e^u = integral (dif x)/x => -e^(-u) = ln abs(x) + ln abs(C) => \ => e^(-u) = -ln abs(x) + ln abs(C) => e^(-u) = ln abs(C/x) => -u = ln ln abs(C/x) => u = -ln ln abs(C/x) => y = -x ln ln abs(C/x) \
-y' = y/x + sin y/x => ... => y = 2x("arctg"(tilde(C) x) + pi n)$
+y' = y/x + sin y/x => ... => y = 2x(arctg(tilde(C) x) + pi n)$
 
 Проверка: $sin u = 0 => u = pi k, y = pi k x$ входит в решение
 
@@ -439,7 +439,7 @@ y = u v = 1/(x - C) dot 1/x = 1/(x^2 - C x); y = 0 space dash "тоже реше
 
 #v(1em)
 
-$ P(x, y) dif x + Q(x, y) dif y = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в частных дифференциалах) $=> dif U(x, y) = 0 => U(x, y) = "const"$ -- общий интеграл ДУ
+$ P(x, y) dif x + Q(x, y) dif y = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в частных дифференциалах) $=> dif U(x, y) = 0 => U(x, y) = const$ -- общий интеграл ДУ
 
 === Пример решения ДУ в полных дифференциалах
 
@@ -472,7 +472,7 @@ pdv(P, y) = (x_0 + sin y)'_y = cos y \
 pdv(Q, x) = (x cos y_0 + sin_y_0)'_x = cos y \
 display(U(x, y) = integral_(x_0=0)^x (x + sin y) dif x + integral_(y_0=0)^y (x_0 cos y + sin y) dif y = integral_0^x (x + sin y) dif x + integral_0^y sin y dif y = \ = evaluated((x^2/2 + sin y dot x))_0^x + evaluated((-cos y))_0^y = x^2/2 + x sin y - 0 + (-cos y + 1) = x^2/2 + x sin y - cos y + 1)$
 
-Ответ: $x^2/2 + x sin y - cos y = "const"$
+Ответ: $x^2/2 + x sin y - cos y = const$
 
 === Ещё один пример
 
@@ -493,7 +493,7 @@ display(
 ) \
 x^2 - phi'_y = 3y^2 + x^2 => phi'_y = 3y^2 => phi(y) = 3y^2 => phi(y) = y^3 + C => U(x, y) = x^2 y - 5x + y^3 + C$
 
-Ответ: $x^2 - 5x + y^3 = "const"$ -- общий интеграл ДУ.
+Ответ: $x^2 - 5x + y^3 = const$ -- общий интеграл ДУ.
 
 ==== Обоснование данного метода
 
@@ -792,7 +792,7 @@ $z(x) equiv tilde(C)_1 y_1(x) + tilde(C)_2 y_2(x)$, иначе через точ
 
 #v(1em)
 
-$ y'' + p_1 y' + p_2 y = 0; space p_1, p_2 = "const" $
+$ y'' + p_1 y' + p_2 y = 0; space p_1, p_2 = const $
 
 Будем искать решение вида $y = e^(k x)$
 
@@ -1053,7 +1053,7 @@ $z(x_0) = display(sum_(k=1)^n tilde(C)_k y_k (x_0))$
 
 #v(1em)
 
-$p_i = "const"$, решения вида $y = e^(k x)$
+$p_i = const$, решения вида $y = e^(k x)$
 
 $y' = k e^(k x)$, $y'' = k^2 e^(k x)$, ..., $y^((n-1)) = k^(n-1) e^(k x)$, $y^((n)) = k^n e^(k x)$
 
@@ -1125,7 +1125,7 @@ exists tilde(C)_k: z - y_"част" = sum tilde(C)_k y_k => z = display(sum_(k=1
 
 #v(1em)
 
-Рассмотрим $L_n [y] = a e^(k x)$; $a, k = "const"$.
+Рассмотрим $L_n [y] = a e^(k x)$; $a, k = const$.
 
 Если $k$ не совпадает с корнями ХУ $R_n (k) = 0$, тогда частное решение имеет вид $ y_"част" = A e^(k x), $ где $A = a/(R_n (k))$
 
@@ -1319,7 +1319,7 @@ $display(
   cases(
     x(t) = alpha e^(lambda t),
     y(t) = beta e^(lambda t),
-  )\; alpha\, beta\, lambda = "const"\; cases(
+  )\; alpha\, beta\, lambda = const\; cases(
     dot(x) (t) = alpha lambda e^(lambda t),
     dot(y) (t) = beta lambda e^(lambda t),
   ) \
@@ -1684,7 +1684,7 @@ $display(
     dot(x) = x - y,
     dot(y) = x + y,
   ) quad mdet(1 - lambda, -1; 1, 1 - lambda) = 0 <=> (1 - lambda)^2 + 1 = 0 <=> 1 - lambda = +- i <=> cases(lambda_1 = 1 + i, lambda_2 = 1 - i) \
-  dot(y)/dot(x) = (x + y)/(x - y) <=> dv(y, x) = (x + y)/(x - y) <=> |u = y/x| <=> (1 + u)/(1 - u) = u + x u' <=> x dv(u, x) = (1 + u)/(1 - u) - u <=> x dv(u, x) = (1 + u^2)/(1 - u) <=> integral (dif x)/x = \ = integral (1 - u)/(1 + u^2) dif u <=> "arctg" u - 1/2 ln abs(1 + u^2) = ln abs(x) + ln abs(C) <=> ln abs(x) + ln sqrt(1 + u^2) = ln abs(C) + ln e^("arctg"u) <=> \ <=> sqrt(x^2 + y^2) = tilde(C) e^("arctg"u) <=> mat(
+  dot(y)/dot(x) = (x + y)/(x - y) <=> dv(y, x) = (x + y)/(x - y) <=> |u = y/x| <=> (1 + u)/(1 - u) = u + x u' <=> x dv(u, x) = (1 + u)/(1 - u) - u <=> x dv(u, x) = (1 + u^2)/(1 - u) <=> integral (dif x)/x = \ = integral (1 - u)/(1 + u^2) dif u <=> arctg u - 1/2 ln abs(1 + u^2) = ln abs(x) + ln abs(C) <=> ln abs(x) + ln sqrt(1 + u^2) = ln abs(C) + ln e^(arctg u) <=> \ <=> sqrt(x^2 + y^2) = tilde(C) e^(arctg u) <=> mat(
     delim: "|",
     align: #left,
     x = r cos phi, x^2 + y^2 = r^2;
