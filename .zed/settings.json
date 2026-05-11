@@ -9,10 +9,9 @@
           },
         },
         "syntaxOnly": "onPowerSaving",
-        // "formatterMode": "typstyle",
       },
     },
   },
-  "soft_wrap": "preferred_line_length",
+  "soft_wrap": "bounded",
   "file_scan_exclusions": ["meta.typ"],
 }

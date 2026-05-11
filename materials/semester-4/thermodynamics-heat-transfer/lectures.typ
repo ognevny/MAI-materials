@@ -2691,4 +2691,280 @@ $
 $
 Действительно при $(Gr_delta dot Pr)_m = 10^3 div 10^7$, $Pr = 1 div 10^3$ и $L/delta = 1 div 20$
 
-=== Теплоотдача при движении жидкости вдоль плоской горизонтальной стенки
+== Конвективная теплоотдача при движении жидкости вдоль плоской поверхности или плоской пластины
+
+#v(1em)
+
+Рассмотрим ламинарное течение
+$
+  pdv(T, tau) = 0 quad {rho, mu, lambda, C_p} = const quad pdv(p, x) = 0 quad pdv(p, y) = 0
+$
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect13-1.png"),
+    )
+  ],
+  [
+    $
+      (pdv(rho, p))_T = 0
+    $
+
+    $display(
+      cases(
+        pdv(u, x) + pdv(v, y) = 0,
+        rho u pdv(u, x) + rho v pdv(u, y) = mu pdv(u, y, 2),
+        rho u C_p pdv(T, x) + rho v C_p pdv(T, y) = lambda pdv(T, y, 2),
+      )
+    )$
+
+    Граничные условия
+
+    $y = 0 & quad u = v = 0: & T(0) = T_w \
+    y = oo & quad u = u_f, v = 0: & T(oo) = T_f$
+
+    Для начала рассмотрим случай $Pr = 1$
+  ],
+)
+
+$
+  C_f = "0,644"/sqrt(Re_w_x) \
+  delta(x) = ("4,64"x)/sqrt(Re_w_x) \
+  C_f (x) = (tau_w (x))/(1/2 rho_w u_f^2) \
+  tau_w = mu_w (pdv(u, y))_w \
+  Re_w_x = (rho_w u_f x)/mu_w \
+$
+
+Толщина динамического слоя сечения на расстоянии $x$ от кромки пластины
+$
+  delta(x) = cases(
+    x^"0,5",
+    u_f^(-"0,5"),
+  ) \
+  delta/delta_т = f(Pr) quad Pr = nu/a
+$
+
+$display(
+  delta_т (x) = cases(
+    x^"0,5",
+    u_f^(-"0,5"),
+  ) \
+  q_w = -lambda_w (pdv(T, y))_w \
+  q_w = alpha (T_f - T_w) \
+  alpha(T_f - T_w) = lambda_w (pdv(T, y))_w \
+)$
+
+$
+  alpha = lambda_w ((pdv(T, y))_w)/(T_f - T_w) \
+$
+
+$Pr = 1 => delta approx delta_т$
+
+Воспользуемся аналогией Рейнольдса
+$
+  ov(u) = (u(y))/u_f = (T(y) - T_w)/(T_f - T_w) = ov(theta) => ov(u) = ov(theta)
+$
+
+$display(
+  pdv(ov(u), y) = pdv(ov(theta), y) \
+  pdv(ov(u), y) = 1/u_f dot pdv(u, y) \
+  pdv(ov(theta), y) = 1/(T_f - T_w) dot pdv(theta, y)
+)$
+
+$
+  alpha = lambda_w (pdv(ov(theta), y))_w \
+  Nu_w_x = (alpha(x) dot x)/lambda_w = (lambda_w (pdv(ov(theta), y))_w x)/lambda_w = (pdv(ov(theta), y))_w x = (pdv(ov(u), y))_w x = (pdv(u, y))_w x/u_f
+$
+
+Домножим и разделим на $mu_w$
+
+$display(Nu_w_x = underbracket(mu_w (pdv(u, y))_w, tau_w) dot x/(mu_w u_f))$
+
+$
+  Nu_w_x = tau_w dot x/(mu_w u_f)
+$
+
+Домножим и разделим на $(rho_w u_f^2)/2$
+
+$display(Nu_w_x = underbracket(tau_w/((rho_w u_f^2)/2), C_f) dot (1/2 rho_w u_f^2 x)/(mu_w u_f))$
+
+$
+  Nu_w_x = 1/2 C_f Re_w_x
+$
+
+При $Pr != 1$ имеем
+
+$
+  Nu_w_x = 1/2 C_f Re_w_x Pr_w^(1/3)
+$
+
+Соответственно получаем при подстановке $C_f$
+$
+  & Pr = 1: Nu_w_x = "0,332"Re_(w_x)^"0,5" \
+  & Pr != 1: Nu_w_x = "0,332"Re_(w_x)^"0,5" dot Pr_w^(1/3)
+$
+
+#grid(
+  columns: (1.1fr, 1fr),
+  column-gutter: 1em,
+  [
+    $
+      delta approx (5x)/sqrt(Re_w_x), space delta_т approx (5x)/(sqrt(Re_w_x) Pr^(1/3)) => delta/delta_т = 1/Pr^(1/3)
+    $
+
+    Возьмем
+    $
+      ov(alpha) = 1/L integral_0^L alpha(x) dif x => ov(alpha) = 2alpha(L)
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect13-2.png"),
+    )
+  ],
+)
+
+Получим
+$
+  ov(Nu)_w_L = "0,664"Re_(w_L)^"0,5" dot Pr_w^(1/3) \
+  ov(Nu)_w_L = (ov(alpha) dot L)/lambda_w quad Re_w_L = (rho_w u_f L)/mu_w
+$
+
+Данные уравнения были получены при следующих условиях: температура поверхности вдоль пластины постоянна; физические параметры жидкости постоянны и не зависят от температуры и динамические и тепловой пограничный слои развиваются с самого начала пластины
+
+Возьмем $pdv(p, x) != 0$
+
+$
+  Nu_w_x = "0,332"Re_(w_x)^"0,5" Pr_w^(1/3) k k_1,
+$
+где $k$ -- поправка, которая учитывает влияние сжимаемости газа (переменность вязкости и плотности); $k_1$ -- поправка, которая учитывает наличие продольного градиента давления.
+
+$
+  k = ((mu^* rho^*)/(mu_w rho_w))^(1/3) ((mu_f rho_f)/(mu^* rho^*))^(1/15 T_w/T_e),
+$
+где $T_max = T^*$, $T_e$ -- температура восстановления
+
+$
+  T_e = T_f (1 + r (k-1)/2 M_f^2),
+$
+где $r_л = sqrt(Pr)$
+
+Определим $T^*$
+
++ $display((k-1)/2 M_f^2 > 1 - T_w/T_f)$
+
+  $
+    (T^* - T_w)/(T_f - T_w) = 1/4 (1 + (1 - T_w/T_f)/((k-1)/2 M_f))
+  $
+
++ $display((k-1)/2 M_f^2 < 1 - T_w/T_f) => T^* = T_f$
+
+  $
+    k = ((mu_f rho_f)/(mu_w rho_w))^(1/3)
+  $
+
+$
+  k_1 = [1 + "0,16"(1 + T_w/T_f_0)^(1/2)]
+$
+
+=== Теплоотдача при турбулентном режиме
+
+#v(1em)
+
+Турбулентное течение состоит из
++ Турбулентного ядра
++ Ламинарной подслоя
+
+Тогда
+$
+  cases(
+    pdv(ov(u), x) + pdv(ov(v), y) = 0,
+    rho ov(u) pdv(u, x) + rho ov(v) pdv(ov(v), y) = pdv(, y) [(mu + mu_т) pdv(u, y)],
+    rho ov(u) C_p pdv(ov(T), x) + rho ov(v) C_p pdv(ov(T), y) = pdv(, y) [(lambda + lambda_т) pdv(T, y, 2)],
+  )
+$
+
+Вводятся
+$
+  Pr = (mu C_p)/lambda \
+  Pr_т = (mu_т C_p)/lambda_т
+$
+
+Пусть $Pr = Pr_т = 1$, тогда
+$
+  Nu_w_x = 1/2 C_f Re_w_x \
+  C_f = "0,058"Re_(w_x)^(-"0,2") \
+  Nu_w_x = "0,029"Re_(w_x)^"0,5"
+$
+
+Пусть $Pr = 1$ и $Pr_т != 1$, тогда
+$
+  Nu_w_x = "0,029"Re_(w_x)^"0,5" Pr_w^"0,4"
+$
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    $
+      alpha_т (x) = C_1/x^"0,2"
+    $
+
+    $display(
+      ov(alpha) = 1/L integral_0^L "0,029"lambda_w ((rho_w u_f)/mu_w)^"0,8" Pr_w^"0,4" (dif x)/x^"0,2" \
+      ov(alpha) = "0,036"Re_(w_L)^"0,5" Pr_w^"0,4" lambda_w/L
+    )$
+  ],
+  [
+    #figure(
+      image("source-figures/lect13-3.png"),
+    )
+  ],
+)
+
+$
+  ov(Nu)_w_L = "0,036"Re_(w_L)^"0,8" Pr_w^"0,4"
+$
+
+Рассмотрим такой случай
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    Координаты $x_"кр"_1$ и $x_"кр"_2$ в общем случае зависят от
+    + От характеристик набегающего потока: степень турбулентности, масштаб турбулентности, частота пульсации
+    + Волнистости поверхности, шероховатости поверхности, обтекаемости передней кромки, наличии вибрации этой поверхности
+    + Интенсивности теплообмена
+
+    Переходные значения $Re_"кр" = 10^4 div 4 dot 10^6$
+
+    Обычно принимается $Delta x = 0$ тогда получаем
+    $
+      Re_"кр" = 5 dot 10^5 space (10^5) \
+      ov(alpha)(L) = 1/x_"кр" integral_0^(x_"кр") alpha_л (x) dif x + 1/(L - x_"кр") integral_(L-x_"кр")^L alpha_т (x) dif x
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect13-4.png"),
+    )
+  ],
+)
+
+Введем поправку
+$
+  Nu_w_x = "0,029"Re_(w_x)^"0,8" Pr_w^"0,4" k_т \
+  k_т = (T_w/T_e)^"0,4" (1 + r_т (k-1)/2 M_f^2)^"0,11",
+$
+где $r_т = root(3, Pr)$
+
+$(T_w/T_e)^"0,4"$ учитывает влияние температурного фактора на трение; $(1 + r_т (k-1)/2 M_f^2)^"0,11"$ учитывает влияние сжимаемости газа на теплообмен
+
+При малых скоростях потока
+$
+  k_т = (rho_f/rho_w)^"0,6"
+$
