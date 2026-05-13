@@ -10,8 +10,6 @@
   tutor: "",
   /// Дата создание документа с работой
   date: datetime(year: 2006, month: 06, day: 23),
-  /// Номер группы
-  group: "М1О-232БВ-24",
 ) = {
   set text(size: 14pt)
 
@@ -45,7 +43,7 @@
       #set par(leading: 1.5em)
       #set align(left)
       Преподаватель: #tutor \
-      Составил студент группы #group: #student \
+      Составил студент #student \
     ]
   ]
 
