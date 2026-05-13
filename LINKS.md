@@ -21,7 +21,6 @@
   - [Семинары по Сопротивлению материалов (только 4 семестр)](https://github.com/ognevny/MAI-materials/releases/download/latest/Seminars_of_Materials-strength.pdf)
 
 - 4 семестр:
-  - [Лекции по Введению в композитные материалы](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Composite-materials.pdf)
   - [Лекции по Метрологии и стандартизации](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Metrology-and-standardization.pdf)
   - [Лекции по Социологии](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Sociology.pdf)
   - [Лекции по Теории машин и механизмов](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Machines-theory.pdf)
