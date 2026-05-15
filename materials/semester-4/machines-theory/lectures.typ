@@ -1,11 +1,12 @@
 #import "@preview/physica:0.9.8": dv
-#import "meta.typ": conf, ov, un
+#import "meta.typ": conf, const, ov, un
 
 #show: conf.with(
   titl: "Лекции по Теории машин и механизмов",
   desc: "Лекции Орехова А.А. по Теории машин и механизмов",
   datet: datetime(year: 2026, month: 2, day: 13),
   head: [Лекции по Теории машин и механизмов],
+  put_author: true,
 )
 
 #outline()
@@ -1360,3 +1361,172 @@ $
 $
 
 $t_(j k)$ -- время, за которое звено передвинется от положения $j$ до положения $k$.
+
+Механической характеристикой называется зависимость усилия, приложенного к рабочему органу, от его кинематических параметров.
+
+Рассмотрим характеристики некоторых машин. Начнём с двигателя
++ #grid(
+    columns: (4fr, 1fr),
+    column-gutter: 1em,
+    [
+      Гиревой двигатель
+
+      $
+        M_д = Q R = const
+      $
+    ],
+    [
+      #figure(
+        image("source-figures/lect12-1.png"),
+      )
+    ],
+  )
++ #grid(
+    columns: (2.5fr, 1fr),
+    column-gutter: 1em,
+    [
+      Пружинный двигатель
+
+      $
+        M_д = M_д_max - q phi_1
+      $
+      #figure(
+        image("source-figures/lect12-3.png", width: 40%),
+      )
+    ],
+    [
+      #figure(
+        image("source-figures/lect12-2.png"),
+      )
+    ],
+  )
++ Электродвигатель -- может быть постоянного (график слева) или переменного тока (график справа).
+  $
+    M_д = M_д (omega)
+  $
+  #figure(
+    grid(
+      columns: (1fr, 1fr),
+      column-gutter: 1em,
+      [
+        #figure(
+          image("source-figures/lect12-4.png", width: 80%),
+        )
+      ],
+      [
+        #figure(
+          image("source-figures/lect12-5.png", width: 80%),
+        )
+      ],
+    ),
+  )
++ #grid(
+    columns: (1.5fr, 1fr),
+    column-gutter: 1em,
+    [
+      Двигатель внутреннего сгорания
+      #figure(
+        image("source-figures/lect12-6.png", width: 60%),
+      )
+
+      $
+        P_д = P_д (s),
+      $
+      где $s$ -- перемещение.
+
+      I такт -- сжатие, кривая $a b$; II такт -- рабочий ход, кривая $b c d$; III такт -- выхлоп, кривая $d e$; IV такт -- всасывание, кривая $e a$.
+
+      Давление получаем исходя из ординаты на рабочем ходе.
+    ],
+    [
+      #figure(
+        image("source-figures/lect12-7.png"),
+      )
+    ],
+  )
+
+Рассмотрим другие машины
++ #grid(
+    columns: (2fr, 1fr),
+    column-gutter: 1em,
+    [
+      Вентилятор
+
+      $
+        M_с = M_с (omega)
+      $
+
+      Момент сопротивления в нуле не равен нулю ввиду сил сопротивления (трение покоя, например).
+    ],
+    [
+      #figure(
+        image("source-figures/lect12-8.png"),
+      )
+    ],
+  )
++ #grid(
+    columns: (1.5fr, 1fr),
+    column-gutter: 1em,
+    [
+      Поршневой компрессор
+
+      $
+        P_с = P_с (s)
+      $
+
+      $a b$ -- всасывание, $b c$ -- сжатие, $c d$ -- нагнетание, $d a$ -- расширение остатка
+
+      $y'''_с$ определяется по пересечению либо со сжатием, либо с нагнетание, либо с расширением остатка.
+    ],
+    [
+      #figure(
+        image("source-figures/lect12-9.png"),
+      )
+    ],
+  )
+
+==== Подбор двигателя к рабочей машине
+
+#v(1em)
+
+Механические характеристики (момент движущей силы и момент сил сопротивления) должны быть такими, что машина выходит на стационарный режим работы (@стационар, слева). В случае выхода на нестационарный режим двигатель может уходить в разнос (@стационар, справа).
+
+#figure(
+  grid(
+    columns: (1fr, 1fr),
+    column-gutter: 1em,
+    [#image("source-figures/lect12-10.png")], [#image("source-figures/lect12-11.png")],
+  ),
+  caption: [],
+) <стационар>
+
+==== Основные уравнения движения ведущего звена механизма
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect12-12.png"),
+    )
+  ],
+  [
+    $
+      I_п = I_п (phi_1)
+    $
+
+    Запишем
+
+    $display(
+      M_д dif phi_1 - M_с dif phi_1 = dif((I_п omega_1^2)/2) \
+      M_д - M_с = I_п omega_1 dv(omega_1, phi_1) + omega_1^2/2 dv(I_п, phi_1) \
+    )$
+
+    Уравнение движения ведущего звена в форме моментов (уравнение движения механизма в форме уравнения Лагранжа II рода)
+    $
+      M_д - M_с = I_п epsilon_1 + omega_1^2/2 dv(I_п, phi_1)
+    $
+  ],
+)
