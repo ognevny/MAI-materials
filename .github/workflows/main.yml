@@ -56,10 +56,11 @@ jobs:
 
           declare -A sources_4=(
             [equations_of_math_phys]='Equations-of-mathematical-physics'
+            [heat_transfer]='Heat-transfer'
             [machines_theory]='Machines-theory'
             [metrology]='Metrology-and-standardization'
             [sociology]='Sociology'
-            [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
+            [thermodynamics]='Thermodynamics'
           )
 
           declare -A seminars_3_4=(
