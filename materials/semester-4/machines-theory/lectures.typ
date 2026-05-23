@@ -277,33 +277,37 @@
 
 #v(1em)
 
+Сокращения: В -- вращательная, П -- поступательная
+
 #grid(
-  columns: (1fr, 1.5fr),
+  columns: (1fr, 1fr, 1fr),
   column-gutter: 1em,
+  align: center,
   [
     #figure(
-      (
-        image("source-figures/lect2-12.png", width: 80%),
-        image("source-figures/lect2-13.png", width: 80%),
-        image("source-figures/lect2-14.png", width: 80%),
-        image("source-figures/lect2-15.png", width: 80%),
-        image("source-figures/lect2-16.png", width: 80%),
-      ).join(),
-      caption: [Группы Ассура II класса],
-    ) <второйвид>
+      image("source-figures/lect2-12.png"),
+    )
+    ВВВ -- первый вид
+    #figure(
+      image("source-figures/lect2-15.png"),
+    )
+    ПВП -- четвертый вид
   ],
   [
-    На @второйвид соответственно сверху вниз
-
-    ВВВ -- первый вид
-
+    #figure(
+      image("source-figures/lect2-13.png"),
+    )
     ВВП (или ПВВ) -- второй вид
-
-    ВПВ -- третий вид
-
-    ПВП -- четвертый вид
-
+    #figure(
+      image("source-figures/lect2-16.png"),
+    )
     ППВ или ВПП -- пятый вид
+  ],
+  [
+    #figure(
+      image("source-figures/lect2-14.png"),
+    )
+    ВПВ -- третий вид
   ],
 )
 
@@ -405,7 +409,7 @@
   [
     #figure(
       (
-        image("source-figures/lect3-5.png", width: 85%),
+        image("source-figures/lect3-5.png"),
         image("source-figures/lect3-6.png", width: 65%),
       ).join(),
     )
@@ -443,27 +447,35 @@
   [
     #figure(
       (
-        image("source-figures/lect4-1.png", width: 85%),
+        image("source-figures/lect4-1.png"),
         image("source-figures/lect4-2.png"),
       ).join(),
     )
   ],
   [
-    $a_B = &un(un(a_B^n))& + &un(un(a_B^tau))& \
-    &omega_1^2 dot L_(A B)& &epsilon dot L_(A B)& \
-    &parallel A B& &perp A B$
+    $display(
+      a_B = &un(un(a_B^n))& + &un(un(a_B^tau))& \
+      &omega_1^2 dot L_(A B)& &epsilon dot L_(A B)& \
+      &parallel A B& &perp A B
+    )$
 
-    $a_C = &un(un(a_c^n))& + &un(a_c^tau)& = un(un(a_B)) + &un(un(a_(C B)^n))& + &un(a_(C B)^tau)& \
-    &omega_D^2 dot L_(C D)& &perp C D& &omega_2^2 dot L_(B C)& &perp C B& \
-    &parallel A B &space &parallel B C &space$
+    $display(
+      a_C = &un(un(a_c^n))& + &un(a_c^tau)& = un(un(a_B)) + &un(un(a_(C B)^n))& + &un(a_(C B)^tau)& \
+      &omega_D^2 dot L_(C D)& &perp C D& &omega_2^2 dot L_(B C)& &perp C B& \
+      &parallel A B &space &parallel B C &space
+    )$
 
-    $mu_a = (P_a b^*)/a_B^n = (P_a n_b)/a_B^n space ["мм"/frac(м, с^2, style: "horizontal")]$
+    $
+      mu_a = (P_a b^*)/a_B^n = (P_a n_b)/a_B^n space ["мм"/frac(м, с^2, style: "horizontal")]
+    $
 
-    $a_C^tau = (n_(c d) C)/l_(C D)$
+    $display(a_C^tau = (n_(c d) C)/l_(C D))$
 
     "Вот вы будете сидеть и думать, а как он поделил миллиметры на метры и получил метры. Он что, волшебник? Да, волшебник."
 
-    $epsilon_1 = a_B^tau/L_(A B)$
+    $
+      epsilon_1 = a_B^tau/L_(A B)
+    $
   ],
 )
 
@@ -478,34 +490,48 @@
     #figure(
       (
         image("source-figures/lect4-3.png"),
-        image("source-figures/lect4-4.png", width: 60%),
+        image("source-figures/lect4-4.png", width: 80%),
       ).join(),
     )
   ],
   [
     1 -- вращательное движение; 2 -- плоское движение; 3 -- поступательное движение.
 
-    $&un(un(V_B)) = omega_1 dot L_(A B) \
-    &perp A B$
+    $display(
+      &un(un(V_B))& = omega_1 dot L_(A B) \
+      &perp A B&
+    )$
 
-    $mu_v = (P_v b)/v_B space ["мм"/frac(м, с, style: "horizontal")]$
+    $
+      mu_v = (P_v b)/v_B space ["мм"/frac(м, с, style: "horizontal")]
+    $
 
-    $&un(ov(V_C))& = un(un(ov(V_B))) + &un(ov(V_(C B)))& \
-    &parallel y y& &perp A B&$
+    $display(
+      &un(ov(V_C))& = un(un(ov(V_B))) + &un(ov(V_(C B)))& \
+      &parallel y y& &perp A B&
+    )$
 
-    $a_B = &un(un(a_B^n))& + &un(un(a_B^tau))& \
-    &omega_1^2 L_(A B)& &epsilon_1 L_(A B)& \
-    &parallel A B& &perp A B&$
+    $display(
+      a_B = &un(un(a_B^n))& + &un(un(a_B^tau))& \
+      &omega_1^2 L_(A B)& &epsilon_1 L_(A B)& \
+      &parallel A B& &perp A B&
+    )$
 
-    $mu_a = (P_a n_b)/a_B^n$
+    $
+      mu_a = (P_a n_b)/a_B^n
+    $
 
-    $&un(un(ov(a_C)^n))& + &un(ov(a_C)^tau)& = un(un(ov(a_B))) + &un(un(ov(a_B)^n))& + &un(ov(a_C)^n)& \
-    &omega_B^2 L_(C D)& &perp C D& &omega_2^2 L_(B C)& &perp C B& \
-    &parallel C D& && &parallel B C &&$
+    $display(
+      &un(un(ov(a_C)^n))& + &un(ov(a_C)^tau)& = un(un(ov(a_B))) + &un(un(ov(a_B)^n))& + &un(ov(a_C)^n)& \
+      &omega_B^2 L_(C D)& &perp C D& &omega_2^2 L_(B C)& &perp C B& \
+      &parallel C D& && &parallel B C &&
+    )$
 
-    $&un(un(ov(a_C)))& = un(un(ov(a_B))) + &un(un(ov(a_B)^n))& + &un(ov(a_C)^n)& \
-    &parallel y y& &parallel B C& &perp C B& \
-    && &omega_2^2 L_(B C)& &&$
+    $display(
+      &un(un(ov(a_C)))& = un(un(ov(a_B))) + &un(un(ov(a_B)^n))& + &un(ov(a_C)^n)& \
+      &parallel y y& &parallel B C& &perp C B& \
+      && &omega_2^2 L_(B C)& &&
+    )$
   ],
 )
 
@@ -514,7 +540,7 @@
 #v(1em)
 
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1fr, 1.5fr),
   column-gutter: 1em,
   [
     #figure(
@@ -563,24 +589,22 @@
 
 #v(1em)
 
-Основан на построении функции положений, и считается, что все задачи кинематического анализа будут решены, если составлена функция положения для ведомой точки или ведомого звена механизма.
+Основан на построении функции положений. Считается, что все задачи кинематического анализа будут решены, если составлена функция положения для ведомой точки или ведомого звена механизма.
 
 Функцией положения называется зависимость координаты ведомой точки (@функположения, а) или координаты ведомого звена (@функположения, б) от координаты ведущей
-
-
 
 #figure(
   grid(
     columns: (1fr, 1fr),
     column-gutter: 1em,
     [
-      #image("source-figures/lect5-2.png", width: 80%)
+      #image("source-figures/lect5-2.png", width: 60%)
       (а)
 
       $ S_j = S_j (phi_1) $
     ],
     [
-      #image("source-figures/lect5-3.png", width: 70%)
+      #image("source-figures/lect5-3.png", width: 50%)
       (б)
 
       $ phi_j = phi_j (phi_1) $
@@ -593,20 +617,30 @@
 
 $phi_1 = phi_1(t)$ -- закон движения
 
-$dv(phi_1, t) quad epsilon_1 = dv(omega_1, t) = dv(phi_1, t, 2)$
+$display(
+  dv(phi_1, t) quad epsilon_1 = dv(omega_1, t) = dv(phi_1, t, 2) \
+  v_j = dv(S_j, t) = dv(S_j, phi_1) dv(phi_1, t) = dv(S_j, phi_1) omega_1 \
+  omega_j = dv(phi_j, t) = dv(phi_j, phi_1) dv(phi_1, t) = dv(phi_j, phi_1) omega_1
+)$
 
-$v_j = dv(S_j, t) = dv(S_j, phi_1) dv(phi_1, t) = dv(S_j, phi_1) omega_1 \
-omega_j = dv(phi_j, t) = dv(phi_j, phi_1) dv(phi_1, t) = dv(phi_j, phi_1) omega_1$
+Аналоги скоростей (передаточное отношение)
+$
+  dv(S_j, phi_1) "и" dv(phi_j, phi_1)
+$
 
-$dv(S_j, phi_1)$ и $dv(phi_j, phi_1)$ -- аналоги скоростей (передаточное отношение).
+$display(
+  dv(S_j, phi_1) = S'_(j phi_1) = (v_j)_phi_1 = i_j_1 \
+  a_j^tau = dv(v_j, t) = dv([(S'_j) omega_1], t) = dv(S_j, phi_1, 2) omega_1 dv(phi_1, t) + dv(S_j, phi_1) dv(omega_1, t) = dv(S_j, phi_1, 2) omega_1^2 + dv(S_j, phi_1) epsilon_1
+)$
 
-$dv(S_j, phi_1) = S'_(j phi_1) = (v_j)_phi_1 = i_j_1$
+$display(
+  epsilon_j = dv(omega_j, t) = dv([(phi'_j) omega_1], t) = dv(phi_j, phi_1, 2) omega_1 dv(phi_1, t) + dv(phi_j, phi_1) dv(omega_1, t) = dv(phi_j, phi_1, 2) omega_1^2 + dv(phi_j, phi_1) epsilon_1
+)$
 
-$a_j^tau = dv(v_j, t) = dv([(S'_j) omega_1], t) = dv(S_j, phi_1, 2) omega_1 dv(phi_1, t) + dv(S_j, phi_1) dv(omega_1, t) = dv(S_j, phi_1, 2) omega_1^2 + dv(S_j, phi_1) epsilon_1$
-
-$epsilon_j = dv(omega_j, t) = dv([(phi'_j) omega_1], t) = dv(phi_j, phi_1, 2) omega_1 dv(phi_1, t) + dv(phi_j, phi_1) dv(omega_1, t) = dv(phi_j, phi_1, 2) omega_1^2 + dv(phi_j, phi_1) epsilon_1$
-
-$dv(S_j, phi_1, 2)$ и $dv(phi_j, phi_1, 2)$ -- аналоги ускорений.
+Аналоги ускорений
+$
+  dv(S_j, phi_1, 2) "и" dv(phi_j, phi_1, 2)
+$
 
 _Орехов скрипящему мелу: "Что ты ноешь?"_
 
@@ -728,7 +762,7 @@ $i < 1$ -- мультипликатор
 
 Основной закон о передаче вращательного движения. Закон распространяется на все плоские одноступенчатые передачи, кроме планетарных систем.
 
-Линия действия делит линию центров на часть, отношение которых обратно пропорционально отношению угловых скоростей. Точка пересечения этих линий называется полюсом и является полюсом мгновенного вращения в относительном движении ведущего и ведомого звеньев.
+Линия действия делит линию центров на части, отношение которых обратно пропорционально отношению угловых скоростей. Точка пересечения этих линий называется полюсом и является полюсом мгновенного вращения в относительном движении ведущего и ведомого звеньев.
 
 Применительно к различным механизмом, закон Виллиса можно записать:
 
@@ -860,6 +894,7 @@ $
 #grid(
   columns: (1fr, 1fr),
   column-gutter: 1em,
+  align: horizon,
   [
     #figure(
       image("source-figures/lect8-2.png"),
@@ -1133,7 +1168,7 @@ $
   caption: [Типовая схема машинного агрегата],
 )
 
-Д -- двигатель, ПМ -- передаточный механизм, РМ -- рабочая машина, РО -- рабочий орган машины, Э -- энергия, М -- муфта, 3 (три) -- управляющий орган, Мд -- момент движущих сил, $P_"пс"$ -- сила полезного сопротивления.
+Д -- двигатель, ПМ -- передаточный механизм, РМ -- рабочая машина, РО -- рабочий орган машины, Э -- энергия, М -- муфта, 3 (три) -- управляющий орган, $M_д$ -- момент движущих сил, $P_"пс"$ -- сила полезного сопротивления.
 
 Этапы работы агрегата:
 + Пуск (вход, запуск) агрегата
@@ -1156,6 +1191,7 @@ $
 #grid(
   columns: (1fr, 1fr),
   column-gutter: 1em,
+  align: horizon,
   [
     #figure(
       image("source-figures/lect10-2.png"),
@@ -1177,8 +1213,7 @@ $
 $
 где $V_п$ -- скорость точки приложения приведенной силы, $omega_п$ -- угловая скорость звена приведения, $V_j$ -- скорость точки приложения приводимой силы, $omega_j$ -- угловая скорость звена, к которому приложен приводимый момент.
 
-Из выражений выше видно, что приведенное усилие зависит от отношения скоростей в механизме. Выражения выше приведены из уравнений мощностей, отсюда следуют ещё определения: \
-Приведенное усилие -- это такое усилие, мощность которого сумме мощностей приводимых усилий
+Из выражений выше видно, что приведенное усилие зависит от отношения скоростей в механизме. Выражения выше приведены из уравнений мощностей, отсюда следует ещё определение: приведенное усилие -- это такое усилие, мощность которого сумме мощностей приводимых усилий
 
 ==== Подсчёт мощности, развиваемой силой посредством рычага Жуковского
 
@@ -1283,8 +1318,8 @@ $
     3. Найдем приведенную силу из равенства мощностей
 
       $display(
-        P_п v_B = P_2 v_M cos phi_2 \
-        P = P_2 dot (v_M/v_B) cos phi_2 + P_3 dot (v_C/v_B)
+        P_п v_B = P_2 v_M cos phi_2 + P_3 dot v_C \
+        P_п = P_2 dot (v_M/v_B) cos phi_2 + P_3 dot (v_C/v_B)
       )$
 
       $
