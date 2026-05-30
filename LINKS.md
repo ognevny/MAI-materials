@@ -2,7 +2,7 @@
 
 - 1 семестр:
   - [Лекции по АЯП (неполный конспект)](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Algorithmic-langs.pdf)
-  - [Лекции по ОРГ (неполный конспект)](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_FRS.pdf)
+  - [Лекции по ОРГ](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_FRS.pdf)
 
 - 1-2 семестры:
   - [Лекции по Истории России (неполный конспект)](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Russian-history.pdf)
