@@ -2492,7 +2492,7 @@ $
 
 Граничные условия в данном случае
 + $[y]_(x=0) = 0$ \
-  $0 = C_1 sin alpha dot 0 + C_2 cos alpha dot 0 => C_2 = 1$
+  $0 = C_1 sin alpha dot 0 + C_2 cos alpha dot 0 => C_2 = 0$
 + $[y]_(x=l) = 0$ \
   $0 = C_1 sin alpha l => sin alpha l = 0 => alpha l = n pi$, где $n = 0,1,2,...$ \
   $alpha = (n pi)/l$ \
