@@ -2,9 +2,9 @@
 #import "@preview/physica:0.9.8": dv, evaluated, pdv
 
 #show: conf.with(
-  titl: "Лекции по Уравнениям математической физики",
-  desc: "Лекции Кондратьевой Л.А. по Уравнениям математической физики",
-  datet: datetime(year: 2026, month: 2, day: 10),
+  title: "Лекции по Уравнениям математической физики",
+  description: "Лекции Кондратьевой Л.А. по Уравнениям математической физики",
+  date: datetime(year: 2026, month: 2, day: 10),
   head: [Лекции по Уравнениям математической физики],
   put_author: true,
 )

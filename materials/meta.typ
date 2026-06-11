@@ -2,26 +2,27 @@
 
 /// Основная метаинформация
 #let conf(
-  titl: [],
-  desc: [],
-  datet: datetime,
-  head: content,
-  doc,
+  title: [],
+  description: [],
+  date: datetime(year: 2006, month: 6, day: 23),
+  head: [],
   put_author: false,
+  group: "М1О-232БВ-24",
+  doc,
 ) = {
   set text(lang: "ru")
 
   set document(
-    title: titl,
+    title: title,
     author: "Максим Бондаренков",
-    description: desc
+    description: description
       + [. Распространяется на условиях лицензии CC-BY-SA-4.0. Исходный код конспекта доступен в #link("https://github.com/ognevny/MAI-materials")],
-    date: datet,
+    date: date,
   )
 
   let header_text = {
     if put_author {
-      emph(head + [. Конспект составил студент группы М1О-232БВ-24 Бондаренков М.В.])
+      emph(head + [. Конспект составил студент группы #group Бондаренков М.В.])
     } else {
       emph(head)
     }
@@ -54,6 +55,14 @@
   show: shorthands.with(
     ($+-$, $plus.minus$),
   )
+
+  show math.equation: it => {
+    show regex("\d+\.\d+"): it => {
+      show ".": { "," + h(0pt) }
+      it
+    }
+    it
+  }
 
   doc
 }

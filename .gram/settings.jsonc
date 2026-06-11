@@ -1,0 +1,17 @@
+{
+  "lsp": {
+    "tinymist": {
+      "initialization_options": {
+        "preview": {
+          "background": {
+            "enabled": true,
+            "args": ["--data-plane-host=127.0.0.1:23625", "--invert-colors=never"]
+          }
+        },
+        "syntaxOnly": "onPowerSaving"
+      }
+    }
+  },
+  "soft_wrap": "bounded",
+  "file_scan_exclusions": ["meta.typ"]
+}

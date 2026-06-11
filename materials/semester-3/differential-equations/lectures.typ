@@ -3,9 +3,9 @@
 #import "@preview/physica:0.9.8": dv, evaluated, mdet, pdv
 
 #show: conf.with(
-  titl: "Лекции по Дифференциальным уравнениям",
-  desc: "Конспект лекций Кондратьевой Л.А. по Дифференциальным уравнениям",
-  datet: datetime(year: 2026, month: 1, day: 12),
+  title: "Лекции по Дифференциальным уравнениям",
+  description: "Конспект лекций Кондратьевой Л.А. по Дифференциальным уравнениям",
+  date: datetime(year: 2026, month: 1, day: 12),
   head: [Лекции по Дифференциальным уравнениям],
 )
 
@@ -1204,7 +1204,7 @@ y^"IV"_ч = 16A cos 2x + 16B sin 2x \
 16A cos 2x + 16B sin 2x - 5 (8A sin 2x - 8B cos 2x) + 4 (-4A cos 2x - 4B sin 2x) = 20sin 2x \
 (16A + 40B - 16A) cos 2x + (16B - 40A - 16B) sin 2x = 20sin 2x$
 
-$display(cases(40B = 0, -40A = 20) <=> cases(B = 0, A = -"0,5") => y_ч = -"0,5"cos 2x)$
+$display(cases(40B = 0, -40A = 20) <=> cases(B = 0, A = -0.5) => y_ч = -0.5cos 2x)$
 
 === Метод вариации для n-ого порядка
 
