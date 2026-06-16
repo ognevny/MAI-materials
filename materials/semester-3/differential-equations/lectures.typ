@@ -192,7 +192,7 @@ $y' = 1 - y, y' = k; k = 1 - y => y = 1 - k$
 )
 
 #grid(
-  columns: (3fr, 1fr),
+  columns: (5fr, 1fr),
   column-gutter: 1em,
   [$display(
     cases(
@@ -359,8 +359,11 @@ $y_"ОН" = (integral q(x) e^(integral p dif x) dif x + C_1) e^(-integral p dif 
 
 #v(1em)
 
-$y' + 2x y = 2x \
-"решаем ЛОДУ:" y' + 2x y = 0 \
+$
+  y' + 2x y = 2x
+$
+
+$"решаем ЛОДУ:" y' + 2x y = 0 \
 dv(y, x) = -2x y |":" y != 0 \
 integral (dif y)/y = integral -2x dif x \
 ln abs(y) = -(2x^2)/2 + ln abs(C) \
@@ -448,7 +451,7 @@ $ P(x, y) dif x + Q(x, y) dif y = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в ча
 $U(x, y) = integral_(x_0)^x P(x, y) dif x + integral_(y_0)^y Q(x, y) dif y$
 
 #grid(
-  columns: (2.5fr, 1fr),
+  columns: (3fr, 1fr),
   column-gutter: 1em,
   [
     $
@@ -467,8 +470,11 @@ $U(x, y) = integral_(x_0)^x P(x, y) dif x + integral_(y_0)^y Q(x, y) dif y$
 
 Собственно пример:
 
-$(x + sin y) dif x + (x cos y + sin y) dif y = 0 \
-pdv(P, y) = (x_0 + sin y)'_y = cos y \
+$
+  (x + sin y) dif x + (x cos y + sin y) dif y = 0
+$
+
+$pdv(P, y) = (x_0 + sin y)'_y = cos y \
 pdv(Q, x) = (x cos y_0 + sin_y_0)'_x = cos y \
 display(U(x, y) = integral_(x_0=0)^x (x + sin y) dif x + integral_(y_0=0)^y (x_0 cos y + sin y) dif y = integral_0^x (x + sin y) dif x + integral_0^y sin y dif y = \ = evaluated((x^2/2 + sin y dot x))_0^x + evaluated((-cos y))_0^y = x^2/2 + x sin y - 0 + (-cos y + 1) = x^2/2 + x sin y - cos y + 1)$
 
