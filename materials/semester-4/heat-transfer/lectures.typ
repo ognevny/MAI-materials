@@ -2431,7 +2431,7 @@ $
 В этом случае движение и теплообмен зависят от формы размеров пространства, от природы жидкости, температуры и температурного напора.
 
 + #grid(
-    columns: (1fr, 2.5fr),
+    columns: (1fr, 2fr),
     column-gutter: 1em,
     [Горизонтальная прослойка],
     [
@@ -2448,14 +2448,13 @@ $
     [
       #figure(
         image("source-figures/lect12-9.png"),
-        caption: [],
-      ) <вертпросл>
+      )
     ],
   )
 
 Если $delta$ мало, то возникает внутренняя циркуляция жидкости, высота этих контуров циркуляции зависит от ширины щели $delta$, от самой жидкости и интенсивностью самого процесса теплообмена.
 
-Сложные процессы наподобие случая с вихрем на @вертпросл заменяют эквивалентным процессом теплопроводности
+Сложные процессы наподобие случая с вихрем заменяют эквивалентным процессом теплопроводности
 $
   q = lambda_"экв"/delta (T_w_1 - T_w_2),
 $
@@ -2472,15 +2471,20 @@ $
   epsilon_к = f(Gr dot Pr) => epsilon_к = C (Gr_delta dot Pr)_m^n, space T_m = (T_w_1 + T_w_2)/2
 $
 
-Для горизонтальных прослоек
-
-#table(
-  columns: 4,
-  align: center,
-  [$(Gr_delta dot Pr)_m$], [$C$], [$n$], [$epsilon_к$],
-  [$<1.7 dot 10^3$], [1], [0], [1],
-  [$1.7 dot 10^3 div 10^6$], [0,105], [0,3], [$0.105(Gr_delta dot Pr)_m^0.3$],
-  [$10^6 div 10^10$], [0,4], [0,2], [$0.4(Gr_delta dot Pr)_m^0.2$],
+#grid(
+  columns: 2,
+  column-gutter: 1em,
+  [Для горизонтальных прослоек],
+  [
+    #table(
+      columns: 4,
+      align: center,
+      [$(Gr_delta dot Pr)_m$], [$C$], [$n$], [$epsilon_к$],
+      [$<1.7 dot 10^3$], [1], [0], [1],
+      [$1.7 dot 10^3 div 10^6$], [0,105], [0,3], [$0.105(Gr_delta dot Pr)_m^0.3$],
+      [$10^6 div 10^10$], [0,4], [0,2], [$0.4(Gr_delta dot Pr)_m^0.2$],
+    )
+  ],
 )
 
 Для вертикальных прослоек
@@ -2531,7 +2535,10 @@ $
 $
   delta(x) = (4.64x)/sqrt(Re_w_x),
 $
-где $display(C_f (x) = (tau_w (x))/(1/2 rho_w u_f^2))$
+Здесь
+$
+  C_f (x) = (tau_w (x))/(1/2 rho_w u_f^2)
+$
 
 Касательное напряжение трения
 $
@@ -2545,16 +2552,10 @@ $
 
 Толщина динамического пограничного слоя сечения на расстоянии $x$ от кромки пластины
 $
-  delta(x), space delta/delta_т = f(Pr) quad Pr = nu/a
+  delta(x), space delta/delta_т = f(Pr), space Pr = nu/a
 $
 
 Толщина теплового пограничного слоя $delta_т (x)$ растет пропорционально $x^0.5$ и убывает пропорционально $u_f^(-0.5)$
-$
-  delta_т (x) = cases(
-    x^0.5,
-    u_f^(-0.5),
-  )
-$
 
 По закону Фурье
 $
@@ -3056,13 +3057,11 @@ $
   column-gutter: 1em,
   [
     Для капельной жидкости
-
     + $T_w > T_f$ -- нагрев
       $
         epsilon_т = (Pr_f/Pr_w)^0.6
       $
       при $Pr_w < Pr_f$ получаем $epsilon_т > 1$
-
     + $T_w < T_f$ -- охлаждение
       $
         epsilon_т = (Pr_f/Pr_w)^0.25
@@ -3070,12 +3069,10 @@ $
       при $Pr_w > Pr_f$ получаем $epsilon_т < 1$
 
     Для газовой жидкости
-
     + $T_w > T_f$ -- нагрев
       $
         epsilon_т = (T_w/T_f)^(-0.55)
       $
-
     + $T_w < T_f => epsilon_т = 1$ -- охлаждение
   ],
   [
@@ -3118,7 +3115,7 @@ $
 Тем не менее расхождение с реальным числом Нуссельта довольно большое: $Nu_d_э/Nu = 0.2 div 0.8$ -- ошибка может составлять до 5 раз.
 
 #grid(
-  columns: (4fr, 1fr),
+  columns: (5fr, 1fr),
   column-gutter: 1em,
   [
     Для изогнутых труб
@@ -3149,7 +3146,7 @@ $
 $
 
 #grid(
-  columns: (1fr, 3fr),
+  columns: (1fr, 4fr),
   column-gutter: 1em,
   [
     #figure(
@@ -3168,7 +3165,7 @@ $
 )
 
 #grid(
-  columns: (1fr, 2fr),
+  columns: (1fr, 3fr),
   column-gutter: 1em,
   [
     #figure(
@@ -3317,7 +3314,7 @@ $
 #v(1em)
 
 + #grid(
-    columns: (1.5fr, 1fr),
+    columns: (1.8fr, 1fr),
     column-gutter: 1em,
     [
       Закон Планка -- для абсолютно черного тела
@@ -3352,18 +3349,16 @@ $
     (E_lambda (T))/(E_(0 lambda) (T)) = const => epsilon_lambda = const
   $
 
-+ Закон смещения Вина-Голицына
-
-  Определяет положение максимума
++ Закон смещения Вина-Голицына -- определяет положение максимума
   $
-    lambda_max dot T = b = const
+    lambda_max dot T = b = const,
   $
   $b = 2.896 dot 10^(-3) м dot К$
 
   Закон справедлив и для серых тел
 
 + #grid(
-    columns: (2fr, 1fr),
+    columns: (2.5fr, 1fr),
     column-gutter: 1em,
     [
       Закон Стефана-Больцмана
@@ -3447,7 +3442,10 @@ $
   )
 
   $
-    dif Q_phi = E_n dif F_1 Omega cos phi , space Omega = (dif F_2)/r^2 \
+    dif Q_phi = E_n dif F_1 Omega cos phi , space Omega = (dif F_2)/r^2
+  $
+
+  $
     cases(
       dif Q = pi E_n dif F_1,
       dif Q = epsilon C_0 (T/100)^4 dif F_1,
@@ -3777,7 +3775,7 @@ $
   [
     #figure(
       grid(
-        columns: (1fr, 3fr),
+        columns: (1fr, 3.5fr),
         column-gutter: 1em,
         [#image("source-figures/lect17-6.png")], [#image("source-figures/lect17-7.png")],
       ),
