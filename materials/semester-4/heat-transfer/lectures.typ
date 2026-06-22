@@ -735,7 +735,7 @@ $
 $
 
 $display(
-  evaluated(T_max)_(x=delta/2) = T_w + (q_v delta)/(4lambda) \
+  T_max = evaluated(T)_(x=delta/2) = T_w + (q_v delta^2)/(8lambda) \
   evaluated(q)_(x=0) = -lambda evaluated(dv(T, x))_(x=0) = -lambda C_1 = -(q_v delta)/2 \
   evaluated(q)_(x=delta) = -lambda evaluated(dv(T, x))_(x=delta) = (q_v delta)/2
 )$
