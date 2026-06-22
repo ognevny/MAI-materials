@@ -136,16 +136,14 @@
 
 По Бойлю-Мариотту $ evaluated(p V)_(T=const) = const $
 По Гей-Люссаку $ evaluated(V_2/V_1)_(p=const) = T_2/T_1 $
-По Шарлю $ evaluated(V_2/V_1)_(p=const) = T_2/T_1 $
+По Шарлю $ evaluated(p_2/p_1)_(V=const) = T_2/T_1 $
 
 Для одного килограмма и для $m$ килограмм соответственно $ p v = R T quad p V = m R T $
 
 Молярная газовая постоянная и удельная газовая постоянная соответственно
 $
-  hat(R) = 8.314 "Дж"/("моль" dot К), space R = hat(R)/mu ["Дж"/("кг" dot К)]
+  hat(R) = 8.314 "Дж"/("моль" dot К), space R = hat(R)/mu ["Дж"/("кг" dot К)] => p V = m/mu hat(R) T
 $
-
-$ p V = m/mu hat(R) T $
 
 === Равновесное и неравновесное состояние термодинамического рабочего тела (1.1.5)
 
@@ -273,9 +271,7 @@ $
   [3], [1,33],
 )
 
-Пусть $c_p - c_V = 287$ и $c_p/c_V = 1.4$
-
-$1.4c_V - c_V = 287 => c_V = 287/(1.4 - 1) approx 717 "Дж"/("кг" dot К) => c_p = 717 + 287 = 1004$
+Пусть $c_p - c_V = 287$ и $c_p/c_V = 1.4$, получим: $1.4c_V - c_V = 287 => c_V = 287/(1.4 - 1) approx 717 "Дж"/("кг" dot К) => c_p = 717 + 287 = 1004$
 
 === Сущность I закона термодинамики (1.2.1)
 
@@ -372,9 +368,7 @@ $
 + Определения изменения внутренней энергии газа $Delta u = c_v (T_2 - T_1)$
 + Нахождения внешней работы процесса $L = sum p Delta v = integral_(v_1)^(v_2) p dif v$
 + Нахождения теплоты процесса $Q = Delta u + L$, $Q = c (T_2 - T_1)$
-+ Определения закона распределения энергии в процессе
-
-  $display(psi = (Delta u)/Q\, cases(Delta u = psi Q, L = (1 - psi) Q))$
++ Определения закона распределения энергии в процессе $display(psi = (Delta u)/Q\, cases(Delta u = psi Q, L = (1 - psi) Q))$
 
 === Политропные процессы
 
@@ -439,13 +433,17 @@ $ k = c_p/c_v $
 
 Работа -- площадь под графиком. В нашем случае она имеет вид $ F = 1/(n - 1) (x_1 y_1 - x_2 y_2), space "где" y x^n = const $ Соответственно здесь $p v^k = const$, график -- гипербола.
 
-Формула соотношения параметров $ p_1 v_1^k = p_2 v_2^k => p_2/p_1 = (v_1/v_2)^k $
+Формула соотношения параметров
+$
+  p_1 v_1^k = p_2 v_2^k => p_2/p_1 = (v_1/v_2)^k
+$
 
 $
-  (p_2 v_2)/(p_1 v_1) = T_2/T_1 => p_2/p_1 = T_2/T_1 dot v_1/v_2 = (v_1/v_2)^k => T_2/T_1 & = (v_1/v_2)^(k-1) \
-                                                                                  v_1/v_2 & = (p_2/p_1)^(1/k) \
-                                                                                  v_1/v_2 & = (T_2/T_1)^(1/(k-1)) \
-                                         (p_2/p_1)^(1/k) = (T_2/T_1)^(1/(k-1)) => T_2/T_1 & = (p_2/p_1)^((k-1)/k)
+  (p_2 v_2)/(p_1 v_1) = T_2/T_1 => p_2/p_1 = T_2/T_1 dot v_1/v_2 = (v_1/v_2)^k => #rect[$ T_2/T_1 = (v_1/v_2)^(k-1), space v_1/v_2 = (p_2/p_1)^(1/k), space v_1/v_2 = (T_2/T_1)^(1/(k-1)) $]
+$
+
+$
+  (p_2/p_1)^(1/k) = (T_2/T_1)^(1/(k-1)) => T_2/T_1 = (p_2/p_1)^((k-1)/k)
 $
 
 $display(
@@ -453,16 +451,10 @@ $display(
   L = 1/(k - 1) (p_1 v_1 - p_2 v_2) = R/(k - 1) (T_1 - T_2)
 )$
 
-Закон распределения энергии не имеет смысла здесь
-
-$display(
-  cancel(angle: #90deg, L = (1 - psi) Q) \
-  L = (R T_1)/(k - 1) (1 - T_2/T_1) = (R T_1)/(k - 1) [1 - (p_2/p_1)^((k-1)/k)] \
-  L = (p_1 v_1)/(k - 1) [1 - (v_1/v_2)^(k-1)]
-)$
+Закон распределения энергии не имеет смысла здесь, поскольку $psi = (Delta u)/Q = oo$: $cancel(angle: #90deg, L = (1 - psi) Q)$
 
 $
-  psi = (Delta u)/Q = oo
+  L = (R T_1)/(k - 1) (1 - T_2/T_1) = (R T_1)/(k - 1) [1 - (p_2/p_1)^((k-1)/k)] => #rect[$ L = (p_1 v_1)/(k - 1) [1 - (v_1/v_2)^(k-1)] $]
 $
 
 ==== Политропный процесс
@@ -483,8 +475,7 @@ $
 где $gamma$ -- показатель политропы
 
 $
-  gamma = (c - c_p)/(c - c_v) \
-  c = c_v/psi
+  gamma = (c - c_p)/(c - c_v), space c = c_v/psi
 $
 
 Частные случаи:
@@ -495,38 +486,48 @@ $
 
 Соотношения параметров
 $
-  p_2/p_1 & = (v_1/v_2)^gamma \
-  T_2/T_1 & = (v_1/v_2)^(gamma-1) \
-  T_2/T_1 & = (p_2/p_1)^((gamma-1)/gamma)
+  p_2/p_1 & = (v_1/v_2)^gamma, space T_2/T_1 & = (v_1/v_2)^(gamma-1), space T_2/T_1 & = (p_2/p_1)^((gamma-1)/gamma)
 $
 
+Работа в политропном процессе
 $
   L = 1/(gamma - 1) (p_1 v_1 - p_2 v_2) = R/(gamma - 1) (T_1 - T_2) = (p_1 v_1)/(gamma - 1) [1 - (p_2/p_1)^((gamma-1)/gamma)]
 $
 
-Теплоёмкость политропного процесса $ & gamma c - gamma c_v = c - c_p => (gamma - 1) c = gamma c_v - c_p \
-& c = (gamma c_v - c_p)/(gamma - 1) = (gamma c_v - k c_v)/(gamma - 1) => c = (gamma - k)/(gamma - 1) c_v \
-& psi = (gamma - 1)/(gamma - k) \
-& Q = c (T_2 - T_1) = c_v (gamma - k)/(gamma - 1) (T_2 - T_1) \
-& Q = L/(1 - psi) $
-
+Теплоёмкость политропного процесса
 $
-  lg p + gamma lg v = lg(const) = lg G
+  gamma c - gamma c_v = c - c_p => (gamma - 1) c = gamma c_v - c_p => c = (gamma c_v - c_p)/(gamma - 1) = (gamma c_v - k c_v)/(gamma - 1) => #rect[$ c = (gamma - k)/(gamma - 1) c_v $]
 $
 
-#figure(
-  image("source-figures/lect4-1.png"),
-)
-
+Из закона распределения энергии получим
 $
-  & tg beta = (lg G)/((lg G)/gamma) = gamma \
-  & lg(p_2/p_1) = gamma lg(v_1/v_2) \
-  & gamma = lg(p_2/p_1)/lg(v_1/v_2)
+  psi = (gamma - 1)/(gamma - k) => Q = c (T_2 - T_1) = c_v (gamma - k)/(gamma - 1) (T_2 - T_1) => Q = L/(1 - psi)
 $
 
 #grid(
-  columns: (1fr, 1.5fr),
+  columns: (1fr, 2fr),
   column-gutter: 1em,
+  [
+    Прологарифмируем зависимость $p v^gamma = const$
+    $
+      lg p + gamma lg v = lg(const) = lg G
+    $
+    $display(
+      tg beta = (lg G)/((lg G)/gamma) = gamma \
+      lg(p_2/p_1) = gamma lg(v_1/v_2) => gamma = lg(p_2/p_1)/lg(v_1/v_2)
+    )$
+  ],
+  [
+    #figure(
+      image("source-figures/lect4-1.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (2fr, 1fr, 2fr, 1fr),
+  column-gutter: 1em,
+  align: horizon,
   [
     #figure(
       image("source-figures/lect4-2.png"),
@@ -536,11 +537,6 @@ $
     $gamma = const \
     G_1 < G_2 < G_3$
   ],
-)
-
-#grid(
-  columns: (1fr, 1.5fr),
-  column-gutter: 1em,
   [
     #figure(
       image("source-figures/lect4-3.png"),
@@ -551,6 +547,10 @@ $
     gamma_1 < gamma_2 < gamma_3$
   ],
 )
+
+===== Знаки параметров при различных значениях $gamma$
+
+#v(1em)
 
 #figure(
   image("source-figures/lect4-4.png"),
@@ -572,21 +572,35 @@ $
 
 #v(1em)
 
-#figure(
-  image("source-figures/lect5-1.png", width: 90%),
-  caption: [Прямой и обратный циклы соответственно],
-)
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [
+    Теплоты процессов 1-2 и 2-1 для прямого цикла соответственно
+    $
+       Q_1 & = u_2 - u_1 + L_р \
+      -Q_2 & = u_1 - u_2 - L_"сж"
+    $
 
-$
-   Q_1 & = u_2 - u_1 + L_р \
-  -Q_2 & = u_1 - u_2 - L_"сж"
-$
-$
-  u_2 - u_1 & = Q_1 - L_р \
-  u_2 - u_1 & = Q_2 - L_"сж" \
-  Q_1 - L_р & = Q_2 - L_"сж" \
-  Q_1 - Q_2 & = L_р - L_"сж" = L_ц
-$
+    Изменение внутренней энергии
+    $
+      u_2 - u_1 & = Q_1 - L_р \
+      u_2 - u_1 & = Q_2 - L_"сж"
+    $
+
+    Соотношение работ
+    $
+      Q_1 - L_р & = Q_2 - L_"сж" \
+      Q_1 - Q_2 & = L_р - L_"сж" = L_ц
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect5-1.png"),
+      caption: [Прямой и обратный циклы соответственно],
+    )
+  ],
+)
 
 Термодинамический КПД
 $
@@ -628,8 +642,7 @@ $
 
 $
   eta_(t"необр") < eta_(t"обр") \
-  eta_(t"необр") = (Q_1 - Q_2)/Q_1 , space eta_(t"обр") = (T_1 - T_2)/T_1 \
-  (Q_1 - Q_2)/Q_1 < (T_1 - T_2)/T_1
+  eta_(t"необр") = (Q_1 - Q_2)/Q_1 , space eta_(t"обр") = (T_1 - T_2)/T_1 => (Q_1 - Q_2)/Q_1 < (T_1 - T_2)/T_1
 $
 
 ===== Обратимый цикл Карно
@@ -663,27 +676,27 @@ $
     $
       sum_(i=1)^n (Delta Q_1^((i)))/T_1^((i)) + sum_(i=1)^n (Delta Q_2^((i)))/T_2^((i)) = 0
     $
+
+    Соответственно
+    $
+      sum (Delta Q)/T = 0 space dash "произвольный обратимый" \
+      sum (Delta Q)/T < 0 space dash "произвольный необратимый"
+    $
+
+    По итогу
+    $
+      sum (Delta Q)/T & <= 0 space dash "произвольный" \
+              sum Q/T & <= 0 space dash "Карно"
+    $
   ],
 )
-
-Соответственно
-$
-  sum (Delta Q)/T = 0 space dash "произвольный обратимый" \
-  sum (Delta Q)/T < 0 space dash "произвольный необратимый"
-$
-
-По итогу
-$
-  sum (Delta Q)/T & <= 0 space dash "произвольный" \
-          sum Q/T & <= 0 space dash "Карно"
-$
 
 == Энтропия
 
 #v(1em)
 
 #grid(
-  columns: (1fr, 1.5fr),
+  columns: (1fr, 2fr),
   column-gutter: 1em,
   [
     #figure(
@@ -715,9 +728,12 @@ $
     )
   ],
   [
+    Для графика выше КПД цикла
     $
       eta_t = 1 - Q_2/Q_1 = 1 - "Пл"("I-1-b-2-II")/"Пл"("I-1-a-2-II")
     $
+
+    Соотношения изменения энтропии
     $
       S_2 - S_1 & = c_v ln T_2/T_1 + R ln v_2/v_1 quad (*) \
       S_2 - S_1 & = c_v ln p_2/p_1 + c_p ln v_2/v_1 \

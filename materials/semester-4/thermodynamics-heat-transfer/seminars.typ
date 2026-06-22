@@ -46,23 +46,18 @@
 
 #v(1em)
 
-$
-  & V = 1.2м^3 space N_2 \
-  & hat(m) = 28.01 "кг"/"Кмоль" \
-  & p_1 = 80"бар" quad t_1 = -25 degree C \
-  & p_к = 90"бар" quad t_2 = 20 degree C
-$
-
-Сработает ли клапан? Какую массу азота необходимо освободить из бака, что давление снова стало 80 бар?
+Дан бак, наполненный азотом $V = 1.2м^3$, $hat(m) = 28.01 "кг"/"Кмоль"$, $p_1 = 80"бар"$, $t_1 = -25 degree C$, $p_к = 90"бар"$, $t_2 = 20 degree C$. Сработает ли клапан? Какую массу азота необходимо освободить из бака, что давление снова стало 80 бар?
 
 $display(
   p V = m R T \
   p_2/p_1 = T_2/T_1 => p_2 = p_1 T_2/T_1 = 80 dot 293/248 approx 94.5"бар" => "клапан сработает" \
-  m_1 = (p_1 V_1)/(R T_1) quad R = hat(R)/hat(m)\, space hat(R) = 8.314 \
-  m_1 = (8000 dot 1.2 dot 28.01)/(8.314 dot 248) approx 130"кг" \
-  m_2 = (8000 dot 1.2 dot 28.01)/(8.314 dot 293) approx 110"кг" \
-  Delta m = m_1 - m_2 = 130 - 110 = 20"кг"
+  m_1 = (p_1 V_1)/(R T_1)\, space R = hat(R)/hat(m)\, space hat(R) = 8.314 "Дж"/("моль" dot К) \
+  m_1 = (8000 dot 1.2 dot 28.01)/(8.314 dot 248) approx 130"кг"\, space m_2 = (8000 dot 1.2 dot 28.01)/(8.314 dot 293) approx 110"кг"
 )$
+
+$
+  Delta m = m_1 - m_2 = 130 - 110 = 20"кг"
+$
 
 === Задача 2
 
@@ -73,11 +68,9 @@ $display(
 $display(
   X_N_2 = 0.78\; space X_O_2 = 0.21\; space X_(H_2 O) = 0.0001\; space X_(A r) = 0.0094\; space X_(C O_2) = 0.0003\; space X_H_2 = 0.0001 \
   hat(m)_N_2 = 28.01\; space hat(m)_O_2 = 32.00\; space hat(m)_(H_2 O) = 18.02\; space hat(m)_(A r) = 39.95\; space hat(m)_(C O_2) = 44.01\; space hat(m)_H_2 = 2.01 \
-  hat(m)_"с.в." = sum X_i hat(m)_i = 28.96 \
-  X_"с.в." = 0.9994 \
+  hat(m)_"с.в." = sum X_i hat(m)_i = 28.96 => X_"с.в." = 0.9994 \
   X'_N_2 = X_N_2/X_"с.в." \
-  X_"в.в." = 1 \
-  hat(m)_"в.в." approx hat(m)_"с.в." => "можно использовать"
+  X_"в.в." = 1 => hat(m)_"в.в." approx hat(m)_"с.в." => "можно использовать"
 )$
 
 === Задача 3
@@ -87,13 +80,13 @@ $display(
 Продукты сгорания авиационного керосина имеет следующий состав в киломолях $n_N_2 = 0.66$, $n_O_2 = 0.07$, $n_(H_2 O) = 0.066$, $n_(C O) = 0.001$, $n_(C O_2) = 0.07$, $n_(S O_2) = 0.003$. Определить парциальное давление элементов и газовую постоянную. $p = 3"бар"$, $hat(m)_N_2 = 28.01$, $hat(m)_O_2 = 32.00$, $hat(m)_(H_2 O) = 18.02$, $hat(m)_(C O) = 28.01$, $hat(m)_(C O_2) = 44.01$, $hat(m)_(S O_2) = 64.08$.
 
 $display(
-  hat(m) = sum x_i hat(m)_i \
-  x_i = n_i/n_Sigma \
-  n_Sigma = 0.87 \
+  hat(m) = sum x_i hat(m)_i\, space x_i = n_i/n_Sigma\, space n_Sigma = 0.87 \
   x_N_2 = 0.76\, x_O_2 = 0.08\, x_(H_2 O) = 0.08\, x_(C O) = 0.001\, x_(C O_2) = 0.08\, x_(S O_2) = 0.003 \
-  hat(m) approx 29 \
-  R = 8314/29 approx 286.7 \
-  p_N_2 = 2.28\, p_O_2 = 0.24\, p_(H_2 O) = 0.225\, p_(C O) = 0.003\, p_(C O_2) = 0.024\, p_(S O_2) = 0.009
+  hat(m) approx 29 => R = 8314/29 approx 286.7
+)$
+
+$display(
+  p_N_2 = 2.28\, space p_O_2 = 0.24\, space p_(H_2 O) = 0.225\, space p_(C O) = 0.003\, space p_(C O_2) = 0.024\, space p_(S O_2) = 0.009
 )$
 
 (Парциальные давления должны в сумме давать 3, нужно проверить)
@@ -102,14 +95,14 @@ $display(
 
 #v(1em)
 
-Двигатель работает на метане $C H_4$. Состав смеси (массовые доли) $C H_4 : "воздух" = 1/16 : 15/16$. $p = 101325"Па"$, $T = 298.15К$. $rho space dash space ?$, $nu space dash space ? space (nu = 1/rho)$. $m = 1"кг"$, $T = 180 degree C$, $V = 0.2м^3$
+Двигатель работает на метане $"CH"_4$. Состав смеси (массовые доли) $"CH"_4 : "воздух" = 1/16 : 15/16$. $p = 101325"Па"$, $T = 298.15К$. $rho space dash space ?$, $nu space dash space ? space (nu = 1/rho)$. $m = 1"кг"$, $T = 180 degree C$, $V = 0.2м^3$
 
 $display(
   p V = m R T \
-  hat(m)_"воз" = 28.96 quad hat(m)_"см" = 16.04 \
+  hat(m)_"воз" = 28.96\, space hat(m)_"см" = 16.04 \
   hat(m) = 1/(w_"воз"/hat(m)_"воз" + w_"см"/hat(m)_"см") = 27.57 \
   R = 301.2 \
-  rho = p/(R T) = 1.128 quad nu = 0.887 м^3/"кг" \
+  rho = p/(R T) = 1.128\, space nu = 0.887 м^3/"кг" \
   p = (m R T)/V = 6.8"бар"
 )$
 
@@ -126,10 +119,8 @@ $display(
 Можно использовать модель плоской стенки, поскольку толщина маленькая.
 
 $
-  q = Q/F quad q = lambda/delta (T_w_1 - T_w_2)
+  q = Q/F = lambda/delta (T_w_1 - T_w_2) => T_w_2 = T_w_1 - delta/lambda q approx 67.5degree C
 $
-
-$display(T_w_2 = T_w_1 - delta/lambda q approx 67.5degree C)$
 
 === Задача 2
 
@@ -137,19 +128,17 @@ $display(T_w_2 = T_w_1 - delta/lambda q approx 67.5degree C)$
 
 Есть летательный аппарат в виде капсулы $1 times 2 times 1.5м$, $lambda = 13.5 "Вт"/(м dot К)$, $delta = 12"мм"$, $t_w_1 = 21degree C$, $T_n = 4К$ (мы находимся в космосе). Определить мощность нагревательного устройства.
 
-$display(Q = lambda/delta Delta T dot F approx 4"МВт")$
+$display(Q = lambda/delta Delta T dot F = 13.5/0.012 dot 290 dot 13 approx 4"МВт")$
 
 Утеплим теплоизоляцией толщиной $delta = 5"мм"$, $lambda_"из" = 0.05 "Вт"/(м dot К)$
 
-$display(
-  Q = (Delta T dot F)/R \
-  R = delta/lambda \
-  Q = (Delta T dot F)/(delta_1/lambda_1 + delta_2/lambda_"из") approx 37"кВт"
-)$
+$
+  Q = (Delta T dot F)/R\, space R = sum delta/lambda
+$
 
-Допустим $R_к = 240 dot 10^(-4) (м^2 dot К)/"Вт"$
+$display(Q = (Delta T dot F)/(delta_1/lambda_1 + delta_2/lambda_"из") approx 37"кВт")$
 
-$display(Q = (Delta T dot F)/(R + R_к) approx = 30"кВт")$
+Допустим $R_к = 240 dot 10^(-4) (м^2 dot К)/"Вт"$, тогда $display(Q = (Delta T dot F)/(R + R_к) approx = 30"кВт")$
 
 === Задача 3
 
@@ -173,20 +162,27 @@ $
 
 #v(1em)
 
-Пусть $lambda_"из" = 0.11 "Вт"/(м dot К)$, $alpha = 8 "Вт"/(м^2 dot К)$, $d_т = 20"мм"$
+Пусть $lambda_"из" = 0.11 "Вт"/(м dot К)$, $alpha = 8 "Вт"/(м^2 dot К)$, $d_т = 20"мм"$, тогда $r_"кр" = 13.75"мм"$, что больше $r_т$, поэтому применение данного материала нецелесообразно.
 
-$r_"кр" = 13.75"мм"$, что больше $r_т$
+=== Задача 2
+
+#v(1em)
 
 Есть трубопровод, подающий охлаждающую жидкость в двигатель. $lambda_и = 0.045 "Вт"/(м dot К)$, $delta_и = 75"мм"$, $d_"нч" = 250"мм"$, $t_w_1 = 20degree C$, $t_w_2 = -10degree C$, $l = 2м$, $Q space dash space ?$
 
-$display(Q = (lambda (t_w_1 - t_w_2) 2pi l)/(ln r_2/r_1) approx 18.5"Вт")$
+$display(
+  Q = (lambda (t_w_1 - t_w_2) 2pi l)/(ln r_2/r_1) = (0.045 dot 30 dot 2 dot pi dot 2)/(ln 125/50) approx 18.5"Вт"
+)$
+
+=== Задача 3
+
+#v(1em)
 
 Необходимо создать поршневой двигатель с цилиндрическими блоками. $D = 160"мм"$, $l = 175"мм"$, $delta = 3"мм"$, $H = 42.3 "МДж"/"кг"$, $dot(m) = 11 "кг"/"час"$, $Delta T = 10degree C$. 14% тепла выделяется вовне. Подобрать материал.
 
 $display(
   Q = dot(m) H = 465.3 "МДж"/"час" approx 130"кВт" \
-  Q' = Q dot 0.14 approx 18"кВт" \
-  Q' = (2pi l lambda Delta T)/(ln r_2/r_1) => lambda = (Q' ln r_2/r_1)/(2pi l Delta T) approx 60.3 "Вт"/(м dot К)
+  Q' = Q dot 0.14 approx 18"кВт" = (2pi l lambda Delta T)/(ln r_2/r_1) => lambda = (Q' ln r_2/r_1)/(2pi l Delta T) = (18000 dot ln 83/80)/(2 dot pi dot 0.175 dot 10) approx 60.3 "Вт"/(м dot К)
 )$
 
 == Конвективный теплообмен
@@ -196,14 +192,12 @@ $display(
 Критерий Рейнольдса
 $
   "Re" = (u dot d)/nu space ("или" (u dot r)/nu) \
-  "Re"_"кр" approx 10^5 \
-  "Re"_"кр"_т approx 2300 space ("для трубы")
+  "Re"_"кр" approx 10^5, space "Re"_"кр"_т approx 2300 space ("для трубы")
 $
 
 Критерий Нуссельта (безразмерный коэффициент теплопередачи)
 $
-  Nu = (alpha l)/lambda \
-  Nu = f(Re, Pr)
+  Nu = (alpha l)/lambda, space Nu = f(Re, Pr)
 $
 
 Например, $display(Nu = 0.023 dot Re^0.8 dot Pr^0.4)$
@@ -232,19 +226,21 @@ $
 
 #v(1em)
 
-Камера сгорания ракетного двигателя, она имеет круглую форму, снаружи находится ребристый слой, образованный каналами. Внутренний диаметр канала 2 мм, давление 98 бар, скорость 20 #math.frac("м", "с", style: "horizontal"), температура жидкости 60$degree$C, температура стенки 220$degree$C. Определить удельный тепловой поток. Табличные данные: вязкость спирта $0.824 dot 10^(-6)$
+Дана камера сгорания ракетного двигателя, она имеет круглую форму, снаружи находится ребристый слой, образованный каналами. Внутренний диаметр канала 2 мм, давление 98 бар, скорость 20 #math.frac("м", "с", style: "horizontal"), температура жидкости 60$degree$C, температура стенки 220$degree$C. Определить удельный тепловой поток. Табличные данные: вязкость спирта $0.824 dot 10^(-6)$
 $
   q = alpha Delta T = Q/F
 $
 
+$display(Re = (w d)/nu = (20 dot 2 dot 10^(-3))/(0.824 dot 10^(-6)) approx 48500 => "турбулентное течение")$
+
+$
+  Nu_f = 0.021 dot Re_f^0.8 Pr_f^0.43 dot (Pr_f/Pr_w)^0.25
+$
+
 $display(
-  Re = (w d)/nu = (20 dot 2 dot 10^(-3))/(0.824 dot 10^(-6)) approx 48500 => "турбулентное течение" \
-  Nu_f = 0.021 dot Re_f^0.8 Pr_f^0.43 dot (Pr_f/Pr_w)^0.25 \
-  Pr_f = nu_f/a_f \
-  a_f = lambda_f/(C_p rho_f) \
-  lambda_f = 0.171 quad C_p = 2.75 "кДж"/("кг" dot К) quad rho_f = 778 \
-  Pr_f = (0.824 dot 10^(-6) dot 2750 dot 778)/0.171 approx 10.3 \
-  Pr_w = (0.176 dot 10^(-6) dot 4.77 dot 10^3 dot 558.5)/0.120 approx 3.9 \
+  Pr_f = nu_f/a_f\, space a_f = lambda_f/(C_p rho_f) \
+  lambda_f = 0.171\, space C_p = 2.75 "кДж"/("кг" dot К)\, space rho_f = 778 \
+  Pr_f = (0.824 dot 10^(-6) dot 2750 dot 778)/0.171 approx 10.3\, space Pr_w = (0.176 dot 10^(-6) dot 4.77 dot 10^3 dot 558.5)/0.120 approx 3.9 \
   (Pr_f/Pr_w)^0.25 approx 1.27 \
   Nu_f = 0.021 dot 48500^0.8 dot 10.3^0.43 dot 1.27 approx 407.5 \
   q = alpha Delta T = (407.5 dot 0.171)/0.002 dot 160 approx 5.6 dot 10^6 "Вт"
@@ -360,8 +356,7 @@ $
 Есть испытательный стенд для измерения температура на сопле ракетного двигателя. Использовался пирометр со светофильтром $lambda = 0.65"мкм"$, $T_0 = 1400degree C$, $epsilon_lambda = 0.6$. $T_lambda$ -- ?.
 
 $
-  B_lambda = E_lambda/pi \
-  E_lambda = (epsilon_lambda C_1 lambda^(-5))/(e^(C_2/(lambda T)) - 1)
+  B_lambda = E_lambda/pi, space E_lambda = (epsilon_lambda C_1 lambda^(-5))/(e^(C_2/(lambda T)) - 1)
 $
 
 $C_1 = 3.74 dot 10^(-16) "Вт" dot м^2$, $C_2 = 1.44 dot 10^(-2) м dot К$, $B_lambda = B_(lambda 0)$
@@ -371,12 +366,9 @@ $
 $
 
 $display(
-  epsilon_lambda (e^(C_2/(lambda T_0)) - 1) = e^(C_2/(lambda T)) - 1 \
-  0.6e^(C_2/(lambda T_0)) - 0.6 = e^(C_2/(lambda T)) - 1 \
+  epsilon_lambda (e^(C_2/(lambda T_0)) - 1) = e^(C_2/(lambda T)) - 1 => 0.6e^(C_2/(lambda T_0)) - 0.6 = e^(C_2/(lambda T)) - 1 \
   "Пренебрежем числовыми слагаемыми" \
-  e^(C_2/(lambda T_0)) = e^(C_2/(lambda T))/0.6 \
-  C_2/(lambda T_0) = C_2/(lambda T) + ln 0.6 \
-  1/T_0 = 1/T + (lambda ln 0.6)/C_2 => T_0 = 1/(1/T + (lambda ln 0.6)/C_2)
+  e^(C_2/(lambda T_0)) = e^(C_2/(lambda T))/0.6 => C_2/(lambda T_0) = C_2/(lambda T) + ln 0.6 => 1/T_0 = 1/T + (lambda ln 0.6)/C_2 => T_0 = 1/(1/T + (lambda ln 0.6)/C_2)
 )$
 
 Должно быть 1740 К.
@@ -388,9 +380,7 @@ $display(
 Есть Солнце, лучи которого падают нормально к поверхности, $T = 6000К$, $D = 1.4 dot 10^6$, $l = 149.5 dot 10^6 "км"$. Определить плотность падающего излучения.
 
 $
-  E_"пад" = B dif omega \
-  dif omega = (pi D^2/4)/l^2 \
-  B = E_0/pi = (C_0 (T/100)^4)/pi
+  E_"пад" = B dif omega, space dif omega = (pi D^2/4)/l^2, space B = E_0/pi = (C_0 (T/100)^4)/pi
 $
 
 $display(E_"пад" = (5.67(6000/100)^4)/pi dot (pi (1.4 dot 10^6)^2/4)/(149.5 dot 10^6)^2 approx 1.6 "кВт"/м^2)$
@@ -402,8 +392,7 @@ $display(E_"пад" = (5.67(6000/100)^4)/pi dot (pi (1.4 dot 10^6)^2/4)/(149.5 d
 Спутник облетает Землю на дневной стороне. $E_"пад" = 1550 "Вт"/м^2$, $A = 0.2$, $epsilon = 0.1$. $T$ -- ?.
 
 $
-  A E_"пад" F_"общ" = epsilon C_0 F_"пов" (T/100)^4 \
-  F_"пов" = (pi d^2), space F_"общ" = (pi d^2)/4
+  A E_"пад" F_"общ" = epsilon C_0 F_"пов" (T/100)^4, space F_"пов" = (pi d^2), space F_"общ" = (pi d^2)/4
 $
 
 $display(T = 100root(4, (0.2 dot 1550)/(0.1 dot 5.67 dot 4)) approx 342К)$
