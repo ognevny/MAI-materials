@@ -1,0 +1,163 @@
+name: главный
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+    name: "Сборка PDF"
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: typst-community/setup-typst@40d32bb6ccb235bd7f5164cb47cfd40a5ea3a314 # v5.2.0
+        with:
+          typst-version: ^0.15.0
+
+      - name: "Сборка PDF файлов"
+        run: |
+          mkdir -p build
+
+          declare -A sources_1=(
+            [algorithmic_langs]='Algorithmic-langs'
+            [FRS]='FRS'
+          )
+
+          declare -A sources_1_2=(
+            [russian_history]='Russian-history'
+          )
+
+          declare -A sources_2_3=(
+            [theoretical_mechanics]='Theoretical-mechanics'
+          )
+
+          declare -A sources_3=(
+            [differential_equations]='Differential-equations'
+            [electrical_engineering]='Electrical-engineering'
+            [material_theory]='Material-science'
+            [probability_theory]='Probability-theory'
+            [psychology]='Psychology'
+          )
+
+          declare -A sources_3_4=(
+            [strength_of_materials]='Materials-strength'
+          )
+
+          declare -A sources_4=(
+            [equations_of_math_phys]='Equations-of-mathematical-physics'
+            [heat_transfer]='Heat-transfer'
+            [machines_theory]='Machines-theory'
+            [metrology]='Metrology-and-standardization'
+            [sociology]='Sociology'
+            [thermodynamics]='Thermodynamics'
+          )
+
+          declare -A seminars_3_4=(
+            [strength_of_materials]='Materials-strength'
+          )
+
+          declare -A seminars_4=(
+            [metrology]='Metrology-and-standardization'
+            [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
+          )
+
+          set -x
+
+          for subject in "${!sources_1[@]}"; do
+            typst compile \
+              "materials/semester-1/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_1[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_1_2[@]}"; do
+            typst compile \
+              "materials/semester-1-2/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_1_2[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_2_3[@]}"; do
+            typst compile \
+              "materials/semester-2-3/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_2_3[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_3[@]}"; do
+            typst compile \
+              "materials/semester-3/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_3[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_3_4[@]}"; do
+            typst compile \
+              "materials/semester-3-4/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_3_4[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_4[@]}"; do
+            typst compile \
+              "materials/semester-4/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_4[$subject]}.pdf"
+          done
+
+          for subject in "${!seminars_3_4[@]}"; do
+            typst compile \
+              "materials/semester-3-4/${subject//_/-}/seminars.typ" \
+              "build/Seminars_of_${seminars_3_4[$subject]}.pdf"
+          done
+
+          for subject in "${!seminars_4[@]}"; do
+            typst compile \
+              "materials/semester-4/${subject//_/-}/seminars.typ" \
+              "build/Seminars_of_${seminars_4[$subject]}.pdf"
+          done
+
+      - name: "Выкладывание PDF"
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: "Materials"
+          path: build/*.pdf
+          if-no-files-found: ignore
+
+  update-release:
+    needs: [build]
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    strategy:
+      fail-fast: false
+    permissions:
+      contents: write # нужно для релиза
+    name: "Выкладывание PDF в страницу Releases"
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        id: artifacts
+
+      - name: "Установка времени изменения"
+        env:
+          TZ: "Europe/Moscow"
+        run: |
+          sed -i "s/%DATE%/$(date +'%F %T %Z')/" LINKS.md
+
+      - name: "Обновление тега 'latest'"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DO_NOT_TRACK: true
+        run: |
+          gh release upload latest *.pdf --clobber
+          gh release edit latest --notes-file LINKS.md --target master

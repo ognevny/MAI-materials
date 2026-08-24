@@ -1,0 +1,6 @@
+.obsidian
+.*.autosave.*
+hw*.xopp
+
+# CI
+/build

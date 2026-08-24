@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.md linguist-detectable
+*.md -linguist-documentation
+
+*.png binary
