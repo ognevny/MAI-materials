@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   build:
+    if: ${{ github.event_name == 'pull_request' || github.ref == 'refs/heads/master' }}
     strategy:
       fail-fast: false
     name: "Сборка PDF"
