@@ -65,6 +65,11 @@ jobs:
             [thermodynamics]='Thermodynamics'
           )
 
+          declare -A sources_5=(
+            [aerodynamics]='Aerodynamics'
+            [machine_parts]='Machine-parts'
+          )
+
           declare -A seminars_3_4=(
             [strength_of_materials]='Materials-strength'
           )
@@ -109,6 +114,12 @@ jobs:
           for subject in "${!sources_4[@]}"; do
             typst compile \
               "materials/semester-4/${subject//_/-}/lectures.typ" \
+              "build/Lectures_of_${sources_4[$subject]}.pdf"
+          done
+
+          for subject in "${!sources_5[@]}"; do
+            typst compile \
+              "materials/semester-5/${subject//_/-}/lectures.typ" \
               "build/Lectures_of_${sources_4[$subject]}.pdf"
           done
 
