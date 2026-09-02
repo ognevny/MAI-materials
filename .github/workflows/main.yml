@@ -120,7 +120,7 @@ jobs:
           for subject in "${!sources_5[@]}"; do
             typst compile \
               "materials/semester-5/${subject//_/-}/lectures.typ" \
-              "build/Lectures_of_${sources_4[$subject]}.pdf"
+              "build/Lectures_of_${sources_5[$subject]}.pdf"
           done
 
           for subject in "${!seminars_3_4[@]}"; do
