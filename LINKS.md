@@ -40,5 +40,7 @@
   - [Лекции по Строительной механике]()
   - [Лекции по Технологии конструкционных материалов]()
   - [Лекции по Численным методам]()
+  - [Семинары по Гидравлике](https://github.com/ognevny/MAI-materials/releases/download/latest/Seminars_of_Hydraulics.pdf)
+  - [Семинары по Численным методам](https://github.com/ognevny/MAI-materials/releases/download/latest/Seminars_of_Numerical-methods.pdf)
 
 Последнее обновление: %DATE%

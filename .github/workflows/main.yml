@@ -79,6 +79,11 @@ jobs:
             [thermodynamics_heat_transfer]='Thermodynamics-and-heat-transfer'
           )
 
+          declare -A seminars_5=(
+            [hydraulics]='Hydraulics'
+            [numerical_methods]='Numerical-methods'
+          )
+
           set -x
 
           for subject in "${!sources_1[@]}"; do
@@ -133,6 +138,12 @@ jobs:
             typst compile \
               "materials/semester-4/${subject//_/-}/seminars.typ" \
               "build/Seminars_of_${seminars_4[$subject]}.pdf"
+          done
+
+          for subject in "${!seminars_5[@]}"; do
+            typst compile \
+              "materials/semester-5/${subject//_/-}/seminars.typ" \
+              "build/Seminars_of_${seminars_5[$subject]}.pdf"
           done
 
       - name: "Выкладывание PDF"
