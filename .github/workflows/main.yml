@@ -67,6 +67,7 @@ jobs:
 
           declare -A sources_5=(
             [aerodynamics]='Aerodynamics'
+            [hydraulics]='Hydraulics'
             [machine_parts]='Machine-parts'
             [structural_materials_technology]='Structural-materials-technology'
             [structural_mechanics]='Structural-mechanics'
