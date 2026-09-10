@@ -39,7 +39,7 @@
   - [Лекции по Политике командной работы]()
   - [Лекции по Строительной механике](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Structural-mechanics.pdf)
   - [Лекции по Технологии конструкционных материалов](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Structural-materials-technology.pdf)
-  - [Лекции по Численным методам]()
+  - [Лекции по Численным методам](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Numerical-methods.pdf)
   - [Семинары по Гидравлике](https://github.com/ognevny/MAI-materials/releases/download/latest/Seminars_of_Hydraulics.pdf)
   - [Семинары по Численным методам](https://github.com/ognevny/MAI-materials/releases/download/latest/Seminars_of_Numerical-methods.pdf)
 

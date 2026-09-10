@@ -69,6 +69,7 @@ jobs:
             [aerodynamics]='Aerodynamics'
             [hydraulics]='Hydraulics'
             [machine_parts]='Machine-parts'
+            [numerical_methods]='Numerical-methods'
             [structural_materials_technology]='Structural-materials-technology'
             [structural_mechanics]='Structural-mechanics'
           )
