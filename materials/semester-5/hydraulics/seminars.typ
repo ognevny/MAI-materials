@@ -32,7 +32,7 @@ $
 Коэффициенты сжимаемости соответственно по объему и температуре
 $
   & beta_w = 1/W (Delta W)/(Delta p); space beta_w = 1/E_w, \
-  & beta_T = 1/W (Delta W)/T,
+  & beta_T = 1/W (Delta W)/(Delta T),
 $
 где $E_w$ -- модуль упругости
 
