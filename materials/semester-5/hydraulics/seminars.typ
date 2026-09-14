@@ -115,3 +115,151 @@ $display(
   Delta p = (m g)/S = (4m g)/(pi d^2) = 0.485 "МПа" \
   E = (0.094 dot 0.485)/(2.52 dot 10^(-5)) = 1804 "МПа"
 )$
+
+= Законы распределения давления
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  align: horizon,
+  [
+    #figure(
+      image("source-figures/sem2-1.png"),
+    )
+  ],
+  [
+    $
+      p_2 = p_1 + rho_ж g h
+    $
+  ],
+)
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  align: center + horizon,
+  [
+    #figure(
+      (
+        image("source-figures/sem2-2.png"),
+        image("source-figures/sem2-3.png"),
+      ).join(),
+    )
+  ],
+  [
+    (Пьезометр)
+    $
+      p_0 = p_a => h_б = h_0, space Delta h = 0 \
+      p_0 > p_а = h_и > h_б, space Delta h = p_(0 и)/(rho_ж g)
+    $
+  ],
+)
+
+== Задача 2.1
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Дано: \
+    $h_в = 350$ мм, $h_б = 500$ мм, $rho_в = 10^3 "кг"/м^3$
+
+    Найти: $rho_б$
+
+    $
+      p_"иб" = rho_б g h_б \
+      p_"ив" = rho_в g h_в \
+      p_"иб" = p_"ив" => rho_б cancel(g) h_б = rho_в cancel(g) h_в => rho_б = (rho_в h_в)/h_б = (10^3 dot 0.35)/0.5 = 700 "кг"/м^3
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/sem2-4.png"),
+    )
+  ],
+)
+
+== Задача 2.2
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Дано: \
+    $D = 2$ м, $h = 300$ мм, $rho_б = 700 "кг"/м^3$
+
+    Найти: $G_б$
+
+    $
+      G_б = rho_б W g, space W = (pi D^2)/4 dot h_б \
+      p_"иб" = rho_б g h_б \
+      p_"ив" = rho_в g (h_б - h) \
+      rho_б h_б = rho_в h_б - rho_в h => h_б = (rho_в h)/(rho_в - rho_б) \
+      G = (pi D^2)/4 dot (rho_в h)/(rho_в - rho_б) g rho_б = (3.14 dot 2^2)/4 dot (10^3 dot 0.3)/(1000 - 700) dot 700 dot 9.8 = 21.5 "кН"
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/sem2-5.png"),
+    )
+  ],
+)
+
+== Задача 2.3
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Дано: \
+    $h = 368$ мм, $H = 1$ м, $rho_(H g) = 13.6 dot 10^3 "кг"/м^3$, $p_а = 736 "мм рт.ст."$
+
+    Найти: $p_0$
+
+    $
+      p_"ив" = rho_ж g (H + h) \
+      p_(и H g) = rho_(H g) g h \
+      p_0 + p_"ив" = p_(и H g) + p_a => p_0 = p_(и H g) + p_a - p_"ив" = rho_(H g) g h + \ + p_а - rho_ж g (H + h) = 13.6 dot 10^3 dot 9.8 dot 368 + 736 - 1000 dot 9.8 dot (1000 + 368) = \ = 1000 "мм рт.ст."
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/sem2-6.png"),
+    )
+  ],
+)
+
+== Задача 2.4
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Дано: \
+    $p_а = 770 "мм рт.ст."$, $rho_(H g)$, $g$, $H = 0.6$ м, $h = 1.36$ м
+
+    Найти: $p_"абс"$, $p_"изб"$
+
+    $
+      p_а = p_("изб" H g) + p_2 = rho_(H g) g H + p_2 \
+      p_3 = p_2 + p_"избв" = p_2 + rho_в g_в h \
+      p_а - p_3 = rho_(H g) g H - rho_в g_в h => p_3 = rho_(H g) g h + rho_в g_в h - rho_(H g) g H = \ = rho_(H g) g (h_а - H) + rho_в g h = 0.362 dot 10^5 "Па" = p_"абс" \
+      p_"изб" = p_а - p_"абс" = 770 - 270 = 500 "мм рт.ст."
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/sem2-7.png"),
+    )
+  ],
+)
