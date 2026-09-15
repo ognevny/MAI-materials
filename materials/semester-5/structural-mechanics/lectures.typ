@@ -1,5 +1,5 @@
 #import "meta.typ": conf
-#import "@preview/physica:0.9.8": dv
+#import "@preview/physica:0.9.8": dv, pdv
 
 #show: conf.with(
   title: "Лекции по Строительной механике",
@@ -130,5 +130,75 @@
     #figure(
       image("source-figures/lect1-4.png"),
     )
+  ],
+)
+
+= Уравнения равновесия
+
+#v(1em)
+
+#figure(
+  image("source-figures/lect2-1.png", width: 80%),
+)
+
+$
+  X: (sigma_(x x) + pdv(sigma_(x x), x) dif x) dif z dif y - sigma_(x x) dif z dif y + (sigma_(y x) + pdv(sigma_(y x), y) dif y) dif x dif z - \ - sigma_(y x) dif x dif z + (sigma_(z x) + pdv(sigma_(z x), z) dif z) dif x dif y - sigma_(z x) dif x dif y + X dif x dif y dif z = 0 \
+$
+
+Силы
+$
+  pdv(sigma_(x x), x) + pdv(sigma_(y x), y) + pdv(sigma_(z x), z) + X = 0 \
+  pdv(sigma_(x y), x) + pdv(sigma_(y y), y) + pdv(sigma_(z y), z) + Y = 0 \
+  pdv(sigma_(x z), x) + pdv(sigma_(y z), y) + pdv(sigma_(z z), z) + Z = 0 \
+$
+
+Моменты
+$
+  (sigma_(y x) + pdv(sigma_(y x), y) dif y) dif x dif z (dif y)/2 + sigma_(y x) dif x dif z (dif y)/2 - (sigma_(x y) + pdv(sigma_(x y), x) dif x) dif z dif y (dif x)/2 - sigma_(x y) dif z dif y (dif x)/2 = 0 \
+  "Убираем особо малые величины," 2sigma_(y x) - 2sigma_(x y) => sigma_(x y) = sigma_(y x)
+$
+
+Закон парности касательных напряжений
+$
+  sigma_(x y) = sigma_(y x) \
+  sigma_(x z) = sigma_(z x) \
+  sigma_(y z) = sigma_(z y)
+$
+
+
+Полученная система из 6 уравнений и есть уравнения равновесия
+
+== Напряжения на наклонной плоскости
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect2-2.png"),
+    )
+  ],
+  [
+    $
+      S_(triangle A B C) = dif A \
+      cos(overline(n), x) = n_x, space cos(overline(n), y) = n_y, space cos(overline(n), z) = n_z \
+      S_(triangle O B C) = n_x dif A, space S_(triangle O B A) = n_z dif A, space S_(triangle O C A) = n_y dif A \
+      sum x: -sigma_(x x) n_x dif A - sigma_(x z) n_z dif A - sigma_(x y) n_y dif A + sigma_x dif A = 0, \
+      sigma_x = sigma_(x x) n_x + sigma_(x y) n_y + sigma_(x z) n_z \
+      sigma_y = sigma_(x y) n_x + sigma_(y y) n_y + sigma_(y z) n_z \
+      sigma_z = sigma_(x z) n_x + sigma_(y z) n_y + sigma_(z z) n_z
+    $
+
+    В матричном виде
+    $
+      vec(sigma_x, sigma_y, sigma_z) = mat(sigma_(x x), sigma_(x y), sigma_(x z); sigma_(x y), sigma_(y y), sigma_(y z); sigma_(x z), sigma_(y z), sigma_(z z)) vec(n_x, n_y, n_z)
+    $
+
+    Нахождение вектора напряжения
+    $
+      abs(overline(sigma)) = sqrt(sigma_x^2 + sigma_y^2 + sigma_z^2)
+    $
   ],
 )
