@@ -1,5 +1,5 @@
 #import "meta.typ": conf, const, grad
-#import "@preview/physica:0.9.8": dv
+#import "@preview/physica:0.9.8": dv, pdv
 
 #show: conf.with(
   title: "Лекции по Аэродинамике",
@@ -9,6 +9,7 @@
 )
 
 #let Kn = math.op("Kn")
+#let rot = math.op("rot")
 
 #outline()
 #pagebreak(weak: true)
@@ -240,3 +241,269 @@ $
 + Модель идеальной среды. Уравнение Эйлера
 + Модель несжимаемой вязкой и теплопроводной среды. Уравнение Навье-Стокса ($rho = const$)
 + Модель сжимаемой вязкой и теплопроводной среды. Уравнение Навье-Стокса
+
+= Основы кинематики сплошной среды
+
+#v(1em)
+
+Основная задача -- определение в каждый момент времени в каждой точке пространства скорости течения
+$
+  arrow(v) ~ p
+$
+
++ #grid(
+    columns: (2fr, 1fr),
+    column-gutter: 1em,
+    [
+      Метод Лагранжа
+      Геометрическое место точек пребывания жидкой частица в различные моменты времени называется траекторией
+      $
+        arrow(r) = arrow(r) (t, underbrace(a\, b\, c, "пер. Лагранжа")) \
+        arrow(v) = dv(arrow(r), t), space arrow(w) = dv(arrow(v), t) = dv(arrow(r), t, 2) \
+        v_x = pdv(x, t); space v_y = pdv(y, t); space v_z = pdv(z, t) \
+        w_x = pdv(v_x, t) = pdv(x, t, 2); space w_y = pdv(v_y, t) = pdv(y, t, 2); space w_z = pdv(v_z, t) = pdv(z, t, 2)
+      $
+    ],
+    [
+      #figure(
+        image("source-figures/lect3-1.png"),
+      )
+    ],
+  )
+
++ #grid(
+    columns: (1fr, 1fr),
+    column-gutter: 1em,
+    [
+      Метод Эйлера -- в ней точка $M$ зафиксирована в момент времени $t$
+      $
+        arrow(v) = arrow(v) (t, underbrace(x\, y\, z, "пер. Эйлера")) \
+        arrow(w) = pdv(arrow(v), t) + dv(x, t) pdv(arrow(v), x) + dv(y, t) pdv(arrow(v), y) + dv(z, t) pdv(arrow(v), z) \
+        v_x = dv(x, t), space v_y = dv(y, t), space v_z = dv(z, t) \
+        dv(arrow(v), t) = pdv(arrow(v), t) + v_x pdv(arrow(v), x) + v_y pdv(arrow(v), y) + v_z pdv(arrow(v), z) \
+        x = x(t, a, b, c), space y = y(t, a, b, c), space z = z(t, a, b, c),
+      $
+      где $a$, $b$ и $c$ -- переменные Лагранжа
+    ],
+    [
+      #figure(
+        image("source-figures/lect3-2.png"),
+      )
+    ],
+  )
+
+== Принцип обращения движения
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [Слева неподвижная среда и подвижный объект; а справа неподвижный объект и подвижная среда],
+  [
+    #figure(
+      image("source-figures/lect3-3.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      (
+        image("source-figures/lect3-4.png"),
+        image("source-figures/lect3-5.png"),
+      ).join(),
+    )
+  ],
+  [
+    Линия тока строится при фиксированном времени ($t = const$). При устремлении расстояния между точками к нулю имеем
+    $
+      dif arrow(s) times arrow(v) = 0 <=> dif arrow(s) times arrow(v) = mat(delim: "|", arrow(i), arrow(j), arrow(k); dif x, dif y, dif z; v_x, v_y, v_z) = 0 \
+      (dif x)/v_x = (dif y)/v_y = (dif z)/v_z
+    $
+  ],
+)
+
+== Циркуляция скорости
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect3-6.png"),
+    )
+  ],
+  [
+    $t = const$
+
+    Циркуляция
+    $
+      Gamma = integral_1^2 arrow(v) dot dif arrow(s) = integral_1^2 v_x dif x + v_y dif y + v_z dif z \
+      arrow(v) = arrow(i) v_x + arrow(j) v_y + arrow(k) v_z \
+      dif arrow(s) = arrow(i) dif x + arrow(j) dif y + arrow(k) dif z
+    $
+
+    Вокруг всего контура
+    $
+      Gamma = integral.cont arrow(v) dot arrow(s)
+    $
+  ],
+)
+
+== Виды движения жидкой частицы
+
+#v(1em)
+
+#grid(
+  columns: (3fr, 1fr),
+  column-gutter: 1em,
+  [
+    $
+      1: v_x, space 2: v_x + pdv(v_x, x) Delta x + ... \
+      theta_x = pdv(v_x, x),
+    $
+    где $theta$ -- относительная скорость линейной деформации жидкой частицы, $Delta x -> 0$. Также определяется для остальных осей.
+  ],
+  [
+    #figure(
+      image("source-figures/lect3-7.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Пусть $Delta x = Delta y$
+
+    Относительная скорость угловой деформации жидкой частицы
+    $
+      cases(
+        epsilon_x = 1/2 (pdv(v_z, y) + pdv(v_y, z)),
+        epsilon_y = 1/2 (pdv(v_x, z) + pdv(v_z, x)),
+        epsilon_z = 1/2 (pdv(v_y, x) + pdv(v_x, y))
+      )
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect3-8.png"),
+    )
+  ],
+)
+
+Относительная скорость углового вращения жидкой частицы (компоненты завихренности)
+$
+  cases(
+    omega_x = 1/2 (pdv(v_z, y) - pdv(v_y, z)),
+    omega_y = 1/2 (pdv(v_x, z) - pdv(v_z, x)),
+    omega_z = 1/2 (pdv(v_y, x) - pdv(v_x, y))
+  )
+$
+
+Ротор вектора скорости
+$
+  arrow(omega) = 1/2 rot arrow(theta) = 1/2 arrow(gradient) times arrow(v) \
+  arrow(gradient) times arrow(v) = mat(delim: "|", arrow(i), arrow(i), arrow(j); pdv(, k), pdv(, y), pdv(, z); v_x, v_y, v_z)
+$
+
+$
+  arrow(gradient) dot arrow(v) = "div" arrow(v) = pdv(v_x, x) + pdv(v_y, y) + pdv(v_z, z)
+$
+
+=== Потенциальное течение
+
+#v(1em)
+
+При потенциальном течении $arrow(omega) = 0$, тогда
+$
+  v_x dif x + v_y dif y + v_z dif z = dif phi = pdv(phi, x) dif x + pdv(phi, y) dif y + pdv(phi, z) dif z,
+$
+тогда $v_x = pdv(phi, x)$, $v_y = pdv(phi, y)$, $v_z = pdv(phi, z)$
+
+$phi = phi(t, x, y, z)$ -- некая функция
+$
+  Gamma = integral_1^2 arrow(v) dif arrow(s) = phi_2 - phi_1
+$
+
+=== Вихревое движение
+
+#v(1em)
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    По сути является непотенциальным, строится вихревая линия
+
+    Уравнение вихревой линии
+    $
+      dif arrow(s) times arrow(omega) = 0 \
+      (dif x)/omega_x = (dif y)/omega_y = (dif z)/omega_z
+    $
+
+    Напряжение вихря
+    $
+      kappa = 2arrow(omega) dot sigma dot arrow(n),
+    $
+    где $sigma$ -- площадь, $arrow(n)$ -- вектор нормали
+  ],
+  [
+    #figure(
+      (
+        image("source-figures/lect3-9.png"),
+        image("source-figures/lect3-10.png"),
+      ).join(),
+    )
+  ],
+)
+
+#grid(
+  columns: (2.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    Теорема Стокса
+    $
+      Gamma = integral.cont arrow(v) dot dif arrow(s) = 2integral.double_S omega_n dif sigma
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect3-11.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Формула Био-Савара
+    $
+      arrow(v) = Gamma/(4pi) integral_(-oo)^(+oo) (dif arrow(s) times r)/r^3,
+    $
+    выведено из
+    $
+      arrow(v) = 1/(2pi) integral.triple_V (arrow(omega) times arrow(r))/r^3 dif V,
+    $
+    в дифференциальной форме
+    $
+      cases(
+        rot arrow(v) = 1/2 arrow(v),
+        "div" arrow(v) = 0
+      )
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect3-12.png"),
+    )
+  ],
+)
