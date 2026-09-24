@@ -1,5 +1,5 @@
 #import "meta.typ": conf, const, grad
-#import "@preview/physica:0.9.8": dv, pdv
+#import "@preview/physica:0.9.8": dv, evaluated, pdv
 
 #show: conf.with(
   title: "Лекции по Аэродинамике",
@@ -252,13 +252,13 @@ $
 $
 
 + #grid(
-    columns: (2fr, 1fr),
+    columns: (2.5fr, 1fr),
     column-gutter: 1em,
     [
       Метод Лагранжа
       Геометрическое место точек пребывания жидкой частица в различные моменты времени называется траекторией
       $
-        arrow(r) = arrow(r) (t, underbrace(a\, b\, c, "пер. Лагранжа")) \
+        arrow(r) = arrow(r) (t, underbrace(a\, b\, c, sscript("пер. Лагранжа"))) \
         arrow(v) = dv(arrow(r), t), space arrow(w) = dv(arrow(v), t) = dv(arrow(r), t, 2) \
         v_x = pdv(x, t); space v_y = pdv(y, t); space v_z = pdv(z, t) \
         w_x = pdv(v_x, t) = pdv(x, t, 2); space w_y = pdv(v_y, t) = pdv(y, t, 2); space w_z = pdv(v_z, t) = pdv(z, t, 2)
@@ -272,15 +272,14 @@ $
   )
 
 + #grid(
-    columns: (1fr, 1fr),
+    columns: (2.5fr, 1fr),
     column-gutter: 1em,
     [
       Метод Эйлера -- в ней точка $M$ зафиксирована в момент времени $t$
       $
-        arrow(v) = arrow(v) (t, underbrace(x\, y\, z, "пер. Эйлера")) \
+        arrow(v) = arrow(v) (t, underbrace(x\, y\, z, sscript("пер. Эйлера"))) \
         arrow(w) = pdv(arrow(v), t) + dv(x, t) pdv(arrow(v), x) + dv(y, t) pdv(arrow(v), y) + dv(z, t) pdv(arrow(v), z) \
-        v_x = dv(x, t), space v_y = dv(y, t), space v_z = dv(z, t) \
-        dv(arrow(v), t) = pdv(arrow(v), t) + v_x pdv(arrow(v), x) + v_y pdv(arrow(v), y) + v_z pdv(arrow(v), z) \
+        v_x = dv(x, t), space v_y = dv(y, t), space v_z = dv(z, t) => dv(arrow(v), t) = pdv(arrow(v), t) + v_x pdv(arrow(v), x) + v_y pdv(arrow(v), y) + v_z pdv(arrow(v), z) \
         x = x(t, a, b, c), space y = y(t, a, b, c), space z = z(t, a, b, c),
       $
       где $a$, $b$ и $c$ -- переменные Лагранжа
@@ -332,7 +331,7 @@ $
 #v(1em)
 
 #grid(
-  columns: (1fr, 1.5fr),
+  columns: (1fr, 2fr),
   column-gutter: 1em,
   [
     #figure(
@@ -507,3 +506,200 @@ $
     )
   ],
 )
+
+= Основы динамики сплошной среды
+
+== Уравнение переноса массы
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Используется Эйлеров подход.
+
+    $
+      M_t = rho Delta V,
+    $
+    где $Delta V = Delta x Delta y Delta z$
+
+    Получим уравнение переноса массы
+    $
+      M_(t+Delta t) = M_t + evaluated(pdv(M, t))_t Delta t + 1/(2!) evaluated(pdv(M, t, 2))_t Delta t^2 + ... \
+      Delta M_t = M_(t+Delta t) - M_t = evaluated(pdv(M, t))_t Delta t + ... = pdv(rho, t) Delta t Delta V + ...
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect4-1.png"),
+    )
+  ],
+)
+
+Жидкость втекает в объем
+$
+  & M_x = rho underbrace(v_x Delta t, Delta x) Delta y Delta z \
+  & M_(x+Delta x) = M_x + evaluated(pdv(M, x))_x Delta x + ... \
+  & Delta M_x = M_x - M_(x+Delta x) = -evaluated(pdv(M, x))_x Delta x + ... = -pdv((rho v_x), x) Delta t overbrace(Delta x Delta y Delta z, Delta V) \
+  & Delta M_y = -pdv((rho v_y), y) Delta t Delta V + ... \
+  & Delta M_z = -pdv((rho v_z), z) Delta t Delta V + ... \
+  & Delta M_t = Delta M_x + Delta M_y + Delta M_z
+$
+
+Осуществим предельный переход $Delta t -> 0$ и $Delta V -> 0$
+$
+  pdv(rho, t) + underbrace(pdv((rho v_x), x) + pdv((rho, v_y), y) + pdv((rho v_z), z), "div"(rho arrow(v)) = arrow(gradient)(rho arrow(v))) = 0
+$
+
+При $rho = const$
+$
+  "div"(arrow(v)) = 0
+$
+
+== Уравнение переноса количества движения
+
+#v(1em)
+
+Аналог II законы Ньютона для сплошной среды
+
+Количество движения
+$
+  arrow(Q)_t = rho arrow(v) Delta V \
+  arrow(Q)_(t+Delta t) = arrow(Q)_t + evaluated(pdv(Q, t))_t Delta t + ...
+$
+
+Изменение количества движения
+$
+  Delta arrow(Q) = arrow(Q)_(t+Delta t) - arrow(Q)_t = evaluated(pdv(Q, t))_t Delta t + ... = pdv((rho arrow(v)), t) Delta t Delta V + ...
+$
+
+Факторы, влияющие на изменение импульса внутри объема:
++ Перенос импульса через границы объема
+  $
+    & arrow(Q)_x = rho arrow(v) underbrace(v_x Delta t, Delta x) Delta y Delta z + ... \
+    & arrow(Q)_(x+Delta x) = arrow(Q)_x + evaluated(pdv(arrow(Q), x))_x Delta x + ... \
+    & arrow(Q)_x = arrow(Q)_x - arrow(Q)_(x+Delta x) = -evaluated(pdv(arrow(Q), x))_x Delta x + ... = -pdv((rho arrow(v), v_x), x) Delta x + ... \
+    & arrow(Q)_y = -pdv((rho arrow(v), v_y), y) Delta y + ... \
+    & arrow(Q)_z = -pdv((rho arrow(v), v_z), z) Delta z + ...
+  $
++ #grid(
+    columns: (2fr, 1fr),
+    column-gutter: 1em,
+    [
+      Импульс поверхностных сил
+
+      Вводится напряжение на площадке
+      $
+        arrow(p)_n = lim_(Delta V -> 0) dv(arrow(p)_n, sigma, d: Delta) = arrow(p)_(n n) + arrow(p)_(n tau) \
+        arrow(p)_n = arrow(p)_x cos(n\^x) + arrow(p)_y cos(n\^y) + arrow(p)_z cos(n\^z) \
+        arrow(p)_x = arrow(i) p_(x x) + arrow(j) p_(x y) + arrow(k) p_(x z) \
+        arrow(p)_y = arrow(i) p_(y x) + arrow(j) p_(y y) + arrow(k) p_(y z) \
+        arrow(p)_z = arrow(i) p_(z x) + arrow(j) p_(z y) + arrow(k) p_(z z)
+      $
+
+      Тензор напряжения
+      $
+        Pi = mat(delim: "[", p_(x x), p_(x y), p_(x z); p_(y x), p_(y y), p_(z z); p_(z x), p_(z y), p_(z z))
+      $
+
+      Имеем $p_(y x) = p_(x y)$, $p_(z x) = p_(x z)$ и $p_(z y) = p_(y z)$
+
+      Импульс сил
+      $
+        & arrow(P)_x = arrow(p)_x Delta y Delta z Delta t \
+        & arrow(P)_(x+Delta x) = arrow(P)_x + evaluated(pdv(arrow(P)_x, x))_x Delta x + ... \
+        & Delta arrow(P)_x = arrow(P)_(-x) + arrow(P)_(x+Delta x) = pdv(arrow(P)_x, x) Delta t Delta V + ... \
+        & Delta arrow(P)_y = pdv(arrow(P)_y, y) Delta t Delta V + ... \
+        & Delta arrow(P)_z = pdv(arrow(P)_z, z) Delta t Delta V + ...
+      $
+      ($arrow(P)_(-x) = -arrow(P)_x$)
+    ],
+    [
+      #figure(
+        image("source-figures/lect4-2.png"),
+      )
+    ],
+  )
++ Импульс массовых сил
+  $
+    Delta arrow(F)_m = arrow(f) rho Delta V Delta t
+  $
+
+Итого
+$
+  Delta arrow(Q)_t = Delta arrow(Q)_x + Delta arrow(Q)_y + Delta arrow(Q)_z + Delta arrow(P)_x + Delta arrow(P)_y + Delta arrow(P)_z + Delta arrow(P)_t + Delta arrow(F)_m
+$
+
+Сократим на $Delta t Delta V$
+$
+  pdv((rho arrow(v)), t) + pdv((rho arrow(v) v_x), x) + pdv((rho arrow(v) v_y), y) + pdv((rho arrow(v) v_z), z) = pdv(arrow(p)_x, x) + pdv(arrow(p)_y, y) + pdv(arrow(p)_z, z) + rho arrow(f)
+$
+
+Отсюда имеем 4 уравнения (векторное плюс 3 скалярных), неизвестные $rho$, $v_x$, $v_y$, $v_z$ и 6 $p_(i j)$ -- 10 штук.
+
+== Уравнение переноса энергии
+
+#v(1em)
+
+Вводится внутренняя энергия $e$ (на единицу объема).
+
+Изменение полной энергии $e + v^2/2$ внутри объема происходит за счет изменения следующих факторов
++ Перенос энергии через грани объема
++ Работа поверхностных сил
++ Работа массовых сил
++ Поток тепла через границы объема
+
+$
+  rho pdv(, t) (e + v^2/2) + underbrace(rho arrow(v) arrow(gradient) (e + v^2/2), "1.") = underbrace(rho arrow(f) arrow(v), "3.") + underbrace(pdv((arrow(p_x) arrow(v)), x) + pdv((arrow(p_y) arrow(v)), y) + pdv((arrow(p_z) arrow(v)), z), "2.") - underbrace("div"arrow(q), "4.")
+$
+
+Теперь добавляется ещё 3 неизвестных $q_i$.
+
+Давление
+$
+  p = -(p_(x x) + p_(y y) + p_(z z))/3 \
+  p_(x y) = p_(y x) = 2mu epsilon_z = mu (pdv(v_x, y) + pdv(v_y, x)) \
+  p_(y z) = p_(y z) = 2mu epsilon_x = mu (pdv(v_y, z) + pdv(v_z, y)) \
+  p_(x z) = p_(z x) = 2mu epsilon_y = mu (pdv(v_x, z) + pdv(v_x, z)) \
+  p_(x x) = -p + 2mu theta_x + lambda'"div"arrow(v) \
+  p_(y y) = -p + 2mu theta_y + lambda'"div"arrow(v) \
+  p_(z z) = -p + 2mu theta_z + lambda'"div"arrow(v)
+$
+где $lambda'$ -- коэффициент объемной вязкости
+
+Уравнение Навье
+$
+  arrow(q) = -lambda arrow(gradient) T,
+$
+где $lambda$ -- коэффициент теплопроводности
+
+Закон Стокса
+$
+  lambda' = -2/3 mu
+$
+работает только для одноатомных газов.
+
+Для многоатомных газов
+$
+  lambda' = -2/3 mu + mu', \
+  mu' = 2/3 dot (5 - 3gamma)/2 h mu, \
+  mu/mu_0 = (T/T_0)^S, \
+  h = z ((7 - 2S)(5 - 2S))/30, space z = 5,
+$
+где $S$ -- показатель степени температуры
+
+== Начальные и граничные условия
+
+#v(1em)
+
+Начальные условия задаются для какого времени $t^n > t_0$. Граничные условия задается на граничных точках (внешнего потока, поверхности).
+
+Например, условие непротекания
+$
+  arrow(v) arrow(n)_w = 0
+$
+и условие прилипания
+$
+  arrow(v)_w = 0
+$
