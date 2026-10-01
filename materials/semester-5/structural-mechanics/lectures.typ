@@ -391,3 +391,109 @@ $
   pdv(, y) (pdv(gamma_(y z), x) - pdv(gamma_(z x), y) + pdv(gamma_(x y), z)) = 2pdv(epsilon_(y y), x, z) \
   pdv(, z) (pdv(gamma_(z x), y) - pdv(gamma_(x y), z) + pdv(gamma_(y z), x)) = 2pdv(epsilon_(z z), x, y)
 $
+
+== Закон Гука
+
+#v(1em)
+
+Для одномерного случая
+$
+  sigma = E epsilon => epsilon = sigma/E
+$
+
+Для трехмерного случая
+$
+  & epsilon_11 = sigma_11/E - mu/E sigma_22 - mu/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
+  & epsilon_22 = -mu/E sigma_11/E + 1/E sigma_22 - mu/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
+  & epsilon_33 = -mu/E sigma_11/E - mu/E sigma_22 + 1/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
+  & gamma_12 = 0sigma_11 + 0sigma_22 + 0sigma_33 + 1/G sigma_12 + 0sigma_13 + 0sigma_23, \
+  & gamma_13 = 0sigma_11 + 0sigma_22 + 0sigma_33 + 0sigma_12 + 1/G sigma_13 + 0sigma_23, \
+  & gamma_23 = 0sigma_11 + 0sigma_22 + 0sigma_33 + 0sigma_12 + 0sigma_13 + 1/G sigma_23,
+$
+где $G = E/(2(1 + mu))$, $mu$ -- коэффициент Пуассона
+$
+  nu = mu = -epsilon_"поперечная"/epsilon_"продольная", space -1 < mu < 0.5
+$
+Материалы с отрицательным коэффициентом Пуассона называются ауксетиками
+
+Можно записать коэффициенты в матричном виде
+$
+  vec(epsilon_11, epsilon_22, epsilon_33, gamma_12, gamma_13, gamma_23) = mat(
+    C_11, C_12, C_13, C_14, C_15, C_16;
+    C_21, C_22, C_23, C_24, C_25, C_26;
+    C_31, C_32, C_33, C_34, C_35, C_36;
+    C_41, C_42, C_43, C_44, C_45, C_46;
+    C_51, C_52, C_53, C_54, C_55, C_56;
+    C_61, C_62, C_63, C_64, C_65, C_66;
+  ) vec(sigma_11, sigma_22, sigma_33, sigma_12, sigma_13, sigma_23)
+$
+
+Отсюда имеем
+$
+  epsilon_(x x) = 1/E (sigma_(x x) - nu (sigma_(y y) + sigma_(z z))) \
+  epsilon_(y y) = 1/E (sigma_(y y) - nu (sigma_(x x) + sigma_(z z))) \
+  epsilon_(z z) = 1/E (sigma_(z z) - nu (sigma_(x x) + sigma_(y y))) \
+  gamma_(x y) = 1/G sigma_(x y) \
+  gamma_(y z) = 1/G sigma_(y z) \
+  gamma_(z x) = 1/G sigma_(z x)
+$
+
+Суммарно получим
+$
+  epsilon_(x x) + epsilon_(y y) + epsilon_(z z) = 1/E (sigma_(x x) + sigma_(y y) + sigma_(z z) - 2mu (sigma_(x x) + sigma_(y y) + sigma_(z z)))
+$
+
+Обозначим
+$
+  sigma_0 = 1/3 (sigma_(x x) + sigma_(y y) + sigma_(z z)) \
+  theta = epsilon_(x x) + epsilon_(y y) + epsilon_(z z)
+$
+
+Итого
+$
+  theta = underbrace((3(1 - 2mu))/E, K space ("или" B) \ "объемный модуль" \ "упругости") sigma_0
+$
+
+Запишем
+$
+  epsilon_(x x) = 1/E (sigma_(x x) + mu sigma_(x x) - mu (sigma_(x x) + sigma_(y y) + sigma_(z z))) = (1 + mu)/E sigma_(x x) - (3mu)/E sigma_0 = 1/(2G) sigma_(x x) - (3mu)/E E/(3(1 - 2mu)) theta = sigma_(x x)/(2G) - mu/(1 - 2mu) theta
+$
+
+Следовательно
+$
+  sigma_(x x) = 2G epsilon_(x x) + lambda theta,
+$
+где $lambda$ -- постоянная Коши
+$
+  lambda = (2G mu)/(1 - 2mu) = (E mu)/((1 + mu)(1 - 2mu))
+$
+
+Остальные напряжения
+$
+  sigma_(y y) = 2G epsilon_(y y) + lambda theta \
+  sigma_(z z) = 2G epsilon_(z z) + lambda theta \
+  sigma_(x y) = G gamma_(x y) \
+  sigma_(x z) = G gamma_(x z) \
+  sigma_(y z) = G gamma_(y z)
+$
+
+=== Уравнение теории упругости в перемещениях
+
+#v(1em)
+
+$
+  pdv(sigma_(x x), x) + pdv(sigma_(x y), y) + pdv(sigma_(x z), z) + X = 0 \
+  sigma_(x x) = 2G pdv(u_x, x) + lambda theta \
+  sigma_(x y) = G (pdv(u_x, y) + pdv(u_y, x)) \
+  sigma_(x z) = G (pdv(u_z, x) + pdv(u_x, z)) \
+  theta = pdv(u_x, x) + pdv(u_y, y) + pdv(u_z, z) \
+  2G pdv(u_x, x, 2) + lambda pdv(theta, x) + G (pdv(u_x, y, 2) + pdv(u_y, x, y)) + G (pdv(u_z, x, z) + pdv(u_x, z, 2)) + X = 0 \
+  G (pdv(u_x, x, 2) + pdv(u_x, y, 2) + pdv(u_x, z, 2)) + G pdv(, x) (pdv(u_x, x) + pdv(u_y, y) + pdv(u_z, z)) + lambda pdv(theta, x) + X = 0
+$
+
+Получим уравнения Ламе
+$
+  G laplace u_x + (G + lambda) pdv(theta, x) + X = 0 \
+  G laplace u_y + (G + lambda) pdv(theta, y) + Y = 0 \
+  G laplace u_z + (G + lambda) pdv(theta, z) + Z = 0
+$
