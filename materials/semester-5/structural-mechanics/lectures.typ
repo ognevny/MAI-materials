@@ -497,3 +497,217 @@ $
   G laplace u_y + (G + lambda) pdv(theta, y) + Y = 0 \
   G laplace u_z + (G + lambda) pdv(theta, z) + Z = 0
 $
+
+= Балочно-стержневые системы
+
+== Кинематический анализ
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Формула Чебышева
+    $
+      "2D:" 2У + 3Д - С = W, \
+      "3D:" 3У + 6Б - С = W,
+    $
+    где У -- узел, Д -- диск, Б -- блок, С -- стержень, $W$ -- число степеней свободы. Стержни работают только на растяжение-сжатие.
+
+    Мгновенные механизмы позволяют телу немного передвинуться (примеры: узел закреплен двумя стержнями, попарно параллельными друг другу, линия опорных стержней пересекаются в одной точке)
+  ],
+  [
+    #figure(
+      image("source-figures/lect4-1.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    Свободные
+    #figure(
+      image("source-figures/lect4-2.png"),
+    )
+  ],
+  [
+    Нормально закрепленные
+    #figure(
+      image("source-figures/lect4-3.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (1fr, 2.5fr),
+  column-gutter: 1em,
+  align: horizon,
+  [
+    #figure(
+      (
+        image("source-figures/lect4-4.png"),
+        image("source-figures/lect4-5.png"),
+        image("source-figures/lect4-6.png"),
+      ).join(),
+    )
+  ],
+  [
+    Соответственно сверху вниз
+    $
+      W = 4 dot 2 + 3 dot 0 - 8 = 0, \
+      W = 0 dot 2 + 3 dot 1 - 4 = -1, \
+      W = 3Д - 2(Ш) - С,
+    $
+    где $Ш$ -- шарнир
+  ],
+)
+
+#grid(
+  columns: (4fr, 1fr),
+  column-gutter: 1em,
+  [
+    Необходимый признак геометрической неизменяемости -- расстояние между точками тела меняется без деформации
+    + Нормально закрепленная система -- $W <= 0$
+    + Плоская свободная система -- $W <= 3$
+    + Пространственная свободная система -- $W <= 6$
+
+    Степень статической неопределимости для нормально закрепленной системы
+    $
+      N = -W
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect4-7.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (1fr, 1.5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      (
+        image("source-figures/lect4-8.png"),
+        image("source-figures/lect4-9.png"),
+      ).join(),
+    )
+  ],
+  [
+    Для верхней системы имеем
+    $
+      cases(
+        N_1 a + N_2 (a + b) = 0,
+        N_1 a + N_2 (a + b) = 0,
+      )
+    $
+    Количество решений бесконечно большое
+
+    Для нижней системы
+    $
+      cases(
+        N_1 a + N_2 (a + b) = 0,
+        N_1 (a + b) + N_2 a = 0,
+      )
+    $
+    Получается тривиальное решение $N_1 = N_2 = 0$
+  ],
+)
+
+=== Метод вырезания узлов
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  align: horizon,
+  [
+    #figure(
+      image("source-figures/lect4-10.png"),
+    )
+  ],
+  [
+    $
+      W = 2У - 8 = 0
+    $
+
+    Запишем уравнения для нахождения реакций
+    $
+      sum x: R_(4x) + P = 0 => R_(4x) = -P \
+      sum y: R_(4y) + R_(3y) => R_(4y) = -R_(3y) \
+      sum M_4: -R_(3y) a + P a => R_(3y) = P
+    $
+  ],
+)
+
+Запишем уравнения для первого узла
+$
+  sum x: N_12 = 0 \
+  sum y: N_14 = 0
+$
+
+Для третьего
+$
+  sum x: N_34 = 0 \
+  sum y: N_32 + P => N_32 = -P
+$
+
+Для второго
+$
+  sum y: -N_24 dot 1/sqrt(2) - N_23 = 0 => N_24 = -sqrt(2) N_23 = sqrt(2) P
+$
+
+#figure(
+  image("source-figures/lect4-11.png"),
+)
+
+Вырежем крайний справа узел
+$
+  sum y: -P - 1/2 N_89 = 0 => N_89 = -2P \
+  sum x: -N_87 - N_89 dot sqrt(3)/2 = 0 => N_87 = -P sqrt(3)
+$
+
+Теперь девятый
+$
+  sum y': N_97 = 0 \
+  sum x': N_98 - N_910 = 0 => N_98 = N_910
+$
+
+Седьмой узел
+$
+  sum y: N_710 = 0 \
+  sum x: N_87 - N_67 = 0 => N_67 = N_87 = -P sqrt(3)
+$
+
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect4-12.png"),
+    )
+  ],
+  [
+    $
+      W = 2 dot 6 - 12 = 0
+    $
+
+    Часть решения упущена, вот значения из вырезанных узлов
+    $
+      N_12 = 0, space N_16 = 0, space N_25 = 0, space N_34 = 0, \ N_32 = P, space N_54 = P/2, space N_24 = -sqrt(2)/2 P
+    $
+
+    Можно вырезать не только узлы, но и участки
+    $
+      sum M_6: N_12 = 0 \
+      sum y: N_62 dot 1/sqrt(2) - P/2 = 0 => N_62 = sqrt(2)/2 P \
+      sum x: N_62 dot 1/sqrt(2) + N_56 - P = 0 => \ => N_56 = P - sqrt(2)/2 P dot 1/sqrt(2) = P/2
+    $
+  ],
+)

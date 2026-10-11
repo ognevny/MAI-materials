@@ -72,6 +72,7 @@
 #let arctg = math.op("arctg")
 #let const = math.op("const")
 #let grad = math.op("grad")
+#let sign = math.op("sign")
 
 /// Разделитель для vec()
 #let delimsys = ("{", "|")

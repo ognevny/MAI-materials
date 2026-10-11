@@ -8,7 +8,13 @@
   head: [Лекции по Аэродинамике],
 )
 
+#let Eu = math.op("Eu")
+#let Fr = math.op("Fr")
 #let Kn = math.op("Kn")
+#let Nu = math.op("Nu")
+#let Nw = math.op("Nw")
+#let Re = math.op("Re")
+#let Sh = math.op("Sh")
 #let rot = math.op("rot")
 
 #outline()
@@ -718,7 +724,168 @@ $
   integral (dif p)/rho + v^2/2 = const
 $
 
-Коэффициент давления
+= Основы теории аэродинамического подобия
+
+#v(1em)
+
+Наука при изучении самых разнообразных процессов природы широко использует метод моделирования, который заключает в изучении физически подобного явления на моделях другого масштаба. Основные особенности -- простота, дешевизна и возможность проведения широких параметрических исследований.
+
+Два явления называются подобными, если во всех сходственных пространственно-временных точках во все сходственные моменты времени все однородные физические величины, описывающие явления, находятся в одинаковых отношениях. Например, точка $M(arrow(r), t)$ сходственна с $M_1(arrow(r)_1, t_1)$, $r_1 = r K_L$, $t_1 = t K_t$.
+
+Различают следующие виды подобия
++ Геометрическое
+  $
+    K_L = L_1/L, space K_S = S_1/S, space K_V = V_1/V
+  $
++ Кинематическое
+  $
+    K_t = t_1/t, space K_v = v_1/v, space K_w = w_1/w
+  $
++ Динамическое
+  $
+    K_R = R_1/R, space K_rho = rho_1/rho, space K_mu = mu_1/mu
+  $
+
+== Коэффициенты аэродинамических сил и моментов
+
+#v(1em)
+
 $
-  C_p = (p - p_oo)/((rho_oo v_oo^2)/2)
+  Delta arrow(R) = m arrow(W) epsilon -> Delta arrow(R)_1 = m_1 arrow(W)_1 epsilon \
+  m = rho Delta V -> m_1 = rho_1 Delta V_1 \
+  Delta arrow(R) = rho arrow(W) epsilon Delta V -> Delta arrow(R)_1 = rho_1 arrow(W)_1 epsilon Delta V_1
 $
+
+Посчитаем
+$
+  K_R = dv(R_1, R, d: Delta) = (rho_1 W_1 epsilon Delta V_1)/(rho W epsilon Delta V) = K_rho K_w K_L^3,
+$
+где $K_w = K_L K_t^(-2)$
+
+Получим
+$
+  K_rho K_w K_L^3 = K_rho K_L^4 K_t^(-2) = K_rho K_L^2 K_v^2
+$
+
+Запишем отношение
+$
+  R_1/R = (rho_1 L_1^2 v_1^2)/(rho L^2 v^2)
+$
+
+Получим число Ньютона
+$
+  R/(rho L^2 v^2) = R_1/(rho_1 L_1^2 v_1^2) = Nw
+$
+
+Но в аэродинамике используется коэффициент динамической силы
+$
+  arrow(C)_R = 2Nw = arrow(R)/((rho v^2)/2 S) = arrow(R)/(q S),
+$
+где $S ~ l^2$, $q = (rho v^2)/2$
+
+Отсюда
+$
+  C_x = X/(q S), space C_y = Y/(q S), space C_z = Z/(q S)
+$
+
+Например, $X_A = C_x_a q S = C_x_a q_1 S_1$
+
+Также существует коэффициент
+$
+  arrow(C)_m = arrow(M)/(q S L)
+$
+
+Рассмотрим
+$
+  K_p = p_1/p = K_R K_L^(-2) = K_R K_L^(-2) (K_L^2 K_t^2)/(K_L^2 K_t^2) = K_R K_t^2 K_L^(-4) K_v^2 = K_rho K_v^2
+$
+
+Число Эйлера
+$
+  p/(rho v^2) = p_1/(rho_1 v_1^2) = Eu
+$
+
+Возьмем
+$
+  p ~ p - p_oo, space rho v^2 ~ (rho v^2)/2
+$
+
+Получим коэффициент давления
+$
+  C_p = (p - p_oo)/q
+$
+
+Запишем
+$
+  (Delta T)/(rho v^2 Delta S) = (Delta T_1)/(rho_1 v_1 Delta S_1)
+$
+
+Местный коэффициент трения
+$
+  C_f = lim_(Delta S -> 0) (Delta T)/(q Delta S)
+$
+
+== Критерии аэродинамического подобия
+
+#v(1em)
+
+Число Кнутцена
+$
+  Kn = lambda/L
+$
+
+В основу теория размерности лежит $pi$-теорема, из нее можно получить все основные критерии.
+
+Новые уравнения
+$
+  (K_v K_t)/K_L pdv(rho_1, t_1) + "div"(rho_1 arrow(v)_1) = 0 \
+  (K_v K_t)/K_L rho_1 pdv(v_1, t_1) + ... = K_v^2/(K_R K_L) rho_1 arrow(F)_1 - (K_rho K_v^2)/K_p arrow(nabla) p_1 + (K_rho K_L K_u)/K_mu \
+  (K_v K_t)/K_L rho_1 pdv(v_1, t_1) + ... = - (K_rho K_epsilon)/K_p p_2 "div" arrow(v)_1 + (K_rho K_epsilon K_L)/(K_mu K_v) - (K_rho K_v K_epsilon)/K_q "div" arrow(q)_1
+$
+
+Критерий монохромности
+$
+  (K_v K_t)/K_t = 1 \
+  (v t)/L = (v_1 t_1)/L_1 = H_0
+$
+
+Число Струхаля
+$
+  (v T)/L = Sh
+$
+
+Число Фруда
+$
+  v^2/(g L) = v_1^2/(g_1 L_1) = Fr
+$
+
+Число Маха
+$
+  v/a = v_1/a_1 = M
+$
+
+Число Рейнольдса
+$
+  (rho v L)/mu = (rho_1 v_1 L_1)/mu_1 = Re
+$
+
+Число Прандтля
+$
+  (mu C_p)/lambda = (mu_1 C_p_1)/lambda_1 = Pr
+$
+
+Число Нуссельта
+$
+  (alpha L)/lambda = (alpha_1 L_1)/lambda_1 = Nu
+$
+
+Соответственно полное подобие можно получить, обеспечив равенство чисел $Sh$, $Fr$, $M$, $Re$, $Pr$, $Nu$, $Kn$.
+
++ Вязкость и сжимаемость
+  $
+    (rho v L)/mu = (rho_1 v_1 L_1)/mu_1, space v/a = v_1/a_1
+  $
++ Силы тяжести и вязкости
+  $
+    v^2/(g L) = v_1^2/(g_1 L_1), space (rho v L)/mu = (rho_1 v_1 L_1)/mu_1
+  $
