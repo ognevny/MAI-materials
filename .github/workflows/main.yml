@@ -72,6 +72,7 @@ jobs:
             [numerical_methods]='Numerical-methods'
             [structural_materials_technology]='Structural-materials-technology'
             [structural_mechanics]='Structural-mechanics'
+            [teamwork_policy]='Teamwork-policy'
           )
 
           declare -A seminars_3_4=(

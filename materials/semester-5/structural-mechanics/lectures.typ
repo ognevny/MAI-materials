@@ -711,3 +711,108 @@ $
     $
   ],
 )
+
+== Перемещения стержневых систем
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr, 1fr),
+  column-gutter: 1em,
+  [
+    // #figure()
+    Для графика
+    $
+      A = 1/2 P_i v_i
+    $
+    Для тел
+    $
+      A = P u "или" A = P v
+    $
+  ],
+  [
+    // #figure()
+    $
+      A = P u cos alpha
+    $
+  ],
+  [
+    // #figure()
+    $
+      M = P u \
+      theta -> 0 => A = 2P theta a/2 = P a theta = M theta
+    $
+  ],
+)
+
+Теорема Клайперона
+$
+  A = sum_(i=1)^n P_i v_i
+$
+
+#grid(
+  columns: (1fr, 2fr),
+  column-gutter: 1em,
+  [],
+  [
+    $
+      A = A_1 + A_2 + P_1 v_12
+    $
+    Для консольных балок
+    $
+      A_1 = P_1 v_1, \
+      A_2 = P_2 v_2, \
+      A = A_1 + A_2 + P_1 v_12,
+    $
+    где $v_12$ -- перемещение по направлению силы $P_1$ после приложения силы $P_2$.
+
+    Теорема о взаимности Бетти
+    $
+      A = A_2 + A_1 + P_2 v_21 => #rect[$ P_1 v_12 = P_2 v_21 $]
+    $
+    Если $P_1 = P_2$, то получим теорему о взаимности Максвелла
+    $
+      v_12 = v_21
+    $
+  ],
+)
+
+...
+
+== Потенциальная энергия деформации стержневой системы
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [],
+  [
+    $
+      sigma = E epsilon = N/A \
+      epsilon = (Delta l)/l => Delta l = l epsilon \
+      Delta(dif x) = (N dif x)/(E A) \
+      dif U_N = 1/2 N Delta(dif x) = 1/2 (N N dif x)/(E A) = 1/2 (N^2 dif x)/(E A)
+    $
+  ],
+)
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  [],
+  [
+    $
+      dif theta = (dif x)/rho \
+      dif U_m = 1/2 M_y dif theta = 1/2 M_y/rho dif x \
+      1/rho = M_y/(E I_z) \
+      dif U_m = M_y^2/(2 E I_z) dif x
+    $
+  ],
+)
+
+Общая формула для упругой энергии стержня
+$
+  dif U = sum_(j=1)^N (integral_l_j N^2/(2E A) dif x + integral_l_j M_y^2/(2E I_z) dif x + integral_l_j M_z^2/(2E I_y) dif x + integral_l_j M_"кр"^2/(2G I_p) dif x + K_z integral_l_j Q_z^2/(2G A) dif x + integral_l_j Q_y^2/(2G A) dif x),
+$
+где $K_z$ и $K_y$ -- константы, зависящая от геометрии сечения. Последние две слагаемые часто оказываются пренебрежимо малы, поэтому их можно опускать.

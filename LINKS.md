@@ -36,7 +36,7 @@
   - [Лекции по Аэродинамике](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Aerodynamics.pdf)
   - [Лекции по Гидравлике](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Hydraulics.pdf)
   - [Лекции по Деталям машин и основам конструирования](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Machine-parts.pdf)
-  - [Лекции по Политике командной работы]()
+  - [Лекции по Политике командной работы](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Teamwork-policy.pdf)
   - [Лекции по Строительной механике](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Structural-mechanics.pdf)
   - [Лекции по Технологии конструкционных материалов](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Structural-materials-technology.pdf)
   - [Лекции по Численным методам](https://github.com/ognevny/MAI-materials/releases/download/latest/Lectures_of_Numerical-methods.pdf)
