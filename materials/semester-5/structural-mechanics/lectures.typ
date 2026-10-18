@@ -711,3 +711,143 @@ $
     $
   ],
 )
+
+== Перемещения стержневых систем
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect5-1.png", width: 90%),
+      caption: [],
+    ) <работа_прямо>
+
+    Для графика снизу (@работа_прямо)
+    $
+      A = 1/2 P_i v_i
+    $
+    Для тел сверху (@работа_прямо)
+    $
+      A = P u "или" A = P v
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect5-2.png", width: 40%),
+    )
+
+    $
+      A = P u cos alpha
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect5-3.png", width: 50%),
+    )
+
+    $
+      M = P u \
+      theta -> 0 => A = 2P theta a/2 = P a theta = M theta
+    $
+  ],
+)
+
+Теорема Клапейрона
+$
+  A = sum_(i=1)^n P_i v_i
+$
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      (
+        image("source-figures/lect5-4.png"),
+        image("source-figures/lect5-5.png"),
+      ).join(),
+    )
+  ],
+  [
+    $
+      A = A_1 + A_2 + P_1 v_12
+    $
+    Для консольных балок
+    $
+      A_1 = P_1 v_1, \
+      A_2 = P_2 v_2, \
+      A = A_1 + A_2 + P_1 v_12,
+    $
+    где $v_12$ -- перемещение по направлению силы $P_1$ после приложения силы $P_2$.
+
+    Теорема о взаимности Бетти
+    $
+      A = A_2 + A_1 + P_2 v_21 => #rect[$ P_1 v_12 = P_2 v_21 $]
+    $
+    Если $P_1 = P_2$, то получим теорему о взаимности Максвелла
+    $
+      v_12 = v_21
+    $
+  ],
+)
+
+#grid(
+  columns: (1fr, 4fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect5-6.png"),
+    )
+  ],
+  [
+    ... (здесь возможно будет что-то ещё)
+  ],
+)
+
+== Потенциальная энергия деформации стержневой системы
+
+#v(1em)
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect5-7.png"),
+    )
+  ],
+  [
+    $
+      sigma = E epsilon = N/A \
+      epsilon = (Delta l)/l => Delta l = l epsilon \
+      Delta(dif x) = (N dif x)/(E A) \
+      dif U_N = 1/2 N Delta(dif x) = 1/2 (N N dif x)/(E A) = \ = 1/2 (N^2 dif x)/(E A)
+    $
+  ],
+)
+
+#grid(
+  columns: (1fr, 5fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect5-8.png"),
+    )
+  ],
+  [
+    $
+      dif theta = (dif x)/rho \
+      dif U_m = 1/2 M_y dif theta = 1/2 M_y/rho dif x \
+      1/rho = M_y/(E I_z) => dif U_m = M_y^2/(2 E I_z) dif x
+    $
+  ],
+)
+
+Общая формула для упругой энергии стержня
+$
+  dif U = sum_(j=1)^N (integral_l_j N^2/(2E A) dif x + integral_l_j M_y^2/(2E I_z) dif x + integral_l_j M_z^2/(2E I_y) dif x + integral_l_j M_"кр"^2/(2G I_p) dif x + K_z integral_l_j Q_z^2/(2G A) dif x + integral_l_j Q_y^2/(2G A) dif x),
+$
+где $K_z$ и $K_y$ -- константы, зависящая от геометрии сечения. Последние две слагаемые часто оказываются пренебрежимо малы, поэтому их можно опускать.

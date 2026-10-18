@@ -889,3 +889,60 @@ $
   $
     v^2/(g L) = v_1^2/(g_1 L_1), space (rho v L)/mu = (rho_1 v_1 L_1)/mu_1
   $
+
+= Основы вычислительной гидродинамики
+
+== Интегралы уравнений движения
+
+#v(1em)
+
+$
+  dv(arrow(v), t) = -1/rho arrow(nabla) p + arrow(f) \
+  dv(arrow(v), t) = pdv(arrow(v), t) + v_x pdv(arrow(v), x) + v_y pdv(arrow(v), y) + v_z pdv(arrow(v), z) \
+  arrow(nabla) p = arrow(i) pdv(p, x) + arrow(j) pdv(p, y) + arrow(k) pdv(p, z) \
+  arrow(f) = -arrow(nabla) V, space V = g y
+$
+
+Интеграл Лагранжа
+$
+  & rot arrow(v) = 0 => pdv(v_x, y) = pdv(v_y, x), space pdv(v_y, z) = pdv(v_z, y), space pdv(v_x, z) = pdv(v_z, x) \
+  & arrow(v) = arrow(nabla) phi \
+  & pdv(v_x, t) = pdv(, t) pdv(phi, x) = pdv(, x) pdv(phi, t) \
+  & v_x pdv(v_x, x) = pdv(, x) v_x^2/2 \
+  & v_y pdv(v_x, y) = v_y pdv(v_y, x) = pdv(, x) v_y^2/2 \
+  & v_z pdv(v_x, z) = v_z pdv(v_z, x) = pdv(, x) v_z^2/2 \
+  & pdv(, x) (pdv(phi, t) + v_x^2/2 + v_y^2/2 + v_z^2/2) = pdv(, x) (pdv(phi, t) + v^2/2) \
+  & P = integral (dif p)/rho; space pdv(P, x) = 1/rho pdv(p, x) \
+  & f_x = -pdv(V, x) \
+  & pdv(, x) overbrace((pdv(phi, t) + v^2/2 + P - V), "интеграл Лагранжа") = 0 \
+  & pdv(phi, t) + v^2/2 + P - V = const(t)
+$
+
+Интеграл Бернулли
+$
+  rot arrow(v) != 0 quad pdv(arrow(v), t) = 0 \
+  v_x pdv(v_x, x) + v_y pdv(v_x, y) + v_z pdv(v_x, z) = pdv(, x) v_x^2/2 + pdv(, x) v_y^2/2 + v_y (pdv(v_x, y) - pdv(v_y, x)) + pdv(, x) v_z^2/2 - v_z (pdv(v_x, z) - pdv(v_z, x)) = \ = pdv(, x) v^2/2 + 2(v_z omega_y - v_y omega_z) \
+  pdv(, x) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_x |dot x dif x \
+  pdv(, y) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_y |dot x dif y \
+  pdv(, z) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_z |dot x dif z \
+  dif(v^2/2 + P + V) = -2(arrow(omega) times arrow(v)) dif arrow(S), space dif arrow(S) = arrow(i) dif x + arrow(j) dif y + arrow(k) dif z
+$
+
+Отсюда выведем при $rho = const$
+$
+  P = integral (dif p)/rho = p/rho + const \
+  v^2/2 + p/rho + g y = const \
+  (rho v^2)/2 + p + cancel(rho g y) = const
+$
+
+Давление торможения
+$
+  (rho v^2)/2 + p = const = p_0
+$
+
+При $p/rho^gamma = const$
+$
+  integral (dif p)/rho = integral (gamma const rho^(gamma-1) dif rho)/rho = gamma const rho^(gamma-1)/(gamma - 1) + const = gamma/(gamma - 1) p/rho^gamma rho^(gamma-1) + const = gamma/(gamma - 1) p/rho + const \
+  p/rho = R T, space gamma/(gamma - 1) R = C_p, space C_p T = i \
+  i + v^2/2 = const = i_0
+$
