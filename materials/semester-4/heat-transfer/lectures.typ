@@ -1,5 +1,5 @@
 #import "meta.typ": conf, const, grad, ov
-#import "@preview/physica:0.9.8": dv, evaluated, pdv
+#import "@preview/physica:0.9.8": dd, dv, evaluated, pdv
 
 #show: conf.with(
   title: "Лекции по Теплопередаче",
@@ -7,6 +7,7 @@
   date: datetime(year: 2026, month: 02, day: 09),
   head: [Лекции по Теплопередаче],
   put_author: true,
+  group: "М1О-232БВ-24",
 )
 
 // Критерии
@@ -218,10 +219,10 @@ $[rho ov(V) I] = "кг"/(м^2 dot с) dot "Дж"/"кг" = "Дж"/(м^2 dot с) =
 
 #v(1em)
 
-Элементарное количество теплоты $dif Q$, проходящее через элемент изотермической поверхности $dif F$ за промежуток времени $dif tau$ пропорционально градиенту температуры $pdv(T, n)$. Закон Фурье может быть сформулирован одним из следующих способов
+Элементарное количество теплоты $dd(Q)$, проходящее через элемент изотермической поверхности $dd(F)$ за промежуток времени $dd(tau)$ пропорционально градиенту температуры $pdv(T, n)$. Закон Фурье может быть сформулирован одним из следующих способов
 $
-  dif Q & = -lambda pdv(T, n) dif F dif tau \
-  dif Q & = -lambda pdv(T, n) dif F \
+  dd(Q) & = -lambda pdv(T, n) dd(F, tau) \
+  dd(Q) & = -lambda pdv(T, n) dd(F) \
   ov(q) & = -lambda ov(pdv(T, n)) <=> ov(q) = -lambda ov(grad)T
 $
 
@@ -230,7 +231,7 @@ $lambda = ["Вт"/(м dot К)]$ -- коэффициент теплопровод
 Знак минус стоит в уравнении, так как в направлении распространения теплоты температура убывает, и градиент получается отрицательным.
 
 $
-  lambda = abs((dif Q)/(pdv(T, u) dif F dif tau))
+  lambda = abs(dd(Q)/(pdv(T, u) dd(F, tau)))
 $
 
 Физический смысл $lambda$: коэффициент теплопроводности численно равен количеству теплоты, проходящей в единицу времени через единицу площади изотермической поверхности при единичном температурном градиенте.
@@ -267,29 +268,29 @@ $b$ определяется экспериментально
     )
   ],
   [
-    Рассмотрим тело объемом $V$, ограниченное поверхностью $F$. $dif Q_F$ -- количество теплоты, прошедшее через боковую поверхность тела, $dif Q_V$ выделилось внутри тела
+    Рассмотрим тело объемом $V$, ограниченное поверхностью $F$. $dd(Q_F)$ -- количество теплоты, прошедшее через боковую поверхность тела, $dd(Q_V)$ выделилось внутри тела
     $
-      & dif Q_F + dif Q_V = dif u + dif L = dif I - V dif p \
-      & dif p = 0 => dif Q_F + dif Q_V = dif I \
-      & dif Q_F = -dif tau integral_F ov(q) dif F
+      & dd(Q_F) + dd(Q_V) = dd(u, L, prod: +) = dd(I) - V dd(p) \
+      & dd(p) = 0 => dd(Q_F, Q_V, prod: +) = dd(I) \
+      & dd(Q_F) = -dd(tau) integral_F ov(q) dd(F)
     $
   ],
 )
 
 По теореме Остроградского
 $
-  integral_F ov(q) dif F = integral_V "div"ov(q) dif V => dif Q_F = -dif tau integral_V "div"ov(q) dif V
+  integral_F ov(q) dd(F) = integral_V "div"ov(q) dd(V) => dd(Q_F) = -dd(tau) integral_V "div"ov(q) dd(V)
 $
 
-Аналогично для $dif Q_V$
+Аналогично для $dd(Q_V)$
 $
-  dif Q_V = dif tau integral_V q_V dif V
+  dd(Q_V) = dd(tau) integral_V q_V dd(V)
 $
 
 $display(
-  dif T = pdv(T, tau) dif tau \
-  dif I = dif tau integral_V C rho pdv(T, tau) dif V \
-  -dif tau integral_V "div"ov(q) dif V + dif tau integral_V q_V dif V = dif tau integral_V rho C_p pdv(T, tau) dif V
+  dd(T) = pdv(T, tau) dd(tau) \
+  dd(I) = dd(tau) integral_V C rho pdv(T, tau) dd(V) \
+  -dd(tau) integral_V "div"ov(q) dd(V) + dd(tau) integral_V q_V dd(V) = dd(tau) integral_V rho C_p pdv(T, tau) dd(V)
 )$
 
 Искомое ДУ
@@ -679,16 +680,16 @@ $
 
 $display(
   dv(Phi, x, 2) = 0 quad cases(Phi(0) = Phi_1, Phi(delta) = Phi_2) => Phi(x) = C_1 x + C_2\; space C_1 = (Phi_2 - Phi_1)/delta\, space C_2 = Phi_1 \
-  q = -lambda dv(T, x) = -dv(Phi, x) = (Phi_1 - Phi_2)/delta <=> integral_0^delta dv(Phi, x) dif x = integral_0^delta lambda dv(T, x) dif x <=> integral_(Phi_1)^(Phi_2) dif Phi = integral_(T_w_1)^(T_w_2) lambda dif T <=> Phi_2 - Phi_1 = integral_(T_w_1)^(T_w_2) lambda dif T <=> \ <=> Phi_1 - Phi_2 = integral_(T_w_2)^(T_w_1) lambda dif T => q = 1/delta integral_(T_w_2)^(T_w_1) lambda dif T
+  q = -lambda dv(T, x) = -dv(Phi, x) = (Phi_1 - Phi_2)/delta <=> integral_0^delta dv(Phi, x) dd(x) = integral_0^delta lambda dv(T, x) dd(x) <=> integral_(Phi_1)^(Phi_2) dd(phi) = integral_(T_w_1)^(T_w_2) lambda dd(T) <=> Phi_2 - Phi_1 = integral_(T_w_1)^(T_w_2) lambda dd(T) <=> \ <=> Phi_1 - Phi_2 = integral_(T_w_2)^(T_w_1) lambda dd(T) => q = 1/delta integral_(T_w_2)^(T_w_1) lambda dd(T)
 )$
 
 $
-  q = (T_w_1 - T_w_2)/delta [1/(T_w_1 - T_w_2) integral_(T_w_2)^(T_w_1) lambda dif T]
+  q = (T_w_1 - T_w_2)/delta [1/(T_w_1 - T_w_2) integral_(T_w_2)^(T_w_1) lambda dd(T)]
 $
 
 Среднеинтегральное значение коэффициента теплопроводности в интервале температур $[T_w_1, T_w_2]$
 $
-  lambda_"ср" = 1/(T_w_1 - T_w_2) integral_(T_w_2)^(T_w_1) lambda dif T
+  lambda_"ср" = 1/(T_w_1 - T_w_2) integral_(T_w_2)^(T_w_1) lambda dd(T)
 $
 
 Тогда тепловой поток принимает вид
@@ -809,7 +810,7 @@ $
     $
 
     Подставим $display(u = dv(T, r))$: $display(
-      dv(u, r) + u/r = 0 <=> (dif u)/u = -(dif r)/r <=> ln u = -ln z + ln C <=> u = C_1/r
+      dv(u, r) + u/r = 0 <=> dd(u)/u = -dd(r)/r <=> ln u = -ln z + ln C <=> u = C_1/r
     )$
 
     $display(dv(T, r) = C_1/r\, space q = -lambda dv(T, r) ~ C_1/r)$
@@ -819,7 +820,7 @@ $
 )
 
 $display(
-  dif T = C_1 (dif r)/r => T(r) = C_1 ln r + C_2 \
+  dd(T) = C_1 dd(r)/r => T(r) = C_1 ln r + C_2 \
   cases(
     T(r_1) = T_w_1 = C_1 ln r_1 + C_2,
     T(r_2) = T_w_2 = C_1 ln r_2 + C_2,
@@ -1083,7 +1084,7 @@ $
     Подставим $display(u = dv(T, r))$
 
     $display(
-      dv(u, r) + 2 u/r = 0 <=> (dif u)/u = -2 (dif r)/r <=> ln u = -2ln r + ln C_1 <=> u = C_1/r^2 => dv(T, r) = C_1/r^2 \
+      dv(u, r) + 2 u/r = 0 <=> dd(u)/u = -2dd(r)/r <=> ln u = -2ln r + ln C_1 <=> u = C_1/r^2 => dv(T, r) = C_1/r^2 \
       q = -lambda dv(T, r) ~ 1/r^2\; space Q = q F\, space F = 4pi r^2
     )$
   ],
@@ -1397,8 +1398,8 @@ $
 
 Закон Ньютона-Рихмана описывает тепловой поток при конвективном теплообмене
 $
-  & dif Q = alpha (T_f - T_w) dif F dif tau, \
-  & dif Q = alpha (T_f - T_w) dif F, \
+  & dd(Q) = alpha (T_f - T_w) dd(F, tau), \
+  & dd(Q) = alpha (T_f - T_w) dd(F), \
   & q = alpha (T_f - T_w),
 $
 где $display([alpha] = "Вт"/(м^2 dot К))$ -- коэффициент теплоотдачи
@@ -1695,7 +1696,7 @@ $
 $
 где $T$ -- статическая температура, тогда
 $
-  dif T_0 = dif T + dif(u^2/(2C_p))
+  dd(T_0) = dd(T) + dif(u^2/(2C_p))
 $
 
 С учетом $display(Pr = nu/a = (mu C_p)/lambda)$ можно преобразовать уравнение (4) следующим образом
@@ -2610,7 +2611,7 @@ $
 
     Возьмем
     $
-      ov(alpha) = 1/L integral_0^L alpha(x) dif x => ov(alpha) = 2alpha(L)
+      ov(alpha) = 1/L integral_0^L alpha(x) dd(x) => ov(alpha) = 2alpha(L)
     $
   ],
   [
@@ -2705,7 +2706,7 @@ $
     $
 
     $display(
-      ov(alpha) = 1/L integral_0^L 0.029lambda_w ((rho_w u_f)/mu_w)^0.8 Pr_w^0.4 (dif x)/x^0.2 \
+      ov(alpha) = 1/L integral_0^L 0.029lambda_w ((rho_w u_f)/mu_w)^0.8 Pr_w^0.4 dd(x)/x^0.2 \
       ov(alpha) = 0.036Re_(w_L)^0.5 Pr_w^0.4 lambda_w/L
     )$
 
@@ -2736,7 +2737,7 @@ $
     Обычно принимается $Delta x = 0$, тогда получаем
     $
       Re_"кр" = 5 dot 10^5 space (10^5) \
-      ov(alpha)(L) = 1/x_"кр" integral_0^(x_"кр") alpha_л (x) dif x + 1/(L - x_"кр") integral_(x_"кр")^L alpha_т (x) dif x
+      ov(alpha)(L) = 1/x_"кр" integral_0^(x_"кр") alpha_л (x) dd(x) + 1/(L - x_"кр") integral_(x_"кр")^L alpha_т (x) dd(x)
     $
   ],
   [
@@ -2854,7 +2855,7 @@ $
   $
 + Средний коэффициент теплоотдачи
   $
-    ov(alpha) = (integral_0^L alpha(x) Delta T(x) dif x)/(integral_0^L Delta T(x) dif x) => ov(l)_"нт"
+    ov(alpha) = (integral_0^L alpha(x) Delta T(x) dd(x))/(integral_0^L Delta T(x) dd(x)) => ov(l)_"нт"
   $
   Расстояние, на котором происходит стабилизация среднего коэффициента теплоотдачи всегда больше расстояния, отвечающего за стабилизацию местного $alpha(x)$.
 
@@ -3191,13 +3192,13 @@ $P_к$ -- контактное (удельное) давление; $E$ -- мо�
 
 Полный поток излучения $Q$ с поверхности $F$
 $
-  Q = integral_F E dif F space ["Вт"]
+  Q = integral_F E dd(F) space ["Вт"]
 $
 
 Спектральная плотность излучения $E_lambda$ -- количество лучистой энергии в единицу времени с единицы площади поверхности в единичном длине интервала волн. $[E_lambda] = "Вт"/(м^2 dot м) = "Вт"/м^3$ (писать лучше не как $м^3$)
 
 $
-  E = integral_0^oo E_lambda dif lambda
+  E = integral_0^oo E_lambda dd(lambda)
 $
 
 $E$ зависит от
@@ -3316,7 +3317,7 @@ $
       Закон Стефана-Больцмана
 
       $
-        E_0 = f(T) , space E_0 = integral_0^oo E_lambda dif lambda = integral_0^oo (C_1 lambda^(-5))/(e^(C_2/(lambda T)) - 1) dif lambda = sigma_0 T^4
+        E_0 = f(T) , space E_0 = integral_0^oo E_lambda dd(lambda) = integral_0^oo (C_1 lambda^(-5))/(e^(C_2/(lambda T)) - 1) dd(lambda) = sigma_0 T^4
       $
       $sigma_0 = 5.67 dot 10^(-8) "Вт"/(м^2 dot К^4)$ -- постоянная Стефана-Больцмана.
 
@@ -3382,7 +3383,7 @@ $
 
       Устанавливает изменение потока излучения по отдельным направлениям полусферического пространства.
 
-      Количество энергии, излучаемой поверхностью $dif F_1$ в направлении элемента $dif F_2$ пропорциональна количеству энергии, излучаемой по нормали к поверхности $dif F_1$ к величине пространственного (или телесного) угла $dif Omega$ к косинусу угла $phi$
+      Количество энергии, излучаемой поверхностью $dd(F_1)$ в направлении элемента $dd(F_2)$ пропорциональна количеству энергии, излучаемой по нормали к поверхности $dd(F_1)$ к величине пространственного (или телесного) угла $dd(Omega)$ к косинусу угла $phi$
     ],
     [
       #figure(
@@ -3392,13 +3393,13 @@ $
   )
 
   $
-    dif Q_phi = E_n dif F_1 Omega cos phi , space Omega = (dif F_2)/r^2
+    dd(Q_phi) = E_n dd(F_1) Omega cos phi , space Omega = dd(F_2)/r^2
   $
 
   $
     cases(
-      dif Q = pi E_n dif F_1,
-      dif Q = epsilon C_0 (T/100)^4 dif F_1,
+      dd(Q) = pi E_n dd(F_1),
+      dd(Q) = epsilon C_0 (T/100)^4 dd(F_1),
     ) => E_n = 1/pi epsilon C_0 (T/100)^4
   $
 
@@ -3880,17 +3881,17 @@ $
 
 Рассматривается только стационарный режим работы и утечки теплоты считаются нулевыми. Следовательно тепловой поток равен
 $
-  dif Q = dif Q_г = dif Q_х,
+  dd(Q) = dd(Q_г) = dd(Q_х),
 $
 где
 $
-  & dif Q_г = dot(m)_г C_p_г dif T_г, space dif T_г < 0 \
-  & dif Q_х = dot(m)_х C_p_х dif T_х, space dif T_х > 0
+  & dd(Q_г) = dot(m)_г C_p_г dd(T_г), space dd(T_г) < 0 \
+  & dd(Q_х) = dot(m)_х C_p_х dd(T_х), space dd(T_х) > 0
 $
 
 Тогда дифференциальная и интегральная формы соответственно
 $
-  & dif Q = -dot(m)_г C_p_г dif T_г = dot(m)_х C_p_х dif T_х \
+  & dd(Q) = -dot(m)_г C_p_г dd(T_г) = dot(m)_х C_p_х dd(T_х) \
   & Q = dot(m)_г ov(C)_p_г (T'_г - T''_г) = dot(m)_х ov(C)_p_х (T''_х - T'_х)
 $
 Соответственно $dot(m)_г$ и $dot(m)_х$ -- массовые расходы горячего (греющего) и холодного (нагреваемого) теплоносителей; $ov(C)_p_г$ и $ov(C)_p_х$ -- средние значения идеальных теплоемкостей в интервалах температур от $T'_г$ до $T''_г$ и от $T'_х$ до $T''_х$.
@@ -3904,7 +3905,7 @@ $
 $
 
 $
-  dif Q = K (T_г - T_х) dif F => Q = integral_F K Delta T dif F,
+  dd(Q) = K (T_г - T_х) dd(F) => Q = integral_F K Delta T dd(F),
 $
 где $K$ -- коэффициент теплопередачи, $"Вт"/(м^2 dot К)$
 
@@ -3916,7 +3917,7 @@ $
 $
 где $ov(Delta T)$ -- средняя разность температур или средний логарифмический температурный напор, из которого можно найти поверхность теплообмена $F$
 $
-  ov(Delta T) = 1/F integral_F Delta T dif F => F = Q/(K ov(Delta T))
+  ov(Delta T) = 1/F integral_F Delta T dd(F) => F = Q/(K ov(Delta T))
 $
 
 Определим $ov(Delta T)$ для прямоточной схемы течения
@@ -3932,23 +3933,23 @@ $
   [
     Запишем температуры горячего и холодного теплоносителей
     $
-      dif T_г = -(dif Q)/(dot(m)_г C_p_г), space dif T_х = -(dif Q)/(dot(m)_х C_p_х)
+      dd(T_г) = -dd(Q)/(dot(m)_г C_p_г), space dd(T_х) = -dd(Q)/(dot(m)_х C_p_х)
     $
 
     Изменение температурного напора равно
     $
-      dif(T_г - T_х) = dif T_г - dif T_х = -(1/(dot(m)_г C_p_г) + 1/(dot(m)_х C_p_х)) dif Q
+      dif(T_г - T_х) = dd(T_г) - dd(T_х) = -(1/(dot(m)_г C_p_г) + 1/(dot(m)_х C_p_х)) dd(Q)
     $
 
     $display(
-      dif Q = K(T_г - T_х) dif F => (dif(T_г - T_х))/(T_г - T_х) = -(1/(dot(m)_г C_p_г) + 1/(dot(m)_х C_p_х)) K dif F
+      dd(Q) = K(T_г - T_х) dd(F) => (dif(T_г - T_х))/(T_г - T_х) = -(1/(dot(m)_г C_p_г) + 1/(dot(m)_х C_p_х)) K dd(F)
     )$
   ],
 )
 
 $display(
-  (dif(T_г - T_х))/(T_г - T_х) = -((T'_г - T''_г)/(dot(m)_г C_p_г (T'_г - T''_г)) + (T''_х - T'_х)/(dot(m)_х C_p_х (T''_х - T'_х))) K dif F \
-  (dif(T_г - T_х))/(T_г - T_х) = -[(T'_г - T''_г) + (T''_х - T'_х)] (K dif F)/Q
+  (dif(T_г - T_х))/(T_г - T_х) = -((T'_г - T''_г)/(dot(m)_г C_p_г (T'_г - T''_г)) + (T''_х - T'_х)/(dot(m)_х C_p_х (T''_х - T'_х))) K dd(F) \
+  (dif(T_г - T_х))/(T_г - T_х) = -[(T'_г - T''_г) + (T''_х - T'_х)] (K dd(F))/Q
 )$
 
 Получим

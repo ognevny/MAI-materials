@@ -1,5 +1,5 @@
 #import "meta.typ": arctg, conf, un
-#import "@preview/physica:0.9.8": dv, evaluated
+#import "@preview/physica:0.9.8": dd, dv, evaluated
 
 #show: conf.with(
   title: "Лекции по Общей электротехнике и электронике",
@@ -512,7 +512,7 @@ $
 Среднее значение синусоидального тока считается как
 
 $
-  I_"ср" = 2/T integral_0^(T/2) i(t) dif t stretch(=)^(psi_i=0) 2/T integral_0^(T/2) I_m sin omega t dif t = -(2I_m)/(omega T) evaluated(cos omega t)_0^(T/2) = 2/pi I_m approx 0.637I_m
+  I_"ср" = 2/T integral_0^(T/2) i(t) dd(t) stretch(=)^(psi_i=0) 2/T integral_0^(T/2) I_m sin omega t dd(t) = -(2I_m)/(omega T) evaluated(cos omega t)_0^(T/2) = 2/pi I_m approx 0.637I_m
 $
 
 Было подставлено $omega = (2pi)/T$
@@ -520,7 +520,7 @@ $
 Средняя квадратическая синусоидального тока
 
 $
-  I^2 = 1/T integral_0^T i^2 (t) dif t = 1/T integral_0^T I_m^2 sin^2 omega t dif t = I_m^2/T integral_0^T (1 - cos 2omega t)/2 dif t = I_m^2/(2T) integral_0^T dif t = I_m^2/2,
+  I^2 = 1/T integral_0^T i^2 (t) dd(t) = 1/T integral_0^T I_m^2 sin^2 omega t dd(t) = I_m^2/T integral_0^T (1 - cos 2omega t)/2 dd(t) = I_m^2/(2T) integral_0^T dd(t) = I_m^2/2,
 $
 
 Отсюда имеем соответственно действующие значения силы тока и напряжения
@@ -535,7 +535,7 @@ $
   [
     Действующие значения являются неким эквивалентом значениям при постоянном токе
     $
-      Q = integral_0^T i^2 R dif t = R integral_0^T i^2 (t) dif t = I^2 R T
+      Q = integral_0^T i^2 R dd(t) = R integral_0^T i^2 (t) dd(t) = I^2 R T
     $
   ],
   [
@@ -580,7 +580,7 @@ $
 
 Средняя мощность
 $
-  P = 1/T integral_0^T p dif t = U I space ["Вт"], space P = I^2 R = U^2 G, space G = 1/R
+  P = 1/T integral_0^T p dd(t) = U I space ["Вт"], space P = I^2 R = U^2 G, space G = 1/R
 $
 
 == Индуктивность
@@ -716,7 +716,7 @@ $
   column-gutter: 1em,
   [
     $
-      & u = u_R + u_L + u_C = i R + L dv(i, t) + 1/C integral i dif t \
+      & u = u_R + u_L + u_C = i R + L dv(i, t) + 1/C integral i dd(t) \
       & i = I_m sin(omega t + psi_i); space psi_i = 0 \
       & u_R = R I_m sin omega t, space u_L = omega L I_m cos omega t, space u_C = -1/(omega C) I_m cos omega t
     $
@@ -779,7 +779,7 @@ $
   [
     $
       i = i_R + i_L + i_C \
-      i_R = U_m/R sin omega t, space i_L = 1/L integral u dif t = 1/(omega L) U_m cos omega t, space i_C = C dv(u, t) = omega C cos omega t
+      i_R = U_m/R sin omega t, space i_L = 1/L integral u dd(t) = 1/(omega L) U_m cos omega t, space i_C = C dv(u, t) = omega C cos omega t
     $
   ],
 )
@@ -819,7 +819,7 @@ $
 
 Активная мощность
 $
-  P = 1/T integral_0^T p(t) dif t = (U_m I_m)/2 cos phi = U I cos phi space ["Вт"]
+  P = 1/T integral_0^T p(t) dd(t) = (U_m I_m)/2 cos phi = U I cos phi space ["Вт"]
 $
 
 #grid(
@@ -898,7 +898,7 @@ $display(
 Воспользуемся комплексным методом для расчета последовательной RLC-цепи
 
 $
-  u = u_R + u_L + u_C = i R + L dv(i, t) + 1/C integral i dif t
+  u = u_R + u_L + u_C = i R + L dv(i, t) + 1/C integral i dd(t)
 $
 
 $display(

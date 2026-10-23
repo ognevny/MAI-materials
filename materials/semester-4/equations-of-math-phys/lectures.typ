@@ -1,5 +1,5 @@
 #import "meta.typ": conf, const, grad, ov
-#import "@preview/physica:0.9.8": dv, evaluated, pdv
+#import "@preview/physica:0.9.8": dd, dv, evaluated, pdv
 
 #show: conf.with(
   title: "Лекции по Уравнениям математической физики",
@@ -7,6 +7,7 @@
   date: datetime(year: 2026, month: 2, day: 10),
   head: [Лекции по Уравнениям математической физики],
   put_author: true,
+  group: "М1О-232БВ-24",
 )
 
 #outline()
@@ -26,7 +27,7 @@ $
 
 $u = phi(x, y)$ -- решение УЧП, если при подстановке $u$, $u'_x$, $u'_y$ и так далее получается верное тождество.
 
-Пример: $u''_(y y) = 0 stretch(<=>)^(x=x_0) (u'_y)'_y = 0 => u'_y = phi(x) => u(x, y) = integral phi(x) dif y = phi (x) y + psi(x)$. Функции $phi(x)$ и $psi(x)$ -- произвольные.
+Пример: $u''_(y y) = 0 stretch(<=>)^(x=x_0) (u'_y)'_y = 0 => u'_y = phi(x) => u(x, y) = integral phi(x) dd(y) = phi (x) y + psi(x)$. Функции $phi(x)$ и $psi(x)$ -- произвольные.
 
 Проверка:
 
@@ -39,7 +40,7 @@ $u_x u_y - y u_y = 0 => u_y (u_x - y) = 0 => display(
   cases(
     delim: "[",
     u_y = 0 => u = phi(x),
-    u_x - y = 0 => u_x = y => u = integral y dif x = y integral dif x = y dot x + psi(y)
+    u_x - y = 0 => u_x = y => u = integral y dd(x) = y integral dd(x) = y dot x + psi(y)
   )
 )$
 
@@ -102,7 +103,7 @@ $R(x, y, z) = 0$ -- однородное УЧП
 
 Составляем систему, являющейся системой ОДУ
 #align(center)[#rect[$
-  (dif x)/P(x, y, z) = (dif y)/Q(x, y, z) = (dif z)/R(x, y, z) quad (2)
+  dd(x)/P(x, y, z) = dd(y)/Q(x, y, z) = dd(z)/R(x, y, z) quad (2)
 $]]
 
 $
@@ -178,10 +179,10 @@ $"Найти общее решение уравнения" #rect[$ -x pdv(z, x) 
 Имеем $P = -x$, $Q = y$, $R = z$
 
 $display(
-  (dif x)/(-x) = (dif y)/y = (dif z)/z =>
+  dd(x)/(-x) = dd(y)/y = dd(z)/z =>
   cases(
-    integral (dif x)/(-x) = integral (dif y)/y => -ln abs(x) = ln abs(y) - ln abs(C_1) => ln abs(x y) = ln abs(C_1) => x y = tilde(C)_1,
-    integral (dif y)/y = integral (dif z)/z => ln abs(y) = ln abs(z) - ln abs(C_2) => ln abs(z/y) = ln abs(C_2) => z/y = tilde(C)_2,
+    integral dd(x)/(-x) = integral dd(y)/y => -ln abs(x) = ln abs(y) - ln abs(C_1) => ln abs(x y) = ln abs(C_1) => x y = tilde(C)_1,
+    integral dd(y)/y = integral dd(z)/z => ln abs(y) = ln abs(z) - ln abs(C_2) => ln abs(z/y) = ln abs(C_2) => z/y = tilde(C)_2,
   ) => Phi(C_1, C_2) = 0 \
   Phi(x y, z/y) => z/y = phi(x y)
 )$
@@ -197,16 +198,16 @@ $display(
 )$
 
 $display(
-  (dif x)/y = (dif y)/(-x) = (dif z)/(y^2 - x^2) \
+  dd(x)/y = dd(y)/(-x) = dd(z)/(y^2 - x^2) \
   cases(
-    (dif x)/y = (dif y)/(-x),
-    (1 dot dif x + 1 dot dif y)/(1 dot y + 1 dot (-x)) = (dif z)/(y^2 - x^2),
+    dd(x)/y = dd(y)/(-x),
+    (1 dot dd(x) + 1 dot dd(y))/(1 dot y + 1 dot (-x)) = dd(z)/(y^2 - x^2),
   ) => cases(
-    -x dif x = y dif y,
-    (dif x + dif y)/cancel((y - x)) = (dif z)/(cancel((y - x)) (y + x)),
+    -x dd(x) = y dd(y),
+    dd(x, y, prod: +)/cancel((y - x)) = dd(z)/(cancel((y - x)) (y + x)),
   ) => cases(
     -x^2/2 = y^2/2 - C/2,
-    d(x + y) = (dif z)/(x + y),
+    dif(x + y) = dd(z)/(x + y),
   ) => cases(
     x^2 + y^2 = C_1,
     (x + y)^2/2 = z - C_2,
@@ -238,24 +239,24 @@ $display(("В решении использовалось свойство ра�
 Пример 1: найти общее решение уравнения $#rect[$ x pdv(z, x) + y pdv(z, y) = 2x y $]$
 
 $display(
-  (dif x)/x = (dif y)/y = (dif z)/(2x y) \
+  dd(x)/x = dd(y)/y = dd(z)/(2x y) \
   cases(
-    (dif x)/x = (dif y)/y => ln abs(x) = ln abs(y) + ln abs(C_1) => x/y = tilde(C)_1 => y = x/C_1 space dash "подстановка",
-    (dif x)/x = (dif z)/(2x y),
+    dd(x)/x = dd(y)/y => ln abs(x) = ln abs(y) + ln abs(C_1) => x/y = tilde(C)_1 => y = x/C_1 space dash "подстановка",
+    dd(x)/x = dd(z)/(2x y),
   ) \
-  (dif x)/cancel(x) = (dif z)/(2cancel(x) dot x/C_1) => (2x)/C_1 dif x = dif z => x^2/C_1 = z - C_2 => z - x^2/C_1 = C_2 => z - x^2/(x/y) = C_2 => z - x y = C_2 \
+  dd(x)/cancel(x) = dd(z)/(2cancel(x) dot x/C_1) => (2x)/C_1 dd(x) = dd(z) => x^2/C_1 = z - C_2 => z - x^2/C_1 = C_2 => z - x^2/(x/y) = C_2 => z - x y = C_2 \
   Phi(phi_1(x, y, z), phi_2(x, y, z)) = 0 => Phi(x/y, z - x y) = 0 => z - x y = phi(x/y) => #rect[$ z = x y + phi(x/y) $]
 )$
 
 Пример 2: найти общее решение уравнения $#rect[$ pdv(u, t) + u pdv(u, x) = 0 $]$ , где $u(x, t) space dash "скорость"$
 
 $display(
-  (dif t)/1 = (dif x)/u = (dif u)/0 \
+  dd(t)/1 = dd(x)/u = dd(u)/0 \
   cases(
-    dif u = 0 => u = C_1,
-    (dif t)/1 = (dif x)/u,
+    dd(u) = 0 => u = C_1,
+    dd(t)/1 = dd(x)/u,
   ) \
-  dif t = (dif x)/C_1 => C_1 integral dif t = integral dif x => C_1 t = x - C_2 => u t = x - C_2 => C_2 = x - u t \
+  dd(t) = dd(x)/C_1 => C_1 integral dd(t) = integral dd(x) => C_1 t = x - C_2 => u t = x - C_2 => C_2 = x - u t \
 )$
 
 $"Ответ": #rect[$ Phi(u, x - u t) = 0 $]$
@@ -269,10 +270,10 @@ $"Ответ": #rect[$ Phi(u, x - u t) = 0 $]$
 Найти общее и частное решение уравнения $#rect[$ x pdv(z, x) - y pdv(z, y) = x - y $]$ , удовлетворяющее условию $z(1, y) = y + e^y$
 
 $display(
-  (dif x)/x = (dif y)/(-y) = (dif z)/(x - y) \
-  (dif x)/x = (dif y)/(-y) => ln abs(x) = -ln abs(y) + ln abs(C_1) => abs(x y) = abs(C_1) => C_1 = x y \
+  dd(x)/x = dd(y)/(-y) = dd(z)/(x - y) \
+  dd(x)/x = dd(y)/(-y) => ln abs(x) = -ln abs(y) + ln abs(C_1) => abs(x y) = abs(C_1) => C_1 = x y \
   "Опираемся на свойство равных дробей" \
-  (1 dot dif x + 1 dot dif y)/cancel(1 dot x + 1 dot (-y)) = (dif z)/cancel(x - y) => dif(x + y) = dif z => x + y = z - C_2 => C_2 = z - x - y
+  (1 dot dd(x) + 1 dot dd(y))/cancel(1 dot x + 1 dot (-y)) = dd(z)/cancel(x - y) => dif(x + y) = dd(z) => x + y = z - C_2 => C_2 = z - x - y
 )$
 
 $display(
@@ -284,18 +285,18 @@ $display(
 УЧП первого порядка аналогично составляется для функций с большим количеством переменных $ a_1 pdv(u, x_1) + a_2 pdv(u, x_2) + ... + a_n pdv(u, x_n) = b, $ где функция $u$ зависит от $x_1$, $x_2$, ..., $x_n$; $a_i$, $b$ -- непрерывные коэффициенты
 
 $
-  (dif x_1)/a_1 = (dif x_2)/a_2 = ... = (dif x_n)/a_n = (dif u)/b \
+  dd(x_1)/a_1 = dd(x_2)/a_2 = ... = dd(x_n)/a_n = dd(u)/b \
   Phi(C_1, C_2, ..., C_n) = 0
 $
 
 Например, найти общее решение уравнения $#rect[$ x u_x + y u_y + z u_z = 0 $]$
 
 $display(
-  (dif x)/x = (dif y)/y = (dif z)/z = (dif u)/0 \
-  dif u = 0 => u = C_1 \
+  dd(x)/x = dd(y)/y = dd(z)/z = dd(u)/0 \
+  dd(u) = 0 => u = C_1 \
   cases(
-    (dif x)/x = (dif y)/y,
-    (dif y)/y = (dif z)/z,
+    dd(x)/x = dd(y)/y,
+    dd(y)/y = dd(z)/z,
   ) => cases(
     ln abs(x) = ln abs(y) - ln abs(C_2),
     ln abs(y) = ln abs(z) - ln abs(C_3),
@@ -371,7 +372,7 @@ $display(
 #v(1em)
 
 Пусть $xi = phi(x, y)$ -- решение УЧП $a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0 space (1)$, тогда $phi(x, y) = C$ является первым интегралом дифференциального уравнения
-#align(center)[$#rect[$ a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 quad (2) $]$ ,]
+#align(center)[$#rect[$ a_11 (dd(y))^2 - 2a_12 dd(x, y) + a_22 (dd(x))^2 = 0 quad (2) $]$ ,]
 носящего название характеристического уравнения (внимание на "минус" перед $a_12$!!!)
 
 $triangle.r xi = phi(x, y)$ в (1)
@@ -388,10 +389,10 @@ $
 $
 
 $display(
-  a_11 (dv(y, x))^2 - 2a_12 dv(y, x) + a_22 = 0 => a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 \
+  a_11 (dv(y, x))^2 - 2a_12 dv(y, x) + a_22 = 0 => a_11 (dd(y))^2 - 2a_12 dd(x, y) + a_22 (dd(x))^2 = 0 \
   "Замечание. Получено квадратное уравнение, которое в зависимости от дискриминанта имеет 2 решения" \
   dv(y, x) = (a_12 +- sqrt(a_12^2 - a_11 a_22))/a_11 \
-  dv(y, x) = (a_12 +- Delta)/a_11 <=> a_11 dif y = (a_12 +- sqrt(Delta)) dif x
+  dv(y, x) = (a_12 +- Delta)/a_11 <=> a_11 dd(y) = (a_12 +- sqrt(Delta)) dd(x)
 )$
 
 ==== Приведение к каноническому виду
@@ -416,7 +417,7 @@ $display(
 $triangle.r$ Пусть $phi(x, y) = C$ -- первый интеграл $(2)$, тогда $y = f(x, C)$ имеет производную $display(dv(y, x) = -phi_x/phi_y) => "ДУ" (2)$
 
 $display(
-  a_11 (dif y)^2 - 2a_12 dif x dif y + a_22 (dif x)^2 = 0 => a_11 (dv(y, x))^2 - 2a_12 dv(y, x) + a_22 = 0 \
+  a_11 (dd(y))^2 - 2a_12 dd(x, y) + a_22 (dd(x))^2 = 0 => a_11 (dv(y, x))^2 - 2a_12 dv(y, x) + a_22 = 0 \
   a_11 (-phi_x/phi_y)^2 - 2a_12 (-phi_x/phi_y) + a_22 = 0 | dot (phi_y)^2 \
   a_11 phi_x^2 - 2a_12 (-phi_x phi_y) + a_22 phi_y^2 = 0 \
   a_11 phi_x^2 + 2a_12 phi_x phi_y + a_22 phi_y^2 = 0 => "функция" xi = phi(x, y) "является решением УЧП" (1)
@@ -456,7 +457,7 @@ $
 
 $display(
   Delta = (-1)^2 - 1 dot 1 = 0 => "параболический вид" \
-  1 dot (dif y)^2 + 2 (dif x) (dif y) + 1 dot (dif x)^2 = 0 => (dv(y, x))^2 + 2 dot dv(y, x) + 1 = 0 => (dv(y, x) + 1)^2 = 0 => dv(y, x) = -1 => dif y = -dif x => \ => y = -x + C => C = x + y => cases(xi = y + x, eta = x) space cases(
+  1 dot (dd(y))^2 + 2dd(x, y) + 1 dot (dd(x))^2 = 0 => (dv(y, x))^2 + 2 dot dv(y, x) + 1 = 0 => (dv(y, x) + 1)^2 = 0 => dv(y, x) = -1 => dd(y) = -dd(x) => \ => y = -x + C => C = x + y => cases(xi = y + x, eta = x) space cases(
     delim: "|",
     xi_x = 1 quad xi_y = 1,
     eta_x = 1 quad eta_y = 0,
@@ -466,7 +467,7 @@ $display(
   u_(x y) = (u_y)'_x = (u_xi)'_x = (u_xi)'_xi xi_x + (u_xi)'_eta eta_x = u_(xi xi) + u_(xi eta) \
   u_(y y) = (u_y)'_y = (u_xi)'_y = (u_xi)'_xi xi_y + (u_xi)'_eta eta_y = u_(xi xi) \
   cancel(u_(xi xi)) + cancel(2u_(xi eta)) + u_(eta eta) - 2(cancel(u_(xi xi)) + cancel(u_(xi eta))) + cancel(u_(xi xi)) + cancel(u_xi) + u_eta - cancel(u_xi) = 0 \
-  u_(eta eta) + u_eta = 0 <=> u_(eta eta) = -u_eta <=> (u_eta)_eta = -(u)_eta <=> u_eta = -u + phi(xi) <=> dv(u, eta) = -u + phi(xi) <=> (dif u)/(u - phi(xi)) = -dif eta <=> \ <=>
+  u_(eta eta) + u_eta = 0 <=> u_(eta eta) = -u_eta <=> (u_eta)_eta = -(u)_eta <=> u_eta = -u + phi(xi) <=> dv(u, eta) = -u + phi(xi) <=> dd(u)/(u - phi(xi)) = -dd(eta) <=> \ <=>
   ln abs(u - phi(xi)) = -eta + ln abs(psi(xi)) <=> abs(u - phi(xi)) = abs(psi(xi)) e^(-eta) <=> u - phi(xi) = tilde(psi)(xi) e^(-eta) <=> u(xi, eta) = tilde(psi)(xi) e^(-eta) + phi(xi) \
 )$
 
@@ -483,7 +484,7 @@ $display(
 Также можно сделать следующую замену
 
 $display(
-  v = u_eta => v_eta + v = 0 <=> dv(v, eta) = -v <=> (dif v)/v = -dif eta <=> ln abs(v) = -eta + ln abs(phi(xi)) <=> v = tilde(phi)(xi) e^(-eta) <=> dv(u, eta) = tilde(phi)(xi) e^(-eta) <=> \ <=> dif u = tilde(phi)(xi) e^(-eta) dif eta <=> u = tilde(phi)(xi) (-e^(-eta)) + psi(xi)\, "где" tilde(phi)(xi) = +-phi(xi)\, phi(xi) "и" psi(xi) space dash "произвольные функции" \
+  v = u_eta => v_eta + v = 0 <=> dv(v, eta) = -v <=> dd(v)/v = -dd(eta) <=> ln abs(v) = -eta + ln abs(phi(xi)) <=> v = tilde(phi)(xi) e^(-eta) <=> dv(u, eta) = tilde(phi)(xi) e^(-eta) <=> \ <=> dd(u) = tilde(phi)(xi) e^(-eta) dd(eta) <=> u = tilde(phi)(xi) (-e^(-eta)) + psi(xi)\, "где" tilde(phi)(xi) = +-phi(xi)\, phi(xi) "и" psi(xi) space dash "произвольные функции" \
   u = Phi(xi) e^(-eta) + psi(xi)\, "где" Phi(xi) = -tilde(phi)(xi)
 )$
 
@@ -495,7 +496,7 @@ $display(
 
 $display(
   Delta = (-2)^2 - 1 dot (-21) = 25 > 0 => "гиперболический тип, найдём замены" \
-  1 dot (dif y)^2 + 4dif x dif y - 21 (dif x)^2 = 0 => cases(delim: "[", dv(y, x) = 7, dv(y, x) = -3) => cases(
+  1 dot (dd(y))^2 + 4dd(x, y) - 21 (dd(x))^2 = 0 => cases(delim: "[", dv(y, x) = 7, dv(y, x) = -3) => cases(
     xi = y + 7x,
     eta = y - 3x,
   ) space cases(
@@ -504,8 +505,8 @@ $display(
     eta_x = -3 quad & eta_y = 1,
   ) \
   "Получаем канонический вид" u_(xi eta) = u_eta \
-  v = u_eta => v_xi = v <=> dv(v, xi) = v <=> (dif v)/v = dif xi <=> ln abs(v) = xi + ln abs(phi(eta)) <=> ln abs(v) = ln(abs(phi(eta)) e^xi) <=> v = +- phi(eta) e^xi => \ =>
-  u_eta = tilde(phi)(eta) e^xi <=> integral dif u = integral tilde(phi)(eta) e^xi dif eta <=> u = e^xi integral tilde(phi)(eta) dif eta = e^xi Phi(eta) + psi(xi) \
+  v = u_eta => v_xi = v <=> dv(v, xi) = v <=> dd(v)/v = dd(xi) <=> ln abs(v) = xi + ln abs(phi(eta)) <=> ln abs(v) = ln(abs(phi(eta)) e^xi) <=> v = +- phi(eta) e^xi => \ =>
+  u_eta = tilde(phi)(eta) e^xi <=> integral dd(u) = integral tilde(phi)(eta) e^xi dd(eta) <=> u = e^xi integral tilde(phi)(eta) dd(eta) = e^xi Phi(eta) + psi(xi) \
   Phi(eta) space dash "первообразная" tilde(phi)(eta)\, tilde(phi) = +-phi(eta)\, phi "и" psi space dash "произвольные функции"
 )$
 
@@ -519,7 +520,7 @@ $display(
 
 $display(
   Delta = 0^2 - 1 dot 1/x^2 = -1/x^2 < 0 space dash "эллиптический тип" \
-  1 dot (dif y)^2 + 1/x^2 (dif x)^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => dv(y, x) = +- i/x => integral dif y = integral i/x dif x => \ => y = +- i ln x + C => C = y +- i ln x
+  1 dot (dd(y))^2 + 1/x^2 (dd(x))^2 = 0 => (dv(y, x))^2 = -1/x^2 => (dv(y, x))^2 = i^2 1/x^2 => dv(y, x) = +- i/x => integral dd(y) = integral i/x dd(x) => \ => y = +- i ln x + C => C = y +- i ln x
 )$
 
 $display(
@@ -611,9 +612,9 @@ $
 $
 
 $display(
-  1 dot (dif x)^2 - a^2 (dif t)^2 = 0 => (dv(x, t))^2 = a^2 => cases(
-    integral dif x = integral a dif t,
-    integral dif x = integral -a dif t,
+  1 dot (dd(x))^2 - a^2 (dd(t))^2 = 0 => (dv(x, t))^2 = a^2 => cases(
+    integral dd(x) = integral a dd(t),
+    integral dd(x) = integral -a dd(t),
   ) => cases(
     x = a t + C_1,
     x = -a t + C_2,
@@ -634,7 +635,7 @@ $display(
   u_(t t) = (u_t)'_t = a (u_(xi xi) xi_t + u_(xi eta) eta_t) - a (u_(eta xi) xi_t + u_(eta eta) eta_t) = a^2 u_(xi xi) - 2a^2 u_(xi eta) + u_(eta eta) \
   a^2 u_(xi xi) - 2a^2 u_(xi eta) + u_(eta eta) - a^2 (u_(xi xi) + 2u_(xi eta) + u_(eta eta)) = 0 \
   -4a^2 u_(xi eta) = 0 => "получаем канонический вид уравнения" u_(xi eta) = 0. "Решаем его, дважды интегрируя" \
-  dv(u_xi, eta) = 0 <=> u_xi = psi(xi) <=> dv(u, xi) = psi(xi) <=> integral dif u = integral(psi(xi)) dif xi <=> u = Psi(xi) + phi(eta) \
+  dv(u_xi, eta) = 0 <=> u_xi = psi(xi) <=> dv(u, xi) = psi(xi) <=> integral dd(u) = integral(psi(xi)) dd(xi) <=> u = Psi(xi) + phi(eta) \
   "После обратной замены получаем общее решение" #rect[$ u(x, t) = Psi(x + a t) + phi(x - a t) $]
 )$
 
@@ -658,7 +659,7 @@ $display(
 $display(
   cases(
     Phi_1(x) + Phi_2(x) = phi(x),
-    integral [a Phi'_1(x) - a Phi'_2(x)] dif x = integral psi(x) dif x
+    integral [a Phi'_1(x) - a Phi'_2(x)] dd(x) = integral psi(x) dd(x)
   ) => cases(
     Phi_1(x) + Phi_2(x) = phi(x),
     a Phi_1(x) - a Phi_2(x) = F(x) + C,
@@ -670,12 +671,12 @@ $display(
     Phi_2(x) = 1/2 phi(x) - 1/(2a) F(x) - C,
   )\, "где" F(x) space dash "первообразная" psi(x) \
   u(x, t) = (Phi_1(x + a t) + Phi_2(x - a t)) = evaluated((1/2 phi(x) + 1/(2a) F(x) + C))_(x+a t) + evaluated((1/2 phi(x) - 1/(2a) F(x) - C))_(x - a t) = \ = 1/2 phi(x + a t) + 1/(2a) F(x + a t) + C + 1/2 phi(x - a t) - 1/(2a) F(x - a t) - C \
-  u = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) underbrace([F(x + a t) - F(x - a t)], integral_(x- a t)^(x + a t) psi(z) dif z)
+  u = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) underbrace([F(x + a t) - F(x - a t)], integral_(x- a t)^(x + a t) psi(z) dd(z))
 )$
 
 Полученная формула
 #align(center)[#rect[$
-  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z quad (1)
+  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dd(z) quad (1)
 $]]
 называется формулой Даламбера
 
@@ -691,7 +692,7 @@ $]]
 $a^2 = 4 => a = 2$
 
 $display(
-  u(x, t) = 1/2 [k(x + 2t) + k(x - 2t)] + 1/(2 dot 2) integral_(x-2t)^(x+2t) k dif z = k x + evaluated(1/4 k z)_(x-2t)^(x+2t) = k x + 1/4 k (x + 2t - x + 2t) = k x + k t
+  u(x, t) = 1/2 [k(x + 2t) + k(x - 2t)] + 1/(2 dot 2) integral_(x-2t)^(x+2t) k dd(z) = k x + evaluated(1/4 k z)_(x-2t)^(x+2t) = k x + 1/4 k (x + 2t - x + 2t) = k x + k t
 )$
 
 Ответ $#rect[$ u(x, t) = k x + k t $]$
@@ -706,7 +707,7 @@ $
 
 Формула Даламбера для неоднородного уравнения
 #align(center)[#rect[$
-  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dif z + 1/(2a) integral_0^t integral_(x - a (t - tau))^(x + a (t - tau)) f(z, t) dif z dif tau quad (2)
+  u(x, t) = 1/2 (phi(x + a t) + phi(x - a t)) + 1/(2a) integral_(x- a t)^(x + a t) psi(z) dd(z) + 1/(2a) integral_0^t integral_(x - a (t - tau))^(x + a (t - tau)) f(z, t) dd(z) dd(tau) quad (2)
 $]]
 
 ===== Пример
@@ -722,7 +723,7 @@ $]]
 $a = 2; space f(x, t) = sin t$
 
 $display(
-  u(x, t) = k (x + t) + 1/4 integral_0^t dif tau [integral_(x - 2(t - tau))^(x + 2(t + tau)) sin tau dif z] = k (x + t) + 1/4 integral_0^t evaluated(sin tau dot z)_(x - 2(t - tau))^(x + 2(t - tau)) = k (x + t) + 1/4 times \ times integral_0^t sin tau dot (x + 2t - 2tau - x + 2t - 2tau) dif tau = k (x + t) + 1/4 integral_0^t (4t - 4tau) sin tau dif tau = k (x + t) + integral_0^t t sin tau dif tau - \ - integral_0^t tau sin tau dif tau = k (x + t) - t evaluated(cos tau)_(0)^t - (evaluated(-tau cos tau)_0^t + integral_0^t cos tau dif tau) = k (x + t) - t cos t + t + t cos t - 0 - \ - evaluated(sin tau)_0^t = k (x + t) + t - sin t = k x + (k + 1)t - sin t
+  u(x, t) = k (x + t) + 1/4 integral_0^t dd(tau) [integral_(x - 2(t - tau))^(x + 2(t + tau)) sin tau dd(z)] = k (x + t) + 1/4 integral_0^t evaluated(sin tau dot z)_(x - 2(t - tau))^(x + 2(t - tau)) = k (x + t) + 1/4 times \ times integral_0^t sin tau dot (x + 2t - 2tau - x + 2t - 2tau) dd(tau) = k (x + t) + 1/4 integral_0^t (4t - 4tau) sin tau dd(tau) = k (x + t) + integral_0^t t sin tau dd(tau) - \ - integral_0^t tau sin tau dd(tau) = k (x + t) - t evaluated(cos tau)_(0)^t - (evaluated(-tau cos tau)_0^t + integral_0^t cos tau dd(tau)) = k (x + t) - t cos t + t + t cos t - 0 - \ - evaluated(sin tau)_0^t = k (x + t) + t - sin t = k x + (k + 1)t - sin t
 )$
 
 Ответ: $#rect[$ u(x, t) = k x + (k + 1)t - sin t $]$
@@ -816,7 +817,7 @@ $display(
 
 Задача поиска нетривиального решения уравнения $X'' + ov(lambda) X = 0$ с условиями $X(0) = 0$, $X(l) = 0$ называется задачей Штурма-Лиувилля.
 
-Собственные функции (для $n in NN$) образуют ортогональную систему $ X_n dot X_m = integral_0^l X_n dot X_m dif x space dash "скалярное произведение" \
+Собственные функции (для $n in NN$) образуют ортогональную систему $ X_n dot X_m = integral_0^l X_n dot X_m dd(x) space dash "скалярное произведение" \
 X_n dot X_m = cases(0 space &n != m, ||x||^2 space &n = m), " где" ||x||^2 "" dash "норма" $
 
 Находим решение второго уравнения с учётом найденного $ov(lambda)$
@@ -845,8 +846,8 @@ $display(
 Находим коэффициенты разложения функций $phi$ и $psi$ в ряд Фурье (материал по рядам Фурье смотрите в Приложении 1 или в ЛМС).
 
 $display(
-  evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) => #rect[$ A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dif x $] \
-  evaluated(u_t)_(t=0) = sum_1^oo underbrace(B_n (pi n a)/l, tilde(B)_n) sin (pi n)/l x = psi(x) => #rect[$ B_n dot (pi a n)/l = 2/l integral_0^l psi(x) sin (pi n x)/l dif x "или" B_n = 2/(a pi n) integral_0^l psi(x) sin (pi n x)/l dif x $]
+  evaluated(u(x, t))_(t=0) = sum_1^oo A_n sin (pi n)/l x = phi(x) => #rect[$ A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dd(x) $] \
+  evaluated(u_t)_(t=0) = sum_1^oo underbrace(B_n (pi n a)/l, tilde(B)_n) sin (pi n)/l x = psi(x) => #rect[$ B_n dot (pi a n)/l = 2/l integral_0^l psi(x) sin (pi n x)/l dd(x) "или" B_n = 2/(a pi n) integral_0^l psi(x) sin (pi n x)/l dd(x) $]
 )$
 
 ===== Пример
@@ -873,8 +874,8 @@ $a = 1; space phi(x) = -x/pi; space psi(x) = 0; space l = pi$
 
 $display(
   u(x, t) = sum_1^oo (A_n cos(n t) + B_n sin(n t)) sin n x \
-  A_n = 2/pi integral_0^pi -x/pi sin n x dif x = -2/pi^2 integral_0^pi x sin n x dif x = 2/(pi^2 n) integral_0^pi x dif cos n x = 2/(pi^2 n) (evaluated(x cos n x)_0^pi - integral_0^pi cos n x dif x) = \ = 2/(pi^2 n) pi cos pi n - 2/(pi^2 n) evaluated(1/n sin n x)_0^pi = 2/(pi n) dot (-1)^n\, #rect[$ A_n = 2/(pi n) dot (-1)^n $] \
-  B_n dot n = 2/pi integral_0^pi 0 dot sin n x dif x => #rect[$ B_n = 0 $] \
+  A_n = 2/pi integral_0^pi -x/pi sin n x dd(x) = -2/pi^2 integral_0^pi x sin n x dd(x) = 2/(pi^2 n) integral_0^pi x dd(cos n x) = 2/(pi^2 n) (evaluated(x cos n x)_0^pi - integral_0^pi cos n x dd(x)) = \ = 2/(pi^2 n) pi cos pi n - 2/(pi^2 n) evaluated(1/n sin n x)_0^pi = 2/(pi n) dot (-1)^n\, #rect[$ A_n = 2/(pi n) dot (-1)^n $] \
+  B_n dot n = 2/pi integral_0^pi 0 dot sin n x dd(x) => #rect[$ B_n = 0 $] \
   "Ответ:" #rect[$ u(x, t) = sum_1^oo 2/(pi n) dot (-1)^n cos n t sin n x $]
 )$
 
@@ -1026,12 +1027,12 @@ $
 #v(1em)
 
 $
-  u(x, t) = 1/(2a sqrt(pi) sqrt(t)) integral_(-oo)^oo e^(-1/(4a^2 t) (x - xi)^2) phi(xi) dif xi
+  u(x, t) = 1/(2a sqrt(pi) sqrt(t)) integral_(-oo)^oo e^(-1/(4a^2 t) (x - xi)^2) phi(xi) dd(xi)
 $
 
 Для начального условия $evaluated(u)_(t=0) = phi(x)$
 
-Интеграл Пуассона $ integral_(-oo)^(oo) e^(-z^2) dif z = sqrt(pi) $
+Интеграл Пуассона $ integral_(-oo)^(oo) e^(-z^2) dd(z) = sqrt(pi) $
 
 === Первая краевая задача для однородного уравнения теплопроводности. Метод Фурье
 
@@ -1078,7 +1079,7 @@ $
 Из начальных условий получаем
 
 $display(
-  evaluated(u)_(t=0) = sum_1^oo A_n sin (pi n x)/l = phi(x) => #rect[$ A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dif x $]
+  evaluated(u)_(t=0) = sum_1^oo A_n sin (pi n x)/l = phi(x) => #rect[$ A_n = 2/l integral_0^l phi(x) sin (pi n x)/l dd(x) $]
 )$
 
 ==== Пример
@@ -1098,7 +1099,7 @@ $display(
 $a = 5 quad l = 5$
 
 $display(
-  A_n = 2/5 integral_0^l 1/5 sin (pi n x)/5 dif x = -2/5 dot 1/5 dot 5/(pi n) evaluated(cos (pi n x)/5)_0^5 = -2/(5pi n) (cos (pi n) - cos 0) = -2/(5pi n) ((-1)^n - 1) = \ = cases(
+  A_n = 2/5 integral_0^l 1/5 sin (pi n x)/5 dd(x) = -2/5 dot 1/5 dot 5/(pi n) evaluated(cos (pi n x)/5)_0^5 = -2/(5pi n) (cos (pi n) - cos 0) = -2/(5pi n) ((-1)^n - 1) = \ = cases(
     0 space & n = 2k,
     4/(5pi n) space & n = 2k - 1,
   ) => #rect[$ A_n = 4/(5pi (2k - 1)) $] \
@@ -1175,7 +1176,7 @@ $
 $display(evaluated(u)_(t=0) = A_0/2 + sum_1^oo A_n cos (pi n x)/l = phi(x))$
 
 #align(center)[#rect[$
-  A_0 = 2/l integral_0^l phi(x) dif x quad A_n = 2/l integral_0^l phi(x) cos (pi n x)/l
+  A_0 = 2/l integral_0^l phi(x) dd(x) quad A_n = 2/l integral_0^l phi(x) cos (pi n x)/l
 $]]
 
 ==== Пример 1
@@ -1194,8 +1195,8 @@ $]]
 
 $display(
   a = 2 quad l = pi \
-  A_0 = 2/pi integral_0^pi x dif x = evaluated(x^2/pi)_0^pi = pi\, #rect[$ A_0 = pi $] \
-  A_n = 2/pi integral_0^pi x cos (pi n x)/pi dif x = 2/pi dot 1/n (evaluated(x sin n x)_0^pi - integral_0^pi sin n x dif x) = 2/(pi n) (pi sin pi n - 0 dot sin 0 + evaluated(1/n cos n x)_0^pi) = \ = 2/(pi n^2) (cos pi n - cos 0) = 2/(pi n^2) ((-1)^n - 1) = cases(
+  A_0 = 2/pi integral_0^pi x dd(x) = evaluated(x^2/pi)_0^pi = pi\, #rect[$ A_0 = pi $] \
+  A_n = 2/pi integral_0^pi x cos (pi n x)/pi dd(x) = 2/pi dot 1/n (evaluated(x sin n x)_0^pi - integral_0^pi sin n x dd(x)) = 2/(pi n) (pi sin pi n - 0 dot sin 0 + evaluated(1/n cos n x)_0^pi) = \ = 2/(pi n^2) (cos pi n - cos 0) = 2/(pi n^2) ((-1)^n - 1) = cases(
     0 quad & n = 2k,
     -4/(pi n^2) quad & n = 2k - 1,
   ) \, #rect[$ A_n = -4/(pi (2k - 1)^2) $] \
@@ -1217,11 +1218,11 @@ $display(
 )$
 
 $display(
-  A_0 = 2/pi integral_0^pi cos 2x dif x = 2/pi dot evaluated(1/2 sin 2x)_0^pi = 2/pi (1/2 sin 2pi - 1/2 sin 0) = 0
+  A_0 = 2/pi integral_0^pi cos 2x dd(x) = 2/pi dot evaluated(1/2 sin 2x)_0^pi = 2/pi (1/2 sin 2pi - 1/2 sin 0) = 0
 )$
 
 $display(
-  A_n = 2/pi integral_0^pi cos 2x cos (pi n x)/pi dif x = cases(
+  A_n = 2/pi integral_0^pi cos 2x cos (pi n x)/pi dd(x) = cases(
     0\, space n != 2,
     1\, space n = 2,
   ). "Функция" phi(x) "уже разложена в ряд Фурье," A_n = cases(0\, space n != 2, 1\, space n = 2)
@@ -1334,7 +1335,7 @@ $
 $
 
 $display(
-  A_n = 2/pi integral_0^pi (-x/pi sin (pi n x)/pi) dif x = -2/pi^2 integral_0^pi x sin n x dif x = -2/pi^2 dot 1/n (evaluated(-x cos n x)_0^pi + integral_0^pi cos n x dif x) = -2/(pi^2 n) times \ times (-pi dot (-1)^n + 0 dot 1 + 1/n evaluated(sin n x)_0^pi) = 2/(pi n) dot (-1)^n - 2/(pi^2 n^2) (sin pi n - sin 0) = 2/(pi n) dot (-1)^n \
+  A_n = 2/pi integral_0^pi (-x/pi sin (pi n x)/pi) dd(x) = -2/pi^2 integral_0^pi x sin n x dd(x) = -2/pi^2 dot 1/n (evaluated(-x cos n x)_0^pi + integral_0^pi cos n x dd(x)) = -2/(pi^2 n) times \ times (-pi dot (-1)^n + 0 dot 1 + 1/n evaluated(sin n x)_0^pi) = 2/(pi n) dot (-1)^n - 2/(pi^2 n^2) (sin pi n - sin 0) = 2/(pi n) dot (-1)^n \
   v(x, t) = sum_1^oo -2/(pi n) e^(-(pi^2 n^2)/pi^2 t) sin (pi n x)/pi = sum_1^oo -2/(pi n) e^(-n^2 t) sin n x
 )$
 
@@ -1379,7 +1380,7 @@ $
 
 #v(1em)
 
-+ Если $integral.cont_L pdv(u, n) dif S = 0$, то источников/стоков внутри контура нет $ f(phi) = pdv(u, r) = sum_1^oo a_n cos n phi + b_n sin n phi $
++ Если $integral.cont_L pdv(u, n) dd(S) = 0$, то источников/стоков внутри контура нет $ f(phi) = pdv(u, r) = sum_1^oo a_n cos n phi + b_n sin n phi $
 
 + Максимум или минимум для гармонической функции достигается только на границах области
 
@@ -1471,11 +1472,11 @@ $display(
 
 Из разложения $f(phi)$ в ряд Фурье имеем
 $
-  A_0 = 1/pi integral_(-pi)^pi f(phi) dif phi quad A_n R_0^n = 1/pi integral_(-pi)^pi f(phi) cos n phi dif phi quad B_n R_0^n = 1/pi integral_(-pi)^pi f(phi) sin n phi dif phi
+  A_0 = 1/pi integral_(-pi)^pi f(phi) dd(phi) quad A_n R_0^n = 1/pi integral_(-pi)^pi f(phi) cos n phi dd(phi) quad B_n R_0^n = 1/pi integral_(-pi)^pi f(phi) sin n phi dd(phi)
 $
 
 #align(center)[#rect[$
-  A_n = 1/(pi R_0^n) integral_(-pi)^pi f(phi) cos n phi dif phi quad B_n = 1/(pi R_0^n) integral_(-pi)^pi f(phi) sin n phi dif phi
+  A_n = 1/(pi R_0^n) integral_(-pi)^pi f(phi) cos n phi dd(phi) quad B_n = 1/(pi R_0^n) integral_(-pi)^pi f(phi) sin n phi dd(phi)
 $]]
 
 ==== Пример
@@ -1490,8 +1491,8 @@ $]]
 Поскольку $f(phi)$ не всегда является ненулевым, то границы интегрирования для коэффициентов меняются
 
 $display(
-  A_0 = 1/pi integral_(-pi/2)^(pi/2) 1 dif phi = 1/pi (pi/2 + pi/2) = 1 \
-  A_n = 2/(pi dot 2^n) integral_0^(pi/2) 1 cos n phi dif phi = 2/(pi dot 2^n) dot 1/n sin (pi n)/2 = cases(
+  A_0 = 1/pi integral_(-pi/2)^(pi/2) 1 dd(phi) = 1/pi (pi/2 + pi/2) = 1 \
+  A_n = 2/(pi dot 2^n) integral_0^(pi/2) 1 cos n phi dd(phi) = 2/(pi dot 2^n) dot 1/n sin (pi n)/2 = cases(
     0 quad & n = 2k,
     (-1)^(k-1)/(pi dot 2^(n-1)) quad & n = 2k - 1,
   )\, #rect[$ A_n = (-1)^(k-1)/(pi dot 2^(2k-2)) $] \
@@ -1516,12 +1517,12 @@ $display(
 )$
 
 $display(
-  sum_1^oo n R_0^(n-1) (A_n cos n phi + B_n sin n phi) = sum_1^oo (a_n cos n phi + b_n sin n phi) => n R_0^(n-1) A_n = a_n = 1/pi integral_(-pi)^pi f(phi) cos n phi dif phi \
-  n R_0^(n-1) B_n = b_n = 1/pi integral_(-pi)^pi f(phi) sin n phi dif phi
+  sum_1^oo n R_0^(n-1) (A_n cos n phi + B_n sin n phi) = sum_1^oo (a_n cos n phi + b_n sin n phi) => n R_0^(n-1) A_n = a_n = 1/pi integral_(-pi)^pi f(phi) cos n phi dd(phi) \
+  n R_0^(n-1) B_n = b_n = 1/pi integral_(-pi)^pi f(phi) sin n phi dd(phi)
 )$
 
 #align(center)[#rect[$
-  A_n = 1/(pi n R_0^(n-1)) integral_(-pi)^pi f(phi) cos n phi dif phi quad B_n = 1/(pi n R_0^(n-1)) integral_(-pi)^pi f(phi) sin n phi dif phi
+  A_n = 1/(pi n R_0^(n-1)) integral_(-pi)^pi f(phi) cos n phi dd(phi) quad B_n = 1/(pi n R_0^(n-1)) integral_(-pi)^pi f(phi) sin n phi dd(phi)
 $]]
 
 В задаче Неймана решение определяется с точностью до произвольной константы $C$
@@ -1556,7 +1557,7 @@ $display(
   column-gutter: 1em,
   [
     $
-      J[y(x)] = integral_(x_0)^(x_1) F(x, y(x), y'(x)) dif x quad y(x_0) = y_0 quad y(x_1) = y_1
+      J[y(x)] = integral_(x_0)^(x_1) F(x, y(x), y'(x)) dd(x) quad y(x_0) = y_0 quad y(x_1) = y_1
     $
 
     $display(C^1 [x_0, x_1])$ -- множество непрерывных функций, определенных на $[x_0, x_1]$, имеющие непрерывную производную.
@@ -1568,11 +1569,11 @@ $display(
   ],
 )
 
-Пример $display(J(x) = integral_0^pi y sin x dif x)$.
+Пример $display(J(x) = integral_0^pi y sin x dd(x))$.
 
-Пусть $y_1 = 1$, тогда $J[y_1] = integral_0^pi 1 dot sin x dif x = evaluated(-cos x)_0^pi = -cos pi + cos 0 = 1 + 1 = 2$.
+Пусть $y_1 = 1$, тогда $J[y_1] = integral_0^pi 1 dot sin x dd(x) = evaluated(-cos x)_0^pi = -cos pi + cos 0 = 1 + 1 = 2$.
 
-Пусть $y_2 = cos x$, тогда $J[y_2] = integral_0^pi cos x sin x dif x = 1/2 integral_0^pi sin 2x dif x = -1/2 evaluated((cos 2x)/2)_0^pi = -1/4 (cos 2pi - cos 0) = 0$
+Пусть $y_2 = cos x$, тогда $J[y_2] = integral_0^pi cos x sin x dd(x) = 1/2 integral_0^pi sin 2x dd(x) = -1/2 evaluated((cos 2x)/2)_0^pi = -1/4 (cos 2pi - cos 0) = 0$
 
 #grid(
   columns: (2fr, 1fr),
@@ -1620,19 +1621,19 @@ $Delta tilde(y) = y(x) - tilde(y)(x) = delta y(x)$ -- вариация аргу�
 $phi'_alpha (0) = y'(x_0) Delta x$
 
 Заметим, что \
-$dif y(x) = phi'_alpha (0) = y'(x_0) Delta x$
+$dd(y(x)) = phi'_alpha (0) = y'(x_0) Delta x$
 
 Аналогично определим вариацию функционала
 $
   delta J[y(x)] = evaluated((pdv(, alpha) [J[tilde(y)(x) + alpha delta x]]))_(alpha=0)
 $
 
-Например, $J[y(x)] = integral_1^2 y y' dif x$
+Например, $J[y(x)] = integral_1^2 y y' dd(x)$
 
 $display(
-  phi(alpha) = integral_1^2 (y + alpha delta y) (y' + alpha (delta y)') dif x \
-  phi'(alpha) = integral_1^2 [delta y (y' + alpha (delta y)' + (y + alpha delta y) delta y')] dif x \
-  phi'_alpha (0) = integral_1^2 [delta y dot y' + y delta y'] dif x
+  phi(alpha) = integral_1^2 (y + alpha delta y) (y' + alpha (delta y)') dd(x) \
+  phi'(alpha) = integral_1^2 [delta y (y' + alpha (delta y)' + (y + alpha delta y) delta y')] dd(x) \
+  phi'_alpha (0) = integral_1^2 [delta y dot y' + y delta y'] dd(x)
 )$
 
 Необходимое условие существования экстремума функционала: пусть $tilde(y)(x)$ реализует экстремум функционала, тогда $delta J[tilde(y)(x)] = 0$.
@@ -1643,12 +1644,12 @@ $display(
   triangle.r "Рассмотрим" phi(alpha) = J[tilde(y)(x) + alpha delta y]\, "которая при" alpha = 0 "имеет экстремум" J[tilde(y)(x)]. "Следовательно" phi'_alpha (0) = 0 <=> \ <=> delta J[tilde(y)(x)] = evaluated((pdv(, alpha) J[tilde(y)(x) + alpha delta y]))_(alpha=0) = 0 <=> delta J[tilde(y)(x)] = 0
 )$
 
-Пример: найти вариацию функционала $#rect[$ J[y(x)] = integral_0^pi y'^2 sin x dif x $]$
+Пример: найти вариацию функционала $#rect[$ J[y(x)] = integral_0^pi y'^2 sin x dd(x) $]$
 
 $display(
-  phi(alpha) = J[y(x) + alpha delta y] = integral_0^pi (y + alpha delta y)'^2 sin x dif x \
-  phi'_alpha = integral_0^pi 2(y + alpha delta y)' dot delta y' dot sin x dif x = integral_0^pi (2y' delta y' + 2alpha dot delta y dot delta y') sin x dif x \
-  #rect[$ phi'_alpha (0) = integral_0^pi 2y' delta y' sin x dif x $]
+  phi(alpha) = J[y(x) + alpha delta y] = integral_0^pi (y + alpha delta y)'^2 sin x dd(x) \
+  phi'_alpha = integral_0^pi 2(y + alpha delta y)' dot delta y' dot sin x dd(x) = integral_0^pi (2y' delta y' + 2alpha dot delta y dot delta y') sin x dd(x) \
+  #rect[$ phi'_alpha (0) = integral_0^pi 2y' delta y' sin x dd(x) $]
 )$
 
 == Вариационное уравнение Эйлера
@@ -1657,7 +1658,7 @@ $display(
 
 Простейшая задача вариационного исчисления -- найти экстремум функционала
 $
-  J[y(x)] = integral_(x_0)^(x_1) F(x, y, y') dif x quad cases(y(x_0) = y_0, y(x_1) = y_1))
+  J[y(x)] = integral_(x_0)^(x_1) F(x, y, y') dd(x) quad cases(y(x_0) = y_0, y(x_1) = y_1))
 $
 
 Необходимое условие экстремума в ПЗВИ#footnote[Простейшая задача вариационного исчисления]: если $F(x, y, y')$ имеет производные по всем аргументам до второго порядка включительно и $J[y(x)]$ достигает экстремума в точке $y(x)$, то $y(x)$ удовлетворяет уравнению Эйлера
@@ -1668,35 +1669,35 @@ $]]
 Доказательство:
 
 $display(
-  triangle.r phi(alpha) = J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F(x, y + alpha delta y, y' + alpha delta y') dif x \
-  phi'_alpha = pdv(, alpha) J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F_y [(x, y + alpha delta y, y' + alpha delta y') dot delta y + F_y' (x, y + alpha delta y, y' + alpha delta y') dot delta y'] dif x \
-  phi'_alpha (0) = integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y (x, y, y') delta y'] dif x
+  triangle.r phi(alpha) = J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F(x, y + alpha delta y, y' + alpha delta y') dd(x) \
+  phi'_alpha = pdv(, alpha) J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F_y [(x, y + alpha delta y, y' + alpha delta y') dot delta y + F_y' (x, y + alpha delta y, y' + alpha delta y') dot delta y'] dd(x) \
+  phi'_alpha (0) = integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y (x, y, y') delta y'] dd(x)
 )$
 
 $display(
   "Так как" delta J[y(x)] = 0\, "то" \
-  integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y' (x, y, y') delta y'] dif x = 0 \
-  integral_(x_0)^(x_1) underbrace(F_y', u) underbrace(delta y' dif x, dif v) = evaluated(F_y' delta y)_(x_0)^(x_1) - integral_(x_0)^(x_1) dv(, x) F_y' delta y dif x = 0 - integral_(x_0)^(x_1) dv(, x) F_y' delta y dif x \
-  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y' delta y] dif x = 0
+  integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y' (x, y, y') delta y'] dd(x) = 0 \
+  integral_(x_0)^(x_1) underbrace(F_y', u) underbrace(delta y' dd(x), dd(v)) = evaluated(F_y' delta y)_(x_0)^(x_1) - integral_(x_0)^(x_1) dv(, x) F_y' delta y dd(x) = 0 - integral_(x_0)^(x_1) dv(, x) F_y' delta y dd(x) \
+  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y' delta y] dd(x) = 0
 )$
 
 === Основная лемма вариационного исчисления
 
 #v(1em)
 
-Если для всякой непрерывной функции $eta(x)$ выполняется $integral_(x_0)^(x_1) Phi(x) eta(x) dif x = 0$, где $Phi(x)$ -- непрерывная на $[x_0, x_1]$ функция, тогда $Phi(x) equiv 0$
+Если для всякой непрерывной функции $eta(x)$ выполняется $integral_(x_0)^(x_1) Phi(x) eta(x) dd(x) = 0$, где $Phi(x)$ -- непрерывная на $[x_0, x_1]$ функция, тогда $Phi(x) equiv 0$
 
 Применим её для доказательства уравнения Эйлера
 
 $display(
-  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y'] delta y dif x = 0\, space delta y space dash "непрерывная функция на промежутке" [х_0, х_1] => F_y - dv(, x) F_y' equiv 0
+  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y'] delta y dd(x) = 0\, space delta y space dash "непрерывная функция на промежутке" [х_0, х_1] => F_y - dv(, x) F_y' equiv 0
 )$
 
 === Пример
 
 #v(1em)
 
-Найти экстремаль функционала $#rect[$ J[y] = integral_0^(pi/2) (y'^2 - y^2) dif x $]$ , $y(0) = 0$, $y(pi/2) = 1$
+Найти экстремаль функционала $#rect[$ J[y] = integral_0^(pi/2) (y'^2 - y^2) dd(x) $]$ , $y(0) = 0$, $y(pi/2) = 1$
 
 Функции, удовлетворяющие уравнению Эйлера называется экстремалями.
 
@@ -1723,11 +1724,11 @@ $display(
 
 Рассмотрим приращение функционала в виде
 $
-  Delta J[y] = J[y + delta y] - J[y] = integral_(x_0)^(x_1) F(x, y + delta y, y' + delta y') dif x - integral_(x_0)^(x_1) F(x, y, y') dif x = [cases(reverse: #true, delta y = y - tilde(y), delta y' = y' - tilde(y)') "малы"]
+  Delta J[y] = J[y + delta y] - J[y] = integral_(x_0)^(x_1) F(x, y + delta y, y' + delta y') dd(x) - integral_(x_0)^(x_1) F(x, y, y') dd(x) = [cases(reverse: #true, delta y = y - tilde(y), delta y' = y' - tilde(y)') "малы"]
 $
 
 $display(
-  integral_(x_0)^(x_1) [underbrace((F_y delta y + F_y' delta y'), delta J = 0) + 1/2 underbrace((F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2), delta^2 J) + R] dif x
+  integral_(x_0)^(x_1) [underbrace((F_y delta y + F_y' delta y'), delta J = 0) + 1/2 underbrace((F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2), delta^2 J) + R] dd(x)
 )$
 
 $R$ зависит от $(delta y)^3$, $(delta y')^3$ и так далее.
@@ -1738,17 +1739,17 @@ $display(
 )$
 
 $display(
-  delta^2 J = integral_(x_0)^(x_1) [F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2] dif x + integral_(x_0)^(x_1) [omega' delta y^2 + 2omega delta y delta y'] dif x
+  delta^2 J = integral_(x_0)^(x_1) [F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2] dd(x) + integral_(x_0)^(x_1) [omega' delta y^2 + 2omega delta y delta y'] dd(x)
 )$
 
 $
-  integral_(x_0)^(x_1) & dif [omega(delta y)^2] = evaluated(omega(x) (delta y)^2)_(x_0)^(x_1) = 0 "в силу закрепленности концов" \
-  & dif [omega(delta y)^2] = (omega' delta y^2 + omega dot 2 delta y delta y') dif x
+  integral_(x_0)^(x_1) & dd(\[omega(delta y)^2\]) = evaluated(omega(x) (delta y)^2)_(x_0)^(x_1) = 0 "в силу закрепленности концов" \
+  & dd(\[omega(delta y)^2\]) = (omega' delta y^2 + omega dot 2 delta y delta y') dd(x)
 $
 
 $display(
-  delta^2 J = integral_(x_0)^(x_1) [(F_(y y) + omega') delta y^2 + 2(F_(y y') + omega) delta y delta y' + F_(y' y') (delta y')^2] dif x \
-  delta^2 J = integral_(x_0)^(x_1) F_(y' y') [(F_(y y) + omega')/F_(y' y') delta y^2 + 2 (F_(y y') + omega)/F_(y' y') delta y delta y' + (delta y')^2] dif x
+  delta^2 J = integral_(x_0)^(x_1) [(F_(y y) + omega') delta y^2 + 2(F_(y y') + omega) delta y delta y' + F_(y' y') (delta y')^2] dd(x) \
+  delta^2 J = integral_(x_0)^(x_1) F_(y' y') [(F_(y y) + omega')/F_(y' y') delta y^2 + 2 (F_(y y') + omega)/F_(y' y') delta y delta y' + (delta y')^2] dd(x)
 )$
 
 Подберём $omega$ так, что $display((F_(y y) + omega')/F_(y' y') = ((F_(y y') + omega)/F_(y' y'))^2)$
@@ -1761,7 +1762,7 @@ $display((F_(y y) - dv(, x) F_(y y')) u - dv(, x) (F_(y' y') u') = 0)$
 
 Если существует решение уравнения Якоби, не обращающееся в ноль на промежутке $(x_0, x_1]$ при начальном условии $u(x_0) = 0$, тогда имеется решение $omega$ и получаем полный квадрат
 
-$display(delta^2 J = integral_(x_0)^(x_1) F_(y' y') [...]^2 dif x)$
+$display(delta^2 J = integral_(x_0)^(x_1) F_(y' y') [...]^2 dd(x))$
 
 Условия Лежандра при выполнении условия Якоби дают достаточные условия слабого экстремума в ПЗВИ
 $
@@ -1773,7 +1774,7 @@ $
 
 #v(1em)
 
-Найти экстремум функционала $#rect[$ J[y] = integral_0^(pi/6) [9y^2 + 2y y' - y'^2] dif x $]$ , $y(0) = 1$, $y(pi/6) = 0$
+Найти экстремум функционала $#rect[$ J[y] = integral_0^(pi/6) [9y^2 + 2y y' - y'^2] dd(x) $]$ , $y(0) = 1$, $y(pi/6) = 0$
 
 $display(
   F_y' = 2y - 2y' quad F_y = 18y + 2y' \
@@ -1857,13 +1858,13 @@ $display(
 )
 
 $display(
-  dv(S, t) = sqrt(2g y) => dif S = sqrt(1 + y'^2) dif x \
-  (sqrt(1 + y'^2) dif x)/(dif t) = sqrt(2 q y) => dif t = 1/sqrt(2g) dot (sqrt(1 + y'^2) dif x)/sqrt(y)
+  dv(S, t) = sqrt(2g y) => dd(S) = sqrt(1 + y'^2) dd(x) \
+  (sqrt(1 + y'^2) dd(x))/dd(t) = sqrt(2 q y) => dd(t) = 1/sqrt(2g) dot (sqrt(1 + y'^2) dd(x))/sqrt(y)
 )$
 
 Получаем функционал
 $
-  T[y] = 1/sqrt(2g) integral_0^x_1 sqrt(1 + y'^2)/sqrt(y) dif x quad cases(y(0) = 0, y(x_1) = y_1),
+  T[y] = 1/sqrt(2g) integral_0^x_1 sqrt(1 + y'^2)/sqrt(y) dd(x) quad cases(y(0) = 0, y(x_1) = y_1),
 $
 найдём его экстремум с помощью первого интеграла уравнения Эйлера
 
@@ -1878,9 +1879,9 @@ $display(
   y = (2a)/(1 + y'^2) \
   y' = p(x) \
   dv(y, x) = 2a (-(1 + p^2)^(-2) dot 2p dot p') = p \
-  1 = -4a dot 1/(1 + p^2)^2 dv(p, x) => dif x = -4a dot 1/(1 + p^2)^2 dif p \
-  p = ctg t/2 => dif p = -1/(2sin^2 t/2) dif t \
-  dif x = 4a 1/(1 + ctg^2 t/2)^2 dot 1/(2sin^2 t/2) dif t <=> dif x = 2a sin^2 t/2 dif t = 2a (1 - cos t)/2 dif t <=> integral dif x = integral a (1 - cos t) dif t \
+  1 = -4a dot 1/(1 + p^2)^2 dv(p, x) => dd(x) = -4a dot 1/(1 + p^2)^2 dd(p) \
+  p = ctg t/2 => dd(p) = -1/(2sin^2 t/2) dd(t) \
+  dd(x) = 4a 1/(1 + ctg^2 t/2)^2 dot 1/(2sin^2 t/2) dd(t) <=> dd(x) = 2a sin^2 t/2 dd(t) = 2a (1 - cos t)/2 dd(t) <=> integral dd(x) = integral a (1 - cos t) dd(t) \
   x = a (t - sin t) + С \
   y = (2a)/(1 + ctg^2 t/2) = 2a sin^2 t/2 = a (1 - cos t)
 )$
@@ -1909,7 +1910,7 @@ $
 
 #v(1em)
 
-Найти экстремум функционала $#rect[$ J[y] = integral_1^2 (x y'^4 - 2y y'^3) dif x $]$ , $y(0) = 0$, $y(2) = 1$
+Найти экстремум функционала $#rect[$ J[y] = integral_1^2 (x y'^4 - 2y y'^3) dd(x) $]$ , $y(0) = 0$, $y(2) = 1$
 
 $display(
   F_y = -2y'^3 quad F_y' = 4x y'^3 - 6y y'^2 quad F_(y y') = -6y'^2 \
@@ -1932,20 +1933,20 @@ $display(F_(y' y') = evaluated(12y' (x y' - y))_(y'=1) = evaluated(12(x - y))_(y
 Рассмотрим бесконечный базис: 1, $cos x$, $sin x$, $cos 2x$, $sin 2x$, ..., $cos n x$, $sin n x$, ...
 относительно скалярного произведения
 
-$display((phi_n (x) dot phi_m (x)) = integral_(-pi)^pi phi_n (x) dot phi_m (x) dif x)$
+$display((phi_n (x) dot phi_m (x)) = integral_(-pi)^pi phi_n (x) dot phi_m (x) dd(x))$
 
 $display(
   (phi_n dot phi_m) = cases(
     0 quad n != m,
     1 quad n = m,
   ) \
-  integral_(-pi)^(pi) sin x cos x dif x = integral_(-pi)^(pi) 1/2 sin 2x dif x = evaluated(-1/4 cos 2x)_(-pi)^pi = 0 \
-  (sin x dot sin x) = integral_(-pi)^(pi) sin^2 x dif x = integral_(-pi)^(pi) 1/2 (1 - cos 2x) dif x = evaluated(1/(2pi) (x - 1/2 sin 2x))_(-pi)^pi = 1/(2pi) evaluated(x)_(-pi)^pi - 1/(2pi) dot 0 = 1
+  integral_(-pi)^(pi) sin x cos x dd(x) = integral_(-pi)^(pi) 1/2 sin 2x dd(x) = evaluated(-1/4 cos 2x)_(-pi)^pi = 0 \
+  (sin x dot sin x) = integral_(-pi)^(pi) sin^2 x dd(x) = integral_(-pi)^(pi) 1/2 (1 - cos 2x) dd(x) = evaluated(1/(2pi) (x - 1/2 sin 2x))_(-pi)^pi = 1/(2pi) evaluated(x)_(-pi)^pi - 1/(2pi) dot 0 = 1
 )$
 
 $
   f(x) = a_0/2 + sum_1^oo (a_n cos n x + b_n sin n x) \
-  a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dif x quad b_n = 1/pi integral_(-pi)^(pi) f(x) sin n x dif x quad a_0 = 1/pi integral_(-pi)^(pi) f(x) dif x
+  a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dd(x) quad b_n = 1/pi integral_(-pi)^(pi) f(x) sin n x dd(x) quad a_0 = 1/pi integral_(-pi)^(pi) f(x) dd(x)
 $
 
 == Разложение в ряд Фурье четных и нечетных функций
@@ -1959,7 +1960,7 @@ $display(
     f(x) sin n x space dash "нечётная",
   ) => cases(
     delim: #none,
-    a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dif x = 2/pi integral_0^(pi) f(x) cos n x dif x,
+    a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dd(x) = 2/pi integral_0^(pi) f(x) cos n x dd(x),
     b_n = 0,
   )
 )$
@@ -1971,7 +1972,7 @@ $display(
     f(x) sin n x space dash "чётная",
   ) => cases(
     delim: #none,
-    a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dif x = 0,
-    b_n = 1/pi integral_(-pi)^(pi) f(x) sin n x dif x = 2/pi integral_0^(pi) f(x) sin n x dif x,
+    a_n = 1/pi integral_(-pi)^(pi) f(x) cos n x dd(x) = 0,
+    b_n = 1/pi integral_(-pi)^(pi) f(x) sin n x dd(x) = 2/pi integral_0^(pi) f(x) sin n x dd(x),
   )
 )$

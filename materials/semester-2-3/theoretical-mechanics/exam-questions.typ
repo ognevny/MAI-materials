@@ -1,4 +1,4 @@
-#import "@preview/physica:0.9.8": dv, evaluated, pdv
+#import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
 #import "meta.typ": conf, const, delimsys, ov
 
 #show: conf.with(
@@ -113,7 +113,7 @@ $ ov(W)_C = dv(ov(V)_C, t) = (display(sum_j) m_j ov(W)_j)/M $
 
 Количеством движения МС называется векторная сумма количеств движений точек этой МС $ ov(Q) = display(sum_j) ov(q)_j = display(sum_j) m_j ov(V)_j $ $ ov(V)_C = (display(sum_j) m_j ov(V)_j)/M => ov(Q) = display(sum_j) m_j ov(V)_j $
 
-Импульс силы -- векторная физическая величина, мера воздействия силы на тело за заданный промежуток времени в поступательном движении: $ ov(S) = integral_(t_1)^(t_2) ov(F) dif t = ov(F) Delta t $
+Импульс силы -- векторная физическая величина, мера воздействия силы на тело за заданный промежуток времени в поступательном движении: $ ov(S) = integral_(t_1)^(t_2) ov(F) dd(t) = ov(F) Delta t $
 
 *Теорема об изменении вектора количества движения МС в дифференциальной форме*
 
@@ -128,8 +128,8 @@ $display(dv(ov(Q), t) = dv(, t) (sum_j m_j ov(V)_j) = sum_j dv(, t) (m_j ov(V)_j
 $ Delta ov(Q) = ov(Q) (tau) - ov(Q) (0) = sum_j ov(S)_(tau) (ov(F)_j^((e))) $
 
 $dv(ov(Q), t) = display(sum_j ov(F)_j^((e))) \
-dif ov(Q) = display((sum_j ov(F)_j^((e))) dif t) \
-dif ov(Q) = display(sum_j (ov(F)_j^((e)) dif t) => integral_0^(tau) dif ov(Q) = integral_0^(tau) sum_j (F_j^((e)) dif t)) => display(ov(Q) (tau) - ov(Q) (0) = sum_j ov(S)_(tau) (ov(F)_j^((e))))$
+dd(ov(Q)) = display((sum_j ov(F)_j^((e))) dd(t)) \
+dd(ov(Q)) = display(sum_j (ov(F)_j^((e)) dd(t)) => integral_0^(tau) dd(ov(Q)) = integral_0^(tau) sum_j (F_j^((e)) dd(t))) => display(ov(Q) (tau) - ov(Q) (0) = sum_j ov(S)_(tau) (ov(F)_j^((e))))$
 
 = Теорема о движении центра масс МС. Следствия
 
@@ -179,8 +179,7 @@ ov(K)_0 = display(sum_j [ov(r)_j, m_j ov(V)_j] => dv(ov(K)_0, t) = sum_j ov(M)_0
   align: horizon,
   [
     $
-      [ov(r)_j, m_j ov(V)_j] = mat(
-        delim: "|",
+      [ov(r)_j, m_j ov(V)_j] = mdet(
         ov(i), ov(j), ov(k);
         x_j, y_j, z_j;
         m_j V_(j x), m_j V_(j y), m_j V_(j z);
@@ -213,7 +212,7 @@ $display("Пр"_"Ox" dv(ov(K)_O, t) = "Пр"_"Ox" sum_j ov(M)_O (ov(F)_j^((e)))\
   align: horizon,
   [
     $[ov(r)_j, m_j ov(V)_j]_z = x_j m_j V_(j y) - y_j m_j V_(j x) \
-    ov(V)_j = [ov(omega), ov(r)_j] = mat(delim: "|", ov(i), ov(j), ov(k); 0, 0, dot(phi); x_j, y_j, z_j) \
+    ov(V)_j = [ov(omega), ov(r)_j] = mdet(ov(i), ov(j), ov(k); 0, 0, dot(phi); x_j, y_j, z_j) \
     V_(j x) = -dot(phi) y_j; V_(j y) = dot(phi) x_j; V_(j z) = 0 \
     K_(O z) = display(sum_j [ov(r)_j; m_j ov(V)_j] = sum_j (x_j m_j dot(phi) x_j - y_j m_j (-dot(phi) y_j)) = \ = sum_j dot(phi) m_j (x_j^2 + y_j^2) = dot(phi) sum_j m_j (x_j^2 + y_j^2)); x_j^2 + y_j^2 = d_(j z)^2$
   ],
@@ -240,12 +239,12 @@ $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 
 *Теорема об изменении кинетической энергии МС в дифференциальной форме*
 
-Дифференциал кинетической энергии МС равен сумме элементарных работ сил, приложенных к точкам этой системы $ dif T = sum_j dif' A (ov(F)_j) $
+Дифференциал кинетической энергии МС равен сумме элементарных работ сил, приложенных к точкам этой системы $ dd(T) = sum_j dif' A (ov(F)_j) $
 
 #block(breakable: false)[Доказательство:
 
   $display(T = sum_j (m_j V_j^2) = sum_j m_j/2 (ov(V)_j, ov(V)_j)) \
-  display(dif T = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dif ov(V)_j, ov(V)_j) + (ov(V)_j, dif ov(V)_j)) = sum_j m_j (d ov(V)_j, dv(ov(r), t)) = \ = sum_j (m_j ov(W)_j, dif ov(r)_j) = sum_j (ov(F)_j, dif ov(r)_j) = sum_j dif' A (ov(F)_j))$]
+  display(dd(T) = sum_j m_j/2 dif(ov(V)_j, ov(V)_j) = sum_j m_j/2 ((dd(ov(V)_j), ov(V)_j) + (ov(V)_j, dd(ov(V)_j))) = sum_j m_j (d ov(V)_j, dv(ov(r), t)) = \ = sum_j (m_j ov(W)_j, dd(ov(r)_j)) = sum_j (ov(F)_j, dd(ov(r)_j)) = sum_j dif' A (ov(F)_j))$]
 
 В этой теореме в общем случае учитываются элементарные работы как внешних, так и внутренних сил.
 
@@ -255,7 +254,7 @@ $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 
 #block(breakable: false)[Доказательство:
 
-  $display(integral_((1))^((2)) dif T = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; evaluated(T)_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$]
+  $display(integral_((1))^((2)) dd(T) = integral_((1))^((2)) sum_j dif' A (ov(F)_j)\; evaluated(T)_((1))^((2)) = sum_j integral_((1))^((2)) dif' A (ov(F)_j) => T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j))$]
 
 $dif' A$ -- величина порядка дифференциала.
 
@@ -292,9 +291,9 @@ $dif' A$ -- величина порядка дифференциала.
   columns: (3fr, 1fr),
   column-gutter: 1em,
   [
-    $ov(V) = dv(ov(r), t), space dif ov(r) = ov(V) dif t$
-    #rect[$ dif' A = (ov(F), dif ov(r)) $]
-    $dif' A = F dif r cos(angle(ov(F), ov(V))) = F_x dif x + F_y dif y + F_z dif z = (ov(F), ov(V)) dif t = \ = F V cos(ov(F), ov(V)) dif t = (F_x V_x + F_y V_y + F_z V_z) dif t$
+    $ov(V) = dv(ov(r), t), space dd(ov(r)) = ov(V) dd(t)$
+    #rect[$ dif' A = (ov(F), dd(ov(r))) $]
+    $dif' A = F dd(r) cos(angle(ov(F), ov(V))) = F_x dd(x) + F_y dd(y) + F_z dd(z) = (ov(F), ov(V)) dd(t) = \ = F V cos(ov(F), ov(V)) dd(t) = (F_x V_x + F_y V_y + F_z V_z) dd(t)$
   ],
   [
     #figure(
@@ -326,22 +325,22 @@ $dif' A$ -- величина порядка дифференциала.
 
 #v(1em)
 
-+ Поступательное движение $ sum_j dif' A = (ov(F)_j^((e)), dif ov(r)) $
-+ Вращательное движение $ sum_j dif' A = sum_j M_z (ov(F)_j^((e))) dif phi $
-+ Плоскопараллельное движение $ sum_j dif' A (ov(F)_j) = ov(F)_j^((e)) V_A dif t + sum_j M_(A ov(omega)) (ov(F)_j^((e))) dif phi $
++ Поступательное движение $ sum_j dif' A = (ov(F)_j^((e)), dd(ov(r))) $
++ Вращательное движение $ sum_j dif' A = sum_j M_z (ov(F)_j^((e))) dd(phi) $
++ Плоскопараллельное движение $ sum_j dif' A (ov(F)_j) = ov(F)_j^((e)) V_A dd(t) + sum_j M_(A ov(omega)) (ov(F)_j^((e))) dd(phi) $
 
 *Идеальные связи*
 
-Идеальными связями называются связи, для которых сумма элементарных работ их реакций равна 0 на любых элементарных перемещениях, допускаемых связями $ forall dif ov(r)_j: sum_j (ov(R)_j, dif ov(R)_j) = 0 $
+Идеальными связями называются связи, для которых сумма элементарных работ их реакций равна 0 на любых элементарных перемещениях, допускаемых связями $ forall dd(ov(r)_j): sum_j (ov(R)_j, dd(ov(r)_j)) = 0 $
 
-$dif' A_j = (ov(F)_j, ov(N)_j) dif t$
+$dif' A_j = (ov(F)_j, ov(N)_j) dd(t)$
 
 #grid(
   columns: (2fr, 1fr),
   column-gutter: 1em,
   [
     1. Гладкая поверхность
-    $ dif' A = (ov(N), ov(V)_A) dif t = 0 $
+    $ dif' A = (ov(N), ov(V)_A) dd(t) = 0 $
   ],
   [
     #figure(
@@ -354,7 +353,7 @@ $dif' A_j = (ov(F)_j, ov(N)_j) dif t$
   column-gutter: 1em,
   [
     2. Неподвижный шарнир
-    $ ov(V)_O = 0; dif' A = (ov(R), ov(V)_O) dif t = 0 $
+    $ ov(V)_O = 0; dif' A = (ov(R), ov(V)_O) dd(t) = 0 $
   ],
   [
     #figure(
@@ -368,14 +367,14 @@ $dif' A_j = (ov(F)_j, ov(N)_j) dif t$
   image("source-figures/lect0-1-19.png", width: 50%),
 )
 $ov(T)_B = -ov(T)_A, "Пр"_ov("AB") ov(V)_A = "Пр"_ov("AB") ov(V)_B \
-dif' A = (ov(T)_A, ov(V)_A) dif t + (ov(T)_B, ov(V)_B) dif t = ... = 0$
+dif' A = (ov(T)_A, ov(V)_A) dd(t) + (ov(T)_B, ov(V)_B) dd(t) = ... = 0$
 
 #grid(
   columns: (2fr, 1fr),
   column-gutter: 1em,
   [
     4. Качение без скольжения по неподвижной поверхности
-    $ V_P = 0 space dash "М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dif t = 0 $
+    $ V_P = 0 space dash "М.Ц.С"; dif' A (ov(R)) = (ov(R), ov(V)_P) dd(t) = 0 $
   ],
   [
     #figure(
@@ -390,10 +389,10 @@ dif' A = (ov(T)_A, ov(V)_A) dif t + (ov(T)_B, ov(V)_B) dif t = ... = 0$
 
 Поле сил называется потенциальным, если существует некая функция $U$, зависящая от координат ($exists U(x, y, z, ..., x_n, y_n, z_n)$), такая что выполняются уравнения $ F_(j x) = pdv(U, x_j), F_(j y) = pdv(U, y_j), F_(j z) = pdv(U, z_j) $ для $j = 1...n$. Соответственно $U$ -- силовая функция.
 
-$display(sum_j dif' A (ov(F)_j) = sum_j (F_(j x) dif x_j + F_(j y) dif y_j + F_(j z) dif z_j) = sum_j (pdv(U, x_j) dif x_j + pdv(U, y_j) dif y_j + pdv(U, z_j) dif z_j) = dif U) \
-display(dif T = sum_j dif' A (ov(F)_j) = dif U)$
+$display(sum_j dif' A (ov(F)_j) = sum_j (F_(j x) dd(x_j) + F_(j y) dd(y_j) + F_(j z) dd(z_j)) = sum_j (pdv(U, x_j) dd(x_j) + pdv(U, y_j) dd(y_j) + pdv(U, z_j) dd(z_j)) = dd(U)) \
+display(dd(T) = sum_j dif' A (ov(F)_j) = dd(U))$
 
-$ display(Delta T = integral_((1))^((2)) dif U = U_((2)) - U_((1)) = Delta U) $
+$ display(Delta T = integral_((1))^((2)) dd(U) = U_((2)) - U_((1)) = Delta U) $
 
 В ППС полная работа не зависит от траектории перемещения точек.
 
@@ -611,12 +610,12 @@ $ f(x, y, z, dot(x), dot(y), dot(z), t) = 0 space (>= 0) $
 $f(x, y, z, dot(x), dot(y), dot(z), t) = 0 \
 f(x, y, z, t) = 0$
 
-$dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z$
+$dd(f) = pdv(f, x) dd(x) + pdv(f, y) dd(y) + pdv(f, z) dd(z)$
 
 $delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ -- вариация функции ($t = const$)
 
 $ov(r) = (x, y, z, t) \
-dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pdv(ov(r), t) dif t space dash "элементарное перемещение"$
+dd(ov(r)) = pdv(ov(r), x) dd(x) + pdv(ov(r), y) dd(y) + pdv(ov(r), z) dd(z) + pdv(ov(r), t) dd(t) space dash "элементарное перемещение"$
 
 Виртуальное перемещение $ delta ov(r) = pdv(ov(r), x) delta x + pdv(ov(r), y) delta y + pdv(ov(r), z) delta z $
 
@@ -629,7 +628,7 @@ dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pd
   column-gutter: 1em,
   [
     $
-       dif' A & = (ov(F), dif ov(r)) \
+       dif' A & = (ov(F), dd(ov(r))) \
       delta A & = (ov(F), delta ov(r))
     $
   ],
@@ -651,7 +650,7 @@ dif ov(r) = pdv(ov(r), x) dif x + pdv(ov(r), y) dif y + pdv(ov(r), z) dif z + pd
   columns: (1fr, 1fr),
   column-gutter: 1em,
   [
-    $dif' A &= display(sum_j (ov(R)_j, dif ov(r)_j)) = 0 \
+    $dif' A &= display(sum_j (ov(R)_j, dd(ov(r)_j))) = 0 \
     delta A &= display(sum_j (ov(R)_j, delta ov(r)_j)) = 0$
 
     $ov(F)_j + ov(R)_j = 0 \
@@ -1006,8 +1005,7 @@ $X_"ОО"$ -- собственные колебания ($X_"собств."$), $
 )
 
 $
-  I = mat(
-    delim: "|",
+  I = mdet(
     J_x, -J_(x y), -J_(x z);
     -J_(y x), J_y, -J_(y z);
     -J_(z x), -J_(z y), J_z;
@@ -1075,11 +1073,11 @@ $
 #v(1em)
 
 $display(
-  dv(ov(K)_0, t) = ov(M)_0^((e))\; dv(ov(K)_0, t) = (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] => (tilde(dif) ov(K)_0)/(dif t) + [ov(omega), ov(K)_0] = ov(M)_0^((e))
+  dv(ov(K)_0, t) = ov(M)_0^((e))\; dv(ov(K)_0, t) = (tilde(dif) ov(K)_0)/dd(t) + [ov(omega), ov(K)_0] => (tilde(dif) ov(K)_0)/dd(t) + [ov(omega), ov(K)_0] = ov(M)_0^((e))
 )$
 
 $display(
-  [ov(omega), ov(K)_0] = mat(delim: "|", ov(i), ov(j), ov(k); omega_x, omega_y, omega_z; K_x, K_y, K_z)\; [ov(omega), ov(K)_0]_x = omega_y K_z - omega_z K_y = omega_y J_z omega_z - omega_z J_y omega_y = omega_y omega_z (J_z - J_y)
+  [ov(omega), ov(K)_0] = mdet(ov(i), ov(j), ov(k); omega_x, omega_y, omega_z; K_x, K_y, K_z)\; [ov(omega), ov(K)_0]_x = omega_y K_z - omega_z K_y = omega_y J_z omega_z - omega_z J_y omega_y = omega_y omega_z (J_z - J_y)
 )$
 
 $
@@ -1105,7 +1103,7 @@ $
         align: #left,
         delim: delimsys,
         ov(omega) = ov(dot(psi)) + ov(dot(theta)) + ov(dot(phi)),
-        (tilde(dif) ov(K)_c)/(dif t) + [ov(omega), ov(K)_c] = ov(M)_c^((e)),
+        (tilde(dif) ov(K)_c)/dd(t) + [ov(omega), ov(K)_c] = ov(M)_c^((e)),
       ) "векторные уравнения" \
       "Скалярные уравнения:" \
       cases(
@@ -1182,7 +1180,7 @@ dv(ov(Q), t) = ov(F)^((e)) => m(t) dv(ov(V), t) + dv(m_1, t) ov(V)_(1r) - dv(m_2
   ],
 )
 
-$(x): m(t) dv(V, t) = -dv(m, t) V_(1r) => integral dif V = -integral (dif m)/(m) V_(1r) => -V_(1r) ln m + C \
+$(x): m(t) dv(V, t) = -dv(m, t) V_(1r) => integral dd(V) = -integral dd(m)/m V_(1r) => -V_(1r) ln m + C \
 t = 0, V = V_0, m = m_0 => V_0 = -V_(1r) ln m_0 + C => C = V_0 + V_(1r) ln m_0 \
 V = V_0 + (ln m_0 - ln m) V_(1r)$
 

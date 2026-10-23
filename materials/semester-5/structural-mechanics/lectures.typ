@@ -1,5 +1,5 @@
-#import "meta.typ": conf
-#import "@preview/physica:0.9.8": dv, mdet, pdv
+#import "meta.typ": conf, const
+#import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
 
 #show: conf.with(
   title: "Лекции по Строительной механике",
@@ -43,17 +43,17 @@
   [
     Напряжение
     $
-      sigma = lim_(dif A -> 0) dv(P, A)
+      sigma = lim_(dd(A) -> 0) dv(P, A)
     $
 
     Нормальное напряжение
     $
-      sigma_n = lim_(dif A -> 0) dv(P_n, A)
+      sigma_n = lim_(dd(A) -> 0) dv(P_n, A)
     $
 
     Касательное напряжение
     $
-      tau = lim_(dif A -> 0) dv(P_tau, A)
+      tau = lim_(dd(A) -> 0) dv(P_tau, A)
     $
   ],
   [
@@ -144,7 +144,7 @@
 )
 
 $
-  X: (sigma_(x x) + pdv(sigma_(x x), x) dif x) dif z dif y - sigma_(x x) dif z dif y + (sigma_(y x) + pdv(sigma_(y x), y) dif y) dif x dif z - \ - sigma_(y x) dif x dif z + (sigma_(z x) + pdv(sigma_(z x), z) dif z) dif x dif y - sigma_(z x) dif x dif y + X dif x dif y dif z = 0 \
+  X: (sigma_(x x) + pdv(sigma_(x x), x) dd(x)) dd(z, y) - sigma_(x x) dd(z, y) + (sigma_(y x) + pdv(sigma_(y x), y) dd(y)) dd(x, z) - \ - sigma_(y x) dd(x, z) + (sigma_(z x) + pdv(sigma_(z x), z) dd(z)) dd(x, y) - sigma_(z x) dd(x, y) + X dd(x, y, z) = 0 \
 $
 
 Силы
@@ -156,7 +156,7 @@ $
 
 Моменты
 $
-  (sigma_(y x) + pdv(sigma_(y x), y) dif y) dif x dif z (dif y)/2 + sigma_(y x) dif x dif z (dif y)/2 - (sigma_(x y) + pdv(sigma_(x y), x) dif x) dif z dif y (dif x)/2 - sigma_(x y) dif z dif y (dif x)/2 = 0 \
+  (sigma_(y x) + pdv(sigma_(y x), y) dd(y)) dd(x, z) dd(y)/2 + sigma_(y x) dd(x, z) dd(y)/2 - (sigma_(x y) + pdv(sigma_(x y), x) dd(x)) dd(z, y) dd(x)/2 - sigma_(x y) dd(z, y) dd(x)/2 = 0 \
   "Убираем особо малые величины," 2sigma_(y x) - 2sigma_(x y) => sigma_(x y) = sigma_(y x)
 $
 
@@ -184,10 +184,10 @@ $
   ],
   [
     $
-      S_(triangle A B C) = dif A \
+      S_(triangle A B C) = dd(A) \
       cos(overline(n), x) = n_x, space cos(overline(n), y) = n_y, space cos(overline(n), z) = n_z \
-      S_(triangle O B C) = n_x dif A, space S_(triangle O B A) = n_z dif A, space S_(triangle O C A) = n_y dif A \
-      sum x: -sigma_(x x) n_x dif A - sigma_(x z) n_z dif A - sigma_(x y) n_y dif A + sigma_x dif A = 0, \
+      S_(triangle O B C) = n_x dd(A), space S_(triangle O B A) = n_z dd(A), space S_(triangle O C A) = n_y dd(A) \
+      sum x: -sigma_(x x) n_x dd(A) - sigma_(x z) n_z dd(A) - sigma_(x y) n_y dd(A) + sigma_x dd(A) = 0, \
       sigma_(n x) = sigma_(x x) n_x + sigma_(x y) n_y + sigma_(x z) n_z \
       sigma_(n y) = sigma_(x y) n_x + sigma_(y y) n_y + sigma_(y z) n_z \
       sigma_(n z) = sigma_(x z) n_x + sigma_(y z) n_y + sigma_(z z) n_z
@@ -303,7 +303,7 @@ $
 
     Деформации
     $
-      & epsilon_(x x) = (dif x + u_x + pdv(u_x, x) dif x - u_x - dif x)/(dif x) = pdv(u_x, x) \
+      & epsilon_(x x) = (dd(x) + u_x + pdv(u_x, x) dd(x) - u_x - dd(x))/dd(x) = pdv(u_x, x) \
       & epsilon_(y y) = pdv(u_y, y)
     $
   ],
@@ -314,7 +314,7 @@ $
   alpha_x approx sin alpha_x = (A'A'')/(M'A'') = 1/(1 + epsilon_(x x)) pdv(u_y, x) approx pdv(u_y, x),
   alpha_y approx pdv(u_x, y),
 $
-где $A'A'' = pdv(u_y, x) dif x$, $M'A'' = dif x (1 + epsilon_(x x))$
+где $A'A'' = pdv(u_y, x) dd(x)$, $M'A'' = dd(x) (1 + epsilon_(x x))$
 
 Сдвиговая деформация
 $
@@ -351,14 +351,14 @@ $
   ],
   [
     $
-      dif V & = dif x dif y dif z \
-      dif V' & = (1 + epsilon_(x x)) dif x (1 + epsilon_(y y)) dif y (1 + epsilon_(z z)) dif z \
-      & = (1 + epsilon_(x x) + epsilon_(y y) + epsilon_(z z) + epsilon_(x x) epsilon_(y y) + epsilon_(x x) epsilon_(z z) + epsilon_(y y) epsilon_(z z) + epsilon_(x x) epsilon_(y y) epsilon_(z z)) dif x dif y dif z
+      dd(V) & = dd(x, y, z) \
+      dd(V') & = (1 + epsilon_(x x)) dd(x) (1 + epsilon_(y y)) dd(y) (1 + epsilon_(z z)) dd(z) \
+      & = (1 + epsilon_(x x) + epsilon_(y y) + epsilon_(z z) + epsilon_(x x) epsilon_(y y) + epsilon_(x x) epsilon_(z z) + epsilon_(y y) epsilon_(z z) + epsilon_(x x) epsilon_(y y) epsilon_(z z)) dd(x, y, z)
     $
 
     Объемная деформация
     $
-      (dif V' - dif V)/(dif V) = epsilon_(x x) + epsilon_(y y) + epsilon_(z z) = theta
+      dd(V', V, prod: -)/dd(V) = epsilon_(x x) + epsilon_(y y) + epsilon_(z z) = theta
     $
   ],
 )
@@ -803,7 +803,13 @@ $
     )
   ],
   [
-    ... (здесь возможно будет что-то ещё)
+    $
+      F Delta l(p) = p Delta V(F) \
+      epsilon_l = -p/E + mu p/E dot 2 \
+      Delta l(p) = epsilon_l l = -(1 - 2mu)/E l p \
+      Delta V(F) = (F Delta l(p))/p \
+      Delta V = -(1 - 2mu)/E l F
+    $
   ],
 )
 
@@ -823,8 +829,8 @@ $
     $
       sigma = E epsilon = N/A \
       epsilon = (Delta l)/l => Delta l = l epsilon \
-      Delta(dif x) = (N dif x)/(E A) \
-      dif U_N = 1/2 N Delta(dif x) = 1/2 (N N dif x)/(E A) = \ = 1/2 (N^2 dif x)/(E A)
+      Delta(dd(x)) = (N dd(x))/(E A) \
+      dd(U_N) = 1/2 N Delta(dd(x)) = 1/2 (N N dd(x))/(E A) = \ = 1/2 (N^2 dd(x))/(E A)
     $
   ],
 )
@@ -839,15 +845,213 @@ $
   ],
   [
     $
-      dif theta = (dif x)/rho \
-      dif U_m = 1/2 M_y dif theta = 1/2 M_y/rho dif x \
-      1/rho = M_y/(E I_z) => dif U_m = M_y^2/(2 E I_z) dif x
+      dd(theta) = dd(x)/rho \
+      dd(U_m) = 1/2 M_y dd(theta) = 1/2 M_y/rho dd(x) \
+      1/rho = M_y/(E I_z) => dd(U_m) = M_y^2/(2 E I_z) dd(x)
     $
   ],
 )
 
 Общая формула для упругой энергии стержня
 $
-  dif U = sum_(j=1)^N (integral_l_j N^2/(2E A) dif x + integral_l_j M_y^2/(2E I_z) dif x + integral_l_j M_z^2/(2E I_y) dif x + integral_l_j M_"кр"^2/(2G I_p) dif x + K_z integral_l_j Q_z^2/(2G A) dif x + integral_l_j Q_y^2/(2G A) dif x),
+  dd(U) = sum_(j=1)^N (integral_l_j N^2/(2E A) dd(x) + integral_l_j M_y^2/(2E I_z) dd(x) + integral_l_j M_z^2/(2E I_y) dd(x) + integral_l_j M_"кр"^2/(2G I_p) dd(x) + K_z integral_l_j Q_z^2/(2G A) dd(x) + integral_l_j Q_y^2/(2G A) dd(x)),
 $
-где $K_z$ и $K_y$ -- константы, зависящая от геометрии сечения. Последние две слагаемые часто оказываются пренебрежимо малы, поэтому их можно опускать.
+где $K_z$ и $K_y$ -- константы, зависящая от геометрии сечения. Последние две слагаемые часто оказываются пренебрежимо малы, поэтому их можно опускать. Вместо $dd(x)$ можно взять $dd(s)$ (интегрирование по длине).
+
+У стержневых систем
+$
+  U_"стержня" = sum_(i=1)^n integral_0^(l_i) N_i^2/(2E_i A_i) dd(s) = sum_(i=1)^n N_i^2/(2E_i A_i) integral_0^(l_i) dd(s) = sum_(i=1)^n (N_i^2 l_i)/(2E_i A_i)
+$
+
+=== Теорема Кастильяно
+
+#v(1em)
+
+#grid(
+  columns: (3fr, 1fr),
+  column-gutter: 1em,
+  [
+    Рассмотрим систему, нагруженную системой сил
+    $
+      U = U(P_1, P_2, ..., P_n)
+    $
+    $P_i$ получает приращение $dd(P_i)$, получим
+    $
+      tilde(U) = U + pdv(U, P_i) dd(P_i)
+    $
+    Приращение работы
+    $
+      tilde(A) = A + 1/2 dd(P_i, v_i) + v_i dd(P_i),
+    $
+    где $dd(v_i)$ -- приращение перемещения $v_i$. Уберем очень малые величины
+    $
+      tilde(A) = A + v_i dd(P_i)
+    $
+    При этом $tilde(U) = tilde(A)$ и $U = A$
+    $
+      pdv(U, P_i) dd(P_i) = v_i dd(P_i) => v_i = pdv(U, P_i)
+    $
+
+    Теорема Кастильяно -- перемещение точки приложения силы в направлении действия этой силы равно частной производной от внутренней энергии деформации по этой силе.
+  ],
+  [
+    #figure(
+      image("source-figures/lect6-1.png"),
+    )
+  ],
+)
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    Пример на эту теорему
+    $
+      U = integral_0^L M_z^2/(2E I_y) dd(s) = integral_0^L (-P x)^2/(2E (b h^3)/12) dd(s) = \ = (6P^2)/(E b h^3) integral_0^L x^2 dd(s) = (6P^2)/(E b h^3) L^3/3 = (2P^2 L^3)/(E b h^3)
+    $
+    Воспользуемся теоремой
+    $
+      v_i = pdv(U, P) = (4P L^3)/(E b h^3)
+    $
+  ],
+  [
+    #figure(
+      image("source-figures/lect6-2.png"),
+    )
+  ],
+)
+
+== Интеграл Мора
+
+#v(1em)
+
+#grid(
+  columns: (4.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    Возьмем точку $m$, к которой не приложена нагрузка. Силовые факторы в исходной системе $N$, $Q_z$, $Q_y$, $M_y$, $M_z$, $M_"кр"$, в единичной системе $overline(N)$, $overline(Q_z)$, $overline(Q_y)$, $overline(M_y)$, $overline(M_z)$, $overline(M_"кр")$.
+
+    $
+      tilde(A) = overline(A) + A + 1 dot v_i
+    $
+    Внутренние усилия в системе с учетом всех нагрузок
+    $
+      tilde(N) = N + overline(N)
+    $
+    Остальные силовые факторы получаются аналогично
+  ],
+  [
+    #figure(
+      image("source-figures/lect6-3.png"),
+    )
+  ],
+)
+
+$
+  tilde(U) & = 1/2 sum_(i=1)^N (integral_l_i tilde(N)_i^2/(E_i A_i) dd(s) + ... + K_y integral_0^(l_i) tilde(Q)_(y i)^2/(G_i A_i) dd(s)) = \
+  & = 1/2 sum_(i=1)^N (integral_0^(l_i) (N_i + overline(N)_i)^2/(E_i A_i) dd(s) + ... + K_y integral_0^(l_i) (Q_(y i) + overline(Q)_(y i))^2/(G_i A_i) dd(s)) = \
+  & = 1/2 sum_(i=1)^N (integral_0^(l_i) (N_i^2 + 2N_i overline(N)_i overline(N)_i^2)/(E_i A_i) dd(s) + ... + K_y integral_0^(l_i) (Q_(y i)^2 + 2Q_y overline(Q)_(y i) + overline(Q)_(y i)^2)/(G_i A_i) dd(s)) \
+  tilde(U) & = U + overline(U) + sum_(i=1)^N [integral_0^(l_i) (N_i overline(N_i))/(E_i A_i) dd(s) + ... + integral_0^(l_i) (Q_(y i) overline(Q)_(y i))/(G_i A_i) dd(s)]
+$
+
+Получим, что
+$
+  1 dot v_i = sum_(i=1)^N [integral_0^(l_i) (N_i overline(N_i))/(E_i A_i) dd(s) + ... + integral_0^(l_i) (Q_(y i) overline(Q)_(y i))/(G_i A_i) dd(s)]
+$
+
+Решим ту же задачу интегралом Мора
+$
+  overline(M) = x \
+  integral_0^L (M overline(M))/(E I) dd(x) = integral_0^L (-P x x)/(E I) dd(x) = evaluated(-(P x^3)/(3E I))_0^L = -(P L^3)/(3E I) = -(P L^3 dot 12)/(3E b h^3) = -(4P L^3)/(E b h^3)
+$
+
+Для стержневой системы имеем
+$
+  v_(i "стержневой") = sum_(i=1)^N (N_i overline(N)_i)/(E_i A_i) l_i
+$
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect6-4.png"),
+    )
+  ],
+  [
+    Монтажная деформация
+    $
+      sigma = N/A = E epsilon => N/A = E (Delta l)/l => N = ((Delta l)/l E A)_i
+    $
+  ],
+)
+
+Температурная деформация
+$
+  epsilon_т = alpha Delta T => (Delta l_т)/l = alpha Delta T => N_т = (alpha Delta T E A)
+$
+
+#grid(
+  columns: (2fr, 1fr),
+  column-gutter: 1em,
+  [
+    Рассмотрим пример
+    $
+      W = 2 dot 4 - 8 = 0
+    $
+    Реакции
+    $
+      R_(3y) = -P, space R_(3x) = -P, space R_(2y) = P
+    $
+    Усилия в стержнях
+    $
+      N_14 = 0, space N_43 = 0, space N_12 = -P, space N_32 = 0, space N_13 = P sqrt(2)
+    $
+
+    Без учета температурной нагрузки
+    $
+      U = sum_(i=1)^N (N_i^2 l_i)/(2E_i A_i) = 1/(2E A) ((-P)^2 dot a + (P sqrt(2))^2 dot a sqrt(2)) = (P^2 a)/(2E A) (1 + 2sqrt(2)),
+    $
+    возьмем $E A = const$
+  ],
+  [
+    #figure(
+      image("source-figures/lect6-5.png"),
+    )
+  ],
+)
+
+По теореме Кастильяно
+$
+  v_i = pdv(U, P) = (P a)/(E A) (1 + 2sqrt(2))
+$
+
+Для применения интеграла Мора приложим единичную нагрузку в ту же сторону, тогда в значениях $N$ нужно вместо $P$ подставить 1.
+
+$
+  v_i = sum_(i=1)^N integral (N_i overline(N)_i)/(E A) dd(s) = (-P dot (-1))/(E A) a + (sqrt(2) P dot sqrt(2))/(E A) dot sqrt(2) a = (P a)/(E A) (1 + 2sqrt(2))
+$
+
+Для нахождения #text(green)[_вертикального_] перемещения нужно пересчитать усилия. Реакции
+$
+  R_(3y) = 0, R_(2y) = -1
+$
+Усилия
+$
+  overline(N)_43 = 0, space overline(N)_13 = 0, space overline(N)_32 = 0, space overline(N)_14 = 0, space overline(N)_12 = 1
+$
+Интеграл Мора
+$
+  v_i = (-P dot 1)/(E A) dot a = -(P a)/(E A)
+$
+(минус значит, что перемещение идет вниз)
+
+Теперь нагреем стержень 4-3
+$
+  N_т_43 = alpha Delta T E A
+$
+
+Суммарное перемещение
+$
+  v_i = ((N_43 + N_т_43) overline(N)_43)/(E A) L_43 = ((-P + alpha dot 80E A) a)/(E A)
+$

@@ -1,5 +1,5 @@
-#import "@preview/physica:0.9.8": dv, pdv
 #import "meta.typ": arctg, conf, const, ov
+#import "@preview/physica:0.9.8": dd, dv, pdv
 
 #show: conf.with(
   title: "Лекции по Теории вероятностей",
@@ -431,14 +431,14 @@ $f(x) = F'(x) = display(lim_(Delta x -> 0)) (F(x + Delta x) - F(x))/(Delta x)$
 
 + $f(x) >= 0$
 
-+ $integral_(-oo)^(+oo) f(x) dif x = 1$
++ $integral_(-oo)^(+oo) f(x) dd(x) = 1$
 
 #grid(
   columns: (3fr, 1fr),
   column-gutter: 1em,
   [
-    $P(x_1 < X < x_2) = integral_(x_1)^(x_2) f(x) dif x \
-    F(x) = integral_(-oo)^x f(t) dif t$
+    $P(x_1 < X < x_2) = integral_(x_1)^(x_2) f(x) dd(x) \
+    F(x) = integral_(-oo)^x f(t) dd(t)$
   ],
   [
     #figure(
@@ -470,7 +470,7 @@ $f(x) = F'(x) = display(lim_(Delta x -> 0)) (F(x + Delta x) - F(x))/(Delta x)$
 #v(1em)
 
 Для ДСВ $ M(X) = sum_(i=1)^(n (oo)) x_i p_i $
-Для НСВ $ M(X) = integral_(-oo)^(+oo) x f(x) dif x $
+Для НСВ $ M(X) = integral_(-oo)^(+oo) x f(x) dd(x) $
 
 ==== Свойства математического ожидания
 
@@ -509,7 +509,7 @@ $f(x) = F'(x) = display(lim_(Delta x -> 0)) (F(x + Delta x) - F(x))/(Delta x)$
     )
   ],
   [
-    $display(integral_(-oo)^(M_e (X)) f(x) dif x = integral_(M_e (X))^(+oo) f(x) dif x = 0.5)$
+    $display(integral_(-oo)^(M_e (X)) f(x) dd(x) = integral_(M_e (X))^(+oo) f(x) dd(x) = 0.5)$
   ],
 )
 
@@ -523,7 +523,7 @@ M(limits(X)^(#circle(radius: 1pt, stroke: 0.4pt))) = M(X - M(X)) = 0$
 Дисперсией называется математическое ожидание от квадрата центрированной СВ $ M(X - M(X))^2 = M(X^2 - 2X M(X) + M^2(X)) = M(X^2) - M^2(X) $
 
 Для ДСВ $ D(X) = sum_(i=1)^n (x_i M(X))^2 p_i = sum_(i=1)^n x_i^2 p_i - M^2(X) $
-Для НСВ $ D(X) = integral_(-oo)^(+oo) (x - M(X))^2 f(x) dif x = integral_(-oo)^(+oo) x^2 f(x) dif x - M^2(X) $
+Для НСВ $ D(X) = integral_(-oo)^(+oo) (x - M(X))^2 f(x) dd(x) = integral_(-oo)^(+oo) x^2 f(x) dd(x) - M^2(X) $
 
 ===== Свойства дисперсии
 
@@ -546,14 +546,14 @@ M(limits(X)^(#circle(radius: 1pt, stroke: 0.4pt))) = M(X - M(X)) = 0$
 
 Начальный момент k-ого порядка $ nu_k (X) = M(X^k) $
 Для ДСВ $ nu_k = sum_(i=1)^n x_i^k p_i $
-Для НСВ $ nu_k = integral_(-oo)^(+oo) x^k f(x) dif x $
+Для НСВ $ nu_k = integral_(-oo)^(+oo) x^k f(x) dd(x) $
 
 Центрированная случайная величина (ЦСВ) $ limits(X)^(#circle(radius: 1pt, stroke: 0.4pt)) = X - M(X) $
 Нормирование (нормированная СВ) $ limits(X)^* = limits(X)^(#circle(radius: 1pt, stroke: 0.4pt))/sigma(X) $
 
 Центральный момент k-ого порядка $ mu_k (X) = M(limits(X^k)^(#circle(radius: 1pt, stroke: 0.4pt))) = M((M - M(X))^k) $
 Для ДСВ $ mu_k = sum_(i=1)^n (x_i - M(X))^k p_i $
-Для НСВ $ mu_k = integral_(-oo)^(+oo) (x - M(X))^k f(x) dif x $
+Для НСВ $ mu_k = integral_(-oo)^(+oo) (x - M(X))^k f(x) dd(x) $
 $mu_1 (X) = M(X - M(X)) = 0 \
 mu_2 (X) = M((X - M(X))^2) = M(X^2 - 2X M(X) + M^2(X)) = M(X^2) - 2M(X) M(X) + M^2(X) = \ = M(X^2) - M^2(X) = nu_2 (X) - nu_1^2 (X)$
 
@@ -607,9 +607,9 @@ $display(
     x^3\, &0 <= x <= 1,
     1\, &x > 1,
   ) \
-  x < 0: F(x) = integral_(-oo)^x 0 dif t = 0 \
-  0 <= x <= 1: F(x) = integral_(-oo)^0 0 dif t + integral_0^x 3t^2 dif t = x^3 \
-  x > 1: F(x) = integral_(-oo)^0 0 dif t + integral_0^1 3t^2 dif t + integral_1^(+oo) 0 dif t = 1 \
+  x < 0: F(x) = integral_(-oo)^x 0 dd(t) = 0 \
+  0 <= x <= 1: F(x) = integral_(-oo)^0 0 dd(t) + integral_0^x 3t^2 dd(t) = x^3 \
+  x > 1: F(x) = integral_(-oo)^0 0 dd(t) + integral_0^1 3t^2 dd(t) + integral_1^(+oo) 0 dd(t) = 1 \
   x_0.3: F(x_0.3) = x_0.3^3 = 0.3 => x_0.3 = root(3, 0.3) approx 0.67 \
   "30%": F(x_(1-0.3)) = x_(1-0.3)^3 = 0.7 => x_(1-0.3) = root(3, 0.7) approx 0.89
 )$
@@ -863,7 +863,7 @@ $P(3 <= X <= 6) = ...$
   ],
 )
 
-$ P(x_1 < X < x_2) = integral_(x_1)^(x_2) f(x) dif x = F(x_2) - F(x_1) $
+$ P(x_1 < X < x_2) = integral_(x_1)^(x_2) f(x) dd(x) = F(x_2) - F(x_1) $
 
 Мода при таком ЗР не определена.
 
@@ -893,7 +893,7 @@ epsilon(X) = -1.2$
     sigma(X) = sqrt(3)/3 \
     alpha(X) = 0 \
     epsilon(X) = -1.2 \
-    P(X < 0.5) = integral_0^0.5 0.5 dif x = 0.25 = F(0.5) - F(0) = S_(rect.filled)/S$
+    P(X < 0.5) = integral_0^0.5 0.5 dd(x) = 0.25 = F(0.5) - F(0) = S_(rect.filled)/S$
   ],
 )
 
@@ -973,7 +973,7 @@ P(X >= 20 "ч") = 1 - P(X < 20) = 1 - P(0 <= X < 20) = 1 - (F(20) - F(0)) = 1 - 
     Для НСВ $X$ задаются параметры $a$ -- математическое ожидание (среднее значение) и $sigma$ -- среднее квадратическое отклонение
     $ X ~ "N"(a, sigma^2) $
     $f(x) = display(1/(sigma sqrt(2pi)) e^(-(x-a)^2/(2sigma^2)))
-    F(x) = display(1/(sigma sqrt(2pi)) integral_(-oo)^x e^(-(t-a)^2/(2sigma^2)) dif t)$
+    F(x) = display(1/(sigma sqrt(2pi)) integral_(-oo)^x e^(-(t-a)^2/(2sigma^2)) dd(t))$
 
     Нормирование и центрирование данной СВ осуществляется при $a = 1$ и $sigma = 0$, соответственно
 
@@ -1015,7 +1015,7 @@ epsilon = 3sigma, P = 2Phi(3) approx 0.9973$
 
 + $f(x) = display(1/(6sqrt(2pi)) e^(-(x-173)^2/(2 dot 36)))$
 
-+ $F(x) = display(1/(6sqrt(2pi)) integral_(-oo)^x e^(-(t-173)^2/(2 dot 36)) dif t = 0.5 + 1/2 Phi((x - 173)/6))$
++ $F(x) = display(1/(6sqrt(2pi)) integral_(-oo)^x e^(-(t-173)^2/(2 dot 36)) dd(t) = 0.5 + 1/2 Phi((x - 173)/6))$
 
 + $176 < X < 182: P(176 < X < 182) = Phi((182-173)/6) - Phi((176-173)/6)$
 
@@ -1032,7 +1032,7 @@ epsilon = 3sigma, P = 2Phi(3) approx 0.9973$
   column-gutter: 1em,
   [
     $x > 0, X < x => ln X < ln x \
-    F(x) = P(X < x) = P(ln X < ln x) = display(1/(sigma sqrt(2pi)) integral_(-oo)^(ln x) e^(-(t - ln a)^2/(2sigma^2)) dif t) \
+    F(x) = P(X < x) = P(ln X < ln x) = display(1/(sigma sqrt(2pi)) integral_(-oo)^(ln x) e^(-(t - ln a)^2/(2sigma^2)) dd(t)) \
     f(x) = display(1/(sigma sqrt(2pi)) e^(-(ln x - ln a)^2/(2sigma^2))) \
     M(X) = a e^(sigma^2/2) \
     D(X) = a^2 e^sigma^2 (e^sigma^2 - 1) \
@@ -1100,7 +1100,7 @@ $ F(x, y) = P(X < x, Y < y) $
 
 Плотностью распределения (дифференциальной функцией) НДСВ называют вторую смешанную производную.
 
-$ f(x, y) = pdv(F(x,y), x, y), $ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(t, l) dif t dif l$
+$ f(x, y) = pdv(F(x,y), x, y), $ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(t, l) dd(t) dd(l)$
 
 #grid(
   columns: (3fr, 1fr),
@@ -1108,9 +1108,9 @@ $ f(x, y) = pdv(F(x,y), x, y), $ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(
   [
     + $f(x, y) >= 0$
 
-    + $integral_(-oo)^(+oo) integral_(-oo)^(+oo) f(x, y) dif x dif y = 1$
+    + $integral_(-oo)^(+oo) integral_(-oo)^(+oo) f(x, y) dd(x, y) = 1$
 
-    $ P(x_1 < X < x_2, y_1 < Y < y_2) = integral_(x_1)^(x_2) integral_(y_1)^(y_2) f(x, y) dif x dif y $
+    $ P(x_1 < X < x_2, y_1 < Y < y_2) = integral_(x_1)^(x_2) integral_(y_1)^(y_2) f(x, y) dd(x, y) $
   ],
   [
     #figure(
@@ -1121,7 +1121,7 @@ $ f(x, y) = pdv(F(x,y), x, y), $ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(
 
 $ nu_(k,s) (X, Y) = M(X^k Y^s) $
 Для ДСВ $ nu_(k,s) = sum_(i=1)^n sum_(j=1)^m x_i^k y_j^s p_(i j) $
-Для НСВ $ nu_(k,s) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) x_i^k y_j^s f(x, y) dif x dif y $
+Для НСВ $ nu_(k,s) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) x_i^k y_j^s f(x, y) dd(x, y) $
 
 $nu_(1,0) (X, Y) = M(X Y^0) = M(X) \
 nu_(0,1) (X, Y) = M(X^0 Y) = M(Y) \
@@ -1131,7 +1131,7 @@ nu_(1,1) (X, Y) = M(X Y)$
 
 $ mu_(k,s) = M((X - M(X))^k (Y - M(Y))^s) $
 Для ДСВ $ mu_(k,s) = sum_(i=1)^n sum_(j=1)^m (x_i - M(X))^k (y_j - M(Y))^s p_(i j) $
-Для НСВ $ mu_(k,s) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X))^k (y_j - M(Y))^s f(x, y) dif x dif y $
+Для НСВ $ mu_(k,s) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X))^k (y_j - M(Y))^s f(x, y) dd(x, y) $
 
 $mu_(1,0) (X, Y) = M((X - M(X)) (Y - M(Y))^0) = 0 \
 mu_(0,1) (X, Y) = M((X - M(X))^0 (Y - M(Y))) = 0 \
@@ -1145,7 +1145,7 @@ mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y)))$
 
 $ k(X, Y) equiv cov(X, Y) = mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y))) = M(X Y) - M(X) M(Y) $
 Для ДСВ $ cov(X, Y) = sum_(i=1)^n sum_(j=1)^m (x_i - M(X)) (y_j - M(Y)) p_(i j) = sum_(i=1)^n sum_(j=1)^m x_i y_j p_(i j) - M(X) M(Y) $
-Для НСВ $ cov(X, Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X)) (y_j - M(Y)) f(x, y) dif x dif y $
+Для НСВ $ cov(X, Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X)) (y_j - M(Y)) f(x, y) dd(x, y) $
 
 + $cov(X, Y) = 0; X, Y space dash "НЗСВ"$
 + $cov(X, Y) = cov(Y, X)$
@@ -1247,8 +1247,8 @@ $
 $
 
 $display(
-  F_1(x) = integral_(-oo)^x integral_(-oo)^(+oo) f(x, y) dif x dif y\, f_1(x) = dv(F_1(x), x) = integral_(-oo)^(+oo) f(x, y) dif y \
-  F_2(y) = integral_(-oo)^(+oo) integral_(-oo)^y f(x, y) dif x dif y\, f_2(y) = dv(F_2(y), y) = integral_(-oo)^(+oo) f(x, y) dif x
+  F_1(x) = integral_(-oo)^x integral_(-oo)^(+oo) f(x, y) dd(x, y)\, f_1(x) = dv(F_1(x), x) = integral_(-oo)^(+oo) f(x, y) dd(y) \
+  F_2(y) = integral_(-oo)^(+oo) integral_(-oo)^y f(x, y) dd(x, y)\, f_2(y) = dv(F_2(y), y) = integral_(-oo)^(+oo) f(x, y) dd(x)
 )$
 
 ==== Числовые характеристики
@@ -1263,8 +1263,8 @@ $
 
 Для НСВ
 $
-  M(X) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) x f(x, y) dif x dif y = integral_(-oo)^(+oo) x f_1(x) dif x \
-  M(Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) y f(x, y) dif x dif y = integral_(-oo)^(+oo) y f_2(y) dif y
+  M(X) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) x f(x, y) dd(x, y) = integral_(-oo)^(+oo) x f_1(x) dd(x) \
+  M(Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) y f(x, y) dd(x, y) = integral_(-oo)^(+oo) y f_2(y) dd(y)
 $
 
 ===== Законы сложения и умножения мат. ожидания и дисперсии
@@ -1384,10 +1384,10 @@ $
 
 Для НСВ
 $
-  M(X\/y) = integral_(-oo)^(+oo) x f_1(x\/y) dif x = 1/(f_2(y)) integral_(-oo)^(+oo) x f(x, y) dif x \
-  M(Y\/x) = integral_(-oo)^(+oo) y f_2(y\/x) dif y = 1/(f_1(x)) integral_(-oo)^(+oo) y f(x, y) dif y \
-  D(X\/y) = integral_(-oo)^(+oo) (x - M(X\/y))^2 f_1(x\/y) dif x = 1/(f_2(y)) integral_(-oo)^(+oo) (x - M(X\/y))^2 f(x, y) dif x \
-  D(Y\/x) = integral_(-oo)^(+oo) (y - M(Y\/x))^2 f_2(y\/x) dif y = 1/(f_1(x)) integral_(-oo)^(+oo) (y - M(Y\/x))^2 f(x, y) dif y
+  M(X\/y) = integral_(-oo)^(+oo) x f_1(x\/y) dd(x) = 1/(f_2(y)) integral_(-oo)^(+oo) x f(x, y) dd(x) \
+  M(Y\/x) = integral_(-oo)^(+oo) y f_2(y\/x) dd(y) = 1/(f_1(x)) integral_(-oo)^(+oo) y f(x, y) dd(y) \
+  D(X\/y) = integral_(-oo)^(+oo) (x - M(X\/y))^2 f_1(x\/y) dd(x) = 1/(f_2(y)) integral_(-oo)^(+oo) (x - M(X\/y))^2 f(x, y) dd(x) \
+  D(Y\/x) = integral_(-oo)^(+oo) (y - M(Y\/x))^2 f_2(y\/x) dd(y) = 1/(f_1(x)) integral_(-oo)^(+oo) (y - M(Y\/x))^2 f(x, y) dd(y)
 $
 
 ===== Уравнение линейной регрессии
@@ -1434,7 +1434,7 @@ $display(
     0&\, "вне" a <= x <= b\, c <= y <= d,
   ) \
   F(x, y) = cases(
-    1/((b-a) (d-c)) integral_0^x integral_0^y dif x dif y = (x-a)/(b-a) dot (y-c)/(d-c)&\, a <= x <= b\, c <= y <= d,
+    1/((b-a) (d-c)) integral_0^x integral_0^y dd(x, y) = (x-a)/(b-a) dot (y-c)/(d-c)&\, a <= x <= b\, c <= y <= d,
     0&\, x < a or y < c,
     1&\, x > b\, y > d,
   ) \
@@ -1454,11 +1454,11 @@ $
 $display(
   k = mat(D(X), k(X, Y); k(X, Y), D(Y)) = mat(sigma^2(X), r(X, Y) sigma(X) sigma(Y); r(X, Y) sigma(X) sigma(Y), sigma^2(Y)) \
   abs(k) = sigma^2(X) sigma^2(Y) (1 - r^2(X, Y)) \
-  M(X) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) x f(x, y) dif x dif y \
-  M(Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) y f(x, y) dif x dif y \
+  M(X) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) x f(x, y) dd(x, y) \
+  M(Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) y f(x, y) dd(x, y) \
   k(X, Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x - M(X)) (y - M(Y)) \
-  f_1(x) = integral_(-oo)^(+oo) f(x, y) dif y = 1/(sigma(X) sqrt(2pi)) e^(-(x - M(X))^2/(2sigma^2(X))) \
-  f_2(x) = integral_(-oo)^(+oo) f(x, y) dif x = 1/(sigma(Y) sqrt(2pi)) e^(-(y - M(Y))^2/(2sigma^2(Y)))
+  f_1(x) = integral_(-oo)^(+oo) f(x, y) dd(y) = 1/(sigma(X) sqrt(2pi)) e^(-(x - M(X))^2/(2sigma^2(X))) \
+  f_2(x) = integral_(-oo)^(+oo) f(x, y) dd(x) = 1/(sigma(Y) sqrt(2pi)) e^(-(y - M(Y))^2/(2sigma^2(Y)))
 )$
 
 $display(
@@ -1682,15 +1682,15 @@ $
 
 $display(
   z_n = display(sum_(i=1)^n (X_i - M(X_i)))/display(sqrt(sum_(i=1)^n D(X_i))) \
-  forall epsilon > 0 quad lim_(n->oo) 1/display(sum_(i=1)^n D(X_i)) sum_(i=1)^n integral_a (x - M(X))^2 f_i (x) dif x \
+  forall epsilon > 0 quad lim_(n->oo) 1/display(sum_(i=1)^n D(X_i)) sum_(i=1)^n integral_a (x - M(X))^2 f_i (x) dd(x) \
   a = abs(x - M(X_i)) > epsilon sqrt(sum_(i=1)^n D(X_i)) \
-  F(z_n) = P(z_n < x) stretch(->)_(n->oo)^P 1/sqrt(2pi) integral_(-oo)^x e^(-t^2/2) dif t
+  F(z_n) = P(z_n < x) stretch(->)_(n->oo)^P 1/sqrt(2pi) integral_(-oo)^x e^(-t^2/2) dd(t)
 )$
 
 $display(
   X_1\, X_2\, ...\, X_n space dash "НЗСВ" \
   X_i ~ "ЗР" quad exists M(X_i) = a\, D(X_i) = sigma^2 \
-  z_n = display(sum_(i=1)^n (x_i - a))/(sigma sqrt(n)) quad F(z_n) = P(z_n < x) stretch(->)_(n->oo)^P 1/sqrt(2pi) integral_(-oo)^x e^(-t^2/2) dif t \
+  z_n = display(sum_(i=1)^n (x_i - a))/(sigma sqrt(n)) quad F(z_n) = P(z_n < x) stretch(->)_(n->oo)^P 1/sqrt(2pi) integral_(-oo)^x e^(-t^2/2) dd(t) \
   S_n = sum_(i=1)^n X_i
 )$
 $
@@ -1705,7 +1705,7 @@ $
     display(lim_(n->oo)) display(sum_(i=1)^n mu_3(X_i))/(display(sum_(i=1)^n sigma_i^2))^(3\/2) = ...
   )
   "ЗР" S_n = sum_(i=1)^n X_i stretch(->)_(n->oo)^P N(sum_(i=1)^n a_i; sum_(i=1)^n sigma_i^2) \
-  lim P(abs(display(S_n - sum_(i=1)^n a_i)/display(sqrt(sum_(i=1)^n sigma_i^2))) < z) = 1/sqrt(2pi) integral_(-oo)^z e^(-t^2/2) dif t
+  lim P(abs(display(S_n - sum_(i=1)^n a_i)/display(sqrt(sum_(i=1)^n sigma_i^2))) < z) = 1/sqrt(2pi) integral_(-oo)^z e^(-t^2/2) dd(t)
 $
 $
   cases(

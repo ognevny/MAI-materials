@@ -1,5 +1,5 @@
-#import "@preview/physica:0.9.8": dv, evaluated
 #import "meta.typ": conf, const, ov, un
+#import "@preview/physica:0.9.8": dd, dv, evaluated
 
 #show: conf.with(
   title: "Лекции по Теории машин и механизмов",
@@ -7,6 +7,7 @@
   date: datetime(year: 2026, month: 2, day: 13),
   head: [Лекции по Теории машин и механизмов],
   put_author: true,
+  group: "М1О-232БВ-24",
 )
 
 #outline()
@@ -1199,13 +1200,13 @@ $
   ],
   [
     $
-      P_п dif S_п cos phi_к = sum_j P_j dif S_j cos phi_к_j + sum_j M_j dif phi_j \
-      M_п dif phi_п = sum_j P_j dif S_j cos phi_к_j + sum_j M_j dif phi_j
+      P_п dd(S_п) cos phi_к = sum_j P_j dd(S_j) cos phi_к_j + sum_j M_j dd(phi_j) \
+      M_п dd(phi_п) = sum_j P_j dd(S_j) cos phi_к_j + sum_j M_j dd(phi_j)
     $
   ],
 )
 
-$P_п$, $M_п$ -- приведенные усилия; $dif S_п$, $dif phi_п$ -- элементарные перемещения точки приложения приведенной силы или звена, к которому приложен момент, суммирование ведётся по всем приводимым силам и моментам; $phi_к$ -- угол между направлением приведенной силы и направлением элементарного перемещения приведенной силы $V_п$; $P_j$, $M_j$ -- приводимые усилия; $dif S_j$, $dif phi_j$ -- элементарные перемещения точки приложения приводимой силы и звена, к которому приложен момент; $phi_к_j$ -- угол между направлениями приводимой силы и направлением элементарного перемещения приводимой силы.
+$P_п$, $M_п$ -- приведенные усилия; $dd(S_п)$, $dd(phi_п)$ -- элементарные перемещения точки приложения приведенной силы или звена, к которому приложен момент, суммирование ведётся по всем приводимым силам и моментам; $phi_к$ -- угол между направлением приведенной силы и направлением элементарного перемещения приведенной силы $V_п$; $P_j$, $M_j$ -- приводимые усилия; $dd(S_j)$, $dd(phi_j)$ -- элементарные перемещения точки приложения приводимой силы и звена, к которому приложен момент; $phi_к_j$ -- угол между направлениями приводимой силы и направлением элементарного перемещения приводимой силы.
 
 $
   P_п = sum_j P_j dot V_j/V_п dot (cos phi_к_j)/(cos phi_к) + sum_j M_j dot omega_j/V_п dot 1/(cos phi_к), \
@@ -1392,7 +1393,7 @@ $
 #v(1em)
 
 $
-  phi_1 = phi_1(t) quad omega_1 = omega_1(t) quad epsilon_1 = epsilon_1(t) quad omega_1 = omega_1(phi_1) quad t_(j k) = integral_(phi_j)^(phi_k) 1/omega_1 dif phi_1
+  phi_1 = phi_1(t) quad omega_1 = omega_1(t) quad epsilon_1 = epsilon_1(t) quad omega_1 = omega_1(phi_1) quad t_(j k) = integral_(phi_j)^(phi_k) 1/omega_1 dd(phi_1)
 $
 
 $t_(j k)$ -- время, за которое звено передвинется от положения $j$ до положения $k$.
@@ -1555,7 +1556,7 @@ $t_(j k)$ -- время, за которое звено передвинется
     Запишем
 
     $display(
-      M_д dif phi_1 - M_с dif phi_1 = dif((I_п omega_1^2)/2) \
+      M_д dd(phi_1) - M_с dd(phi_1) = dif((I_п omega_1^2)/2) \
       M_д - M_с = I_п omega_1 dv(omega_1, phi_1) + omega_1^2/2 dv(I_п, phi_1) \
     )$
 
@@ -1568,7 +1569,7 @@ $t_(j k)$ -- время, за которое звено передвинется
 
 Итого получим
 $
-  integral_(phi_(1j))^(phi_(1k)) M_д dif phi_1 - integral_(phi_(1j))^(phi_(1k)) M_с dif phi_1 = underbracket((I_п_k omega_k^2)/2, T_k) - underbracket((I_п_j omega_j^2)/2, T_j)
+  integral_(phi_(1j))^(phi_(1k)) M_д dd(phi_1) - integral_(phi_(1j))^(phi_(1k)) M_с dd(phi_1) = underbracket((I_п_k omega_k^2)/2, T_k) - underbracket((I_п_j omega_j^2)/2, T_j)
 $
 
 Избыточная работа
@@ -1670,8 +1671,8 @@ $
 
 Мощность ещё называют эффективной мощностью
 $
-  & N_д = (integral_0^(phi_ц) M_д dif phi)/t_ц \
-  & integral_0^(phi_ц) M_д dif phi = M_д_"ср" dot phi_ц \
+  & N_д = (integral_0^(phi_ц) M_д dd(phi))/t_ц \
+  & integral_0^(phi_ц) M_д dd(phi) = M_д_"ср" dot phi_ц \
   & phi_ц/t_ц = omega_"ср" \
   & N_д = M_д_"ср" dot omega_"ср"
 $
