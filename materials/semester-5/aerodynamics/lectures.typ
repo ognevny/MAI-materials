@@ -1,5 +1,5 @@
 #import "meta.typ": conf, const, grad
-#import "@preview/physica:0.9.8": dv, evaluated, pdv
+#import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
 
 #show: conf.with(
   title: "Лекции по Аэродинамике",
@@ -139,7 +139,7 @@ $
 
 + Внутренняя энергия
   $
-    dif E = C_V dif T => E = C_V T + const
+    dd(E) = C_V dd(T) => E = C_V T + const
   $
   Если взять $T = 0 => E = 0$, то
   $
@@ -147,7 +147,7 @@ $
   $
 + Энтальпия
   $
-    dif i = C_p dif T => i = C_p T + const
+    dd(i) = C_p dd(T) => i = C_p T + const
   $
   Аналогично получим
   $
@@ -167,7 +167,7 @@ $
   $
 + Энтропия
   $
-    dif S = (dif q)/T \
+    dd(S) = dd(q)/T \
     S = C_v ln p/rho^gamma + const
   $
   Если $S = const$, то $p/rho^gamma = const$
@@ -178,7 +178,7 @@ $
 
 Коэффициент сжимаемости среды
 $
-  beta_p = (dif rho)/(rho dif p) = 1/(rho a^2),
+  beta_p = dd(rho)/(rho dd(p)) = 1/(rho a^2),
 $
 где $a^2$ -- квадрат скорости звука
 $
@@ -326,8 +326,8 @@ $
   [
     Линия тока строится при фиксированном времени ($t = const$). При устремлении расстояния между точками к нулю имеем
     $
-      dif arrow(s) times arrow(v) = 0 <=> dif arrow(s) times arrow(v) = mat(delim: "|", arrow(i), arrow(j), arrow(k); dif x, dif y, dif z; v_x, v_y, v_z) = 0 \
-      (dif x)/v_x = (dif y)/v_y = (dif z)/v_z
+      dd(arrow(s)) times arrow(v) = 0 <=> dd(arrow(s)) times arrow(v) = mdet(arrow(i), arrow(j), arrow(k); dd(x), dd(y), dd(z); v_x, v_y, v_z) = 0 \
+      dd(x)/v_x = dd(y)/v_y = dd(z)/v_z
     $
   ],
 )
@@ -349,9 +349,9 @@ $
 
     Циркуляция
     $
-      Gamma = integral_1^2 arrow(v) dot dif arrow(s) = integral_1^2 v_x dif x + v_y dif y + v_z dif z \
+      Gamma = integral_1^2 arrow(v) dot dd(arrow(s)) = integral_1^2 v_x dd(x) + v_y dd(y) + v_z dd(z) \
       arrow(v) = arrow(i) v_x + arrow(j) v_y + arrow(k) v_z \
-      dif arrow(s) = arrow(i) dif x + arrow(j) dif y + arrow(k) dif z
+      dd(arrow(s)) = arrow(i) dd(x) + arrow(j) dd(y) + arrow(k) dd(z)
     $
 
     Вокруг всего контура
@@ -416,7 +416,7 @@ $
 Ротор вектора скорости
 $
   arrow(omega) = 1/2 rot arrow(theta) = 1/2 arrow(gradient) times arrow(v) \
-  arrow(gradient) times arrow(v) = mat(delim: "|", arrow(i), arrow(i), arrow(j); pdv(, k), pdv(, y), pdv(, z); v_x, v_y, v_z)
+  arrow(gradient) times arrow(v) = mdet(arrow(i), arrow(i), arrow(j); pdv(, k), pdv(, y), pdv(, z); v_x, v_y, v_z)
 $
 
 $
@@ -429,13 +429,13 @@ $
 
 При потенциальном течении $arrow(omega) = 0$, тогда
 $
-  v_x dif x + v_y dif y + v_z dif z = dif phi = pdv(phi, x) dif x + pdv(phi, y) dif y + pdv(phi, z) dif z,
+  v_x dd(x) + v_y dd(y) + v_z dd(z) = dd(phi) = pdv(phi, x) dd(x) + pdv(phi, y) dd(y) + pdv(phi, z) dd(z),
 $
 тогда $v_x = pdv(phi, x)$, $v_y = pdv(phi, y)$, $v_z = pdv(phi, z)$
 
 $phi = phi(t, x, y, z)$ -- некая функция
 $
-  Gamma = integral_1^2 arrow(v) dif arrow(s) = phi_2 - phi_1
+  Gamma = integral_1^2 arrow(v) dd(arrow(s)) = phi_2 - phi_1
 $
 
 === Вихревое движение
@@ -450,8 +450,8 @@ $
 
     Уравнение вихревой линии
     $
-      dif arrow(s) times arrow(omega) = 0 \
-      (dif x)/omega_x = (dif y)/omega_y = (dif z)/omega_z
+      dd(arrow(s)) times arrow(omega) = 0 \
+      dd(x)/omega_x = dd(y)/omega_y = dd(z)/omega_z
     $
 
     Напряжение вихря
@@ -476,7 +476,7 @@ $
   [
     Теорема Стокса
     $
-      Gamma = integral.cont arrow(v) dot dif arrow(s) = 2integral.double_S omega_n dif sigma
+      Gamma = integral.cont arrow(v) dot dd(arrow(s)) = 2integral.double_S omega_n dd(sigma)
     $
   ],
   [
@@ -492,11 +492,11 @@ $
   [
     Формула Био-Савара
     $
-      arrow(v) = Gamma/(4pi) integral_(-oo)^(+oo) (dif arrow(s) times r)/r^3,
+      arrow(v) = Gamma/(4pi) integral_(-oo)^(+oo) (dd(arrow(s)) times r)/r^3,
     $
     выведено из
     $
-      arrow(v) = 1/(2pi) integral.triple_V (arrow(omega) times arrow(r))/r^3 dif V,
+      arrow(v) = 1/(2pi) integral.triple_V (arrow(omega) times arrow(r))/r^3 dd(V),
     $
     в дифференциальной форме
     $
@@ -721,7 +721,7 @@ $
 
 При непостоянной плотности
 $
-  integral (dif p)/rho + v^2/2 = const
+  integral dd(p)/rho + v^2/2 = const
 $
 
 = Основы теории аэродинамического подобия
@@ -912,7 +912,7 @@ $
   & v_y pdv(v_x, y) = v_y pdv(v_y, x) = pdv(, x) v_y^2/2 \
   & v_z pdv(v_x, z) = v_z pdv(v_z, x) = pdv(, x) v_z^2/2 \
   & pdv(, x) (pdv(phi, t) + v_x^2/2 + v_y^2/2 + v_z^2/2) = pdv(, x) (pdv(phi, t) + v^2/2) \
-  & P = integral (dif p)/rho; space pdv(P, x) = 1/rho pdv(p, x) \
+  & P = integral dd(p)/rho; space pdv(P, x) = 1/rho pdv(p, x) \
   & f_x = -pdv(V, x) \
   & pdv(, x) overbrace((pdv(phi, t) + v^2/2 + P - V), "интеграл Лагранжа") = 0 \
   & pdv(phi, t) + v^2/2 + P - V = const(t)
@@ -922,15 +922,15 @@ $
 $
   rot arrow(v) != 0 quad pdv(arrow(v), t) = 0 \
   v_x pdv(v_x, x) + v_y pdv(v_x, y) + v_z pdv(v_x, z) = pdv(, x) v_x^2/2 + pdv(, x) v_y^2/2 + v_y (pdv(v_x, y) - pdv(v_y, x)) + pdv(, x) v_z^2/2 - v_z (pdv(v_x, z) - pdv(v_z, x)) = \ = pdv(, x) v^2/2 + 2(v_z omega_y - v_y omega_z) \
-  pdv(, x) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_x |dot x dif x \
-  pdv(, y) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_y |dot x dif y \
-  pdv(, z) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_z |dot x dif z \
-  dif(v^2/2 + P + V) = -2(arrow(omega) times arrow(v)) dif arrow(S), space dif arrow(S) = arrow(i) dif x + arrow(j) dif y + arrow(k) dif z
+  pdv(, x) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_x |dot x dd(x) \
+  pdv(, y) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_y |dot x dd(y) \
+  pdv(, z) (v^2 + P + V) = -2(arrow(omega) times arrow(v))_z |dot x dd(z) \
+  dif(v^2/2 + P + V) = -2(arrow(omega) times arrow(v)) dd(arrow(S)), space dd(arrow(S)) = arrow(i) dd(x) + arrow(j) dd(y) + arrow(k) dd(z)
 $
 
 Отсюда выведем при $rho = const$
 $
-  P = integral (dif p)/rho = p/rho + const \
+  P = integral dd(p)/rho = p/rho + const \
   v^2/2 + p/rho + g y = const \
   (rho v^2)/2 + p + cancel(rho g y) = const
 $
@@ -942,7 +942,56 @@ $
 
 При $p/rho^gamma = const$
 $
-  integral (dif p)/rho = integral (gamma const rho^(gamma-1) dif rho)/rho = gamma const rho^(gamma-1)/(gamma - 1) + const = gamma/(gamma - 1) p/rho^gamma rho^(gamma-1) + const = gamma/(gamma - 1) p/rho + const \
+  integral dd(p)/rho = integral (gamma const rho^(gamma-1) dd(rho))/rho = gamma const rho^(gamma-1)/(gamma - 1) + const = gamma/(gamma - 1) p/rho^gamma rho^(gamma-1) + const = gamma/(gamma - 1) p/rho + const \
   p/rho = R T, space gamma/(gamma - 1) R = C_p, space C_p T = i \
   i + v^2/2 = const = i_0
+$
+
+= Одномерное изоэнотропическое течение газа
+
+#v(1em)
+
+$
+  s = C_v ln p/rho^gamma = const => p/rho^gamma = const
+$
+
+Для сечения любой струйки в зоне нулевой скорости можно записать энтальпию торможения $i_0 = C_p T_0$
+$
+  gamma/(gamma - 1) R T_0 = gamma/(gamma - 1) R T + v^2/2,
+$
+где $T_0$ -- температура торможения.
+
+Можем получить значение максимальной скорости из
+$
+  i -> 0 => i_0 = v_max^2/2 => v_max = sqrt(2i_0) = sqrt((2gamma)/(gamma - 1) R T_0)
+$
+
+При идеальных условиях $v_max = const$
+
+Для наших условий можем записать
+$
+  i/i_0 = T/T_0 = 1 - v^2/(2i_0) = 1 - v^2/v_max^2 \
+  p/p_0 = (1 - v^2/(2i_0))^(gamma/(gamma-1)), space rho/rho_0 = (1 - v^2/(2i_0))^(1/(gamma-1))
+$
+
+Скорость звука
+$
+  a_0^2 = gamma R T_0, space v_max^2 = (2gamma)/(gamma - 1) R T_0 => a^2 = (gamma - 1)/2 (v_max^2 - v^2)
+$
+
+Критическая скорость
+$
+  a_"кр"^2 = (gamma - 1)/(gamma + 1) v_max^2
+$
+
+Отсюда можем получить критические значения величин
+$
+  T_"кр"/T_0 = 1 - a_"кр"^2/v_max^2 => & T_"кр" = 2/(gamma + 1) T_0 \
+                                       & rho_"кр" = (2/(gamma + 1))^(1/(gamma - 1)) rho_0 \
+                                       & p_"кр" = (2/(gamma + 1))^(gamma/(gamma - 1)) p_0 \
+$
+
+В расчетах может использоваться приведенная скорость
+$
+  lambda = v/a_"кр"
 $

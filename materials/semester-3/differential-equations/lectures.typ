@@ -1,6 +1,6 @@
 #import "meta.typ": arctg, clrundrln, conf, const, delimsys, ov
 #import "@preview/cetz:0.5.3": canvas, draw
-#import "@preview/physica:0.9.8": dv, evaluated, mdet, pdv
+#import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
 
 #show: conf.with(
   title: "Лекции по Дифференциальным уравнениям",
@@ -25,11 +25,11 @@
 
 б) $F(x, y, y') = 0$ -- неявно выраженная
 
-в) $P(x, y) dif x + Q(x, y) dif y$ = 0
+в) $P(x, y) dd(x) + Q(x, y) dd(y)$ = 0
 
 $ y' = dv(y, x) $
 
-$y' + y = 1 => y' = 1 - y; y' + y - 1 = 0; dv(y, x) + y = 1 => dv(y, x) = 1 - y => (1 - y) dif x - dif y = 0$
+$y' + y = 1 => y' = 1 - y; y' + y - 1 = 0; dv(y, x) + y = 1 => dv(y, x) = 1 - y => (1 - y) dd(x) - dd(y) = 0$
 
 Функция $y = phi(x)$, непрерывно дифференцируемая на интервале $(a; b)$ называется решением ДУ, если подстановка $phi(x), phi'(x)$ обращает ДУ в тождество для любого $x$ из $(a; b)$.
 
@@ -44,7 +44,7 @@ $=> y = -C e^(-x) + 1$ -- решение ДУ
 
 Поиск решения ДУ $y' = f(x, y)$, удовлетворяющего дополнительному условию $y(x_0) = y_0$ (начальные условия -- НУ), называется задачей Коши.
 
-$y' = 2x => y(x) = integral 2x dif x = x^2 + C$ -- семейство интегральных кривых.
+$y' = 2x => y(x) = integral 2x dd(x) = x^2 + C$ -- семейство интегральных кривых.
 
 $y = phi(x) = x^2 + C; y' = phi'(x) => 2x + 0 equiv 2x$
 
@@ -231,11 +231,11 @@ $y' = 1 - y, y' = k; k = 1 - y => y = 1 - k$
 
 а) $y' = f(x)/g(x)$
 
-б) $f(x) dif x = g(y) dif y$
+б) $f(x) dd(x) = g(y) dd(y)$
 
-в) $M_1 (x) N_1 (y) dif x + M_2 (x) N_2 (y) dif y = 0$
+в) $M_1 (x) N_1 (y) dd(x) + M_2 (x) N_2 (y) dd(y) = 0$
 
-$y' = y/x => y' = dv(y, x) => dv(y, x) = y/x => dif y = y/x dif x |":" y != 0 (!) => integral (dif y)/y = integral (dif x)/x => ln abs(y) = ln abs(x) + ln abs(C)$
+$y' = y/x => y' = dv(y, x) => dv(y, x) = y/x => dd(y) = y/x dd(x) |":" y != 0 (!) => integral dd(y)/y = integral dd(x)/x => ln abs(y) = ln abs(x) + ln abs(C)$
 
 $C != 0 => abs(y) = abs(C x) => y = +- C x =>$ $tilde(C) x$ -- общее решение
 
@@ -243,7 +243,7 @@ $C != 0 => abs(y) = abs(C x) => y = +- C x =>$ $tilde(C) x$ -- общее реш
 
 Ответ: $y = tilde(C) x$
 
-$y' = 1 - y => dv(y, x) = 1 - y => dif y = (1 - y) dif x |":" (1-y)!=0 (!) => (dif y)/(1 - y) = dif x => integral (dif y)/(1 - y) = integral dif x => ln abs(y - 1) = \ = -x + ln abs(C), C != 0 => ln abs(y - 1) = ln e^(-x) + ln abs(C) => ln abs(y - 1) = ln abs(C e^(-x)) => abs(y - 1) = abs(C e^(-x)) => y - 1 = \ = +- C e^(-x) => y = 1 + tilde(C) e^(-x)$
+$y' = 1 - y => dv(y, x) = 1 - y => dd(y) = (1 - y) dd(x) |":" (1-y)!=0 (!) => dd(y)/(1 - y) = dd(x) => integral dd(y)/(1 - y) = integral dd(x) => ln abs(y - 1) = \ = -x + ln abs(C), C != 0 => ln abs(y - 1) = ln e^(-x) + ln abs(C) => ln abs(y - 1) = ln abs(C e^(-x)) => abs(y - 1) = abs(C e^(-x)) => y - 1 = \ = +- C e^(-x) => y = 1 + tilde(C) e^(-x)$
 
 Проверка: $1 - y = 0, y = 1; y' = 0: 0 = 1 - 1 => 0 equiv 0$
 
@@ -252,7 +252,7 @@ $y' = 1 - y => dv(y, x) = 1 - y => dif y = (1 - y) dif x |":" (1-y)!=0 (!) => (d
 $y(0) = 1/2 \
 dv(T, t) = -k (T - T_"вн"); T_"вн" = 20 degree C, space T(t) space dash "температура чайника"$
 
-$dv(T, t) = -k (T - 20) => dif T = -k (T - 20) dif t |":" (T - 20) => integral (dif T)/(T - 20) = -k integral dif t => ln(T - 20) = -k t + ln abs(C) => \ => ln(T - 20) = ln e^(-k t) + ln abs(C) => ln(T-20) = ln abs(C e^(-k t)) => T - 20 = C e^(-k t) => T(t) = 20 + C e^(-k t)$
+$dv(T, t) = -k (T - 20) => dd(T) = -k (T - 20) dd(t) |":" (T - 20) => integral dd(T)/(T - 20) = -k integral dd(t) => ln(T - 20) = -k t + ln abs(C) => \ => ln(T - 20) = ln e^(-k t) + ln abs(C) => ln(T-20) = ln abs(C e^(-k t)) => T - 20 = C e^(-k t) => T(t) = 20 + C e^(-k t)$
 
 $display(
   cases(
@@ -291,7 +291,7 @@ $y' = phi(y/x)$. Замена $u(x) = y/x$
 $y = x u(x), y' = (x u(x))' = u(x) + u'(x) dot x = y/x - 1 = u - 1$
 
 $u + x u' = u - 1 => x u' = -1 => u' = -1/x, x != 0 => u = -ln abs(x) + ln abs(C) => u = ln abs(C/x) => y/x = ln abs(C/x) => y = x ln abs(C/x) \
-y' = e^(y/x) + y/x => y' = e^u + u => x u' = e^u => x dv(u, x) = e^u => integral (dif u)/e^u = integral (dif x)/x => -e^(-u) = ln abs(x) + ln abs(C) => \ => e^(-u) = -ln abs(x) + ln abs(C) => e^(-u) = ln abs(C/x) => -u = ln ln abs(C/x) => u = -ln ln abs(C/x) => y = -x ln ln abs(C/x) \
+y' = e^(y/x) + y/x => y' = e^u + u => x u' = e^u => x dv(u, x) = e^u => integral dd(u)/e^u = integral dd(x)/x => -e^(-u) = ln abs(x) + ln abs(C) => \ => e^(-u) = -ln abs(x) + ln abs(C) => e^(-u) = ln abs(C/x) => -u = ln ln abs(C/x) => u = -ln ln abs(C/x) => y = -x ln ln abs(C/x) \
 y' = y/x + sin y/x => ... => y = 2x(arctg(tilde(C) x) + pi n)$
 
 Проверка: $sin u = 0 => u = pi k, y = pi k x$ входит в решение
@@ -308,7 +308,7 @@ $y' + P(x) y = Q(x) quad display(
   )
 )$
 
-$"ЛОДУ": dv(y, x) = -y P(x) dif x |":" y != 0 => integral (dif y)/y = -integral P(x) dif x => ln abs(y) = -integral P(x) dif x => ln abs(y) = ln(abs(C) e^(-integral P(x) dif x)) => \ => abs(y) = abs(C) e^(-integral P(x) dif x) => y = +- C e^(-integral P(x) dif x) => y_О = tilde(C) e^(-integral P(x) dif x)$
+$"ЛОДУ": dv(y, x) = -y P(x) dd(x) |":" y != 0 => integral dd(y)/y = -integral P(x) dd(x) => ln abs(y) = -integral P(x) dd(x) => ln abs(y) = ln(abs(C) e^(-integral P(x) dd(x))) => \ => abs(y) = abs(C) e^(-integral P(x) dd(x)) => y = +- C e^(-integral P(x) dd(x)) => y_О = tilde(C) e^(-integral P(x) dd(x))$
 
 === Методы решения ЛНДУ 1-ого порядка
 
@@ -316,12 +316,12 @@ $"ЛОДУ": dv(y, x) = -y P(x) dif x |":" y != 0 => integral (dif y)/y = -integ
 
 #v(1em)
 
-$ y_"ОН" = C(x) Y_О, $ где $Y_О = tilde(C) e^(-integral P(x) dif x)$, $C(x)$ -- некоторая функция
+$ y_"ОН" = C(x) Y_О, $ где $Y_О = tilde(C) e^(-integral P(x) dd(x))$, $C(x)$ -- некоторая функция
 
 $tilde(C) -> C(x)$
 
 $y' + y/(1 + x) = cos(x)/(1 + x) \
-y' + y/(1 + x) = 0 => dv(y, x) = -y/(1 + x) => integral (dif y)/y = -integral (dif x)/(1 + x) => ln abs(y) = ln abs(C/(1 + x)) => y = (+- C)/(1 + x) => y = (tilde(C))/(1 + x) \
+y' + y/(1 + x) = 0 => dv(y, x) = -y/(1 + x) => integral dd(y)/y = -integral dd(x)/(1 + x) => ln abs(y) = ln abs(C/(1 + x)) => y = (+- C)/(1 + x) => y = (tilde(C))/(1 + x) \
 y_О = (tilde(C))/(1 + x), y_"ОН" = C(x)/(1 + x) \
 y'_"ОН" = (C' (1 + x) - C)/(1 + x)^2 = C'/(1 + x) - C/(1 + x)^2 \
 C'/(1 + x) - C/(1 + x)^2 + C/(1 + x)^2 = (cos x)/(1 + x) => C'/(1 + x) = (cos x)/(1 + x) => C'(x) = cos x => C(x) = sin x + C_1$
@@ -334,7 +334,7 @@ $y_"ОН" = (sin x + C_1)/(1 + x)$ -- общее решение
 
 $y' + p(x) y = 0$ -- ЛОДУ. Такие уравнения решаются методом разделения переменных.
 
-$ y_О = tilde(C) e^(-integral p(x) dif x) $
+$ y_О = tilde(C) e^(-integral p(x) dd(x)) $
 
 ЛНДУ: $y' + p(x) y = q(x)$.
 
@@ -342,18 +342,18 @@ $ y_О = tilde(C) e^(-integral p(x) dif x) $
 
 #v(1em)
 
-$ y_"ОН" = C(x) e^(-integral p(x) dif x) $
+$ y_"ОН" = C(x) e^(-integral p(x) dd(x)) $
 
-$y'_"ОН" = (C(x) e^(-integral p(x) dif x))'= |p = p(x)| = C'(x) e^(-integral p dif x) + C(x) (e^(-integral p dif x))' = C'(x) e^(-integral p dif x) + C(x) e^(-integral p dif x) times \ times (-integral p dif x)' = C'(x) e^(-integral p dif x) + C(x) e^(-integral p dif x) (-p)$
+$y'_"ОН" = (C(x) e^(-integral p(x) dd(x)))'= |p = p(x)| = C'(x) e^(-integral p dd(x)) + C(x) (e^(-integral p dd(x)))' = C'(x) e^(-integral p dd(x)) + C(x) e^(-integral p dd(x)) times \ times (-integral p dd(x))' = C'(x) e^(-integral p dd(x)) + C(x) e^(-integral p dd(x)) (-p)$
 
 Подстановка:
 
-$C'(x) e^(-integral p dif x) + cancel(C(x) e^(-integral p dif x) (-p(x))) + cancel(p(x) C(x) e^(-integral p dif x)) = q(x) \
-C'(x) e^(-integral p dif x) = q(x) => C'(x) = q(x) e^(integral p dif x) => integral q(x) e^(integral p dif x) dif x + C_1 = C(x)$
+$C'(x) e^(-integral p dd(x)) + cancel(C(x) e^(-integral p dd(x)) (-p(x))) + cancel(p(x) C(x) e^(-integral p dd(x))) = q(x) \
+C'(x) e^(-integral p dd(x)) = q(x) => C'(x) = q(x) e^(integral p dd(x)) => integral q(x) e^(integral p dd(x)) dd(x) + C_1 = C(x)$
 
 Подставим в $y_"ОН"$:
 
-$y_"ОН" = (integral q(x) e^(integral p dif x) dif x + C_1) e^(-integral p dif x) = integral q(x) e^(integral p dif x) dif x dot e^(-integral p dif x) + C_1 e^(-integral p dif x)$
+$y_"ОН" = (integral q(x) e^(integral p dd(x)) dd(x) + C_1) e^(-integral p dd(x)) = integral q(x) e^(integral p dd(x)) dd(x) dot e^(-integral p dd(x)) + C_1 e^(-integral p dd(x))$
 
 ==== Пример решения ЛНДУ
 
@@ -365,7 +365,7 @@ $
 
 $"решаем ЛОДУ:" y' + 2x y = 0 \
 dv(y, x) = -2x y |":" y != 0 \
-integral (dif y)/y = integral -2x dif x \
+integral dd(y)/y = integral -2x dd(x) \
 ln abs(y) = -(2x^2)/2 + ln abs(C) \
 ln abs(y) = ln e^(-x^2) + ln abs(C) \
 abs(y) = abs(C e^(-x^2)) \
@@ -375,7 +375,7 @@ y = tilde(C) e^(-x^2), y_O = tilde(C) e^(-x^2)$
 $y_"ОН" = C(x) e^(-x^2) \
 y'_"ОН" = (C(x) e^(-x^2))' = C'(x) e^(-x^2) - C(x) dot 2x e^(-x^2) \
 C'(x) e^(-x^2) - cancel(C(x) dot 2x e^(-x^2)) + cancel(2x C(x) e^(-x^2)) = 2x \
-C'(x) e^(-x^2) = 2x => C'(x) = 2x e^(x^2) => C(x) = integral 2x e^(x^2) dif x = integral e^u dif u = e^u + C_1 = e^(x^2) + C_1 \
+C'(x) e^(-x^2) = 2x => C'(x) = 2x e^(x^2) => C(x) = integral 2x e^(x^2) dd(x) = integral e^u dd(u) = e^u + C_1 = e^(x^2) + C_1 \
 y_"ОН" = (e^(x^2) + C_1) e^(-x^2) = 1 + C_1 e^(-x^2)$
 
 === Метод Бернулли
@@ -389,10 +389,10 @@ u' v + u (v' + p(x) v) = q(x)$
 
 Подберём $v$ такую, что $v' + p(x) v = 0$
 
-$v_0 = tilde(C) e^(-integral p dif x) stretch(=>)^(tilde(C)=1) v_0 = e^(-integral p dif x)$ (можно брать любую $tilde(C) != 0$)
+$v_0 = tilde(C) e^(-integral p dd(x)) stretch(=>)^(tilde(C)=1) v_0 = e^(-integral p dd(x))$ (можно брать любую $tilde(C) != 0$)
 
-$u' e^(-integral p dif x) + u dot 0 = q(x) => u' = q(x) e^(integral p dif x) => u(x) = integral q(x) e^(integral p dif x) dif x + C_1 \
-integral q(x) e^(integral p dif x) dif x dot e^(-integral p dif x) + C_1 e^(-integral p dif x) = y_"ОН"$
+$u' e^(-integral p dd(x)) + u dot 0 = q(x) => u' = q(x) e^(integral p dd(x)) => u(x) = integral q(x) e^(integral p dd(x)) dd(x) + C_1 \
+integral q(x) e^(integral p dd(x)) dd(x) dot e^(-integral p dd(x)) + C_1 e^(-integral p dd(x)) = y_"ОН"$
 
 ==== Решение того же самого примера методом Бернулли
 
@@ -403,10 +403,10 @@ u' v + (u v' + 2x u v) = 2x \
 u' v + u (v' + 2x v) = 2x \
 v' + 2x v = 0 \
 dv(v, x) = -2x v \
-integral (dif v)/v = integral -2x dif x \
+integral dd(v)/v = integral -2x dd(x) \
 ln abs(v) = -x^2 + C \
 ln abs(v) = x^2 + ln abs(C) => v_0 = e^(-x^2), tilde(C) = 1 \
-u' e^(-x^2) + u dot 0 = 2x => u' = 2x e^(x^2) => u(x) = integral 2x e^(x^2) dif x = e^(x^2) + C_1 \
+u' e^(-x^2) + u dot 0 = 2x => u' = 2x e^(x^2) => u(x) = integral 2x e^(x^2) dd(x) = e^(x^2) + C_1 \
 y_"ОН" = u v = (e^(x^2) + C_1) e^(-x^2) = 1 + e^(-x^2) C_1$
 
 == Уравнение Бернулли
@@ -424,7 +424,7 @@ underparen(u' v + u v', y') + 1/x underparen(u v, y) = -x underparen((u v), y)^2
 u' v + u(v' + 1/x v) = -x u^2 v^2 \
 v' + 1/x v = 0 \
 dv(v, x) = -1/x v \
-integral (dif v)/v = integral -(dif x)/x \
+integral dd(v)/v = integral -dd(x)/x \
 ln abs(v) = -(ln abs(x) + ln abs(c)) \
 ln abs(v) = ln abs(c/x) \
 v = +- c/x \
@@ -433,7 +433,7 @@ u' 1/x + u dot 0 = -x u^2 1/x^2 \
 u'/x + u^2/x = 0 \
 u' = -u^2 \
 dv(u, x) = -u^2 \
-integral (dif u)/u^2 = integral -dif x \
+integral dd(u)/u^2 = integral -dd(x) \
 -1/u = -x + C \
 u = 1/(x - C); u = 1/(x + tilde(C)) \
 y = u v = 1/(x - C) dot 1/x = 1/(x^2 - C x); y = 0 space dash "тоже решение"$
@@ -442,13 +442,13 @@ y = u v = 1/(x - C) dot 1/x = 1/(x^2 - C x); y = 0 space dash "тоже реше
 
 #v(1em)
 
-$ P(x, y) dif x + Q(x, y) dif y = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в частных дифференциалах) $=> dif U(x, y) = 0 => U(x, y) = const$ -- общий интеграл ДУ
+$ P(x, y) dd(x) + Q(x, y) dd(y) = 0, $ если $pdv(P, y) = pdv(Q, x)$ (в частных дифференциалах) $=> dd(U(x, y)) = 0 => U(x, y) = const$ -- общий интеграл ДУ
 
 === Пример решения ДУ в полных дифференциалах
 
 #v(1em)
 
-$U(x, y) = integral_(x_0)^x P(x, y) dif x + integral_(y_0)^y Q(x, y) dif y$
+$U(x, y) = integral_(x_0)^x P(x, y) dd(x) + integral_(y_0)^y Q(x, y) dd(y)$
 
 #grid(
   columns: (3fr, 1fr),
@@ -471,12 +471,12 @@ $U(x, y) = integral_(x_0)^x P(x, y) dif x + integral_(y_0)^y Q(x, y) dif y$
 Собственно пример:
 
 $
-  (x + sin y) dif x + (x cos y + sin y) dif y = 0
+  (x + sin y) dd(x) + (x cos y + sin y) dd(y) = 0
 $
 
 $pdv(P, y) = (x_0 + sin y)'_y = cos y \
 pdv(Q, x) = (x cos y_0 + sin_y_0)'_x = cos y \
-display(U(x, y) = integral_(x_0=0)^x (x + sin y) dif x + integral_(y_0=0)^y (x_0 cos y + sin y) dif y = integral_0^x (x + sin y) dif x + integral_0^y sin y dif y = \ = evaluated((x^2/2 + sin y dot x))_0^x + evaluated((-cos y))_0^y = x^2/2 + x sin y - 0 + (-cos y + 1) = x^2/2 + x sin y - cos y + 1)$
+display(U(x, y) = integral_(x_0=0)^x (x + sin y) dd(x) + integral_(y_0=0)^y (x_0 cos y + sin y) dd(y) = integral_0^x (x + sin y) dd(x) + integral_0^y sin y dd(y) = \ = evaluated((x^2/2 + sin y dot x))_0^x + evaluated((-cos y))_0^y = x^2/2 + x sin y - 0 + (-cos y + 1) = x^2/2 + x sin y - cos y + 1)$
 
 Ответ: $x^2/2 + x sin y - cos y = const$
 
@@ -484,7 +484,7 @@ display(U(x, y) = integral_(x_0=0)^x (x + sin y) dif x + integral_(y_0=0)^y (x_0
 
 #v(1em)
 
-$underparen((2x y - 5), P) dif x + underparen((3y^2 + x^2), Q) dif y = 0 \
+$underparen((2x y - 5), P) dd(x) + underparen((3y^2 + x^2), Q) dd(y) = 0 \
 display(
   cases(
     reverse: #true,
@@ -493,7 +493,7 @@ display(
     pdv(P, y) = 2x,
   ) pdv(Q, x) = pdv(P, y) \
   cases(
-    U'_x = P(x, y) = 2x y - 5 => U(x, y) = integral (2x y - 5) dif x = x^2 y - 5x + phi(y),
+    U'_x = P(x, y) = 2x y - 5 => U(x, y) = integral (2x y - 5) dd(x) = x^2 y - 5x + phi(y),
     U'_y = Q(x, y) = 3y^2 + x^2 => (x^2 - 5x + phi(y))'_y = 3y^2 + x^2,
   )
 ) \
@@ -505,15 +505,15 @@ x^2 - phi'_y = 3y^2 + x^2 => phi'_y = 3y^2 => phi(y) = 3y^2 => phi(y) = y^3 + C 
 
 #v(1em)
 
-Пусть $dif U(x, y) = U'_x dif x + U'_y dif y$
+Пусть $dd(U(x, y)) = U'_x dd(x) + U'_y dd(y)$
 
-Совпадение $P dif x + Q dif y => display(cases(delim: #none, U'_x = P(x, y), U'_y = Q(x, y)) => cases(delim: #none, U''_(x y) = (U'_x)'_y = (P(x, y))'_y = pdv(P, y), U''_(y x) = (U'_y)'_x = (Q(x, y))'_x = pdv(Q, x)))$
+Совпадение $P dd(x) + Q dd(y) => display(cases(delim: #none, U'_x = P(x, y), U'_y = Q(x, y)) => cases(delim: #none, U''_(x y) = (U'_x)'_y = (P(x, y))'_y = pdv(P, y), U''_(y x) = (U'_y)'_x = (Q(x, y))'_x = pdv(Q, x)))$
 
 ==== Пример решения задачи методом интегрирующего множителя
 
 #v(1em)
 
-$(2x y + x^2 y + 1/3 y^2) dif x + (x^2 + y^2) dif y = 0 \
+$(2x y + x^2 y + 1/3 y^2) dd(x) + (x^2 + y^2) dd(y) = 0 \
 display(
   cases(
     reverse: #true,
@@ -523,12 +523,12 @@ display(
   ) => pdv(Q, x) != pdv(P, y)
 )$
 
-+ $mu(x)$, если $1/Q (pdv(P, y) - pdv(Q, x)) = F(x) => mu(x) = e^(integral F(x) dif x)$
++ $mu(x)$, если $1/Q (pdv(P, y) - pdv(Q, x)) = F(x) => mu(x) = e^(integral F(x) dd(x))$
 
-+ $mu(y)$, если $-1/P (pdv(P, y) - pdv(Q, x)) = G(y) => mu(y) = e^(integral G(y) dif y)$
++ $mu(y)$, если $-1/P (pdv(P, y) - pdv(Q, x)) = G(y) => mu(y) = e^(integral G(y) dd(y))$
 
-$1/Q (pdv(P, y) - pdv(Q, x)) = 1/(x^2 + y^2) (2x + x^2 + y^2 - 2x) = 1 => mu(x) = e^(integral 1 dif x) = e^x \
-e^x (2x y + x^2 y + 1/3 y^3) dif x + e^x (x^2 + y^2) dif y = 0 \
+$1/Q (pdv(P, y) - pdv(Q, x)) = 1/(x^2 + y^2) (2x + x^2 + y^2 - 2x) = 1 => mu(x) = e^(integral 1 dd(x)) = e^x \
+e^x (2x y + x^2 y + 1/3 y^3) dd(x) + e^x (x^2 + y^2) dd(y) = 0 \
 display(
   cases(
     reverse: #true,
@@ -540,13 +540,13 @@ display(
 
 Пусть $mu = mu(x); 1/Q (pdv(P, y) - pdv(Q, x)) = F(x)$
 
-$underbrace(mu(x) P(x, y), P_1) dif x + underbrace(mu(x) Q(x, y), Q_1) dif y = 0 \
+$underbrace(mu(x) P(x, y), P_1) dd(x) + underbrace(mu(x) Q(x, y), Q_1) dd(y) = 0 \
 pdv(P_1, y) = pdv(Q_1, x) <=> pdv(, y) (mu(x) P(x, y)) = pdv(, x) (mu(x) Q(x, y)) \
 mu(x) pdv(P, y) = dv(mu, x) Q(x, y) + mu(x) pdv(Q, y) \
 dv(mu, x) Q(x, y) = mu(x) (pdv(P, y) - pdv(Q, x)) \
-integral (dif mu)/mu = integral 1/Q (pdv(P, y) - pdv(Q, x)) dif x \
-ln abs(mu(x)) = integral F(x) dif x \
-mu(x) = e^(integral F(x) dif x)$
+integral dd(mu)/mu = integral 1/Q (pdv(P, y) - pdv(Q, x)) dd(x) \
+ln abs(mu(x)) = integral F(x) dd(x) \
+mu(x) = e^(integral F(x) dd(x))$
 
 == ДУ не разрешенные относительно производных
 
@@ -633,8 +633,8 @@ b) $F(x, y, y', y'') = 0$
 $y'' = f(x)$ решаем дважды интегрированием
 
 $y'' = e^x; "Н.У:" y(0) = 1 "и" y'(0) = 2 \
-y' = integral e^x dif x = e^x + C_1 \
-y = integral (e_x + C_1) dif x = e^x + C_1 x + C_2 space dash "общее решение"$
+y' = integral e^x dd(x) = e^x + C_1 \
+y = integral (e_x + C_1) dd(x) = e^x + C_1 x + C_2 space dash "общее решение"$
 
 $y(0) = evaluated((e^x + C_1 x + C_2))_(x=0) = 1 => 1 + 0 + C_2 = 1 => C_2 = 0 \
 y'(0) = evaluated(((e^x + C_1 x + C_2)'))_(x=0) = 2 => evaluated((e^x + C_1))_(x=0) = 2 => 1 + C_1 = 2 => C_1 = 1$
@@ -646,7 +646,7 @@ y'(0) = evaluated(((e^x + C_1 x + C_2)'))_(x=0) = 2 => evaluated((e^x + C_1))_(x
 $x = 4/9 y'^2 \
 y' = p(y) \
 x = 4/9 (p(y))^2 \
-dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = integral 8/9 p^2 dif p => display(
+dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dd(y) = integral 8/9 p^2 dd(p) => display(
   cases(
     y = 8/27 p^3 + C,
     x = 4/9 p^2,
@@ -672,8 +672,8 @@ dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = 
     y'' = z'(x)$
   ],
   [
-    $y'' = y'/x => z' = z/x => dv(z, x) = z/x => (dif z)/z = (dif x)/x => ln abs(z) = ln abs(C x) => z = tilde(C) x, tilde(C) = +- C \
-    y' = tilde(C) x => y = integral tilde(C) x dif x = tilde(C) x^2/2 + C_2 \
+    $y'' = y'/x => z' = z/x => dv(z, x) = z/x => dd(z)/z = dd(x)/x => ln abs(z) = ln abs(C x) => z = tilde(C) x, tilde(C) = +- C \
+    y' = tilde(C) x => y = integral tilde(C) x dd(x) = tilde(C) x^2/2 + C_2 \
     y = C_1 x^2 + C_2$
   ],
 )
@@ -697,7 +697,7 @@ dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = 
     ) \
     y' = z \
     y'' = z dv(z, y) \
-    z dv(z, y) = e^(2y) => integral z dif z = integral e^(2y) dif y => z^2/2 = e^(2y)/2 + C => z^2 = e^(2y) + 2C$
+    z dv(z, y) = e^(2y) => integral z dd(z) = integral e^(2y) dd(y) => z^2/2 = e^(2y)/2 + C => z^2 = e^(2y) + 2C$
   ],
 )
 
@@ -705,7 +705,7 @@ dv(x, y) = 4/9 dot 2 p'(y) dot p(y) => 1/p = 8/9 p dv(p, y) => integral dif y = 
 
 $y' = +- e^y$; так как $y'(0) = 1$, то выбираем "+"
 
-$y' = e^y => (dif y)/e^y = dif x => -e^(-y) = x + C \
+$y' = e^y => dd(y)/e^y = dd(x) => -e^(-y) = x + C \
 y(0) = 0 => -e^(-0) = 0 + C_1 => C_1 = -1 => -e^(-y) = x - 1 => e^(-y) = 1 - x => ln e^(-y) = ln(1 - x) => -y = \ = ln(1 - x) => y = ln(1/(1 - x))$
 
 == Линейные ДУ 2-ого порядка
@@ -843,7 +843,7 @@ y'_"ОН" = C'(x) e^(-3x) - 3C(x) e^(-3x) \
 C'(x) e^(-3x) - cancel(3C(x) e^(-3x)) + cancel(3C(x) e^(-3x)) = tilde(C) e^(-3x) \
 C'(x) e^(-3x) = tilde(C) e^(-3x)
 C'(x) = tilde(C)
-C(x) = integral tilde(C) dif x = tilde(C) x + C_1 \
+C(x) = integral tilde(C) dd(x) = tilde(C) x + C_1 \
 y_"ОН" = (C(x) e^(-3x)) = (tilde(C) x + C_1) e^(-3x) \
 y = tilde(C) underbrace(x e^(-3x), y_2) + C_1 underbrace(e^(-3x), y_1)$
 
@@ -942,8 +942,8 @@ $display(
     C'_1 = phi_1(x),
     C'_2 = phi_2(x),
   ) => cases(
-    C_1(x) = integral phi_1(x) dif x,
-    C_2(x) = integral phi_2(x) dif x,
+    C_1(x) = integral phi_1(x) dd(x),
+    C_2(x) = integral phi_2(x) dd(x),
   )
 )$
 
@@ -1227,7 +1227,7 @@ $
   ) space mat(y_1, ..., y_n; dots.v, dots.down, dots.v; y_1^((n-1)), ..., y_n^((n-1))) mat(C'_1; dots.v; C'_n) = mat(0; dots.v; f(x))
 $
 
-${y_k} space dash "ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ -- существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dif x$
+${y_k} space dash "ФСР" => W != 0 => exists!#footnote[Жаргонное обозначение $exists!$ -- существует единственное, лектор использует "$exists$ единственное"] "решение" C'_k = phi_k (x), k = 1, 2, ..., n => C_k (x) = integral phi_k (x) dd(x)$
 
 $y''' + y' = (sin x)/(cos^2 x) \
 k^3 + k = 0 <=> display(cases(k_1 = 0 &=> y_1 = e^(0x), k_(2,3) = +- i &=> y_2 = cos x\, y_3 = sin x)) \
@@ -1239,7 +1239,7 @@ display(
     0 + C'_2 (-cos x) + C'_3 (-sin x) = (sin x)/(cos^2 x),
   )
 ) \
-C'_1 = (sin x)/(cos^2 x) => C_1 = integral (sin x)/(cos^2 x) dif x = -integral (dif cos x)/(cos^2 x) = -(-1/(cos x)) = 1/(cos x) \
+C'_1 = (sin x)/(cos^2 x) => C_1 = integral (sin x)/(cos^2 x) dd(x) = -integral dd(cos x)/(cos^2 x) = -(-1/(cos x)) = 1/(cos x) \
 display(
   cases(
     C'_2 (-sin x) + C'_3 cos x = 0,
@@ -1595,7 +1595,7 @@ $display(
   cases(
     x(t) = C_1 e^(-t),
     y(t) = C_2 e^(-2t)
-  ) quad y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral (dif y)/y = integral (2 dif x)/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, \ tilde(C) = +- C
+  ) quad y'_x = dot(y)/dot(x) => dv(y, x) = (-2y)/(-x) <=> integral dd(y)/y = integral (2dd(x))/x <=> ln abs(y) = 2ln abs(x) + ln abs(C) <=> abs(y) = abs(C) abs(x)^2 <=> y = tilde(C) x^2\, \ tilde(C) = +- C
 )$
 
 #grid(
@@ -1622,7 +1622,7 @@ $display(
     $display(
       cases(dot(x) = -x, dot(y) = y) <=> cases(x = C_1 e^(-t), y = C_2 e^t) \
       C_1 = 0: cases(x equiv 0, y = C_2 e^t)\, C_2 = 0: cases(x = C_1 e^(-t), y equiv 0) \
-      dot(y)/dot(x) = y/(-x) <=> dv(y, x) = y/(-x) <=> integral (dif y)/y = -integral (dif x)/x <=> ln abs(y) = -ln abs(x) + ln abs(C) <=> ln abs(y) = ln abs(C/x) <=> \ <=> abs(y) = abs(C/x) <=> y = tilde(C) 1/x
+      dot(y)/dot(x) = y/(-x) <=> dv(y, x) = y/(-x) <=> integral dd(y)/y = -integral dd(x)/x <=> ln abs(y) = -ln abs(x) + ln abs(C) <=> ln abs(y) = ln abs(C/x) <=> \ <=> abs(y) = abs(C/x) <=> y = tilde(C) 1/x
     )$
   ],
   [
@@ -1690,8 +1690,7 @@ $display(
     dot(x) = x - y,
     dot(y) = x + y,
   ) quad mdet(1 - lambda, -1; 1, 1 - lambda) = 0 <=> (1 - lambda)^2 + 1 = 0 <=> 1 - lambda = +- i <=> cases(lambda_1 = 1 + i, lambda_2 = 1 - i) \
-  dot(y)/dot(x) = (x + y)/(x - y) <=> dv(y, x) = (x + y)/(x - y) <=> |u = y/x| <=> (1 + u)/(1 - u) = u + x u' <=> x dv(u, x) = (1 + u)/(1 - u) - u <=> x dv(u, x) = (1 + u^2)/(1 - u) <=> integral (dif x)/x = \ = integral (1 - u)/(1 + u^2) dif u <=> arctg u - 1/2 ln abs(1 + u^2) = ln abs(x) + ln abs(C) <=> ln abs(x) + ln sqrt(1 + u^2) = ln abs(C) + ln e^(arctg u) <=> \ <=> sqrt(x^2 + y^2) = tilde(C) e^(arctg u) <=> mat(
-    delim: "|",
+  dot(y)/dot(x) = (x + y)/(x - y) <=> dv(y, x) = (x + y)/(x - y) <=> |u = y/x| <=> (1 + u)/(1 - u) = u + x u' <=> x dv(u, x) = (1 + u)/(1 - u) - u <=> x dv(u, x) = (1 + u^2)/(1 - u) <=> integral dd(x)/x = \ = integral (1 - u)/(1 + u^2) dd(u) <=> arctg u - 1/2 ln abs(1 + u^2) = ln abs(x) + ln abs(C) <=> ln abs(x) + ln sqrt(1 + u^2) = ln abs(C) + ln e^(arctg u) <=> \ <=> sqrt(x^2 + y^2) = tilde(C) e^(arctg u) <=> mdet(
     align: #left,
     x = r cos phi, x^2 + y^2 = r^2;
     y = r sin phi, y/x = tg phi

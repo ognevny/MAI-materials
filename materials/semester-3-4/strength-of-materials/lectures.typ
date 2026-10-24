@@ -1,5 +1,5 @@
-#import "@preview/physica:0.9.8": dv, evaluated
 #import "meta.typ": conf, const, delimsys
+#import "@preview/physica:0.9.8": dd, dv, evaluated
 
 #show: conf.with(
   title: "Лекции по Сопротивлению материалов",
@@ -170,7 +170,7 @@
 Нормальное усилие в поперечном сечении стержня при растяжении-сжатии равняется алгебраической сумме сосредоточенных сил и грузовых площадей по одну сторону от сечения.
 
 $q(x)$ -- грузовая площадь,
-$ N(x) = sum^m_1 P + sum^k_1 integral_l q(x) dif x $
+$ N(x) = sum^m_1 P + sum^k_1 integral_l q(x) dd(x) $
 
 Замечание: здесь интегралы берутся по длине участка действия распределенных нагрузок, приходящихся на отсеченную часть стержня
 
@@ -263,7 +263,7 @@ $ sigma = E epsilon = N/F => epsilon = N / (E F). $ Произведение $E 
   column-gutter: 1em,
   [
     $ Delta l = (N l) / (E F) = (P l) / (E F) $
-    Перемещение: $ delta(x) = integral_0^(x_0) epsilon(x) dif x + delta_i $
+    Перемещение: $ delta(x) = integral_0^(x_0) epsilon(x) dd(x) + delta_i $
     В сечении "0" $delta_0 = 0$.
   ],
   [
@@ -629,7 +629,7 @@ $M$ -- сосредоточенная скручивающая пара; $m$ -- 
 
 Правило определения $M_k$: крутящий момент поперечного сечения стержня равняется алгебраической сумме моментов сосредоточенных скручивающих пар и моментных грузовых площадей по одну сторону от сечения стержня.
 
-$ M_k(x) = sum_1^k M + sum_1^m integral_l m(x) dif x $
+$ M_k(x) = sum_1^k M + sum_1^m integral_l m(x) dd(x) $
 
 Замечание: здесь интегралы берутся по длине участка действия распределенных скручивающих нагрузок, приходящуюся на отсеченную часть стержня.
 
@@ -663,7 +663,7 @@ $
   cases(
     delim: "|",
     dv(M_k, x) = m,
-    M_k = integral_0^(x_i) m dif x + M_k^((i-1))
+    M_k = integral_0^(x_i) m dd(x) + M_k^((i-1))
   )
 $
 
@@ -683,7 +683,7 @@ $tau_max = M_k/W_k$ -- эта формула позволяет определи
 
 $theta = dv(phi, x)$ -- погонный угол закручивания; $theta = M_k/(G J_k)$, где $G J_k$ -- жесткость сечения при кручении, $G$ -- модуль упругости 2 рода, или модуль сдвига, $J_k$ -- геометрическая характеристика жесткости, которая зависит формы и размеров сечения; $G = E / (2(1 + mu))$, где $E$ -- модуль Юнга, а $mu$ -- коэффициент Пуассона.
 
-$ phi(x) = integral_0^(x_i) theta dif x + phi_(i - 1) $
+$ phi(x) = integral_0^(x_i) theta dd(x) + phi_(i - 1) $
 
 Замечание: перед построением эпюр $M_k, tau, theta, phi$ необходимо получить характеристики $W_k$ и $J_k$ для конкретных сечений стержня. Общих формул не существует, поэтому для каждой формы поперечного сечения в задачах по определению $W_k$ и $J_k$ решается отдельно.
 
@@ -758,7 +758,7 @@ $ phi(x) = integral_0^(x_i) theta dif x + phi_(i - 1) $
   [
     Касательные напряжения вдоль стенки принято считать одинаковыми (@стенка): $tau_A = tau_B approx tau_C$.
 
-    $tau t = const$. $W_k = 2F_"ср" t_max$. $tau_max = display(M_k/W_k)$. $J_k = display((4F_"ср"^2) / (integral.cont (dif s)/t))$, интеграл здесь -- длина окружности по средней линии, периметр прямоугольника по средней линии, и так далее...
+    $tau t = const$. $W_k = 2F_"ср" t_max$. $tau_max = display(M_k/W_k)$. $J_k = display((4F_"ср"^2) / (integral.cont dd(s)/t))$, интеграл здесь -- длина окружности по средней линии, периметр прямоугольника по средней линии, и так далее...
   ],
   [
     #figure(
@@ -907,7 +907,7 @@ W_(k_1)/W_(k_2) - ?, J_(k_1)/J_(k_2) - ?$
 
 $ W_(k_1)/W_(k_2) = 300/20 = 15 $
 
-(а): $J_(k_1) = display((4F_"ср"^2) / (integral.cont (dif S)/t)) = display((4((pi d^2)/4)^2) / ((pi d)/t)) = (pi d^4)/40$
+(а): $J_(k_1) = display((4F_"ср"^2) / (integral.cont dd(S)/t)) = display((4((pi d^2)/4)^2) / ((pi d)/t)) = (pi d^4)/40$
 
 (б): $J_(k_2) = 1/3 t^3 S = 1/3 (d/10)^3 pi d = (pi d^4)/3000$
 
@@ -925,10 +925,10 @@ $ J_(k_1)/J_(k_2) = 3000/40 = 75 $
     [Внешняя нагрузка], [$P, q(x)$], [$M, m(x)$],
     [Внутренний силовой фактор],
     [
-      $N = sum P + sum integral_l q(x) dif x$
+      $N = sum P + sum integral_l q(x) dd(x)$
     ],
     [
-      $M_k = sum M + sum integral_l m(x) dif x$
+      $M_k = sum M + sum integral_l m(x) dd(x)$
     ],
 
     [], [$sigma = N/F$], [$tau_max = M_k/W_k$],
@@ -936,10 +936,10 @@ $ J_(k_1)/J_(k_2) = 3000/40 = 75 $
     [], [$dv(delta, x) = epsilon$], [$dv(phi, x) = theta$],
     [],
     [
-      $delta = integral_0^(x_i) epsilon dif x + delta^((i-1))$
+      $delta = integral_0^(x_i) epsilon dd(x) + delta^((i-1))$
     ],
     [
-      $phi = integral_0^(x_i) theta dif x + phi^((i-1))$
+      $phi = integral_0^(x_i) theta dd(x) + phi^((i-1))$
     ],
   )
 
@@ -956,16 +956,16 @@ $ J_(k_1)/J_(k_2) = 3000/40 = 75 $
 )
 
 Статические моменты сечения относительно осей z и y соответственно:
-$ S_z = integral.double_F y dif F; S_y = integral.double_F z dif F $
+$ S_z = integral.double_F y dd(F); S_y = integral.double_F z dd(F) $
 
 Осевые моменты инерций сечения относительно осей z и y соответственно:
-$ I_z = integral.double_F y^2 dif F; I_y = integral.double_F z^2 dif F $
+$ I_z = integral.double_F y^2 dd(F); I_y = integral.double_F z^2 dd(F) $
 
 Центробежный момент инерции сечения относительно осей z и y:
-$ I_(z y) = integral.double_F z y dif F $
+$ I_(z y) = integral.double_F z y dd(F) $
 
 $rho$ -- полярный радиус; полярный момент инерции сечения относительно начала координат:
-$ I_p = integral.double_F rho^2 dif F $
+$ I_p = integral.double_F rho^2 dd(F) $
 
 Радиусы инерции сечения относительно осей z и y соответственно:
 $ i_z = sqrt(I_z/F); i_y = sqrt(I_y/F) $
@@ -973,7 +973,7 @@ $ i_z = sqrt(I_z/F); i_y = sqrt(I_y/F) $
 $I_z, I_y, I_p > 0$\
 $S_z, S_y, I_(z y) in RR$\
 $rho^2 = y^2 + z^2$\
-$integral.double_F rho^2 dif F = integral.double_F y^2 dif F + integral.double_F z^2 dif F => I_p = I_z + I_y$
+$integral.double_F rho^2 dd(F) = integral.double_F y^2 dd(F) + integral.double_F z^2 dd(F) => I_p = I_z + I_y$
 
 Полярный момент инерции сечения относительно точки равен сумме его осевых моментов инерции, расчёт которых проводится относительно любых взаимноперпендикулярных осей, проходящих через эту точку.
 
@@ -1013,13 +1013,13 @@ $integral.double_F rho^2 dif F = integral.double_F y^2 dif F + integral.double_F
   [
     $z_C = 0, space y_C space dash space ? \
     y_C = S_z/F \
-    S_z = integral_F y dif F \
+    S_z = integral_F y dd(F) \
     F = pi R delta \
     y = R sin(phi) \
-    dif F = delta dot dif S, space dif S space dash "элемент дуги"$
+    dd(F) = delta dot dd(S), space dd(S) space dash "элемент дуги"$
 
-    $dif S = R dif phi => dif F = R delta dif phi \
-    S_z = R^2 delta integral_0^pi sin(phi) dif phi = 2 R^2 delta => y_C = (2 R^2 delta)/(pi R delta) = (2R)/pi$
+    $dd(S) = R dd(phi) => dd(F) = R delta dd(phi) \
+    S_z = R^2 delta integral_0^pi sin(phi) dd(phi) = 2 R^2 delta => y_C = (2 R^2 delta)/(pi R delta) = (2R)/pi$
   ],
 )
 
@@ -1058,7 +1058,7 @@ $ tg(2 alpha) = (2 I_(z y)) / (I_y - I_z), $
   caption: [Тело, имеющее ось симметрии],
 ) <симметр>
 
-Пусть ось y является осью симметрии сечения, а ось z ей перпендикулярна (@симметр). $I_(z y) = integral.double z y dif F = 0$. Вывод: ось симметрии сечения и любая ось, ей перпендикулярная есть главная ось сечения.
+Пусть ось y является осью симметрии сечения, а ось z ей перпендикулярна (@симметр). $I_(z y) = integral.double z y dd(F) = 0$. Вывод: ось симметрии сечения и любая ось, ей перпендикулярная есть главная ось сечения.
 
 == Геометрические характеристики некоторых элементарных фигур
 
@@ -1154,7 +1154,7 @@ $ tg(2 alpha) = (2 I_(z y)) / (I_y - I_z), $
 
 Перерезывающая сила в поперечном сечении балки равна алгебраической сумме сосредоточенных сил и грузовых площадей по одну сторону от сечения.
 
-$ Q_y = sum_1^m P + sum_1^k integral_l q(x) dif x $
+$ Q_y = sum_1^m P + sum_1^k integral_l q(x) dd(x) $
 
 ==== Правило знаков для $Q_y$
 
@@ -1168,7 +1168,7 @@ $ Q_y = sum_1^m P + sum_1^k integral_l q(x) dif x $
 
 Изгибающий момент в поперечном сечении балки равен алгебраической сумме моментов всех сил и пар, расположенных по одну сторону от сечения относительно оси z сечения.
 
-$ M_z (x) = sum_1^n M + sum_1^m P x + sum_1^k integral_l x q(x) dif x $
+$ M_z (x) = sum_1^n M + sum_1^m P x + sum_1^k integral_l x q(x) dd(x) $
 
 ==== Правило знаков для $M_z$
 
@@ -1195,8 +1195,8 @@ $ M_z (x) = sum_1^n M + sum_1^m P x + sum_1^k integral_l x q(x) dif x $
 $
   cases(
     delim: delimsys,
-    dv(Q_y, x) = q\; Q_y = integral_0^(x_i) q dif x + Q_y^((i-1)),
-    dv(Q_y, x) = q\; Q_y = integral_0^(x_i) q dif x + Q_y^((i-1)),
+    dv(Q_y, x) = q\; Q_y = integral_0^(x_i) q dd(x) + Q_y^((i-1)),
+    dv(Q_y, x) = q\; Q_y = integral_0^(x_i) q dd(x) + Q_y^((i-1)),
   ) => dv(M_z, x, 2) = q
 $
 
@@ -1435,11 +1435,11 @@ M_z^"экстр" = A (3l + x_0) - P (2l + x_0) - M - q x_0 x_0/2 = 9/8 q l (3l +
 
 $rho$ -- радиус кривизны; AB -- волокно; y -- расстояние от нейтральной части до волокна AB; $epsilon(y)$ -- ?.
 
-$epsilon(y) = ((rho + y) dif phi - rho dif phi) / (rho dif phi) = (y dif phi) / (rho dif phi) = y/rho$. Вывод -- относительная деформация по высоте изменяется по линейному закону. Это является прямым следствием гипотезы плоских сечений.
+$epsilon(y) = ((rho + y) dd(phi) - rho dd(phi)) / (rho dd(phi)) = (y dd(phi)) / (rho dd(phi)) = y/rho$. Вывод -- относительная деформация по высоте изменяется по линейному закону. Это является прямым следствием гипотезы плоских сечений.
 
 Предположим далее, что продольные волокна при изгибе друг на друга не давят и находятся в состоянии одноосного растяжения или сжатия. $sigma = E epsilon$ -- закон Гука. $sigma(y) = E (y/rho)$. Вывод -- напряжения, как и деформации, меняются по высоте сечения линейно.
 
-$ M_z = integral.double_F y sigma dif F = E/rho integral.double_F y^2 dif F $
+$ M_z = integral.double_F y sigma dd(F) = E/rho integral.double_F y^2 dd(F) $
 
 $I_z$ -- осевой момент инерции; $M_z = (E I_z)/rho$; $1/rho$ -- кривизна нейтральный линии; $1/rho = M_z/(E I_z)$ -- основное уравнение изгиба. Произведение $E I_z$ называется жесткостью при изгибе. $sigma = M_z/I_z y$ -- расчётное уравнение для нормальных напряжений при чистом изгибе
 
@@ -1524,8 +1524,8 @@ $I_z$ -- осевой момент инерции; $M_z = (E I_z)/rho$; $1/rho$ 
 
     Точка C -- центр тяжести сечения
 
-    $tau_(x y) = tau_(y x) = dv(M_z, x) 1/(b I_z) integral.double_F_"отс" y dif F \
-    dv(M_z, x) = Q_y, integral.double_F_"отс" y dif F = S_z^"отс"$
+    $tau_(x y) = tau_(y x) = dv(M_z, x) 1/(b I_z) integral.double_F_"отс" y dd(F) \
+    dv(M_z, x) = Q_y, integral.double_F_"отс" y dd(F) = S_z^"отс"$
   ],
   [
     #figure(
@@ -1691,7 +1691,7 @@ C и D -- граничные условия, определяемые из гр�
 
 С учётом знака $y'' = +- M_z/(E I_z)$
 
-$ y' = theta = integral M_z/(E I_z) dif x + C $
+$ y' = theta = integral M_z/(E I_z) dd(x) + C $
 
 === Определение перемещений сечений балок с помощью интеграла Мора
 
@@ -1699,7 +1699,7 @@ $ y' = theta = integral M_z/(E I_z) dif x + C $
 
 Интеграл Мора может быть получен -- в частности -- из условия равенства работы внешних сил и потенциальной энергии, накопленной в деформированной балке.
 
-$ delta = sum_1^n integral_l (M_(z_P) M_(z_1))/(E I_z) dif x $
+$ delta = sum_1^n integral_l (M_(z_P) M_(z_1))/(E I_z) dd(x) $
 
 $delta$ -- искомое перемещение (прогиб $y$ или угол поворота $theta$); $M_(z_P) equiv M_z$ -- изгибающий момент в текущем сечении участка балки от заданной нагрузки; "P" -- символ внешней нагрузки; $M_(z_1)$ -- изгибающий момент в том же сечении от единичной силы, если ищется прогиб, или от единичного момента, если ищется угол поворота; $n$ -- число участков балки.
 
@@ -1724,11 +1724,11 @@ $delta$ -- искомое перемещение (прогиб $y$ или уго
 
     $M_(z_P) = -P x \
     M_(z_1) = (-1) (x - l) \
-    y_B = integral_l^2l 1/(E I_z) M_(z_P) M_(z_1) dif x = 1/(E I_z) integral_l^2l P x (x - l) dif x = P/(E I_z) [evaluated(x^3 / 3)_l^2l - \ - l dot evaluated(x^2 / 2)_l^2l] = 5/6 (P l^3)/(E I_z)$
+    y_B = integral_l^2l 1/(E I_z) M_(z_P) M_(z_1) dd(x) = 1/(E I_z) integral_l^2l P x (x - l) dd(x) = P/(E I_z) [evaluated(x^3 / 3)_l^2l - \ - l dot evaluated(x^2 / 2)_l^2l] = 5/6 (P l^3)/(E I_z)$
 
     $M_(z_P) = -P x \
     M_(z_1) = 1 \
-    theta_C = -1/(E I_z) integral_0^2l P x 1 dif x = -P/(E I_z) dot evaluated(x^2 / 2)_0^2l = -2 (P l^2) / (E I_z)$
+    theta_C = -1/(E I_z) integral_0^2l P x 1 dd(x) = -P/(E I_z) dot evaluated(x^2 / 2)_0^2l = -2 (P l^2) / (E I_z)$
 
     Знак минус в окончательном выражении означает, что торцевое сечение C поворачивается не в направлении единичной пары, а в противоположную.
   ],
@@ -1744,9 +1744,9 @@ $delta$ -- искомое перемещение (прогиб $y$ или уго
   columns: (2.5fr, 1fr),
   column-gutter: 1em,
   [
-    $integral_l M_(z_P) (x) M_(z_1) (x) dif x = integral_l M_(z_P) (x) (k x + b) dif x = k integral_l x M_(z_P) (x) dif x + \ + b integral_l M_(z_P) (x) dif x$
+    $integral_l M_(z_P) (x) M_(z_1) (x) dd(x) = integral_l M_(z_P) (x) (k x + b) dd(x) = k integral_l x M_(z_P) (x) dd(x) + \ + b integral_l M_(z_P) (x) dd(x)$
 
-    $integral_l M_(z_P) (x) M_(z_1) (x) dif x = omega (k x_C + b) => delta = 1/(E I_z) omega y_C$
+    $integral_l M_(z_P) (x) M_(z_1) (x) dd(x) = omega (k x_C + b) => delta = 1/(E I_z) omega y_C$
 
     В общем случае при $E I_z = const$ (Формула Верещагина): $ delta = 1/(E I_z) sum_(i=1)^n omega_i y_(C_i) $
   ],
@@ -2102,7 +2102,7 @@ $X_1$, $X_2$, $X_3$ -- неизвестные обобщенные усилия
 Для рам, состоящих из прямолинейных элементов, перемещение можно находить путём перемножения эпюр по правилу Верещагина. Для рам из криволинейных элементов нужно использовать интеграл Мора.
 
 $
-  delta_(i p) = sum_1^n integral_s (M_z_p M_z_i)/(E I_z) dif s, quad delta_(i j) = sum_1^n integral_s (M_z_i M_z_j)/(E I_z) dif s, quad delta_(i i) = sum_1^n integral_s M_(z_i)^2/(E I_z) dif s
+  delta_(i p) = sum_1^n integral_s (M_z_p M_z_i)/(E I_z) dd(s), quad delta_(i j) = sum_1^n integral_s (M_z_i M_z_j)/(E I_z) dd(s), quad delta_(i i) = sum_1^n integral_s M_(z_i)^2/(E I_z) dd(s)
 $
 
 == Анализ напряженного состояния
@@ -2537,7 +2537,7 @@ $mu l$ -- приведенная длина стержня -- длина пол�
 
 Формула определения $P_к$ энергетическим методом
 $
-  P_к = (integral_0^l E I_min (y'')^2 dif x)/(integral_0^l (y')^2 dif x)
+  P_к = (integral_0^l E I_min (y'')^2 dd(x))/(integral_0^l (y')^2 dd(x))
 $
 
 Для определения $P_к$ по этой формуле уравнение $y = y(x)$ приходится задавать. Например, в форме алгебраического полинома

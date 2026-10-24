@@ -7,7 +7,7 @@
   date: datetime(year: 2006, month: 6, day: 23),
   head: [],
   put_author: false,
-  group: "М1О-232БВ-24",
+  group: "М1О-304БВ-24",
   doc,
 ) = {
   set text(lang: "ru")
