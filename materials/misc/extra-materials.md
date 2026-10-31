@@ -37,24 +37,6 @@
 
 [Записки авиаконструктора (Яковлев).](https://disk.yandex.ru/i/GDVLA4o2HQQlLQ)
 
-### ДОП:
-
-[Энциклопедия. Динамика и прочность машин часть 1 (Фролов).](https://disk.yandex.ru/i/ooKkPTxro0HsUQ)
-
-[Энциклопедия. Динамика и прочность машин часть 2 (Фролов).](https://disk.yandex.ru/i/FPpexFBZDfyBnA)
-
-[Энциклопедия. Стали, чугуны (Фролов).](https://disk.yandex.ru/i/8FDjb0lM1qcFgA)
-
-[Энциклопедия. Теоретическая механика и термодинамика (Фролов).](https://disk.yandex.ru/d/CTuEePFDUsD2UA)
-
-[Энциклопедия. Цветные металлы (Фролов).](https://disk.yandex.ru/d/uWoMzDu35V8cIw)
-
-[Энциклопедия. Автоматическое управление. Теория (Фролов).](https://disk.yandex.ru/d/RwhMymHnml47lw)
-
-[Энциклопедия. Испытания металлических материалов (Фролов).](https://disk.yandex.ru/d/am20w3bssrhEEA)
-
-[Энциклопедия. Стандартизация и сертификация (Фролов).](https://disk.yandex.ru/d/H6-AZAVrqAkOPQ)
-
 # История России:
 
 [История России в мировой истории Порохня.](https://disk.yandex.ru/i/ZSD3EmYvfEfC3g)
@@ -92,3 +74,21 @@
 [Курс теоретической механики (Н. В. Бутенин).](https://disk.yandex.ru/i/zYoB1_i477gQqw)
 
 [методичка по теоретической механике (Кратко, мало теории, много формул).](https://disk.yandex.ru/i/WVrMxSXYrGRX4Q)
+
+# Дополнительно:
+
+[Энциклопедия. Динамика и прочность машин часть 1 (Фролов).](https://disk.yandex.ru/i/ooKkPTxro0HsUQ)
+
+[Энциклопедия. Динамика и прочность машин часть 2 (Фролов).](https://disk.yandex.ru/i/FPpexFBZDfyBnA)
+
+[Энциклопедия. Стали, чугуны (Фролов).](https://disk.yandex.ru/i/8FDjb0lM1qcFgA)
+
+[Энциклопедия. Теоретическая механика и термодинамика (Фролов).](https://disk.yandex.ru/d/CTuEePFDUsD2UA)
+
+[Энциклопедия. Цветные металлы (Фролов).](https://disk.yandex.ru/d/uWoMzDu35V8cIw)
+
+[Энциклопедия. Автоматическое управление. Теория (Фролов).](https://disk.yandex.ru/d/RwhMymHnml47lw)
+
+[Энциклопедия. Испытания металлических материалов (Фролов).](https://disk.yandex.ru/d/am20w3bssrhEEA)
+
+[Энциклопедия. Стандартизация и сертификация (Фролов).](https://disk.yandex.ru/d/H6-AZAVrqAkOPQ)
