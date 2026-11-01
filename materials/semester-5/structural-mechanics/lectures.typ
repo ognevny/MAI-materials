@@ -404,8 +404,8 @@ $
 Для трехмерного случая
 $
   & epsilon_11 = sigma_11/E - mu/E sigma_22 - mu/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
-  & epsilon_22 = -mu/E sigma_11/E + 1/E sigma_22 - mu/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
-  & epsilon_33 = -mu/E sigma_11/E - mu/E sigma_22 + 1/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
+  & epsilon_22 = -mu/E sigma_11 + 1/E sigma_22 - mu/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
+  & epsilon_33 = -mu/E sigma_11 - mu/E sigma_22 + 1/E sigma_33 + 0sigma_12 + 0sigma_13 + 0sigma_23, \
   & gamma_12 = 0sigma_11 + 0sigma_22 + 0sigma_33 + 1/G sigma_12 + 0sigma_13 + 0sigma_23, \
   & gamma_13 = 0sigma_11 + 0sigma_22 + 0sigma_33 + 0sigma_12 + 1/G sigma_13 + 0sigma_23, \
   & gamma_23 = 0sigma_11 + 0sigma_22 + 0sigma_33 + 0sigma_12 + 0sigma_13 + 1/G sigma_23,
