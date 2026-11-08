@@ -1,5 +1,5 @@
 #import "meta.typ": conf, const
-#import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
+#import "@preview/physica:0.9.8": TT, dd, dv, evaluated, mdet, pdv
 
 #show: conf.with(
   title: "Лекции по Строительной механике",
@@ -9,6 +9,8 @@
 )
 
 #let sp = math.op("sp")
+// гыгы, пидиди
+#let pdd(..args) = $dd(..args, d: partial)$
 
 #outline()
 #pagebreak(weak: true)
@@ -1111,4 +1113,168 @@ $
 где $Delta_(i 0)$ -- перемещение от внешних сил; $delta_(i k)$ -- перемещение в направление $i$-ой связи от действия единичной силы $overline(X)_k$ ($delta_(i k) = S_(k i)$). Получаем
 $
   Delta_(i 0) + sum_(k=1)^n delta_(i k) X_k = 0 space forall i = 1, 2, ..., n
+$
+
+= Вариационные методы теории упругости
+
+#v(1em)
+
+#grid(
+  columns: (1fr, 1fr, 1fr),
+  column-gutter: 1em,
+  align: horizon,
+  [
+    Линейно-упругое тело
+    $
+      A = 1/2 P v
+    $
+
+    #figure(
+      image("source-figures/lect8-1.png"),
+    )
+  ],
+  [
+    #figure(
+      image("source-figures/lect8-2.png"),
+    )
+  ],
+  [
+    #figure(
+      image("source-figures/lect8-3.png"),
+    )
+
+    $
+      A(v) = integral_0^v P(v) dd(v)
+    $
+  ],
+)
+
+Потенциал силы $P$
+$
+  Pi(v) = -P v
+$
+
+$P$ получает приращение $pdd(P)$, тогда $v$ получит приращение $pdd(v)$
+$
+  Delta A = P pdd(v) + 1/2 pdd(P, v) + ...
+$
+
+Возможная (виртуальная) работа силы $P$
+$
+  pdd(A) = P pdd(v)
+$
+
+Изменение потенциала
+$
+  Delta Pi = Pi(v + pdd(v)) - Pi(v) = -P(v + pdd(v)) - (-P v) = -P pdd(v)
+$
+
+Вариация потенциала работы
+$
+  pdd(Pi) = -P pdd(v) = -pdd(A)
+$
+
+#grid(
+  columns: (1fr, 3fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect8-4.png"),
+    )
+  ],
+  [
+    $omega$ -- поверхность тела
+    $
+      omega = omega_p + omega_n,
+    $
+    где $omega_n$ -- часть поверхности, где заданы перемещения; $omega_p$ -- часть, свободная от закреплений.
+  ],
+)
+
+Вектор объемной силы
+$
+  [R] = vec(delim: "[", R_x, R_y, R_z)
+$
+
+Прочие векторы
+$
+  [P] = vec(delim: "[", P_x, P_y, P_z), space [u] = vec(delim: "[", u_x, u_y, u_z)
+$
+
+Работа объемных сил в малом объеме $dd(tau)$
+$
+  1/2 (R_x u_x + R_y u_y + R_z u_z) dd(tau)
+$
+
+Работа всех сил
+$
+  A & = 1/2 [integral_tau (R_x u_x + R_y u_y + R_z u_z) dd(tau) + integral_omega (P_x u_x + P_y u_y + P_z u_z) dd(omega)] = \
+  & = integral_tau [u]^TT [R] dd(tau) + integral_omega [u]^TT [P] dd(omega)
+$
+
+Вариация работы
+$
+  pdd(A) = integral_tau (R_x dd(u_x) + R_y dd(u_y) + R_z dd(u_z)) dd(tau) + integral_omega (P_x pdd(u_x) + P_y pdd(u_y) + P_z pdd(u_z)) dd(omega)
+$
+
+Введем вектор
+$
+  [pdd(u)] = vec(delim: "[", pdd(u_x), pdd(u_y), pdd(u_z))
+$
+
+Тогда векторная форма
+$
+  & pdd(A) = integral_tau [pdd(u)]^TT [R] dd(tau) + integral_omega [pdd(u)]^TT [P] dd(omega) \
+  & pdd(A) = integral_tau [pdd(u)]^TT [R] dd(tau) + integral_(omega_p) [pdd(u)]^TT [P] dd(omega)
+$
+
+Вариация потенциала
+$
+  pdd(Pi) = -(integral_tau [pdd(u)]^TT [R] dd(tau) + integral_(omega_p) [pdd(u)]^TT [P] dd(omega))
+$
+
+Потенциал
+$
+  Pi = -(integral_tau [u]^TT [R] dd(tau) + integral_(omega_p) [u]^TT [P] dd(omega))
+$
+
+== Потенциальная энергия деформации
+
+#v(1em)
+
+#grid(
+  columns: (1.5fr, 1fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect8-5.png"),
+    )
+  ],
+  [
+    Работа нормального напряжения
+    $
+      1/2 sigma_(x x) dd(y, z) dot epsilon_(x x) dd(x) = 1/2 sigma_(x x) epsilon_(x x) dd(tau),
+    $
+    где $dd(tau)$ -- элемент объема.
+
+    Работа касательных напряжений
+    $
+      1/2 sigma_(x y) dd(x, z) dot gamma_(x y) dd(y) = 1/2 sigma_(x y) gamma_(x y) dd(tau)
+    $
+  ],
+)
+
+Потенциальная энергия объема
+$
+  dd(u) = 1/2 (sigma_(x x) epsilon_(x x) + sigma_(y y) epsilon_(y y) + sigma_(z z) epsilon_(z z) + sigma_(x y) gamma_(x y) + sigma_(x z) gamma_(x z) + sigma_(y z) gamma_(y z)) dd(tau)
+$
+
+Удельная потенциальная энергия деформаций
+$
+  W = dv(u, tau) = 1/2 (sigma_(x x) epsilon_(x x) + sigma_(y y) epsilon_(y y) + sigma_(z z) epsilon_(z z) + sigma_(x y) gamma_(x y) + sigma_(x z) gamma_(x z) + sigma_(y z) gamma_(y z))
+$
+
+Соответственно векторы напряжений и деформаций
+$
+  [sigma] = vec(delim: "[", sigma_(x x), sigma_(y y), sigma_(z z), sigma_(x y), sigma_(y z), sigma_(z x)), space [epsilon] = vec(delim: "[", epsilon_(x x), epsilon_(y y), epsilon_(z z), gamma_(x y), gamma_(y z), gamma_(z x))
 $
