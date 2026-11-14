@@ -9,8 +9,7 @@
 )
 
 #let sp = math.op("sp")
-// гыгы, пидиди
-#let pdd(..args) = $dd(..args, d: partial)$
+#let ddd(..args) = $dd(..args, d: delta)$
 
 #outline()
 #pagebreak(weak: true)
@@ -1154,24 +1153,24 @@ $
   Pi(v) = -P v
 $
 
-$P$ получает приращение $pdd(P)$, тогда $v$ получит приращение $pdd(v)$
+$P$ получает приращение $ddd(P)$, тогда $v$ получит приращение $ddd(v)$
 $
-  Delta A = P pdd(v) + 1/2 pdd(P, v) + ...
+  Delta A = P ddd(v) + 1/2 ddd(P, v) + ...
 $
 
 Возможная (виртуальная) работа силы $P$
 $
-  pdd(A) = P pdd(v)
+  ddd(A) = P ddd(v)
 $
 
 Изменение потенциала
 $
-  Delta Pi = Pi(v + pdd(v)) - Pi(v) = -P(v + pdd(v)) - (-P v) = -P pdd(v)
+  Delta Pi = Pi(v + ddd(v)) - Pi(v) = -P(v + ddd(v)) - (-P v) = -P ddd(v)
 $
 
 Вариация потенциала работы
 $
-  pdd(Pi) = -P pdd(v) = -pdd(A)
+  ddd(Pi) = -P ddd(v) = -ddd(A)
 $
 
 #grid(
@@ -1214,23 +1213,23 @@ $
 
 Вариация работы
 $
-  pdd(A) = integral_tau (R_x dd(u_x) + R_y dd(u_y) + R_z dd(u_z)) dd(tau) + integral_omega (P_x pdd(u_x) + P_y pdd(u_y) + P_z pdd(u_z)) dd(omega)
+  ddd(A) = integral_tau (R_x dd(u_x) + R_y dd(u_y) + R_z dd(u_z)) dd(tau) + integral_omega (P_x ddd(u_x) + P_y ddd(u_y) + P_z ddd(u_z)) dd(omega)
 $
 
 Введем вектор
 $
-  [pdd(u)] = vec(delim: "[", pdd(u_x), pdd(u_y), pdd(u_z))
+  [ddd(u)] = vec(delim: "[", ddd(u_x), ddd(u_y), ddd(u_z))
 $
 
 Тогда векторная форма
 $
-  & pdd(A) = integral_tau [pdd(u)]^TT [R] dd(tau) + integral_omega [pdd(u)]^TT [P] dd(omega) \
-  & pdd(A) = integral_tau [pdd(u)]^TT [R] dd(tau) + integral_(omega_p) [pdd(u)]^TT [P] dd(omega)
+  & ddd(A) = integral_tau [ddd(u)]^TT [R] dd(tau) + integral_omega [ddd(u)]^TT [P] dd(omega) \
+  & ddd(A) = integral_tau [ddd(u)]^TT [R] dd(tau) + integral_(omega_p) [ddd(u)]^TT [P] dd(omega)
 $
 
 Вариация потенциала
 $
-  pdd(Pi) = -(integral_tau [pdd(u)]^TT [R] dd(tau) + integral_(omega_p) [pdd(u)]^TT [P] dd(omega))
+  ddd(Pi) = -(integral_tau [ddd(u)]^TT [R] dd(tau) + integral_(omega_p) [ddd(u)]^TT [P] dd(omega))
 $
 
 Потенциал
@@ -1266,7 +1265,7 @@ $
 
 Потенциальная энергия объема
 $
-  dd(u) = 1/2 (sigma_(x x) epsilon_(x x) + sigma_(y y) epsilon_(y y) + sigma_(z z) epsilon_(z z) + sigma_(x y) gamma_(x y) + sigma_(x z) gamma_(x z) + sigma_(y z) gamma_(y z)) dd(tau)
+  dd(U) = 1/2 (sigma_(x x) epsilon_(x x) + sigma_(y y) epsilon_(y y) + sigma_(z z) epsilon_(z z) + sigma_(x y) gamma_(x y) + sigma_(x z) gamma_(x z) + sigma_(y z) gamma_(y z)) dd(tau)
 $
 
 Удельная потенциальная энергия деформаций
@@ -1278,3 +1277,103 @@ $
 $
   [sigma] = vec(delim: "[", sigma_(x x), sigma_(y y), sigma_(z z), sigma_(x y), sigma_(y z), sigma_(z x)), space [epsilon] = vec(delim: "[", epsilon_(x x), epsilon_(y y), epsilon_(z z), gamma_(x y), gamma_(y z), gamma_(z x))
 $
+
+Иногда можно встретиться с нотацией Фойгта (особенно в композитах): $sigma_(x x)$, $sigma_(y y)$, $sigma_(z z)$, $sigma_(y z)$, $sigma_(x z)$, $sigma_(x y)$.
+
+Матричный вид $W$
+$
+  W = 1/2 [sigma]^TT [epsilon] = 1/2 [epsilon]^TT [sigma]
+$
+
+Объемная потенциальная энергия деформации
+$
+  U = integral_tau W dd(tau)
+$
+
+Матричная запись закона Гука
+$
+  [sigma] = [k] [epsilon] => [epsilon] = [Phi] [sigma],
+$
+где $[Phi] = mat(delim: "[", 1/E, -mu/E, -mu/E, 0, 0, 0; ...; ...; ...; ...; ...)$
+
+Тогда запишем $W$ как
+$
+  W = 1/2 [epsilon]^TT [k] [epsilon]; space W = 1/2 [sigma]^TT [Phi] [sigma]
+$
+
+Подставим туда $[sigma]$ и $[Phi]$
+$
+  W = G/2 [2(epsilon_(x x)^2 + epsilon_(y y)^2 + epsilon_(z z)^2) + gamma_(x y)^2 + gamma_(y z)^2 + gamma_(z x)^2] + lambda/2 theta^2
+$
+
+При этом всём $W >= 0$
+
+Также имеем
+$
+  W = (1 + mu)/(2E) [sigma_(x x)^2 + sigma_(y y)^2 + sigma_(z z)^2 + 2(sigma_(x y)^2 + sigma_(y z)^2 + sigma_(z x)^2)] - mu/(2E) (sigma_(x x) + sigma_(y y) + sigma_(z z))^2
+$
+
+Приращения значений
+$
+  ddd(sigma_(x x)), ddd(sigma_(y y)), ddd(sigma_(z z)), ddd(sigma_(x y)), ddd(sigma_(y z)), ddd(sigma_(z x)) \
+  ddd(u_x), ddd(u_y), ddd(u_z) \
+  ddd(epsilon_(x x)), ddd(epsilon_(y y)), ddd(epsilon_(z z)), ddd(epsilon_(x y)), ddd(epsilon_(y z)), ddd(epsilon_(z x))
+$
+
+$
+  ddd(W) = [ddd(epsilon)]^TT [sigma] \
+  [ddd(U)] = integral_tau ddd(W) dd(tau) = integral_tau [ddd(epsilon)]^TT [sigma] dd(tau)
+$
+
+#grid(
+  columns: (1fr, 4fr),
+  column-gutter: 1em,
+  [
+    #figure(
+      image("source-figures/lect9-1.png"),
+    )
+  ],
+  [
+    $
+      [R] = vec(delim: "[", R_x, R_y, R_z), space p = vec(delim: "[", p_x, p_y, p_z) \
+      u = vec(delim: "[", u_x (x, y, z), u_y (x, y, z), u_z (x, y, z)), ddd(u) = vec(delim: "[", ddd(u_x) (x, y, z), ddd(u_y) (x, y, z), ddd(u_z) (x, y, z))
+    $
+    $omega_u$ -- часть границы, где заданы перемещения, $omega_p$ -- часть границы, где заданы нагрузки
+  ],
+)
+
+$
+  ddd(A) = integral_tau [ddd(u)]^TT [R] dd(tau) + integral_omega_p [ddd(u)]^TT [p] dd(omega) \
+  ddd(U) = integral_tau [ddd(epsilon)]^TT [sigma] dd(tau) = integral_tau (sigma_(x x) ddd(epsilon_(x x)) + sigma_(y y) ddd(epsilon_(y y)) + ... + sigma_(x z) ddd(gamma_(x z))) dd(tau)
+$
+
+Воспользуемся соотношениями Коши
+$
+  ddd(U) = integral_tau {sigma_(x x) pdv(, x) (ddd(u_x)) + sigma_(x y) pdv(, x) (ddd(u_y)) + sigma_(x z) pdv(, x) (ddd(u_z)) + sigma_(x y) pdv(, y) (ddd(u_x)) + sigma_(y y) pdv(, y) (ddd(u_y)) + \ + sigma_(y z) pdv(, y) (ddd(u_z)) + sigma_(x z) pdv(, z) (ddd(u_x)) + sigma_(y z) pdv(, z) (ddd(u_y)) + sigma_(z z) pdv(, z) (ddd(u_z))} dd(tau) \
+  ddd(U) = integral_tau (pdv([ddd(u)]^TT, x) [sigma_x] + pdv([ddd(u)]^TT, y) [sigma_y] + pdv([ddd(u)]^TT, z) [sigma_z]) dd(tau)
+$
+
+Вспомнив формулу $pdv(f, t) phi = pdv((f dot phi), t) - pdv(phi, t) f$, запишем
+$
+  ddd(U) = integral_tau {pdv(, x) ([ddd(u)]^TT [sigma_x]) + pdv(, y) ([ddd(u)]^TT [sigma_y]) + pdv(, z) ([ddd(u)]^TT [sigma_z])} dd(tau) - integral_tau [ddd(u)]^TT (pdv([sigma_x], x) + pdv([sigma_y], y) + pdv([sigma_z], z)) dd(tau)
+$
+
+Воспользуемся формулой Остроградского-Гаусса
+$
+  integral_t (pdv(Q_x, x) + pdv(Q_y, y) + pdv(Q_z, z)) dd(t) = integral_w (Q_x n_x + Q_y n_y + Q_z n_z) dd(w)
+$
+$[ddd(u)] = 0$ на $omega_n$
+$
+  ddd(U) = integral_omega_p [ddd(u)]^TT ([sigma_x] n_x + [sigma_y] n_y + [sigma_z] n_z) dd(omega) - integral_tau [ddd(u)]^TT (pdv([sigma_x], x) + pdv([sigma_y], y) + pdv([sigma_z], z)) dd(tau)
+$
+
+Итого
+$
+  ddd(U) = integral_omega_p [ddd(u)]^TT [p] + integral_tau [ddd(u)]^TT [R] = ddd(A)
+$
+
+Принцип возможных перемещений
+$
+  ddd(U) = ddd(A)
+$
+Для тела, находящегося в равновесии, работа внешних сил на любых возможных перемещениях равна вариации потенциальной энергии деформации. Отсюда $ddd(U + Pi) = 0$, пусть $V = U + Pi$ -- полная потенциальная энергия системы, тогда $ddd(V) = 0$ -- принцип Лагранжа -- среди всех перемещений, допускаемых наложенными на тело связями, в действительности будут реализовываться такие, для которых потенциальная энергия системы минимальна.
