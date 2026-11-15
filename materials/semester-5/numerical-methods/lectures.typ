@@ -1,4 +1,4 @@
-#import "meta.typ": conf, sign
+#import "meta.typ": Ddd, conf, sign
 #import "@preview/physica:0.9.8": pdv
 
 #show: conf.with(
@@ -98,8 +98,8 @@ $
 
 Свойства
 $
-  & norm(Delta x)/norm(x) <= cond(A) dot norm(Delta b)/norm(b) \
-  & norm(Delta x)/norm(x) <= cond(A) dot norm(Delta A)/norm(A + Delta A)
+  & norm(Ddd(x))/norm(x) <= cond(A) dot norm(Ddd(b))/norm(b) \
+  & norm(Ddd(x))/norm(x) <= cond(A) dot norm(Ddd(A))/norm(A + Ddd(A))
 $
 
 Пример $A = mat(1, 10; 100, 10001)$, тогда $A^(-1) = mat(1001, -10; -100, 1)$
@@ -112,7 +112,7 @@ $cond(A) = 1113111 > 10^6$ -- такие матрицы плохо обусло�
 
 Посчитаем
 
-$display(norm(Delta x)/norm(x) = 10.01 <= 1113111 dot 0.01/1101 space dash "выполняется")$
+$display(norm(Ddd(x))/norm(x) = 10.01 <= 1113111 dot 0.01/1101 space dash "выполняется")$
 
 == Метод прогонки (Томаса)
 

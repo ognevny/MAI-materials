@@ -1,5 +1,5 @@
 #import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
-#import "meta.typ": conf, const, delimsys, ov
+#import "meta.typ": Ddd, conf, const, ddd, delimsys, ov
 
 #show: conf.with(
   title: "Ответы на вопросы к экзамену по Теоретической механике",
@@ -68,7 +68,9 @@ m ov(W)_r = display(sum_(j=1)^N ov(F)_j + sum_(k=1)^p ov(R)_k - ov(W)_e - ov(W)_
 
 Для относительного движения точки вводятся силы инерции: $ ov(Phi)_e = -m ov(W)_e, ov(Phi)_c = -m ov(W)_c, $ где $ov(Phi)_e$ -- переносная сила инерции; $ov(Phi)_c$ -- Кориолисова сила инерции.
 
-$ m ov(W)_r = display(sum_(j=1)^N ov(F)_j + sum_(k=1)^N ov(R)_k + ov(Phi)_e + ov(Phi)_c) $
+$
+  m ov(W)_r = display(sum_(j=1)^N ov(F)_j + sum_(k=1)^N ov(R)_k + ov(Phi)_e + ov(Phi)_c)
+$
 
 Вывод уравнения относительного равновесия
 
@@ -113,7 +115,7 @@ $ ov(W)_C = dv(ov(V)_C, t) = (display(sum_j) m_j ov(W)_j)/M $
 
 Количеством движения МС называется векторная сумма количеств движений точек этой МС $ ov(Q) = display(sum_j) ov(q)_j = display(sum_j) m_j ov(V)_j $ $ ov(V)_C = (display(sum_j) m_j ov(V)_j)/M => ov(Q) = display(sum_j) m_j ov(V)_j $
 
-Импульс силы -- векторная физическая величина, мера воздействия силы на тело за заданный промежуток времени в поступательном движении: $ ov(S) = integral_(t_1)^(t_2) ov(F) dd(t) = ov(F) Delta t $
+Импульс силы -- векторная физическая величина, мера воздействия силы на тело за заданный промежуток времени в поступательном движении: $ ov(S) = integral_(t_1)^(t_2) ov(F) dd(t) = ov(F) Ddd(t) $
 
 *Теорема об изменении вектора количества движения МС в дифференциальной форме*
 
@@ -125,7 +127,7 @@ $display(dv(ov(Q), t) = dv(, t) (sum_j m_j ov(V)_j) = sum_j dv(, t) (m_j ov(V)_j
 
 Изменение вектора количества движения МС за время $tau$ равно векторной сумме импульсов внешних сил за это время
 
-$ Delta ov(Q) = ov(Q) (tau) - ov(Q) (0) = sum_j ov(S)_(tau) (ov(F)_j^((e))) $
+$ Ddd(ov(Q)) = ov(Q) (tau) - ov(Q) (0) = sum_j ov(S)_(tau) (ov(F)_j^((e))) $
 
 $dv(ov(Q), t) = display(sum_j ov(F)_j^((e))) \
 dd(ov(Q)) = display((sum_j ov(F)_j^((e))) dd(t)) \
@@ -250,7 +252,7 @@ $ J_z dot.double(phi) = sum_j M_(O z) (ov(F)_j^((e))) $
 
 *Теорема об изменении кинетической энергии МС в интегральной форме*
 
-Изменение кинетической энергии МС, прошедшим перемещение точек из положения (1) в положение (2) равно сумме полных работ сил при перемещении $ Delta T = T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j) $
+Изменение кинетической энергии МС, прошедшим перемещение точек из положения (1) в положение (2) равно сумме полных работ сил при перемещении $ Ddd(T) = T_((2)) - T_((1)) = sum_j A_((1))^((2)) (ov(F)_j) $
 
 #block(breakable: false)[Доказательство:
 
@@ -392,7 +394,7 @@ dif' A = (ov(T)_A, ov(V)_A) dd(t) + (ov(T)_B, ov(V)_B) dd(t) = ... = 0$
 $display(sum_j dif' A (ov(F)_j) = sum_j (F_(j x) dd(x_j) + F_(j y) dd(y_j) + F_(j z) dd(z_j)) = sum_j (pdv(U, x_j) dd(x_j) + pdv(U, y_j) dd(y_j) + pdv(U, z_j) dd(z_j)) = dd(U)) \
 display(dd(T) = sum_j dif' A (ov(F)_j) = dd(U))$
 
-$ display(Delta T = integral_((1))^((2)) dd(U) = U_((2)) - U_((1)) = Delta U) $
+$ display(Ddd(T) = integral_((1))^((2)) dd(U) = U_((2)) - U_((1)) = Ddd(U)) $
 
 В ППС полная работа не зависит от траектории перемещения точек.
 
@@ -442,7 +444,9 @@ $ ov(K)_O = ov(K)'_c + [ov(r)_c; (sum_j m_j) ov(V)_c] $
 
 Производная по времени от кинетического момента МС в движении относительно центра масс равна векторной сумме моментов внешних сил относительно центра масс
 
-$ dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov(F)_j^((e))] $
+$
+  dv(ov(K)_c, t) = sum_j ov(M)_c (ov(F)_j^((e))) = sum_j [ov(rho)_j, ov(F)_j^((e))]
+$
 
 #block(breakable: false)[Доказательство
 
@@ -612,12 +616,12 @@ f(x, y, z, t) = 0$
 
 $dd(f) = pdv(f, x) dd(x) + pdv(f, y) dd(y) + pdv(f, z) dd(z)$
 
-$delta f = pdv(f, x) delta x + pdv(f, y) delta y + pdv(f, z) delta z$ -- вариация функции ($t = const$)
+$ddd(f) = pdv(f, x) ddd(x) + pdv(f, y) ddd(y) + pdv(f, z) ddd(z)$ -- вариация функции ($t = const$)
 
 $ov(r) = (x, y, z, t) \
 dd(ov(r)) = pdv(ov(r), x) dd(x) + pdv(ov(r), y) dd(y) + pdv(ov(r), z) dd(z) + pdv(ov(r), t) dd(t) space dash "элементарное перемещение"$
 
-Виртуальное перемещение $ delta ov(r) = pdv(ov(r), x) delta x + pdv(ov(r), y) delta y + pdv(ov(r), z) delta z $
+Виртуальное перемещение $ ddd(ov(r)) = pdv(ov(r), x) ddd(x) + pdv(ov(r), y) ddd(y) + pdv(ov(r), z) ddd(z) $
 
 Виртуальным перемещением называется мысленное малое перемещение точки, допускаемое связями, в фиксированный момент времени. При стационарных связях множество действительных элементарных перемещений, допускаемых связями, и множество виртуальных перемещений совпадают.
 
@@ -628,8 +632,8 @@ dd(ov(r)) = pdv(ov(r), x) dd(x) + pdv(ov(r), y) dd(y) + pdv(ov(r), z) dd(z) + pd
   column-gutter: 1em,
   [
     $
-       dif' A & = (ov(F), dd(ov(r))) \
-      delta A & = (ov(F), delta ov(r))
+      dif' A & = (ov(F), dd(ov(r))) \
+      ddd(A) & = (ov(F), ddd(ov(r)))
     $
   ],
   [
@@ -651,15 +655,15 @@ dd(ov(r)) = pdv(ov(r), x) dd(x) + pdv(ov(r), y) dd(y) + pdv(ov(r), z) dd(z) + pd
   column-gutter: 1em,
   [
     $dif' A &= display(sum_j (ov(R)_j, dd(ov(r)_j))) = 0 \
-    delta A &= display(sum_j (ov(R)_j, delta ov(r)_j)) = 0$
+    ddd(A) &= display(sum_j (ov(R)_j, ddd(ov(r)_j))) = 0$
 
     $ov(F)_j + ov(R)_j = 0 \
-    (ov(F)_j + ov(R)_j, delta ov(r)_j) = 0$
+    (ov(F)_j + ov(R)_j, ddd(ov(r)_j)) = 0$
 
-    $display(sum_j (ov(F)_j, delta ov(r)_j) + sum_j (ov(R)_j, delta ov(r)_j) = 0) \
-    "Идеальная связь" => display(sum_j (ov(R)_j, delta ov(r)_j) = 0)$
+    $display(sum_j (ov(F)_j, ddd(ov(r)_j)) + sum_j (ov(R)_j, ddd(ov(r)_j)) = 0) \
+    "Идеальная связь" => display(sum_j (ov(R)_j, ddd(ov(r)_j)) = 0)$
 
-    $ sum_j (ov(F)_j, delta ov(r)_j) = 0 $
+    $ sum_j (ov(F)_j, ddd(ov(r)_j)) = 0 $
   ],
   [
     #figure(
@@ -681,9 +685,9 @@ N точек, 3N координат
   column-gutter: 1em,
   [
     $ov(Phi)_(alpha) = -m_(alpha) ov(W)_(alpha) \
-    ov(F)_(alpha) + ov(R)_(alpha) + ov(Phi)_(alpha) = 0 | dot delta ov(r)_A \
-    (ov(F)_(alpha) + ov(R)_(alpha) + ov(Phi)_(alpha), delta ov(r)_(alpha)) = 0 \
-    display(sum_(alpha) (ov(F)_(alpha), delta ov(r)_(alpha)) + cancel(sum_(alpha) (ov(R)_(alpha), delta ov(r)_(alpha))) + sum_(alpha) (ov(Phi)_(alpha), delta ov(r)_(alpha)) = 0)$
+    ov(F)_(alpha) + ov(R)_(alpha) + ov(Phi)_(alpha) = 0 | dot ddd(ov(r)_A) \
+    (ov(F)_(alpha) + ov(R)_(alpha) + ov(Phi)_(alpha), ddd(ov(r)_alpha)) = 0 \
+    display(sum_(alpha) (ov(F)_(alpha), ddd(ov(r)_alpha)) + cancel(sum_(alpha) (ov(R)_(alpha), ddd(ov(r)_alpha))) + sum_(alpha) (ov(Phi)_(alpha), ddd(ov(r)_alpha)) = 0)$
   ],
   [
     #figure(
@@ -692,7 +696,7 @@ N точек, 3N координат
   ],
 )
 
-Общее уравнение аналитической динамики (принцип д'Аламбера-Лагранжа) $ sum_(alpha) (ov(F)_(alpha), delta ov(r)_(alpha)) + sum_(alpha) (ov(Phi)_(alpha), delta ov(r)_(alpha)) = 0 $
+Общее уравнение аналитической динамики (принцип д'Аламбера-Лагранжа) $ sum_(alpha) (ov(F)_(alpha), ddd(ov(r)_alpha)) + sum_(alpha) (ov(Phi)_(alpha), ddd(ov(r)_alpha)) = 0 $
 
 = Обобщенные координаты, скорости и силы. Число степеней свободы. Способы вычисления обобщенных сил
 
@@ -711,7 +715,7 @@ $ ov(V)_j = display(sum_(i=1)^n pdv(ov(r)_j, q_i) dot(q_i) + pdv(ov(r)_j, t)) $
 Числом степеней свободы МС называется число независимых вариаций обобщенных координат. В голономных системах число степеней свободы совпадает с числом обобщенных координат. Голономные МС называется МС, на которые наложены только голономные связи.
 
 $
-  delta A = sum_j (ov(F)_j, delta ov(r)_j) = sum_j (ov(F)_j, sum_(i=1)^n pdv(ov(r)_j, q_i) delta q_i) = sum_j sum_(i=1)^n (ov(F)_j, pdv(ov(r)_j, q_i)) delta q_i = \ = sum_(i=1)^n sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) delta q_i = sum_(i=1)^n delta q_i sum_j (ov(F)_j, pdv(ov(r)_j, q_i))
+  ddd(A) = sum_j (ov(F)_j, ddd(ov(r)_j)) = sum_j (ov(F)_j, sum_(i=1)^n pdv(ov(r)_j, q_i) ddd(q_i)) = sum_j sum_(i=1)^n (ov(F)_j, pdv(ov(r)_j, q_i)) ddd(q_i) = \ = sum_(i=1)^n sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) ddd(q_i) = sum_(i=1)^n ddd(q_i) sum_j (ov(F)_j, pdv(ov(r)_j, q_i))
 $
 
 *Обобщенные силы*
@@ -726,9 +730,9 @@ $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) $
 
 + Для голономных систем
 
-  $delta q_i space dash "независимы" \
-  delta q_1 > 0; delta q_2 = ... = delta q_n = 0 \
-  delta A_((1)) = display(sum_j (ov(F)_j, delta ov(r)_j^((1)))); delta A_((1)) = display(sum_(i=1)^n Q_i delta q_i = Q_1 delta q_1)$
+  $ddd(q_i) space dash "независимы" \
+  ddd(q_1) > 0; ddd(q_2) = ... = ddd(q_n) = 0 \
+  ddd(A_((1))) = display(sum_j (ov(F)_j, ddd(ov(r)_j^((1))))); ddd(A_((1))) = display(sum_(i=1)^n Q_i ddd(q_i) = Q_1 ddd(q_1))$
 
 + Для потенциальных сил
 
@@ -741,25 +745,25 @@ $ Q_i = sum_j (ov(F)_j, pdv(ov(r)_j, q_i)) $
 #v(1em)
 
 $ov(Phi)_j = -m_j ov(W)_j \
-display(delta A^(Phi) = sum_j (ov(Phi)_j, delta ov(r)_j) = -sum_j m_j (ov(W)_j, delta ov(r)_j) = sum_(i=1)^n Q_i^(Phi) delta q_i)$\
+display(ddd(A^Phi) = sum_j (ov(Phi)_j, ddd(ov(r)_j)) = -sum_j m_j (ov(W)_j, ddd(ov(r)_j)) = sum_(i=1)^n Q_i^(Phi) ddd(q_i))$\
 $Q_i^(Phi)$ -- обобщенные силы инерции
 
-$display(delta ov(r)_j = sum_(i=1)^n pdv(ov(r)_j, q_i) delta q_i) \
+$display(ddd(ov(r)_j) = sum_(i=1)^n pdv(ov(r)_j, q_i) ddd(q_i)) \
 display(ov(V)_j = dv(ov(r)_j, t) = sum_(i=1)^n pdv(ov(r)_j, q_i) dot(q_i))$
 
 $n = 1, q_1 = q \
-delta ov(r)_j = pdv(ov(r)_j, q) delta q \
+ddd(ov(r)_j) = pdv(ov(r)_j, q) ddd(q) \
 ov(V)_j = pdv(ov(r)_j, q) dot(q) \
 pdv(ov(V)_j, dot(q)) = pdv(ov(r)_j, q) quad (**) \
 ov(V)_j = dv(ov(r)_j, t); pdv(ov(V)_j, q) = dv(, t) pdv(ov(r)_j, q) quad (*) \
 V_j^2 = (ov(V)_j, ov(V)_j) \
 pdv(, q) V_j^2 = pdv(, q) (ov(V)_j, ov(V)_j) = (pdv(ov(V)_j, q), ov(V)_j) + (ov(V)_j, pdv(ov(V)_j, q)) = 2(ov(V)_j, pdv(ov(V)_j, q)) quad (****) \
 pdv((V_j)^2, dot(q)) = 2(ov(V)_j, pdv(ov(V)_j, dot(q))) quad (***) \
-(ov(W)_j, delta ov(r)_j) = (dv(ov(V)_j, t), pdv(ov(r)_j, q)) delta q = \
+(ov(W)_j, ddd(ov(r)_j)) = (dv(ov(V)_j, t), pdv(ov(r)_j, q)) ddd(q) = \
 = display(dv(, t) (ov(V)_j, overparen(pdv(ov(r)_j, q), (**))) - (ov(V)_j, overparen(dv(, t) (pdv(ov(r)_j, q)), (*))) = dv(, t) overparen((ov(V)_j, pdv(ov(V)_j, dot(q))), (***)) - overparen((ov(V)_j, pdv(ov(V)_j, q)), (****)) = 1/2 dv(, t) (pdv((V_j)^2, dot(q))) - 1/2 pdv((V_j)^2, q)) \
 display(
-  delta A^(Phi) = -sum_j m_j (ov(W)_j, delta ov(r)_j) delta q = -{sum_j 1/2 m_j dv(, t) (pdv((V_j)^2, dot(q))) - sum_j 1/2 m_j pdv((V_j)^2, q)} delta q = -delta q times \ times {sum_j dv(, t) (pdv((1/2 m_j V_j^2), dot(q))) - sum_j pdv(, q) (1/2 m_j V_j^2)} = -delta q {dv(, t) pdv(, dot(q)) (sum_j (m_j V_j^2)/2) - pdv(, q) (sum_j 1/2 m_j V_j^2)} = \ = -delta q {dv(, t) pdv(T, dot(q)) - pdv(T, q)}
-); quad delta A^(Phi) = Q^(Phi) delta q$
+  ddd(A^Phi) = -sum_j m_j (ov(W)_j, ddd(ov(r)_j)) ddd(q) = -{sum_j 1/2 m_j dv(, t) (pdv((V_j)^2, dot(q))) - sum_j 1/2 m_j pdv((V_j)^2, q)} ddd(q) = -ddd(q) times \ times {sum_j dv(, t) (pdv((1/2 m_j V_j^2), dot(q))) - sum_j pdv(, q) (1/2 m_j V_j^2)} = -ddd(q) {dv(, t) pdv(, dot(q)) (sum_j (m_j V_j^2)/2) - pdv(, q) (sum_j 1/2 m_j V_j^2)} = \ = -ddd(q) {dv(, t) pdv(T, dot(q)) - pdv(T, q)}
+); quad ddd(A^Phi) = Q^(Phi) ddd(q)$
 
 $ Q^(Phi) = -{dv(, t) pdv(T, dot(q)) - pdv(T, q)} $
 
@@ -773,10 +777,10 @@ $ Q_i^(Phi) = -{dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)} $
 
 Вывод уравнения Лагранжа II рода:
 
-$display(sum_(i=1)^n Q_i delta q_i + sum_(i=1)^n Q_i^(Phi) delta q_i = 0) \
-display(sum_(i=1)^n (Q_i + Q_i^(Phi)) delta q_i = 0)$
+$display(sum_(i=1)^n Q_i ddd(q_i) + sum_(i=1)^n Q_i^(Phi) ddd(q_i) = 0) \
+display(sum_(i=1)^n (Q_i + Q_i^(Phi)) ddd(q_i) = 0)$
 
-$delta q_i space dash "независимы" \
+$ddd(q_i) space dash "независимы" \
 Q_i + Q_i^(Phi) = 0 space (i = 1...n) \
 Q_i - display({dv(, t) pdv(T, dot(q)_i) - pdv(T, q_i)}) = 0$
 
@@ -798,7 +802,7 @@ $ dv(, t) pdv(L, dot(q)_i) - pdv(L, q_i) = 0 $
 
 #v(1em)
 
-$display(sum_(i=1)^n Q_i delta q_i) = display(sum_j (ov(F)_j, delta ov(r)_j)) = 0 space dash "уравнение равновесия голономных систем" \
+$display(sum_(i=1)^n Q_i ddd(q_i)) = display(sum_j (ov(F)_j, ddd(ov(r)_j))) = 0 space dash "уравнение равновесия голономных систем" \
 pdv(Pi, q_i) = 0 => q_i^*, i = 1...n space dash "положение равновесия" \
 x_i = q_i - q_i^* space dash "возмущение" \
 x_(i O) = q_(i O) - q_i^* space (t_0 = 0) => dot(x)_(i O) = dot(q)_(i O)$
@@ -855,12 +859,12 @@ _Здесь и далее под интегрированием уравнени
   column-gutter: 1em,
   [
     $ov(F)_j = -beta_j ov(V)_j, beta_j > 0 \
-    delta A = display(sum_j (ov(F)_j, delta ov(r)_j)) \
-    delta ov(r)_j = pdv(ov(r)_j, q) delta q; ov(V)_j = pdv(ov(r)_j, q) dot(q) \
-    delta A = display(sum_j (-beta_j pdv(ov(r)_j, q) dot(q), pdv(ov(r)_j, q) q) = -(sum_j beta_j (pdv(ov(r)_j, q))^2) dot(q) delta q) \
+    ddd(A) = display(sum_j (ov(F)_j, ddd(ov(r)_j))) \
+    ddd(ov(r)_j) = pdv(ov(r)_j, q) ddd(q); ov(V)_j = pdv(ov(r)_j, q) dot(q) \
+    ddd(A) = display(sum_j (-beta_j pdv(ov(r)_j, q) dot(q), pdv(ov(r)_j, q) q) = -(sum_j beta_j (pdv(ov(r)_j, q))^2) dot(q) ddd(q)) \
     b_j (q) = display(sum_j beta_j (pdv(ov(r)_j, q))^2) > 0 \
     b_j (q) = b_j (q^*) + pdv(b_j, q) (q- q^*) + ... approx b_j (q^*) = b^* > 0 \
-    delta A = -b^* dot(q) delta q \
+    ddd(A) = -b^* dot(q) ddd(q) \
     Q^* = -b^* q, dot(q) = dot(x) => Q^* = -b dot(x)$
   ],
   [
@@ -870,7 +874,9 @@ _Здесь и далее под интегрированием уравнени
   ],
 )
 
-$ a^* dot.double(x) + c^* x = -b^* dot(x) <=> a^* dot.double(x) + b^* dot(x) + c^* x = 0; a^*, b^*, c^* > 0 $
+$
+  a^* dot.double(x) + c^* x = -b^* dot(x) <=> a^* dot.double(x) + b^* dot(x) + c^* x = 0; a^*, b^*, c^* > 0
+$
 
 $dot.double(x) + b^* / a^* dot(x) + c^* / a^* x = 0 \
 b^* / a^* = 2n, c^* / a^* = k^2 \
@@ -1134,10 +1140,10 @@ $
   columns: (1.5fr, 1fr),
   column-gutter: 1em,
   [
-    $m(t + Delta t) = m(t) + Delta m_2 - Delta m_1 \
-    Delta m = m(t + Delta t) - m(t) = -Delta m_1 + Delta m_2 \
-    display(dv(m, t) = lim_(Delta t -> 0) dv(m, t, d: Delta) = -lim_(Delta t -> 0) dv(m_1, t, d: Delta) + lim_(Delta t -> 0) dv(m_2, t, d: Delta) = \ = -dv(m_1, t) + dv(m_2, t)) \
-    Delta ov(Q) = ov(Q)(t + Delta t) - ov(Q)(t) = ... = \ = m(t) Delta ov(V) - Delta m_1 (ov(V)_1 - ov(V)(t)) - Delta m_2 (ov(V)_2 - ov(V)(t)) - \ - Delta m_1 Delta ov(V) + Delta m_2 Delta ov(V)$
+    $m(t + Ddd(t)) = m(t) + Ddd(m_2) - Ddd(m_1) \
+    Ddd(m) = m(t + Ddd(t)) - m(t) = -Ddd(m_1) + Ddd(m_2) \
+    display(dv(m, t) = lim_(Ddd(t) -> 0) dv(m, t, d: Delta) = -lim_(Ddd(t) -> 0) dv(m_1, t, d: Delta) + lim_(Ddd(t) -> 0) dv(m_2, t, d: Delta) = \ = -dv(m_1, t) + dv(m_2, t)) \
+    Ddd(ov(Q)) = ov(Q)(t + Ddd(t)) - ov(Q)(t) = ... = \ = m(t) Ddd(ov(V)) - Ddd(m_1) (ov(V)_1 - ov(V)(t)) - Ddd(m_2) (ov(V)_2 - ov(V)(t)) - \ - Ddd(m_1, V) + Ddd(m_2, V)$
   ],
   [
     #figure(
@@ -1146,15 +1152,15 @@ $
   ],
 )
 
-$display(dv(ov(Q), t) = lim_(Delta t -> 0) dv(ov(Q), t, d: Delta) = lim_(Delta t -> 0) m(t) dv(ov(V), t, d: Delta) + lim_(Delta t -> 0) (dv(m_1, t, d: Delta) (ov(V)_1 - ov(V)(t))) - lim_(Delta t -> 0) (dv(m_2, t, d: Delta) (ov(V)_2 - ov(V)(t))) - \ - lim_(Delta t -> 0) (Delta m_1 Delta ov(V))/(Delta t) + lim_(Delta t -> 0) (Delta m_2 Delta ov(V))/(Delta t) = m(t) lim_(Delta t -> 0) dv(ov(V), t, d: Delta) + (ov(V)_1 - ov(V)(t)) lim_(Delta -> 0) dv(m_1, t, d: Delta) - (ov(V)_2 - ov(V)(t)) lim_(Delta -> 0) dv(m_2, t, d: Delta)) \
+$display(dv(ov(Q), t) = lim_(Ddd(t) -> 0) dv(ov(Q), t, d: Delta) = lim_(Ddd(t) -> 0) m(t) dv(ov(V), t, d: Delta) + lim_(Ddd(t) -> 0) (dv(m_1, t, d: Delta) (ov(V)_1 - ov(V)(t))) - lim_(Ddd(t) -> 0) (dv(m_2, t, d: Delta) (ov(V)_2 - ov(V)(t))) - \ - lim_(Ddd(t) -> 0) Ddd(m_1, ov(V))/Ddd(t) + lim_(Ddd(t) -> 0) Ddd(m_2, ov(V))/Ddd(t) = m(t) lim_(Ddd(t) -> 0) dv(ov(V), t, d: Delta) + (ov(V)_1 - ov(V)(t)) lim_(Delta -> 0) dv(m_1, t, d: Delta) - (ov(V)_2 - ov(V)(t)) lim_(Delta -> 0) dv(m_2, t, d: Delta)) \
 ov(V)_1 - ov(V)(t) = ov(V)_(1r); ov(V)_2 - ov(V)(t) = ov(V)_(2r) \
 dv(ov(Q), t) = ov(F)^((e)) => m(t) dv(ov(V), t) + dv(m_1, t) ov(V)_(1r) - dv(m_2, t) ov(V)_(2r) = ov(F)^((e))$
 
 Уравнение Мещерского в случае одновременного отсоединения и присоединения частиц $ m(t) dv(ov(V), t) = ov(F)^((e)) - dv(m_1, t) ov(V)_(1r) + dv(m_2, t) ov(V)_(2r) $
 
-Уравнение Мещерского в случае отсоединения частиц -- уравнение реактивного движения $ Delta m_2 = 0 => dv(m_2, t) = 0; dv(m, t) = -dv(m_1, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(1r) $
+Уравнение Мещерского в случае отсоединения частиц -- уравнение реактивного движения $ Ddd(m_2) = 0 => dv(m_2, t) = 0; dv(m, t) = -dv(m_1, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(1r) $
 
-Уравнение Мещерского в случае присоединения частиц $ Delta m_1 = 0 => dv(m_1, t) = 0; dv(m, t) = dv(m_2, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(2r) $
+Уравнение Мещерского в случае присоединения частиц $ Ddd(m_1) = 0 => dv(m_1, t) = 0; dv(m, t) = dv(m_2, t) => m(t) dv(ov(V), t) = ov(F)^((e)) + dv(m, t) ov(V)_(2r) $
 
 = Задача К.Э. Циолковского. Движение многоступенчатой ракеты
 
@@ -1234,7 +1240,7 @@ $display(
 
 $ M_z^((e)) = 0 => K_z = const $
 
-Теорема об изменении кинетической энергии в интегральной форме: $ Delta T = Delta Pi + A_((1))^((2)*), $ где $A_((1))^((2)*)$ -- работа непотенциальных сил; $Delta Pi = M g Delta h$ в случае силы тяжести.
+Теорема об изменении кинетической энергии в интегральной форме: $ Ddd(T) = Ddd(Pi) + A_((1))^((2)*), $ где $A_((1))^((2)*)$ -- работа непотенциальных сил; $Ddd(Pi) = M g Ddd(h)$ в случае силы тяжести.
 
 Кинетическая энергия при поступательном движении: $ T = (M V^2)/2 $
 При вращательном: $ T = (J_z omega^2)/2 $
@@ -1242,9 +1248,9 @@ $ M_z^((e)) = 0 => K_z = const $
 
 Принцип д'Аламбера для материальной точки: $ ov(Phi) = -m ov(W) $ (во многих задачах ускорение задано!)
 
-Принцип виртуальных перемещений (использовать, когда система находится в равновесии): $ sum_j (ov(F)_j, delta ov(r)_j) +- M delta phi = 0 $
-+ Тело вращается вокруг неподвижной точки: все перемещения перпендикулярны радиусу $ delta r_A = delta phi dot O A, $ где $O A$ -- расстояние от центра до точки $A$
-+ Движение твердого тела: $ "Пр"_(ov(A B)) delta ov(r)_A = "Пр"_(ov(A B)) delta ov(r)_B "или" (delta r_A)/(A P) = (delta r_B)/(B P) = ... $
-+ Перемещения двух точек твердого тела параллельны в данный момент времени $ delta ov(r)_A = delta ov(r)_B $
+Принцип виртуальных перемещений (использовать, когда система находится в равновесии): $ sum_j (ov(F)_j, ddd(ov(r)_j)) +- M ddd(phi) = 0 $
++ Тело вращается вокруг неподвижной точки: все перемещения перпендикулярны радиусу $ ddd(r_A) = ddd(phi) dot O A, $ где $O A$ -- расстояние от центра до точки $A$
++ Движение твердого тела: $ "Пр"_(ov(A B)) ddd(ov(r)_A) = "Пр"_(ov(A B)) ddd(ov(r)_B) "или" ddd(r_A)/(A P) = ddd(r_B)/(B P) = ... $
++ Перемещения двух точек твердого тела параллельны в данный момент времени $ ddd(ov(r)_A) = ddd(ov(r)_B) $
 
 Уравнение Лагранжа при одной степени свободы (одна обобщённого координата). В задачах обычно требуется нахождение ускорения. В уравнение Лагранжа это ускорение должно войти.

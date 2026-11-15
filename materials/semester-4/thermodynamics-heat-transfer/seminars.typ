@@ -56,7 +56,7 @@ $display(
 )$
 
 $
-  Delta m = m_1 - m_2 = 130 - 110 = 20"кг"
+  Ddd(m) = m_1 - m_2 = 130 - 110 = 20"кг"
 $
 
 === Задача 2
@@ -128,17 +128,17 @@ $
 
 Есть летательный аппарат в виде капсулы $1 times 2 times 1.5м$, $lambda = 13.5 "Вт"/(м dot К)$, $delta = 12"мм"$, $t_w_1 = 21degree C$, $T_n = 4К$ (мы находимся в космосе). Определить мощность нагревательного устройства.
 
-$display(Q = lambda/delta Delta T dot F = 13.5/0.012 dot 290 dot 13 approx 4"МВт")$
+$display(Q = lambda/delta Ddd(T) dot F = 13.5/0.012 dot 290 dot 13 approx 4"МВт")$
 
 Утеплим теплоизоляцией толщиной $delta = 5"мм"$, $lambda_"из" = 0.05 "Вт"/(м dot К)$
 
 $
-  Q = (Delta T dot F)/R\, space R = sum delta/lambda
+  Q = (Ddd(T) dot F)/R\, space R = sum delta/lambda
 $
 
-$display(Q = (Delta T dot F)/(delta_1/lambda_1 + delta_2/lambda_"из") approx 37"кВт")$
+$display(Q = (Ddd(T) dot F)/(delta_1/lambda_1 + delta_2/lambda_"из") approx 37"кВт")$
 
-Допустим $R_к = 240 dot 10^(-4) (м^2 dot К)/"Вт"$, тогда $display(Q = (Delta T dot F)/(R + R_к) approx = 30"кВт")$
+Допустим $R_к = 240 dot 10^(-4) (м^2 dot К)/"Вт"$, тогда $display(Q = (Ddd(T) dot F)/(R + R_к) approx = 30"кВт")$
 
 === Задача 3
 
@@ -178,11 +178,11 @@ $display(
 
 #v(1em)
 
-Необходимо создать поршневой двигатель с цилиндрическими блоками. $D = 160"мм"$, $l = 175"мм"$, $delta = 3"мм"$, $H = 42.3 "МДж"/"кг"$, $dot(m) = 11 "кг"/"час"$, $Delta T = 10degree C$. 14% тепла выделяется вовне. Подобрать материал.
+Необходимо создать поршневой двигатель с цилиндрическими блоками. $D = 160"мм"$, $l = 175"мм"$, $delta = 3"мм"$, $H = 42.3 "МДж"/"кг"$, $dot(m) = 11 "кг"/"час"$, $Ddd(T) = 10degree C$. 14% тепла выделяется вовне. Подобрать материал.
 
 $display(
   Q = dot(m) H = 465.3 "МДж"/"час" approx 130"кВт" \
-  Q' = Q dot 0.14 approx 18"кВт" = (2pi l lambda Delta T)/(ln r_2/r_1) => lambda = (Q' ln r_2/r_1)/(2pi l Delta T) = (18000 dot ln 83/80)/(2 dot pi dot 0.175 dot 10) approx 60.3 "Вт"/(м dot К)
+  Q' = Q dot 0.14 approx 18"кВт" = (2pi l lambda Ddd(T))/(ln r_2/r_1) => lambda = (Q' ln r_2/r_1)/(2pi l Ddd(T)) = (18000 dot ln 83/80)/(2 dot pi dot 0.175 dot 10) approx 60.3 "Вт"/(м dot К)
 )$
 
 == Конвективный теплообмен
@@ -219,7 +219,7 @@ $
 
 Критерий Грасгофа
 $
-  Gr = (g beta Delta T l^3)/nu^2
+  Gr = (g beta Ddd(T) l^3)/nu^2
 $
 
 == Задача 1
@@ -228,7 +228,7 @@ $
 
 Дана камера сгорания ракетного двигателя, она имеет круглую форму, снаружи находится ребристый слой, образованный каналами. Внутренний диаметр канала 2 мм, давление 98 бар, скорость 20 #math.frac("м", "с", style: "horizontal"), температура жидкости 60$degree$C, температура стенки 220$degree$C. Определить удельный тепловой поток. Табличные данные: вязкость спирта $0.824 dot 10^(-6)$
 $
-  q = alpha Delta T = Q/F
+  q = alpha Ddd(T) = Q/F
 $
 
 $display(Re = (w d)/nu = (20 dot 2 dot 10^(-3))/(0.824 dot 10^(-6)) approx 48500 => "турбулентное течение")$
@@ -243,7 +243,7 @@ $display(
   Pr_f = (0.824 dot 10^(-6) dot 2750 dot 778)/0.171 approx 10.3\, space Pr_w = (0.176 dot 10^(-6) dot 4.77 dot 10^3 dot 558.5)/0.120 approx 3.9 \
   (Pr_f/Pr_w)^0.25 approx 1.27 \
   Nu_f = 0.021 dot 48500^0.8 dot 10.3^0.43 dot 1.27 approx 407.5 \
-  q = alpha Delta T = (407.5 dot 0.171)/0.002 dot 160 approx 5.6 dot 10^6 "Вт"
+  q = alpha Ddd(T) = (407.5 dot 0.171)/0.002 dot 160 approx 5.6 dot 10^6 "Вт"
 )$
 
 == Задача 2
@@ -322,6 +322,7 @@ $display(
   columns: 6,
   [$x/l$], [0,1], [0,2], [0,5], [0,8], [1],
   [$Re_x$], [$4 dot 10^4$], [$8 dot 10^4$], [$2 dot 10^5$], [$3.2 dot 10^5$], [$4 dot 10^5$],
+
   [$delta_л$], [4,6], [6,6], [10,4], [13,1], [14,7],
   [$Nu_f$], [59], [83,4], [132], [167], [186],
   [$alpha$], [7,6], [5,4], [3,4], [2,7], [2,4],
@@ -405,7 +406,7 @@ $display(T = 100root(4, (0.2 dot 1550)/(0.1 dot 5.67 dot 4)) approx 342К)$
 
 $
   q_л = epsilon C_0 [(T_w/100)^4 - (T_f/100)^4] = 13 "кВт"/м^2 => Q = 13 dot pi dot 0.2 dot 1 = 8"кВт" \
-  q_к = alpha (T_w - T_f), space Nu_m = C (Gr_m Pr_m)^n, space n = 1/3, space C = 0.135, space Pr approx 0.7, space Gr_m = (g beta_m Delta T d^3)/nu_m^2, beta = 1/T_m
+  q_к = alpha (T_w - T_f), space Nu_m = C (Gr_m Pr_m)^n, space n = 1/3, space C = 0.135, space Pr approx 0.7, space Gr_m = (g beta_m Ddd(T) d^3)/nu_m^2, beta = 1/T_m
 $
 
 $

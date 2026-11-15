@@ -1,4 +1,4 @@
-#import "meta.typ": arctg, conf, const, ov
+#import "meta.typ": Ddd, arctg, conf, const, ov
 #import "@preview/physica:0.9.8": dd, dv, pdv
 
 #show: conf.with(
@@ -113,7 +113,9 @@
 + Полная группа событий образует совокупность событий $A_1, A_2, ..., A_n => sum_i A_i = Omega; A_i A_j = nothing space forall i != j$
 + События называются равновозможными, если в результате эксперимента появляются одинаково часто
 
-$ P(A) = m/n; P(Omega) = 1; P(nothing) = 0; 0 < P(A) < 1 (A != Omega, A != nothing) => 0 <= P(A) <= 1 $
+$
+  P(A) = m/n; P(Omega) = 1; P(nothing) = 0; 0 < P(A) < 1 (A != Omega, A != nothing) => 0 <= P(A) <= 1
+$
 
 ==== Недостатки КОВ
 
@@ -213,7 +215,9 @@ lim_(n->oo) P(A_n) = 0, A_1 supset A_2 supset ... supset A_n supset ... => produ
 #v(1em)
 
 Для несовместных событий ($P(A B) = 0$)
-$ P(A+B) = P(A) + P(B) \ P(sum_i A_i) = sum_i P(A_i) => sum_i P(A_i) = 1, P(A) + P(ov(A)) = 1 "для" sum_i A_i = Omega $
+$
+  P(A+B) = P(A) + P(B) \ P(sum_i A_i) = sum_i P(A_i) => sum_i P(A_i) = 1, P(A) + P(ov(A)) = 1 "для" sum_i A_i = Omega
+$
 
 При наличии совместности
 $
@@ -423,7 +427,7 @@ $ X = phi(omega), omega in Omega $
 
 $ f(x) = F'(x) = dv(, x) F(x) $
 
-$f(x) = F'(x) = display(lim_(Delta x -> 0)) (F(x + Delta x) - F(x))/(Delta x)$
+$f(x) = F'(x) = display(lim_(Ddd(x) -> 0)) (F(x + Ddd(x)) - F(x))/Ddd(x)$
 
 ==== Свойства ПР
 
@@ -996,7 +1000,9 @@ P(X >= 20 "ч") = 1 - P(X < 20) = 1 - P(0 <= X < 20) = 1 - (F(20) - F(0)) = 1 - 
 
 Для вычисления вероятности используется функция Лапласа $Phi(X)$, аргументом которого является нормированная и центрированная СВ $X$.
 
-$ P(x_1 < X < x_2) = 1/2 Phi((x_2 - M(X))/sigma(X)) - 1/2 Phi((x_1 - M(X))/sigma(X)) $
+$
+  P(x_1 < X < x_2) = 1/2 Phi((x_2 - M(X))/sigma(X)) - 1/2 Phi((x_1 - M(X))/sigma(X))
+$
 $ P(abs(x - a) < epsilon) = 2Phi((epsilon)/(sigma)) $
 
 ==== Правило трёх сигм
@@ -1100,7 +1106,9 @@ $ F(x, y) = P(X < x, Y < y) $
 
 Плотностью распределения (дифференциальной функцией) НДСВ называют вторую смешанную производную.
 
-$ f(x, y) = pdv(F(x,y), x, y), $ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(t, l) dd(t) dd(l)$
+$
+  f(x, y) = pdv(F(x,y), x, y),
+$ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(t, l) dd(t) dd(l)$
 
 #grid(
   columns: (3fr, 1fr),
@@ -1110,7 +1118,9 @@ $ f(x, y) = pdv(F(x,y), x, y), $ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(
 
     + $integral_(-oo)^(+oo) integral_(-oo)^(+oo) f(x, y) dd(x, y) = 1$
 
-    $ P(x_1 < X < x_2, y_1 < Y < y_2) = integral_(x_1)^(x_2) integral_(y_1)^(y_2) f(x, y) dd(x, y) $
+    $
+      P(x_1 < X < x_2, y_1 < Y < y_2) = integral_(x_1)^(x_2) integral_(y_1)^(y_2) f(x, y) dd(x, y)
+    $
   ],
   [
     #figure(
@@ -1143,7 +1153,9 @@ mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y)))$
 
 #v(1em)
 
-$ k(X, Y) equiv cov(X, Y) = mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y))) = M(X Y) - M(X) M(Y) $
+$
+  k(X, Y) equiv cov(X, Y) = mu_(1,1) (X, Y) = M((X - M(X)) (Y - M(Y))) = M(X Y) - M(X) M(Y)
+$
 Для ДСВ $ cov(X, Y) = sum_(i=1)^n sum_(j=1)^m (x_i - M(X)) (y_j - M(Y)) p_(i j) = sum_(i=1)^n sum_(j=1)^m x_i y_j p_(i j) - M(X) M(Y) $
 Для НСВ $ cov(X, Y) = integral_(-oo)^(+oo) integral_(-oo)^(+oo) (x_i - M(X)) (y_j - M(Y)) f(x, y) dd(x, y) $
 

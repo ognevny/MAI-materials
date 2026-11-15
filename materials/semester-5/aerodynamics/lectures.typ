@@ -1,4 +1,4 @@
-#import "meta.typ": conf, const, grad
+#import "meta.typ": Ddd, conf, const, grad
 #import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
 
 #show: conf.with(
@@ -121,11 +121,11 @@ $
 Термодинамические параметры:
 - Плотность
   $
-    rho = lim_(Delta v -> 0) dv(m, v, d: Delta) ["кг"/м^3]
+    rho = lim_(Ddd(v) -> 0) dv(m, v, d: Delta) ["кг"/м^3]
   $
 - Давление
   $
-    p = lim_(Delta S -> 0) dv(P, S, d: Delta) [Н/м^2 = "Па"]
+    p = lim_(Ddd(S) -> 0) dv(P, S, d: Delta) [Н/м^2 = "Па"]
   $
 - Температура вводится из отношения
   $
@@ -370,10 +370,10 @@ $
   column-gutter: 1em,
   [
     $
-      1: v_x, space 2: v_x + pdv(v_x, x) Delta x + ... \
+      1: v_x, space 2: v_x + pdv(v_x, x) Ddd(x) + ... \
       theta_x = pdv(v_x, x),
     $
-    где $theta$ -- относительная скорость линейной деформации жидкой частицы, $Delta x -> 0$. Также определяется для остальных осей.
+    где $theta$ -- относительная скорость линейной деформации жидкой частицы, $Ddd(x) -> 0$. Также определяется для остальных осей.
   ],
   [
     #figure(
@@ -386,7 +386,7 @@ $
   columns: (2fr, 1fr),
   column-gutter: 1em,
   [
-    Пусть $Delta x = Delta y$
+    Пусть $Ddd(x) = Ddd(y)$
 
     Относительная скорость угловой деформации жидкой частицы
     $
@@ -526,14 +526,14 @@ $
     Используется Эйлеров подход.
 
     $
-      M_t = rho Delta V,
+      M_t = rho Ddd(V),
     $
-    где $Delta V = Delta x Delta y Delta z$
+    где $Ddd(V) = Ddd(x, y, z)$
 
     Получим уравнение переноса массы
     $
-      M_(t+Delta t) = M_t + evaluated(pdv(M, t))_t Delta t + 1/(2!) evaluated(pdv(M, t, 2))_t Delta t^2 + ... \
-      Delta M_t = M_(t+Delta t) - M_t = evaluated(pdv(M, t))_t Delta t + ... = pdv(rho, t) Delta t Delta V + ...
+      M_(t+Ddd(t)) = M_t + evaluated(pdv(M, t))_t Ddd(t) + 1/(2!) evaluated(pdv(M, t, 2))_t Ddd(t)^2 + ... \
+      Ddd(M_t) = M_(t+Ddd(t)) - M_t = evaluated(pdv(M, t))_t Ddd(t) + ... = pdv(rho, t) Ddd(t, V) + ...
     $
   ],
   [
@@ -545,15 +545,15 @@ $
 
 Жидкость втекает в объем
 $
-  & M_x = rho underbrace(v_x Delta t, Delta x) Delta y Delta z \
-  & M_(x+Delta x) = M_x + evaluated(pdv(M, x))_x Delta x + ... \
-  & Delta M_x = M_x - M_(x+Delta x) = -evaluated(pdv(M, x))_x Delta x + ... = -pdv((rho v_x), x) Delta t overbrace(Delta x Delta y Delta z, Delta V) \
-  & Delta M_y = -pdv((rho v_y), y) Delta t Delta V + ... \
-  & Delta M_z = -pdv((rho v_z), z) Delta t Delta V + ... \
-  & Delta M_t = Delta M_x + Delta M_y + Delta M_z
+  & M_x = rho underbrace(v_x Ddd(t), Ddd(x)) Ddd(y, z) \
+  & M_(x+Ddd(x)) = M_x + evaluated(pdv(M, x))_x Ddd(x) + ... \
+  & Ddd(M_x) = M_x - M_(x+Ddd(x)) = -evaluated(pdv(M, x))_x Ddd(x) + ... = -pdv((rho v_x), x) Ddd(t) overbrace(Ddd(x, y, z), Ddd(V)) \
+  & Ddd(M_y) = -pdv((rho v_y), y) Ddd(t, V) + ... \
+  & Ddd(M_z) = -pdv((rho v_z), z) Ddd(t, V) + ... \
+  & Ddd(M_t) = Ddd(M_x) + Ddd(M_y) + Ddd(M_z)
 $
 
-Осуществим предельный переход $Delta t -> 0$ и $Delta V -> 0$
+Осуществим предельный переход $Ddd(t) -> 0$ и $Ddd(V) -> 0$
 $
   pdv(rho, t) + underbrace(pdv((rho v_x), x) + pdv((rho, v_y), y) + pdv((rho v_z), z), "div"(rho arrow(v)) = arrow(gradient)(rho arrow(v))) = 0
 $
@@ -571,23 +571,23 @@ $
 
 Количество движения
 $
-  arrow(Q)_t = rho arrow(v) Delta V \
-  arrow(Q)_(t+Delta t) = arrow(Q)_t + evaluated(pdv(Q, t))_t Delta t + ...
+  arrow(Q)_t = rho arrow(v) Ddd(V) \
+  arrow(Q)_(t+Ddd(t)) = arrow(Q)_t + evaluated(pdv(Q, t))_t Ddd(t) + ...
 $
 
 Изменение количества движения
 $
-  Delta arrow(Q) = arrow(Q)_(t+Delta t) - arrow(Q)_t = evaluated(pdv(Q, t))_t Delta t + ... = pdv((rho arrow(v)), t) Delta t Delta V + ...
+  Ddd(arrow(Q)) = arrow(Q)_(t+Ddd(t)) - arrow(Q)_t = evaluated(pdv(Q, t))_t Ddd(t) + ... = pdv((rho arrow(v)), t) Ddd(t, V) + ...
 $
 
 Факторы, влияющие на изменение импульса внутри объема:
 + Перенос импульса через границы объема
   $
-    & arrow(Q)_x = rho arrow(v) underbrace(v_x Delta t, Delta x) Delta y Delta z + ... \
-    & arrow(Q)_(x+Delta x) = arrow(Q)_x + evaluated(pdv(arrow(Q), x))_x Delta x + ... \
-    & arrow(Q)_x = arrow(Q)_x - arrow(Q)_(x+Delta x) = -evaluated(pdv(arrow(Q), x))_x Delta x + ... = -pdv((rho arrow(v), v_x), x) Delta x + ... \
-    & arrow(Q)_y = -pdv((rho arrow(v), v_y), y) Delta y + ... \
-    & arrow(Q)_z = -pdv((rho arrow(v), v_z), z) Delta z + ...
+    & arrow(Q)_x = rho arrow(v) underbrace(v_x Ddd(t), Ddd(x)) Ddd(y, z) + ... \
+    & arrow(Q)_(x+Ddd(x)) = arrow(Q)_x + evaluated(pdv(arrow(Q), x))_x Ddd(x) + ... \
+    & arrow(Q)_x = arrow(Q)_x - arrow(Q)_(x+Ddd(x)) = -evaluated(pdv(arrow(Q), x))_x Ddd(x) + ... = -pdv((rho arrow(v), v_x), x) Ddd(x) + ... \
+    & arrow(Q)_y = -pdv((rho arrow(v), v_y), y) Ddd(y) + ... \
+    & arrow(Q)_z = -pdv((rho arrow(v), v_z), z) Ddd(z) + ...
   $
 + #grid(
     columns: (2fr, 1fr),
@@ -597,7 +597,7 @@ $
 
       Вводится напряжение на площадке
       $
-        arrow(p)_n = lim_(Delta V -> 0) dv(arrow(p)_n, sigma, d: Delta) = arrow(p)_(n n) + arrow(p)_(n tau) \
+        arrow(p)_n = lim_(Ddd(V) -> 0) dv(arrow(p)_n, sigma, d: Delta) = arrow(p)_(n n) + arrow(p)_(n tau) \
         arrow(p)_n = arrow(p)_x cos(n\^x) + arrow(p)_y cos(n\^y) + arrow(p)_z cos(n\^z) \
         arrow(p)_x = arrow(i) p_(x x) + arrow(j) p_(x y) + arrow(k) p_(x z) \
         arrow(p)_y = arrow(i) p_(y x) + arrow(j) p_(y y) + arrow(k) p_(y z) \
@@ -613,11 +613,11 @@ $
 
       Импульс сил
       $
-        & arrow(P)_x = arrow(p)_x Delta y Delta z Delta t \
-        & arrow(P)_(x+Delta x) = arrow(P)_x + evaluated(pdv(arrow(P)_x, x))_x Delta x + ... \
-        & Delta arrow(P)_x = arrow(P)_(-x) + arrow(P)_(x+Delta x) = pdv(arrow(P)_x, x) Delta t Delta V + ... \
-        & Delta arrow(P)_y = pdv(arrow(P)_y, y) Delta t Delta V + ... \
-        & Delta arrow(P)_z = pdv(arrow(P)_z, z) Delta t Delta V + ...
+        & arrow(P)_x = arrow(p)_x Ddd(y, z, t) \
+        & arrow(P)_(x+Ddd(x)) = arrow(P)_x + evaluated(pdv(arrow(P)_x, x))_x Ddd(x) + ... \
+        & Ddd(arrow(P)_x) = arrow(P)_(-x) + arrow(P)_(x+Ddd(x)) = pdv(arrow(P)_x, x) Ddd(t, V) + ... \
+        & Ddd(arrow(P)_y) = pdv(arrow(P)_y, y) Ddd(t, V) + ... \
+        & Ddd(arrow(P)_z) = pdv(arrow(P)_z, z) Ddd(t, V) + ...
       $
       ($arrow(P)_(-x) = -arrow(P)_x$)
     ],
@@ -629,15 +629,15 @@ $
   )
 + Импульс массовых сил
   $
-    Delta arrow(F)_m = arrow(f) rho Delta V Delta t
+    Ddd(arrow(F)_m) = arrow(f) rho Ddd(V, t)
   $
 
 Итого
 $
-  Delta arrow(Q)_t = Delta arrow(Q)_x + Delta arrow(Q)_y + Delta arrow(Q)_z + Delta arrow(P)_x + Delta arrow(P)_y + Delta arrow(P)_z + Delta arrow(P)_t + Delta arrow(F)_m
+  Ddd(arrow(Q)_t) = Ddd(arrow(Q)_x) + Ddd(arrow(Q)_y) + Ddd(arrow(Q)_z) + Ddd(arrow(P)_x) + Ddd(arrow(P)_y) + Ddd(arrow(P)_z) + Ddd(arrow(P)_t) + Ddd(arrow(F)_m)
 $
 
-Сократим на $Delta t Delta V$
+Сократим на $Ddd(V, t)$
 $
   pdv((rho arrow(v)), t) + pdv((rho arrow(v) v_x), x) + pdv((rho arrow(v) v_y), y) + pdv((rho arrow(v) v_z), z) = pdv(arrow(p)_x, x) + pdv(arrow(p)_y, y) + pdv(arrow(p)_z, z) + rho arrow(f)
 $
@@ -751,14 +751,14 @@ $
 #v(1em)
 
 $
-  Delta arrow(R) = m arrow(W) epsilon -> Delta arrow(R)_1 = m_1 arrow(W)_1 epsilon \
-  m = rho Delta V -> m_1 = rho_1 Delta V_1 \
-  Delta arrow(R) = rho arrow(W) epsilon Delta V -> Delta arrow(R)_1 = rho_1 arrow(W)_1 epsilon Delta V_1
+  Ddd(arrow(R)) = m arrow(W) epsilon -> Ddd(arrow(R)_1) = m_1 arrow(W)_1 epsilon \
+  m = rho Ddd(V) -> m_1 = rho_1 Ddd(V_1) \
+  Ddd(arrow(R)) = rho arrow(W) epsilon Ddd(V) -> Ddd(arrow(R)_1) = rho_1 arrow(W)_1 epsilon Ddd(V_1)
 $
 
 Посчитаем
 $
-  K_R = dv(R_1, R, d: Delta) = (rho_1 W_1 epsilon Delta V_1)/(rho W epsilon Delta V) = K_rho K_w K_L^3,
+  K_R = dv(R_1, R, d: Delta) = (rho_1 W_1 epsilon Ddd(V_1))/(rho W epsilon Ddd(V)) = K_rho K_w K_L^3,
 $
 где $K_w = K_L K_t^(-2)$
 
@@ -817,12 +817,12 @@ $
 
 Запишем
 $
-  (Delta T)/(rho v^2 Delta S) = (Delta T_1)/(rho_1 v_1 Delta S_1)
+  Ddd(T)/(rho v^2 Ddd(S)) = Ddd(T_1)/(rho_1 v_1 Ddd(S_1))
 $
 
 Местный коэффициент трения
 $
-  C_f = lim_(Delta S -> 0) (Delta T)/(q Delta S)
+  C_f = lim_(Ddd(S) -> 0) Ddd(T)/(q Ddd(S))
 $
 
 == Критерии аэродинамического подобия

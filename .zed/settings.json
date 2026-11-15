@@ -2,15 +2,17 @@
   "lsp": {
     "tinymist": {
       "initialization_options": {
+        "formatterMode": "typstyle",
+        "formatterPrintWidth": 120,
         "preview": {
           "background": {
             "enabled": true,
-            "args": ["--data-plane-host=127.0.0.1:23625", "--invert-colors=never"],
-          },
+            "args": ["--data-plane-host=127.0.0.1:23625", "--invert-colors=never"]
+          }
         },
-        "syntaxOnly": "onPowerSaving",
-      },
-    },
+        "syntaxOnly": "onPowerSaving"
+      }
+    }
   },
   "soft_wrap": "bounded",
   "file_scan_exclusions": ["meta.typ"],

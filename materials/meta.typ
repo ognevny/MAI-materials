@@ -1,3 +1,4 @@
+#import "@preview/physica:0.9.8": dd, difference
 #import "@preview/quick-maths:0.2.1": shorthands
 
 /// Основная метаинформация
@@ -89,3 +90,6 @@
 
 /// Для ТММ пока
 #let un(var) = $underline(#var)$
+
+#let Ddd(..args) = $difference(..args)$
+#let ddd(..args) = $dd(..args, d: Delta)$

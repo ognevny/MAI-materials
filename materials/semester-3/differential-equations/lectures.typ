@@ -1,4 +1,4 @@
-#import "meta.typ": arctg, clrundrln, conf, const, delimsys, ov
+#import "meta.typ": Ddd, arctg, clrundrln, conf, const, delimsys, ov
 #import "@preview/cetz:0.5.3": canvas, draw
 #import "@preview/physica:0.9.8": dd, dv, evaluated, mdet, pdv
 
@@ -106,8 +106,8 @@ $y = -1; y' = 0 => "ДУ": 0 = sqrt(1 - (-1)^2) equiv 0 => y = -1$ -- решен
     $M_0(x_0, y_0) -> y'(x_0) = f(x_0, y_0) - tg(alpha) \
     forall x in [x_0; x_1]: y'(x) = const \
     y - y_0 = y'(x_0, y_0) (x - x_0) => (x_1, y_1); \
-    underbrace(y_1 - y_0, Delta y) = underbrace(y'(x_0), tg(alpha)) underbrace((x_1 - x_0), h) \
-    Delta y = h tg(alpha) \
+    underbrace(y_1 - y_0, Ddd(y)) = underbrace(y'(x_0), tg(alpha)) underbrace((x_1 - x_0), h) \
+    Ddd(y) = h tg(alpha) \
     display(
       M_1 cases(
         delim: bar.v.double,
@@ -1441,7 +1441,9 @@ $L[ov(z)] - L[ov(y)_ч] = F - F equiv 0 => (ov(z) - ov(y)_ч) space dash "реш
 
 #v(1em)
 
-$ F(t) = ov(P)_n (t) e^(k t), ov(P)_n (t) = vec(a_n t^n + a_(n-1) t^(n-1) + ... a_0, b_m t^m + ... + b_0) quad n >= m $
+$
+  F(t) = ov(P)_n (t) e^(k t), ov(P)_n (t) = vec(a_n t^n + a_(n-1) t^(n-1) + ... a_0, b_m t^m + ... + b_0) quad n >= m
+$
 
 $ y_"част" = ov(Q)_(N+r) (t) e^(k t), ov(Q)_(N+r) = vec(d_(N+r) t^(N+r) + ... + d_0, s_(N+r) t^(N+r) + ... + s_0), $ где $N = n$, $r$ -- кратность корня ХУ, совпадающего с $k$; $r = 0$, если $k$ не совпадает с корнями ХУ
 

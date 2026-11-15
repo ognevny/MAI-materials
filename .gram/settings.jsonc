@@ -2,6 +2,8 @@
   "lsp": {
     "tinymist": {
       "initialization_options": {
+        "formatterMode": "typstyle",
+        "formatterPrintWidth": 120,
         "preview": {
           "background": {
             "enabled": true,

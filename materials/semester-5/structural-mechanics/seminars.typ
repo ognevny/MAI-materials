@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": Ddd, conf
 #import "@preview/physica:0.9.8": dd, dv, pdv
 
 #show: conf.with(
@@ -67,8 +67,8 @@ $
 
 Найдем температурную деформацию
 $
-  sigma = N/A = E epsilon => N^T = E A epsilon^T = E A alpha Delta T \
-  v^T = v + (N_i^T overline(N)_i)/(E A) l = (P a)/(E A) (3/2 + sqrt(2)) + (E A alpha Delta T dot P)/(E A) dot a = (P a)/(E A) (3/2 + sqrt(2)) + alpha Delta T a
+  sigma = N/A = E epsilon => N^T = E A epsilon^T = E A alpha Ddd(T) \
+  v^T = v + (N_i^T overline(N)_i)/(E A) l = (P a)/(E A) (3/2 + sqrt(2)) + (E A alpha Ddd(T) dot P)/(E A) dot a = (P a)/(E A) (3/2 + sqrt(2)) + alpha Ddd(T) a
 $
 
 = Деформации

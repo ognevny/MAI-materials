@@ -2,6 +2,7 @@
 .*.autosave.*
 hw*.xopp
 *.pdf
+.DS_Store
 
 # CI
 /build

@@ -1,4 +1,4 @@
-#import "meta.typ": conf, const
+#import "meta.typ": Ddd, conf, const
 #import "@preview/physica:0.9.8": TT, dd, dv, evaluated, mdet, pdv
 
 #show: conf.with(
@@ -800,11 +800,11 @@ $
   ],
   [
     $
-      F Delta l(p) = p Delta V(F) \
+      F Ddd(l(p)) = p Ddd(V(F)) \
       epsilon_l = -p/E + mu p/E dot 2 \
-      Delta l(p) = epsilon_l l = -(1 - 2mu)/E l p \
-      Delta V(F) = (F Delta l(p))/p \
-      Delta V = -(1 - 2mu)/E l F
+      Ddd(l(p)) = epsilon_l l = -(1 - 2mu)/E l p \
+      Ddd(V(F)) = (F Ddd(l(p)))/p \
+      Ddd(V) = -(1 - 2mu)/E l F
     $
   ],
 )
@@ -824,7 +824,7 @@ $
   [
     $
       sigma = E epsilon = N/A \
-      epsilon = (Delta l)/l => Delta l = l epsilon \
+      epsilon = Ddd(l)/l => Ddd(l) = l epsilon \
       Delta(dd(x)) = (N dd(x))/(E A) \
       dd(U_N) = 1/2 N Delta(dd(x)) = 1/2 (N N dd(x))/(E A) = \ = 1/2 (N^2 dd(x))/(E A)
     $
@@ -977,14 +977,14 @@ $
   [
     Монтажная деформация
     $
-      sigma = N/A = E epsilon => N/A = E (Delta l)/l => N = ((Delta l)/l E A)_i
+      sigma = N/A = E epsilon => N/A = E Ddd(l)/l => N = (Ddd(l)/l E A)_i
     $
   ],
 )
 
 Температурная деформация
 $
-  epsilon_т = alpha Delta T => (Delta l_т)/l = alpha Delta T => N_т = (alpha Delta T E A)
+  epsilon_т = alpha Ddd(T) => Ddd(l_т)/l = alpha Ddd(T) => N_т = (alpha Ddd(T) E A)
 $
 
 #grid(
@@ -1044,7 +1044,7 @@ $
 
 Теперь нагреем стержень 4-3
 $
-  N_т_43 = alpha Delta T E A
+  N_т_43 = alpha Ddd(T) E A
 $
 
 Суммарное перемещение
@@ -1155,7 +1155,7 @@ $
 
 $P$ получает приращение $ddd(P)$, тогда $v$ получит приращение $ddd(v)$
 $
-  Delta A = P ddd(v) + 1/2 ddd(P, v) + ...
+  Ddd(A) = P ddd(v) + 1/2 ddd(P, v) + ...
 $
 
 Возможная (виртуальная) работа силы $P$
@@ -1165,7 +1165,7 @@ $
 
 Изменение потенциала
 $
-  Delta Pi = Pi(v + ddd(v)) - Pi(v) = -P(v + ddd(v)) - (-P v) = -P ddd(v)
+  Ddd(Pi) = Pi(v + ddd(v)) - Pi(v) = -P(v + ddd(v)) - (-P v) = -P ddd(v)
 $
 
 Вариация потенциала работы

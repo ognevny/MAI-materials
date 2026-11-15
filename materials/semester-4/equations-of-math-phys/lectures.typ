@@ -1,4 +1,4 @@
-#import "meta.typ": conf, const, grad, ov
+#import "meta.typ": Ddd, conf, const, ddd, grad, ov
 #import "@preview/physica:0.9.8": dd, dv, evaluated, pdv
 
 #show: conf.with(
@@ -372,7 +372,9 @@ $display(
 #v(1em)
 
 Пусть $xi = phi(x, y)$ -- решение УЧП $a_11 xi_x^2 + 2a_12 xi_x xi_y + a_22 xi_y^2 = 0 space (1)$, тогда $phi(x, y) = C$ является первым интегралом дифференциального уравнения
-#align(center)[$#rect[$ a_11 (dd(y))^2 - 2a_12 dd(x, y) + a_22 (dd(x))^2 = 0 quad (2) $]$ ,]
+#align(
+  center,
+)[$#rect[$ a_11 (dd(y))^2 - 2a_12 dd(x, y) + a_22 (dd(x))^2 = 0 quad (2) $]$ ,]
 носящего название характеристического уравнения (внимание на "минус" перед $a_12$!!!)
 
 $triangle.r xi = phi(x, y)$ в (1)
@@ -572,11 +574,11 @@ $ u_(t t) = a^2 u_(x x), $
   [
     Вывод уравнения свободных колебаний струны:
 
-    Рассмотрим $Delta x$, $T = const$, $rho = const$
+    Рассмотрим $Ddd(x)$, $T = const$, $rho = const$
 
-    $Delta x approx Delta l quad cos alpha approx 1 quad sin alpha approx tg alpha = u_x$ -- из геометрического смысла производной.
+    $Ddd(x) approx Ddd(l) quad cos alpha approx 1 quad sin alpha approx tg alpha = u_x$ -- из геометрического смысла производной.
 
-    $m = rho Delta x$
+    $m = rho Ddd(x)$
   ],
 )
 
@@ -585,15 +587,15 @@ $ u_(t t) = a^2 u_(x x), $
 $display(
   a m = F_"верт." \
   a = u_(t t) \
-  F_"верт." = evaluated(T sin alpha)_(x+Delta x) - evaluated(T sin alpha)_x \
-  u_(t t) rho Delta x = evaluated(T u_x)_(x+Delta x) - evaluated(T u_x)_x = T (evaluated(u_x)_(x+Delta x) - evaluated(u_x)_x) = T evaluated((u_x)'_x)_(x=C) Delta x
+  F_"верт." = evaluated(T sin alpha)_(x+Ddd(x)) - evaluated(T sin alpha)_x \
+  u_(t t) rho Ddd(x) = evaluated(T u_x)_(x+Ddd(x)) - evaluated(T u_x)_x = T (evaluated(u_x)_(x+Ddd(x)) - evaluated(u_x)_x) = T evaluated((u_x)'_x)_(x=C) Ddd(x)
 )$
 
-#rect[$ Delta f = f'(C) Delta x $]
+#rect[$ Ddd(f) = f'(C) Ddd(x) $]
 
 $display(
-  u_(t t) rho Delta x = T evaluated(u_(x x))_(x=C) Delta x \
-  Delta x -> 0 => C -> x\, "тогда имеем" u_(t t) rho Delta x = T evaluated(u_(x x))_(x=x) Delta x \
+  u_(t t) rho Ddd(x) = T evaluated(u_(x x))_(x=C) Ddd(x) \
+  Ddd(x) -> 0 => C -> x\, "тогда имеем" u_(t t) rho Ddd(x) = T evaluated(u_(x x))_(x=x) Ddd(x) \
   u_(t t) rho = T u_(x x) \
   u_(t t) = T/rho u_(x x) \
   T/rho = a^2
@@ -991,25 +993,25 @@ $display(
   [
     $u(x, t)$ -- температура в сечении $S$ в точке $x$ в момент времени $t$ одинакова.
 
-    Количество теплоты $ Q(t) = c rho S Delta x u(x + theta_1 Delta x, t), $ где $c$ -- удельная теплоемкость, $rho$ -- удельная плотность, $S$ -- сечение цилиндра, $theta_1 in (0, 1)$
+    Количество теплоты $ Q(t) = c rho S Ddd(x) u(x + theta_1 Ddd(x), t), $ где $c$ -- удельная теплоемкость, $rho$ -- удельная плотность, $S$ -- сечение цилиндра, $theta_1 in (0, 1)$
   ],
 )
 
-По закону Фурье количество теплоты $q$, прошедшее за время $Delta t$ через сечение $S$ $ q(x) = k S pdv(u, x) (x, t + theta_2 Delta t) Delta t, $ где $k$ -- коэффициент теплообмена
+По закону Фурье количество теплоты $q$, прошедшее за время $Ddd(t)$ через сечение $S$ $ q(x) = k S pdv(u, x) (x, t + theta_2 Ddd(t)) Ddd(t), $ где $k$ -- коэффициент теплообмена
 
-Уравнение теплового баланса для фрагмента $Delta x$ $ Q(t + Delta t) - Q(t) = q(x + Delta x) - q(x) $
+Уравнение теплового баланса для фрагмента $Ddd(x)$ $ Q(t + Ddd(t)) - Q(t) = q(x + Ddd(x)) - q(x) $
 
 $display(
-  c rho S Delta x u(underbrace(x + theta_3 Delta x, C_3), t + Delta t) - c rho S Delta x u(underbrace(x + theta_1 Delta x, C_1), t) = k S Delta t pdv(u, x) (x + Delta x, underbrace(t + theta_4 Delta t, C_4)) - k S Delta t pdv(u, x) times \ times (x, underbrace(t + theta_2 Delta t, C_2)) \
-  c rho S Delta x [u(C_3, t + Delta t) - u(C_1, t)] = k S Delta t [pdv(u, x) (x + Delta x, C_4) - pdv(u, x) (x, C_2)] |":" S Delta x Delta t \
-  c rho (u(C_3 t + Delta t) - u(C_1, t))/(Delta t) = k (pdv(u, x) (x + Delta x, C_4) - pdv(u, x) (x, C_2))/(Delta x)
+  c rho S Ddd(x) u(underbrace(x + theta_3 Ddd(x), C_3), t + Ddd(t)) - c rho S Ddd(x) u(underbrace(x + theta_1 Ddd(x), C_1), t) = k S Ddd(t) pdv(u, x) (x + Ddd(x), underbrace(t + theta_4 Ddd(t), C_4)) - k S Ddd(t) pdv(u, x) times \ times (x, underbrace(t + theta_2 Ddd(t), C_2)) \
+  c rho S Ddd(x) [u(C_3, t + Ddd(t)) - u(C_1, t)] = k S Ddd(t) [pdv(u, x) (x + Ddd(x), C_4) - pdv(u, x) (x, C_2)] |":" S Ddd(x) Ddd(t) \
+  c rho (u(C_3 t + Ddd(t)) - u(C_1, t))/Ddd(t) = k (pdv(u, x) (x + Ddd(x), C_4) - pdv(u, x) (x, C_2))/Ddd(x)
 )$
 
 $display(
   cases(
     delim: #none,
-    Delta x -> 0,
-    Delta t -> 0,
+    Ddd(x) -> 0,
+    Ddd(t) -> 0,
   ) quad cases(
     delim: #none,
     C_1\, C_3 -> x,
@@ -1018,7 +1020,7 @@ $display(
 )$
 
 $
-  c rho undershell((Delta_t u)/(Delta t), inline(pdv(u, t))) = k undershell((Delta_x u_x)/(Delta x), inline(pdv(u, x, 2))) => c rho u_t = k u_(x x) => u_t = a^2 u_(x x)
+  c rho undershell((Delta_t u)/Ddd(t), inline(pdv(u, t))) = k undershell((Delta_x u_x)/Ddd(x), inline(pdv(u, x, 2))) => c rho u_t = k u_(x x) => u_t = a^2 u_(x x)
 $
 Неоднородное уравнение $ u_t = a^2 u_(x x) + f(x, t) $
 
@@ -1583,9 +1585,9 @@ $display(
 
     $
           & J[y(x)] >= J[tilde(y)(x)] space dash "минимум" <=> \
-      <=> & J[y(x)] - J[tilde(y)(x)] >= 0 <=> Delta J[tilde(y)(x)] >= 0 \
+      <=> & J[y(x)] - J[tilde(y)(x)] >= 0 <=> Ddd(J[tilde(y)(x)]) >= 0 \
           & J[y(x)] <= J[tilde(y)(x)] space dash "максимум" <=> \
-      <=> & J[y(x)] - J[tilde(y)(x)] <= 0 <=> Delta J[tilde(y)(x)] <= 0
+      <=> & J[y(x)] - J[tilde(y)(x)] <= 0 <=> Ddd(J[tilde(y)(x)]) <= 0
     $
   ],
   [
@@ -1607,49 +1609,49 @@ $
 
 Всякий сильный экстремум является слабым, поэтому необходимые условия для сильного экстремума подходят и для слабого экстремума.
 
-$Delta tilde(y) = y(x) - tilde(y)(x) = delta y(x)$ -- вариация аргумента функционала. \
-Приращение функционала $Delta J[tilde(y)(x)] = J[tilde(y) + Delta y] - J[tilde(y)]$.
+$Ddd(tilde(y)) = y(x) - tilde(y)(x) = ddd(y(x))$ -- вариация аргумента функционала. \
+Приращение функционала $Ddd(J[tilde(y)(x)]) = J[tilde(y) + Ddd(y)] - J[tilde(y)]$.
 
-Главная линейная часть относительно $Delta y = delta y$ называется вариацией функционала и обозначается $delta J[y(x)]$.
+Главная линейная часть относительно $Ddd(y) = ddd(y)$ называется вариацией функционала и обозначается $ddd(J[y(x)])$.
 
 == Эквивалентное определение вариации
 
 #v(1em)
 
-Рассмотрим функцию $phi(alpha) = y(x_0 + alpha Delta x)$, $phi'_alpha = y'(x_0 + alpha Delta x) dot (x_0 + alpha Delta x)' = y'(x_0 + alpha Delta x) dot Delta x$.
+Рассмотрим функцию $phi(alpha) = y(x_0 + alpha Ddd(x))$, $phi'_alpha = y'(x_0 + alpha Ddd(x)) dot (x_0 + alpha Ddd(x))' = y'(x_0 + alpha Ddd(x)) dot Ddd(x)$.
 
-$phi'_alpha (0) = y'(x_0) Delta x$
+$phi'_alpha (0) = y'(x_0) Ddd(x)$
 
 Заметим, что \
-$dd(y(x)) = phi'_alpha (0) = y'(x_0) Delta x$
+$dd(y(x)) = phi'_alpha (0) = y'(x_0) Ddd(x)$
 
 Аналогично определим вариацию функционала
 $
-  delta J[y(x)] = evaluated((pdv(, alpha) [J[tilde(y)(x) + alpha delta x]]))_(alpha=0)
+  ddd(J[y(x)]) = evaluated((pdv(, alpha) [J[tilde(y)(x) + alpha ddd(x)]]))_(alpha=0)
 $
 
 Например, $J[y(x)] = integral_1^2 y y' dd(x)$
 
 $display(
-  phi(alpha) = integral_1^2 (y + alpha delta y) (y' + alpha (delta y)') dd(x) \
-  phi'(alpha) = integral_1^2 [delta y (y' + alpha (delta y)' + (y + alpha delta y) delta y')] dd(x) \
-  phi'_alpha (0) = integral_1^2 [delta y dot y' + y delta y'] dd(x)
+  phi(alpha) = integral_1^2 (y + alpha ddd(y)) (y' + alpha (ddd(y))') dd(x) \
+  phi'(alpha) = integral_1^2 [ddd(y) (y' + alpha (ddd(y))' + (y + alpha ddd(y)) ddd(y'))] dd(x) \
+  phi'_alpha (0) = integral_1^2 [ddd(y) dot y' + y ddd(y')] dd(x)
 )$
 
-Необходимое условие существования экстремума функционала: пусть $tilde(y)(x)$ реализует экстремум функционала, тогда $delta J[tilde(y)(x)] = 0$.
+Необходимое условие существования экстремума функционала: пусть $tilde(y)(x)$ реализует экстремум функционала, тогда $ddd(J[tilde(y)(x)]) = 0$.
 
 Доказательство:
 
 $display(
-  triangle.r "Рассмотрим" phi(alpha) = J[tilde(y)(x) + alpha delta y]\, "которая при" alpha = 0 "имеет экстремум" J[tilde(y)(x)]. "Следовательно" phi'_alpha (0) = 0 <=> \ <=> delta J[tilde(y)(x)] = evaluated((pdv(, alpha) J[tilde(y)(x) + alpha delta y]))_(alpha=0) = 0 <=> delta J[tilde(y)(x)] = 0
+  triangle.r "Рассмотрим" phi(alpha) = J[tilde(y)(x) + alpha ddd(y)]\, "которая при" alpha = 0 "имеет экстремум" J[tilde(y)(x)]. "Следовательно" phi'_alpha (0) = 0 <=> \ <=> ddd(J[tilde(y)(x)]) = evaluated((pdv(, alpha) J[tilde(y)(x) + alpha ddd(y)]))_(alpha=0) = 0 <=> ddd(J[tilde(y)(x)]) = 0
 )$
 
 Пример: найти вариацию функционала $#rect[$ J[y(x)] = integral_0^pi y'^2 sin x dd(x) $]$
 
 $display(
-  phi(alpha) = J[y(x) + alpha delta y] = integral_0^pi (y + alpha delta y)'^2 sin x dd(x) \
-  phi'_alpha = integral_0^pi 2(y + alpha delta y)' dot delta y' dot sin x dd(x) = integral_0^pi (2y' delta y' + 2alpha dot delta y dot delta y') sin x dd(x) \
-  #rect[$ phi'_alpha (0) = integral_0^pi 2y' delta y' sin x dd(x) $]
+  phi(alpha) = J[y(x) + alpha ddd(y)] = integral_0^pi (y + alpha ddd(y))'^2 sin x dd(x) \
+  phi'_alpha = integral_0^pi 2(y + alpha ddd(y))' dot ddd(y') dot sin x dd(x) = integral_0^pi (2y' ddd(y') + 2alpha dot ddd(y) dot ddd(y')) sin x dd(x) \
+  #rect[$ phi'_alpha (0) = integral_0^pi 2y' ddd(y') sin x dd(x) $]
 )$
 
 == Вариационное уравнение Эйлера
@@ -1669,16 +1671,16 @@ $]]
 Доказательство:
 
 $display(
-  triangle.r phi(alpha) = J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F(x, y + alpha delta y, y' + alpha delta y') dd(x) \
-  phi'_alpha = pdv(, alpha) J[y(x) + alpha delta y] = integral_(x_0)^(x_1) F_y [(x, y + alpha delta y, y' + alpha delta y') dot delta y + F_y' (x, y + alpha delta y, y' + alpha delta y') dot delta y'] dd(x) \
-  phi'_alpha (0) = integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y (x, y, y') delta y'] dd(x)
+  triangle.r phi(alpha) = J[y(x) + alpha ddd(y)] = integral_(x_0)^(x_1) F(x, y + alpha ddd(y), y' + alpha ddd(y')) dd(x) \
+  phi'_alpha = pdv(, alpha) J[y(x) + alpha ddd(y)] = integral_(x_0)^(x_1) F_y [(x, y + alpha ddd(y), y' + alpha ddd(y')) dot ddd(y) + F_y' (x, y + alpha ddd(y), y' + alpha ddd(y')) dot ddd(y')] dd(x) \
+  phi'_alpha (0) = integral_(x_0)^(x_1) [F_y (x, y, y') ddd(y) + F_y (x, y, y') ddd(y')] dd(x)
 )$
 
 $display(
-  "Так как" delta J[y(x)] = 0\, "то" \
-  integral_(x_0)^(x_1) [F_y (x, y, y') delta y + F_y' (x, y, y') delta y'] dd(x) = 0 \
-  integral_(x_0)^(x_1) underbrace(F_y', u) underbrace(delta y' dd(x), dd(v)) = evaluated(F_y' delta y)_(x_0)^(x_1) - integral_(x_0)^(x_1) dv(, x) F_y' delta y dd(x) = 0 - integral_(x_0)^(x_1) dv(, x) F_y' delta y dd(x) \
-  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y' delta y] dd(x) = 0
+  "Так как" ddd(J[y(x)]) = 0\, "то" \
+  integral_(x_0)^(x_1) [F_y (x, y, y') ddd(y) + F_y' (x, y, y') ddd(y')] dd(x) = 0 \
+  integral_(x_0)^(x_1) underbrace(F_y', u) underbrace(ddd(y') dd(x), dd(v)) = evaluated(F_y' ddd(y))_(x_0)^(x_1) - integral_(x_0)^(x_1) dv(, x) F_y' ddd(y) dd(x) = 0 - integral_(x_0)^(x_1) dv(, x) F_y' ddd(y) dd(x) \
+  integral_(x_0)^(x_1) [F_y ddd(y) - dv(, x) F_y' ddd(y)] dd(x) = 0
 )$
 
 === Основная лемма вариационного исчисления
@@ -1690,7 +1692,7 @@ $display(
 Применим её для доказательства уравнения Эйлера
 
 $display(
-  integral_(x_0)^(x_1) [F_y delta y - dv(, x) F_y'] delta y dd(x) = 0\, space delta y space dash "непрерывная функция на промежутке" [х_0, х_1] => F_y - dv(, x) F_y' equiv 0
+  integral_(x_0)^(x_1) [F_y ddd(y) - dv(, x) F_y'] ddd(y) dd(x) = 0\, space ddd(y) space dash "непрерывная функция на промежутке" [х_0, х_1] => F_y - dv(, x) F_y' equiv 0
 )$
 
 === Пример
@@ -1724,32 +1726,32 @@ $display(
 
 Рассмотрим приращение функционала в виде
 $
-  Delta J[y] = J[y + delta y] - J[y] = integral_(x_0)^(x_1) F(x, y + delta y, y' + delta y') dd(x) - integral_(x_0)^(x_1) F(x, y, y') dd(x) = [cases(reverse: #true, delta y = y - tilde(y), delta y' = y' - tilde(y)') "малы"]
+  Ddd(J[y]) = J[y + ddd(y)] - J[y] = integral_(x_0)^(x_1) F(x, y + ddd(y), y' + ddd(y')) dd(x) - integral_(x_0)^(x_1) F(x, y, y') dd(x) = [cases(reverse: #true, ddd(y) = y - tilde(y), ddd(y') = y' - tilde(y)') "малы"]
 $
 
 $display(
-  integral_(x_0)^(x_1) [underbrace((F_y delta y + F_y' delta y'), delta J = 0) + 1/2 underbrace((F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2), delta^2 J) + R] dd(x)
+  integral_(x_0)^(x_1) [underbrace((F_y ddd(y) + F_y' ddd(y')), ddd(J) = 0) + 1/2 underbrace((F_(y y) (ddd(y))^2 + 2F_(y y') ddd(y) ddd(y') + F_(y' y') (ddd(y'))^2), delta^2 J) + R] dd(x)
 )$
 
-$R$ зависит от $(delta y)^3$, $(delta y')^3$ и так далее.
+$R$ зависит от $(ddd(y))^3$, $(ddd(y'))^3$ и так далее.
 
 $display(
-  Delta J[y] approx delta^2 J \
-  Delta J "имеет тот же знак как" (delta^2 J)
+  Ddd(J[y]) approx delta^2 J \
+  Ddd(J) "имеет тот же знак как" (delta^2 J)
 )$
 
 $display(
-  delta^2 J = integral_(x_0)^(x_1) [F_(y y) (delta y)^2 + 2F_(y y') delta y delta y' + F_(y' y') (delta y')^2] dd(x) + integral_(x_0)^(x_1) [omega' delta y^2 + 2omega delta y delta y'] dd(x)
+  delta^2 J = integral_(x_0)^(x_1) [F_(y y) (ddd(y))^2 + 2F_(y y') ddd(y, y') + F_(y' y') (ddd(y'))^2] dd(x) + integral_(x_0)^(x_1) [omega' ddd(y^2) + 2omega ddd(y, y')] dd(x)
 )$
 
 $
-  integral_(x_0)^(x_1) & dd(\[omega(delta y)^2\]) = evaluated(omega(x) (delta y)^2)_(x_0)^(x_1) = 0 "в силу закрепленности концов" \
-  & dd(\[omega(delta y)^2\]) = (omega' delta y^2 + omega dot 2 delta y delta y') dd(x)
+  integral_(x_0)^(x_1) & dd(\[omega(ddd(y))^2\]) = evaluated(omega(x) (ddd(y))^2)_(x_0)^(x_1) = 0 "в силу закрепленности концов" \
+  & dd(\[omega(ddd(y))^2\]) = (omega' ddd(y^2) + omega dot 2ddd(y, y')) dd(x)
 $
 
 $display(
-  delta^2 J = integral_(x_0)^(x_1) [(F_(y y) + omega') delta y^2 + 2(F_(y y') + omega) delta y delta y' + F_(y' y') (delta y')^2] dd(x) \
-  delta^2 J = integral_(x_0)^(x_1) F_(y' y') [(F_(y y) + omega')/F_(y' y') delta y^2 + 2 (F_(y y') + omega)/F_(y' y') delta y delta y' + (delta y')^2] dd(x)
+  delta^2 J = integral_(x_0)^(x_1) [(F_(y y) + omega') ddd(y^2) + 2(F_(y y') + omega) ddd(y, y') + F_(y' y') (ddd(y'))^2] dd(x) \
+  delta^2 J = integral_(x_0)^(x_1) F_(y' y') [(F_(y y) + omega')/F_(y' y') ddd(y^2) + 2 (F_(y y') + omega)/F_(y' y') ddd(y, y') + (ddd(y'))^2] dd(x)
 )$
 
 Подберём $omega$ так, что $display((F_(y y) + omega')/F_(y' y') = ((F_(y y') + omega)/F_(y' y'))^2)$
