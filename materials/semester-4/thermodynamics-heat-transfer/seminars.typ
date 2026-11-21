@@ -1,4 +1,4 @@
-#import "meta.typ": conf
+#import "meta.typ": Ddd, conf
 #import "@preview/physica:0.9.8": dd, dv, evaluated
 
 #show: conf.with(
