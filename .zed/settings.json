@@ -15,5 +15,5 @@
     }
   },
   "soft_wrap": "bounded",
-  "file_scan_exclusions": ["meta.typ"],
+  "file_scan_exclusions": ["meta.typ"]
 }

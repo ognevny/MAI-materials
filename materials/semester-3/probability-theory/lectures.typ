@@ -1108,7 +1108,8 @@ $ F(x, y) = P(X < x, Y < y) $
 
 $
   f(x, y) = pdv(F(x,y), x, y),
-$ $F(x, y) = integral_(-oo)^x integral_(-oo)^y f(t, l) dd(t) dd(l)$
+$
+$F(x, y) = integral_(-oo)^x integral_(-oo)^y f(t, l) dd(t) dd(l)$
 
 #grid(
   columns: (3fr, 1fr),

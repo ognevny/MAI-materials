@@ -11,6 +11,9 @@
           },
         },
         "syntaxOnly": "onPowerSaving",
+        "lint": {
+          "enabled": true,
+        },
       },
     },
   },

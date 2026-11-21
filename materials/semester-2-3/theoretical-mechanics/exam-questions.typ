@@ -394,7 +394,9 @@ dif' A = (ov(T)_A, ov(V)_A) dd(t) + (ov(T)_B, ov(V)_B) dd(t) = ... = 0$
 $display(sum_j dif' A (ov(F)_j) = sum_j (F_(j x) dd(x_j) + F_(j y) dd(y_j) + F_(j z) dd(z_j)) = sum_j (pdv(U, x_j) dd(x_j) + pdv(U, y_j) dd(y_j) + pdv(U, z_j) dd(z_j)) = dd(U)) \
 display(dd(T) = sum_j dif' A (ov(F)_j) = dd(U))$
 
-$ display(Ddd(T) = integral_((1))^((2)) dd(U) = U_((2)) - U_((1)) = Ddd(U)) $
+$
+  Ddd(T) = integral_((1))^((2)) dd(U) = U_((2)) - U_((1)) = Ddd(U)
+$
 
 В ППС полная работа не зависит от траектории перемещения точек.
 
